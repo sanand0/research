@@ -1,0 +1,776 @@
+{
+  "scores": {
+    "turndown": {
+      "score": 84.6,
+      "passed": 33,
+      "total": 39
+    },
+    "node-html-markdown": {
+      "score": 97.4,
+      "passed": 38,
+      "total": 39
+    },
+    "html2text": {
+      "score": 74.4,
+      "passed": 29,
+      "total": 39
+    },
+    "markdownify": {
+      "score": 92.3,
+      "passed": 36,
+      "total": 39
+    },
+    "pandoc": {
+      "score": 79.5,
+      "passed": 31,
+      "total": 39
+    }
+  },
+  "detailed_results": {
+    "turndown": {
+      "01-headings.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "h1_atx": true,
+          "h2_atx": true,
+          "h6_atx": true
+        }
+      },
+      "02-links.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_link": true,
+          "link_preserved": true
+        }
+      },
+      "03-code.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_code": true,
+          "fenced_code": true
+        }
+      },
+      "04-simple-table.md": {
+        "passed": 0,
+        "failed": 2,
+        "details": {
+          "table_pipe": false,
+          "table_header_sep": false
+        }
+      },
+      "05-complex-table.md": {
+        "passed": 1,
+        "failed": 1,
+        "details": {
+          "table_pipe": false,
+          "preserves_checkmark": true
+        }
+      },
+      "06-unordered-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "list_marker": true
+        }
+      },
+      "07-ordered-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "numbered_list": true
+        }
+      },
+      "08-nested-lists.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "nested_indent": true,
+          "deeply_nested": true
+        }
+      },
+      "09-emphasis.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "bold": true,
+          "italic": true
+        }
+      },
+      "10-images.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "image_syntax": true,
+          "alt_text": true
+        }
+      },
+      "11-blockquotes.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "blockquote": true,
+          "nested_blockquote": true
+        }
+      },
+      "12-mixed-formatting.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "has_bold": true,
+          "has_code": true,
+          "has_link": true
+        }
+      },
+      "14-definition-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "preserves_terms": true
+        }
+      },
+      "15-horizontal-rules.md": {
+        "passed": 0,
+        "failed": 1,
+        "details": {
+          "hr_marker": false
+        }
+      },
+      "17-nested-structure.md": {
+        "passed": 4,
+        "failed": 0,
+        "details": {
+          "h1": true,
+          "h2": true,
+          "h3": true,
+          "fenced_code": true
+        }
+      },
+      "18-syntax-highlighting.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "fenced_python": true,
+          "fenced_javascript": true,
+          "fenced_sql": true
+        }
+      },
+      "19-multicolumn-table.md": {
+        "passed": 1,
+        "failed": 1,
+        "details": {
+          "table_pipe": false,
+          "preserves_dollar": true
+        }
+      },
+      "20-real-world-docs.md": {
+        "passed": 3,
+        "failed": 1,
+        "details": {
+          "headings": true,
+          "code_blocks": true,
+          "tables": false,
+          "lists": true
+        }
+      }
+    },
+    "node-html-markdown": {
+      "01-headings.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "h1_atx": true,
+          "h2_atx": true,
+          "h6_atx": true
+        }
+      },
+      "02-links.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_link": true,
+          "link_preserved": true
+        }
+      },
+      "03-code.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_code": true,
+          "fenced_code": true
+        }
+      },
+      "04-simple-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "table_header_sep": true
+        }
+      },
+      "05-complex-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "preserves_checkmark": true
+        }
+      },
+      "06-unordered-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "list_marker": true
+        }
+      },
+      "07-ordered-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "numbered_list": true
+        }
+      },
+      "08-nested-lists.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "nested_indent": true,
+          "deeply_nested": true
+        }
+      },
+      "09-emphasis.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "bold": true,
+          "italic": true
+        }
+      },
+      "10-images.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "image_syntax": true,
+          "alt_text": true
+        }
+      },
+      "11-blockquotes.md": {
+        "passed": 1,
+        "failed": 1,
+        "details": {
+          "blockquote": true,
+          "nested_blockquote": false
+        }
+      },
+      "12-mixed-formatting.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "has_bold": true,
+          "has_code": true,
+          "has_link": true
+        }
+      },
+      "14-definition-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "preserves_terms": true
+        }
+      },
+      "15-horizontal-rules.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "hr_marker": true
+        }
+      },
+      "17-nested-structure.md": {
+        "passed": 4,
+        "failed": 0,
+        "details": {
+          "h1": true,
+          "h2": true,
+          "h3": true,
+          "fenced_code": true
+        }
+      },
+      "18-syntax-highlighting.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "fenced_python": true,
+          "fenced_javascript": true,
+          "fenced_sql": true
+        }
+      },
+      "19-multicolumn-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "preserves_dollar": true
+        }
+      },
+      "20-real-world-docs.md": {
+        "passed": 4,
+        "failed": 0,
+        "details": {
+          "headings": true,
+          "code_blocks": true,
+          "tables": true,
+          "lists": true
+        }
+      }
+    },
+    "html2text": {
+      "01-headings.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "h1_atx": true,
+          "h2_atx": true,
+          "h6_atx": true
+        }
+      },
+      "02-links.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_link": true,
+          "link_preserved": true
+        }
+      },
+      "03-code.md": {
+        "passed": 1,
+        "failed": 1,
+        "details": {
+          "inline_code": true,
+          "fenced_code": false
+        }
+      },
+      "04-simple-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "table_header_sep": true
+        }
+      },
+      "05-complex-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "preserves_checkmark": true
+        }
+      },
+      "06-unordered-list.md": {
+        "passed": 0,
+        "failed": 1,
+        "details": {
+          "list_marker": false
+        }
+      },
+      "07-ordered-list.md": {
+        "passed": 0,
+        "failed": 1,
+        "details": {
+          "numbered_list": false
+        }
+      },
+      "08-nested-lists.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "nested_indent": true,
+          "deeply_nested": true
+        }
+      },
+      "09-emphasis.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "bold": true,
+          "italic": true
+        }
+      },
+      "10-images.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "image_syntax": true,
+          "alt_text": true
+        }
+      },
+      "11-blockquotes.md": {
+        "passed": 1,
+        "failed": 1,
+        "details": {
+          "blockquote": true,
+          "nested_blockquote": false
+        }
+      },
+      "12-mixed-formatting.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "has_bold": true,
+          "has_code": true,
+          "has_link": true
+        }
+      },
+      "14-definition-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "preserves_terms": true
+        }
+      },
+      "15-horizontal-rules.md": {
+        "passed": 0,
+        "failed": 1,
+        "details": {
+          "hr_marker": false
+        }
+      },
+      "17-nested-structure.md": {
+        "passed": 3,
+        "failed": 1,
+        "details": {
+          "h1": true,
+          "h2": true,
+          "h3": true,
+          "fenced_code": false
+        }
+      },
+      "18-syntax-highlighting.md": {
+        "passed": 0,
+        "failed": 3,
+        "details": {
+          "fenced_python": false,
+          "fenced_javascript": false,
+          "fenced_sql": false
+        }
+      },
+      "19-multicolumn-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "preserves_dollar": true
+        }
+      },
+      "20-real-world-docs.md": {
+        "passed": 3,
+        "failed": 1,
+        "details": {
+          "headings": true,
+          "code_blocks": false,
+          "tables": true,
+          "lists": true
+        }
+      }
+    },
+    "markdownify": {
+      "01-headings.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "h1_atx": true,
+          "h2_atx": true,
+          "h6_atx": true
+        }
+      },
+      "02-links.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_link": true,
+          "link_preserved": true
+        }
+      },
+      "03-code.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_code": true,
+          "fenced_code": true
+        }
+      },
+      "04-simple-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "table_header_sep": true
+        }
+      },
+      "05-complex-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "preserves_checkmark": true
+        }
+      },
+      "06-unordered-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "list_marker": true
+        }
+      },
+      "07-ordered-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "numbered_list": true
+        }
+      },
+      "08-nested-lists.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "nested_indent": true,
+          "deeply_nested": true
+        }
+      },
+      "09-emphasis.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "bold": true,
+          "italic": true
+        }
+      },
+      "10-images.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "image_syntax": true,
+          "alt_text": true
+        }
+      },
+      "11-blockquotes.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "blockquote": true,
+          "nested_blockquote": true
+        }
+      },
+      "12-mixed-formatting.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "has_bold": true,
+          "has_code": true,
+          "has_link": true
+        }
+      },
+      "14-definition-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "preserves_terms": true
+        }
+      },
+      "15-horizontal-rules.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "hr_marker": true
+        }
+      },
+      "17-nested-structure.md": {
+        "passed": 4,
+        "failed": 0,
+        "details": {
+          "h1": true,
+          "h2": true,
+          "h3": true,
+          "fenced_code": true
+        }
+      },
+      "18-syntax-highlighting.md": {
+        "passed": 0,
+        "failed": 3,
+        "details": {
+          "fenced_python": false,
+          "fenced_javascript": false,
+          "fenced_sql": false
+        }
+      },
+      "19-multicolumn-table.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "table_pipe": true,
+          "preserves_dollar": true
+        }
+      },
+      "20-real-world-docs.md": {
+        "passed": 4,
+        "failed": 0,
+        "details": {
+          "headings": true,
+          "code_blocks": true,
+          "tables": true,
+          "lists": true
+        }
+      }
+    },
+    "pandoc": {
+      "01-headings.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "h1_atx": true,
+          "h2_atx": true,
+          "h6_atx": true
+        }
+      },
+      "02-links.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_link": true,
+          "link_preserved": true
+        }
+      },
+      "03-code.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "inline_code": true,
+          "fenced_code": true
+        }
+      },
+      "04-simple-table.md": {
+        "passed": 0,
+        "failed": 2,
+        "details": {
+          "table_pipe": false,
+          "table_header_sep": false
+        }
+      },
+      "05-complex-table.md": {
+        "passed": 1,
+        "failed": 1,
+        "details": {
+          "table_pipe": false,
+          "preserves_checkmark": true
+        }
+      },
+      "06-unordered-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "list_marker": true
+        }
+      },
+      "07-ordered-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "numbered_list": true
+        }
+      },
+      "08-nested-lists.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "nested_indent": true,
+          "deeply_nested": true
+        }
+      },
+      "09-emphasis.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "bold": true,
+          "italic": true
+        }
+      },
+      "10-images.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "image_syntax": true,
+          "alt_text": true
+        }
+      },
+      "11-blockquotes.md": {
+        "passed": 2,
+        "failed": 0,
+        "details": {
+          "blockquote": true,
+          "nested_blockquote": true
+        }
+      },
+      "12-mixed-formatting.md": {
+        "passed": 3,
+        "failed": 0,
+        "details": {
+          "has_bold": true,
+          "has_code": true,
+          "has_link": true
+        }
+      },
+      "14-definition-list.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "preserves_terms": true
+        }
+      },
+      "15-horizontal-rules.md": {
+        "passed": 1,
+        "failed": 0,
+        "details": {
+          "hr_marker": true
+        }
+      },
+      "17-nested-structure.md": {
+        "passed": 4,
+        "failed": 0,
+        "details": {
+          "h1": true,
+          "h2": true,
+          "h3": true,
+          "fenced_code": true
+        }
+      },
+      "18-syntax-highlighting.md": {
+        "passed": 0,
+        "failed": 3,
+        "details": {
+          "fenced_python": false,
+          "fenced_javascript": false,
+          "fenced_sql": false
+        }
+      },
+      "19-multicolumn-table.md": {
+        "passed": 1,
+        "failed": 1,
+        "details": {
+          "table_pipe": false,
+          "preserves_dollar": true
+        }
+      },
+      "20-real-world-docs.md": {
+        "passed": 3,
+        "failed": 1,
+        "details": {
+          "headings": true,
+          "code_blocks": true,
+          "tables": false,
+          "lists": true
+        }
+      }
+    }
+  }
+}
