@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test: Code with Syntax Classes</title></head>
+<body>
+<h3>Python Example</h3>
+<pre><code class="language-python">def fibonacci(n):
+    if n <= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(10))</code></pre>
+<h3>JavaScript Example</h3>
+<pre><code class="language-javascript">async function fetchData(url) {
+  const response = await fetch(url);
+  return await response.json();
+}</code></pre>
+<h3>SQL Example</h3>
+<pre><code class="language-sql">SELECT users.name, COUNT(orders.id) as order_count
+FROM users
+LEFT JOIN orders ON users.id = orders.user_id
+GROUP BY users.id
+HAVING order_count > 5;</code></pre>
+</body>
+</html>

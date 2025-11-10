@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test: Real-world Documentation Page</title></head>
+<body>
+<h1>Installation Guide</h1>
+<p>Follow these steps to install and configure the application.</p>
+
+<h2>Prerequisites</h2>
+<p>Before you begin, ensure you have the following:</p>
+<ul>
+<li>Node.js (version 16 or higher)</li>
+<li>npm or yarn package manager</li>
+<li>Git</li>
+</ul>
+
+<h2>Installation Steps</h2>
+<ol>
+<li><p>Clone the repository:</p>
+<pre><code class="language-bash">git clone https://github.com/example/project.git
+cd project</code></pre></li>
+<li><p>Install dependencies:</p>
+<pre><code class="language-bash">npm install</code></pre></li>
+<li><p>Configure environment variables:</p>
+<p>Create a <code>.env</code> file with the following:</p>
+<pre><code>API_KEY=your_api_key_here
+DATABASE_URL=postgresql://localhost/mydb</code></pre></li>
+</ol>
+
+<h2>Configuration</h2>
+<p>The application can be configured using the <code>config.json</code> file:</p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>number</td>
+<td>3000</td>
+<td>Server port</td>
+</tr>
+<tr>
+<td>debug</td>
+<td>boolean</td>
+<td>false</td>
+<td>Enable debug mode</td>
+</tr>
+<tr>
+<td>logLevel</td>
+<td>string</td>
+<td>"info"</td>
+<td>Logging level</td>
+</tr>
+</tbody>
+</table>
+
+<h2>Troubleshooting</h2>
+<blockquote>
+<p><strong>Note:</strong> If you encounter EACCES errors, try running with <code>sudo</code> or fix your npm permissions.</p>
+</blockquote>
+
+<p>For more help, see our <a href="https://docs.example.com/faq">FAQ</a> or <a href="https://github.com/example/project/issues">open an issue</a>.</p>
+</body>
+</html>
