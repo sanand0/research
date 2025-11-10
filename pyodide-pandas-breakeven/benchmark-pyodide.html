@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pyodide/Pandas Benchmark</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .timing { color: #0066cc; font-weight: bold; }
+        button { padding: 10px 20px; font-size: 16px; margin: 10px 5px; }
+        #status { margin: 20px 0; padding: 10px; background: #ffffcc; }
+    </style>
+</head>
+<body>
+    <h1>Pyodide/Pandas Benchmark</h1>
+    <div id="status">Status: Initializing...</div>
+
+    <button onclick="runBenchmark(100)">Test 100 rows</button>
+    <button onclick="runBenchmark(1000)">Test 1,000 rows</button>
+    <button onclick="runBenchmark(10000)">Test 10,000 rows</button>
+    <button onclick="runBenchmark(100000)">Test 100,000 rows</button>
+
+    <div id="results"></div>
+
+    <script type="text/javascript">
+        let pyodide;
+        let pyodideLoadTime = 0;
+        let pandasLoadTime = 0;
+
+        async function loadPyodideAndPackages() {
+            const startTotal = performance.now();
+            document.getElementById('status').innerText = 'Loading Pyodide runtime...';
+
+            const startPyodide = performance.now();
+            pyodide = await loadPyodide();
+            pyodideLoadTime = performance.now() - startPyodide;
+
+            document.getElementById('status').innerText = 'Loading pandas package...';
+            const startPandas = performance.now();
+            await pyodide.loadPackage(['pandas', 'numpy']);
+            pandasLoadTime = performance.now() - startPandas;
+
+            const totalTime = performance.now() - startTotal;
+            document.getElementById('status').innerHTML =
+                `Ready! Load times:<br>` +
+                `- Pyodide runtime: <span class="timing">${pyodideLoadTime.toFixed(0)}ms</span><br>` +
+                `- Pandas package: <span class="timing">${pandasLoadTime.toFixed(0)}ms</span><br>` +
+                `- Total: <span class="timing">${totalTime.toFixed(0)}ms</span>`;
+        }
+
+        async function runBenchmark(numRows) {
+            if (!pyodide) {
+                alert('Pyodide not loaded yet, please wait...');
+                return;
+            }
+
+            const results = document.getElementById('results');
+            results.innerHTML = `<h2>Running benchmark with ${numRows.toLocaleString()} rows...</h2>`;
+
+            // Generate test data
+            const dataGenStart = performance.now();
+            pyodide.runPython(`
+import pandas as pd
+import numpy as np
+
+# Generate test data
+np.random.seed(42)
+n = ${numRows}
+df = pd.DataFrame({
+    'id': range(n),
+    'category': np.random.choice(['A', 'B', 'C', 'D', 'E'], n),
+    'value': np.random.randn(n) * 100,
+    'quantity': np.random.randint(1, 100, n),
+    'price': np.random.uniform(10, 1000, n)
+})
+            `);
+            const dataGenTime = performance.now() - dataGenStart;
+
+            // Test 1: Filter
+            const filterStart = performance.now();
+            pyodide.runPython(`
+filtered = df[df['value'] > 0]
+result_count = len(filtered)
+            `);
+            const filterTime = performance.now() - filterStart;
+            const filterCount = pyodide.globals.get('result_count');
+
+            // Test 2: Group by and aggregate
+            const groupStart = performance.now();
+            pyodide.runPython(`
+grouped = df.groupby('category').agg({
+    'value': 'mean',
+    'quantity': 'sum',
+    'price': ['min', 'max']
+})
+result_groups = len(grouped)
+            `);
+            const groupTime = performance.now() - groupStart;
+            const groupCount = pyodide.globals.get('result_groups');
+
+            // Test 3: Sort
+            const sortStart = performance.now();
+            pyodide.runPython(`
+sorted_df = df.sort_values(['category', 'value'], ascending=[True, False])
+result_count = len(sorted_df)
+            `);
+            const sortTime = performance.now() - sortStart;
+
+            // Test 4: Column transformation
+            const transformStart = performance.now();
+            pyodide.runPython(`
+df['total'] = df['quantity'] * df['price']
+df['value_squared'] = df['value'] ** 2
+result_count = len(df)
+            `);
+            const transformTime = performance.now() - transformStart;
+
+            // Test 5: Complex filter with multiple conditions
+            const complexStart = performance.now();
+            pyodide.runPython(`
+complex_filter = df[
+    (df['value'] > 0) &
+    (df['quantity'] > 50) &
+    (df['category'].isin(['A', 'B']))
+]
+result_count = len(complex_filter)
+            `);
+            const complexTime = performance.now() - complexStart;
+            const complexCount = pyodide.globals.get('result_count');
+
+            const totalExecTime = filterTime + groupTime + sortTime + transformTime + complexTime;
+            const totalWithLoad = pyodideLoadTime + pandasLoadTime + totalExecTime;
+
+            results.innerHTML = `
+                <h2>Results for ${numRows.toLocaleString()} rows</h2>
+                <div class="result">
+                    <strong>Initial Load (one-time cost):</strong><br>
+                    - Pyodide runtime: <span class="timing">${pyodideLoadTime.toFixed(2)}ms</span><br>
+                    - Pandas package: <span class="timing">${pandasLoadTime.toFixed(2)}ms</span><br>
+                    - <strong>Total load overhead: <span class="timing">${(pyodideLoadTime + pandasLoadTime).toFixed(2)}ms</span></strong>
+                </div>
+                <div class="result">
+                    <strong>Data Generation:</strong> <span class="timing">${dataGenTime.toFixed(2)}ms</span>
+                </div>
+                <div class="result">
+                    <strong>Test 1 - Filter (value > 0):</strong> <span class="timing">${filterTime.toFixed(2)}ms</span> (${filterCount} rows)
+                </div>
+                <div class="result">
+                    <strong>Test 2 - GroupBy + Aggregate:</strong> <span class="timing">${groupTime.toFixed(2)}ms</span> (${groupCount} groups)
+                </div>
+                <div class="result">
+                    <strong>Test 3 - Sort by 2 columns:</strong> <span class="timing">${sortTime.toFixed(2)}ms</span>
+                </div>
+                <div class="result">
+                    <strong>Test 4 - Column transformations:</strong> <span class="timing">${transformTime.toFixed(2)}ms</span>
+                </div>
+                <div class="result">
+                    <strong>Test 5 - Complex filter:</strong> <span class="timing">${complexTime.toFixed(2)}ms</span> (${complexCount} rows)
+                </div>
+                <div class="result" style="background: #ccffcc;">
+                    <strong>Total execution time (excluding load):</strong> <span class="timing">${totalExecTime.toFixed(2)}ms</span><br>
+                    <strong>Total with first-time load:</strong> <span class="timing">${totalWithLoad.toFixed(2)}ms</span>
+                </div>
+            `;
+        }
+
+        // Load Pyodide when page loads
+        loadPyodideAndPackages();
+    </script>
+</body>
+</html>

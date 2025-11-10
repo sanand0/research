@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pyodide/Pandas vs JavaScript - Break-even Analysis</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; max-width: 1200px; }
+        h1 { color: #333; }
+        .container { display: flex; gap: 20px; margin: 20px 0; }
+        .column { flex: 1; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; border-radius: 5px; }
+        .timing { color: #0066cc; font-weight: bold; }
+        button { padding: 10px 20px; font-size: 16px; margin: 10px 5px; cursor: pointer; }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
+        #status { margin: 20px 0; padding: 15px; background: #ffffcc; border-radius: 5px; }
+        .winner { background: #ccffcc !important; }
+        .loser { background: #ffcccc !important; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { padding: 10px; text-align: left; border: 1px solid #ddd; }
+        th { background: #4CAF50; color: white; }
+        tr:nth-child(even) { background: #f2f2f2; }
+        .comparison { margin: 20px 0; padding: 15px; background: #e3f2fd; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Pyodide/Pandas vs JavaScript - Break-even Analysis</h1>
+
+    <div id="status">Status: Initializing Pyodide...</div>
+
+    <div>
+        <button id="btn100" onclick="runComparison(100)" disabled>Test 100 rows</button>
+        <button id="btn1000" onclick="runComparison(1000)" disabled>Test 1,000 rows</button>
+        <button id="btn10000" onclick="runComparison(10000)" disabled>Test 10,000 rows</button>
+        <button id="btn100000" onclick="runComparison(100000)" disabled>Test 100,000 rows</button>
+        <button onclick="runAllTests()" id="btnAll" disabled>Run All Tests</button>
+    </div>
+
+    <div id="results"></div>
+    <div id="summary"></div>
+
+    <script type="text/javascript">
+        let pyodide;
+        let pyodideLoadTime = 0;
+        let pandasLoadTime = 0;
+        let allResults = [];
+
+        // Seeded random for JS
+        class SeededRandom {
+            constructor(seed) { this.seed = seed; }
+            next() {
+                this.seed = (this.seed * 9301 + 49297) % 233280;
+                return this.seed / 233280;
+            }
+            randn() {
+                const u1 = this.next();
+                const u2 = this.next();
+                return Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
+            }
+            randint(min, max) { return Math.floor(this.next() * (max - min) + min); }
+            choice(arr) { return arr[Math.floor(this.next() * arr.length)]; }
+        }
+
+        function generateDataJS(numRows) {
+            const rng = new SeededRandom(42);
+            const categories = ['A', 'B', 'C', 'D', 'E'];
+            const data = [];
+            for (let i = 0; i < numRows; i++) {
+                data.push({
+                    id: i,
+                    category: rng.choice(categories),
+                    value: rng.randn() * 100,
+                    quantity: rng.randint(1, 100),
+                    price: rng.next() * 990 + 10
+                });
+            }
+            return data;
+        }
+
+        async function loadPyodideAndPackages() {
+            const startTotal = performance.now();
+            document.getElementById('status').innerText = 'Loading Pyodide runtime...';
+
+            const startPyodide = performance.now();
+            pyodide = await loadPyodide();
+            pyodideLoadTime = performance.now() - startPyodide;
+
+            document.getElementById('status').innerText = 'Loading pandas package...';
+            const startPandas = performance.now();
+            await pyodide.loadPackage(['pandas', 'numpy']);
+            pandasLoadTime = performance.now() - startPandas;
+
+            const totalTime = performance.now() - startTotal;
+            document.getElementById('status').innerHTML =
+                `✅ Ready! Initial load times (one-time cost):<br>` +
+                `- Pyodide runtime: <span class="timing">${(pyodideLoadTime/1000).toFixed(2)}s</span><br>` +
+                `- Pandas package: <span class="timing">${(pandasLoadTime/1000).toFixed(2)}s</span><br>` +
+                `- <strong>Total load overhead: <span class="timing">${(totalTime/1000).toFixed(2)}s</span></strong>`;
+
+            // Enable buttons
+            document.querySelectorAll('button').forEach(btn => btn.disabled = false);
+        }
+
+        async function runPyodideBenchmark(numRows) {
+            const results = {};
+
+            // Generate data
+            const dataGenStart = performance.now();
+            pyodide.runPython(`
+import pandas as pd
+import numpy as np
+np.random.seed(42)
+n = ${numRows}
+df = pd.DataFrame({
+    'id': range(n),
+    'category': np.random.choice(['A', 'B', 'C', 'D', 'E'], n),
+    'value': np.random.randn(n) * 100,
+    'quantity': np.random.randint(1, 100, n),
+    'price': np.random.uniform(10, 1000, n)
+})
+            `);
+            results.dataGen = performance.now() - dataGenStart;
+
+            // Filter
+            const filterStart = performance.now();
+            pyodide.runPython(`filtered = df[df['value'] > 0]`);
+            results.filter = performance.now() - filterStart;
+
+            // GroupBy
+            const groupStart = performance.now();
+            pyodide.runPython(`grouped = df.groupby('category').agg({'value': 'mean', 'quantity': 'sum', 'price': ['min', 'max']})`);
+            results.group = performance.now() - groupStart;
+
+            // Sort
+            const sortStart = performance.now();
+            pyodide.runPython(`sorted_df = df.sort_values(['category', 'value'], ascending=[True, False])`);
+            results.sort = performance.now() - sortStart;
+
+            // Transform
+            const transformStart = performance.now();
+            pyodide.runPython(`
+df['total'] = df['quantity'] * df['price']
+df['value_squared'] = df['value'] ** 2
+            `);
+            results.transform = performance.now() - transformStart;
+
+            // Complex filter
+            const complexStart = performance.now();
+            pyodide.runPython(`complex_filter = df[(df['value'] > 0) & (df['quantity'] > 50) & (df['category'].isin(['A', 'B']))];`);
+            results.complex = performance.now() - complexStart;
+
+            results.total = results.filter + results.group + results.sort + results.transform + results.complex;
+            results.totalWithLoad = pyodideLoadTime + pandasLoadTime + results.total;
+
+            return results;
+        }
+
+        async function runJSBenchmark(numRows) {
+            const results = {};
+
+            // Generate data
+            const dataGenStart = performance.now();
+            let data = generateDataJS(numRows);
+            results.dataGen = performance.now() - dataGenStart;
+
+            // Filter
+            const filterStart = performance.now();
+            const filtered = data.filter(row => row.value > 0);
+            results.filter = performance.now() - filterStart;
+
+            // GroupBy
+            const groupStart = performance.now();
+            const groups = {};
+            for (const row of data) {
+                if (!groups[row.category]) groups[row.category] = { values: [], quantities: [], prices: [] };
+                groups[row.category].values.push(row.value);
+                groups[row.category].quantities.push(row.quantity);
+                groups[row.category].prices.push(row.price);
+            }
+            const grouped = {};
+            for (const [category, group] of Object.entries(groups)) {
+                grouped[category] = {
+                    value_mean: group.values.reduce((a, b) => a + b, 0) / group.values.length,
+                    quantity_sum: group.quantities.reduce((a, b) => a + b, 0),
+                    price_min: Math.min(...group.prices),
+                    price_max: Math.max(...group.prices)
+                };
+            }
+            results.group = performance.now() - groupStart;
+
+            // Sort
+            const sortStart = performance.now();
+            const sorted = [...data].sort((a, b) => a.category < b.category ? -1 : a.category > b.category ? 1 : b.value - a.value);
+            results.sort = performance.now() - sortStart;
+
+            // Transform
+            const transformStart = performance.now();
+            data = data.map(row => ({ ...row, total: row.quantity * row.price, value_squared: row.value ** 2 }));
+            results.transform = performance.now() - transformStart;
+
+            // Complex filter
+            const complexStart = performance.now();
+            const complexFiltered = data.filter(row => row.value > 0 && row.quantity > 50 && (row.category === 'A' || row.category === 'B'));
+            results.complex = performance.now() - complexStart;
+
+            results.total = results.filter + results.group + results.sort + results.transform + results.complex;
+            results.totalWithLoad = results.total; // No load time for JS
+
+            return results;
+        }
+
+        async function runComparison(numRows) {
+            document.getElementById('results').innerHTML = `<h2>Running comparison with ${numRows.toLocaleString()} rows...</h2>`;
+
+            const pyResults = await runPyodideBenchmark(numRows);
+            const jsResults = await runJSBenchmark(numRows);
+
+            const faster = jsResults.total < pyResults.total ? 'js' : 'pandas';
+            const speedup = faster === 'js'
+                ? (pyResults.total / jsResults.total).toFixed(2)
+                : (jsResults.total / pyResults.total).toFixed(2);
+
+            const result = {
+                numRows,
+                pyResults,
+                jsResults,
+                faster,
+                speedup
+            };
+            allResults.push(result);
+
+            displayComparison(result);
+        }
+
+        function displayComparison(result) {
+            const { numRows, pyResults, jsResults, faster, speedup } = result;
+
+            const html = `
+                <h2>Comparison Results for ${numRows.toLocaleString()} rows</h2>
+
+                <table>
+                    <tr>
+                        <th>Operation</th>
+                        <th>Pyodide/Pandas</th>
+                        <th>JavaScript</th>
+                        <th>Winner</th>
+                    </tr>
+                    <tr>
+                        <td>Data Generation</td>
+                        <td>${pyResults.dataGen.toFixed(2)}ms</td>
+                        <td>${jsResults.dataGen.toFixed(2)}ms</td>
+                        <td>${pyResults.dataGen < jsResults.dataGen ? '🐍 Pandas' : '🟨 JavaScript'}</td>
+                    </tr>
+                    <tr>
+                        <td>Filter</td>
+                        <td>${pyResults.filter.toFixed(2)}ms</td>
+                        <td>${jsResults.filter.toFixed(2)}ms</td>
+                        <td>${pyResults.filter < jsResults.filter ? '🐍 Pandas' : '🟨 JavaScript'}</td>
+                    </tr>
+                    <tr>
+                        <td>GroupBy + Aggregate</td>
+                        <td>${pyResults.group.toFixed(2)}ms</td>
+                        <td>${jsResults.group.toFixed(2)}ms</td>
+                        <td>${pyResults.group < jsResults.group ? '🐍 Pandas' : '🟨 JavaScript'}</td>
+                    </tr>
+                    <tr>
+                        <td>Sort</td>
+                        <td>${pyResults.sort.toFixed(2)}ms</td>
+                        <td>${jsResults.sort.toFixed(2)}ms</td>
+                        <td>${pyResults.sort < jsResults.sort ? '🐍 Pandas' : '🟨 JavaScript'}</td>
+                    </tr>
+                    <tr>
+                        <td>Transform</td>
+                        <td>${pyResults.transform.toFixed(2)}ms</td>
+                        <td>${jsResults.transform.toFixed(2)}ms</td>
+                        <td>${pyResults.transform < jsResults.transform ? '🐍 Pandas' : '🟨 JavaScript'}</td>
+                    </tr>
+                    <tr>
+                        <td>Complex Filter</td>
+                        <td>${pyResults.complex.toFixed(2)}ms</td>
+                        <td>${jsResults.complex.toFixed(2)}ms</td>
+                        <td>${pyResults.complex < jsResults.complex ? '🐍 Pandas' : '🟨 JavaScript'}</td>
+                    </tr>
+                    <tr style="font-weight: bold; background: #e0e0e0;">
+                        <td>Total Execution</td>
+                        <td class="${faster === 'pandas' ? 'winner' : 'loser'}">${pyResults.total.toFixed(2)}ms</td>
+                        <td class="${faster === 'js' ? 'winner' : 'loser'}">${jsResults.total.toFixed(2)}ms</td>
+                        <td>${faster === 'js' ? '🟨 JavaScript' : '🐍 Pandas'} (${speedup}x faster)</td>
+                    </tr>
+                    <tr style="font-weight: bold; background: #fff3cd;">
+                        <td>Total (with initial load)</td>
+                        <td class="${jsResults.totalWithLoad < pyResults.totalWithLoad ? 'loser' : 'winner'}">${pyResults.totalWithLoad.toFixed(2)}ms</td>
+                        <td class="${jsResults.totalWithLoad < pyResults.totalWithLoad ? 'winner' : 'loser'}">${jsResults.totalWithLoad.toFixed(2)}ms</td>
+                        <td>${jsResults.totalWithLoad < pyResults.totalWithLoad ? '🟨 JavaScript' : '🐍 Pandas'} (${(Math.max(pyResults.totalWithLoad, jsResults.totalWithLoad) / Math.min(pyResults.totalWithLoad, jsResults.totalWithLoad)).toFixed(2)}x faster)</td>
+                    </tr>
+                </table>
+
+                <div class="comparison">
+                    <h3>Analysis</h3>
+                    <p><strong>Execution time only:</strong> ${faster === 'js' ? 'JavaScript' : 'Pandas'} is ${speedup}x faster (${Math.abs(pyResults.total - jsResults.total).toFixed(2)}ms difference)</p>
+                    <p><strong>Including load time:</strong> JavaScript is ${(pyResults.totalWithLoad / jsResults.totalWithLoad).toFixed(2)}x faster (${(pyResults.totalWithLoad - jsResults.totalWithLoad).toFixed(2)}ms difference)</p>
+                    <p><strong>Load overhead:</strong> Pyodide + Pandas requires ${(pyodideLoadTime + pandasLoadTime).toFixed(2)}ms one-time load</p>
+                    <p><strong>Operations needed to break even:</strong> ${Math.ceil((pyodideLoadTime + pandasLoadTime) / Math.max(jsResults.total - pyResults.total, 0.1))} iterations of these operations</p>
+                </div>
+            `;
+
+            document.getElementById('results').innerHTML = html;
+        }
+
+        async function runAllTests() {
+            allResults = [];
+            const sizes = [100, 1000, 10000, 100000];
+            for (const size of sizes) {
+                await runComparison(size);
+                await new Promise(resolve => setTimeout(resolve, 100)); // Small delay between tests
+            }
+            displaySummary();
+        }
+
+        function displaySummary() {
+            if (allResults.length === 0) return;
+
+            let html = '<h2>Summary of All Tests</h2><table><tr><th>Rows</th><th>JS Time</th><th>Pandas Time (exec only)</th><th>Pandas (with load)</th><th>Winner (exec)</th><th>Winner (with load)</th></tr>';
+
+            for (const result of allResults) {
+                const execWinner = result.jsResults.total < result.pyResults.total ? 'JS' : 'Pandas';
+                const loadWinner = result.jsResults.totalWithLoad < result.pyResults.totalWithLoad ? 'JS' : 'Pandas';
+
+                html += `<tr>
+                    <td>${result.numRows.toLocaleString()}</td>
+                    <td>${result.jsResults.total.toFixed(2)}ms</td>
+                    <td>${result.pyResults.total.toFixed(2)}ms</td>
+                    <td>${result.pyResults.totalWithLoad.toFixed(2)}ms</td>
+                    <td>${execWinner}</td>
+                    <td>${loadWinner}</td>
+                </tr>`;
+            }
+
+            html += '</table>';
+
+            html += '<div class="comparison"><h3>Key Findings</h3>';
+            html += `<p><strong>Load overhead:</strong> ${(pyodideLoadTime + pandasLoadTime).toFixed(0)}ms (${((pyodideLoadTime + pandasLoadTime)/1000).toFixed(2)}s)</p>`;
+
+            // Find if pandas ever wins on execution
+            const pandasWins = allResults.filter(r => r.pyResults.total < r.jsResults.total);
+            if (pandasWins.length > 0) {
+                html += `<p><strong>Pandas becomes faster at:</strong> ${pandasWins[0].numRows.toLocaleString()} rows (execution only)</p>`;
+            } else {
+                html += `<p><strong>JavaScript is faster for all tested sizes</strong> (execution only)</p>`;
+            }
+
+            html += '</div>';
+
+            document.getElementById('summary').innerHTML = html;
+        }
+
+        // Load Pyodide when page loads
+        loadPyodideAndPackages();
+    </script>
+</body>
+</html>
