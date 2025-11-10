@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Benchmark</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .result { margin: 10px 0; padding: 10px; background: #f0f0f0; }
+        .timing { color: #0066cc; font-weight: bold; }
+        button { padding: 10px 20px; font-size: 16px; margin: 10px 5px; }
+        #status { margin: 20px 0; padding: 10px; background: #ffffcc; }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Benchmark (No External Libraries)</h1>
+    <div id="status">Status: Ready (no load time required)</div>
+
+    <button onclick="runBenchmark(100)">Test 100 rows</button>
+    <button onclick="runBenchmark(1000)">Test 1,000 rows</button>
+    <button onclick="runBenchmark(10000)">Test 10,000 rows</button>
+    <button onclick="runBenchmark(100000)">Test 100,000 rows</button>
+
+    <div id="results"></div>
+
+    <script type="text/javascript">
+        // Simple seeded random number generator
+        class SeededRandom {
+            constructor(seed) {
+                this.seed = seed;
+            }
+            next() {
+                this.seed = (this.seed * 9301 + 49297) % 233280;
+                return this.seed / 233280;
+            }
+            randn() {
+                // Box-Muller transform
+                const u1 = this.next();
+                const u2 = this.next();
+                return Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
+            }
+            randint(min, max) {
+                return Math.floor(this.next() * (max - min) + min);
+            }
+            choice(arr) {
+                return arr[Math.floor(this.next() * arr.length)];
+            }
+        }
+
+        function generateData(numRows) {
+            const rng = new SeededRandom(42);
+            const categories = ['A', 'B', 'C', 'D', 'E'];
+            const data = [];
+
+            for (let i = 0; i < numRows; i++) {
+                data.push({
+                    id: i,
+                    category: rng.choice(categories),
+                    value: rng.randn() * 100,
+                    quantity: rng.randint(1, 100),
+                    price: rng.next() * 990 + 10
+                });
+            }
+
+            return data;
+        }
+
+        function filterData(data) {
+            return data.filter(row => row.value > 0);
+        }
+
+        function groupByAndAggregate(data) {
+            const groups = {};
+
+            // Group data
+            for (const row of data) {
+                if (!groups[row.category]) {
+                    groups[row.category] = {
+                        values: [],
+                        quantities: [],
+                        prices: []
+                    };
+                }
+                groups[row.category].values.push(row.value);
+                groups[row.category].quantities.push(row.quantity);
+                groups[row.category].prices.push(row.price);
+            }
+
+            // Aggregate
+            const result = {};
+            for (const [category, group] of Object.entries(groups)) {
+                const valueMean = group.values.reduce((a, b) => a + b, 0) / group.values.length;
+                const quantitySum = group.quantities.reduce((a, b) => a + b, 0);
+                const priceMin = Math.min(...group.prices);
+                const priceMax = Math.max(...group.prices);
+
+                result[category] = {
+                    value_mean: valueMean,
+                    quantity_sum: quantitySum,
+                    price_min: priceMin,
+                    price_max: priceMax
+                };
+            }
+
+            return result;
+        }
+
+        function sortData(data) {
+            return [...data].sort((a, b) => {
+                // First sort by category (ascending)
+                if (a.category < b.category) return -1;
+                if (a.category > b.category) return 1;
+                // Then by value (descending)
+                return b.value - a.value;
+            });
+        }
+
+        function transformData(data) {
+            // Add new computed columns
+            return data.map(row => ({
+                ...row,
+                total: row.quantity * row.price,
+                value_squared: row.value ** 2
+            }));
+        }
+
+        function complexFilter(data) {
+            return data.filter(row =>
+                row.value > 0 &&
+                row.quantity > 50 &&
+                (row.category === 'A' || row.category === 'B')
+            );
+        }
+
+        async function runBenchmark(numRows) {
+            const results = document.getElementById('results');
+            results.innerHTML = `<h2>Running benchmark with ${numRows.toLocaleString()} rows...</h2>`;
+
+            // Generate test data
+            const dataGenStart = performance.now();
+            let data = generateData(numRows);
+            const dataGenTime = performance.now() - dataGenStart;
+
+            // Test 1: Filter
+            const filterStart = performance.now();
+            const filtered = filterData(data);
+            const filterTime = performance.now() - filterStart;
+
+            // Test 2: Group by and aggregate
+            const groupStart = performance.now();
+            const grouped = groupByAndAggregate(data);
+            const groupTime = performance.now() - groupStart;
+
+            // Test 3: Sort
+            const sortStart = performance.now();
+            const sorted = sortData(data);
+            const sortTime = performance.now() - sortStart;
+
+            // Test 4: Column transformation
+            const transformStart = performance.now();
+            data = transformData(data);
+            const transformTime = performance.now() - transformStart;
+
+            // Test 5: Complex filter
+            const complexStart = performance.now();
+            const complexFiltered = complexFilter(data);
+            const complexTime = performance.now() - complexStart;
+
+            const totalExecTime = filterTime + groupTime + sortTime + transformTime + complexTime;
+
+            results.innerHTML = `
+                <h2>Results for ${numRows.toLocaleString()} rows</h2>
+                <div class="result">
+                    <strong>Initial Load (one-time cost):</strong><br>
+                    - <strong>No external libraries required: <span class="timing">0ms</span></strong>
+                </div>
+                <div class="result">
+                    <strong>Data Generation:</strong> <span class="timing">${dataGenTime.toFixed(2)}ms</span>
+                </div>
+                <div class="result">
+                    <strong>Test 1 - Filter (value > 0):</strong> <span class="timing">${filterTime.toFixed(2)}ms</span> (${filtered.length} rows)
+                </div>
+                <div class="result">
+                    <strong>Test 2 - GroupBy + Aggregate:</strong> <span class="timing">${groupTime.toFixed(2)}ms</span> (${Object.keys(grouped).length} groups)
+                </div>
+                <div class="result">
+                    <strong>Test 3 - Sort by 2 columns:</strong> <span class="timing">${sortTime.toFixed(2)}ms</span>
+                </div>
+                <div class="result">
+                    <strong>Test 4 - Column transformations:</strong> <span class="timing">${transformTime.toFixed(2)}ms</span>
+                </div>
+                <div class="result">
+                    <strong>Test 5 - Complex filter:</strong> <span class="timing">${complexTime.toFixed(2)}ms</span> (${complexFiltered.length} rows)
+                </div>
+                <div class="result" style="background: #ccffcc;">
+                    <strong>Total execution time:</strong> <span class="timing">${totalExecTime.toFixed(2)}ms</span>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
