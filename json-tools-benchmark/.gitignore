@@ -1,0 +1,9 @@
+# Large data files (can be regenerated)
+data/
+
+# Dependencies (not our code)
+node_modules/
+__pycache__/
+
+# Downloaded binaries
+/tmp/dasel
