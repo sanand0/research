@@ -1,0 +1,16 @@
+{
+  "name": "Method 1: Environment Variable",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  // Install GitHub CLI
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  // Set GH_TOKEN from host environment or user secrets
+  "remoteEnv": {
+    "GH_TOKEN": "${localEnv:GH_TOKEN}"
+  },
+
+  "postCreateCommand": "gh --version && echo 'Run: gh auth status' to verify"
+}
