@@ -1,0 +1,17 @@
+{
+  "name": "Method 2: Mount hosts.yml",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  // Install GitHub CLI
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  // Mount the gh config directory
+  // Note: This only works if host uses --insecure-storage
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.config/gh,target=/root/.config/gh,type=bind,consistency=cached"
+  ],
+
+  "postCreateCommand": "gh auth status || echo 'Auth failed: Ensure host uses gh auth login --insecure-storage'"
+}

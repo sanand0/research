@@ -1,0 +1,25 @@
+{
+  "name": "Recommended: Flexible Authentication",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  // Install GitHub CLI
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  // Support environment variable authentication (preferred)
+  "remoteEnv": {
+    "GH_TOKEN": "${localEnv:GH_TOKEN}"
+  },
+
+  // OPTIONAL: Also mount config if available
+  // Comment out if you only want to use GH_TOKEN
+  "mounts": [
+    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.config/gh,target=/home/vscode/.config/gh,type=bind,consistency=cached"
+  ],
+
+  // Verify authentication status
+  "postCreateCommand": "bash .devcontainer/verify-auth.sh",
+
+  "remoteUser": "vscode"
+}

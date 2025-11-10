@@ -1,0 +1,11 @@
+{
+  "name": "Method 3: Feature Only (Manual Auth)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  // Install GitHub CLI
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "postCreateCommand": "echo 'gh installed. Run: gh auth login --insecure-storage'"
+}
