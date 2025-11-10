@@ -14,10 +14,19 @@ Compare jq, fx, dasel, NodeJS scripts, Python scripts, and other popular JSON pr
 
 ### Tools and Libraries Identified
 
-**CLI Tools:**
-- jq (v1.7) - already installed
+**CLI Tools (Round 1 - Initial):**
+- jq (v1.7) - already installed, the standard
 - fx - Node.js based JSON viewer/processor
-- dasel - downloaded binary
+- dasel - downloaded binary (had syntax issues)
+
+**CLI Tools (Round 2 - Expanded):**
+- fx - Node.js based JSON processor (https://github.com/antonmedv/fx)
+- dasel - selector for JSON/YAML/TOML/XML (fix syntax)
+- gron - makes JSON greppable
+- jaq - Rust clone of jq (faster, compatible)
+- jtc - C++ JSON processor with streaming claims
+- yq - multi-format processor (YAML/JSON/XML)
+- miller (mlr) - data processing for tabular formats
 
 **Node.js Libraries:**
 - fx - interactive JSON tool
@@ -42,7 +51,15 @@ Compare jq, fx, dasel, NodeJS scripts, Python scripts, and other popular JSON pr
 7. **Large file streaming**: processing files that don't fit in memory
 8. **Deep nesting**: accessing deeply nested structures
 
-## Benchmark Results Summary
+## Benchmark Results Summary (Round 2 - Expanded)
+
+### New Tools Added in Round 2
+- **jaq**: Rust clone of jq - MUCH FASTER than jq!
+- **fx**: JavaScript-based tool (failed in automated benchmarks - interactive tool)
+- **dasel**: Multi-format selector (slow on large datasets)
+- **yq**: YAML/JSON processor (slower, different syntax)
+- **miller**: Tabular data processor (decent performance)
+- **gron**: Make JSON greppable (very slow, different use case)
 
 ### Performance (on large.json - 100K objects, 11MB)
 
@@ -82,13 +99,17 @@ Compare jq, fx, dasel, NodeJS scripts, Python scripts, and other popular JSON pr
 - python-ujson: 0.301s
 - python-jq: 0.579s
 
-### Key Findings
+### Key Findings (Updated with Round 2)
 
-1. **jq** is excellent for simple selections and is very fast
-2. **Node.js native** is the overall winner for most operations, especially transformations
-3. **Python ujson** is the fastest Python option, ~40% faster than native json
-4. **Python jq** provides jq compatibility but with significant performance overhead
-5. **dasel** - command line syntax issues encountered
+1. **jaq** (Rust clone) is 30-40% FASTER than jq across all tasks! 🚀
+2. **Node.js native** is still the overall winner for complex operations
+3. **jq** remains excellent for simple queries and universal compatibility
+4. **Python ujson** is the fastest Python option, ~40% faster than native json
+5. **dasel** - Works but very slow (2-4x slower than jq)
+6. **yq** - Slow and has different syntax (not jq-compatible)
+7. **miller** - Good for tabular data, but slower than jq/jaq
+8. **gron** - Very slow for transformations (meant for grepping)
+9. **fx** - Interactive tool, doesn't work well in automated pipelines
 
 ### Streaming Capabilities
 

@@ -1,0 +1,55 @@
+============================================================
+STREAMING OUTPUT TEST
+============================================================
+
+Using dataset: data/large.json (10.5 MB)
+
+Testing jq:
+  ✓ Streaming: YES
+  Time to first output: 0.3596s
+  Time for 10 lines: 0.3680s
+
+Testing jaq:
+  ✓ Streaming: YES
+  Time to first output: 0.2260s
+  Time for 10 lines: 0.2276s
+
+Testing fx:
+  ✗ Streaming: NO (no output captured)
+
+Testing dasel:
+  ✓ Streaming: YES
+  Time to first output: 1.3795s
+  Time for 10 lines: 1.3961s
+
+Testing yq:
+  ✓ Streaming: YES
+  Time to first output: 1.9199s
+  Time for 10 lines: 1.9374s
+
+Testing node-native:
+  ✓ Streaming: YES
+  Time to first output: 0.1900s
+  Time for 10 lines: 0.1993s
+
+Testing python-native:
+  ✓ Streaming: YES
+  Time to first output: 0.2067s
+  Time for 10 lines: 0.2107s
+
+Testing python-jq:
+  ✓ Streaming: YES
+  Time to first output: 0.7036s
+  Time for 10 lines: 0.7122s
+
+============================================================
+STREAMING SUMMARY
+============================================================
+jq                  : ✓ Supports streaming
+jaq                 : ✓ Supports streaming
+fx                  : ✗ No streaming
+dasel               : ✓ Supports streaming
+yq                  : ✓ Supports streaming
+node-native         : ✓ Supports streaming
+python-native       : ✓ Supports streaming
+python-jq           : ✓ Supports streaming

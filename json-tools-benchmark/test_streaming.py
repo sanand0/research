@@ -24,7 +24,8 @@ def test_streaming(tool_name, cmd, data_file):
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 text=True,
-                bufsize=1  # Line buffered
+                bufsize=1,  # Line buffered
+                shell=isinstance(cmd, str)
             )
 
             for line in process.stdout:
@@ -63,6 +64,10 @@ def main():
     # Test different tools for streaming
     streaming_tests = {
         'jq': ['jq', '-r', '.[].name'],
+        'jaq': ['jaq', '-r', '.[].name'],
+        'fx': 'fx .map(x => x.name)',
+        'dasel': ['dasel', '-r', 'json', '.all().name'],
+        'yq': ['yq', '-r', '.[].name'],
         'node-native': ['node', 'benchmarks/node_native.js', 'select_name'],
         'python-native': ['python3', 'benchmarks/python_native.py', 'select_name'],
         'python-jq': ['python3', 'benchmarks/python_jq.py', 'select_name'],

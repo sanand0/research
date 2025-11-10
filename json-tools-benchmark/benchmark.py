@@ -107,7 +107,12 @@ def main():
     print("\n=== Task 1: Simple field selection (.[].name) ===")
     task1_commands = {
         'jq': ['jq', '-r', '.[].name'],
-        'dasel': ['/tmp/dasel', 'select', '-f', '-', '-p', 'json', '-m', '.[*].name'],
+        'jaq': ['jaq', '-r', '.[].name'],
+        'fx': 'fx .flatMap(x => x.name)',
+        'dasel': ['dasel', '-r', 'json', '.all().name'],
+        'yq': ['yq', '-r', '.[].name'],
+        'miller': 'mlr --ijson --onidx --no-auto-flatten cut -f name then put -q \'print $name\'',
+        'gron': 'gron | grep -E \'\\[\\d+\\]\\.name\' | gron -u | jq -r \'.[].name\'',
         'node-native': ['node', 'benchmarks/node_native.js', 'select_name'],
         'node-jsonpath': ['node', 'benchmarks/node_jsonpath.js', 'select_name'],
         'python-native': ['python3', 'benchmarks/python_native.py', 'select_name'],
@@ -125,6 +130,10 @@ def main():
     print("\n=== Task 2: Filter by condition (select(.value > 500)) ===")
     task2_commands = {
         'jq': ['jq', '-c', '.[] | select(.value > 500)'],
+        'jaq': ['jaq', '-c', '.[] | select(.value > 500)'],
+        'fx': 'fx .filter(x => x.value > 500)',
+        'yq': ['yq', '-o=json', '.[] | select(.value > 500)'],
+        'miller': 'mlr --ijson --ojson filter \'$value > 500\'',
         'node-native': ['node', 'benchmarks/node_native.js', 'filter_value'],
         'python-native': ['python3', 'benchmarks/python_native.py', 'filter_value'],
         'python-jq': ['python3', 'benchmarks/python_jq.py', 'filter_value'],
@@ -141,6 +150,10 @@ def main():
     print("\n=== Task 3: Array mapping (map(.value * 2)) ===")
     task3_commands = {
         'jq': ['jq', '[.[] | .value * 2]'],
+        'jaq': ['jaq', '[.[] | .value * 2]'],
+        'fx': 'fx .map(x => x.value * 2)',
+        'yq': ['yq', '-o=json', '[.[] | .value * 2]'],
+        'miller': 'mlr --ijson --ojson put \'$value = $value * 2\' then cut -f value',
         'node-native': ['node', 'benchmarks/node_native.js', 'map_value'],
         'python-native': ['python3', 'benchmarks/python_native.py', 'map_value'],
         'python-jq': ['python3', 'benchmarks/python_jq.py', 'map_value'],
@@ -157,6 +170,10 @@ def main():
     print("\n=== Task 4: Aggregation (sum of values) ===")
     task4_commands = {
         'jq': ['jq', '[.[] | .value] | add'],
+        'jaq': ['jaq', '[.[] | .value] | add'],
+        'fx': 'fx .reduce((a, x) => a + x.value, 0)',
+        'yq': ['yq', '[.[] | .value] | add'],
+        'miller': 'mlr --ijson --ojson stats1 -a sum -f value',
         'node-native': ['node', 'benchmarks/node_native.js', 'sum_values'],
         'python-native': ['python3', 'benchmarks/python_native.py', 'sum_values'],
         'python-jq': ['python3', 'benchmarks/python_jq.py', 'sum_values'],
@@ -173,6 +190,10 @@ def main():
     print("\n=== Task 5: Deep nested access ===")
     task5_commands = {
         'jq': ['jq', '-r', '.[].user.profile.location.city // empty'],
+        'jaq': ['jaq', '-r', '.[].user.profile.location.city // empty'],
+        'fx': 'fx .map(x => x?.user?.profile?.location?.city).filter(x => x)',
+        'yq': ['yq', '-r', '.[].user.profile.location.city // empty'],
+        'dasel': ['dasel', '-r', 'json', '.all().user.profile.location.city'],
         'node-native': ['node', 'benchmarks/node_native.js', 'deep_nested'],
         'python-native': ['python3', 'benchmarks/python_native.py', 'deep_nested'],
         'python-jq': ['python3', 'benchmarks/python_jq.py', 'deep_nested'],
