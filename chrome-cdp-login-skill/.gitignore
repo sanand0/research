@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+
+# Credentials (NEVER commit these!)
+.credentials.json
+.env
+
+# Browser profile data
+.chrome-profile/
+
+# Session files
+.sessions/
+*.session.json
+
+# Screenshots and test outputs
+*.png
+*.jpg
+*.jpeg
+examples/*.png
+examples/*.jpg
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
