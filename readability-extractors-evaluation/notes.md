@@ -210,3 +210,93 @@ For extracting article content with stable heading IDs: **Use @mozilla/readabili
 For Python projects: **Use ReadabiliPy** (wraps Mozilla Readability)
 
 For high-speed extraction without heading IDs: **Use trafilatura**
+
+---
+
+## Phase 2: Extended Evaluation (6 Additional Tools)
+
+### Additional Tools Research
+
+After initial evaluation, researching 6 more modern and alternative extractors:
+
+**Additional candidates identified:**
+
+1. **Reader-LM / Jina Reader** (ML-based, 2024-2025)
+   - Small language models (0.5B, 1.5B params) specifically trained for HTML→Markdown
+   - ReaderLM-v2 (Jan 2025): 512K token context, 29 languages, 20% more accurate
+   - Outperforms GPT-4o on HTML→Markdown tasks
+   - Can output JSON with schema
+   - Available via API (r.jina.ai) or as downloadable model
+
+2. **node-html-markdown** (Node.js, fast)
+   - 1.57× faster than Turndown
+   - Built for high-volume conversion (gigabytes daily)
+   - Pure HTML→Markdown converter (not readability-focused)
+
+3. **newspaper4k** (Python, maintained)
+   - Active fork of newspaper3k (updated for Python 3.11+)
+   - Designed for news articles
+   - Includes NLP features (keywords, summaries)
+   - Multi-language support
+
+4. **jusText** (Python, heuristic)
+   - Boilerplate removal tool
+   - Preserves full sentences
+   - Highly configurable
+   - Originally designed for web corpus creation
+
+5. **extractnet** (Python, ML + metadata)
+   - Fork of dragnet with ML-based extraction
+   - Extracts author, date, keywords
+   - Trained on 22,000+ pages from 2020
+
+6. **news-please** (Python, combined)
+   - Combines multiple extractors (news-please + Newspaper3k)
+   - Open-source news scraper
+   - Includes NLP features
+
+### Installing Additional Tools
+
+### Installing Additional Tools (Completed)
+
+Successfully installed:
+- justext ✓
+- resiliparse ✓ (fixed API usage)
+- inscriptis ✓
+- boilerpy3 ✓
+- node-html-markdown ✓ (Node.js)
+- (jina-reader skipped - API requires URLs not HTML files)
+
+Failed to install (Python 3.11 incompatibility):
+- newspaper4k (old sgmllib3k dependency)
+- news-please (old langdetect dependency)
+- extractnet (dragnet-based, unmaintained)
+
+### Running Additional Extractors (Completed)
+
+Successfully tested 5 additional extractors on all 20 pages:
+- justext: 20/20 pages, avg 0.04s
+- resiliparse: 20/20 pages, avg 0.01s (after fixing)
+- inscriptis: 20/20 pages, avg 0.02s
+- boilerpy3: 20/20 pages, avg 0.03s
+- node-html-markdown: 20/20 pages, avg 0.82s
+
+Total extractors evaluated: 11 (6 original + 5 new)
+
+### Phase 2 Evaluation Results
+
+**Overall Rankings (11 extractors):**
+1-4. readability-lxml, readabilipy, trafilatura, mozilla-readability (79.0/100)
+5-7. markdownify, node-html-markdown, html2text (72.3/100)
+8. boilerpy3 (50.0/100)
+9. resiliparse (49.8/100)
+10. justext (48.5/100)
+11. inscriptis (43.5/100)
+
+**Heading ID Preservation (unchanged):**
+- Only Mozilla Readability (14 IDs) and ReadabiliPy (14 IDs) preserve IDs cleanly
+- markdownify (16 IDs) but includes too much chrome
+- All other 8 tools: 0 IDs
+
+**Key Insight:** New tools don't beat Mozilla Readability for article extraction with heading IDs.
+
