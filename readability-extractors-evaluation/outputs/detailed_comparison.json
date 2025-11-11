@@ -1,0 +1,3361 @@
+{
+  "heading_id_analysis": {
+    "boilerpy3": {
+      "total_ids": 0,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "html2text": {
+      "total_ids": 0,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "inscriptis": {
+      "total_ids": 0,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "justext": {
+      "total_ids": 0,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "markdownify": {
+      "total_ids": 16,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 1,
+          "link_style_ids": [
+            "authors"
+          ],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 1
+        },
+        "page_04": {
+          "link_style_count": 15,
+          "link_style_ids": [
+            "the_websocket_handshake",
+            "client_handshake_request",
+            "server_handshake_response",
+            "keeping_track_of_clients",
+            "exchanging_data_frames"
+          ],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 15
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "mozilla-readability": {
+      "total_ids": 14,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 14,
+          "link_style_ids": [
+            "the_websocket_handshake",
+            "client_handshake_request",
+            "server_handshake_response",
+            "keeping_track_of_clients",
+            "exchanging_data_frames"
+          ],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 14
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "node-html-markdown": {
+      "total_ids": 6,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 1,
+          "link_style_ids": [
+            "authors"
+          ],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 1
+        },
+        "page_04": {
+          "link_style_count": 5,
+          "link_style_ids": [
+            "format",
+            "miscellaneous",
+            "extensions",
+            "subprotocols",
+            "related"
+          ],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 5
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "readabilipy": {
+      "total_ids": 14,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 14,
+          "link_style_ids": [
+            "the_websocket_handshake",
+            "client_handshake_request",
+            "server_handshake_response",
+            "keeping_track_of_clients",
+            "exchanging_data_frames"
+          ],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 14
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "readability-lxml": {
+      "total_ids": 0,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "resiliparse": {
+      "total_ids": 0,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    },
+    "trafilatura": {
+      "total_ids": 0,
+      "by_page": {
+        "page_01": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_02": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_03": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_04": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_05": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_06": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_07": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_08": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_09": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_10": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_11": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_12": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_13": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_14": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_15": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_16": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_17": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_18": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_19": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        },
+        "page_20": {
+          "link_style_count": 0,
+          "link_style_ids": [],
+          "pandoc_style_count": 0,
+          "html_anchor_count": 0,
+          "total_id_count": 0
+        }
+      }
+    }
+  },
+  "ugly_failures": {
+    "boilerpy3": [
+      {
+        "page": "page_01",
+        "failures": [
+          "Very short output (0 chars)",
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_02",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_03",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_04",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_05",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_06",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_07",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_08",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_10",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_11",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_12",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_13",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_14",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_15",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_16",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_17",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "Very short output (0 chars)",
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_19",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_20",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "html2text": [
+      {
+        "page": "page_01",
+        "failures": [
+          "Cookie/consent notices included",
+          "Social media clutter (6 instances)"
+        ]
+      },
+      {
+        "page": "page_02",
+        "failures": [
+          "Excessive navigation artifacts (7 instances)",
+          "Social media clutter (7 instances)"
+        ]
+      },
+      {
+        "page": "page_07",
+        "failures": [
+          "Excessive navigation artifacts (9 instances)"
+        ]
+      },
+      {
+        "page": "page_08",
+        "failures": [
+          "Excessive navigation artifacts (9 instances)"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_12",
+        "failures": [
+          "Social media clutter (4 instances)"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "inscriptis": [
+      {
+        "page": "page_01",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_02",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_03",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_04",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_05",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_06",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_07",
+        "failures": [
+          "No headings found",
+          "Excessive navigation artifacts (7 instances)"
+        ]
+      },
+      {
+        "page": "page_08",
+        "failures": [
+          "No headings found",
+          "Excessive navigation artifacts (7 instances)"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_10",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_11",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_12",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_13",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_14",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_15",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_16",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_17",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_19",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_20",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "justext": [
+      {
+        "page": "page_01",
+        "failures": [
+          "Very short output (0 chars)",
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_02",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_03",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_04",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_05",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_06",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_07",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_08",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_10",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_11",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_12",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_13",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_14",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_15",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_16",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_17",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "Very short output (0 chars)",
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_19",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_20",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "markdownify": [
+      {
+        "page": "page_01",
+        "failures": [
+          "Cookie/consent notices included",
+          "Social media clutter (6 instances)"
+        ]
+      },
+      {
+        "page": "page_02",
+        "failures": [
+          "Excessive navigation artifacts (7 instances)",
+          "Social media clutter (5 instances)"
+        ]
+      },
+      {
+        "page": "page_07",
+        "failures": [
+          "Excessive navigation artifacts (9 instances)"
+        ]
+      },
+      {
+        "page": "page_08",
+        "failures": [
+          "Excessive navigation artifacts (9 instances)"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_12",
+        "failures": [
+          "Social media clutter (4 instances)"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "node-html-markdown": [
+      {
+        "page": "page_01",
+        "failures": [
+          "Cookie/consent notices included",
+          "Social media clutter (6 instances)"
+        ]
+      },
+      {
+        "page": "page_02",
+        "failures": [
+          "Excessive navigation artifacts (8 instances)",
+          "Social media clutter (7 instances)"
+        ]
+      },
+      {
+        "page": "page_07",
+        "failures": [
+          "Excessive navigation artifacts (9 instances)"
+        ]
+      },
+      {
+        "page": "page_08",
+        "failures": [
+          "Excessive navigation artifacts (9 instances)"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_12",
+        "failures": [
+          "Social media clutter (4 instances)"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "resiliparse": [
+      {
+        "page": "page_01",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_02",
+        "failures": [
+          "No headings found",
+          "Excessive navigation artifacts (7 instances)"
+        ]
+      },
+      {
+        "page": "page_03",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_04",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_05",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_06",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_07",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_08",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_10",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_11",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_12",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_13",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_14",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_15",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_16",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_17",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_19",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_20",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "mozilla-readability": [
+      {
+        "page": "page_02",
+        "failures": [
+          "Excessive navigation artifacts (7 instances)"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_13",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_14",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_16",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_17",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_19",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_20",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "readabilipy": [
+      {
+        "page": "page_02",
+        "failures": [
+          "Excessive navigation artifacts (7 instances)"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_13",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_14",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_16",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_17",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_19",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_20",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "readability-lxml": [
+      {
+        "page": "page_02",
+        "failures": [
+          "Excessive navigation artifacts (7 instances)"
+        ]
+      },
+      {
+        "page": "page_04",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_13",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_14",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_16",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_17",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_19",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_20",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ],
+    "trafilatura": [
+      {
+        "page": "page_02",
+        "failures": [
+          "Excessive navigation artifacts (7 instances)"
+        ]
+      },
+      {
+        "page": "page_09",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_11",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_13",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_14",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_16",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_17",
+        "failures": [
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_18",
+        "failures": [
+          "Very short output (0 chars)",
+          "No headings found"
+        ]
+      },
+      {
+        "page": "page_19",
+        "failures": [
+          "No headings found"
+        ]
+      }
+    ]
+  },
+  "page_comparisons": {
+    "page_01": {
+      "word_counts": {
+        "boilerpy3": 0,
+        "html2text": 3933,
+        "inscriptis": 12,
+        "justext": 0,
+        "markdownify": 3939,
+        "mozilla-readability": 2673,
+        "node-html-markdown": 3983,
+        "readabilipy": 2659,
+        "readability-lxml": 2474,
+        "resiliparse": 2471,
+        "trafilatura": 2250
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 17,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 13,
+        "mozilla-readability": 11,
+        "node-html-markdown": 13,
+        "readabilipy": 11,
+        "readability-lxml": 7,
+        "resiliparse": 0,
+        "trafilatura": 7
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 13,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 17,
+        "mozilla-readability": 8,
+        "node-html-markdown": 17,
+        "readabilipy": 8,
+        "readability-lxml": 7,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 2205077.1404958675,
+      "avg_words": 2217.6363636363635
+    },
+    "page_02": {
+      "word_counts": {
+        "boilerpy3": 8971,
+        "html2text": 9912,
+        "inscriptis": 9208,
+        "justext": 7950,
+        "markdownify": 9966,
+        "mozilla-readability": 8979,
+        "node-html-markdown": 10003,
+        "readabilipy": 8922,
+        "readability-lxml": 8918,
+        "resiliparse": 8927,
+        "trafilatura": 8627
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 43,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 43,
+        "mozilla-readability": 29,
+        "node-html-markdown": 43,
+        "readabilipy": 29,
+        "readability-lxml": 29,
+        "resiliparse": 0,
+        "trafilatura": 31
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 3,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 13,
+        "mozilla-readability": 10,
+        "node-html-markdown": 13,
+        "readabilipy": 10,
+        "readability-lxml": 10,
+        "resiliparse": 0,
+        "trafilatura": 10
+      },
+      "word_variance": 354667.2892561984,
+      "avg_words": 9125.727272727272
+    },
+    "page_03": {
+      "word_counts": {
+        "boilerpy3": 2151,
+        "html2text": 3169,
+        "inscriptis": 3031,
+        "justext": 2517,
+        "markdownify": 3223,
+        "mozilla-readability": 2420,
+        "node-html-markdown": 3165,
+        "readabilipy": 2420,
+        "readability-lxml": 2420,
+        "resiliparse": 2587,
+        "trafilatura": 2420
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 20,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 22,
+        "mozilla-readability": 8,
+        "node-html-markdown": 20,
+        "readabilipy": 8,
+        "readability-lxml": 8,
+        "resiliparse": 0,
+        "trafilatura": 8
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 2,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 3,
+        "mozilla-readability": 0,
+        "node-html-markdown": 4,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 134335.173553719,
+      "avg_words": 2683.909090909091
+    },
+    "page_04": {
+      "word_counts": {
+        "boilerpy3": 3248,
+        "html2text": 5042,
+        "inscriptis": 3747,
+        "justext": 2411,
+        "markdownify": 5030,
+        "mozilla-readability": 3272,
+        "node-html-markdown": 5333,
+        "readabilipy": 3221,
+        "readability-lxml": 3131,
+        "resiliparse": 3286,
+        "trafilatura": 3504
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 18,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 18,
+        "mozilla-readability": 14,
+        "node-html-markdown": 18,
+        "readabilipy": 14,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 1
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 0,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 0,
+        "mozilla-readability": 0,
+        "node-html-markdown": 0,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 820520.743801653,
+      "avg_words": 3747.7272727272725
+    },
+    "page_05": {
+      "word_counts": {
+        "boilerpy3": 3744,
+        "html2text": 4407,
+        "inscriptis": 4057,
+        "justext": 2267,
+        "markdownify": 4566,
+        "mozilla-readability": 4156,
+        "node-html-markdown": 4564,
+        "readabilipy": 4106,
+        "readability-lxml": 3943,
+        "resiliparse": 3743,
+        "trafilatura": 3934
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 23,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 23,
+        "mozilla-readability": 12,
+        "node-html-markdown": 23,
+        "readabilipy": 12,
+        "readability-lxml": 13,
+        "resiliparse": 0,
+        "trafilatura": 13
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 3,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 3,
+        "mozilla-readability": 0,
+        "node-html-markdown": 3,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 360134.2314049587,
+      "avg_words": 3953.3636363636365
+    },
+    "page_06": {
+      "word_counts": {
+        "boilerpy3": 1109,
+        "html2text": 10291,
+        "inscriptis": 4279,
+        "justext": 1011,
+        "markdownify": 10235,
+        "mozilla-readability": 1449,
+        "node-html-markdown": 10489,
+        "readabilipy": 1374,
+        "readability-lxml": 1236,
+        "resiliparse": 1147,
+        "trafilatura": 1252
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 10,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 10,
+        "mozilla-readability": 6,
+        "node-html-markdown": 10,
+        "readabilipy": 6,
+        "readability-lxml": 7,
+        "resiliparse": 0,
+        "trafilatura": 7
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 2,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 1,
+        "mozilla-readability": 0,
+        "node-html-markdown": 2,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 15878333.322314052,
+      "avg_words": 3988.3636363636365
+    },
+    "page_07": {
+      "word_counts": {
+        "boilerpy3": 1164,
+        "html2text": 27321,
+        "inscriptis": 13242,
+        "justext": 8396,
+        "markdownify": 28122,
+        "mozilla-readability": 21287,
+        "node-html-markdown": 30539,
+        "readabilipy": 19900,
+        "readability-lxml": 22192,
+        "resiliparse": 11664,
+        "trafilatura": 15642
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 50,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 50,
+        "mozilla-readability": 20,
+        "node-html-markdown": 50,
+        "readabilipy": 20,
+        "readability-lxml": 20,
+        "resiliparse": 0,
+        "trafilatura": 37
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 17,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 206,
+        "mozilla-readability": 200,
+        "node-html-markdown": 208,
+        "readabilipy": 200,
+        "readability-lxml": 200,
+        "resiliparse": 0,
+        "trafilatura": 38
+      },
+      "word_variance": 74762257.88429752,
+      "avg_words": 18133.545454545456
+    },
+    "page_08": {
+      "word_counts": {
+        "boilerpy3": 1735,
+        "html2text": 28109,
+        "inscriptis": 14482,
+        "justext": 5171,
+        "markdownify": 29266,
+        "mozilla-readability": 28647,
+        "node-html-markdown": 32272,
+        "readabilipy": 25779,
+        "readability-lxml": 24354,
+        "resiliparse": 13182,
+        "trafilatura": 22595
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 30,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 30,
+        "mozilla-readability": 5,
+        "node-html-markdown": 30,
+        "readabilipy": 5,
+        "readability-lxml": 5,
+        "resiliparse": 0,
+        "trafilatura": 12
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 25,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 31,
+        "mozilla-readability": 24,
+        "node-html-markdown": 35,
+        "readabilipy": 20,
+        "readability-lxml": 9,
+        "resiliparse": 0,
+        "trafilatura": 21
+      },
+      "word_variance": 96697777.8677686,
+      "avg_words": 20508.363636363636
+    },
+    "page_09": {
+      "word_counts": {
+        "boilerpy3": 12315,
+        "html2text": 12362,
+        "inscriptis": 12316,
+        "justext": 12265,
+        "markdownify": 11995,
+        "mozilla-readability": 12363,
+        "node-html-markdown": 12388,
+        "readabilipy": 12349,
+        "readability-lxml": 12350,
+        "resiliparse": 12321,
+        "trafilatura": 11015
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 0,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 0,
+        "mozilla-readability": 0,
+        "node-html-markdown": 0,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 3,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 0,
+        "mozilla-readability": 1,
+        "node-html-markdown": 4,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 4
+      },
+      "word_variance": 147481.68595041323,
+      "avg_words": 12185.363636363636
+    },
+    "page_10": {
+      "word_counts": {
+        "boilerpy3": 182,
+        "html2text": 17786,
+        "inscriptis": 983,
+        "justext": 222,
+        "markdownify": 17764,
+        "mozilla-readability": 1558,
+        "node-html-markdown": 17788,
+        "readabilipy": 1532,
+        "readability-lxml": 84,
+        "resiliparse": 787,
+        "trafilatura": 528
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 14,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 14,
+        "mozilla-readability": 1,
+        "node-html-markdown": 14,
+        "readabilipy": 1,
+        "readability-lxml": 1,
+        "resiliparse": 0,
+        "trafilatura": 5
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 4,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 7,
+        "mozilla-readability": 0,
+        "node-html-markdown": 7,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 57844398.62809917,
+      "avg_words": 5383.090909090909
+    },
+    "page_11": {
+      "word_counts": {
+        "boilerpy3": 9235,
+        "html2text": 11205,
+        "inscriptis": 10990,
+        "justext": 9131,
+        "markdownify": 11319,
+        "mozilla-readability": 8969,
+        "node-html-markdown": 11315,
+        "readabilipy": 8900,
+        "readability-lxml": 9206,
+        "resiliparse": 10637,
+        "trafilatura": 6627
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 41,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 41,
+        "mozilla-readability": 29,
+        "node-html-markdown": 41,
+        "readabilipy": 29,
+        "readability-lxml": 29,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 21,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 21,
+        "mozilla-readability": 21,
+        "node-html-markdown": 21,
+        "readabilipy": 21,
+        "readability-lxml": 19,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 1943178.1487603306,
+      "avg_words": 9775.818181818182
+    },
+    "page_12": {
+      "word_counts": {
+        "boilerpy3": 534,
+        "html2text": 3013,
+        "inscriptis": 2413,
+        "justext": 1550,
+        "markdownify": 3023,
+        "mozilla-readability": 2187,
+        "node-html-markdown": 3035,
+        "readabilipy": 2106,
+        "readability-lxml": 2011,
+        "resiliparse": 1832,
+        "trafilatura": 1934
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 14,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 14,
+        "mozilla-readability": 13,
+        "node-html-markdown": 14,
+        "readabilipy": 13,
+        "readability-lxml": 10,
+        "resiliparse": 0,
+        "trafilatura": 13
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 1,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 7,
+        "mozilla-readability": 5,
+        "node-html-markdown": 7,
+        "readabilipy": 5,
+        "readability-lxml": 1,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 500103.71900826436,
+      "avg_words": 2148.909090909091
+    },
+    "page_13": {
+      "word_counts": {
+        "boilerpy3": 5187,
+        "html2text": 6400,
+        "inscriptis": 5486,
+        "justext": 5159,
+        "markdownify": 6356,
+        "mozilla-readability": 5040,
+        "node-html-markdown": 6585,
+        "readabilipy": 5037,
+        "readability-lxml": 5037,
+        "resiliparse": 5214,
+        "trafilatura": 5186
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 21,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 21,
+        "mozilla-readability": 0,
+        "node-html-markdown": 21,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 0,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 2,
+        "mozilla-readability": 0,
+        "node-html-markdown": 2,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 341087.0909090909,
+      "avg_words": 5517.0
+    },
+    "page_14": {
+      "word_counts": {
+        "boilerpy3": 3791,
+        "html2text": 4606,
+        "inscriptis": 4182,
+        "justext": 4045,
+        "markdownify": 4638,
+        "mozilla-readability": 3793,
+        "node-html-markdown": 4631,
+        "readabilipy": 3793,
+        "readability-lxml": 3793,
+        "resiliparse": 3752,
+        "trafilatura": 3781
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 9,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 9,
+        "mozilla-readability": 0,
+        "node-html-markdown": 9,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 1,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 7,
+        "mozilla-readability": 0,
+        "node-html-markdown": 7,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 130033.78512396693,
+      "avg_words": 4073.181818181818
+    },
+    "page_15": {
+      "word_counts": {
+        "boilerpy3": 454,
+        "html2text": 1156,
+        "inscriptis": 759,
+        "justext": 272,
+        "markdownify": 1187,
+        "mozilla-readability": 554,
+        "node-html-markdown": 1176,
+        "readabilipy": 497,
+        "readability-lxml": 504,
+        "resiliparse": 501,
+        "trafilatura": 521
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 7,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 7,
+        "mozilla-readability": 6,
+        "node-html-markdown": 7,
+        "readabilipy": 6,
+        "readability-lxml": 5,
+        "resiliparse": 0,
+        "trafilatura": 6
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 15,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 19,
+        "mozilla-readability": 0,
+        "node-html-markdown": 19,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 99105.23966942147,
+      "avg_words": 689.1818181818181
+    },
+    "page_16": {
+      "word_counts": {
+        "boilerpy3": 5815,
+        "html2text": 5986,
+        "inscriptis": 5895,
+        "justext": 5802,
+        "markdownify": 6000,
+        "mozilla-readability": 5648,
+        "node-html-markdown": 5988,
+        "readabilipy": 5648,
+        "readability-lxml": 5648,
+        "resiliparse": 5626,
+        "trafilatura": 5645
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 9,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 9,
+        "mozilla-readability": 0,
+        "node-html-markdown": 9,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 1,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 1,
+        "mozilla-readability": 0,
+        "node-html-markdown": 1,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 21992.363636363636,
+      "avg_words": 5791.0
+    },
+    "page_17": {
+      "word_counts": {
+        "boilerpy3": 3556,
+        "html2text": 3842,
+        "inscriptis": 3699,
+        "justext": 3499,
+        "markdownify": 3837,
+        "mozilla-readability": 3552,
+        "node-html-markdown": 3840,
+        "readabilipy": 3552,
+        "readability-lxml": 3552,
+        "resiliparse": 3676,
+        "trafilatura": 3525
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 3,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 3,
+        "mozilla-readability": 0,
+        "node-html-markdown": 3,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 0,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 0,
+        "mozilla-readability": 0,
+        "node-html-markdown": 0,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 17004.3305785124,
+      "avg_words": 3648.181818181818
+    },
+    "page_18": {
+      "word_counts": {
+        "boilerpy3": 0,
+        "html2text": 1342,
+        "inscriptis": 1338,
+        "justext": 0,
+        "markdownify": 1352,
+        "mozilla-readability": 2099,
+        "node-html-markdown": 2859,
+        "readabilipy": 1348,
+        "readability-lxml": 1352,
+        "resiliparse": 1334,
+        "trafilatura": 0
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 0,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 0,
+        "mozilla-readability": 0,
+        "node-html-markdown": 0,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 0,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 0,
+        "mozilla-readability": 0,
+        "node-html-markdown": 0,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 727540.1818181818,
+      "avg_words": 1184.0
+    },
+    "page_19": {
+      "word_counts": {
+        "boilerpy3": 2360,
+        "html2text": 3055,
+        "inscriptis": 2733,
+        "justext": 2649,
+        "markdownify": 3085,
+        "mozilla-readability": 2249,
+        "node-html-markdown": 3080,
+        "readabilipy": 2249,
+        "readability-lxml": 2249,
+        "resiliparse": 2303,
+        "trafilatura": 2248
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 9,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 9,
+        "mozilla-readability": 0,
+        "node-html-markdown": 9,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 1,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 7,
+        "mozilla-readability": 0,
+        "node-html-markdown": 7,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 0
+      },
+      "word_variance": 120140.62809917355,
+      "avg_words": 2569.090909090909
+    },
+    "page_20": {
+      "word_counts": {
+        "boilerpy3": 448,
+        "html2text": 1882,
+        "inscriptis": 1315,
+        "justext": 1057,
+        "markdownify": 1854,
+        "mozilla-readability": 858,
+        "node-html-markdown": 1887,
+        "readabilipy": 852,
+        "readability-lxml": 836,
+        "resiliparse": 1266,
+        "trafilatura": 844
+      },
+      "heading_counts": {
+        "boilerpy3": 0,
+        "html2text": 13,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 15,
+        "mozilla-readability": 0,
+        "node-html-markdown": 13,
+        "readabilipy": 0,
+        "readability-lxml": 0,
+        "resiliparse": 0,
+        "trafilatura": 1
+      },
+      "image_counts": {
+        "boilerpy3": 0,
+        "html2text": 1,
+        "inscriptis": 0,
+        "justext": 0,
+        "markdownify": 13,
+        "mozilla-readability": 2,
+        "node-html-markdown": 13,
+        "readabilipy": 2,
+        "readability-lxml": 1,
+        "resiliparse": 0,
+        "trafilatura": 1
+      },
+      "word_variance": 224065.0578512397,
+      "avg_words": 1190.8181818181818
+    }
+  },
+  "summary": {
+    "best_heading_ids": "markdownify",
+    "cleanest_output": "html2text",
+    "total_extractors_tested": 11,
+    "total_pages_tested": 20
+  }
+}

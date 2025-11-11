@@ -1,0 +1,3086 @@
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html 
+      lang="en"
+      dir="ltr">
+  <head>
+    <meta name="google-signin-client-id" content="157101835696-ooapojlodmuabs2do2vuhhnf90bccmoi.apps.googleusercontent.com"><meta name="google-signin-scope"
+          content="profile email https://www.googleapis.com/auth/developerprofiles https://www.googleapis.com/auth/developerprofiles.award"><meta property="og:site_name" content="web.dev">
+    <meta property="og:type" content="website"><meta name="theme-color" content="#3740ff"><meta charset="utf-8">
+    <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+    <link rel="manifest" href="/_pwa/web/manifest.json"
+          crossorigin="use-credentials">
+    <link rel="preconnect" href="//www.gstatic.com" crossorigin>
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="//fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="//apis.google.com" crossorigin>
+    <link rel="preconnect" href="//www.google-analytics.com" crossorigin><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap">
+      <link rel="stylesheet"
+            href="//fonts.googleapis.com/css2?family=Material+Icons&family=Material+Symbols+Outlined&display=block"><link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/css/app.css">
+      
+        <link rel="stylesheet" href="https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/css/dark-theme.css" disabled>
+      <link rel="shortcut icon" href="https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/images/favicon.png">
+    <link rel="apple-touch-icon" href="https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/images/touchicon-180.png"><link rel="canonical" href="https://web.dev/articles/vitals"><link rel="search" type="application/opensearchdescription+xml"
+            title="web.dev" href="https://web.dev/s/opensearch.xml">
+      <link rel="alternate" hreflang="en"
+          href="https://web.dev/articles/vitals" /><link rel="alternate" hreflang="x-default" href="https://web.dev/articles/vitals" /><link rel="alternate" hreflang="ar"
+          href="https://web.dev/articles/vitals?hl=ar" /><link rel="alternate" hreflang="bn"
+          href="https://web.dev/articles/vitals?hl=bn" /><link rel="alternate" hreflang="zh-Hans"
+          href="https://web.dev/articles/vitals?hl=zh-cn" /><link rel="alternate" hreflang="zh-Hant"
+          href="https://web.dev/articles/vitals?hl=zh-tw" /><link rel="alternate" hreflang="fa"
+          href="https://web.dev/articles/vitals?hl=fa" /><link rel="alternate" hreflang="fr"
+          href="https://web.dev/articles/vitals?hl=fr" /><link rel="alternate" hreflang="de"
+          href="https://web.dev/articles/vitals?hl=de" /><link rel="alternate" hreflang="he"
+          href="https://web.dev/articles/vitals?hl=he" /><link rel="alternate" hreflang="hi"
+          href="https://web.dev/articles/vitals?hl=hi" /><link rel="alternate" hreflang="id"
+          href="https://web.dev/articles/vitals?hl=id" /><link rel="alternate" hreflang="it"
+          href="https://web.dev/articles/vitals?hl=it" /><link rel="alternate" hreflang="ja"
+          href="https://web.dev/articles/vitals?hl=ja" /><link rel="alternate" hreflang="ko"
+          href="https://web.dev/articles/vitals?hl=ko" /><link rel="alternate" hreflang="pl"
+          href="https://web.dev/articles/vitals?hl=pl" /><link rel="alternate" hreflang="pt-BR"
+          href="https://web.dev/articles/vitals?hl=pt-br" /><link rel="alternate" hreflang="ru"
+          href="https://web.dev/articles/vitals?hl=ru" /><link rel="alternate" hreflang="es-419"
+          href="https://web.dev/articles/vitals?hl=es-419" /><link rel="alternate" hreflang="th"
+          href="https://web.dev/articles/vitals?hl=th" /><link rel="alternate" hreflang="tr"
+          href="https://web.dev/articles/vitals?hl=tr" /><link rel="alternate" hreflang="vi"
+          href="https://web.dev/articles/vitals?hl=vi" /><link rel="alternate" hreflang="en-cn"
+          href="https://web.developers.google.cn/articles/vitals" /><link rel="alternate" hreflang="x-default" href="https://web.developers.google.cn/articles/vitals" /><link rel="alternate" hreflang="ar-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=ar" /><link rel="alternate" hreflang="bn-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=bn" /><link rel="alternate" hreflang="zh-Hans-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=zh-cn" /><link rel="alternate" hreflang="zh-Hant-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=zh-tw" /><link rel="alternate" hreflang="fa-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=fa" /><link rel="alternate" hreflang="fr-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=fr" /><link rel="alternate" hreflang="de-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=de" /><link rel="alternate" hreflang="he-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=he" /><link rel="alternate" hreflang="hi-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=hi" /><link rel="alternate" hreflang="id-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=id" /><link rel="alternate" hreflang="it-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=it" /><link rel="alternate" hreflang="ja-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=ja" /><link rel="alternate" hreflang="ko-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=ko" /><link rel="alternate" hreflang="pl-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=pl" /><link rel="alternate" hreflang="pt-BR-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=pt-br" /><link rel="alternate" hreflang="ru-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=ru" /><link rel="alternate" hreflang="es-419-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=es-419" /><link rel="alternate" hreflang="th-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=th" /><link rel="alternate" hreflang="tr-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=tr" /><link rel="alternate" hreflang="vi-cn"
+          href="https://web.developers.google.cn/articles/vitals?hl=vi" /><title>Web Vitals &nbsp;|&nbsp; Articles &nbsp;|&nbsp; web.dev</title>
+
+<meta property="og:title" content="Web Vitals &nbsp;|&nbsp; Articles &nbsp;|&nbsp; web.dev"><meta name="description" content="Essential metrics for a healthy site">
+  <meta property="og:description" content="Essential metrics for a healthy site"><meta property="og:url" content="https://web.dev/articles/vitals"><meta property="og:image" content="https://web.dev/static/articles/vitals/image/thumbnail.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="675"><meta property="og:locale" content="en"><meta name="twitter:card" content="summary_large_image"><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "dateModified": "2024-10-31",
+    "headline": "Web Vitals"
+  }
+</script><script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Articles",
+      "item": "https://web.dev/articles"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Web Vitals",
+      "item": "https://web.dev/articles/vitals"
+    }]
+  }
+  </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+    
+      <link rel="stylesheet" href="/extras.css"></head>
+  <body class=""
+        template="page"
+        theme="web-theme"
+        type="article"
+        
+        
+        appearance
+        
+        layout="docs"
+        
+        
+        
+        
+        
+        display-toc
+        pending>
+  
+    <devsite-progress type="indeterminate" id="app-progress"></devsite-progress>
+  
+  
+    <a href="#main-content" class="skip-link button">
+      
+      Skip to main content
+    </a>
+    <section class="devsite-wrapper">
+      <devsite-cookie-notification-bar></devsite-cookie-notification-bar><devsite-header role="banner">
+  
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-header--inner" data-nosnippet>
+  <div class="devsite-top-logo-row-wrapper-wrapper">
+    <div class="devsite-top-logo-row-wrapper">
+      <div class="devsite-top-logo-row">
+        <button type="button" id="devsite-hamburger-menu"
+          class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+          data-category="Site-Wide Custom Events"
+          data-label="Navigation menu button"
+          visually-hidden
+          aria-label="Open menu">
+        </button>
+        
+<div class="devsite-product-name-wrapper">
+
+  <a href="/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo" track-type="globalNav"
+   track-name="webDev" track-metadata-position="nav"
+   track-metadata-eventDetail="nav">
+  
+  <picture>
+    
+    <source srcset="https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/images/lockup-dark-theme.svg"
+            media="(prefers-color-scheme: dark)"
+            class="devsite-dark-theme">
+    
+    <img src="https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/images/lockup.svg" class="devsite-site-logo" alt="web.dev">
+  </picture>
+  
+</a>
+
+
+
+  
+  
+  <span class="devsite-product-name">
+    <ul class="devsite-breadcrumb-list"
+  >
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+      
+    
+  </li>
+  
+</ul>
+  </span>
+
+</div>
+        <div class="devsite-top-logo-row-middle">
+          <div class="devsite-header-upper-tabs">
+            
+              
+              
+  <devsite-tabs class="upper-tabs">
+
+    <nav class="devsite-tabs-wrapper" aria-label="Upper tabs">
+      
+        
+          <tab class="devsite-dropdown
+    devsite-dropdown-full
+    
+    
+    ">
+  
+    <button
+      class="devsite-tabs-content devsite-tabs-dropdown-only gc-analytics-event  devsite-icon devsite-icon-arrow-drop-down"
+  
+       track-type="nav"
+       track-metadata-position="nav - resources"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Tab: Resources"
+         
+           track-name="resources"
+         
+       >
+    Resources
+  
+  </button>
+  
+  <div class="devsite-tabs-dropdown" role="menu" aria-label="submenu" hidden>
+    
+    <div class="devsite-tabs-dropdown-content">
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       build-icon web-dev-subnav">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Web Platform</li>
+              
+              
+                <li class="devsite-nav-description">Dive into the web platform, at your pace.
+</li>
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/html"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/html"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="web platform"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      HTML
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/css"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/css"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="web platform"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      CSS
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/javascript"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/javascript"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="web platform"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      JavaScript
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       build-icon web-dev-subnav">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>User experience</li>
+              
+              
+                <li class="devsite-nav-description">Learn how to build better user experiences.
+</li>
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/performance"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/performance"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="user experience"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Performance
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/accessibility"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/accessibility"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="user experience"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Accessibility
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/identity"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/identity"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="user experience"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Identity
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       productivity-icon web-dev-subnav">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Learn</li>
+              
+              
+                <li class="devsite-nav-description">Get up to speed on web development.</li>
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/learn/html"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/learn/html"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="learn"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Learn HTML
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/learn/css"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/learn/css"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="learn"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Learn CSS
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/learn/javascript"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/learn/javascript"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="learn"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Learn JavaScript
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/learn/performance"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/learn/performance"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="learn"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Learn Performance
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/learn/accessibility"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/learn/accessibility"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="learn"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Learn Accessibility
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/learn"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/learn"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="learn"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      More courses
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+        <div class="devsite-tabs-dropdown-column
+                    ">
+          
+            <ul class="devsite-tabs-dropdown-section
+                       experience-icon web-dev-subnav">
+              
+                <li class="devsite-nav-title" role="heading" tooltip>Additional resources</li>
+              
+              
+                <li class="devsite-nav-description">Explore content collections, patterns, and more.</li>
+              
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/explore/ai"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/explore/ai"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="additional resources"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      AI and the web
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/explore"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/explore"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="additional resources"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Explore
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://pagespeed.web.dev/"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://pagespeed.web.dev/"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="additional resources"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      PageSpeed Insights
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/patterns"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/patterns"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="additional resources"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Patterns
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/shows"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/shows"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="additional resources"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Podcasts &amp; shows
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/newsletter"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/newsletter"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="additional resources"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      Developer Newsletter
+                    </div>
+                    
+                  </a>
+                </li>
+              
+                <li class="devsite-nav-item">
+                  <a href="https://web.dev/about"
+                    
+                     track-type="nav"
+                     track-metadata-eventdetail="https://web.dev/about"
+                     track-metadata-position="nav - resources"
+                     track-metadata-module="tertiary nav"
+                     
+                       track-metadata-module_headline="additional resources"
+                     
+                     tooltip
+                  >
+                    
+                    <div class="devsite-nav-item-title">
+                      About web.dev
+                    </div>
+                    
+                  </a>
+                </li>
+              
+            </ul>
+          
+        </div>
+      
+    </div>
+  </div>
+</tab>
+        
+      
+        
+          <tab  >
+            
+    <a href="https://web.dev/baseline"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://web.dev/baseline"
+    
+       track-type="nav"
+       track-metadata-position="nav - baseline"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Tab: Baseline"
+         
+           track-name="baseline"
+         
+       >
+    Baseline
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+        
+          <tab  >
+            
+    <a href="https://web.dev/how-to-use-baseline"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://web.dev/how-to-use-baseline"
+    
+       track-type="nav"
+       track-metadata-position="nav - how to use baseline"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Tab: How to use Baseline"
+         
+           track-name="how to use baseline"
+         
+       >
+    How to use Baseline
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+        
+          <tab  >
+            
+    <a href="https://web.dev/blog"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://web.dev/blog"
+    
+       track-type="nav"
+       track-metadata-position="nav - blog"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Tab: Blog"
+         
+           track-name="blog"
+         
+       >
+    Blog
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+        
+          <tab  >
+            
+    <a href="https://web.dev/case-studies"
+    class="devsite-tabs-content gc-analytics-event "
+      track-metadata-eventdetail="https://web.dev/case-studies"
+    
+       track-type="nav"
+       track-metadata-position="nav - case studies"
+       track-metadata-module="primary nav"
+       
+       
+         
+           data-category="Site-Wide Custom Events"
+         
+           data-label="Tab: Case Studies"
+         
+           track-name="case studies"
+         
+       >
+    Case Studies
+  
+    </a>
+    
+  
+          </tab>
+        
+      
+    </nav>
+
+  </devsite-tabs>
+
+            
+           </div>
+          
+<devsite-search
+    enable-signin
+    enable-search
+    enable-suggestions
+      enable-query-completion
+    
+    enable-search-summaries
+    project-name="Articles"
+    tenant-name="web.dev"
+    
+    
+    
+    
+    
+    >
+  <form class="devsite-search-form" action="https://web.dev/s/results" method="GET">
+    <div class="devsite-search-container">
+      <button type="button"
+              search-open
+              class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+              
+              aria-label="Open search"></button>
+      <div class="devsite-searchbox">
+        <input
+          aria-activedescendant=""
+          aria-autocomplete="list"
+          
+          aria-label="Search"
+          aria-expanded="false"
+          aria-haspopup="listbox"
+          autocomplete="off"
+          class="devsite-search-field devsite-search-query"
+          name="q"
+          
+          placeholder="Search"
+          role="combobox"
+          type="text"
+          value=""
+          >
+          <div class="devsite-search-image material-icons" aria-hidden="true">
+            
+              <svg class="devsite-search-ai-image" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g clip-path="url(#clip0_6641_386)">
+                    <path d="M19.6 21L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16C7.68333 16 6.14167 15.375 4.875 14.125C3.625 12.8583 3 11.3167 3 9.5C3 7.68333 3.625 6.15 4.875 4.9C6.14167 3.63333 7.68333 3 9.5 3C10.0167 3 10.5167 3.05833 11 3.175C11.4833 3.275 11.9417 3.43333 12.375 3.65L10.825 5.2C10.6083 5.13333 10.3917 5.08333 10.175 5.05C9.95833 5.01667 9.73333 5 9.5 5C8.25 5 7.18333 5.44167 6.3 6.325C5.43333 7.19167 5 8.25 5 9.5C5 10.75 5.43333 11.8167 6.3 12.7C7.18333 13.5667 8.25 14 9.5 14C10.6667 14 11.6667 13.625 12.5 12.875C13.35 12.1083 13.8417 11.15 13.975 10H15.975C15.925 10.6333 15.7833 11.2333 15.55 11.8C15.3333 12.3667 15.05 12.8667 14.7 13.3L21 19.6L19.6 21ZM17.5 12C17.5 10.4667 16.9667 9.16667 15.9 8.1C14.8333 7.03333 13.5333 6.5 12 6.5C13.5333 6.5 14.8333 5.96667 15.9 4.9C16.9667 3.83333 17.5 2.53333 17.5 0.999999C17.5 2.53333 18.0333 3.83333 19.1 4.9C20.1667 5.96667 21.4667 6.5 23 6.5C21.4667 6.5 20.1667 7.03333 19.1 8.1C18.0333 9.16667 17.5 10.4667 17.5 12Z" fill="#5F6368"/>
+                  </g>
+                <defs>
+                <clipPath id="clip0_6641_386">
+                <rect width="24" height="24" fill="white"/>
+                </clipPath>
+                </defs>
+              </svg>
+            
+          </div>
+          <div class="devsite-search-shortcut-icon-container" aria-hidden="true">
+            <kbd class="devsite-search-shortcut-icon">/</kbd>
+          </div>
+      </div>
+    </div>
+  </form>
+  <button type="button"
+          search-close
+          class="devsite-search-button devsite-header-icon-button button-flat material-icons"
+          
+          aria-label="Close search"></button>
+</devsite-search>
+
+        </div>
+
+        
+
+          
+
+          
+
+          <devsite-appearance-selector></devsite-appearance-selector>
+
+          
+<devsite-language-selector>
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en"
+        >English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="de"
+        >Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es_419"
+        >Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fr"
+        >Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id"
+        >Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="it"
+        >Italiano</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pl"
+        >Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt_br"
+        >Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="vi"
+        >Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="tr"
+        >Türkçe</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ru"
+        >Русский</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="he"
+        >עברית</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ar"
+        >العربيّة</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fa"
+        >فارسی</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="hi"
+        >हिंदी</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="bn"
+        >বাংলা</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="th"
+        >ภาษาไทย</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_cn"
+        >中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_tw"
+        >中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja"
+        >日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko"
+        >한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+
+          
+
+        
+
+        
+          <devsite-user 
+                        
+                        
+                          enable-profiles
+                        
+                        
+                        id="devsite-user">
+            
+              
+              <span class="button devsite-top-button" aria-hidden="true" visually-hidden>Sign in</span>
+            
+          </devsite-user>
+        
+        
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="devsite-collapsible-section
+    
+      devsite-header-no-lower-tabs
+    ">
+    <div class="devsite-header-background">
+      
+        
+      
+      
+    </div>
+  </div>
+
+</div>
+
+
+
+  
+</devsite-header>
+      <devsite-book-nav scrollbars hidden>
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="devsite-book-nav-filter"
+     hidden>
+  <span class="filter-list-icon material-icons" aria-hidden="true"></span>
+  <input type="text"
+         placeholder="Filter"
+         
+         aria-label="Type to filter"
+         role="searchbox">
+  
+  <span class="filter-clear-button hidden"
+        data-title="Clear filter"
+        aria-label="Clear filter"
+        role="button"
+        tabindex="0"></span>
+</div>
+
+<nav class="devsite-book-nav devsite-nav nocontent"
+     aria-label="Side menu">
+  <div class="devsite-mobile-header">
+    <button type="button"
+            id="devsite-close-nav"
+            class="devsite-header-icon-button button-flat material-icons gc-analytics-event"
+            data-category="Site-Wide Custom Events"
+            data-label="Close navigation"
+            aria-label="Close navigation">
+    </button>
+    <div class="devsite-product-name-wrapper">
+
+  <a href="/" class="devsite-site-logo-link gc-analytics-event"
+   data-category="Site-Wide Custom Events" data-label="Site logo" track-type="globalNav"
+   track-name="webDev" track-metadata-position="nav"
+   track-metadata-eventDetail="nav">
+  
+  <picture>
+    
+    <source srcset="https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/images/lockup-dark-theme.svg"
+            media="(prefers-color-scheme: dark)"
+            class="devsite-dark-theme">
+    
+    <img src="https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/images/lockup.svg" class="devsite-site-logo" alt="web.dev">
+  </picture>
+  
+</a>
+
+
+  
+      <span class="devsite-product-name">
+        
+        
+        <ul class="devsite-breadcrumb-list"
+  >
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+      
+    
+  </li>
+  
+</ul>
+      </span>
+    
+
+</div>
+  </div>
+
+  <div class="devsite-book-nav-wrapper">
+    <div class="devsite-mobile-nav-top">
+      
+        <ul class="devsite-nav-list">
+          
+            <li class="devsite-nav-item">
+              
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Resources"
+      
+        track-name="resources"
+      
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Resources
+   </span>
+    
+  
+  </span>
+  
+
+  
+    <ul class="devsite-nav-responsive-tabs devsite-nav-has-menu
+               ">
+      
+<li class="devsite-nav-item">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Resources"
+      
+        track-name="resources"
+      
+    >
+  
+    <span class="devsite-nav-text" tooltip menu="Resources">
+      More
+   </span>
+    
+    <span class="devsite-nav-icon material-icons" data-icon="forward"
+          menu="Resources">
+    </span>
+    
+  
+  </span>
+  
+
+</li>
+
+    </ul>
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="/baseline"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Baseline"
+      
+        track-name="baseline"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Baseline"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Baseline
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="/how-to-use-baseline"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: How to use Baseline"
+      
+        track-name="how to use baseline"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: How to use Baseline"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      How to use Baseline
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="/blog"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Blog"
+      
+        track-name="blog"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Blog"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Blog
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+            <li class="devsite-nav-item">
+              
+  
+  <a href="/case-studies"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Tab: Case Studies"
+      
+        track-name="case studies"
+      
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Case Studies"
+     track-type="globalNav"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Case Studies
+   </span>
+    
+  
+  </a>
+  
+
+  
+              
+            </li>
+          
+          
+          
+        </ul>
+      
+    </div>
+    
+      <div class="devsite-mobile-nav-bottom">
+        
+        
+          
+    
+      
+      <ul class="devsite-nav-list" menu="Resources"
+          aria-label="Side menu" hidden>
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Web Platform
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/html"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: HTML"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      HTML
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/css"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: CSS"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      CSS
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/javascript"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: JavaScript"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      JavaScript
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      User experience
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/performance"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Performance"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Performance
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/accessibility"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Accessibility"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Accessibility
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/identity"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Identity"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Identity
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Learn
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/learn/html"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Learn HTML"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Learn HTML
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/learn/css"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Learn CSS"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Learn CSS
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/learn/javascript"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Learn JavaScript"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Learn JavaScript
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/learn/performance"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Learn Performance"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Learn Performance
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/learn/accessibility"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Learn Accessibility"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Learn Accessibility
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/learn"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: More courses"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      More courses
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+          
+            
+              
+<li class="devsite-nav-item devsite-nav-heading">
+
+  
+  <span
+    
+       class="devsite-nav-title"
+       tooltip
+    
+    >
+  
+    <span class="devsite-nav-text" tooltip >
+      Additional resources
+   </span>
+    
+  
+  </span>
+  
+
+</li>
+
+            
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/explore/ai"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: AI and the web"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      AI and the web
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/explore"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Explore"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Explore
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="https://pagespeed.web.dev/"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: PageSpeed Insights"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      PageSpeed Insights
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/patterns"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Patterns"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Patterns
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/shows"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Podcasts &amp;amp; shows"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Podcasts &amp;amp; shows
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/newsletter"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: Developer Newsletter"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      Developer Newsletter
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+              
+<li class="devsite-nav-item">
+
+  
+  <a href="/about"
+    
+       class="devsite-nav-title gc-analytics-event
+              
+              "
+    
+
+    
+     data-category="Site-Wide Custom Events"
+     data-label="Responsive Tab: About web.dev"
+     track-type="navMenu"
+     track-metadata-eventDetail="globalMenu"
+     track-metadata-position="nav">
+  
+    <span class="devsite-nav-text" tooltip >
+      About web.dev
+   </span>
+    
+  
+  </a>
+  
+
+</li>
+
+            
+          
+        
+      </ul>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+        
+        
+      </div>
+    
+  </div>
+</nav>
+        
+      </devsite-book-nav>
+      <section id="gc-wrapper">
+        <main role="main" id="main-content" class="devsite-main-content"
+            
+              
+              has-sidebar
+            >
+          <div class="devsite-sidebar">
+            <div class="devsite-sidebar-content">
+                
+                <devsite-toc class="devsite-nav"
+                            role="navigation"
+                            aria-label="On this page"
+                            depth="2"
+                            scrollbars
+                  ></devsite-toc>
+                <devsite-recommendations-sidebar class="nocontent devsite-nav">
+                </devsite-recommendations-sidebar>
+            </div>
+          </div>
+          <devsite-content>
+            
+              
+
+
+
+
+
+
+
+
+
+
+
+
+<article class="devsite-article">
+  
+  
+  
+  
+  
+
+  <div class="devsite-article-meta nocontent" role="navigation">
+    
+    
+    <ul class="devsite-breadcrumb-list"
+  
+    aria-label="Breadcrumb">
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+    
+    
+      
+  <a href="https://web.dev/"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="1"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="1"
+      
+        track-metadata-eventdetail=""
+      
+    >
+    
+        Home
+      
+  </a>
+  
+    
+  </li>
+  
+  <li class="devsite-breadcrumb-item
+             ">
+    
+      
+      <div class="devsite-breadcrumb-guillemet material-icons" aria-hidden="true"></div>
+    
+    
+    
+      
+  <a href="https://web.dev/articles"
+      
+        class="devsite-breadcrumb-link gc-analytics-event"
+      
+        data-category="Site-Wide Custom Events"
+      
+        data-label="Breadcrumbs"
+      
+        data-value="2"
+      
+        track-type="globalNav"
+      
+        track-name="breadcrumb"
+      
+        track-metadata-position="2"
+      
+        track-metadata-eventdetail="Articles"
+      
+    >
+    
+        Articles
+      
+  </a>
+  
+    
+  </li>
+  
+</ul>
+    
+      
+    <devsite-thumb-rating position="header">
+    </devsite-thumb-rating>
+  
+    
+  </div>
+  
+    <h1 class="devsite-page-title" tabindex="-1">
+      Web Vitals<devsite-actions hidden data-nosnippet><devsite-feature-tooltip
+      ack-key="AckCollectionsBookmarkTooltipDismiss"
+      analytics-category="Site-Wide Custom Events"
+      analytics-action-show="Callout Profile displayed"
+      analytics-action-close="Callout Profile dismissed"
+      analytics-label="Create Collection Callout"
+      class="devsite-page-bookmark-tooltip nocontent"
+      dismiss-button="true"
+      id="devsite-collections-dropdown"
+      
+      dismiss-button-text="Dismiss"
+
+      
+      close-button-text="Got it">
+
+    
+    
+      <devsite-bookmark></devsite-bookmark>
+    
+
+    <span slot="popout-heading">
+      
+      Stay organized with collections
+    </span>
+    <span slot="popout-contents">
+      
+      Save and categorize content based on your preferences.
+    </span>
+  </devsite-feature-tooltip>
+    <devsite-llm-tools></devsite-llm-tools></devsite-actions>
+  
+      
+    </h1>
+  <div class="devsite-page-title-meta"><devsite-view-release-notes></devsite-view-release-notes></div>
+  
+
+  <devsite-toc class="devsite-nav"
+    depth="2"
+    devsite-toc-embedded
+    >
+  </devsite-toc>
+  
+    
+  <div class="devsite-article-body clearfix
+  ">
+
+  
+    
+    
+
+
+
+
+<p><style>
+  .wd-author__links {
+    display: flex;
+  }
+  </style>
+
+<div class="wd-authors" translate="no">
+  
+    
+    
+      <div class="wd-author">
+        
+          <img class="devsite-landing-row-item-icon" alt="Philip Walton" 
+            src="https://web.dev/images/authors/philipwalton.jpg" 
+            decoding="async" height="64" loading="lazy" width="64"> 
+        
+        <div>
+          <span> 
+            Philip Walton
+          </span>
+          <div class="wd-author__links">
+            
+              <a href="https://twitter.com/philwalton" aria-label="Philip Walton on X" rel="me">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 300 271">
+                  <title>X</title>
+                  <path fill="currentColor" d="m236 0h46l-101 115 118 156h-92.6l-72.5-94.8-83 94.8h-46l107-123-113-148h94.9l65.5 86.6zm-16.1 244h25.5l-165-218h-27.4z"></path>
+                </svg></a>
+            
+            
+              <a href="https://github.com/philipwalton" aria-label="Philip Walton on GitHub" rel="me">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32.6 31.8">
+                  <title>GitHub</title>
+                  <path d="M16.3 0C7.3 0 0 7.3 0 16.3c0 7.2 4.7 13.3 11.1 15.5.8.1 1.1-.4 1.1-.8v-2.8c-4.5 1-5.5-2.2-5.5-2.2-.7-1.9-1.8-2.4-1.8-2.4-1.5-1 .1-1 .1-1 1.6.1 2.5 1.7 2.5 1.7 1.5 2.5 3.8 1.8 4.7 1.4.1-1.1.6-1.8 1-2.2-3.6-.4-7.4-1.8-7.4-8.1 0-1.8.6-3.2 1.7-4.4-.1-.3-.7-2 .2-4.2 0 0 1.4-.4 4.5 1.7 1.3-.4 2.7-.5 4.1-.5 1.4 0 2.8.2 4.1.5 3.1-2.1 4.5-1.7 4.5-1.7.9 2.2.3 3.9.2 4.3 1 1.1 1.7 2.6 1.7 4.4 0 6.3-3.8 7.6-7.4 8 .6.5 1.1 1.5 1.1 3V31c0 .4.3.9 1.1.8 6.5-2.2 11.1-8.3 11.1-15.5C32.6 7.3 25.3 0 16.3 0z" fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" />
+                </svg></a>
+            
+            
+            
+              <a href="https://www.linkedin.com/in/waltonphilip" aria-label="Philip Walton on LinkedIn" rel="me">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 200 200">
+                  <title>LinkedIn</title>
+                  <path d="M185.2 0H14.8C6.6 0 0 6.4 0 14.3v171.3c0 7.9 6.6 14.3 14.8 14.3h170.4c8.1 0 14.8-6.4 14.8-14.3V14.3C199.9 6.4 193.3 0 185.2 0zM60.6 167.3H30.4V77.1h30.2v90.2zM45.5 64.8h-.2c-10.1 0-16.7-6.9-16.7-15.6 0-8.8 6.7-15.6 17.1-15.6 10.3 0 16.7 6.7 16.9 15.6 0 8.6-6.5 15.6-17.1 15.6zm124 102.5h-30.2V119c0-12.1-4.4-20.4-15.3-20.4-8.4 0-13.3 5.6-15.5 11-.8 1.9-1 4.6-1 7.3v50.4H77.3s.4-81.8 0-90.3h30.2v12.8c4-6.1 11.2-14.9 27.2-14.9 19.9 0 34.8 12.9 34.8 40.6v51.8zm-62.2-77.1c0-.1.1-.2.2-.3v.3h-.2z" fill="currentColor" />
+                </svg></a>
+            
+            
+              <a href="https://toot.cafe/@philipwalton" aria-label="Philip Walton on Mastodon" rel="me">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 16 16">
+                  <title>Mastodon</title>
+                  <path fill="currentColor" d="M 15.659 9.592 C 15.424 10.72 13.553 11.956 11.404 12.195 C 10.283 12.32 9.18 12.434 8.003 12.384 C 6.079 12.302 4.56 11.956 4.56 11.956 C 4.56 12.13 4.572 12.297 4.595 12.452 C 4.845 14.224 6.478 14.33 8.025 14.379 C 9.586 14.429 10.976 14.02 10.976 14.02 L 11.04 15.337 C 11.04 15.337 9.948 15.884 8.003 15.984 C 6.93 16.039 5.598 15.959 4.047 15.576 C 0.683 14.746 0.104 11.4 0.015 8.006 C -0.012 6.998 0.005 6.048 0.005 5.253 C 0.005 1.782 2.443 0.765 2.443 0.765 C 3.672 0.238 5.782 0.017 7.975 0 L 8.029 0 C 10.221 0.017 12.332 0.238 13.561 0.765 C 13.561 0.765 15.999 1.782 15.999 5.253 C 15.999 5.253 16.03 7.814 15.659 9.592 Z M 13.124 5.522 L 13.124 9.725 L 11.339 9.725 L 11.339 5.646 C 11.339 4.786 10.951 4.35 10.175 4.35 C 9.317 4.35 8.887 4.867 8.887 5.891 L 8.887 8.124 L 7.113 8.124 L 7.113 5.891 C 7.113 4.867 6.683 4.35 5.825 4.35 C 5.049 4.35 4.661 4.786 4.661 5.646 L 4.661 9.725 L 2.876 9.725 L 2.876 5.522 C 2.876 4.663 3.111 3.981 3.582 3.476 C 4.067 2.971 4.703 2.712 5.493 2.712 C 6.406 2.712 7.098 3.039 7.555 3.695 L 8 4.39 L 8.445 3.695 C 8.902 3.039 9.594 2.712 10.507 2.712 C 11.297 2.712 11.933 2.971 12.418 3.476 C 12.889 3.981 13.124 4.663 13.124 5.522 Z" style="stroke:none;stroke-miterlimit:10;fill-rule:evenodd;"></path>
+                </svg></a>
+            
+            
+              <a href="https://bsky.app/profile/philipwalton.com" aria-label="Philip Walton on Bluesky" rel="me">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 568 501">
+                  <title>Bluesky</title>
+                  <path fill="currentColor" d="M123.121 33.664C188.241 82.553 258.281 181.68 284 234.873c25.719-53.192 95.759-152.32 160.879-201.21C491.866-1.611 568-28.906 568 57.947c0 17.346-9.945 145.713-15.778 166.555-20.275 72.453-94.155 90.933-159.875 79.748C507.222 323.8 536.444 388.56 473.333 453.32c-119.86 122.992-172.272-30.859-185.702-70.281-2.462-7.227-3.614-10.608-3.631-7.733-.017-2.875-1.169.506-3.631 7.733-13.43 39.422-65.842 193.273-185.702 70.281-63.111-64.76-33.89-129.52 80.986-149.071-65.72 11.185-139.6-7.295-159.875-79.748C9.945 203.659 0 75.291 0 57.946 0-28.906 76.135-1.612 123.121 33.664Z"/>
+                </svg>
+              </a>
+            
+            
+              <a href="https://philipwalton.com/" aria-label="Philip Walton's homepage" rel="me">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 30 30">
+                  <title>Homepage</title>
+                  <circle cx="14.5" cy="14.5" r="13.5" stroke-width="2" stroke-miterlimit="10" fill="none" stroke="currentColor" />
+                  <ellipse cx="14.5" cy="14.5" rx="6.1" ry="13.5" stroke-width="2" stroke-miterlimit="10" fill="none" stroke="currentColor" />
+                  <path d="M1.6 9.6h25.8M1.6 19.4h25.8" stroke-width="2" stroke-miterlimit="10" fill="none" stroke="currentColor" />
+                </svg></a>
+            
+          </div>
+        </div>
+      </div>
+    
+  
+</div></p>
+
+<p>
+<p class="wd-pubdates"
+    style="font-size: 90%; border-bottom: 1px solid var(--devsite-ref-palette--grey200);color: var(--devsite-ref-palette--blue-grey700);">
+  Published: May 4, 2020
+</p>
+</p>
+
+<p>Optimizing for quality of user experience is key to the long-term success of any site on the web. Whether you&#39;re a business owner, marketer, or developer, Web Vitals can help you quantify the experience of your site and identify opportunities to improve.</p>
+
+<h2 id="overview" data-text="Overview" tabindex="-1">Overview</h2>
+
+<p>Web Vitals is an initiative by Google to provide unified guidance for quality signals that are essential to delivering a great user experience on the web.</p>
+
+<p>Google has provided a number of tools over the years to measure and report on performance. Some developers are experts at using these tools, while others have found the abundance of both tools and metrics challenging to keep up with.</p>
+
+<p>Site owners shouldn&#39;t have to be performance experts to understand the quality of experience they are delivering to their users. The Web Vitals initiative aims to simplify the landscape, and help sites focus on the metrics that matter most, the <strong>Core Web Vitals</strong>.</p>
+
+<h2 id="core-web-vitals" data-text="Core Web Vitals" tabindex="-1">Core Web Vitals</h2>
+
+<p>Core Web Vitals are the subset of Web Vitals that apply to all web pages, should be measured by all site owners, and will be surfaced across all Google tools. Each of the Core Web Vitals represents a distinct facet of the user experience, is measurable <a href="/articles/user-centric-performance-metrics#how_metrics_are_measured">in the field</a>, and reflects the real-world experience of a critical <a href="/articles/user-centric-performance-metrics#how_metrics_are_measured">user-centric</a> outcome.</p>
+
+<p>The metrics that make up Core Web Vitals will <a href="#evolving-web-vitals">evolve</a> over time. The current set focuses on three aspects of the user experience—<em>loading</em>, <em>interactivity</em>, and <em>visual stability</em>—and includes the following metrics (and their respective thresholds):</p>
+
+<style>
+  .cwv-metrics {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+  }
+</style>
+
+<div class="cwv-metrics">
+  <img src="/static/articles/vitals/image/largest-contentful-paint-ea2e6ec5569b6.svg" alt="Largest Contentful Paint threshold recommendations" width="250" height="220">
+  <img src="/static/articles/vitals/image/inp-thresholds.svg" alt="Interaction to Next Paint threshold recommendations" width="250" height="220">
+  <img src="/static/articles/vitals/image/cumulative-layout-shift-t-5d49b9b883de4.svg" alt="Cumulative Layout Shift threshold recommendations" width="250" height="220">
+</div>
+
+<ul>
+<li><strong><a href="/articles/lcp">Largest Contentful Paint (LCP)</a></strong>: measures <em>loading</em> performance. To provide a good user experience, LCP should occur within <strong>2.5 seconds</strong> of when the page first starts loading.</li>
+<li><strong><a href="/articles/inp">Interaction to Next Paint (INP)</a></strong>: measures <em>interactivity</em>. To provide a good user experience, pages should have a INP of <strong>200 milliseconds</strong> or less.</li>
+<li><strong><a href="/articles/cls">Cumulative Layout Shift (CLS)</a></strong>: measures <em>visual stability</em>. To provide a good user experience, pages should maintain a CLS of <strong>0.1.</strong> or less.</li>
+</ul>
+
+<p>To ensure you&#39;re hitting the recommended target for these metrics for most of your users, a good threshold to measure is the <strong>75th percentile</strong> of page loads, segmented across mobile and desktop devices.</p>
+
+<p>Tools that assess Core Web Vitals compliance should consider a page passing if it meets the recommended targets at the 75th percentile for all three of the Core Web Vitals metrics.</p>
+
+<aside class="note">
+  <b>Note:</b> To learn more about the research and methodology behind these recommendations, see: <a href="/articles/defining-core-web-vitals-thresholds">Defining the Core Web Vitals metrics thresholds</a>.
+</aside>
+
+<h3 id="lifecycle" data-text="Lifecycle" tabindex="-1">Lifecycle</h3>
+
+<p>Metrics on the Core Web Vitals track go through a lifecycle consisting of three phases: experimental, pending, and stable.</p>
+
+<figure>
+  <img src="/static/articles/vitals/image/the-three-lifecycle-phase-0d329be3158f9.svg" alt="The three lifecycle phases of Core Web Vitals metrics, visualized as a series of three chevrons. From left to right, the phases are Experimental, Pending, and Stable." width="600" height="62">
+  <figcaption class="wd-caption">
+    The stages of the Core Web Vitals lifecycle.
+  </figcaption>
+</figure>
+
+<p>Each phase is designed to signal to developers how they should think about each metric:</p>
+
+<ul>
+<li><strong>Experimental metrics</strong> are prospective Core Web Vitals that may still be undergoing significant changes depending on testing and community feedback.</li>
+<li><strong>Pending metrics</strong> are future Core Web Vitals that have passed the testing and feedback stage and have a well-defined timeline to becoming stable.</li>
+<li><strong>Stable metrics</strong> are the current set of Core Web Vitals that Chrome considers essential for great user experiences.</li>
+</ul>
+
+<p>The Core Web Vitals are at the following lifecycle stages:</p>
+
+<ul>
+<li><a href="/articles/lcp">LCP</a>: Stable</li>
+<li><a href="/articles/cls">CLS</a>: Stable</li>
+<li><a href="/articles/inp">INP</a>: Stable</li>
+</ul>
+
+<h4 id="experimental" data-text="Experimental" tabindex="-1">Experimental</h4>
+
+<p>When a metric is initially developed and enters the ecosystem, it is considered an <em>experimental metric</em>.</p>
+
+<p>The purpose of the experimental phase is to assess a metric&#39;s fitness, first by exploring the problem to be solved, and possibly iterate on what previous metrics may have failed to address. For example, <a href="/articles/inp">Interaction to Next Paint (INP)</a> was initially developed as an experimental metric to address the runtime performance issues present on the web more comprehensively than <a href="/articles/fid">First Input Delay (FID)</a>.</p>
+
+<p>The experimental phase of Core Web Vitals lifecycle is also intended to give flexibility in a metric&#39;s development by identifying bugs and even exploring changes to its initial definition. It&#39;s also the phase in which community feedback is most important.</p>
+
+<h4 id="pending" data-text="Pending" tabindex="-1">Pending</h4>
+
+<p>When the Chrome team determines that an experimental metric has received sufficient feedback and proven its efficacy, it becomes a <em>pending metric</em>. For example, INP was promoted in 2023 from experimental to pending status with the intent to eventually retire FID.</p>
+
+<p>Pending metrics are held in this phase for a minimum of six months to give the ecosystem time to adapt. Community feedback remains an important aspect of this phase, as more developers begin to use the metric.</p>
+
+<h4 id="stable" data-text="Stable" tabindex="-1">Stable</h4>
+
+<p>When a Core Web Vital candidate metric is finalized, it becomes a <em>stable metric</em>. This is when the metric can become a Core Web Vital.</p>
+
+<p>Stable metrics are actively supported, and can be subject to bug fixes and definition changes. Stable Core Web Vitals metrics won&#39;t change more than once per year. Any change to a Core Web Vital will be clearly communicated in the metric&#39;s official documentation, as well as in the metric&#39;s changelog. Core Web Vitals are also included in any assessments.</p>
+
+<aside class="key-point">
+  <b>Key point:</b> Stable metrics aren't necessarily permanent. A stable metric can be retired and replaced by another metric that addresses the problem area more effectively. This is exactly what happened to FID as <a href="/blog/inp-cwv-launch">INP became a stable Core Web Vital metric in 2024</a>.
+</aside>
+
+<h3 id="tools_to_measure_and_report_core_web_vitals" data-text="Tools to measure and report Core Web Vitals" tabindex="-1">Tools to measure and report Core Web Vitals</h3>
+
+<p>Google believes that the Core Web Vitals are critical to all web experiences. As a result, it is committed to surfacing these metrics <a href="/articles/vitals-tools">in all of its popular tools</a>. The following sections details which tools support the Core Web Vitals.</p>
+
+<h4 id="field_tools_to_measure_core_web_vitals" data-text="Field tools to measure Core Web Vitals" tabindex="-1">Field tools to measure Core Web Vitals</h4>
+
+<p>The <a href="https://developer.chrome.com/docs/crux">Chrome User Experience Report</a> collects anonymized, real user measurement data for each Core Web Vital. This data enables site owners to quickly assess their performance without requiring them to manually instrument analytics on their pages, and powers tools like <a href="https://developer.chrome.com/docs/devtools/performance/overview#compare">Chrome DevTools</a>, <a href="https://pagespeed.web.dev">PageSpeed Insights</a>, and Search Console&#39;s <a href="https://support.google.com/webmasters/answer/9205520">Core Web Vitals report</a>.</p>
+
+<div class="table-wrapper">
+  <table>
+    <tr>
+      <td>&nbsp;</td>
+      <td>LCP</td>
+      <td>INP</td>
+      <td>CLS</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.chrome.com/docs/crux">
+        Chrome User Experience Report</a></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.chrome.com/docs/devtools/performance/overview#compare">
+        Chrome DevTools</a></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+    </tr>
+    <tr>
+      <td><a href="https://developers.google.com/speed/pagespeed/insights/">
+        PageSpeed Insights</a></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+    </tr>
+    <tr>
+      <td><a href="https://support.google.com/webmasters/answer/9205520">
+        Search Console (Core Web Vitals report)</a></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+    </tr>
+  </table>
+</div>
+
+<aside class="note">
+  <b>Note:</b> For guidance on how to use these tools, and which tool is right for your use case, see: <a href="/articles/vitals-measurement-getting-started">Getting started with measuring Web Vitals</a>.
+</aside>
+
+<p>The data provided by Chrome User Experience Report offers a quick way to assess the performance of sites, but it does not provide the detailed, per-pageview telemetry that is often necessary to accurately diagnose, monitor, and quickly react to regressions. As a result, we strongly recommend that sites set up their own real-user monitoring.</p>
+
+<h4 id="javascript" data-text="Measure Core Web Vitals in JavaScript" tabindex="-1">Measure Core Web Vitals in JavaScript</h4>
+
+<p>Each of the Core Web Vitals can be measured in JavaScript using standard web APIs.</p>
+
+<aside class="note">
+  <b>Note:</b> Note that the Core Web Vitals measured in JavaScript using public APIs may differ from the Core Web Vitals reported by CrUX. Read about <a href="/articles/crux-and-rum-differences">the differences between these data sources</a> for more info.
+</aside>
+
+<p>The easiest way to measure all the Core Web Vitals is to use the <a href="https://github.com/GoogleChrome/web-vitals">web-vitals</a> JavaScript library, a small, production-ready wrapper around the underlying web APIs that measures each metric in a way that accurately matches how they&#39;re reported by all the Google tools listed earlier.</p>
+
+<p>With the <a href="https://github.com/GoogleChrome/web-vitals">web-vitals</a> library, measuring each metric can be done by calling a single function. See the documentation for complete <a href="https://github.com/GoogleChrome/web-vitals#usage">usage</a> and <a href="https://github.com/GoogleChrome/web-vitals#api">API</a> details.</p>
+<div></div><devsite-code><pre class="devsite-click-to-copy" translate="no" dir="ltr" is-upgraded syntax="JavaScript"><code translate="no" dir="ltr"><span class="devsite-syntax-k">import</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-p">{</span><span class="devsite-syntax-nx">onCLS</span><span class="devsite-syntax-p">,</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-nx">onINP</span><span class="devsite-syntax-p">,</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-nx">onLCP</span><span class="devsite-syntax-p">}</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-kr">from</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-s1">'web-vitals'</span><span class="devsite-syntax-p">;</span>
+
+<span class="devsite-syntax-kd">function</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-nx">sendToAnalytics</span><span class="devsite-syntax-p">(</span><span class="devsite-syntax-nx">metric</span><span class="devsite-syntax-p">)</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-p">{</span>
+<span class="devsite-syntax-w">  </span><span class="devsite-syntax-kd">const</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-nx">body</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-o">=</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-nb">JSON</span><span class="devsite-syntax-p">.</span><span class="devsite-syntax-nx">stringify</span><span class="devsite-syntax-p">(</span><span class="devsite-syntax-nx">metric</span><span class="devsite-syntax-p">);</span>
+<span class="devsite-syntax-w">  </span><span class="devsite-syntax-c1">// Use `navigator.sendBeacon()` if available, falling back to `fetch()`.</span>
+<span class="devsite-syntax-w">  </span><span class="devsite-syntax-p">(</span><span class="devsite-syntax-nx">navigator</span><span class="devsite-syntax-p">.</span><span class="devsite-syntax-nx">sendBeacon</span><span class="devsite-syntax-w"> &amp;&amp; </span><span class="devsite-syntax-nx">navigator</span><span class="devsite-syntax-p">.</span><span class="devsite-syntax-nx">sendBeacon</span><span class="devsite-syntax-p">(</span><span class="devsite-syntax-s1">'/analytics'</span><span class="devsite-syntax-p">,</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-nx">body</span><span class="devsite-syntax-p">))</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-o">||</span>
+<span class="devsite-syntax-w">    </span><span class="devsite-syntax-nx">fetch</span><span class="devsite-syntax-p">(</span><span class="devsite-syntax-s1">'/analytics'</span><span class="devsite-syntax-p">,</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-p">{</span><span class="devsite-syntax-nx">body</span><span class="devsite-syntax-p">,</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-nx">method</span><span class="devsite-syntax-o">:</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-s1">'POST'</span><span class="devsite-syntax-p">,</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-nx">keepalive</span><span class="devsite-syntax-o">:</span><span class="devsite-syntax-w"> </span><span class="devsite-syntax-kc">true</span><span class="devsite-syntax-p">});</span>
+<span class="devsite-syntax-p">}</span>
+
+<span class="devsite-syntax-nx">onCLS</span><span class="devsite-syntax-p">(</span><span class="devsite-syntax-nx">sendToAnalytics</span><span class="devsite-syntax-p">);</span>
+<span class="devsite-syntax-nx">onINP</span><span class="devsite-syntax-p">(</span><span class="devsite-syntax-nx">sendToAnalytics</span><span class="devsite-syntax-p">);</span>
+<span class="devsite-syntax-nx">onLCP</span><span class="devsite-syntax-p">(</span><span class="devsite-syntax-nx">sendToAnalytics</span><span class="devsite-syntax-p">);</span>
+</code></pre></devsite-code>
+<p>Once you&#39;ve configured your site to use the <a href="https://github.com/GoogleChrome/web-vitals">web-vitals</a> library to measure and send your Core Web Vitals data to an analytics endpoint, the next step is to aggregate and report on that data to see if your pages are meeting the recommended thresholds for at least 75% of page visits.</p>
+
+<p>While some analytics providers have built-in support for Core Web Vitals metrics, even those that don&#39;t should include basic custom metric features that allow you to measure Core Web Vitals in their tool.</p>
+
+<p>Developers who prefer to measure these metrics directly using the underlying web APIs can instead use these metric guides for implementation details:</p>
+
+<ul>
+<li><a href="/articles/lcp#measure_lcp_in_javascript">Measure LCP in JavaScript</a></li>
+<li><a href="/articles/inp#how-to-measure-inp">Measure INP in JavaScript</a></li>
+<li><a href="/articles/cls#measure_cls_in_javascript">Measure CLS in JavaScript</a></li>
+</ul>
+
+<p>For additional guidance on measuring these metrics using popular analytics services or your own in-house analytics tools, see <a href="/articles/vitals-field-measurement-best-practices">Best practices for measuring Web Vitals in the field</a>.</p>
+
+<h4 id="lab_tools_to_measure_core_web_vitals" data-text="Lab tools to measure Core Web Vitals" tabindex="-1">Lab tools to measure Core Web Vitals</h4>
+
+<p>While all of the Core Web Vitals are, first and foremost, field metrics, many of them are also measurable in the lab.</p>
+
+<p>Lab measurement is the best way to test the performance of features during development—before they&#39;ve been released to users. It&#39;s also the best way to catch performance regressions before they happen.</p>
+
+<p>The following tools can be used to measure the Core Web Vitals in a lab environment:</p>
+
+<div class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>LCP</th>
+        <th>INP</th>
+        <th>CLS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href="https://developer.chrome.com/docs/devtools">
+          Chrome DevTools</a></td>
+        <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+        <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+        <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      </tr>
+      <tr>
+        <td><a href="https://developer.chrome.com/docs/lighthouse/overview">
+          Lighthouse</a></td>
+        <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+        <td><span class="material-icons" aria-hidden="true" translate="no">block</span> (use <a href="/articles/tbt">TBT</a> instead)</td>
+        <td><span class="material-icons" aria-hidden="true" translate="no">check</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<aside class="note">
+  <b>Note:</b> Tools like Lighthouse that load pages in a simulated environment without a user cannot measure INP, as there is no user input. However, the Total Blocking Time (TBT) metric is lab-measurable and is a proxy for INP. Performance optimizations that improve TBT in the lab may improve INP in the field (see performance recommendations below).
+</aside>
+
+<p>While lab measurement is an essential part of delivering great experiences, it is not a substitute for field measurement.</p>
+
+<p>The performance of a site can substantially vary based on a user&#39;s device capabilities, their network conditions, what other processes may be running on the device, and how they&#39;re interacting with the page. In fact, each of the Core Web Vitals metrics can have its score affected by user interaction. Only field measurement can accurately capture the complete picture.</p>
+
+<h3 id="recommendations_for_improving_your_scores" data-text="Recommendations for improving your scores" tabindex="-1">Recommendations for improving your scores</h3>
+
+<p>The following guides offer specific recommendations for how to optimize your pages for each of the Core Web Vitals:</p>
+
+<ul>
+<li><a href="/articles/optimize-lcp">Optimize LCP</a></li>
+<li><a href="/articles/optimize-inp">Optimize INP</a></li>
+<li><a href="/articles/optimize-cls">Optimize CLS</a></li>
+</ul>
+
+<p>There are many ways to improve Core Web Vitals, and each approach comes with varying levels of impact, relevance, and ease of use for every situation. Refer to <a href="/articles/top-cwv">The most effective ways to improve Core Web Vitals</a> for a short list of the Chrome team&#39;s top recommendations.</p>
+
+<h2 id="other-web-vitals" data-text="Other Web Vitals" tabindex="-1">Other Web Vitals</h2>
+
+<p>While the Core Web Vitals are the critical metrics for understanding and delivering a great user experience, there are other supporting metrics.</p>
+
+<p>These other metrics can serve as proxy—or as supplemental metrics for the three Core Web Vitals—to help capture a larger part of the experience or to aid in diagnosing a specific issue.</p>
+
+<p>For example, the metrics <a href="/articles/ttfb">Time to First Byte (TTFB)</a> and <a href="/articles/fcp">First Contentful Paint (FCP)</a> are both vital aspects of the <em>loading</em> experience, and are both useful in diagnosing issues with LCP (slow <a href="/articles/overloaded-server">server response times</a> or <a href="https://developer.chrome.com/docs/lighthouse/performance/render-blocking-resources">render-blocking resources</a>, respectively).</p>
+
+<p>Similarly, a metric like <a href="/articles/tbt">Total Blocking Time (TBT)</a> is a lab metrics is vital in catching and diagnosing potential <em>interactivity</em> issues that can impact INP. However, it is not part of the Core Web Vitals set because they are not field-measurable, nor do they reflect a <a href="/articles/user-centric-performance-metrics#how_metrics_are_measured">user-centric</a> outcome.</p>
+
+<h2 id="evolving-web-vitals" data-text="Changes to Web Vitals" tabindex="-1">Changes to Web Vitals</h2>
+
+<p>Web Vitals and Core Web Vitals represent the best available signals developers have today to measure quality of experience across the web, but these signals are not perfect and future improvements or additions should be expected.</p>
+
+<p>The <strong>Core Web Vitals</strong> are relevant to all web pages and featured across relevant Google tools. Changes to these metrics will have wide-reaching impact; as such, developers should expect the definitions and thresholds of the Core Web Vitals to be stable, and updates to have prior notice and a predictable, annual cadence.</p>
+
+<p>The other Web Vitals are often context or tool specific, and may be more experimental than the Core Web Vitals. As such, their definitions and thresholds may change with greater frequency.</p>
+
+<p>For all Web Vitals, changes will be clearly documented in this public <a href="https://chromium.googlesource.com/chromium/src/+/main/docs/speed/metrics_changelog/README.md">CHANGELOG</a>.</p>
+
+  
+
+  
+</div>
+
+  
+    
+    
+      
+    <devsite-thumb-rating position="footer">
+    </devsite-thumb-rating>
+  
+       
+    
+    
+  
+
+  <div class="devsite-floating-action-buttons"></div></article>
+
+
+<devsite-content-footer class="nocontent">
+  <p>Except as otherwise noted, the content of this page is licensed under the <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 License</a>, and code samples are licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 License</a>. For details, see the <a href="https://developers.google.com/site-policies">Google Developers Site Policies</a>. Java is a registered trademark of Oracle and/or its affiliates.</p>
+  <p>Last updated 2024-10-31 UTC.</p>
+</devsite-content-footer>
+
+
+<devsite-notification
+>
+</devsite-notification>
+
+
+  
+<div class="devsite-content-data">
+  
+  
+    <template class="devsite-content-data-template">
+      [[["Easy to understand","easyToUnderstand","thumb-up"],["Solved my problem","solvedMyProblem","thumb-up"],["Other","otherUp","thumb-up"]],[["Missing the information I need","missingTheInformationINeed","thumb-down"],["Too complicated / too many steps","tooComplicatedTooManySteps","thumb-down"],["Out of date","outOfDate","thumb-down"],["Samples / code issue","samplesCodeIssue","thumb-down"],["Other","otherDown","thumb-down"]],["Last updated 2024-10-31 UTC."],[],[]]
+    </template>
+  
+</div>
+            
+          </devsite-content>
+        </main>
+        <devsite-footer-promos class="devsite-footer">
+          
+            
+          
+        </devsite-footer-promos>
+        <devsite-footer-linkboxes class="devsite-footer">
+          
+            
+<nav class="devsite-footer-linkboxes nocontent" aria-label="Footer links">
+  
+  <ul class="devsite-footer-linkboxes-list">
+    
+    <li class="devsite-footer-linkbox wd-footer-promo">
+    <h3 class="devsite-footer-linkbox-heading no-link">web.dev</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <h3 class="devsite-footer-linkbox-heading no-link">
+          
+            web.dev
+          
+          </h3>
+          
+          
+          <div class="devsite-footer-linkbox-description">We want to help you build beautiful, accessible, fast, and secure websites that work cross-browser, and for all of your users. This site is our home for content to help you on that journey, written by members of the Chrome team, and external experts.</div>
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Contribute</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://issuetracker.google.com/issues/new?component=1400680&amp;template=1857359"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            File a bug
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://issuetracker.google.com/issues?q=status:open%20componentid:1400680&amp;s=created_time:desc"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+              
+              
+            
+          
+            See open issues
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Related Content</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://developer.chrome.com/"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            Chrome for Developers
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://blog.chromium.org/"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            Chromium updates
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/case-studies"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Case studies
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/shows"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+              
+              
+            
+          
+            Podcasts &amp; shows
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+    <li class="devsite-footer-linkbox ">
+    <h3 class="devsite-footer-linkbox-heading no-link">Follow</h3>
+      <ul class="devsite-footer-linkbox-list">
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://twitter.com/ChromiumDev"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 1)"
+            >
+            
+          
+            @ChromiumDev on X
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.youtube.com/user/ChromeDevelopers"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 2)"
+            >
+            
+          
+            YouTube
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="https://www.linkedin.com/showcase/chrome-for-developers"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 3)"
+            >
+            
+          
+            Chrome for Developers on LinkedIn
+          
+          </a>
+          
+          
+        </li>
+        
+        <li class="devsite-footer-linkbox-item">
+          
+          <a href="/static/blog/feed.xml"
+             class="devsite-footer-linkbox-link gc-analytics-event"
+             data-category="Site-Wide Custom Events"
+            
+             data-label="Footer Link (index 4)"
+            >
+            
+              
+              
+            
+          
+            RSS
+          
+          </a>
+          
+          
+        </li>
+        
+      </ul>
+    </li>
+    
+  </ul>
+  
+</nav>
+          
+        </devsite-footer-linkboxes>
+        <devsite-footer-utility class="devsite-footer">
+          
+            
+
+<div class="devsite-footer-utility nocontent">
+  
+
+  
+  <nav class="devsite-footer-utility-links" aria-label="Utility links">
+    
+    <ul class="devsite-footer-utility-list">
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="//policies.google.com/terms"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Terms link"
+         >
+          Terms
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 ">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="//policies.google.com/privacy"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Privacy link"
+         >
+          Privacy
+        </a>
+        
+      </li>
+      
+      <li class="devsite-footer-utility-item
+                 glue-cookie-notification-bar-control">
+        
+        
+        <a class="devsite-footer-utility-link gc-analytics-event"
+           href="#"
+           data-category="Site-Wide Custom Events"
+           data-label="Footer Manage cookies link"
+         
+           aria-hidden="true"
+         >
+          Manage cookies
+        </a>
+        
+      </li>
+      
+    </ul>
+    
+    
+<devsite-language-selector>
+  <ul role="presentation">
+    
+    
+    <li role="presentation">
+      <a role="menuitem" lang="en"
+        >English</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="de"
+        >Deutsch</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="es_419"
+        >Español – América Latina</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fr"
+        >Français</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="id"
+        >Indonesia</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="it"
+        >Italiano</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pl"
+        >Polski</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="pt_br"
+        >Português – Brasil</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="vi"
+        >Tiếng Việt</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="tr"
+        >Türkçe</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ru"
+        >Русский</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="he"
+        >עברית</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ar"
+        >العربيّة</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="fa"
+        >فارسی</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="hi"
+        >हिंदी</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="bn"
+        >বাংলা</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="th"
+        >ภาษาไทย</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_cn"
+        >中文 – 简体</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="zh_tw"
+        >中文 – 繁體</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ja"
+        >日本語</a>
+    </li>
+    
+    <li role="presentation">
+      <a role="menuitem" lang="ko"
+        >한국어</a>
+    </li>
+    
+  </ul>
+</devsite-language-selector>
+
+  </nav>
+</div>
+          
+        </devsite-footer-utility>
+        <devsite-panel>
+          
+        </devsite-panel>
+        
+      </section></section>
+    <devsite-sitemask></devsite-sitemask>
+    <devsite-snackbar></devsite-snackbar>
+    <devsite-tooltip ></devsite-tooltip>
+    <devsite-heading-link></devsite-heading-link>
+    <devsite-analytics>
+      
+        <script type="application/json" analytics>[]</script>
+<script type="application/json" tag-management>{&#34;at&#34;: &#34;True&#34;, &#34;ga4&#34;: [], &#34;ga4p&#34;: [], &#34;gtm&#34;: [{&#34;id&#34;: &#34;GTM-MZWCJPP&#34;, &#34;purpose&#34;: 0}], &#34;parameters&#34;: {&#34;internalUser&#34;: &#34;False&#34;, &#34;language&#34;: {&#34;machineTranslated&#34;: &#34;False&#34;, &#34;requested&#34;: &#34;en&#34;, &#34;served&#34;: &#34;en&#34;}, &#34;pageType&#34;: &#34;article&#34;, &#34;projectName&#34;: &#34;Articles&#34;, &#34;signedIn&#34;: &#34;False&#34;, &#34;tenant&#34;: &#34;web&#34;, &#34;recommendations&#34;: {&#34;sourcePage&#34;: &#34;&#34;, &#34;sourceType&#34;: 0, &#34;sourceRank&#34;: 0, &#34;sourceIdenticalDescriptions&#34;: 0, &#34;sourceTitleWords&#34;: 0, &#34;sourceDescriptionWords&#34;: 0, &#34;experiment&#34;: &#34;&#34;}, &#34;experiment&#34;: {&#34;ids&#34;: &#34;&#34;}}}</script>
+      
+    </devsite-analytics>
+    
+      <devsite-badger></devsite-badger>
+    
+    
+    
+    
+<script nonce="P+LIY5mOVCARzmpji5p+d5dcdEJwu5">
+  
+  (function(d,e,v,s,i,t,E){d['GoogleDevelopersObject']=i;
+    t=e.createElement(v);t.async=1;t.src=s;E=e.getElementsByTagName(v)[0];
+    E.parentNode.insertBefore(t,E);})(window, document, 'script',
+    'https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/js/app_loader.js', '[27,"en",null,"/js/devsite_app_module.js","https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5","https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web","https://web-dot-devsite-v2-prod-3p.appspot.com",1,null,["/_pwa/web/manifest.json","https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/images/video-placeholder.svg","https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/images/favicon.png","https://www.gstatic.com/devrel-devsite/prod/vbbbf67a54a0fa61d452a62d016ca62f820d4cb99ab70cea0bd30d469bb65aaf5/web/images/lockup.svg","https://fonts.googleapis.com/css?family=Google+Sans:400,500|Roboto:400,400italic,500,500italic,700,700italic|Roboto+Mono:400,500,700&display=swap"],1,null,[1,6,8,12,14,17,21,25,50,52,63,70,75,76,80,87,91,92,93,97,98,100,101,102,103,104,105,107,108,109,110,112,113,117,118,120,122,124,125,126,127,129,130,131,132,133,134,135,136,138,140,141,147,148,149,151,152,156,157,158,159,161,163,164,168,169,170,179,180,182,183,186,191,193,196],"AIzaSyCNm9YxQumEXwGJgTDjxoxXK6m1F-9720Q","AIzaSyCc76DZePGtoyUjqKrLdsMGk_ry7sljLbY","web.dev","AIzaSyB9bqgQ2t11WJsOX8qNsCQ6U-w91mmqF-I","AIzaSyAdYnStPdzjcJJtQ0mvIaeaMKj7_t6J_Fg",null,null,null,["DevPro__enable_devpro_offers","DevPro__enable_cloud_innovators_plus","Profiles__enable_developer_profile_pages_as_content","Profiles__enable_profile_collections","Search__enable_suggestions_from_borg","Profiles__enable_stripe_subscription_management","Concierge__enable_pushui","DevPro__enable_code_assist","Concierge__enable_devsite_llm_tools","MiscFeatureFlags__emergency_css","Cloud__cache_serialized_dynamic_content","DevPro__enable_free_benefits","Cloud__enable_llm_concierge_chat","Profiles__enable_purchase_prompts","MiscFeatureFlags__enable_framebox_badge_methods","MiscFeatureFlags__enable_appearance_cookies","Concierge__enable_actions_menu","Search__enable_page_map","MiscFeatureFlags__gdp_dashboard_reskin_enabled","TpcFeatures__enable_unmirrored_page_left_nav","MiscFeatureFlags__enable_project_body_class","DevPro__enable_google_one_card","Cloud__enable_cloud_shell","DevPro__enable_vertex_credit_card","Analytics__enable_clearcut_logging","Search__enable_ai_eligibility_checks","Cloud__enable_legacy_calculator_redirect","Profiles__enable_release_notes_notifications","MiscFeatureFlags__enable_explicit_template_dependencies","Cloud__enable_cloudx_experiment_ids","DevPro__enable_enterprise","DevPro__remove_eu_tax_intake_form","Experiments__reqs_query_experiments","DevPro__enable_developer_subscriptions","Profiles__enable_completecodelab_endpoint","DevPro__enable_firebase_workspaces_card","MiscFeatureFlags__developers_footer_image","Profiles__enable_playlist_community_acl","BookNav__enable_tenant_cache_key","MiscFeatureFlags__enable_variable_operator_index_yaml","Profiles__enable_user_type","OnSwitch__enable","Profiles__enable_developer_profiles_callout","MiscFeatureFlags__enable_llms_txt","Profiles__enable_join_program_group_endpoint","Cloud__enable_cloud_shell_fte_user_flow","DevPro__enable_google_payments_buyflow","DevPro__enable_nvidia_credits_card","MiscFeatureFlags__enable_variable_operator","Search__enable_ai_search_summaries_for_all","MiscFeatureFlags__enable_view_transitions","Cloud__fast_free_trial","EngEduTelemetry__enable_engedu_telemetry","Profiles__enable_page_saving","Profiles__require_profile_eligibility_for_signin","Profiles__enable_awarding_url","Concierge__enable_remove_info_panel_tags","MiscFeatureFlags__enable_project_variables","Profiles__enable_callout_notifications","Profiles__enable_dashboard_curated_recommendations","Profiles__enable_recognition_badges","CloudShell__cloud_code_overflow_menu","DevPro__enable_embed_profile_creation","Profiles__enable_completequiz_endpoint","Profiles__enable_developer_profile_benefits_ui_redesign","CloudShell__cloud_shell_button","TpcFeatures__proxy_prod_host","MiscFeatureFlags__enable_firebase_utm","MiscFeatureFlags__developers_footer_dark_image","Profiles__enable_complete_playlist_endpoint","Profiles__enable_auto_apply_credits","Cloud__enable_cloud_dlp_service","Profiles__enable_public_developer_profiles","Cloud__enable_free_trial_server_call","Search__enable_dynamic_content_confidential_banner"],null,null,"AIzaSyA58TaKli1DculwmAmbpzLVGuWc8eCQgQc","https://developerscontentserving-pa.googleapis.com","AIzaSyDWBU60w0P9hEkr29kkksYs8Z7gvZ8u_wc","https://developerscontentsearch-pa.googleapis.com",2,4,null,"https://developerprofiles-pa.googleapis.com",[27,"web","web.dev","web.dev",null,"web-dot-devsite-v2-prod-3p.appspot.com",null,null,[null,null,null,null,null,null,null,null,null,null,null,[1],null,null,null,null,null,null,[1],null,null,null,null,[1,null,1],[1,1,null,1,1],null,null,null,null,null,[1]],null,[38,null,null,null,null,null,"/images/lockup.svg","/images/touchicon-180.png",null,null,null,1,1,null,null,null,null,null,null,null,null,2,null,null,null,"/images/lockup-dark-theme.svg",[]],[],null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,[[],[1,1]],[[null,null,null,null,null,["GTM-MZWCJPP"],null,null,null,null,null,[["GTM-MZWCJPP",1]],1]],null,4],1,null,1,null,"https://developerscontentinsights-pa.googleapis.com","AIzaSyC11xEGtFhkmSh_iF6l_itbxnFz2GrIBOg","AIzaSyAXJ10nRF73mmdSDINgkCNX5bbd2KPcWm8","https://developers.googleapis.com",null,null,"AIzaSyCjP0KOnHfv8mwe38sfzZJMOnqE3HvrD4A",null,"https://developerslogging.googleapis.com"]')
+  
+</script>
+
+    <devsite-a11y-announce></devsite-a11y-announce>
+  </body>
+</html>
