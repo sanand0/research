@@ -7,3 +7,4 @@
 - 11 Nov 2025: [`json-tools-benchmark`](json-tools-benchmark/). jaq is ~40% faster than jq, while native Node excels at heavy transforms and nearly every tool now streams results.
 - 11 Nov 2025: [`dom-markdown-extractor-eval`](dom-markdown-extractor-eval/). Use `node-html-markdown` for HTML to Markdown. Has 97% accuracy. `markdownify` is a readability-focused backup, and turndown still can't handle tables.
 - 11 Nov 2025: [`readability-extractors-evaluation`](readability-extractors-evaluation/). Mozilla Readability + Turndown yields the cleanest article content with stable heading IDs—trafilatura is faster but loses IDs, while html2text/markdownify include too much chrome.
+- 11 Nov 2025: [`codex-fastapi-streaming-token`](codex-fastapi-streaming-token/). Token-by-token streaming via delta tracking and state management creates typewriter effects—word-level granularity balances UX and performance best.

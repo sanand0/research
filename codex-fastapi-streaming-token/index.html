@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codex Token Streaming</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+
+        .main {
+            padding: 30px;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-stream {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-stream:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-clear {
+            background: #f56565;
+            color: white;
+            flex: 0 0 auto;
+        }
+
+        .btn-clear:hover {
+            background: #e53e3e;
+            transform: translateY(-2px);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .output-section {
+            margin-top: 30px;
+        }
+
+        .stats-bar {
+            background: #f7fafc;
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #718096;
+            margin-bottom: 4px;
+        }
+
+        .stat-value {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2d3748;
+        }
+
+        .stat-value.active {
+            color: #48bb78;
+        }
+
+        .output-container {
+            background: #1a1a1a;
+            border-radius: 8px;
+            padding: 20px;
+            min-height: 400px;
+            max-height: 600px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .message-container {
+            margin-bottom: 20px;
+        }
+
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .message-type {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .type-agent {
+            background: #2c5282;
+            color: #90cdf4;
+        }
+
+        .type-reasoning {
+            background: #553c9a;
+            color: #d6bcfa;
+        }
+
+        .message-content {
+            background: #2d3748;
+            border-left: 4px solid #4299e1;
+            padding: 12px;
+            border-radius: 4px;
+            color: #e2e8f0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .message-content.reasoning {
+            border-left-color: #9f7aea;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background: #4299e1;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .event {
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 6px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-thread-started {
+            background: #2d3748;
+            color: #81e6d9;
+        }
+
+        .event-turn-started {
+            background: #2c5282;
+            color: #90cdf4;
+        }
+
+        .event-turn-completed {
+            background: #1a365d;
+            color: #63b3ed;
+        }
+
+        .event-error {
+            background: #742a2a;
+            color: #fc8181;
+        }
+
+        .event-type {
+            font-weight: bold;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .event-content {
+            color: #e2e8f0;
+        }
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Codex Token Streaming</h1>
+            <p>Real-time token-by-token AI code assistance</p>
+            <div class="badge">⚡ Powered by Word-Level Streaming</div>
+        </div>
+
+        <div class="main">
+            <div class="input-section">
+                <div class="form-group">
+                    <label for="prompt">Prompt</label>
+                    <textarea
+                        id="prompt"
+                        rows="4"
+                        placeholder="Enter your prompt for Codex... (e.g., 'Explain how binary search works')"
+                    ></textarea>
+                </div>
+
+                <div class="options">
+                    <div class="form-group">
+                        <label for="tokenSize">Token Granularity</label>
+                        <select id="tokenSize">
+                            <option value="word">Word (Recommended)</option>
+                            <option value="char">Character</option>
+                            <option value="chunk">Chunk (10 chars)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="model">Model</label>
+                        <select id="model">
+                            <option value="">Default</option>
+                            <option value="gpt-5-codex">GPT-5 Codex</option>
+                            <option value="gpt-5">GPT-5</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sandbox">Sandbox Mode</label>
+                        <select id="sandbox">
+                            <option value="workspace-write">Workspace Write</option>
+                            <option value="read-only">Read Only</option>
+                            <option value="danger-full-access">Full Access (Dangerous)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="workingDir">Working Directory</label>
+                        <input type="text" id="workingDir" placeholder="/tmp (optional)">
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-stream" id="streamBtn" onclick="streamTokens()">
+                        🚀 Stream Tokens
+                    </button>
+                    <button class="btn-clear" onclick="clearOutput()">
+                        Clear
+                    </button>
+                </div>
+            </div>
+
+            <div class="output-section">
+                <div class="stats-bar">
+                    <div class="stat">
+                        <div class="stat-label">Status</div>
+                        <div class="stat-value" id="statusText">Ready</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Tokens Received</div>
+                        <div class="stat-value" id="tokenCount">0</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Events Received</div>
+                        <div class="stat-value" id="eventCount">0</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-label">Streaming Rate</div>
+                        <div class="stat-value" id="streamRate">0 tok/s</div>
+                    </div>
+                </div>
+                <div class="output-container" id="output"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const output = document.getElementById('output');
+        const statusText = document.getElementById('statusText');
+        const tokenCountEl = document.getElementById('tokenCount');
+        const eventCountEl = document.getElementById('eventCount');
+        const streamRateEl = document.getElementById('streamRate');
+        const streamBtn = document.getElementById('streamBtn');
+
+        let tokenCount = 0;
+        let eventCount = 0;
+        let startTime = null;
+        let currentMessages = {}; // Track active messages by item_id
+
+        function setStatus(text, isActive = false) {
+            statusText.textContent = text;
+            statusText.className = isActive ? 'stat-value active' : 'stat-value';
+        }
+
+        function updateStats() {
+            tokenCountEl.textContent = tokenCount;
+            eventCountEl.textContent = eventCount;
+
+            if (startTime) {
+                const elapsed = (Date.now() - startTime) / 1000;
+                const rate = (tokenCount / elapsed).toFixed(1);
+                streamRateEl.textContent = `${rate} tok/s`;
+            }
+        }
+
+        function addToken(event) {
+            const itemId = event.item_id;
+            const itemType = event.item_type;
+            const token = event.token;
+
+            // Get or create message container
+            if (!currentMessages[itemId]) {
+                const container = document.createElement('div');
+                container.className = 'message-container';
+                container.id = `msg-${itemId}`;
+
+                const header = document.createElement('div');
+                header.className = 'message-header';
+
+                const typeLabel = document.createElement('span');
+                typeLabel.className = `message-type type-${itemType === 'agent_message' ? 'agent' : 'reasoning'}`;
+                typeLabel.textContent = itemType === 'agent_message' ? 'Assistant' : 'Reasoning';
+                header.appendChild(typeLabel);
+
+                const content = document.createElement('div');
+                content.className = `message-content ${itemType === 'reasoning' ? 'reasoning' : ''}`;
+                content.id = `content-${itemId}`;
+
+                const cursor = document.createElement('span');
+                cursor.className = 'cursor';
+                cursor.id = `cursor-${itemId}`;
+                content.appendChild(cursor);
+
+                container.appendChild(header);
+                container.appendChild(content);
+                output.appendChild(container);
+
+                currentMessages[itemId] = {
+                    container: container,
+                    content: content,
+                    cursor: cursor,
+                    text: ''
+                };
+            }
+
+            // Append token
+            const msg = currentMessages[itemId];
+            msg.text += token;
+
+            // Update content (remove cursor, add token, add cursor back)
+            msg.content.removeChild(msg.cursor);
+            msg.content.textContent = msg.text;
+            msg.content.appendChild(msg.cursor);
+
+            // Auto-scroll
+            output.scrollTop = output.scrollHeight;
+
+            tokenCount++;
+            updateStats();
+        }
+
+        function removeTokenCursor(itemId) {
+            const msg = currentMessages[itemId];
+            if (msg && msg.cursor && msg.cursor.parentNode) {
+                msg.cursor.parentNode.removeChild(msg.cursor);
+            }
+        }
+
+        function addEvent(event) {
+            eventCount++;
+            updateStats();
+
+            // Handle special events
+            if (event.type === 'item.completed.complete') {
+                const originalEvent = event.original_event || {};
+                const item = originalEvent.item || {};
+                const itemId = item.id;
+                if (itemId) {
+                    removeTokenCursor(itemId);
+                }
+                return; // Don't display this meta-event
+            }
+
+            // Display non-token events
+            if (!['token', 'item.updated.complete'].includes(event.type)) {
+                const eventDiv = document.createElement('div');
+                const eventType = event.type.replace(/\./g, '-');
+                eventDiv.className = `event event-${eventType}`;
+
+                let content = '';
+                if (event.type === 'turn.completed') {
+                    content = `Usage: ${event.usage?.input_tokens || 0} input, ${event.usage?.cached_input_tokens || 0} cached, ${event.usage?.output_tokens || 0} output tokens`;
+                } else if (event.type === 'error') {
+                    content = event.message || 'Unknown error';
+                } else {
+                    content = JSON.stringify(event, null, 2);
+                }
+
+                eventDiv.innerHTML = `
+                    <div class="event-type">${event.type}</div>
+                    <div class="event-content"><pre>${escapeHtml(content)}</pre></div>
+                `;
+
+                output.appendChild(eventDiv);
+                output.scrollTop = output.scrollHeight;
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function clearOutput() {
+            output.innerHTML = '';
+            currentMessages = {};
+            tokenCount = 0;
+            eventCount = 0;
+            startTime = null;
+            updateStats();
+            setStatus('Ready');
+        }
+
+        async function streamTokens() {
+            const prompt = document.getElementById('prompt').value.trim();
+            if (!prompt) {
+                alert('Please enter a prompt');
+                return;
+            }
+
+            const request = {
+                prompt: prompt,
+                token_size: document.getElementById('tokenSize').value,
+                model: document.getElementById('model').value || null,
+                sandbox: document.getElementById('sandbox').value,
+                working_directory: document.getElementById('workingDir').value || null,
+                skip_git_repo_check: true
+            };
+
+            clearOutput();
+            setStatus('Streaming...', true);
+            streamBtn.disabled = true;
+            startTime = Date.now();
+
+            try {
+                const response = await fetch('/api/codex/stream-tokens', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(request)
+                });
+
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+
+                while (true) {
+                    const { done, value } = await reader.read();
+                    if (done) break;
+
+                    const chunk = decoder.decode(value);
+                    const lines = chunk.split('\n');
+
+                    for (const line of lines) {
+                        if (line.startsWith('data: ')) {
+                            const data = line.slice(6);
+                            try {
+                                const event = JSON.parse(data);
+
+                                if (event.type === 'token') {
+                                    addToken(event);
+                                } else {
+                                    addEvent(event);
+                                }
+                            } catch (e) {
+                                console.error('Failed to parse event:', e);
+                            }
+                        }
+                    }
+                }
+
+                setStatus('Completed');
+            } catch (error) {
+                addEvent({ type: 'error', message: error.message });
+                setStatus('Error');
+            } finally {
+                streamBtn.disabled = false;
+            }
+        }
+
+        // Allow Ctrl+Enter to submit
+        document.getElementById('prompt').addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                streamTokens();
+            }
+        });
+    </script>
+</body>
+</html>
