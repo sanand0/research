@@ -1,0 +1,22 @@
+# Additional URLs to replace failed downloads
+
+# Tech/Dev content
+https://css-tricks.com/a-complete-guide-to-flexbox/
+https://web.dev/articles/vitals
+https://github.blog/engineering/engineering-principles/how-we-build-github-code-search/
+https://stackoverflow.blog/2024/06/10/generative-ai-is-not-going-to-build-your-engineering-team-for-you/
+https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
+
+# More accessible blogs
+https://blog.pragmaticengineer.com/p/advice-for-engineering-leaders
+https://rachelbythebay.com/w/2024/11/18/test/
+https://blog.rust-lang.org/2024/02/08/Rust-1.76.0.html
+https://go.dev/blog/go1.21
+
+# Documentation
+https://redis.io/docs/latest/develop/data-types/
+https://www.postgresql.org/docs/current/tutorial-arch.html
+
+# Essays/Long-form
+https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/
+https://blog.samaltman.com/how-to-be-successful

@@ -1,0 +1,854 @@
+{
+  "trafilatura": {
+    "page_01": {
+      "success": true,
+      "duration": 0.19051837921142578,
+      "error": null,
+      "output_size": 14208,
+      "output_lines": 147
+    },
+    "page_02": {
+      "success": true,
+      "duration": 0.06920790672302246,
+      "error": null,
+      "output_size": 54517,
+      "output_lines": 796
+    },
+    "page_03": {
+      "success": true,
+      "duration": 0.01702570915222168,
+      "error": null,
+      "output_size": 14038,
+      "output_lines": 141
+    },
+    "page_04": {
+      "success": true,
+      "duration": 0.03257560729980469,
+      "error": null,
+      "output_size": 22270,
+      "output_lines": 345
+    },
+    "page_05": {
+      "success": true,
+      "duration": 0.1454174518585205,
+      "error": null,
+      "output_size": 24337,
+      "output_lines": 875
+    },
+    "page_06": {
+      "success": true,
+      "duration": 0.07347702980041504,
+      "error": null,
+      "output_size": 8337,
+      "output_lines": 253
+    },
+    "page_07": {
+      "success": true,
+      "duration": 0.333665132522583,
+      "error": null,
+      "output_size": 109969,
+      "output_lines": 903
+    },
+    "page_08": {
+      "success": true,
+      "duration": 0.36247754096984863,
+      "error": null,
+      "output_size": 151672,
+      "output_lines": 862
+    },
+    "page_09": {
+      "success": true,
+      "duration": 0.032483816146850586,
+      "error": null,
+      "output_size": 59793,
+      "output_lines": 113
+    },
+    "page_10": {
+      "success": true,
+      "duration": 0.048458099365234375,
+      "error": null,
+      "output_size": 3483,
+      "output_lines": 83
+    },
+    "page_11": {
+      "success": true,
+      "duration": 0.04446554183959961,
+      "error": null,
+      "output_size": 39929,
+      "output_lines": 295
+    },
+    "page_12": {
+      "success": true,
+      "duration": 0.024960041046142578,
+      "error": null,
+      "output_size": 12403,
+      "output_lines": 137
+    },
+    "page_13": {
+      "success": true,
+      "duration": 0.024094581604003906,
+      "error": null,
+      "output_size": 29573,
+      "output_lines": 220
+    },
+    "page_14": {
+      "success": true,
+      "duration": 0.016164302825927734,
+      "error": null,
+      "output_size": 21194,
+      "output_lines": 162
+    },
+    "page_15": {
+      "success": true,
+      "duration": 0.008472681045532227,
+      "error": null,
+      "output_size": 3211,
+      "output_lines": 74
+    },
+    "page_16": {
+      "success": true,
+      "duration": 0.015155315399169922,
+      "error": null,
+      "output_size": 32593,
+      "output_lines": 134
+    },
+    "page_17": {
+      "success": true,
+      "duration": 0.01970839500427246,
+      "error": null,
+      "output_size": 19554,
+      "output_lines": 250
+    },
+    "page_18": {
+      "success": true,
+      "duration": 0.0008225440979003906,
+      "error": null,
+      "output_size": 0,
+      "output_lines": 0
+    },
+    "page_19": {
+      "success": true,
+      "duration": 0.008927106857299805,
+      "error": null,
+      "output_size": 12573,
+      "output_lines": 46
+    },
+    "page_20": {
+      "success": true,
+      "duration": 0.009206533432006836,
+      "error": null,
+      "output_size": 4745,
+      "output_lines": 44
+    }
+  },
+  "readability-lxml": {
+    "page_01": {
+      "success": true,
+      "duration": 0.03347325325012207,
+      "error": null,
+      "output_size": 16084,
+      "output_lines": 109
+    },
+    "page_02": {
+      "success": true,
+      "duration": 0.04970836639404297,
+      "error": null,
+      "output_size": 57064,
+      "output_lines": 1222
+    },
+    "page_03": {
+      "success": true,
+      "duration": 0.014942646026611328,
+      "error": null,
+      "output_size": 14064,
+      "output_lines": 115
+    },
+    "page_04": {
+      "success": true,
+      "duration": 0.032215118408203125,
+      "error": null,
+      "output_size": 20446,
+      "output_lines": 240
+    },
+    "page_05": {
+      "success": true,
+      "duration": 0.14799976348876953,
+      "error": null,
+      "output_size": 24854,
+      "output_lines": 714
+    },
+    "page_06": {
+      "success": true,
+      "duration": 0.08853578567504883,
+      "error": null,
+      "output_size": 8113,
+      "output_lines": 167
+    },
+    "page_07": {
+      "success": true,
+      "duration": 0.5975942611694336,
+      "error": null,
+      "output_size": 158806,
+      "output_lines": 4073
+    },
+    "page_08": {
+      "success": true,
+      "duration": 0.510676383972168,
+      "error": null,
+      "output_size": 171115,
+      "output_lines": 513
+    },
+    "page_09": {
+      "success": true,
+      "duration": 0.0669710636138916,
+      "error": null,
+      "output_size": 67490,
+      "output_lines": 2
+    },
+    "page_10": {
+      "success": true,
+      "duration": 0.1314222812652588,
+      "error": null,
+      "output_size": 441,
+      "output_lines": 26
+    },
+    "page_11": {
+      "success": true,
+      "duration": 0.04798603057861328,
+      "error": null,
+      "output_size": 55896,
+      "output_lines": 471
+    },
+    "page_12": {
+      "success": true,
+      "duration": 0.03169894218444824,
+      "error": null,
+      "output_size": 12824,
+      "output_lines": 138
+    },
+    "page_13": {
+      "success": true,
+      "duration": 0.030485868453979492,
+      "error": null,
+      "output_size": 28681,
+      "output_lines": 185
+    },
+    "page_14": {
+      "success": true,
+      "duration": 0.021046876907348633,
+      "error": null,
+      "output_size": 21220,
+      "output_lines": 148
+    },
+    "page_15": {
+      "success": true,
+      "duration": 0.012336492538452148,
+      "error": null,
+      "output_size": 3117,
+      "output_lines": 73
+    },
+    "page_16": {
+      "success": true,
+      "duration": 0.018448352813720703,
+      "error": null,
+      "output_size": 32835,
+      "output_lines": 134
+    },
+    "page_17": {
+      "success": true,
+      "duration": 0.02265477180480957,
+      "error": null,
+      "output_size": 19638,
+      "output_lines": 188
+    },
+    "page_18": {
+      "success": true,
+      "duration": 0.0026922225952148438,
+      "error": null,
+      "output_size": 5506,
+      "output_lines": 73
+    },
+    "page_19": {
+      "success": true,
+      "duration": 0.011998414993286133,
+      "error": null,
+      "output_size": 12601,
+      "output_lines": 48
+    },
+    "page_20": {
+      "success": true,
+      "duration": 0.010803461074829102,
+      "error": null,
+      "output_size": 4753,
+      "output_lines": 40
+    }
+  },
+  "html2text": {
+    "page_01": {
+      "success": true,
+      "duration": 0.028350114822387695,
+      "error": null,
+      "output_size": 26824,
+      "output_lines": 561
+    },
+    "page_02": {
+      "success": true,
+      "duration": 0.03268742561340332,
+      "error": null,
+      "output_size": 65556,
+      "output_lines": 1483
+    },
+    "page_03": {
+      "success": true,
+      "duration": 0.014204025268554688,
+      "error": null,
+      "output_size": 19935,
+      "output_lines": 414
+    },
+    "page_04": {
+      "success": true,
+      "duration": 0.03463172912597656,
+      "error": null,
+      "output_size": 35035,
+      "output_lines": 819
+    },
+    "page_05": {
+      "success": true,
+      "duration": 0.04623246192932129,
+      "error": null,
+      "output_size": 29539,
+      "output_lines": 927
+    },
+    "page_06": {
+      "success": true,
+      "duration": 0.08640861511230469,
+      "error": null,
+      "output_size": 91782,
+      "output_lines": 1130
+    },
+    "page_07": {
+      "success": true,
+      "duration": 0.24696707725524902,
+      "error": null,
+      "output_size": 205219,
+      "output_lines": 2826
+    },
+    "page_08": {
+      "success": true,
+      "duration": 0.20257949829101562,
+      "error": null,
+      "output_size": 197441,
+      "output_lines": 1650
+    },
+    "page_09": {
+      "success": true,
+      "duration": 0.029133081436157227,
+      "error": null,
+      "output_size": 68657,
+      "output_lines": 1366
+    },
+    "page_10": {
+      "success": true,
+      "duration": 0.09112763404846191,
+      "error": null,
+      "output_size": 116898,
+      "output_lines": 2155
+    },
+    "page_11": {
+      "success": true,
+      "duration": 0.04337120056152344,
+      "error": null,
+      "output_size": 69522,
+      "output_lines": 1387
+    },
+    "page_12": {
+      "success": true,
+      "duration": 0.028558731079101562,
+      "error": null,
+      "output_size": 21037,
+      "output_lines": 507
+    },
+    "page_13": {
+      "success": true,
+      "duration": 0.02496337890625,
+      "error": null,
+      "output_size": 39416,
+      "output_lines": 740
+    },
+    "page_14": {
+      "success": true,
+      "duration": 0.018098831176757812,
+      "error": null,
+      "output_size": 26412,
+      "output_lines": 509
+    },
+    "page_15": {
+      "success": true,
+      "duration": 0.0447382926940918,
+      "error": null,
+      "output_size": 8165,
+      "output_lines": 228
+    },
+    "page_16": {
+      "success": true,
+      "duration": 0.015743017196655273,
+      "error": null,
+      "output_size": 34867,
+      "output_lines": 591
+    },
+    "page_17": {
+      "success": true,
+      "duration": 6.003472566604614,
+      "error": null,
+      "output_size": 21712,
+      "output_lines": 491
+    },
+    "page_18": {
+      "success": true,
+      "duration": 0.0028204917907714844,
+      "error": null,
+      "output_size": 5442,
+      "output_lines": 82
+    },
+    "page_19": {
+      "success": true,
+      "duration": 0.012015104293823242,
+      "error": null,
+      "output_size": 17726,
+      "output_lines": 274
+    },
+    "page_20": {
+      "success": true,
+      "duration": 0.01282501220703125,
+      "error": null,
+      "output_size": 11502,
+      "output_lines": 278
+    }
+  },
+  "markdownify": {
+    "page_01": {
+      "success": true,
+      "duration": 0.042795658111572266,
+      "error": null,
+      "output_size": 26734,
+      "output_lines": 327
+    },
+    "page_02": {
+      "success": true,
+      "duration": 0.041487932205200195,
+      "error": null,
+      "output_size": 65796,
+      "output_lines": 1528
+    },
+    "page_03": {
+      "success": true,
+      "duration": 0.026575803756713867,
+      "error": null,
+      "output_size": 20140,
+      "output_lines": 342
+    },
+    "page_04": {
+      "success": true,
+      "duration": 0.05776071548461914,
+      "error": null,
+      "output_size": 34870,
+      "output_lines": 579
+    },
+    "page_05": {
+      "success": true,
+      "duration": 0.13879704475402832,
+      "error": null,
+      "output_size": 29286,
+      "output_lines": 853
+    },
+    "page_06": {
+      "success": true,
+      "duration": 0.21680045127868652,
+      "error": null,
+      "output_size": 89625,
+      "output_lines": 1069
+    },
+    "page_07": {
+      "success": true,
+      "duration": 1.8052592277526855,
+      "error": null,
+      "output_size": 211422,
+      "output_lines": 4568
+    },
+    "page_08": {
+      "success": true,
+      "duration": 1.4195034503936768,
+      "error": null,
+      "output_size": 210373,
+      "output_lines": 941
+    },
+    "page_09": {
+      "success": true,
+      "duration": 0.03442978858947754,
+      "error": null,
+      "output_size": 65466,
+      "output_lines": 12
+    },
+    "page_10": {
+      "success": true,
+      "duration": 0.1631639003753662,
+      "error": null,
+      "output_size": 116905,
+      "output_lines": 303
+    },
+    "page_11": {
+      "success": true,
+      "duration": 0.05348348617553711,
+      "error": null,
+      "output_size": 70027,
+      "output_lines": 742
+    },
+    "page_12": {
+      "success": true,
+      "duration": 0.10252857208251953,
+      "error": null,
+      "output_size": 20628,
+      "output_lines": 373
+    },
+    "page_13": {
+      "success": true,
+      "duration": 0.03576827049255371,
+      "error": null,
+      "output_size": 38903,
+      "output_lines": 332
+    },
+    "page_14": {
+      "success": true,
+      "duration": 0.023886442184448242,
+      "error": null,
+      "output_size": 26516,
+      "output_lines": 230
+    },
+    "page_15": {
+      "success": true,
+      "duration": 0.019728422164916992,
+      "error": null,
+      "output_size": 8233,
+      "output_lines": 253
+    },
+    "page_16": {
+      "success": true,
+      "duration": 0.014306068420410156,
+      "error": null,
+      "output_size": 35151,
+      "output_lines": 189
+    },
+    "page_17": {
+      "success": true,
+      "duration": 0.022209882736206055,
+      "error": null,
+      "output_size": 21610,
+      "output_lines": 308
+    },
+    "page_18": {
+      "success": true,
+      "duration": 0.0015270709991455078,
+      "error": null,
+      "output_size": 5506,
+      "output_lines": 73
+    },
+    "page_19": {
+      "success": true,
+      "duration": 0.019179105758666992,
+      "error": null,
+      "output_size": 17873,
+      "output_lines": 130
+    },
+    "page_20": {
+      "success": true,
+      "duration": 0.020991802215576172,
+      "error": null,
+      "output_size": 11058,
+      "output_lines": 206
+    }
+  },
+  "readabilipy": {
+    "page_01": {
+      "success": true,
+      "duration": 7.191195011138916,
+      "error": null,
+      "output_size": 17394,
+      "output_lines": 131
+    },
+    "page_02": {
+      "success": true,
+      "duration": 3.7164273262023926,
+      "error": null,
+      "output_size": 57098,
+      "output_lines": 1222
+    },
+    "page_03": {
+      "success": true,
+      "duration": 3.6342391967773438,
+      "error": null,
+      "output_size": 14064,
+      "output_lines": 115
+    },
+    "page_04": {
+      "success": true,
+      "duration": 3.6582252979278564,
+      "error": null,
+      "output_size": 21523,
+      "output_lines": 272
+    },
+    "page_05": {
+      "success": true,
+      "duration": 4.127652406692505,
+      "error": null,
+      "output_size": 25805,
+      "output_lines": 720
+    },
+    "page_06": {
+      "success": true,
+      "duration": 3.9044744968414307,
+      "error": null,
+      "output_size": 9279,
+      "output_lines": 182
+    },
+    "page_07": {
+      "success": true,
+      "duration": 5.02603554725647,
+      "error": null,
+      "output_size": 146651,
+      "output_lines": 665
+    },
+    "page_08": {
+      "success": true,
+      "duration": 5.294283390045166,
+      "error": null,
+      "output_size": 181938,
+      "output_lines": 514
+    },
+    "page_09": {
+      "success": true,
+      "duration": 3.6477110385894775,
+      "error": null,
+      "output_size": 67252,
+      "output_lines": 2
+    },
+    "page_10": {
+      "success": true,
+      "duration": 4.071240663528442,
+      "error": null,
+      "output_size": 9926,
+      "output_lines": 27
+    },
+    "page_11": {
+      "success": true,
+      "duration": 3.8115367889404297,
+      "error": null,
+      "output_size": 54093,
+      "output_lines": 456
+    },
+    "page_12": {
+      "success": true,
+      "duration": 3.5934438705444336,
+      "error": null,
+      "output_size": 13907,
+      "output_lines": 171
+    },
+    "page_13": {
+      "success": true,
+      "duration": 3.5839955806732178,
+      "error": null,
+      "output_size": 28681,
+      "output_lines": 185
+    },
+    "page_14": {
+      "success": true,
+      "duration": 3.5392982959747314,
+      "error": null,
+      "output_size": 21220,
+      "output_lines": 148
+    },
+    "page_15": {
+      "success": true,
+      "duration": 3.411977767944336,
+      "error": null,
+      "output_size": 3102,
+      "output_lines": 72
+    },
+    "page_16": {
+      "success": true,
+      "duration": 3.554536819458008,
+      "error": null,
+      "output_size": 32835,
+      "output_lines": 134
+    },
+    "page_17": {
+      "success": true,
+      "duration": 3.638124942779541,
+      "error": null,
+      "output_size": 19638,
+      "output_lines": 188
+    },
+    "page_18": {
+      "success": true,
+      "duration": 3.5298380851745605,
+      "error": null,
+      "output_size": 5462,
+      "output_lines": 72
+    },
+    "page_19": {
+      "success": true,
+      "duration": 3.5853686332702637,
+      "error": null,
+      "output_size": 12584,
+      "output_lines": 46
+    },
+    "page_20": {
+      "success": true,
+      "duration": 3.6265270709991455,
+      "error": null,
+      "output_size": 4859,
+      "output_lines": 42
+    }
+  },
+  "mozilla-readability": {
+    "page_01": {
+      "success": true,
+      "duration": 3.4626035690307617,
+      "error": null,
+      "output_size": 17418,
+      "output_lines": 161
+    },
+    "page_02": {
+      "success": true,
+      "duration": 3.0517992973327637,
+      "error": null,
+      "output_size": 57307,
+      "output_lines": 586
+    },
+    "page_03": {
+      "success": true,
+      "duration": 3.146317958831787,
+      "error": null,
+      "output_size": 14247,
+      "output_lines": 142
+    },
+    "page_04": {
+      "success": true,
+      "duration": 3.1188557147979736,
+      "error": null,
+      "output_size": 21856,
+      "output_lines": 257
+    },
+    "page_05": {
+      "success": true,
+      "duration": 3.360805034637451,
+      "error": null,
+      "output_size": 26199,
+      "output_lines": 511
+    },
+    "page_06": {
+      "success": true,
+      "duration": 3.4800658226013184,
+      "error": null,
+      "output_size": 9765,
+      "output_lines": 125
+    },
+    "page_07": {
+      "success": true,
+      "duration": 4.433759450912476,
+      "error": null,
+      "output_size": 155130,
+      "output_lines": 662
+    },
+    "page_08": {
+      "success": true,
+      "duration": 4.759660959243774,
+      "error": null,
+      "output_size": 199120,
+      "output_lines": 886
+    },
+    "page_09": {
+      "success": true,
+      "duration": 3.0163018703460693,
+      "error": null,
+      "output_size": 67544,
+      "output_lines": 582
+    },
+    "page_10": {
+      "success": true,
+      "duration": 3.522958517074585,
+      "error": null,
+      "output_size": 10061,
+      "output_lines": 34
+    },
+    "page_11": {
+      "success": true,
+      "duration": 3.2698073387145996,
+      "error": null,
+      "output_size": 54569,
+      "output_lines": 436
+    },
+    "page_12": {
+      "success": true,
+      "duration": 3.2381601333618164,
+      "error": null,
+      "output_size": 14304,
+      "output_lines": 186
+    },
+    "page_13": {
+      "success": true,
+      "duration": 3.2347209453582764,
+      "error": null,
+      "output_size": 28700,
+      "output_lines": 186
+    },
+    "page_14": {
+      "success": true,
+      "duration": 3.2186129093170166,
+      "error": null,
+      "output_size": 21258,
+      "output_lines": 150
+    },
+    "page_15": {
+      "success": true,
+      "duration": 3.067913293838501,
+      "error": null,
+      "output_size": 3449,
+      "output_lines": 43
+    },
+    "page_16": {
+      "success": true,
+      "duration": 3.136337995529175,
+      "error": null,
+      "output_size": 32840,
+      "output_lines": 135
+    },
+    "page_17": {
+      "success": true,
+      "duration": 3.1561901569366455,
+      "error": null,
+      "output_size": 19664,
+      "output_lines": 189
+    },
+    "page_18": {
+      "success": true,
+      "duration": 3.013120174407959,
+      "error": null,
+      "output_size": 10471,
+      "output_lines": 1
+    },
+    "page_19": {
+      "success": true,
+      "duration": 3.102060556411743,
+      "error": null,
+      "output_size": 12595,
+      "output_lines": 47
+    },
+    "page_20": {
+      "success": true,
+      "duration": 3.2460851669311523,
+      "error": null,
+      "output_size": 4908,
+      "output_lines": 41
+    }
+  }
+}

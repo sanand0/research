@@ -1,0 +1,31 @@
+# Mapping of page numbers to URLs
+
+page_01.html	https://www.theguardian.com/technology/2024/dec/15/meta-ends-factchecking-mark-zuckerberg
+page_02.html	https://www.bbc.com/news/articles/c3vw4pn2ng7o
+page_03.html	https://www.reuters.com/technology/artificial-intelligence/openai-releases-new-reasoning-ai-model-launches-subscription-plan-2024-12-05/
+page_04.html	https://www.nytimes.com/2024/12/13/technology/google-quantum-chip-willow.html
+page_05.html	https://www.npr.org/2024/12/10/nx-s1-5221385/ai-google-search-results
+page_06.html	https://simonwillison.net/2024/Dec/9/gemini-2/
+page_07.html	https://blog.cloudflare.com/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack
+page_08.html	https://martinfowler.com/articles/micro-frontends.html
+page_09.html	https://increment.com/testing/i-test-in-production/
+page_10.html	https://jvns.ca/blog/2024/11/18/how-to-import-a-csv-file-into-sqlite/
+page_11.html	https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers
+page_12.html	https://docs.python.org/3/tutorial/datastructures.html
+page_13.html	https://kubernetes.io/docs/concepts/overview/working-with-objects/
+page_14.html	https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)
+page_15.html	https://en.wikipedia.org/wiki/CRISPR
+page_16.html	https://paulgraham.com/greatwork.html
+page_17.html	https://www.newyorker.com/magazine/2024/12/16/the-ai-revolution-has-an-energy-problem
+page_18.html	https://www.theatlantic.com/magazine/archive/2024/12/ai-computers-cryptocurrency-data-centers/680238/
+page_19.html	https://arxiv.org/abs/2312.11805
+page_20.html	https://distill.pub/2021/gnn-intro/
+
+# Additional pages
+page_22.html	https://web.dev/articles/vitals
+page_24.html	https://stackoverflow.blog/2024/06/10/generative-ai-is-not-going-to-build-your-engineering-team-for-you/
+page_25.html	https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/
+page_28.html	https://blog.rust-lang.org/2024/02/08/Rust-1.76.0.html
+page_29.html	https://go.dev/blog/go1.21
+page_32.html	https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/
+page_33.html	https://blog.samaltman.com/how-to-be-successful

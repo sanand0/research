@@ -1,0 +1,3443 @@
+{
+  "readability-lxml": [
+    {
+      "file": "page_01.md",
+      "headings": {
+        "h2": 4,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 7,
+      "links": 19,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 16084,
+        "total_lines": 110,
+        "non_empty_lines": 61,
+        "word_count": 2474,
+        "sentence_count": 182,
+        "avg_words_per_sentence": 13.593406593406593
+      }
+    },
+    {
+      "file": "page_02.md",
+      "headings": {
+        "h2": 11,
+        "h3": 18,
+        "h1": 3
+      },
+      "heading_ids": {
+        "has_ids": true,
+        "id_count": 5
+      },
+      "images": 10,
+      "links": 41,
+      "code_blocks": 19,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 57064,
+        "total_lines": 1223,
+        "non_empty_lines": 1027,
+        "word_count": 8918,
+        "sentence_count": 505,
+        "avg_words_per_sentence": 17.65940594059406
+      }
+    },
+    {
+      "file": "page_03.md",
+      "headings": {
+        "h2": 5,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 14064,
+        "total_lines": 116,
+        "non_empty_lines": 71,
+        "word_count": 2420,
+        "sentence_count": 146,
+        "avg_words_per_sentence": 16.575342465753426
+      }
+    },
+    {
+      "file": "page_04.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 32,
+      "code_blocks": 9,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 20446,
+        "total_lines": 241,
+        "non_empty_lines": 183,
+        "word_count": 3131,
+        "sentence_count": 219,
+        "avg_words_per_sentence": 14.296803652968036
+      }
+    },
+    {
+      "file": "page_05.md",
+      "headings": {
+        "h1": 1,
+        "h2": 8,
+        "h3": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 39,
+      "code_blocks": 33,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 24854,
+        "total_lines": 715,
+        "non_empty_lines": 592,
+        "word_count": 3943,
+        "sentence_count": 364,
+        "avg_words_per_sentence": 10.832417582417582
+      }
+    },
+    {
+      "file": "page_06.md",
+      "headings": {
+        "h1": 1,
+        "h2": 3,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 12,
+      "code_blocks": 3,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 8113,
+        "total_lines": 168,
+        "non_empty_lines": 131,
+        "word_count": 1236,
+        "sentence_count": 66,
+        "avg_words_per_sentence": 18.727272727272727
+      }
+    },
+    {
+      "file": "page_07.md",
+      "headings": {
+        "h3": 13,
+        "h4": 6,
+        "h2": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 200,
+      "links": 883,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 158806,
+        "total_lines": 4074,
+        "non_empty_lines": 2411,
+        "word_count": 22192,
+        "sentence_count": 2221,
+        "avg_words_per_sentence": 9.991895542548402
+      }
+    },
+    {
+      "file": "page_08.md",
+      "headings": {
+        "h3": 4,
+        "h4": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 9,
+      "links": 1963,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 171115,
+        "total_lines": 514,
+        "non_empty_lines": 380,
+        "word_count": 24354,
+        "sentence_count": 5097,
+        "avg_words_per_sentence": 4.7781047675103006
+      }
+    },
+    {
+      "file": "page_09.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 29,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 67490,
+        "total_lines": 3,
+        "non_empty_lines": 3,
+        "word_count": 12350,
+        "sentence_count": 761,
+        "avg_words_per_sentence": 16.228646517739815
+      }
+    },
+    {
+      "file": "page_10.md",
+      "headings": {
+        "h2": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 5,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 441,
+        "total_lines": 27,
+        "non_empty_lines": 14,
+        "word_count": 84,
+        "sentence_count": 6,
+        "avg_words_per_sentence": 14.0
+      }
+    },
+    {
+      "file": "page_11.md",
+      "headings": {
+        "h2": 7,
+        "h3": 22
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 19,
+      "links": 13,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 55896,
+        "total_lines": 472,
+        "non_empty_lines": 235,
+        "word_count": 9206,
+        "sentence_count": 526,
+        "avg_words_per_sentence": 17.50190114068441
+      }
+    },
+    {
+      "file": "page_12.md",
+      "headings": {
+        "h2": 4,
+        "h3": 2,
+        "h4": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 28,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 12824,
+        "total_lines": 139,
+        "non_empty_lines": 76,
+        "word_count": 2011,
+        "sentence_count": 107,
+        "avg_words_per_sentence": 18.794392523364486
+      }
+    },
+    {
+      "file": "page_13.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 5,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 28681,
+        "total_lines": 186,
+        "non_empty_lines": 98,
+        "word_count": 5037,
+        "sentence_count": 297,
+        "avg_words_per_sentence": 16.95959595959596
+      }
+    },
+    {
+      "file": "page_14.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 16,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21220,
+        "total_lines": 149,
+        "non_empty_lines": 88,
+        "word_count": 3793,
+        "sentence_count": 276,
+        "avg_words_per_sentence": 13.742753623188406
+      }
+    },
+    {
+      "file": "page_15.md",
+      "headings": {
+        "h1": 1,
+        "h2": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 18,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 3117,
+        "total_lines": 74,
+        "non_empty_lines": 57,
+        "word_count": 504,
+        "sentence_count": 41,
+        "avg_words_per_sentence": 12.292682926829269
+      }
+    },
+    {
+      "file": "page_16.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 2,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 32835,
+        "total_lines": 135,
+        "non_empty_lines": 68,
+        "word_count": 5648,
+        "sentence_count": 323,
+        "avg_words_per_sentence": 17.486068111455108
+      }
+    },
+    {
+      "file": "page_17.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 19638,
+        "total_lines": 189,
+        "non_empty_lines": 95,
+        "word_count": 3552,
+        "sentence_count": 206,
+        "avg_words_per_sentence": 17.24271844660194
+      }
+    },
+    {
+      "file": "page_18.md",
+      "headings": {
+        "h1": 2
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 5506,
+        "total_lines": 74,
+        "non_empty_lines": 74,
+        "word_count": 1352,
+        "sentence_count": 149,
+        "avg_words_per_sentence": 9.073825503355705
+      }
+    },
+    {
+      "file": "page_19.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 2,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 12601,
+        "total_lines": 49,
+        "non_empty_lines": 28,
+        "word_count": 2249,
+        "sentence_count": 106,
+        "avg_words_per_sentence": 21.21698113207547
+      }
+    },
+    {
+      "file": "page_20.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 6,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 4753,
+        "total_lines": 41,
+        "non_empty_lines": 30,
+        "word_count": 836,
+        "sentence_count": 74,
+        "avg_words_per_sentence": 11.297297297297296
+      }
+    }
+  ],
+  "readabilipy": [
+    {
+      "file": "page_01.md",
+      "headings": {
+        "h2": 7,
+        "h3": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 8,
+      "links": 32,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 17394,
+        "total_lines": 132,
+        "non_empty_lines": 72,
+        "word_count": 2659,
+        "sentence_count": 214,
+        "avg_words_per_sentence": 12.425233644859814
+      }
+    },
+    {
+      "file": "page_02.md",
+      "headings": {
+        "h2": 11,
+        "h3": 18,
+        "h1": 3
+      },
+      "heading_ids": {
+        "has_ids": true,
+        "id_count": 5
+      },
+      "images": 10,
+      "links": 42,
+      "code_blocks": 19,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 57098,
+        "total_lines": 1223,
+        "non_empty_lines": 1027,
+        "word_count": 8922,
+        "sentence_count": 507,
+        "avg_words_per_sentence": 17.597633136094675
+      }
+    },
+    {
+      "file": "page_03.md",
+      "headings": {
+        "h2": 5,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 14064,
+        "total_lines": 116,
+        "non_empty_lines": 71,
+        "word_count": 2420,
+        "sentence_count": 146,
+        "avg_words_per_sentence": 16.575342465753426
+      }
+    },
+    {
+      "file": "page_04.md",
+      "headings": {
+        "h2": 5,
+        "h3": 9
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 49,
+      "code_blocks": 9,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21523,
+        "total_lines": 273,
+        "non_empty_lines": 200,
+        "word_count": 3221,
+        "sentence_count": 220,
+        "avg_words_per_sentence": 14.64090909090909
+      }
+    },
+    {
+      "file": "page_05.md",
+      "headings": {
+        "h2": 8,
+        "h3": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 52,
+      "code_blocks": 35,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 25805,
+        "total_lines": 721,
+        "non_empty_lines": 597,
+        "word_count": 4106,
+        "sentence_count": 326,
+        "avg_words_per_sentence": 12.595092024539877
+      }
+    },
+    {
+      "file": "page_06.md",
+      "headings": {
+        "h2": 3,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 27,
+      "code_blocks": 3,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 9279,
+        "total_lines": 183,
+        "non_empty_lines": 144,
+        "word_count": 1374,
+        "sentence_count": 70,
+        "avg_words_per_sentence": 19.62857142857143
+      }
+    },
+    {
+      "file": "page_07.md",
+      "headings": {
+        "h3": 13,
+        "h4": 6,
+        "h2": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 200,
+      "links": 917,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 146651,
+        "total_lines": 666,
+        "non_empty_lines": 427,
+        "word_count": 19900,
+        "sentence_count": 2212,
+        "avg_words_per_sentence": 8.99638336347197
+      }
+    },
+    {
+      "file": "page_08.md",
+      "headings": {
+        "h3": 4,
+        "h4": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 20,
+      "links": 2071,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 181938,
+        "total_lines": 515,
+        "non_empty_lines": 408,
+        "word_count": 25779,
+        "sentence_count": 5389,
+        "avg_words_per_sentence": 4.783633327147894
+      }
+    },
+    {
+      "file": "page_09.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 29,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 67252,
+        "total_lines": 3,
+        "non_empty_lines": 3,
+        "word_count": 12349,
+        "sentence_count": 761,
+        "avg_words_per_sentence": 16.227332457293034
+      }
+    },
+    {
+      "file": "page_10.md",
+      "headings": {
+        "h2": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 108,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 9926,
+        "total_lines": 28,
+        "non_empty_lines": 22,
+        "word_count": 1532,
+        "sentence_count": 230,
+        "avg_words_per_sentence": 6.660869565217391
+      }
+    },
+    {
+      "file": "page_11.md",
+      "headings": {
+        "h2": 7,
+        "h3": 22
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 21,
+      "links": 9,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 54093,
+        "total_lines": 457,
+        "non_empty_lines": 227,
+        "word_count": 8900,
+        "sentence_count": 512,
+        "avg_words_per_sentence": 17.3828125
+      }
+    },
+    {
+      "file": "page_12.md",
+      "headings": {
+        "h2": 4,
+        "h3": 3,
+        "h4": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 5,
+      "links": 43,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 13907,
+        "total_lines": 172,
+        "non_empty_lines": 101,
+        "word_count": 2106,
+        "sentence_count": 121,
+        "avg_words_per_sentence": 17.40495867768595
+      }
+    },
+    {
+      "file": "page_13.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 5,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 28681,
+        "total_lines": 186,
+        "non_empty_lines": 98,
+        "word_count": 5037,
+        "sentence_count": 297,
+        "avg_words_per_sentence": 16.95959595959596
+      }
+    },
+    {
+      "file": "page_14.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 16,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21220,
+        "total_lines": 149,
+        "non_empty_lines": 88,
+        "word_count": 3793,
+        "sentence_count": 276,
+        "avg_words_per_sentence": 13.742753623188406
+      }
+    },
+    {
+      "file": "page_15.md",
+      "headings": {
+        "h2": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 19,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 3102,
+        "total_lines": 73,
+        "non_empty_lines": 56,
+        "word_count": 497,
+        "sentence_count": 39,
+        "avg_words_per_sentence": 12.743589743589743
+      }
+    },
+    {
+      "file": "page_16.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 2,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 32835,
+        "total_lines": 135,
+        "non_empty_lines": 68,
+        "word_count": 5648,
+        "sentence_count": 323,
+        "avg_words_per_sentence": 17.486068111455108
+      }
+    },
+    {
+      "file": "page_17.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 19638,
+        "total_lines": 189,
+        "non_empty_lines": 95,
+        "word_count": 3552,
+        "sentence_count": 206,
+        "avg_words_per_sentence": 17.24271844660194
+      }
+    },
+    {
+      "file": "page_18.md",
+      "headings": {
+        "h1": 2
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 5462,
+        "total_lines": 73,
+        "non_empty_lines": 73,
+        "word_count": 1348,
+        "sentence_count": 149,
+        "avg_words_per_sentence": 9.046979865771812
+      }
+    },
+    {
+      "file": "page_19.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 2,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 12584,
+        "total_lines": 47,
+        "non_empty_lines": 26,
+        "word_count": 2249,
+        "sentence_count": 106,
+        "avg_words_per_sentence": 21.21698113207547
+      }
+    },
+    {
+      "file": "page_20.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 2,
+      "links": 7,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 4859,
+        "total_lines": 43,
+        "non_empty_lines": 31,
+        "word_count": 852,
+        "sentence_count": 76,
+        "avg_words_per_sentence": 11.210526315789474
+      }
+    }
+  ],
+  "trafilatura": [
+    {
+      "file": "page_01.md",
+      "headings": {
+        "h2": 4,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 14208,
+        "total_lines": 148,
+        "non_empty_lines": 106,
+        "word_count": 2250,
+        "sentence_count": 115,
+        "avg_words_per_sentence": 19.565217391304348
+      }
+    },
+    {
+      "file": "page_02.md",
+      "headings": {
+        "h1": 1,
+        "h2": 12,
+        "h3": 18
+      },
+      "heading_ids": {
+        "has_ids": true,
+        "id_count": 5
+      },
+      "images": 10,
+      "links": 38,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 54517,
+        "total_lines": 797,
+        "non_empty_lines": 569,
+        "word_count": 8627,
+        "sentence_count": 493,
+        "avg_words_per_sentence": 17.49898580121704
+      }
+    },
+    {
+      "file": "page_03.md",
+      "headings": {
+        "h2": 5,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 14038,
+        "total_lines": 142,
+        "non_empty_lines": 71,
+        "word_count": 2420,
+        "sentence_count": 146,
+        "avg_words_per_sentence": 16.575342465753426
+      }
+    },
+    {
+      "file": "page_04.md",
+      "headings": {
+        "h1": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 53,
+      "code_blocks": 7,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 22270,
+        "total_lines": 346,
+        "non_empty_lines": 207,
+        "word_count": 3504,
+        "sentence_count": 242,
+        "avg_words_per_sentence": 14.479338842975206
+      }
+    },
+    {
+      "file": "page_05.md",
+      "headings": {
+        "h1": 1,
+        "h2": 8,
+        "h3": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 49,
+      "code_blocks": 36,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 24337,
+        "total_lines": 876,
+        "non_empty_lines": 655,
+        "word_count": 3934,
+        "sentence_count": 347,
+        "avg_words_per_sentence": 11.337175792507205
+      }
+    },
+    {
+      "file": "page_06.md",
+      "headings": {
+        "h1": 1,
+        "h2": 3,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 19,
+      "code_blocks": 3,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 8337,
+        "total_lines": 254,
+        "non_empty_lines": 167,
+        "word_count": 1252,
+        "sentence_count": 68,
+        "avg_words_per_sentence": 18.41176470588235
+      }
+    },
+    {
+      "file": "page_07.md",
+      "headings": {
+        "h1": 1,
+        "h3": 18,
+        "h2": 8,
+        "h4": 10
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 38,
+      "links": 793,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 109969,
+        "total_lines": 904,
+        "non_empty_lines": 457,
+        "word_count": 15642,
+        "sentence_count": 1857,
+        "avg_words_per_sentence": 8.423263327948304
+      }
+    },
+    {
+      "file": "page_08.md",
+      "headings": {
+        "h1": 1,
+        "h3": 4,
+        "h2": 7
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 21,
+      "links": 1826,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 151672,
+        "total_lines": 863,
+        "non_empty_lines": 456,
+        "word_count": 22595,
+        "sentence_count": 5110,
+        "avg_words_per_sentence": 4.421722113502935
+      }
+    },
+    {
+      "file": "page_09.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 4,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 59793,
+        "total_lines": 114,
+        "non_empty_lines": 113,
+        "word_count": 11015,
+        "sentence_count": 697,
+        "avg_words_per_sentence": 15.803443328550932
+      }
+    },
+    {
+      "file": "page_10.md",
+      "headings": {
+        "h1": 3,
+        "h2": 1,
+        "h3": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 21,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 3483,
+        "total_lines": 84,
+        "non_empty_lines": 48,
+        "word_count": 528,
+        "sentence_count": 58,
+        "avg_words_per_sentence": 9.10344827586207
+      }
+    },
+    {
+      "file": "page_11.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 14,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 39929,
+        "total_lines": 296,
+        "non_empty_lines": 149,
+        "word_count": 6627,
+        "sentence_count": 337,
+        "avg_words_per_sentence": 19.664688427299705
+      }
+    },
+    {
+      "file": "page_12.md",
+      "headings": {
+        "h2": 4,
+        "h3": 3,
+        "h4": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 32,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 12403,
+        "total_lines": 138,
+        "non_empty_lines": 76,
+        "word_count": 1934,
+        "sentence_count": 105,
+        "avg_words_per_sentence": 18.419047619047618
+      }
+    },
+    {
+      "file": "page_13.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 5,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 29573,
+        "total_lines": 221,
+        "non_empty_lines": 115,
+        "word_count": 5186,
+        "sentence_count": 293,
+        "avg_words_per_sentence": 17.699658703071673
+      }
+    },
+    {
+      "file": "page_14.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 16,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21194,
+        "total_lines": 163,
+        "non_empty_lines": 90,
+        "word_count": 3781,
+        "sentence_count": 264,
+        "avg_words_per_sentence": 14.321969696969697
+      }
+    },
+    {
+      "file": "page_15.md",
+      "headings": {
+        "h1": 1,
+        "h2": 5
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 23,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 3211,
+        "total_lines": 75,
+        "non_empty_lines": 49,
+        "word_count": 521,
+        "sentence_count": 43,
+        "avg_words_per_sentence": 12.116279069767442
+      }
+    },
+    {
+      "file": "page_16.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 2,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 32593,
+        "total_lines": 135,
+        "non_empty_lines": 68,
+        "word_count": 5645,
+        "sentence_count": 323,
+        "avg_words_per_sentence": 17.476780185758514
+      }
+    },
+    {
+      "file": "page_17.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 19554,
+        "total_lines": 251,
+        "non_empty_lines": 93,
+        "word_count": 3525,
+        "sentence_count": 205,
+        "avg_words_per_sentence": 17.195121951219512
+      }
+    },
+    {
+      "file": "page_18.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 0,
+        "total_lines": 1,
+        "non_empty_lines": 0,
+        "word_count": 0,
+        "sentence_count": 0,
+        "avg_words_per_sentence": 0.0
+      }
+    },
+    {
+      "file": "page_19.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 2,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 12573,
+        "total_lines": 47,
+        "non_empty_lines": 26,
+        "word_count": 2248,
+        "sentence_count": 106,
+        "avg_words_per_sentence": 21.20754716981132
+      }
+    },
+    {
+      "file": "page_20.md",
+      "headings": {
+        "h1": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 6,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 4745,
+        "total_lines": 45,
+        "non_empty_lines": 25,
+        "word_count": 844,
+        "sentence_count": 74,
+        "avg_words_per_sentence": 11.405405405405405
+      }
+    }
+  ],
+  "mozilla-readability": [
+    {
+      "file": "page_01.md",
+      "headings": {
+        "h2": 7,
+        "h3": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 8,
+      "links": 32,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 17418,
+        "total_lines": 162,
+        "non_empty_lines": 80,
+        "word_count": 2673,
+        "sentence_count": 218,
+        "avg_words_per_sentence": 12.261467889908257
+      }
+    },
+    {
+      "file": "page_02.md",
+      "headings": {
+        "h2": 11,
+        "h3": 18,
+        "h1": 3
+      },
+      "heading_ids": {
+        "has_ids": true,
+        "id_count": 5
+      },
+      "images": 10,
+      "links": 44,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 57307,
+        "total_lines": 587,
+        "non_empty_lines": 390,
+        "word_count": 8979,
+        "sentence_count": 523,
+        "avg_words_per_sentence": 17.168260038240916
+      }
+    },
+    {
+      "file": "page_03.md",
+      "headings": {
+        "h2": 5,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 14247,
+        "total_lines": 143,
+        "non_empty_lines": 71,
+        "word_count": 2420,
+        "sentence_count": 146,
+        "avg_words_per_sentence": 16.575342465753426
+      }
+    },
+    {
+      "file": "page_04.md",
+      "headings": {
+        "h2": 5,
+        "h3": 9
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 49,
+      "code_blocks": 7,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21856,
+        "total_lines": 258,
+        "non_empty_lines": 184,
+        "word_count": 3272,
+        "sentence_count": 237,
+        "avg_words_per_sentence": 13.80590717299578
+      }
+    },
+    {
+      "file": "page_05.md",
+      "headings": {
+        "h2": 8,
+        "h3": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 52,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 26199,
+        "total_lines": 512,
+        "non_empty_lines": 376,
+        "word_count": 4156,
+        "sentence_count": 364,
+        "avg_words_per_sentence": 11.417582417582418
+      }
+    },
+    {
+      "file": "page_06.md",
+      "headings": {
+        "h2": 3,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 27,
+      "code_blocks": 3,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 9765,
+        "total_lines": 126,
+        "non_empty_lines": 83,
+        "word_count": 1449,
+        "sentence_count": 96,
+        "avg_words_per_sentence": 15.09375
+      }
+    },
+    {
+      "file": "page_07.md",
+      "headings": {
+        "h3": 13,
+        "h4": 6,
+        "h2": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 200,
+      "links": 919,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 155130,
+        "total_lines": 663,
+        "non_empty_lines": 423,
+        "word_count": 21287,
+        "sentence_count": 2581,
+        "avg_words_per_sentence": 8.24757845796203
+      }
+    },
+    {
+      "file": "page_08.md",
+      "headings": {
+        "h3": 4,
+        "h4": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 24,
+      "links": 2076,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 199120,
+        "total_lines": 887,
+        "non_empty_lines": 549,
+        "word_count": 28647,
+        "sentence_count": 6209,
+        "avg_words_per_sentence": 4.613786439040103
+      }
+    },
+    {
+      "file": "page_09.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 29,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 67544,
+        "total_lines": 583,
+        "non_empty_lines": 292,
+        "word_count": 12363,
+        "sentence_count": 763,
+        "avg_words_per_sentence": 16.203145478374836
+      }
+    },
+    {
+      "file": "page_10.md",
+      "headings": {
+        "h2": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 109,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 10061,
+        "total_lines": 35,
+        "non_empty_lines": 18,
+        "word_count": 1558,
+        "sentence_count": 240,
+        "avg_words_per_sentence": 6.491666666666666
+      }
+    },
+    {
+      "file": "page_11.md",
+      "headings": {
+        "h2": 7,
+        "h3": 22
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 21,
+      "links": 9,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 54569,
+        "total_lines": 437,
+        "non_empty_lines": 217,
+        "word_count": 8969,
+        "sentence_count": 534,
+        "avg_words_per_sentence": 16.795880149812735
+      }
+    },
+    {
+      "file": "page_12.md",
+      "headings": {
+        "h2": 4,
+        "h3": 3,
+        "h4": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 5,
+      "links": 43,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 14304,
+        "total_lines": 187,
+        "non_empty_lines": 101,
+        "word_count": 2187,
+        "sentence_count": 150,
+        "avg_words_per_sentence": 14.58
+      }
+    },
+    {
+      "file": "page_13.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 5,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 28700,
+        "total_lines": 187,
+        "non_empty_lines": 98,
+        "word_count": 5040,
+        "sentence_count": 297,
+        "avg_words_per_sentence": 16.96969696969697
+      }
+    },
+    {
+      "file": "page_14.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 16,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21258,
+        "total_lines": 151,
+        "non_empty_lines": 89,
+        "word_count": 3793,
+        "sentence_count": 276,
+        "avg_words_per_sentence": 13.742753623188406
+      }
+    },
+    {
+      "file": "page_15.md",
+      "headings": {
+        "h2": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 21,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 3449,
+        "total_lines": 44,
+        "non_empty_lines": 26,
+        "word_count": 554,
+        "sentence_count": 59,
+        "avg_words_per_sentence": 9.389830508474576
+      }
+    },
+    {
+      "file": "page_16.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 2,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 32840,
+        "total_lines": 136,
+        "non_empty_lines": 68,
+        "word_count": 5648,
+        "sentence_count": 323,
+        "avg_words_per_sentence": 17.486068111455108
+      }
+    },
+    {
+      "file": "page_17.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 19664,
+        "total_lines": 190,
+        "non_empty_lines": 95,
+        "word_count": 3552,
+        "sentence_count": 206,
+        "avg_words_per_sentence": 17.24271844660194
+      }
+    },
+    {
+      "file": "page_18.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 10471,
+        "total_lines": 2,
+        "non_empty_lines": 1,
+        "word_count": 2099,
+        "sentence_count": 157,
+        "avg_words_per_sentence": 13.369426751592357
+      }
+    },
+    {
+      "file": "page_19.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 2,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 12595,
+        "total_lines": 48,
+        "non_empty_lines": 26,
+        "word_count": 2249,
+        "sentence_count": 106,
+        "avg_words_per_sentence": 21.21698113207547
+      }
+    },
+    {
+      "file": "page_20.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 2,
+      "links": 7,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 4908,
+        "total_lines": 42,
+        "non_empty_lines": 29,
+        "word_count": 858,
+        "sentence_count": 78,
+        "avg_words_per_sentence": 11.0
+      }
+    }
+  ],
+  "html2text": [
+    {
+      "file": "page_01.md",
+      "headings": {
+        "h2": 12,
+        "h1": 1,
+        "h3": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 13,
+      "links": 127,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 26824,
+        "total_lines": 562,
+        "non_empty_lines": 422,
+        "word_count": 3933,
+        "sentence_count": 384,
+        "avg_words_per_sentence": 10.2421875
+      }
+    },
+    {
+      "file": "page_02.md",
+      "headings": {
+        "h2": 24,
+        "h1": 4,
+        "h3": 18
+      },
+      "heading_ids": {
+        "has_ids": true,
+        "id_count": 5
+      },
+      "images": 3,
+      "links": 84,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 65556,
+        "total_lines": 1484,
+        "non_empty_lines": 1132,
+        "word_count": 9912,
+        "sentence_count": 603,
+        "avg_words_per_sentence": 16.437810945273633
+      }
+    },
+    {
+      "file": "page_03.md",
+      "headings": {
+        "h1": 2,
+        "h4": 6,
+        "h2": 7,
+        "h3": 5
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 2,
+      "links": 51,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 19935,
+        "total_lines": 415,
+        "non_empty_lines": 305,
+        "word_count": 3169,
+        "sentence_count": 205,
+        "avg_words_per_sentence": 15.458536585365854
+      }
+    },
+    {
+      "file": "page_04.md",
+      "headings": {
+        "h1": 1,
+        "h2": 8,
+        "h3": 9
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 153,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 35035,
+        "total_lines": 820,
+        "non_empty_lines": 579,
+        "word_count": 5042,
+        "sentence_count": 317,
+        "avg_words_per_sentence": 15.905362776025237
+      }
+    },
+    {
+      "file": "page_05.md",
+      "headings": {
+        "h3": 10,
+        "h4": 4,
+        "h1": 1,
+        "h2": 8
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 3,
+      "links": 59,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 29539,
+        "total_lines": 928,
+        "non_empty_lines": 634,
+        "word_count": 4407,
+        "sentence_count": 507,
+        "avg_words_per_sentence": 8.692307692307692
+      }
+    },
+    {
+      "file": "page_06.md",
+      "headings": {
+        "h4": 2,
+        "h1": 1,
+        "h2": 4,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 2,
+      "links": 847,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 91782,
+        "total_lines": 1131,
+        "non_empty_lines": 1051,
+        "word_count": 10291,
+        "sentence_count": 195,
+        "avg_words_per_sentence": 52.774358974358975
+      }
+    },
+    {
+      "file": "page_07.md",
+      "headings": {
+        "h2": 11,
+        "h1": 1,
+        "h3": 26,
+        "h4": 12
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 17,
+      "links": 1002,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 205219,
+        "total_lines": 2827,
+        "non_empty_lines": 2371,
+        "word_count": 27321,
+        "sentence_count": 2542,
+        "avg_words_per_sentence": 10.747836349331235
+      }
+    },
+    {
+      "file": "page_08.md",
+      "headings": {
+        "h2": 13,
+        "h1": 1,
+        "h3": 14,
+        "h4": 2
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 25,
+      "links": 1705,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 197441,
+        "total_lines": 1651,
+        "non_empty_lines": 1390,
+        "word_count": 28109,
+        "sentence_count": 5781,
+        "avg_words_per_sentence": 4.862307559245806
+      }
+    },
+    {
+      "file": "page_09.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 3,
+      "links": 1,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 68657,
+        "total_lines": 1367,
+        "non_empty_lines": 997,
+        "word_count": 12362,
+        "sentence_count": 777,
+        "avg_words_per_sentence": 15.90990990990991
+      }
+    },
+    {
+      "file": "page_10.md",
+      "headings": {
+        "h2": 4,
+        "h1": 7,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 4,
+      "links": 543,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 116898,
+        "total_lines": 2156,
+        "non_empty_lines": 2052,
+        "word_count": 17786,
+        "sentence_count": 2929,
+        "avg_words_per_sentence": 6.072379651758279
+      }
+    },
+    {
+      "file": "page_11.md",
+      "headings": {
+        "h1": 1,
+        "h3": 33,
+        "h2": 7
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 21,
+      "links": 17,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 69522,
+        "total_lines": 1388,
+        "non_empty_lines": 1070,
+        "word_count": 11205,
+        "sentence_count": 1135,
+        "avg_words_per_sentence": 9.872246696035242
+      }
+    },
+    {
+      "file": "page_12.md",
+      "headings": {
+        "h1": 1,
+        "h2": 4,
+        "h3": 3,
+        "h4": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 88,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21037,
+        "total_lines": 508,
+        "non_empty_lines": 397,
+        "word_count": 3013,
+        "sentence_count": 223,
+        "avg_words_per_sentence": 13.511210762331839
+      }
+    },
+    {
+      "file": "page_13.md",
+      "headings": {
+        "h1": 1,
+        "h2": 20
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 37,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 39416,
+        "total_lines": 741,
+        "non_empty_lines": 592,
+        "word_count": 6400,
+        "sentence_count": 447,
+        "avg_words_per_sentence": 14.317673378076062
+      }
+    },
+    {
+      "file": "page_14.md",
+      "headings": {
+        "h1": 3,
+        "h2": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 23,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": true,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 26412,
+        "total_lines": 510,
+        "non_empty_lines": 416,
+        "word_count": 4606,
+        "sentence_count": 399,
+        "avg_words_per_sentence": 11.543859649122806
+      }
+    },
+    {
+      "file": "page_15.md",
+      "headings": {
+        "h1": 2,
+        "h2": 5
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 15,
+      "links": 83,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 8165,
+        "total_lines": 229,
+        "non_empty_lines": 145,
+        "word_count": 1156,
+        "sentence_count": 142,
+        "avg_words_per_sentence": 8.140845070422536
+      }
+    },
+    {
+      "file": "page_16.md",
+      "headings": {
+        "h1": 1,
+        "h3": 6,
+        "h2": 2
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 12,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 34867,
+        "total_lines": 592,
+        "non_empty_lines": 502,
+        "word_count": 5986,
+        "sentence_count": 351,
+        "avg_words_per_sentence": 17.054131054131055
+      }
+    },
+    {
+      "file": "page_17.md",
+      "headings": {
+        "h1": 1,
+        "h2": 1,
+        "h3": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 17,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21712,
+        "total_lines": 492,
+        "non_empty_lines": 348,
+        "word_count": 3842,
+        "sentence_count": 253,
+        "avg_words_per_sentence": 15.185770750988143
+      }
+    },
+    {
+      "file": "page_18.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 5442,
+        "total_lines": 83,
+        "non_empty_lines": 81,
+        "word_count": 1342,
+        "sentence_count": 149,
+        "avg_words_per_sentence": 9.006711409395972
+      }
+    },
+    {
+      "file": "page_19.md",
+      "headings": {
+        "h1": 3,
+        "h2": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 19,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": true,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 17726,
+        "total_lines": 275,
+        "non_empty_lines": 221,
+        "word_count": 3055,
+        "sentence_count": 229,
+        "avg_words_per_sentence": 13.34061135371179
+      }
+    },
+    {
+      "file": "page_20.md",
+      "headings": {
+        "h1": 1,
+        "h4": 2,
+        "h2": 2,
+        "h3": 8
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 30,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 11502,
+        "total_lines": 279,
+        "non_empty_lines": 207,
+        "word_count": 1882,
+        "sentence_count": 180,
+        "avg_words_per_sentence": 10.455555555555556
+      }
+    }
+  ],
+  "markdownify": [
+    {
+      "file": "page_01.md",
+      "headings": {
+        "h2": 8,
+        "h1": 1,
+        "h3": 4
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 17,
+      "links": 168,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 26734,
+        "total_lines": 328,
+        "non_empty_lines": 189,
+        "word_count": 3939,
+        "sentence_count": 385,
+        "avg_words_per_sentence": 10.231168831168832
+      }
+    },
+    {
+      "file": "page_02.md",
+      "headings": {
+        "h2": 24,
+        "h1": 4,
+        "h3": 18
+      },
+      "heading_ids": {
+        "has_ids": true,
+        "id_count": 5
+      },
+      "images": 13,
+      "links": 165,
+      "code_blocks": 19,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 65796,
+        "total_lines": 1529,
+        "non_empty_lines": 1220,
+        "word_count": 9966,
+        "sentence_count": 594,
+        "avg_words_per_sentence": 16.77777777777778
+      }
+    },
+    {
+      "file": "page_03.md",
+      "headings": {
+        "h1": 21,
+        "h3": 24,
+        "h4": 15,
+        "h2": 8
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 3,
+      "links": 24,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 20140,
+        "total_lines": 343,
+        "non_empty_lines": 202,
+        "word_count": 3223,
+        "sentence_count": 201,
+        "avg_words_per_sentence": 16.034825870646767
+      }
+    },
+    {
+      "file": "page_04.md",
+      "headings": {
+        "h1": 1,
+        "h2": 8,
+        "h3": 9
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 201,
+      "code_blocks": 9,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 34870,
+        "total_lines": 580,
+        "non_empty_lines": 407,
+        "word_count": 5030,
+        "sentence_count": 305,
+        "avg_words_per_sentence": 16.491803278688526
+      }
+    },
+    {
+      "file": "page_05.md",
+      "headings": {
+        "h3": 10,
+        "h4": 4,
+        "h1": 1,
+        "h2": 8
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 3,
+      "links": 110,
+      "code_blocks": 35,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 29286,
+        "total_lines": 854,
+        "non_empty_lines": 691,
+        "word_count": 4566,
+        "sentence_count": 509,
+        "avg_words_per_sentence": 8.970530451866404
+      }
+    },
+    {
+      "file": "page_06.md",
+      "headings": {
+        "h4": 2,
+        "h1": 1,
+        "h2": 4,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 878,
+      "code_blocks": 3,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 89625,
+        "total_lines": 1070,
+        "non_empty_lines": 1007,
+        "word_count": 10235,
+        "sentence_count": 177,
+        "avg_words_per_sentence": 57.824858757062145
+      }
+    },
+    {
+      "file": "page_07.md",
+      "headings": {
+        "h2": 11,
+        "h1": 1,
+        "h3": 26,
+        "h4": 12
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 206,
+      "links": 1469,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 211422,
+        "total_lines": 4569,
+        "non_empty_lines": 2768,
+        "word_count": 28122,
+        "sentence_count": 2523,
+        "avg_words_per_sentence": 11.146254458977408
+      }
+    },
+    {
+      "file": "page_08.md",
+      "headings": {
+        "h2": 13,
+        "h1": 1,
+        "h3": 14,
+        "h4": 2
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 31,
+      "links": 2369,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 210373,
+        "total_lines": 942,
+        "non_empty_lines": 706,
+        "word_count": 29266,
+        "sentence_count": 5745,
+        "avg_words_per_sentence": 5.094168842471714
+      }
+    },
+    {
+      "file": "page_09.md",
+      "headings": {},
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 29,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 65466,
+        "total_lines": 13,
+        "non_empty_lines": 4,
+        "word_count": 11995,
+        "sentence_count": 744,
+        "avg_words_per_sentence": 16.122311827956988
+      }
+    },
+    {
+      "file": "page_10.md",
+      "headings": {
+        "h2": 4,
+        "h1": 7,
+        "h3": 3
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 7,
+      "links": 1421,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 116905,
+        "total_lines": 304,
+        "non_empty_lines": 159,
+        "word_count": 17764,
+        "sentence_count": 2930,
+        "avg_words_per_sentence": 6.062798634812287
+      }
+    },
+    {
+      "file": "page_11.md",
+      "headings": {
+        "h1": 1,
+        "h3": 33,
+        "h2": 7
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 21,
+      "links": 40,
+      "code_blocks": 2,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 70027,
+        "total_lines": 743,
+        "non_empty_lines": 433,
+        "word_count": 11319,
+        "sentence_count": 1135,
+        "avg_words_per_sentence": 9.972687224669604
+      }
+    },
+    {
+      "file": "page_12.md",
+      "headings": {
+        "h1": 1,
+        "h2": 4,
+        "h3": 3,
+        "h4": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 7,
+      "links": 120,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 20628,
+        "total_lines": 374,
+        "non_empty_lines": 247,
+        "word_count": 3023,
+        "sentence_count": 224,
+        "avg_words_per_sentence": 13.495535714285714
+      }
+    },
+    {
+      "file": "page_13.md",
+      "headings": {
+        "h1": 1,
+        "h2": 20
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 2,
+      "links": 81,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 38903,
+        "total_lines": 333,
+        "non_empty_lines": 179,
+        "word_count": 6356,
+        "sentence_count": 435,
+        "avg_words_per_sentence": 14.611494252873563
+      }
+    },
+    {
+      "file": "page_14.md",
+      "headings": {
+        "h1": 3,
+        "h2": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 7,
+      "links": 51,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": true,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 26516,
+        "total_lines": 231,
+        "non_empty_lines": 124,
+        "word_count": 4638,
+        "sentence_count": 399,
+        "avg_words_per_sentence": 11.62406015037594
+      }
+    },
+    {
+      "file": "page_15.md",
+      "headings": {
+        "h1": 2,
+        "h2": 5
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 19,
+      "links": 103,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": true,
+        "navigation": true,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 8233,
+        "total_lines": 254,
+        "non_empty_lines": 179,
+        "word_count": 1187,
+        "sentence_count": 144,
+        "avg_words_per_sentence": 8.243055555555555
+      }
+    },
+    {
+      "file": "page_16.md",
+      "headings": {
+        "h1": 1,
+        "h3": 6,
+        "h2": 2
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 1,
+      "links": 17,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 35151,
+        "total_lines": 190,
+        "non_empty_lines": 97,
+        "word_count": 6000,
+        "sentence_count": 351,
+        "avg_words_per_sentence": 17.094017094017094
+      }
+    },
+    {
+      "file": "page_17.md",
+      "headings": {
+        "h1": 1,
+        "h2": 1,
+        "h3": 1
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 15,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 21610,
+        "total_lines": 309,
+        "non_empty_lines": 166,
+        "word_count": 3837,
+        "sentence_count": 250,
+        "avg_words_per_sentence": 15.348
+      }
+    },
+    {
+      "file": "page_18.md",
+      "headings": {
+        "h1": 2
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 0,
+      "links": 0,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 5506,
+        "total_lines": 74,
+        "non_empty_lines": 74,
+        "word_count": 1352,
+        "sentence_count": 149,
+        "avg_words_per_sentence": 9.073825503355705
+      }
+    },
+    {
+      "file": "page_19.md",
+      "headings": {
+        "h1": 3,
+        "h2": 6
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 7,
+      "links": 37,
+      "code_blocks": 0,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": true,
+        "social_share": true,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 17873,
+        "total_lines": 131,
+        "non_empty_lines": 64,
+        "word_count": 3085,
+        "sentence_count": 229,
+        "avg_words_per_sentence": 13.471615720524017
+      }
+    },
+    {
+      "file": "page_20.md",
+      "headings": {
+        "h1": 1,
+        "h4": 2,
+        "h2": 4,
+        "h3": 8
+      },
+      "heading_ids": {
+        "has_ids": false,
+        "id_count": 0
+      },
+      "images": 13,
+      "links": 52,
+      "code_blocks": 1,
+      "artifacts": {
+        "cookie_notice": false,
+        "navigation": false,
+        "social_share": false,
+        "comments_section": false,
+        "ads": false
+      },
+      "quality": {
+        "total_chars": 11058,
+        "total_lines": 207,
+        "non_empty_lines": 126,
+        "word_count": 1854,
+        "sentence_count": 170,
+        "avg_words_per_sentence": 10.905882352941177
+      }
+    }
+  ]
+}

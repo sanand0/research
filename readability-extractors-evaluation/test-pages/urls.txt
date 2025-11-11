@@ -1,0 +1,34 @@
+# Test URLs - 20 Representative HTML Pages
+# Mix of: news, tech blogs, docs, long-form, Wikipedia, academic
+
+# News sites (5)
+https://www.theguardian.com/technology/2024/dec/15/meta-ends-factchecking-mark-zuckerberg
+https://www.bbc.com/news/articles/c3vw4pn2ng7o
+https://www.reuters.com/technology/artificial-intelligence/openai-releases-new-reasoning-ai-model-launches-subscription-plan-2024-12-05/
+https://www.nytimes.com/2024/12/13/technology/google-quantum-chip-willow.html
+https://www.npr.org/2024/12/10/nx-s1-5221385/ai-google-search-results
+
+# Tech blogs & articles (5)
+https://simonwillison.net/2024/Dec/9/gemini-2/
+https://blog.cloudflare.com/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack
+https://martinfowler.com/articles/micro-frontends.html
+https://increment.com/testing/i-test-in-production/
+https://jvns.ca/blog/2024/11/18/how-to-import-a-csv-file-into-sqlite/
+
+# Documentation (3)
+https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers
+https://docs.python.org/3/tutorial/datastructures.html
+https://kubernetes.io/docs/concepts/overview/working-with-objects/
+
+# Wikipedia (2)
+https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)
+https://en.wikipedia.org/wiki/CRISPR
+
+# Long-form/Essays (3)
+https://paulgraham.com/greatwork.html
+https://www.newyorker.com/magazine/2024/12/16/the-ai-revolution-has-an-energy-problem
+https://www.theatlantic.com/magazine/archive/2024/12/ai-computers-cryptocurrency-data-centers/680238/
+
+# Academic/Research (2)
+https://arxiv.org/abs/2312.11805
+https://distill.pub/2021/gnn-intro/

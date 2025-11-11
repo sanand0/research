@@ -1,0 +1,23 @@
+# Test Pages Metadata
+# Format: filename | URL | description
+
+page_01.html | https://blog.cloudflare.com/how-cloudflare-auto-mitigated-world-record-3-8-tbps-ddos-attack | Cloudflare blog (tech)
+page_02.html | https://martinfowler.com/articles/micro-frontends.html | Martin Fowler article (tech)
+page_03.html | https://increment.com/testing/i-test-in-production/ | Increment magazine article
+page_04.html | https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API/Writing_WebSocket_servers | MDN documentation
+page_05.html | https://docs.python.org/3/tutorial/datastructures.html | Python documentation
+page_06.html | https://kubernetes.io/docs/concepts/overview/working-with-objects/ | Kubernetes documentation
+page_07.html | https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture) | Wikipedia (technical)
+page_08.html | https://en.wikipedia.org/wiki/CRISPR | Wikipedia (science)
+page_09.html | https://paulgraham.com/greatwork.html | Paul Graham essay
+page_10.html | https://arxiv.org/abs/2312.11805 | arXiv paper
+page_11.html | https://distill.pub/2021/gnn-intro/ | Distill.pub article (interactive)
+page_12.html | https://web.dev/articles/vitals | web.dev documentation
+page_13.html | https://stackoverflow.blog/2024/06/10/generative-ai-is-not-going-to-build-your-engineering-team-for-you/ | Stack Overflow blog
+page_14.html | https://www.joelonsoftware.com/2000/08/09/the-joel-test-12-steps-to-better-code/ | Joel on Software blog
+page_15.html | https://go.dev/blog/go1.21 | Go blog (official)
+page_16.html | https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/ | Kalzumeus blog
+page_17.html | https://blog.samaltman.com/how-to-be-successful | Sam Altman blog
+page_18.html | https://www.benfrederickson.com/blog/ | Ben Frederickson blog
+page_19.html | https://blog.codinghorror.com/about-me/ | Coding Horror blog
+page_20.html | https://blog.codinghorror.com/the-best-code-is-no-code-at-all/ | Coding Horror blog post
