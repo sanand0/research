@@ -12,3 +12,5 @@ Any code you wrote along the way
 If you checked out and modified an existing repo, the output of "git diff" against that modified repo saved as a file - but not a copy of the full repo
 If appropriate, any binary files you created along the way provided they are less than 2MB in size
 Do NOT include full copies of code that you fetched as part of your investigation. Your final commit should include only new files you created or diffs showing changes you made to existing code.
+
+Update the root README.md with a 1-line summary of your research in the same style as the existing entries.
