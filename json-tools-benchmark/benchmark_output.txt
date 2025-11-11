@@ -1,0 +1,204 @@
+
+=== Task 1: Simple field selection (.[].name) ===
+
+  Select name field on small.json:
+    jq: 0.0148s (min: 0.0135s, max: 0.0156s)
+    dasel: FAILED - Error: unknown shorthand flag: 'p' in -p
+
+    node-native: 0.0693s (min: 0.0674s, max: 0.0711s)
+    node-jsonpath: 0.0844s (min: 0.0796s, max: 0.0886s)
+    python-native: 0.0695s (min: 0.0678s, max: 0.0720s)
+    python-jq: 0.0813s (min: 0.0798s, max: 0.0823s)
+    python-ujson: 0.0621s (min: 0.0602s, max: 0.0636s)
+
+  Select name field on medium.json:
+    jq: 0.0540s (min: 0.0502s, max: 0.0580s)
+    dasel: FAILED - Error: unknown shorthand flag: 'p' in -p
+
+    node-native: 0.1518s (min: 0.1507s, max: 0.1535s)
+    node-jsonpath: 0.1747s (min: 0.1647s, max: 0.1814s)
+    python-native: 0.1400s (min: 0.1322s, max: 0.1454s)
+    python-jq: 0.2020s (min: 0.1996s, max: 0.2044s)
+    python-ujson: 0.1349s (min: 0.1279s, max: 0.1413s)
+
+  Select name field on large.json:
+    jq: 0.4521s (min: 0.4359s, max: 0.4728s)
+    dasel: FAILED - Error: unknown shorthand flag: 'p' in -p
+
+    node-native: 0.6858s (min: 0.6814s, max: 0.6921s)
+    node-jsonpath: 0.7728s (min: 0.7457s, max: 0.7953s)
+    python-native: 0.8915s (min: 0.8410s, max: 0.9900s)
+    python-jq: 1.5078s (min: 1.4706s, max: 1.5324s)
+    python-ujson: 0.9561s (min: 0.9243s, max: 1.0063s)
+
+  Select name field on nested.json:
+    jq: 0.2488s (min: 0.2445s, max: 0.2519s)
+    dasel: FAILED - Error: unknown shorthand flag: 'p' in -p
+
+    node-native: 0.2538s (min: 0.2382s, max: 0.2633s)
+    node-jsonpath: 0.1856s (min: 0.1709s, max: 0.2007s)
+    python-native: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 13, in <module>
+    print(item['name'])
+          ~~~~^^^^^^^^
+KeyError: 'name'
+
+    python-jq: 0.5654s (min: 0.5459s, max: 0.5892s)
+    python-ujson: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 13, in <module>
+    print(item['name'])
+          ~~~~^^^^^^^^
+KeyError: 'name'
+
+
+=== Task 2: Filter by condition (select(.value > 500)) ===
+
+  Filter value > 500 on small.json:
+    jq: 0.0165s (min: 0.0155s, max: 0.0171s)
+    node-native: 0.0676s (min: 0.0660s, max: 0.0687s)
+    python-native: 0.0645s (min: 0.0624s, max: 0.0661s)
+    python-jq: 0.0852s (min: 0.0831s, max: 0.0873s)
+    python-ujson: 0.0597s (min: 0.0561s, max: 0.0623s)
+
+  Filter value > 500 on medium.json:
+    jq: 0.0612s (min: 0.0595s, max: 0.0637s)
+    node-native: 0.1289s (min: 0.1234s, max: 0.1334s)
+    python-native: 0.1286s (min: 0.1251s, max: 0.1311s)
+    python-jq: 0.2348s (min: 0.2274s, max: 0.2409s)
+    python-ujson: 0.1124s (min: 0.1100s, max: 0.1141s)
+
+  Filter value > 500 on large.json:
+    jq: 0.5506s (min: 0.5463s, max: 0.5563s)
+    node-native: 0.5112s (min: 0.4928s, max: 0.5390s)
+    python-native: 0.7374s (min: 0.7144s, max: 0.7548s)
+    python-jq: 1.7644s (min: 1.7397s, max: 1.7809s)
+    python-ujson: 0.6498s (min: 0.6143s, max: 0.6934s)
+
+  Filter value > 500 on nested.json:
+    jq: 0.2466s (min: 0.2456s, max: 0.2474s)
+    node-native: 0.1660s (min: 0.1613s, max: 0.1706s)
+    python-native: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 17, in <module>
+    if item['value'] > 500:
+       ~~~~^^^^^^^^^
+KeyError: 'value'
+
+    python-jq: 0.5070s (min: 0.4979s, max: 0.5168s)
+    python-ujson: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 17, in <module>
+    if item['value'] > 500:
+       ~~~~^^^^^^^^^
+KeyError: 'value'
+
+
+=== Task 3: Array mapping (map(.value * 2)) ===
+
+  Map values * 2 on small.json:
+    jq: 0.0148s (min: 0.0145s, max: 0.0150s)
+    node-native: 0.0567s (min: 0.0561s, max: 0.0579s)
+    python-native: 0.0566s (min: 0.0561s, max: 0.0575s)
+    python-jq: 0.0715s (min: 0.0704s, max: 0.0723s)
+    python-ujson: 0.0501s (min: 0.0493s, max: 0.0509s)
+
+  Map values * 2 on medium.json:
+    jq: 0.0515s (min: 0.0492s, max: 0.0535s)
+    node-native: 0.0688s (min: 0.0664s, max: 0.0714s)
+    python-native: 0.0689s (min: 0.0662s, max: 0.0719s)
+    python-jq: 0.1488s (min: 0.1405s, max: 0.1543s)
+    python-ujson: 0.0662s (min: 0.0616s, max: 0.0690s)
+
+  Map values * 2 on large.json:
+    jq: 0.4794s (min: 0.4703s, max: 0.4853s)
+    node-native: 0.1995s (min: 0.1969s, max: 0.2041s)
+    python-native: 0.2567s (min: 0.2477s, max: 0.2745s)
+    python-jq: 0.9472s (min: 0.9244s, max: 0.9602s)
+    python-ujson: 0.2795s (min: 0.2775s, max: 0.2810s)
+
+  Map values * 2 on nested.json:
+    jq: FAILED - jq: error (at <stdin>:0): null (null) and number (2) cannot be multiplied
+
+    node-native: 0.1728s (min: 0.1643s, max: 0.1805s)
+    python-native: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 21, in <module>
+    mapped = [item['value'] * 2 for item in data]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 21, in <listcomp>
+    mapped = [item['value'] * 2 for item in data]
+              ~~~~^^^^^^^^^
+KeyError: 'value'
+
+    python-jq: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_jq.py", line 24, in <module>
+    result = program.input_text(input_text).first()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "jq.pyx", line 329, in jq._ProgramWithInput.first
+  File "jq.pyx", line 373, in jq._ResultIterator.__next__
+ValueError: null (null) and number (2) cannot be multiplied
+
+    python-ujson: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 21, in <module>
+    mapped = [item['value'] * 2 for item in data]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 21, in <listcomp>
+    mapped = [item['value'] * 2 for item in data]
+              ~~~~^^^^^^^^^
+KeyError: 'value'
+
+
+=== Task 4: Aggregation (sum of values) ===
+
+  Sum all values on small.json:
+    jq: 0.0307s (min: 0.0167s, max: 0.0566s)
+    node-native: 0.0619s (min: 0.0591s, max: 0.0641s)
+    python-native: 0.0592s (min: 0.0584s, max: 0.0596s)
+    python-jq: 0.0785s (min: 0.0769s, max: 0.0813s)
+    python-ujson: 0.0538s (min: 0.0534s, max: 0.0543s)
+
+  Sum all values on medium.json:
+    jq: 0.0532s (min: 0.0525s, max: 0.0537s)
+    node-native: 0.0748s (min: 0.0717s, max: 0.0771s)
+    python-native: 0.0807s (min: 0.0774s, max: 0.0833s)
+    python-jq: 0.1588s (min: 0.1561s, max: 0.1617s)
+    python-ujson: 0.0726s (min: 0.0720s, max: 0.0732s)
+
+  Sum all values on large.json:
+    jq: 0.4872s (min: 0.4803s, max: 0.4954s)
+    node-native: 0.1891s (min: 0.1869s, max: 0.1918s)
+    python-native: 0.2237s (min: 0.2214s, max: 0.2266s)
+    python-jq: 0.9684s (min: 0.9572s, max: 0.9814s)
+    python-ujson: 0.2542s (min: 0.2500s, max: 0.2584s)
+
+  Sum all values on nested.json:
+    jq: 0.2744s (min: 0.2721s, max: 0.2760s)
+    node-native: 0.1633s (min: 0.1618s, max: 0.1651s)
+    python-native: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 25, in <module>
+    total = sum(item['value'] for item in data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 25, in <genexpr>
+    total = sum(item['value'] for item in data)
+                ~~~~^^^^^^^^^
+KeyError: 'value'
+
+    python-jq: 0.5085s (min: 0.5035s, max: 0.5142s)
+    python-ujson: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 25, in <module>
+    total = sum(item['value'] for item in data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 25, in <genexpr>
+    total = sum(item['value'] for item in data)
+                ~~~~^^^^^^^^^
+KeyError: 'value'
+
+
+=== Task 5: Deep nested access ===
+
+  Deep nested access on nested.json:
+    jq: 0.2411s (min: 0.2348s, max: 0.2475s)
+    node-native: 0.2276s (min: 0.2223s, max: 0.2325s)
+    python-native: 0.2513s (min: 0.2396s, max: 0.2648s)
+    python-jq: 0.5786s (min: 0.5755s, max: 0.5842s)
+    python-ujson: 0.3007s (min: 0.2950s, max: 0.3086s)
+
+
+Benchmark complete! Results saved to results/benchmark_results.json

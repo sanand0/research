@@ -1,0 +1,297 @@
+
+=== Task 1: Simple field selection (.[].name) ===
+
+  Select name field on small.json:
+    jq: 0.0151s (min: 0.0144s, max: 0.0163s)
+    jaq: 0.0118s (min: 0.0116s, max: 0.0121s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    dasel: 0.0440s (min: 0.0429s, max: 0.0445s)
+    yq: 0.0579s (min: 0.0569s, max: 0.0593s)
+    miller: 0.0370s (min: 0.0353s, max: 0.0392s)
+    gron: 0.0862s (min: 0.0851s, max: 0.0874s)
+    node-native: 0.0728s (min: 0.0717s, max: 0.0738s)
+    node-jsonpath: 0.0828s (min: 0.0794s, max: 0.0862s)
+    python-native: 0.0707s (min: 0.0690s, max: 0.0735s)
+    python-jq: 0.0789s (min: 0.0769s, max: 0.0816s)
+    python-ujson: 0.0592s (min: 0.0561s, max: 0.0627s)
+
+  Select name field on medium.json:
+    jq: 0.0529s (min: 0.0494s, max: 0.0559s)
+    jaq: 0.0387s (min: 0.0384s, max: 0.0391s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    dasel: 0.2406s (min: 0.2340s, max: 0.2484s)
+    yq: 0.4637s (min: 0.4439s, max: 0.4783s)
+    miller: 0.1670s (min: 0.1606s, max: 0.1725s)
+    gron: 0.6364s (min: 0.6233s, max: 0.6441s)
+    node-native: 0.1610s (min: 0.1535s, max: 0.1686s)
+    node-jsonpath: 0.1769s (min: 0.1718s, max: 0.1839s)
+    python-native: 0.1456s (min: 0.1380s, max: 0.1514s)
+    python-jq: 0.2098s (min: 0.2065s, max: 0.2133s)
+    python-ujson: 0.1445s (min: 0.1359s, max: 0.1505s)
+
+  Select name field on large.json:
+    jq: 0.4555s (min: 0.4373s, max: 0.4775s)
+    jaq: 0.2837s (min: 0.2791s, max: 0.2869s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    dasel: 2.1121s (min: 2.0396s, max: 2.2041s)
+    yq: 4.0844s (min: 4.0163s, max: 4.1605s)
+    miller: 1.2476s (min: 1.2335s, max: 1.2578s)
+    gron: 5.7713s (min: 5.6205s, max: 5.8731s)
+    node-native: 0.7036s (min: 0.6769s, max: 0.7239s)
+    node-jsonpath: 0.7803s (min: 0.7546s, max: 0.7956s)
+    python-native: 0.9151s (min: 0.8544s, max: 0.9508s)
+    python-jq: 1.5075s (min: 1.5009s, max: 1.5126s)
+    python-ujson: 0.8315s (min: 0.8174s, max: 0.8572s)
+
+  Select name field on nested.json:
+    jq: 0.2341s (min: 0.2262s, max: 0.2425s)
+    jaq: 0.1590s (min: 0.1561s, max: 0.1628s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    dasel: FAILED - Error: could not access map index: property not found: name
+
+    yq: 1.1112s (min: 1.0941s, max: 1.1207s)
+    miller: 0.8131s (min: 0.7982s, max: 0.8247s)
+    gron: 3.3741s (min: 3.3134s, max: 3.4287s)
+    node-native: 0.2605s (min: 0.2536s, max: 0.2713s)
+    node-jsonpath: 0.1876s (min: 0.1844s, max: 0.1894s)
+    python-native: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 13, in <module>
+    print(item['name'])
+          ~~~~^^^^^^^^
+KeyError: 'name'
+
+    python-jq: 0.5915s (min: 0.5824s, max: 0.6043s)
+    python-ujson: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 13, in <module>
+    print(item['name'])
+          ~~~~^^^^^^^^
+KeyError: 'name'
+
+
+=== Task 2: Filter by condition (select(.value > 500)) ===
+
+  Filter value > 500 on small.json:
+    jq: 0.0155s (min: 0.0147s, max: 0.0167s)
+    jaq: 0.0127s (min: 0.0123s, max: 0.0129s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: 0.0563s (min: 0.0536s, max: 0.0577s)
+    miller: 0.0407s (min: 0.0395s, max: 0.0419s)
+    node-native: 0.0704s (min: 0.0677s, max: 0.0720s)
+    python-native: 0.0711s (min: 0.0708s, max: 0.0714s)
+    python-jq: 0.0864s (min: 0.0862s, max: 0.0864s)
+    python-ujson: 0.0614s (min: 0.0588s, max: 0.0633s)
+
+  Filter value > 500 on medium.json:
+    jq: 0.0634s (min: 0.0611s, max: 0.0660s)
+    jaq: 0.0476s (min: 0.0460s, max: 0.0485s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: 0.4262s (min: 0.4075s, max: 0.4381s)
+    miller: 0.1580s (min: 0.1576s, max: 0.1587s)
+    node-native: 0.1318s (min: 0.1267s, max: 0.1382s)
+    python-native: 0.1169s (min: 0.1139s, max: 0.1212s)
+    python-jq: 0.2361s (min: 0.2339s, max: 0.2389s)
+    python-ujson: 0.1186s (min: 0.1144s, max: 0.1223s)
+
+  Filter value > 500 on large.json:
+    jq: 0.5491s (min: 0.5408s, max: 0.5578s)
+    jaq: 0.4184s (min: 0.4131s, max: 0.4239s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: 4.1495s (min: 4.0473s, max: 4.2176s)
+    miller: 1.3158s (min: 1.3032s, max: 1.3300s)
+    node-native: 0.5016s (min: 0.4855s, max: 0.5261s)
+    python-native: 0.7503s (min: 0.7432s, max: 0.7545s)
+    python-jq: 1.7364s (min: 1.6961s, max: 1.7880s)
+    python-ujson: 0.5652s (min: 0.5575s, max: 0.5724s)
+
+  Filter value > 500 on nested.json:
+    jq: 0.2440s (min: 0.2390s, max: 0.2481s)
+    jaq: 0.1675s (min: 0.1644s, max: 0.1690s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: 0.9429s (min: 0.9354s, max: 0.9554s)
+    miller: 0.8522s (min: 0.7902s, max: 0.9160s)
+    node-native: 0.1707s (min: 0.1664s, max: 0.1746s)
+    python-native: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 17, in <module>
+    if item['value'] > 500:
+       ~~~~^^^^^^^^^
+KeyError: 'value'
+
+    python-jq: 0.5321s (min: 0.5262s, max: 0.5385s)
+    python-ujson: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 17, in <module>
+    if item['value'] > 500:
+       ~~~~^^^^^^^^^
+KeyError: 'value'
+
+
+=== Task 3: Array mapping (map(.value * 2)) ===
+
+  Map values * 2 on small.json:
+    jq: 0.0159s (min: 0.0157s, max: 0.0160s)
+    jaq: 0.0133s (min: 0.0130s, max: 0.0136s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: 0.0432s (min: 0.0426s, max: 0.0443s)
+    miller: 0.0402s (min: 0.0380s, max: 0.0420s)
+    node-native: 0.0580s (min: 0.0567s, max: 0.0586s)
+    python-native: 0.0593s (min: 0.0561s, max: 0.0636s)
+    python-jq: 0.0741s (min: 0.0720s, max: 0.0754s)
+    python-ujson: 0.0540s (min: 0.0527s, max: 0.0551s)
+
+  Map values * 2 on medium.json:
+    jq: 0.0576s (min: 0.0522s, max: 0.0632s)
+    jaq: 0.0378s (min: 0.0369s, max: 0.0391s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: 0.2895s (min: 0.2713s, max: 0.3084s)
+    miller: 0.1588s (min: 0.1539s, max: 0.1652s)
+    node-native: 0.0777s (min: 0.0734s, max: 0.0805s)
+    python-native: 0.0798s (min: 0.0747s, max: 0.0858s)
+    python-jq: 0.1573s (min: 0.1524s, max: 0.1599s)
+    python-ujson: 0.0713s (min: 0.0697s, max: 0.0734s)
+
+  Map values * 2 on large.json:
+    jq: 0.5087s (min: 0.4988s, max: 0.5228s)
+    jaq: 0.3457s (min: 0.3351s, max: 0.3549s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: 2.5124s (min: 2.4916s, max: 2.5305s)
+    miller: 1.3743s (min: 1.3575s, max: 1.3915s)
+    node-native: 0.2177s (min: 0.2100s, max: 0.2236s)
+    python-native: 0.2538s (min: 0.2501s, max: 0.2566s)
+    python-jq: 0.9335s (min: 0.9242s, max: 0.9434s)
+    python-ujson: 0.2730s (min: 0.2683s, max: 0.2770s)
+
+  Map values * 2 on nested.json:
+    jq: FAILED - jq: error (at <stdin>:0): null (null) and number (2) cannot be multiplied
+
+    jaq: FAILED - Error: cannot calculate null * 2
+
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: FAILED - Error: cannot multiply !!null with !!int
+
+    miller: 0.8274s (min: 0.8150s, max: 0.8359s)
+    node-native: 0.1643s (min: 0.1621s, max: 0.1686s)
+    python-native: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 21, in <module>
+    mapped = [item['value'] * 2 for item in data]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 21, in <listcomp>
+    mapped = [item['value'] * 2 for item in data]
+              ~~~~^^^^^^^^^
+KeyError: 'value'
+
+    python-jq: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_jq.py", line 24, in <module>
+    result = program.input_text(input_text).first()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "jq.pyx", line 329, in jq._ProgramWithInput.first
+  File "jq.pyx", line 373, in jq._ResultIterator.__next__
+ValueError: null (null) and number (2) cannot be multiplied
+
+    python-ujson: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 21, in <module>
+    mapped = [item['value'] * 2 for item in data]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 21, in <listcomp>
+    mapped = [item['value'] * 2 for item in data]
+              ~~~~^^^^^^^^^
+KeyError: 'value'
+
+
+=== Task 4: Aggregation (sum of values) ===
+
+  Sum all values on small.json:
+    jq: 0.0159s (min: 0.0145s, max: 0.0167s)
+    jaq: 0.0127s (min: 0.0125s, max: 0.0128s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: FAILED - Error: 1:18: lexer: invalid input text "add"
+
+    miller: 0.0388s (min: 0.0375s, max: 0.0403s)
+    node-native: 0.0597s (min: 0.0584s, max: 0.0622s)
+    python-native: 0.0626s (min: 0.0616s, max: 0.0641s)
+    python-jq: 0.0792s (min: 0.0773s, max: 0.0807s)
+    python-ujson: 0.0538s (min: 0.0534s, max: 0.0541s)
+
+  Sum all values on medium.json:
+    jq: 0.0576s (min: 0.0555s, max: 0.0594s)
+    jaq: 0.0387s (min: 0.0380s, max: 0.0398s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: FAILED - Error: 1:18: lexer: invalid input text "add"
+
+    miller: 0.1445s (min: 0.1390s, max: 0.1504s)
+    node-native: 0.0741s (min: 0.0730s, max: 0.0754s)
+    python-native: 0.0779s (min: 0.0761s, max: 0.0799s)
+    python-jq: 0.1630s (min: 0.1581s, max: 0.1682s)
+    python-ujson: 0.0734s (min: 0.0694s, max: 0.0761s)
+
+  Sum all values on large.json:
+    jq: 0.4989s (min: 0.4929s, max: 0.5097s)
+    jaq: 0.3593s (min: 0.3509s, max: 0.3759s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: FAILED - Error: 1:18: lexer: invalid input text "add"
+
+    miller: 1.3418s (min: 1.2600s, max: 1.4508s)
+    node-native: 0.2070s (min: 0.1989s, max: 0.2119s)
+    python-native: 0.2429s (min: 0.2414s, max: 0.2453s)
+    python-jq: 1.0336s (min: 1.0293s, max: 1.0417s)
+    python-ujson: 0.2682s (min: 0.2646s, max: 0.2712s)
+
+  Sum all values on nested.json:
+    jq: 0.3054s (min: 0.2960s, max: 0.3154s)
+    jaq: 0.1754s (min: 0.1728s, max: 0.1790s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: FAILED - Error: 1:18: lexer: invalid input text "add"
+
+    miller: 0.8086s (min: 0.7890s, max: 0.8223s)
+    node-native: 0.1576s (min: 0.1557s, max: 0.1588s)
+    python-native: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 25, in <module>
+    total = sum(item['value'] for item in data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_native.py", line 25, in <genexpr>
+    total = sum(item['value'] for item in data)
+                ~~~~^^^^^^^^^
+KeyError: 'value'
+
+    python-jq: 0.5271s (min: 0.5145s, max: 0.5496s)
+    python-ujson: FAILED - Traceback (most recent call last):
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 25, in <module>
+    total = sum(item['value'] for item in data)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/research/json-tools-benchmark/benchmarks/python_ujson.py", line 25, in <genexpr>
+    total = sum(item['value'] for item in data)
+                ~~~~^^^^^^^^^
+KeyError: 'value'
+
+
+=== Task 5: Deep nested access ===
+
+  Deep nested access on nested.json:
+    jq: 0.2552s (min: 0.2510s, max: 0.2579s)
+    jaq: 0.1580s (min: 0.1564s, max: 0.1596s)
+    fx: FAILED - /bin/sh: 1: Syntax error: "(" unexpected
+
+    yq: FAILED - Error: 1:35: lexer: invalid input text "empty"
+
+    dasel: 0.8873s (min: 0.8684s, max: 0.9130s)
+    node-native: 0.2402s (min: 0.2344s, max: 0.2449s)
+    python-native: 0.2665s (min: 0.2570s, max: 0.2777s)
+    python-jq: 0.6203s (min: 0.5967s, max: 0.6383s)
+    python-ujson: 0.3096s (min: 0.2971s, max: 0.3203s)
+
+
+Benchmark complete! Results saved to results/benchmark_results.json

@@ -1,0 +1,33 @@
+============================================================
+STREAMING OUTPUT TEST
+============================================================
+
+Using dataset: data/large.json (10.5 MB)
+
+Testing jq:
+  ✓ Streaming: YES
+  Time to first output: 0.3446s
+  Time for 10 lines: 0.3529s
+
+Testing node-native:
+  ✓ Streaming: YES
+  Time to first output: 0.1592s
+  Time for 10 lines: 0.1689s
+
+Testing python-native:
+  ✓ Streaming: YES
+  Time to first output: 0.1951s
+  Time for 10 lines: 0.1989s
+
+Testing python-jq:
+  ✓ Streaming: YES
+  Time to first output: 0.6648s
+  Time for 10 lines: 0.6728s
+
+============================================================
+STREAMING SUMMARY
+============================================================
+jq                  : ✓ Supports streaming
+node-native         : ✓ Supports streaming
+python-native       : ✓ Supports streaming
+python-jq           : ✓ Supports streaming
