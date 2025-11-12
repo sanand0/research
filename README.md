@@ -1,5 +1,6 @@
 # Research
 
+- 12 Nov 2025: [`custom-system-prompt`](custom-system-prompt/). Use output styles to replace Claude Code's system prompt for non-coding tasks—`--system-prompt` only works in print mode, while output styles enable full customization in interactive sessions.
 - 10 Nov 2025: [`codex-fastapi-streaming`](codex-fastapi-streaming/). FastAPI + SSE wrapper lets you stream Codex CLI in a browser.
   - 11 Nov 2025: [`codex-fastapi-streaming-token`](codex-fastapi-streaming-token/). Run Codex CLI on the browser with token-by-token streaming. Not sure if Codex actually sends tokens one-by-one, so [`codex-fastapi-streaming`](codex-fastapi-streaming/) may be better.
 - 10 Nov 2025: [`pyodide-pandas-breakeven`](pyodide-pandas-breakeven/). Use native JS instead of Pyodide + Pandas—the 30s load penalty means the browser never reaches a performance break-even.
