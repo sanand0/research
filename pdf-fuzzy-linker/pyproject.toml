@@ -1,0 +1,11 @@
+[project]
+name = "pdf-fuzzy-linker"
+version = "0.0.1"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn>=0.30.0",
+  "python-multipart>=0.0.9"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

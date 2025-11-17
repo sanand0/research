@@ -1,0 +1,8 @@
+{
+  "name": "pdf-fuzzy-linker",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/search.spec.js",
+    "lint": "ruff check --line-length 100 main.py"
+  }
+}
