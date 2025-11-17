@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Viewer - Fuzzy Search</title>
+  <!-- PDF.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <!-- Fuse.js for fuzzy searching -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/7.0.0/fuse.min.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      background: #525659;
+    }
+    .toolbar {
+      background: #323639;
+      padding: 0.75rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      color: white;
+      flex-shrink: 0;
+    }
+    .search-box {
+      flex: 1;
+      max-width: 600px;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+    .filename {
+      font-weight: bold;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 200px;
+    }
+    .match-count {
+      background: #4a4d50;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+    .home-link {
+      color: #7eb8ff;
+      text-decoration: none;
+    }
+    .home-link:hover {
+      text-decoration: underline;
+    }
+    .main-content {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+    .sidebar {
+      width: 300px;
+      background: #f0f0f0;
+      overflow-y: auto;
+      padding: 1rem;
+      flex-shrink: 0;
+    }
+    .sidebar h3 {
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    .match-list {
+      list-style: none;
+    }
+    .match-item {
+      background: white;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+    .match-item:hover {
+      background: #e8f4ff;
+    }
+    .match-item.active {
+      border-color: #007bff;
+      background: #fff3cd;
+    }
+    .match-item .page-num {
+      color: #666;
+      font-size: 0.75rem;
+      margin-top: 0.25rem;
+    }
+    .pdf-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+    .page-wrapper {
+      position: relative;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .page-canvas {
+      display: block;
+    }
+    .text-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      opacity: 0.2;
+      line-height: 1.0;
+    }
+    .text-layer span {
+      color: transparent;
+      position: absolute;
+      white-space: pre;
+      transform-origin: 0% 0%;
+    }
+    .highlight {
+      background: yellow !important;
+      opacity: 0.4;
+    }
+    .highlight.active {
+      background: orange !important;
+      opacity: 0.6;
+    }
+    .loading {
+      color: white;
+      font-size: 1.2rem;
+      padding: 2rem;
+    }
+    .no-matches {
+      color: #666;
+      font-style: italic;
+      padding: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <a href="/" class="home-link">Home</a>
+    <span class="filename" id="filename">Loading...</span>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search text (fuzzy matching)..." autofocus>
+    </div>
+    <span class="match-count" id="matchCount">0 matches</span>
+  </div>
+
+  <div class="main-content">
+    <div class="sidebar">
+      <h3>Matches</h3>
+      <ul class="match-list" id="matchList">
+        <li class="no-matches">Type to search...</li>
+      </ul>
+    </div>
+    <div class="pdf-container" id="pdfContainer">
+      <div class="loading">Loading PDF...</div>
+    </div>
+  </div>
+
+  <script>
+    // Configure PDF.js worker
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    // State
+    let pdfDoc = null;
+    let pdfText = '';
+    let textItems = [];
+    let fuse = null;
+    let currentMatches = [];
+    let activeMatchIndex = 0;
+    let pageTextLayers = new Map();
+
+    // Get PDF ID from URL
+    const pdfId = window.location.pathname.split('/').pop();
+
+    // Initialize
+    async function init() {
+      try {
+        // Load PDF metadata and text
+        const metaResponse = await fetch(`/api/pdf/${pdfId}`);
+        if (!metaResponse.ok) throw new Error('PDF not found');
+        const metadata = await metaResponse.json();
+
+        document.getElementById('filename').textContent = metadata.filename;
+        pdfText = metadata.text;
+
+        // Prepare text for fuzzy search - split into sentences/chunks
+        prepareSearchIndex(pdfText);
+
+        // Load PDF for rendering
+        const pdfResponse = await fetch(`/api/pdf/${pdfId}/file`);
+        const pdfData = await pdfResponse.arrayBuffer();
+        pdfDoc = await pdfjsLib.getDocument({ data: pdfData }).promise;
+
+        // Render all pages
+        await renderAllPages();
+
+        // Check for search query in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const query = urlParams.get('q');
+        if (query) {
+          document.getElementById('searchInput').value = query;
+          performSearch(query);
+        }
+      } catch (error) {
+        console.error('Init error:', error);
+        document.getElementById('pdfContainer').innerHTML =
+          `<div class="loading">Error loading PDF: ${error.message}</div>`;
+      }
+    }
+
+    function prepareSearchIndex(text) {
+      // Split text into searchable chunks (sentences or line breaks)
+      const chunks = text.split(/(?<=[.!?])\s+|\n+/).filter(s => s.trim().length > 0);
+
+      textItems = chunks.map((chunk, index) => ({
+        id: index,
+        text: chunk.trim(),
+        // Store position info for highlighting
+        original: chunk.trim()
+      }));
+
+      // Initialize Fuse.js
+      fuse = new Fuse(textItems, {
+        keys: ['text'],
+        threshold: 0.4, // Allow fuzzy matching
+        distance: 100,
+        includeScore: true,
+        includeMatches: true,
+        minMatchCharLength: 3,
+        ignoreLocation: true
+      });
+    }
+
+    async function renderAllPages() {
+      const container = document.getElementById('pdfContainer');
+      container.innerHTML = '';
+
+      for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+        const page = await pdfDoc.getPage(pageNum);
+        const scale = 1.5;
+        const viewport = page.getViewport({ scale });
+
+        // Create page wrapper
+        const wrapper = document.createElement('div');
+        wrapper.className = 'page-wrapper';
+        wrapper.id = `page-${pageNum}`;
+        wrapper.style.width = `${viewport.width}px`;
+        wrapper.style.height = `${viewport.height}px`;
+
+        // Create canvas for rendering
+        const canvas = document.createElement('canvas');
+        canvas.className = 'page-canvas';
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        // Render page
+        const context = canvas.getContext('2d');
+        await page.render({ canvasContext: context, viewport }).promise;
+
+        // Create text layer for highlighting
+        const textLayer = document.createElement('div');
+        textLayer.className = 'text-layer';
+
+        // Get text content
+        const textContent = await page.getTextContent();
+
+        // Store text items with positions for this page
+        const pageTextItems = [];
+
+        textContent.items.forEach(item => {
+          const tx = pdfjsLib.Util.transform(viewport.transform, item.transform);
+          const span = document.createElement('span');
+          span.textContent = item.str;
+          span.style.left = `${tx[4]}px`;
+          span.style.top = `${tx[5] - item.height}px`;
+          span.style.fontSize = `${item.height}px`;
+          span.dataset.text = item.str;
+          textLayer.appendChild(span);
+
+          pageTextItems.push({
+            element: span,
+            text: item.str,
+            pageNum: pageNum
+          });
+        });
+
+        pageTextLayers.set(pageNum, pageTextItems);
+
+        wrapper.appendChild(canvas);
+        wrapper.appendChild(textLayer);
+        container.appendChild(wrapper);
+      }
+    }
+
+    function performSearch(query) {
+      if (!fuse || !query.trim()) {
+        clearHighlights();
+        updateMatchList([]);
+        updateURL('');
+        return;
+      }
+
+      // Perform fuzzy search
+      const results = fuse.search(query);
+      currentMatches = results.slice(0, 50); // Limit to top 50 matches
+      activeMatchIndex = 0;
+
+      // Update UI
+      updateMatchList(currentMatches);
+      highlightMatches(currentMatches, query);
+      updateURL(query);
+
+      if (currentMatches.length > 0) {
+        scrollToMatch(0);
+      }
+    }
+
+    function updateMatchList(matches) {
+      const list = document.getElementById('matchList');
+      const countEl = document.getElementById('matchCount');
+
+      countEl.textContent = `${matches.length} match${matches.length !== 1 ? 'es' : ''}`;
+
+      if (matches.length === 0) {
+        list.innerHTML = '<li class="no-matches">No matches found</li>';
+        return;
+      }
+
+      list.innerHTML = matches.map((match, index) => {
+        const text = match.item.text;
+        const preview = text.length > 100 ? text.substring(0, 100) + '...' : text;
+        const score = Math.round((1 - match.score) * 100);
+        return `
+          <li class="match-item ${index === 0 ? 'active' : ''}"
+              data-index="${index}"
+              onclick="selectMatch(${index})">
+            <div>${escapeHtml(preview)}</div>
+            <div class="page-num">Score: ${score}%</div>
+          </li>
+        `;
+      }).join('');
+    }
+
+    function highlightMatches(matches, query) {
+      clearHighlights();
+
+      if (matches.length === 0) return;
+
+      const queryWords = query.toLowerCase().split(/\s+/);
+
+      // For each page's text layer, find and highlight matching text
+      pageTextLayers.forEach((pageItems, pageNum) => {
+        pageItems.forEach(item => {
+          const text = item.text.toLowerCase();
+
+          // Check if any of our matches contain words from this text span
+          const shouldHighlight = matches.some(match => {
+            const matchText = match.item.text.toLowerCase();
+            return queryWords.some(word =>
+              text.includes(word) && matchText.includes(word)
+            );
+          });
+
+          if (shouldHighlight) {
+            item.element.classList.add('highlight');
+            item.element.dataset.matchIndex = '0'; // Will update for active
+          }
+        });
+      });
+    }
+
+    function clearHighlights() {
+      document.querySelectorAll('.highlight').forEach(el => {
+        el.classList.remove('highlight', 'active');
+        delete el.dataset.matchIndex;
+      });
+    }
+
+    function selectMatch(index) {
+      // Update active state in list
+      document.querySelectorAll('.match-item').forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+
+      activeMatchIndex = index;
+      scrollToMatch(index);
+    }
+
+    function scrollToMatch(index) {
+      if (index >= currentMatches.length) return;
+
+      const match = currentMatches[index];
+      const matchText = match.item.text.toLowerCase();
+      const queryWords = document.getElementById('searchInput').value.toLowerCase().split(/\s+/);
+
+      // Find highlighted elements that match this specific result
+      let targetElement = null;
+      let targetPage = null;
+
+      pageTextLayers.forEach((pageItems, pageNum) => {
+        if (targetElement) return;
+
+        pageItems.forEach(item => {
+          if (targetElement) return;
+          const text = item.text.toLowerCase();
+
+          if (queryWords.some(word => text.includes(word) && matchText.includes(word))) {
+            if (item.element.classList.contains('highlight')) {
+              targetElement = item.element;
+              targetPage = pageNum;
+            }
+          }
+        });
+      });
+
+      // Update active highlight
+      document.querySelectorAll('.highlight.active').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      if (targetElement) {
+        targetElement.classList.add('active');
+
+        // Scroll to the page
+        const pageWrapper = document.getElementById(`page-${targetPage}`);
+        if (pageWrapper) {
+          pageWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
+    }
+
+    function updateURL(query) {
+      const url = new URL(window.location);
+      if (query) {
+        url.searchParams.set('q', query);
+      } else {
+        url.searchParams.delete('q');
+      }
+      window.history.replaceState({}, '', url);
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // Debounced search
+    let searchTimeout;
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(e.target.value);
+      }, 300);
+    });
+
+    // Initialize on load
+    init();
+  </script>
+</body>
+</html>
