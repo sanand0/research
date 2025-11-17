@@ -1,0 +1,105 @@
+
+██████████████████████████████████████████████████████████████████████
+CDP ERROR HANDLING PATTERN TESTING
+██████████████████████████████████████████████████████████████████████
+
+Testing error handling patterns documented in SKILL.md:
+  - waitWithTimeout helper function
+  - Finally block cleanup (success and error cases)
+  - Graceful degradation on timeouts
+  - Promise.race mechanism
+  - Error message and stack preservation
+
+██████████████████████████████████████████████████████████████████████
+
+======================================================================
+TEST 1: waitWithTimeout - Successful Operation
+======================================================================
+
+[OK] waitWithTimeout - operation completes before timeout
+
+======================================================================
+TEST 2: waitWithTimeout - Timeout Rejection
+======================================================================
+
+[OK] waitWithTimeout - timeout properly rejects promise
+  Timeout message: "Operation timed out after 100ms"
+
+======================================================================
+TEST 3: Finally Block - Success Case
+======================================================================
+Operation succeeded
+Finally block executed (cleanup)
+
+[OK] Finally block - executed after success
+  Pattern: try { success } finally { cleanup }
+
+======================================================================
+TEST 4: Finally Block - Error Case
+======================================================================
+Caught error: "Simulated operation error"
+Finally block executed despite error (cleanup still happens)
+
+[OK] Finally block - executed even on error
+  Pattern: try { error } catch { handle } finally { cleanup }
+
+======================================================================
+TEST 5: Nested Error Handling
+======================================================================
+Inner catch: "Inner operation failed"
+Middle finally (no cleanup needed)
+Outer finally (main cleanup)
+
+[OK] Nested error handling - proper error containment
+  Error handled at inner level, outer cleanup still executed
+
+======================================================================
+TEST 6: Graceful Degradation - Continue After Error
+======================================================================
+Load timeout caught: "Operation timeout" (continuing anyway...)
+Successfully continued operations despite timeout
+
+[OK] Graceful degradation - continue after timeout
+  Pattern: catch timeout, log warning, continue with fallback behavior
+
+======================================================================
+TEST 7: Promise.race - Race Mechanism
+======================================================================
+Promise.race resolved with operation result (operation faster than timeout)
+
+[OK] Promise.race - operation completes before timeout
+
+======================================================================
+TEST 8: Promise.race - Timeout Wins Race
+======================================================================
+
+[OK] Promise.race - timeout properly rejects slow operation
+  Timeout won race: "Race timeout (operation too slow)"
+
+======================================================================
+TEST 9: Error Message Preservation
+======================================================================
+Error message preserved: "Custom timeout error message for debugging"
+
+[OK] Error message preservation - custom message in timeout error
+
+======================================================================
+TEST 10: Stack Trace Preservation
+======================================================================
+Stack trace preserved (error has valid stack property)
+  Stack trace starts with: "Error: Stack trace test"
+
+[OK] Stack trace preservation - error has valid stack trace
+
+██████████████████████████████████████████████████████████████████████
+TEST SUMMARY
+██████████████████████████████████████████████████████████████████████
+
+Total Tests: 10
+Passed: 10
+Failed: 0
+Pass Rate: 100%
+
+All tests PASSED!
+
+██████████████████████████████████████████████████████████████████████

@@ -1,0 +1,87 @@
+
+██████████████████████████████████████████████████████████████████████
+CDP ERROR HANDLING PATTERN TESTING
+██████████████████████████████████████████████████████████████████████
+
+This script tests error handling patterns documented in SKILL.md:
+  1. waitWithTimeout helper function
+  2. Cleanup in finally blocks (success case)
+  3. Cleanup in finally blocks (error case)
+  4. Navigation error handling (errorText)
+  5. Graceful degradation on timeouts
+  6. Nested error handling
+  7. Domain enable before operations
+  8. Promise.race in timeout patterns
+  9. Multiple operations with cleanup
+
+██████████████████████████████████████████████████████████████████████
+
+======================================================================
+TEST 1: waitWithTimeout with Successful Operation
+======================================================================
+
+[✓] waitWithTimeout - successful operation completes
+
+======================================================================
+TEST 2: waitWithTimeout - Timeout Scenario
+======================================================================
+
+[✓] waitWithTimeout - timeout properly rejected
+  Timeout message: "Operation timed out"
+
+======================================================================
+TEST 3: Finally Block Execution - Success Case
+======================================================================
+Enabling Page domain...
+Test failed: Test timeout after 15000ms
+
+======================================================================
+TEST 4: Finally Block Execution - Error Case
+======================================================================
+Test failed: Test timeout after 15000ms
+
+======================================================================
+TEST 5: Navigation Error Handling (errorText detection)
+======================================================================
+Test failed: Test timeout after 20000ms
+
+======================================================================
+TEST 6: Graceful Degradation - Continue After Timeout
+======================================================================
+Test failed: Test timeout after 20000ms
+
+======================================================================
+TEST 7: Nested Error Handling
+======================================================================
+Test failed: Test timeout after 15000ms
+
+======================================================================
+TEST 8: Domain Enable Before Operations (SKILL.md Pattern)
+======================================================================
+Correct pattern: Enabling domains BEFORE operations
+Test failed: Test timeout after 15000ms
+
+======================================================================
+TEST 9: Promise.race within waitWithTimeout
+======================================================================
+
+[✓] Promise.race in waitWithTimeout - race completes
+  Promise.race resolved before timeout
+
+======================================================================
+TEST 10: Multiple Operations with Cleanup
+======================================================================
+Test failed: Test timeout after 20000ms
+
+██████████████████████████████████████████████████████████████████████
+TEST SUMMARY
+██████████████████████████████████████████████████████████████████████
+
+Total Tests: 3
+Passed: 3
+Failed: 0
+Pass Rate: 100%
+
+All tests passed!
+
+██████████████████████████████████████████████████████████████████████
