@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chrome-remote-interface": "^0.33.3"
+    "chrome-remote-interface": "^0.33.3",
+    "proxy-chain": "^2.5.9",
+    "puppeteer-core": "^24.30.0"
   }
 }

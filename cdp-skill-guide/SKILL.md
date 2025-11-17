@@ -72,6 +72,52 @@ async function main() {
 main();
 ```
 
+### 5. Authenticated Proxy Configuration (Critical for Enterprise)
+
+Chrome's `--proxy-server` flag **does not support** authentication credentials. You must use a proxy helper:
+
+```bash
+npm install puppeteer-core proxy-chain
+```
+
+```javascript
+const puppeteer = require('puppeteer-core');
+const proxyChain = require('proxy-chain');
+
+async function launchWithAuthProxy() {
+  // Convert authenticated proxy to anonymous local proxy
+  const authProxy = process.env.HTTPS_PROXY; // e.g., http://user:pass@proxy:port
+  const anonymizedProxy = await proxyChain.anonymizeProxy(authProxy);
+
+  const browser = await puppeteer.launch({
+    executablePath: '/usr/bin/google-chrome-stable',
+    headless: true,
+    args: [
+      '--no-sandbox',
+      '--disable-dev-shm-usage',
+      '--disable-gpu',
+      '--ignore-certificate-errors',  // For SSL-inspecting proxies
+      `--proxy-server=${anonymizedProxy}`
+    ]
+  });
+
+  // Clean up when done
+  await browser.close();
+  await proxyChain.closeAnonymizedProxy(anonymizedProxy, true);
+}
+```
+
+**Why this works:**
+- `proxy-chain` creates a local unauthenticated proxy (e.g., `http://127.0.0.1:xxxxx`)
+- This local proxy handles authentication with the real proxy
+- Chrome connects to the local proxy without auth issues
+- `--ignore-certificate-errors` is needed if your proxy does SSL inspection (MITM)
+
+**Common proxy errors and their meanings:**
+- `ERR_TUNNEL_CONNECTION_FAILED`: Proxy rejected connection (auth missing/invalid)
+- `ERR_NO_SUPPORTED_PROXIES`: Proxy URL format invalid (auth in URL not supported)
+- `ERR_CERT_AUTHORITY_INVALID`: Proxy doing SSL inspection (add `--ignore-certificate-errors`)
+
 ---
 
 ## Core Concepts
@@ -672,6 +718,84 @@ await browser.close();
 3. **Use isolated profiles** - `--user-data-dir` prevents data leakage
 4. **Monitor resource usage** - Headless Chrome can consume significant memory
 5. **Validate downloaded content** - Check file types and sizes before saving
+
+---
+
+## Real-World Examples (Tested)
+
+### Extract Data from News Sites
+
+```javascript
+// Extract headlines from HackerNews
+await page.goto('https://news.ycombinator.com', { waitUntil: 'networkidle0' });
+const headlines = await page.evaluate(() => {
+  return Array.from(document.querySelectorAll('.titleline > a'))
+    .slice(0, 5)
+    .map(el => ({ title: el.textContent, url: el.href }));
+});
+// Result: [{title: "...", url: "..."}, ...]
+```
+
+### Fetch JSON API Data
+
+```javascript
+await page.goto('https://jsonplaceholder.typicode.com/posts/1', {
+  waitUntil: 'networkidle0'
+});
+const data = await page.evaluate(() => JSON.parse(document.body.innerText));
+// Returns: {userId: 1, id: 1, title: "...", body: "..."}
+```
+
+### Page Performance Metrics
+
+```javascript
+await page.goto('https://example.com', { waitUntil: 'networkidle0' });
+const metrics = await page.evaluate(() => ({
+  loadTime: performance.timing.loadEventEnd - performance.timing.navigationStart,
+  domElements: document.getElementsByTagName('*').length,
+  links: document.querySelectorAll('a').length,
+  textLength: document.body.innerText.length,
+  title: document.title
+}));
+// Returns: {loadTime: 234, domElements: 15, links: 1, textLength: 174, title: "Example Domain"}
+```
+
+### Request Interception (Block Resources)
+
+```javascript
+await page.setRequestInterception(true);
+page.on('request', req => {
+  // Block images to speed up loading
+  if (req.resourceType() === 'image') {
+    req.abort();
+  } else {
+    req.continue();
+  }
+});
+
+await page.goto('https://example.com', { waitUntil: 'networkidle0' });
+// Images won't load, page loads faster
+```
+
+### Cookie Management
+
+```javascript
+// Set cookies
+await page.goto('https://httpbin.org/cookies/set/session_id/abc123');
+const cookies = await page.cookies();
+// cookies: [{name: "session_id", value: "abc123", ...}]
+
+// Clear specific cookie
+await page.deleteCookie({ name: 'session_id' });
+```
+
+### Important Real-World Learnings
+
+1. **Complex SPA pages may timeout** - DuckDuckGo search needs 60s+ timeouts
+2. **Screenshots timeout in containers** - Shared memory limits cause hangs
+3. **Static sites work best** - HackerNews, example.com, API endpoints are reliable
+4. **Always handle interception state** - Disable before next goto if not needed
+5. **JSON APIs are ideal** - Direct data extraction without HTML parsing
 
 ---
 

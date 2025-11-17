@@ -60,9 +60,19 @@ Multiple test scripts verifying CDP patterns:
 ### Network Challenges
 
 In containerized/proxy environments:
-- `ERR_TUNNEL_CONNECTION_FAILED`: Proxy configuration required
-- `ERR_NAME_NOT_RESOLVED`: DNS requires proxy
-- Solution: Use `--proxy-server="$HTTPS_PROXY"` flag
+- `ERR_TUNNEL_CONNECTION_FAILED`: Proxy authentication required
+- `ERR_NO_SUPPORTED_PROXIES`: Chrome doesn't support auth in proxy URL
+- `ERR_CERT_AUTHORITY_INVALID`: Proxy doing SSL inspection
+
+**Critical Discovery**: Chrome's `--proxy-server` flag does NOT support credentials in URL!
+
+**Working solution:**
+```javascript
+// Use proxy-chain to create local unauthenticated proxy
+const anonymizedProxy = await proxyChain.anonymizeProxy(process.env.HTTPS_PROXY);
+// Use --proxy-server=${anonymizedProxy} (e.g., http://127.0.0.1:xxxxx)
+// Add --ignore-certificate-errors for SSL-inspecting proxies
+```
 
 ### Non-Fatal Errors (Safe to Ignore)
 
@@ -82,6 +92,15 @@ These stderr messages don't affect CDP functionality:
 | DOM Operations | PASSED | 100% |
 | Form Filling | PASSED | 100% |
 | Button Clicking | PASSED | 100% |
+| HackerNews Scraping | PASSED | 5 headlines extracted |
+| JSON API Fetching | PASSED | Structured data retrieved |
+| Cookie Management | PASSED | Set/read cookies |
+| Request Interception | PASSED | Block resources by type |
+
+**Real-world challenges discovered:**
+- DuckDuckGo Search: Timeout (complex SPA needs 60s+ timeouts)
+- Screenshots in containers: Shared memory issues cause hangs
+- Request Interception: State management critical (disable when not needed)
 
 *After fixing falsy value bug in SKILL.md
 
