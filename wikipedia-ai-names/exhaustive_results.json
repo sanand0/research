@@ -1,0 +1,23 @@
+{
+  "count": 12,
+  "names": [
+    "Ai Nagai",
+    "Air Dubai",
+    "Aiguo Dai",
+    "Ai (poet)",
+    "Aisea Nawai",
+    "Ai (singer)",
+    "Aisha Chughtai",
+    "Aiyappan Pillai",
+    "Ai (chimpanzee)",
+    "Aizawa Seishisai",
+    "Ainmuire mac S\u00e9tnai",
+    "Aisha Yousef al-Mannai"
+  ],
+  "methodology": "Exhaustive Wikipedia API search using pagination through ALL pages starting with 'Ai'",
+  "statistics": {
+    "total_pages_checked": 24086,
+    "pages_matching_pattern": 167,
+    "person_pages_found": 12
+  }
+}
