@@ -1,0 +1,28 @@
+{
+  "count": 11,
+  "names": [
+    "Ai Nagai",
+    "Aiguo Dai",
+    "Ai (poet)",
+    "Aisea Nawai",
+    "Ai (singer)",
+    "Aisha Chughtai",
+    "Aiyappan Pillai",
+    "Aizawa Seishisai",
+    "Ainmuire mac S\u00e9tnai",
+    "Aisha Yousef al-Mannai",
+    "Aishwarya Rai Bachchan"
+  ],
+  "excluded": [
+    {
+      "name": "Air Dubai",
+      "reason": "Band/group, not individual person"
+    },
+    {
+      "name": "Ai (chimpanzee)",
+      "reason": "Animal, not person"
+    }
+  ],
+  "methodology": "Exhaustive Wikipedia API search (24,086 pages checked) + manual verification",
+  "scope": "English Wikipedia pages with titles starting with 'Ai'"
+}

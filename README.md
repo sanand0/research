@@ -9,4 +9,4 @@
 - 11 Nov 2025: [`dom-markdown-extractor-eval`](dom-markdown-extractor-eval/). Use `node-html-markdown` for HTML to Markdown. Has 97% accuracy. `markdownify` is a readability-focused backup, and turndown still can't handle tables.
 - 11 Nov 2025: [`readability-extractors-evaluation`](readability-extractors-evaluation/). Mozilla Readability + Turndown yields the cleanest article content with stable heading IDs—trafilatura is faster but loses IDs, while html2text/markdownify include too much chrome.
 - 17 Nov 2025: [`fuzzy-pdf-search`](fuzzy-pdf-search/). PDF.js + Fuse.js web app enables fuzzy text search in PDFs with shareable bookmark URLs—typos like "fuzzi matcing" still find "fuzzy matching".
-- 18 Nov 2025: [`wikipedia-ai-names`](wikipedia-ai-names/). Found 4 people in Wikipedia whose names begin and end with "AI": shortest is Ai Ai (5 chars), longest is Aishwarya Rai (13 chars).
+- 18 Nov 2025: [`wikipedia-ai-names`](wikipedia-ai-names/). Exhaustive search of 24,086 Wikipedia pages found 11 people whose names begin and end with "AI": shortest is Ai Nagai (8 chars), longest are Aisha Yousef al-Mannai and Aishwarya Rai Bachchan (22 chars each).
