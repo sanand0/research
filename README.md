@@ -11,3 +11,4 @@
 - 17 Nov 2025: [`fuzzy-pdf-search`](fuzzy-pdf-search/). PDF.js + Fuse.js web app enables fuzzy text search in PDFs with shareable bookmark URLs—typos like "fuzzi matcing" still find "fuzzy matching".
 - 18 Nov 2025: [`wikipedia-ai-names`](wikipedia-ai-names/). Exhaustive search of 24,086 Wikipedia pages found 11 people whose names begin and end with "AI": shortest is Ai Nagai (8 chars), longest are Aisha Yousef al-Mannai and Aishwarya Rai Bachchan (22 chars each).
 - 19 Nov 2025: [`word-file-splitter-gui`](word-file-splitter-gui/). Cross-platform Python GUI app splits Word docs by delimiter and batch renames files with numeric/alphabetic/roman suffixes—44 tests pass, builds to standalone exe.
+- 19 Nov 2025: [`india-data-professionals`](india-data-professionals/). GitHub API yields 790 data scientists/engineers in India (42% Bangalore-based) with best ROI—expandable to 15K-100K via additional keywords/locations/sources like Kaggle.
