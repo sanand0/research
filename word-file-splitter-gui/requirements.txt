@@ -1,0 +1,14 @@
+# Word File Splitter & Renamer GUI - Dependencies
+
+# Core dependencies
+python-docx>=0.8.11
+
+# GUI (built-in with Python, no need to install)
+# tkinter - included with Python standard library
+
+# For creating executables
+pyinstaller>=5.0.0
+
+# Testing dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
