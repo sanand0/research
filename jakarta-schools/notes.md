@@ -117,3 +117,56 @@ Created `schools.csv` with 102 entries containing:
 - Most entries include general school contact (admissions office, school office)
 - All schools verified to have active websites
 - Contact information sourced from official school websites and aggregator sites
+
+---
+
+## Self-Critique and Revision (v2)
+
+### Issues Identified in v1:
+
+1. **Decision-Maker Data Quality**
+   - Most entries labeled "Admissions Office" or "School Office" - these are NOT decision-makers
+   - The objective was "Head of English, Curriculum Director, Principal" - v1 only had ~15 actual names
+   - Labeling generic contacts as "Persona Name" was misleading
+
+2. **Geographic Scope Creep**
+   - Included BSD, Tangerang, Bekasi schools without clarifying they're outside DKI Jakarta
+   - Some schools like Sekolah Madania are in Bogor, not Jakarta
+
+3. **Source Currency Concerns**
+   - Some aggregator data may be outdated
+   - Leadership info from search results not always verified as current
+
+4. **Coverage Gaps**
+   - Over-indexed on international/SPK schools
+   - Under-represented Indonesian national curriculum private schools
+   - Many prominent local private schools (Bakti Mulya, Al-Ikhlas, etc.) missing
+
+5. **Duplicate Inflation**
+   - Same school appeared multiple times for different campuses/personnel
+   - Inflated the "102 schools" count
+
+### Revisions Made in v2:
+
+1. **Added Region column** - Clarifies if school is in Jakarta proper (Jakarta Selatan, Utara, Barat, Timur, Pusat) or Greater Jakarta (Tangerang, Bekasi, Bogor)
+
+2. **Fixed Persona field** - Left blank when no actual decision-maker name known, rather than misleading "Admissions Office"
+
+3. **Added more national curriculum schools:**
+   - SD Islam Al-Ikhlas (with principal name: Syifa Faridah)
+   - Sekolah Bakti Mulya 400 (with principal: Eliyani Umas Triyana)
+   - Global Islamic School
+   - Ananda Islamic School
+   - SD Kupu-Kupu
+   - Sekolah Al-Izhar
+   - Multiple Catholic high schools (Gonzaga, Fons Vitae, Pangudi Luhur, etc.)
+
+4. **Consolidated duplicate entries** - Merged multi-campus entries where appropriate
+
+### Known Limitations (Honest Assessment):
+
+- **Named decision-makers**: Only ~20 schools (~20%) have actual named contacts
+- **Currency**: Data current as of November 2025 but school leadership changes frequently
+- **Completeness**: This is not an exhaustive list of all 75+ private SMA in Jakarta Selatan alone
+- **Website verification**: Not all website URLs verified as currently active
+- **Contact accuracy**: Phone numbers and emails not tested for validity
