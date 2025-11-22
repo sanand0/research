@@ -1,0 +1,3517 @@
+{
+  "summary": {
+    "total_words_analyzed": 370105,
+    "qualifying_words": 333,
+    "criteria": "min_length=4, min_percentage>50%"
+  },
+  "by_percentage": [
+    {
+      "word": "mmmm",
+      "dominant_letter": "m",
+      "count": 4,
+      "total": 4,
+      "percentage": 100.0,
+      "adjusted_score": 1.92
+    },
+    {
+      "word": "oooo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 4,
+      "percentage": 100.0,
+      "adjusted_score": 1.92
+    },
+    {
+      "word": "bibb",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "brrr",
+      "dominant_letter": "r",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "dedd",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "dodd",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "epee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "faff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "feff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "fuff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "gegg",
+      "dominant_letter": "g",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "ieee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "iiwi",
+      "dominant_letter": "i",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "lall",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "lill",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "loll",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "lull",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "mumm",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "sass",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "sess",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "siss",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "soss",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "suss",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "viii",
+      "dominant_letter": "i",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "xiii",
+      "dominant_letter": "i",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "zizz",
+      "dominant_letter": "z",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "assess",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "beebee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "booboo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "boohoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "coccic",
+      "dominant_letter": "c",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "cooboo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "dodded",
+      "dominant_letter": "d",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "eebree",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "geejee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "gooroo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "hoodoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "hoopoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "hooroo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "jeetee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "kakkak",
+      "dominant_letter": "k",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "koodoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "muumuu",
+      "dominant_letter": "u",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "peewee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "pookoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "sasses",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "seesee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "seewee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "soosoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "teepee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "teetee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "teevee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "tooroo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "toozoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "veepee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "voodoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "weewee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "woodoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "woohoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "zoozoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "assesses",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 8,
+      "percentage": 62.5,
+      "adjusted_score": 1.66
+    },
+    {
+      "word": "mohoohoo",
+      "dominant_letter": "o",
+      "count": 5,
+      "total": 8,
+      "percentage": 62.5,
+      "adjusted_score": 1.66
+    },
+    {
+      "word": "oronooko",
+      "dominant_letter": "o",
+      "count": 5,
+      "total": 8,
+      "percentage": 62.5,
+      "adjusted_score": 1.66
+    },
+    {
+      "word": "swissess",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 8,
+      "percentage": 62.5,
+      "adjusted_score": 1.66
+    },
+    {
+      "word": "abaca",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "abada",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "abaka",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "abama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "acana",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "acara",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "adapa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "addda",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "added",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "afara",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "agada",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "agama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "agata",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "ajaja",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "ajava",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "akala",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "akasa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "alada",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "alala",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "alapa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "allyl",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amaas",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amaga",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amala",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amapa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amara",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "anama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "anana",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "anasa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "apama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "araba",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "araca",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "arara",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "araua",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "arawa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "asana",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "asses",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "assis",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "babby",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "beele",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "beeve",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "belee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "besee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bibby",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bibbs",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bobby",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bubba",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bubby",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "caaba",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "caama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "cabaa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "cecca",
+      "dominant_letter": "c",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "cocci",
+      "dominant_letter": "c",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "cocco",
+      "dominant_letter": "c",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "daddy",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "deddy",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "diddy",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "doddy",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "duddy",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "eeler",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "eerie",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "eeten",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "eleme",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "eleve",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "emcee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "emeer",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "epees",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "error",
+      "dominant_letter": "r",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "esere",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "essee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "esses",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "etwee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "evene",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "evese",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "exede",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "faffy",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "feere",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "feeze",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "feoff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "filii",
+      "dominant_letter": "i",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "flaff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "fluff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "fuffy",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "geese",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "gelee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "gigge",
+      "dominant_letter": "g",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "glogg",
+      "dominant_letter": "g",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "gogga",
+      "dominant_letter": "g",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "gregg",
+      "dominant_letter": "g",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "heeze",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "indii",
+      "dominant_letter": "i",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "kaaba",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "kaama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "kakke",
+      "dominant_letter": "k",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "keeve",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "kikki",
+      "dominant_letter": "k",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "lally",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "lalls",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "leese",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "levee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "lilly",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "lolly",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "lolls",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "lully",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "lulls",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "maana",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "mamma",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "mammy",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "meece",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "meese",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "melee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "momma",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "momme",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "mommy",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "mummy",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "mumms",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "nanny",
+      "dominant_letter": "n",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "neele",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "neese",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "neeze",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "ninny",
+      "dominant_letter": "n",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "ninon",
+      "dominant_letter": "n",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "nonny",
+      "dominant_letter": "n",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "nunni",
+      "dominant_letter": "n",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "odoom",
+      "dominant_letter": "o",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "oopod",
+      "dominant_letter": "o",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "oozoa",
+      "dominant_letter": "o",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "oromo",
+      "dominant_letter": "o",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "ovolo",
+      "dominant_letter": "o",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "pappi",
+      "dominant_letter": "p",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "pappy",
+      "dominant_letter": "p",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "pedee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "peeke",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "peele",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "peeve",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "peppy",
+      "dominant_letter": "p",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    }
+  ],
+  "by_score": [
+    {
+      "word": "mmmm",
+      "dominant_letter": "m",
+      "count": 4,
+      "total": 4,
+      "percentage": 100.0,
+      "adjusted_score": 1.92
+    },
+    {
+      "word": "oooo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 4,
+      "percentage": 100.0,
+      "adjusted_score": 1.92
+    },
+    {
+      "word": "assesses",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 8,
+      "percentage": 62.5,
+      "adjusted_score": 1.66
+    },
+    {
+      "word": "mohoohoo",
+      "dominant_letter": "o",
+      "count": 5,
+      "total": 8,
+      "percentage": 62.5,
+      "adjusted_score": 1.66
+    },
+    {
+      "word": "oronooko",
+      "dominant_letter": "o",
+      "count": 5,
+      "total": 8,
+      "percentage": 62.5,
+      "adjusted_score": 1.66
+    },
+    {
+      "word": "swissess",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 8,
+      "percentage": 62.5,
+      "adjusted_score": 1.66
+    },
+    {
+      "word": "anapanapa",
+      "dominant_letter": "a",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "assassins",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "assessors",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "beekeeper",
+      "dominant_letter": "e",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "eyeleteer",
+      "dominant_letter": "e",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "nontannin",
+      "dominant_letter": "n",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "peeseweep",
+      "dominant_letter": "e",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "possesses",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "sassiness",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "sissiness",
+      "dominant_letter": "s",
+      "count": 5,
+      "total": 9,
+      "percentage": 55.6,
+      "adjusted_score": 1.55
+    },
+    {
+      "word": "assess",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "beebee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "booboo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "boohoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "coccic",
+      "dominant_letter": "c",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "cooboo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "dodded",
+      "dominant_letter": "d",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "eebree",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "geejee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "gooroo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "hoodoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "hoopoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "hooroo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "jeetee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "kakkak",
+      "dominant_letter": "k",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "koodoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "muumuu",
+      "dominant_letter": "u",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "peewee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "pookoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "sasses",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "seesee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "seewee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "soosoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "teepee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "teetee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "teevee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "tooroo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "toozoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "veepee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "voodoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "weewee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "woodoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "woohoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "zoozoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 6,
+      "percentage": 66.7,
+      "adjusted_score": 1.54
+    },
+    {
+      "word": "bibb",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "brrr",
+      "dominant_letter": "r",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "dedd",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "dodd",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "epee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "faff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "feff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "fuff",
+      "dominant_letter": "f",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "gegg",
+      "dominant_letter": "g",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "ieee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "iiwi",
+      "dominant_letter": "i",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "lall",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "lill",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "loll",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "lull",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "mumm",
+      "dominant_letter": "m",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "sass",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "sess",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "siss",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "soss",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "suss",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "viii",
+      "dominant_letter": "i",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "xiii",
+      "dominant_letter": "i",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "zizz",
+      "dominant_letter": "z",
+      "count": 3,
+      "total": 4,
+      "percentage": 75.0,
+      "adjusted_score": 1.42
+    },
+    {
+      "word": "ahaaina",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "ayapana",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "akaakai",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "alabama",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "alcaaba",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "amalaka",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "anabata",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "anacara",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "apadana",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "arabana",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "aracana",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "assists",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "atalaya",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "avadana",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "avatara",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "beebees",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "beeweed",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "boobook",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "booboos",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "boohoos",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "cooboos",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "daddled",
+      "dominant_letter": "d",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "deedeed",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "diddled",
+      "dominant_letter": "d",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "doddard",
+      "dominant_letter": "d",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "eyebree",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "eyeseed",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "ejectee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "electee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "eveweed",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "exegete",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "freebee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "gagging",
+      "dominant_letter": "g",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "geechee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "genesee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "gigging",
+      "dominant_letter": "g",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "hoodoos",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "hoopoos",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "koodoos",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "labaara",
+      "dominant_letter": "a",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "muumuus",
+      "dominant_letter": "u",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "nonnant",
+      "dominant_letter": "n",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "nunning",
+      "dominant_letter": "n",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "oloroso",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "oozooid",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "oronoco",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "oronoko",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "ottetto",
+      "dominant_letter": "t",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "pallall",
+      "dominant_letter": "l",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "peebeen",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "peepeye",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "peeweep",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "peewees",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "pizzazz",
+      "dominant_letter": "z",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "pokomoo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "possess",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "potoroo",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "referee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "rereeve",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "reveree",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "sassies",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "sissies",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "sooloos",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "spissus",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "swisses",
+      "dominant_letter": "s",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "teepees",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "veepees",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "voodoos",
+      "dominant_letter": "o",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "weeshee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "weeweed",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "weewees",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "wowwows",
+      "dominant_letter": "w",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "zebedee",
+      "dominant_letter": "e",
+      "count": 4,
+      "total": 7,
+      "percentage": 57.1,
+      "adjusted_score": 1.41
+    },
+    {
+      "word": "abaca",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "abada",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "abaka",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "abama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "acana",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "acara",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "adapa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "addda",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "added",
+      "dominant_letter": "d",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "afara",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "agada",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "agama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "agata",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "ajaja",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "ajava",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "akala",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "akasa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "alada",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "alala",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "alapa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "allyl",
+      "dominant_letter": "l",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amaas",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amaga",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amala",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amapa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "amara",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "anama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "anana",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "anasa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "apama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "araba",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "araca",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "arara",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "araua",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "arawa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "asana",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "asses",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "assis",
+      "dominant_letter": "s",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "babby",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "beele",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "beeve",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "belee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "besee",
+      "dominant_letter": "e",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bibby",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bibbs",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bobby",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bubba",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "bubby",
+      "dominant_letter": "b",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "caaba",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "caama",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "cabaa",
+      "dominant_letter": "a",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "cecca",
+      "dominant_letter": "c",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    },
+    {
+      "word": "cocci",
+      "dominant_letter": "c",
+      "count": 3,
+      "total": 5,
+      "percentage": 60.0,
+      "adjusted_score": 1.26
+    }
+  ],
+  "by_letter": {
+    "A": [
+      "abaca",
+      "abada",
+      "abaka",
+      "abama",
+      "acana",
+      "acara",
+      "adapa",
+      "afara",
+      "agada",
+      "agama",
+      "agata",
+      "ajaja",
+      "ajava",
+      "akala",
+      "akasa",
+      "alada",
+      "alala",
+      "alapa",
+      "amaas",
+      "amaga"
+    ],
+    "D": [
+      "dedd",
+      "dodd",
+      "dodded",
+      "addda",
+      "added",
+      "daddy",
+      "deddy",
+      "diddy",
+      "doddy",
+      "duddy",
+      "daddled",
+      "diddled",
+      "doddard"
+    ],
+    "L": [
+      "lall",
+      "lill",
+      "loll",
+      "lull",
+      "allyl",
+      "lally",
+      "lalls",
+      "lilly",
+      "lolly",
+      "lolls",
+      "lully",
+      "lulls",
+      "pallall"
+    ],
+    "S": [
+      "sass",
+      "sess",
+      "siss",
+      "soss",
+      "suss",
+      "assess",
+      "sasses",
+      "assesses",
+      "swissess",
+      "asses",
+      "assis",
+      "esses",
+      "sasse",
+      "sassy",
+      "sessa",
+      "sises",
+      "sissy",
+      "sissu",
+      "spass",
+      "spiss"
+    ],
+    "B": [
+      "bibb",
+      "babby",
+      "bibby",
+      "bibbs",
+      "bobby",
+      "bubba",
+      "bubby"
+    ],
+    "E": [
+      "epee",
+      "ieee",
+      "beebee",
+      "eebree",
+      "geejee",
+      "jeetee",
+      "peewee",
+      "seesee",
+      "seewee",
+      "teepee",
+      "teetee",
+      "teevee",
+      "veepee",
+      "weewee",
+      "beele",
+      "beeve",
+      "belee",
+      "besee",
+      "eeler",
+      "eerie"
+    ],
+    "O": [
+      "oooo",
+      "booboo",
+      "boohoo",
+      "cooboo",
+      "gooroo",
+      "hoodoo",
+      "hoopoo",
+      "hooroo",
+      "koodoo",
+      "pookoo",
+      "soosoo",
+      "tooroo",
+      "toozoo",
+      "voodoo",
+      "woodoo",
+      "woohoo",
+      "zoozoo",
+      "mohoohoo",
+      "oronooko",
+      "odoom"
+    ],
+    "R": [
+      "brrr",
+      "error",
+      "rarer"
+    ],
+    "C": [
+      "coccic",
+      "cecca",
+      "cocci",
+      "cocco"
+    ],
+    "F": [
+      "faff",
+      "feff",
+      "fuff",
+      "faffy",
+      "feoff",
+      "flaff",
+      "fluff",
+      "fuffy"
+    ],
+    "I": [
+      "iiwi",
+      "viii",
+      "xiii",
+      "filii",
+      "indii",
+      "xviii",
+      "xxiii"
+    ],
+    "G": [
+      "gegg",
+      "gigge",
+      "glogg",
+      "gogga",
+      "gregg",
+      "gagging",
+      "gigging"
+    ],
+    "K": [
+      "kakkak",
+      "kakke",
+      "kikki"
+    ],
+    "M": [
+      "mmmm",
+      "mumm",
+      "mamma",
+      "mammy",
+      "momma",
+      "momme",
+      "mommy",
+      "mummy",
+      "mumms"
+    ],
+    "U": [
+      "muumuu",
+      "uhuru",
+      "ululu",
+      "urubu",
+      "urucu",
+      "urutu",
+      "muumuus"
+    ],
+    "N": [
+      "nanny",
+      "ninny",
+      "ninon",
+      "nonny",
+      "nunni",
+      "uninn",
+      "nonnant",
+      "nunning",
+      "nontannin"
+    ],
+    "T": [
+      "stott",
+      "tatta",
+      "tatty",
+      "tetty",
+      "titty",
+      "totty",
+      "tutti",
+      "tutty",
+      "tutto",
+      "ottetto"
+    ],
+    "P": [
+      "pappi",
+      "pappy",
+      "peppy",
+      "pippy",
+      "poppa",
+      "poppy",
+      "puppy",
+      "uppop"
+    ],
+    "Z": [
+      "zizz",
+      "pizzazz"
+    ],
+    "W": [
+      "wowwows"
+    ]
+  },
+  "length_stats": {
+    "5": {
+      "count": 186,
+      "avg_percentage": 60.0,
+      "max_percentage": 60.0,
+      "examples": [
+        "abaca",
+        "abada",
+        "abaka",
+        "abama",
+        "acana"
+      ]
+    },
+    "7": {
+      "count": 73,
+      "avg_percentage": 57.1,
+      "max_percentage": 57.1,
+      "examples": [
+        "ahaaina",
+        "ayapana",
+        "akaakai",
+        "alabama",
+        "alcaaba"
+      ]
+    },
+    "9": {
+      "count": 10,
+      "avg_percentage": 55.6,
+      "max_percentage": 55.6,
+      "examples": [
+        "anapanapa",
+        "assassins",
+        "assessors",
+        "beekeeper",
+        "eyeleteer"
+      ]
+    },
+    "6": {
+      "count": 34,
+      "avg_percentage": 66.7,
+      "max_percentage": 66.7,
+      "examples": [
+        "assess",
+        "beebee",
+        "booboo",
+        "boohoo",
+        "coccic"
+      ]
+    },
+    "8": {
+      "count": 4,
+      "avg_percentage": 62.5,
+      "max_percentage": 62.5,
+      "examples": [
+        "assesses",
+        "mohoohoo",
+        "oronooko",
+        "swissess"
+      ]
+    },
+    "4": {
+      "count": 26,
+      "avg_percentage": 76.9,
+      "max_percentage": 100.0,
+      "examples": [
+        "mmmm",
+        "oooo",
+        "bibb",
+        "brrr",
+        "dedd"
+      ]
+    }
+  }
+}
