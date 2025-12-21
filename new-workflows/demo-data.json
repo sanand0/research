@@ -1,0 +1,18 @@
+{
+  "title": "Monthly API Response Times",
+  "unit": "ms",
+  "data": [
+    {"month": "Jan", "avg_response": 145, "requests": 45000},
+    {"month": "Feb", "avg_response": 132, "requests": 52000},
+    {"month": "Mar", "avg_response": 156, "requests": 61000},
+    {"month": "Apr", "avg_response": 178, "requests": 58000},
+    {"month": "May", "avg_response": 134, "requests": 67000},
+    {"month": "Jun", "avg_response": 121, "requests": 72000},
+    {"month": "Jul", "avg_response": 143, "requests": 69000},
+    {"month": "Aug", "avg_response": 167, "requests": 74000},
+    {"month": "Sep", "avg_response": 189, "requests": 71000},
+    {"month": "Oct", "avg_response": 156, "requests": 78000},
+    {"month": "Nov", "avg_response": 142, "requests": 82000},
+    {"month": "Dec", "avg_response": 138, "requests": 85000}
+  ]
+}
