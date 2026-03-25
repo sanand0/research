@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Music UMAP</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:system-ui,-apple-system,sans-serif;font-size:13px;background:#0f172a;color:#e2e8f0}
+#app{display:flex;flex-direction:column;height:100dvh;min-height:0}
+
+/* ── Controls ── */
+#controls{
+  display:flex;align-items:center;gap:10px;
+  padding:6px 12px;background:#1e293b;
+  border-bottom:1px solid #334155;flex-shrink:0;flex-wrap:wrap;
+  min-height:40px
+}
+.ctrl-label{color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.btn-group{display:flex;border-radius:6px;overflow:hidden;border:1px solid #334155}
+.btn-group button{
+  padding:3px 10px;background:#0f172a;color:#94a3b8;border:none;
+  cursor:pointer;font-size:12px;transition:background .12s,color .12s
+}
+.btn-group button.active{background:#3b82f6;color:#fff}
+.btn-group button:hover:not(.active){background:#1e293b;color:#e2e8f0}
+select{
+  background:#0f172a;color:#e2e8f0;border:1px solid #334155;
+  border-radius:4px;padding:3px 8px;font-size:12px;cursor:pointer;max-width:150px
+}
+select:hover{border-color:#3b82f6}
+.ctrl-sep{width:1px;height:20px;background:#334155;flex-shrink:0}
+#legend{
+  display:flex;align-items:center;gap:5px;flex-wrap:wrap;
+  margin-left:auto;padding-left:8px;max-width:500px
+}
+.leg-item{display:flex;align-items:center;gap:3px;font-size:10px;color:#94a3b8;white-space:nowrap}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ── Plot ── */
+#plot-wrap{flex:1;position:relative;overflow:hidden;min-height:0}
+#plot{position:absolute;top:0;left:0;width:100%;height:100%}
+#overlay{position:absolute;top:0;left:0;width:100%;height:100%;cursor:crosshair}
+.selection{fill:rgba(59,130,246,.15);stroke:#3b82f6;stroke-width:1.5}
+
+/* ── Bottom controls ── */
+#bottom{
+  padding:8px 16px 10px;background:#1e293b;
+  border-top:1px solid #334155;flex-shrink:0
+}
+.date-row{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.date-lbl{font-size:12px;color:#94a3b8;white-space:nowrap;min-width:72px}
+.date-lbl.right{text-align:right}
+
+/* Dual-thumb range slider */
+.range-wrap{flex:1;position:relative;height:20px;display:flex;align-items:center}
+.range-track{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);height:4px;background:#334155;border-radius:2px;pointer-events:none}
+.range-fill{position:absolute;top:50%;transform:translateY(-50%);height:2px;background:#3b82f6;border-radius:1px;cursor:grab;
+  padding-block:9px;box-sizing:content-box;background-clip:content-box}
+.range-wrap input[type=range]{
+  position:absolute;top:50%;transform:translateY(-50%);width:100%;height:4px;
+  -webkit-appearance:none;appearance:none;
+  background:transparent;pointer-events:none;outline:none;margin:0
+}
+.range-wrap input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;pointer-events:all;
+  width:16px;height:16px;border-radius:50%;
+  background:#3b82f6;border:2px solid #0f172a;cursor:pointer;
+  box-shadow:0 1px 4px rgba(0,0,0,.5);transition:background .12s
+}
+.range-wrap input[type=range]::-webkit-slider-thumb:hover{background:#60a5fa}
+.range-wrap input[type=range]::-moz-range-thumb{
+  pointer-events:all;width:16px;height:16px;border-radius:50%;
+  background:#3b82f6;border:2px solid #0f172a;cursor:pointer
+}
+.range-wrap input[type=range]::-moz-range-track{background:transparent}
+#play-btn{
+  padding:4px 14px;background:#3b82f6;color:#fff;border:none;
+  border-radius:6px;cursor:pointer;font-size:13px;white-space:nowrap;flex-shrink:0
+}
+#play-btn:hover{background:#2563eb}
+#play-btn.playing{background:#ef4444}
+#play-btn.playing:hover{background:#dc2626}
+#year-ticks{
+  display:flex;justify-content:space-between;
+  padding:0 1px;font-size:10px;color:#cdcdcd
+}
+
+/* Range duration label */
+#range-dur{
+  position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+  font-size:11px;color:#cdcdcd;pointer-events:none;white-space:nowrap;
+  background:rgba(15,23,42,.8);padding:1px 7px;border-radius:10px
+}
+
+/* ── Bar chart ── */
+#barchart{
+  position:absolute;top:10px;left:10px;z-index:10;pointer-events:none;
+  background:rgba(15,23,42,.88);border:1px solid #1e293b;border-radius:8px;
+  padding:8px 10px;max-width:310px;max-height:380px;overflow:hidden
+}
+.bc-head{font-size:10px;color:#475569;text-transform:uppercase;
+  letter-spacing:.06em;margin-bottom:5px;font-weight:600}
+.bc-row{display:flex;align-items:center;gap:5px;height:15px;margin-bottom:2px}
+.bc-lbl{width:86px;text-align:right;font-size:10px;color:#94a3b8;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0}
+.bc-bwrap{width:150px;height:7px;border-radius:2px;overflow:hidden;flex-shrink:0;
+  background:rgba(255,255,255,.04)}
+.bc-bar{height:100%;border-radius:2px}
+.bc-cnt{font-size:9px;color:#475569;min-width:26px;text-align:right;flex-shrink:0}
+
+/* ── Popup ── */
+#popup{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  background:#1e293b;border:1px solid #334155;border-radius:10px;
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
+  width:min(96vw,900px);max-height:75vh;
+  display:flex;flex-direction:column;z-index:200;overflow:hidden
+}
+#popup.hidden{display:none}
+.pop-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-bottom:1px solid #334155;flex-shrink:0
+}
+.pop-title{font-size:14px;font-weight:600;color:#e2e8f0}
+.pop-close{
+  background:none;border:none;color:#94a3b8;
+  cursor:pointer;font-size:18px;line-height:1;padding:2px
+}
+.pop-close:hover{color:#e2e8f0}
+.pop-scroll{overflow-y:auto;flex:1}
+#pop-table{width:100%;border-collapse:collapse;font-size:12px;min-width:800px}
+#pop-table thead th{
+  position:sticky;top:0;background:#0f172a;
+  padding:7px 10px;text-align:left;color:#64748b;font-weight:500;
+  cursor:pointer;white-space:nowrap;border-bottom:1px solid #334155
+}
+#pop-table thead th:hover{color:#e2e8f0}
+#pop-table thead th.sorted{color:#3b82f6}
+#pop-table tbody tr:hover{background:#0f172a}
+#pop-table td{padding:5px 10px;border-bottom:1px solid #1e293b;vertical-align:middle;color:#cbd5e1}
+#pop-table a{color:#60a5fa;text-decoration:none}
+#pop-table a:hover{text-decoration:underline}
+.cat-dot{display:inline-block;width:10px;height:10px;border-radius:50%;flex-shrink:0;vertical-align:middle}
+
+/* Tooltip */
+#tip{
+  position:fixed;pointer-events:none;z-index:100;
+  background:#0f172a;border:1px solid #334155;border-radius:6px;
+  padding:6px 10px;font-size:12px;color:#e2e8f0;max-width:280px;
+  box-shadow:0 4px 12px rgba(0,0,0,.5);display:none;line-height:1.5
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="controls">
+    <span class="ctrl-label">Color</span>
+    <div class="btn-group" id="col-grp">
+      <button class="btn active" data-col="composer">Composer</button>
+      <button class="btn" data-col="singer">Singer</button>
+      <button class="btn" data-col="decade">Decade</button>
+    </div>
+    <div class="ctrl-sep"></div>
+    <span class="ctrl-label">Filter</span>
+    <select id="f-composer"><option value="">All composers</option></select>
+    <select id="f-singer"><option value="">All singers</option></select>
+    <select id="f-lyricist"><option value="">All lyricists</option></select>
+    <div id="legend"></div>
+  </div>
+
+  <div id="loading" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#64748b;font-size:14px;z-index:99">Loading…</div>
+  <div id="plot-wrap">
+    <canvas id="plot"></canvas>
+    <svg id="overlay"></svg>
+    <div id="barchart"></div>
+  </div>
+
+  <div id="bottom">
+    <div class="date-row">
+      <span class="date-lbl" id="lbl-start">— — —</span>
+      <div class="range-wrap" id="rwrap">
+        <div id="range-dur"></div>
+        <div class="range-track"></div>
+        <div class="range-fill" id="rfill"></div>
+        <input type="range" id="sl-start" min="0" max="10000" value="0" step="1">
+        <input type="range" id="sl-end"   min="0" max="10000" value="10000" step="1">
+      </div>
+      <span class="date-lbl right" id="lbl-end">— — —</span>
+      <button id="play-btn">▶ Play</button>
+    </div>
+    <div id="year-ticks"></div>
+  </div>
+</div>
+
+<div id="popup" class="hidden">
+  <div class="pop-head">
+    <span class="pop-title" id="pop-title">Selected songs</span>
+    <button class="pop-close" id="pop-close">✕</button>
+  </div>
+  <div class="pop-scroll">
+    <table id="pop-table">
+      <thead><tr>
+        <th data-sort="inRange" style="text-align:center;width:40px">✓</th>
+        <th data-sort="year" style="text-align:right;width:60px">Year</th>
+        <th data-sort="movie" style="width:120px">Movie</th>
+        <th data-sort="song">Song</th>
+        <th data-sort="composer" style="width:120px">Composer</th>
+        <th data-sort="singer" style="width:120px">Singer</th>
+        <th data-sort="lyricist" style="width:100px">Lyricist</th>
+        <th data-sort="duration" style="text-align:right;width:60px">Dur</th>
+      </tr></thead>
+      <tbody id="pop-body"></tbody>
+    </table>
+  </div>
+</div>
+<div id="tip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script>
+// ═══════════════════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════════════
+let X_DOM, Y_DOM;
+const M = {t:16, r:16, b:16, l:16};
+const R = 4;
+const SMAX = 10000;
+
+// ═══════════════════════════════════════════════════
+// COLOR SCALES
+// ═══════════════════════════════════════════════════
+let MIN_YR, MAX_YR;
+
+// BRIGHT color palette for composers
+const COMP_PAL = [
+  '#ff3b3b','#30d158','#0a84ff','#ff9f0a','#bf5af2',
+  '#64d2ff','#ffd60a','#ff375f','#34c759','#5e5ce6',
+  '#ac8e68','#ff6b6b','#48bb78','#4299e1','#ed8936'
+];
+
+// BRIGHT color palette for singers
+const SING_PAL = [
+  '#ff4757','#2ed573','#1e90ff','#ffa502','#a55eea',
+  '#ff6348','#7bed9f','#70a1ff','#ffd32a','#ff6b81',
+  '#00d2d3','#ff7f50','#c56cf0','#fdcb6e','#6c5ce7'
+];
+
+// Decade colors - bright rainbow
+const DEC_PAL = [
+  '#ff3b30','#ff9500','#ffcc00','#34c759','#00c7be',
+  '#007aff','#5856d6','#af52de','#ff2d55','#ff6b35'
+];
+
+let COMPOSERS = [];
+let SINGERS = [];
+let LYRICISTS = [];
+let DECADES = [];
+
+let composerColor, singerColor, decadeColor;
+
+function getColor(d) {
+  if (st.colorBy === 'composer') return composerColor(d.composer);
+  if (st.colorBy === 'singer') return singerColor(d.singer);
+  return decadeColor(d.decade);
+}
+
+// ═══════════════════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════════════════
+let DATA, st;
+
+// ═══════════════════════════════════════════════════
+// CANVAS
+// ═══════════════════════════════════════════════════
+const canvas  = document.getElementById('plot');
+const ctx     = canvas.getContext('2d');
+const wrap    = document.getElementById('plot-wrap');
+let W=0, H=0, xs, ys, dpr=1;
+
+function resize() {
+  dpr = devicePixelRatio || 1;
+  const r = wrap.getBoundingClientRect();
+  W = r.width; H = r.height;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  xs = d3.scaleLinear().domain(X_DOM).range([M.l, W-M.r]);
+  ys = d3.scaleLinear().domain(Y_DOM).range([H-M.b, M.t]);
+  d3.select('#overlay').attr('width', W).attr('height', H);
+  buildQT();
+  render();
+}
+new ResizeObserver(resize).observe(wrap);
+
+// ═══════════════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════════════
+function isFiltered(d) {
+  // Filter by dropdowns
+  if (st.filterComposer && d.composer !== st.filterComposer) return true;
+  if (st.filterSinger && d.singer !== st.filterSinger) return true;
+  if (st.filterLyricist && d.lyricist !== st.filterLyricist) return true;
+  return false;
+}
+
+function inRange(d) {
+  return d.year >= st.year0 && d.year <= st.year1;
+}
+
+function render() {
+  if (!W || !H) return;
+  ctx.clearRect(0, 0, W, H);
+  const hasBrush = st.brushed !== null;
+  const bSet = hasBrush ? new Set(st.brushed.map(d=>d._i)) : null;
+
+  for (let pass = 0; pass < 2; pass++) {
+    for (const d of DATA) {
+      if (isFiltered(d)) continue;
+      const inYrRange = inRange(d);
+      const inBrush  = !hasBrush || bSet.has(d._i);
+      let alpha;
+      if (!inYrRange && (!hasBrush || !inBrush)) alpha = 0.04;
+      else if (!inYrRange) alpha = 0.08;
+      else if (hasBrush && !inBrush) alpha = 0.06;
+      else alpha = 0.85;
+      const bright = alpha > 0.4;
+      if (pass === 0 && bright) continue;
+      if (pass === 1 && !bright) continue;
+
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = getColor(d);
+      ctx.beginPath();
+      ctx.arc(xs(d.u1), ys(d.u2), R, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+  ctx.globalAlpha = 1;
+  updateBarChart();
+}
+
+// ═══════════════════════════════════════════════════
+// BAR CHART
+// ═══════════════════════════════════════════════════
+const bcEl = document.getElementById('barchart');
+let bcThrottle = 0;
+const BAR_MAX_PX = 150;
+
+function updateBarChart() {
+  const now = performance.now();
+  if (now - bcThrottle < 80) return;
+  bcThrottle = now;
+
+  const counts = new Map();
+  for (const d of DATA) {
+    if (isFiltered(d)) continue;
+    if (!inRange(d)) continue;
+    const key = st.colorBy === 'composer' ? d.composer
+              : st.colorBy === 'singer' ? d.singer : String(d.decade);
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+
+  const entries = [...counts.entries()].sort((a,b)=>b[1]-a[1]).slice(0, 22);
+  if (!entries.length) { bcEl.innerHTML=''; return; }
+
+  const maxVal = Math.max(...entries.map(e=>e[1]));
+
+  const headLabel = st.colorBy === 'composer' ? 'Composer'
+                  : st.colorBy === 'singer' ? 'Singer' : 'Decade';
+
+  bcEl.innerHTML = '<div class="bc-head">by ' + headLabel + '</div>' + entries.map(([key, n])=>{
+    const barPx = Math.max(2, Math.round(n / maxVal * BAR_MAX_PX));
+    const col = st.colorBy === 'composer' ? composerColor(key)
+              : st.colorBy === 'singer' ? singerColor(key)
+              : decadeColor(+key);
+    return `<div class="bc-row">
+      <span class="bc-lbl" title="${key}">${key}</span>
+      <div class="bc-bwrap"><div class="bc-bar" style="width:${barPx}px;background:${col}"></div></div>
+      <span class="bc-cnt">${n}</span>
+    </div>`;
+  }).join('');
+}
+
+function buildLegend() {
+  const el = document.getElementById('legend');
+  el.innerHTML = '';
+  if (st.colorBy === 'composer') {
+    COMPOSERS.slice(0,12).forEach(c=>{
+      const item = document.createElement('span');
+      item.className = 'leg-item';
+      item.innerHTML = `<span class="leg-dot" style="background:${composerColor(c)}"></span>${c}`;
+      el.appendChild(item);
+    });
+  } else if (st.colorBy === 'singer') {
+    SINGERS.slice(0,12).forEach(s=>{
+      const item = document.createElement('span');
+      item.className = 'leg-item';
+      item.innerHTML = `<span class="leg-dot" style="background:${singerColor(s)}"></span>${s}`;
+      el.appendChild(item);
+    });
+  } else {
+    DECADES.forEach(d=>{
+      const item = document.createElement('span');
+      item.className = 'leg-item';
+      item.innerHTML = `<span class="leg-dot" style="background:${decadeColor(d)}"></span>${d}s`;
+      el.appendChild(item);
+    });
+  }
+}
+
+// ═══════════════════════════════════════════════════
+// CONTROLS: color-by
+// ═══════════════════════════════════════════════════
+document.getElementById('col-grp').addEventListener('click', e=>{
+  const btn = e.target.closest('[data-col]');
+  if (!btn) return;
+  st.colorBy = btn.dataset.col;
+  document.querySelectorAll('#col-grp .btn').forEach(b=>b.classList.toggle('active', b===btn));
+  buildLegend(); render();
+});
+
+// ═══════════════════════════════════════════════════
+// CONTROLS: filters
+// ═══════════════════════════════════════════════════
+function populateFilters() {
+  // Composers
+  const fc = document.getElementById('f-composer');
+  COMPOSERS.sort().forEach(c=>fc.add(new Option(c,c)));
+
+  // Singers
+  const fs = document.getElementById('f-singer');
+  SINGERS.sort().forEach(s=>fs.add(new Option(s,s)));
+
+  // Lyricists
+  const fl = document.getElementById('f-lyricist');
+  LYRICISTS.sort().forEach(l=>fl.add(new Option(l,l)));
+}
+
+document.getElementById('f-composer').addEventListener('change', e=>{st.filterComposer=e.target.value; refilterAndRebuild();});
+document.getElementById('f-singer').addEventListener('change', e=>{st.filterSinger=e.target.value; refilterAndRebuild();});
+document.getElementById('f-lyricist').addEventListener('change', e=>{st.filterLyricist=e.target.value; refilterAndRebuild();});
+
+// ═══════════════════════════════════════════════════
+// YEAR RANGE SLIDER
+// ═══════════════════════════════════════════════════
+const slS = document.getElementById('sl-start');
+const slE = document.getElementById('sl-end');
+const rfill = document.getElementById('rfill');
+const lblS = document.getElementById('lbl-start');
+const lblE = document.getElementById('lbl-end');
+
+function yrToSlider(yr){ return Math.round((yr-MIN_YR)/(MAX_YR-MIN_YR)*SMAX); }
+function sliderToYr(v) { return MIN_YR + (v/SMAX)*(MAX_YR-MIN_YR); }
+
+function syncSliderUI() {
+  const s = yrToSlider(st.year0), e = yrToSlider(st.year1);
+  slS.value = s; slE.value = e;
+  rfill.style.left = (s/SMAX*100)+'%';
+  rfill.style.width = ((e-s)/SMAX*100)+'%';
+  lblS.textContent = st.year0;
+  lblE.textContent = st.year1;
+  const dur = st.year1 - st.year0;
+  document.getElementById('range-dur').textContent = dur === MAX_YR - MIN_YR ? 'All years' : dur + ' years';
+  document.getElementById('range-dur').style.left = ((s+e)/2/SMAX*100)+'%';
+}
+
+slS.addEventListener('input', ()=>{
+  let v = Math.min(+slS.value, +slE.value - 100);
+  slS.value = v;
+  st.year0 = Math.round(sliderToYr(v));
+  syncSliderUI(); render();
+});
+slE.addEventListener('input', ()=>{
+  let v = Math.max(+slE.value, +slS.value + 100);
+  slE.value = v;
+  st.year1 = Math.round(sliderToYr(v));
+  syncSliderUI(); render();
+});
+
+// Drag the fill bar
+rfill.addEventListener('mousedown', e=>{
+  if (st.playing) return;
+  e.preventDefault();
+  const trackRect = document.getElementById('rwrap').getBoundingClientRect();
+  const dragX = e.clientX;
+  const dragY0 = st.year0, dragY1 = st.year1;
+  rfill.style.cursor = 'grabbing';
+  function onMove(ev) {
+    const dx = ev.clientX - dragX;
+    const deltaYr = (dx / trackRect.width) * (MAX_YR - MIN_YR);
+    let y0 = dragY0 + deltaYr, y1 = dragY1 + deltaYr;
+    if (y0 < MIN_YR) { y0 = MIN_YR; y1 = MIN_YR + (dragY1 - dragY0); }
+    if (y1 > MAX_YR) { y1 = MAX_YR; y0 = MAX_YR - (dragY1 - dragY0); }
+    st.year0 = Math.round(y0); st.year1 = Math.round(y1);
+    syncSliderUI(); render();
+  }
+  function onUp() {
+    rfill.style.cursor = 'grab';
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+  }
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', onUp);
+});
+
+function buildYearTicks() {
+  const decades = DECADES.filter(d=>d >= MIN_YR && d <= MAX_YR);
+  document.getElementById('year-ticks').innerHTML = decades.map(y=>`<span>${y}</span>`).join('');
+}
+
+// ═══════════════════════════════════════════════════
+// PLAY / PAUSE
+// ═══════════════════════════════════════════════════
+let playRaf, playPrev;
+
+function playStep(ts) {
+  if (!st.playing) return;
+  if (playPrev == null) playPrev = ts;
+  const dt = ts - playPrev; playPrev = ts;
+  const windowSize = st.year1 - st.year0;
+  st.year1 = Math.min(MAX_YR, st.year1 + dt * 0.02);
+  st.year0 = st.year1 - windowSize;
+  if (st.year0 < MIN_YR) { st.year0 = MIN_YR; st.year1 = st.year0 + windowSize; }
+  if (st.year1 >= MAX_YR) { pausePlay(); return; }
+  syncSliderUI(); render();
+  playRaf = requestAnimationFrame(playStep);
+}
+
+function startPlay() {
+  const windowSize = st.year1 - st.year0;
+  if (st.year1 >= MAX_YR) {
+    st.year0 = MIN_YR;
+    st.year1 = Math.min(MAX_YR, MIN_YR + windowSize);
+  }
+  st.playing = true; playPrev = null;
+  const btn = document.getElementById('play-btn');
+  btn.textContent='⏸ Pause'; btn.classList.add('playing');
+  playRaf = requestAnimationFrame(playStep);
+}
+
+function pausePlay() {
+  st.playing = false; cancelAnimationFrame(playRaf);
+  const btn = document.getElementById('play-btn');
+  btn.textContent='▶ Play'; btn.classList.remove('playing');
+}
+
+document.getElementById('play-btn').addEventListener('click', ()=>{
+  st.playing ? pausePlay() : startPlay();
+});
+
+// ═══════════════════════════════════════════════════
+// BRUSH
+// ═══════════════════════════════════════════════════
+const svg = d3.select('#overlay');
+const brush = d3.brush().on('end', onBrushEnd);
+svg.append('g').attr('class','brush').call(brush);
+
+function onBrushEnd(ev) {
+  if (!ev.selection) {
+    st.brushed = null;
+    document.getElementById('popup').classList.add('hidden');
+    render(); return;
+  }
+  const [[x0,y0],[x1,y1]] = ev.selection;
+  const pts = DATA.filter(d=>{
+    if (isFiltered(d)) return false;
+    const sx=xs(d.u1), sy=ys(d.u2);
+    return sx>=x0&&sx<=x1&&sy>=y0&&sy<=y1;
+  });
+  st.brushed = pts; render(); showPopup(pts);
+}
+
+// ═══════════════════════════════════════════════════
+// TOOLTIP
+// ═══════════════════════════════════════════════════
+const tip = document.getElementById('tip');
+let qt;
+function buildQT() {
+  qt = d3.quadtree()
+    .x(d=>xs(d.u1)).y(d=>ys(d.u2))
+    .addAll(DATA.filter(d=>!isFiltered(d)));
+}
+
+document.getElementById('overlay').addEventListener('mousemove', e=>{
+  if (!qt || st.playing) { tip.style.display='none'; return; }
+  if (e.buttons > 0) { tip.style.display='none'; return; }
+  const rect = canvas.getBoundingClientRect();
+  const mx=e.clientX-rect.left, my=e.clientY-rect.top;
+  const found = qt.find(mx, my, 12);
+  if (found) {
+    tip.style.display='block';
+    tip.style.left = (e.clientX+14)+'px';
+    tip.style.top  = (e.clientY-10)+'px';
+    tip.innerHTML = `<strong>${found.song_title || found.movie || 'Unknown'}</strong><br>
+      <span style="color:#94a3b8">${found.movie || ''} · ${found.year}</span><br>
+      <span style="color:#94a3b8">${found.composer || ''} · ${found.singer || ''}</span>`;
+  } else {
+    tip.style.display='none';
+  }
+});
+document.getElementById('overlay').addEventListener('mouseleave', ()=>{ tip.style.display='none'; });
+
+function refilterAndRebuild() { if(xs) buildQT(); render(); }
+
+// ═══════════════════════════════════════════════════
+// POPUP
+// ═══════════════════════════════════════════════════
+let pSortBy='inRange', pSortAsc=false;
+
+function showPopup(pts) {
+  if (!pts||!pts.length) { document.getElementById('popup').classList.add('hidden'); return; }
+  document.getElementById('pop-title').textContent = `${pts.length} song${pts.length!==1?'s':''} selected`;
+  document.getElementById('popup').classList.remove('hidden');
+  renderPopup(pts);
+}
+
+function renderPopup(pts) {
+  const sorted = [...pts].sort((a,b)=>{
+    if (pSortBy === 'inRange') {
+      const ia = inRange(a) ? 0 : 1;
+      const ib = inRange(b) ? 0 : 1;
+      if (ia !== ib) return pSortAsc ? ia - ib : ib - ia;
+      return b.year - a.year;
+    }
+    let va, vb;
+    if (pSortBy==='year')     { va=a.year; vb=b.year; }
+    else if (pSortBy==='movie')    { va=a.movie||''; vb=b.movie||''; }
+    else if (pSortBy==='composer')  { va=a.composer||''; vb=b.composer||''; }
+    else if (pSortBy==='singer')    { va=a.singer||''; vb=b.singer||''; }
+    else if (pSortBy==='lyricist')  { va=a.lyricist||''; vb=b.lyricist||''; }
+    else if (pSortBy==='duration')  { va=a.duration||0; vb=b.duration||0; }
+    else                      { va=a.song_title||''; vb=b.song_title||''; }
+    if (va<vb) return pSortAsc?-1:1;
+    if (va>vb) return pSortAsc?1:-1;
+    return 0;
+  });
+
+  document.getElementById('pop-body').innerHTML = sorted.map(d=>{
+    const inYr = inRange(d);
+    const ytUrl = `https://youtube.com/watch?v=${d.youtube_id}`;
+    const dur = d.duration ? Math.round(d.duration) + 's' : '-';
+    return `<tr style="opacity:${inYr?1:0.45}">
+      <td style="text-align:center;font-size:14px;color:${inYr?'#3b82f6':'#475569'}">${inYr?'●':'○'}</td>
+      <td style="text-align:right;white-space:nowrap">${d.year}</td>
+      <td style="white-space:nowrap">${d.movie||'-'}</td>
+      <td><span class="cat-dot" style="background:${getColor(d)};margin-right:5px"></span><a href="${ytUrl}" target="_blank">${d.song_title||'-'}</a></td>
+      <td style="white-space:nowrap">${d.composer||'-'}</td>
+      <td style="white-space:nowrap">${d.singer||'-'}</td>
+      <td style="white-space:nowrap">${d.lyricist||'-'}</td>
+      <td style="text-align:right;white-space:nowrap">${dur}</td>
+    </tr>`;
+  }).join('');
+
+  document.querySelectorAll('#pop-table thead th').forEach(th=>{
+    const col=th.dataset.sort;
+    const labels={inRange:'✓',year:'Year',movie:'Movie',song:'Song',composer:'Composer',singer:'Singer',lyricist:'Lyricist',duration:'Dur'};
+    const arrow = col===pSortBy ? (pSortAsc?' ▲':' ▼') : '';
+    th.textContent = labels[col] + arrow;
+    if (col==='year'||col==='duration') th.style.textAlign='right';
+    if (col==='inRange') th.style.textAlign='center';
+    th.classList.toggle('sorted', col===pSortBy);
+  });
+}
+
+document.querySelector('#pop-table thead').addEventListener('click', e=>{
+  const th=e.target.closest('th[data-sort]');
+  if(!th) return;
+  const col=th.dataset.sort;
+  if(col===pSortBy) pSortAsc=!pSortAsc; else { pSortBy=col; pSortAsc=true; }
+  if(st.brushed) renderPopup(st.brushed);
+});
+
+document.getElementById('pop-close').addEventListener('click', ()=>{
+  document.getElementById('popup').classList.add('hidden');
+  st.brushed=null;
+  svg.select('.brush').call(brush.move,null);
+  render();
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='Escape'){
+    document.getElementById('popup').classList.add('hidden');
+    st.brushed=null;
+    svg.select('.brush').call(brush.move,null);
+    render();
+  }
+});
+
+// ═══════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════
+(async () => {
+  const loadEl = document.getElementById('loading');
+  try {
+    const json = await fetch('umap_data.json').then(r => { if(!r.ok) throw new Error(r.status); return r.json(); });
+
+    DATA = json.metadata;
+    X_DOM = [d3.min(json.coords, d=>d[0]) - 0.5, d3.max(json.coords, d=>d[0]) + 0.5];
+    Y_DOM = [d3.min(json.coords, d=>d[1]) - 0.5, d3.max(json.coords, d=>d[1]) + 0.5];
+
+    DATA.forEach((d,i)=>{
+      d._i = i;
+      d.u1 = json.coords[i][0];
+      d.u2 = json.coords[i][1];
+      d.year = d.year || 2000;
+      d.decade = d.decade || 2000;
+    });
+
+    // Extract unique composers, singers, lyricists
+    COMPOSERS = [...new Set(DATA.map(d=>d.composer).filter(Boolean))];
+    SINGERS = [...new Set(DATA.map(d=>d.singer).filter(Boolean))];
+    LYRICISTS = [...new Set(DATA.map(d=>d.lyricist).filter(Boolean))];
+    DECADES = [...new Set(DATA.map(d=>d.decade))].sort();
+
+    MIN_YR = Math.min(...DATA.map(d=>d.year));
+    MAX_YR = Math.max(...DATA.map(d=>d.year));
+
+    composerColor = d3.scaleOrdinal().domain(COMPOSERS).range(COMP_PAL).unknown('#6b7280');
+    singerColor = d3.scaleOrdinal().domain(SINGERS).range(SING_PAL).unknown('#6b7280');
+    decadeColor = d3.scaleOrdinal().domain(DECADES).range(DEC_PAL).unknown('#6b7280');
+
+    st = { colorBy:'composer', filterComposer:'', filterSinger:'', filterLyricist:'',
+           year0:MIN_YR, year1:MAX_YR, brushed:null, playing:false };
+
+    if (loadEl) loadEl.remove();
+    populateFilters();
+    buildLegend();
+    buildYearTicks();
+    syncSliderUI();
+    resize();
+  } catch(err) {
+    if (loadEl) loadEl.textContent = '⚠ Failed to load umap_data.json — ' + err.message;
+    console.error(err);
+  }
+})();
+</script>
+</body>
+</html>

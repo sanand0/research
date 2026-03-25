@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+
+# Downloaded audio (large, regeneratable)
+songs/
+clips_50s/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+## Embeddings
+embeddings.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Progress/state files (regeneratable)
+.download_progress.json
+.fetch_progress.json
+.clip_embeddings.json
