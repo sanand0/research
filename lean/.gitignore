@@ -1,0 +1,18 @@
+# API keys and environment
+.env
+
+# Lean build artifacts
+/.lake
+
+# Large binary results database (use polya_results/summary.json instead)
+polya_results/results.db
+
+# Verbose run logs
+polya_results/logs/
+polya_results/*.log
+polya_results/calibration_*.txt
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo

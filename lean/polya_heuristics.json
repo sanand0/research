@@ -1,0 +1,82 @@
+[
+  {
+    "id": "baseline",
+    "name": "Baseline (No Heuristic)",
+    "prompt": "Solve the following math problem step by step. Show your reasoning clearly."
+  },
+  {
+    "id": "work_backwards",
+    "name": "Work Backwards",
+    "prompt": "Solve the following math problem using the WORK BACKWARDS heuristic: Start from the desired answer or conclusion and reason step by step back toward the given information. What would have to be true for the goal to hold? Keep walking backwards until you reach what you know."
+  },
+  {
+    "id": "simpler_case",
+    "name": "Solve a Simpler Case",
+    "prompt": "Solve the following math problem using the SIMPLER CASE heuristic: First strip away complexity and solve an easier or special version of the problem (e.g., small n, one dimension, specific values). Observe the pattern or method that works there, then generalize it to the original problem."
+  },
+  {
+    "id": "contradiction",
+    "name": "Proof by Contradiction",
+    "prompt": "Solve the following math problem using the CONTRADICTION heuristic: Assume the opposite of what you want to show is true. Then reason carefully until you derive an absurdity or impossible statement. Conclude that the assumption was false and the original claim holds."
+  },
+  {
+    "id": "induction",
+    "name": "Mathematical Induction",
+    "prompt": "Solve the following math problem using the MATHEMATICAL INDUCTION heuristic: Identify a parameter n. Prove a base case (usually n=0 or n=1). Assume the statement holds for n (inductive hypothesis). Use that assumption to prove it holds for n+1. Conclude by induction."
+  },
+  {
+    "id": "extremal_element",
+    "name": "Use an Extremal Element",
+    "prompt": "Solve the following math problem using the EXTREMAL ELEMENT heuristic: Focus on the largest, smallest, maximum, minimum, first, or last element in the problem. Extremal elements often have special properties that constrain the problem and unlock the solution."
+  },
+  {
+    "id": "invariant",
+    "name": "Find an Invariant",
+    "prompt": "Solve the following math problem using the INVARIANT heuristic: Look for a quantity, property, or relationship that remains unchanged throughout the process or transformation in the problem. Use this invariant to prove impossibility, find constraints, or determine the answer."
+  },
+  {
+    "id": "change_representation",
+    "name": "Change Representation",
+    "prompt": "Solve the following math problem using the CHANGE REPRESENTATION heuristic: Transform the problem into a different form that makes it easier to solve. Consider: coordinates/vectors, complex numbers, generating functions, matrices, a graph, a different variable substitution, or geometric visualization of an algebraic problem (or vice versa)."
+  },
+  {
+    "id": "symmetry",
+    "name": "Exploit Symmetry",
+    "prompt": "Solve the following math problem using the SYMMETRY heuristic: Identify symmetric structure in the problem — symmetric expressions, symmetric geometric configurations, or invariance under permutations/reflections/rotations. Use symmetry to simplify, pair up terms, reduce cases, or directly deduce the answer."
+  },
+  {
+    "id": "count_two_ways",
+    "name": "Count in Two Ways",
+    "prompt": "Solve the following math problem using the COUNT TWO WAYS heuristic: Find a quantity that can be counted or computed in two different ways. Set up both expressions and equate them. This double-counting identity often immediately yields the answer."
+  },
+  {
+    "id": "pigeonhole",
+    "name": "Pigeonhole Principle",
+    "prompt": "Solve the following math problem using the PIGEONHOLE PRINCIPLE heuristic: Identify 'pigeons' (objects) and 'holes' (categories or containers). If there are more pigeons than holes, at least one hole must contain more than one pigeon. Use this to guarantee existence of a collision, coincidence, or repeated value."
+  },
+  {
+    "id": "auxiliary_elements",
+    "name": "Introduce Auxiliary Elements",
+    "prompt": "Solve the following math problem using the AUXILIARY ELEMENTS heuristic: Add something new to the problem that wasn't originally there — a construction line in geometry, a new variable, a helper function, an intermediate expression, or an algebraic identity. The auxiliary element should make connections visible that were previously hidden."
+  },
+  {
+    "id": "analogy",
+    "name": "Solve by Analogy",
+    "prompt": "Solve the following math problem using the ANALOGY heuristic: Think of a simpler or related problem whose solution you know. Map the structure of that problem onto this one. Adapt the technique that worked there to work here. Explicitly state the analogous problem and the analogical reasoning."
+  },
+  {
+    "id": "generalize",
+    "name": "Generalize the Problem",
+    "prompt": "Solve the following math problem using the GENERALIZE heuristic: Reformulate the problem in a more general form (with a parameter, in higher dimensions, or for a broader class of objects). Solve the general version — it may paradoxically be easier because the structure is cleaner. Then specialize back to get the specific answer."
+  },
+  {
+    "id": "case_analysis",
+    "name": "Exhaustive Case Analysis",
+    "prompt": "Solve the following math problem using the CASE ANALYSIS heuristic: Identify the key variable or condition that splits the problem. List all possible cases exhaustively (they must be mutually exclusive and collectively exhaustive). Handle each case separately with a complete argument. State the final answer after all cases."
+  },
+  {
+    "id": "pattern_recognition",
+    "name": "Find a Pattern",
+    "prompt": "Solve the following math problem using the PATTERN RECOGNITION heuristic: Compute or examine the first several specific instances (small n, simple values). Tabulate the results. Identify a pattern or recurrence. State the pattern as a conjecture. Then prove it or use it directly to get the answer."
+  }
+]

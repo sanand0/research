@@ -1,0 +1,2367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 80-Year Blind Spot: The Polya Audit</title>
+<style>
+/* ─── Design Tokens ─── */
+:root {
+  --red:     #c41230;
+  --blue:    #1a4d7c;
+  --orange:  #d4580a;
+  --purple:  #6b3a8f;
+  --gemini:  #1565c0;
+  --ink:     #121212;
+  --gray1:   #f7f4f0;
+  --gray2:   #e8e4de;
+  --gray3:   #999;
+  --gray4:   #555;
+  --serif:   'Georgia', 'Times New Roman', serif;
+  --sans:    system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+  --mono:    'SFMono-Regular', 'Consolas', monospace;
+  --col:     680px;
+  --wide:    960px;
+}
+
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--serif);
+  color: var(--ink);
+  background: var(--gray1);
+  line-height: 1.7;
+  font-size: 19px;
+}
+
+/* ─── Layout ─── */
+.container { max-width: var(--col); margin: 0 auto; padding: 0 24px; }
+.container-wide { max-width: var(--wide); margin: 0 auto; padding: 0 24px; }
+.container-full { max-width: 1400px; margin: 0 auto; padding: 0 24px; }
+
+/* ─── Nav ─── */
+nav {
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav .nav-right { color: var(--gray3); font-size: 11px; }
+
+/* ─── Hero ─── */
+.hero {
+  background: var(--ink);
+  color: #fff;
+  padding: 64px 24px 80px;
+  text-align: center;
+}
+.kicker {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 20px;
+}
+.hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  max-width: 720px;
+  margin: 0 auto 24px;
+  font-style: italic;
+}
+.hero .deck {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  max-width: 580px;
+  margin: 0 auto 28px;
+  color: #ccc;
+  line-height: 1.55;
+  font-style: normal;
+}
+.hero .byline {
+  font-family: var(--sans);
+  font-size: 12px;
+  color: var(--gray3);
+  letter-spacing: 0.05em;
+}
+
+/* ─── Typography ─── */
+section { padding: 64px 24px; }
+section + section { border-top: 1px solid var(--gray2); }
+h2 {
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  line-height: 1.2;
+  margin-bottom: 24px;
+  font-style: italic;
+}
+h3 {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray4);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+p { margin-bottom: 1.4em; }
+p:last-child { margin-bottom: 0; }
+strong { font-weight: 700; }
+em { font-style: italic; }
+
+/* ─── Pull Quote ─── */
+.pull-quote {
+  background: #fff;
+  border-left: 4px solid var(--red);
+  padding: 40px 48px;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--gray4);
+  max-width: var(--col);
+  margin: 0 auto;
+}
+.pull-quote cite {
+  display: block;
+  font-style: normal;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--gray3);
+  margin-top: 16px;
+  letter-spacing: 0.05em;
+}
+.pull-quote cite a { color: var(--blue); text-decoration: none; }
+.pull-quote cite a:hover { text-decoration: underline; }
+
+/* ─── Section backgrounds ─── */
+.bg-white { background: #fff; }
+.bg-dark { background: var(--ink); color: #fff; }
+.bg-dark h2 { color: #fff; }
+.bg-dark h3 { color: #aaa; }
+.bg-dark p { color: #ccc; }
+
+/* ─── Callout Box ─── */
+.callout {
+  background: var(--gray1);
+  border: 1px solid var(--gray2);
+  border-radius: 4px;
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 0.95rem;
+}
+.callout.highlight {
+  background: #fff8e1;
+  border-color: #f5c842;
+}
+.callout.danger { background: #fff5f5; border-color: var(--red); }
+.callout.positive { background: #f0f7ff; border-color: var(--blue); }
+
+/* ─── Stat Cards ─── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+.stat-card {
+  background: #fff;
+  border: 1px solid var(--gray2);
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+}
+.bg-dark .stat-card { background: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.12); }
+.stat-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  font-family: var(--sans);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray3);
+}
+.bg-dark .stat-label { color: #888; }
+
+/* ─── Experiment SVG container ─── */
+#experiment-svg-container {
+  max-width: 760px;
+  margin: 40px auto;
+  background: #fff;
+  border: 1px solid var(--gray2);
+  border-radius: 8px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+/* ─── Model Personality Chart ─── */
+#personality-chart {
+  margin: 40px 0;
+  overflow-x: auto;
+}
+
+/* ─── Heatmap ─── */
+.heatmap-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 0;
+  border-bottom: 2px solid var(--gray2);
+}
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 12px 24px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  cursor: pointer;
+  color: var(--gray4);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+}
+.tab-btn:hover { color: var(--ink); }
+.tab-btn.active {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--ink);
+}
+.tab-btn[data-model="gpt"].active { border-bottom-color: var(--orange); color: var(--orange); }
+.tab-btn[data-model="gem"].active { border-bottom-color: var(--gemini); color: var(--gemini); }
+.tab-btn[data-model="haiku"].active { border-bottom-color: var(--purple); color: var(--purple); }
+
+.heatmap-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 16px 0;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+.toggle-btn {
+  background: #fff;
+  border: 1px solid var(--gray2);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.toggle-btn.active {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+#heatmap-wrapper {
+  overflow-x: auto;
+  margin-top: 0;
+  -webkit-overflow-scrolling: touch;
+}
+#heatmap-table {
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  min-width: 840px;
+}
+#heatmap-table th, #heatmap-table td {
+  padding: 0;
+  border: 1px solid rgba(255,255,255,0.4);
+}
+.hm-corner { width: 140px; }
+.hm-cat-label {
+  text-align: right;
+  padding-right: 10px;
+  font-weight: 600;
+  white-space: nowrap;
+  font-size: 0.76rem;
+  width: 140px;
+  height: 38px;
+  vertical-align: middle;
+}
+.hm-header {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  height: 100px;
+  width: 50px;
+  vertical-align: bottom;
+  padding-bottom: 6px;
+  font-weight: 500;
+  font-size: 0.72rem;
+  cursor: default;
+  text-align: left;
+}
+.hm-header.baseline-col { font-weight: 700; }
+.hm-cell {
+  width: 50px;
+  height: 38px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 0.72rem;
+  font-weight: 600;
+  transition: opacity 0.1s;
+  position: relative;
+}
+.hm-cell:hover { outline: 2px solid var(--ink); z-index: 2; }
+.hm-cell.baseline-col { border-left: 2px solid rgba(0,0,0,0.3) !important; border-right: 2px solid rgba(0,0,0,0.3) !important; }
+
+.hm-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--gray4);
+}
+.hm-legend-bar {
+  width: 200px;
+  height: 10px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #c41230, #f7c5c5, #f7f4f0, #c5d8f7, #1a4d7c);
+}
+
+/* ─── Finding Cards ─── */
+.finding-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 40px 0;
+}
+@media (max-width: 680px) { .finding-grid { grid-template-columns: 1fr; } }
+.finding-card {
+  background: #fff;
+  border: 1px solid var(--gray2);
+  border-radius: 6px;
+  padding: 24px;
+}
+.finding-number {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray3);
+  margin-bottom: 8px;
+}
+.finding-card h4 {
+  font-size: 1.05rem;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+.finding-card p {
+  font-size: 0.88rem;
+  color: var(--gray4);
+  line-height: 1.5;
+  font-family: var(--sans);
+}
+
+/* ─── Mini comparison chart ─── */
+.mini-compare {
+  display: flex;
+  gap: 16px;
+  margin: 20px 0;
+  align-items: flex-end;
+}
+.mini-bar-group {
+  flex: 1;
+  text-align: center;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+}
+.mini-bar-label { margin-bottom: 6px; color: var(--gray4); }
+.mini-bar-container {
+  height: 80px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+}
+.mini-bar {
+  width: 22px;
+  border-radius: 2px 2px 0 0;
+  transition: opacity 0.2s;
+}
+.mini-bar-values { margin-top: 4px; font-weight: 700; }
+
+/* ─── Tooltips ─── */
+[data-tip] { position: relative; cursor: help; border-bottom: 1px dotted currentColor; }
+[data-tip]::after {
+  content: attr(data-tip);
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-family: var(--sans);
+  line-height: 1.4;
+  white-space: normal;
+  width: max-content;
+  max-width: 260px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+  z-index: 50;
+  font-style: normal;
+  text-align: center;
+}
+[data-tip]:hover::after { opacity: 1; }
+
+/* ─── Popup ─── */
+#popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+}
+#popup-overlay.open { display: flex; }
+#popup {
+  background: #fff;
+  border-radius: 8px;
+  max-width: 640px;
+  width: 90vw;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+#popup-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  padding: 12px 16px;
+  color: var(--gray4);
+  z-index: 1;
+  line-height: 1;
+}
+#popup-close:hover { color: var(--ink); }
+#popup-content { padding: 24px 28px 28px; }
+.popup-header {
+  margin-bottom: 20px;
+}
+.popup-kicker {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray3);
+  margin-bottom: 6px;
+}
+.popup-title {
+  font-size: 1.3rem;
+  line-height: 1.25;
+  margin-bottom: 4px;
+}
+.popup-subtitle {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--gray4);
+}
+.popup-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 20px 0;
+}
+.popup-stat {
+  background: var(--gray1);
+  border-radius: 4px;
+  padding: 12px;
+  text-align: center;
+}
+.popup-stat-num {
+  font-family: var(--sans);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.popup-stat-lbl {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray3);
+}
+.popup-body {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  color: var(--gray4);
+  line-height: 1.6;
+}
+.popup-body p { margin-bottom: 0.8em; }
+.popup-models-compare {
+  margin: 16px 0;
+  border: 1px solid var(--gray2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.popup-model-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  border-bottom: 1px solid var(--gray2);
+  gap: 10px;
+}
+.popup-model-row:last-child { border-bottom: none; }
+.popup-model-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.popup-model-name { flex: 1; font-weight: 600; }
+.popup-model-acc { font-weight: 700; min-width: 44px; text-align: right; }
+.popup-model-delta {
+  min-width: 60px;
+  text-align: right;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+.popup-prompt {
+  background: var(--gray1);
+  border-left: 3px solid var(--gray2);
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--gray4);
+  border-radius: 0 4px 4px 0;
+  margin-top: 16px;
+  white-space: pre-wrap;
+}
+
+/* ─── Citation Links ─── */
+.cite {
+  cursor: pointer;
+  color: var(--blue);
+  border-bottom: 1px solid rgba(26,77,124,0.3);
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  vertical-align: super;
+  font-style: normal;
+  line-height: 0;
+  margin: 0 1px;
+}
+.cite:hover { border-bottom-color: var(--blue); }
+
+/* ─── Inline chart ─── */
+.chart-caption {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--gray4);
+  margin-top: 8px;
+  line-height: 1.4;
+}
+.chart-title {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+/* ─── Conclusion ─── */
+.conclusion-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  margin: 40px 0;
+}
+@media (max-width: 680px) { .conclusion-grid { grid-template-columns: 1fr; } }
+.conclusion-card {
+  border-top: 3px solid;
+  padding-top: 16px;
+}
+.conclusion-card.red { border-color: var(--red); }
+.conclusion-card.blue { border-color: var(--blue); }
+.conclusion-card.green { border-color: #2e7d32; }
+.conclusion-card h4 {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.conclusion-card p {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--gray4);
+  line-height: 1.5;
+}
+
+/* ─── Footer ─── */
+footer {
+  background: var(--ink);
+  color: #888;
+  padding: 40px 24px;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  text-align: center;
+}
+footer a { color: #aaa; }
+
+/* ─── Heuristic Summary Table ─── */
+.htable-wrap { overflow-x: auto; margin: 24px 0; }
+#htable {
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  width: 100%;
+  min-width: 540px;
+}
+#htable th {
+  background: var(--ink);
+  color: #ccc;
+  padding: 8px 10px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+#htable th.ht-heuristic { text-align: left; min-width: 140px; }
+#htable td {
+  padding: 7px 8px;
+  text-align: center;
+  border-bottom: 1px solid var(--gray2);
+  font-weight: 600;
+  cursor: pointer;
+  transition: outline 0.1s;
+}
+#htable td:hover { outline: 2px solid var(--ink); }
+#htable td.ht-heuristic {
+  text-align: left;
+  font-style: italic;
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--ink);
+  padding-left: 10px;
+  cursor: default;
+}
+#htable td.ht-heuristic:hover { outline: none; }
+#htable tr:hover td { background-color: rgba(0,0,0,0.02); }
+#htable tr:hover td.ht-heuristic { background-color: rgba(0,0,0,0.02); }
+.ht-avg { border-left: 2px solid var(--gray2) !important; }
+.ht-sig { font-size: 0.65rem; vertical-align: super; color: inherit; opacity: 0.8; }
+.ht-view-btns { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
+.ht-insight {
+  background: #fffbf0;
+  border: 1px solid #e8d879;
+  border-radius: 4px;
+  padding: 14px 18px;
+  font-family: var(--sans);
+  font-size: 0.84rem;
+  color: var(--gray4);
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+.ht-legend {
+  display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+  font-family: var(--sans); font-size: 0.75rem; color: var(--gray4);
+  margin-top: 10px;
+}
+.ht-legend-swatch { width: 28px; height: 10px; border-radius: 2px; display: inline-block; }
+.sortable-header { cursor: pointer; user-select: none; }
+.sortable-header:hover { color: #fff; }
+.sort-arrow { margin-left: 4px; opacity: 0.5; font-size: 0.7rem; }
+
+/* ─── Scroll fade-in ─── */
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* ─── Responsive ─── */
+@media (max-width: 680px) {
+  body { font-size: 17px; }
+  section { padding: 48px 20px; }
+  .pull-quote { padding: 28px 24px; font-size: 1.1rem; }
+  .finding-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+  <span>The Polya Audit · March 2026</span>
+  <span class="nav-right">6,747 AI experiments · 3 models · 15 heuristics · 7 math domains</span>
+</nav>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="kicker">Mathematics &times; Artificial Intelligence &times; Experimental Method</div>
+  <h1>The 80-Year Blind Spot</h1>
+  <p class="deck">In 1945, George Pólya gave mathematicians 15 rules for solving problems. For eight decades, they were treated as gospel. Nobody ever tested them. Until now.</p>
+  <div class="byline">March 26–27, 2026 &middot; Based on 6,747 AI experimental runs</div>
+</header>
+
+<!-- Tao Quote -->
+<section style="background:#fff; padding: 0;">
+  <div class="pull-quote">
+    "We haven't done many experiments as to, if we have two different ways to solve a problem, which is more effective. We have some intuition, but we haven't done large-scale studies where we take a thousand problems and just test them."
+    <cite>— <span data-tip="Terence Tao, Fields Medal winner (2006), widely considered the greatest living mathematician">Terence Tao</span>,
+      <a href="https://www.dwarkesh.com/p/terence-tao" target="_blank">Dwarkesh Patel Podcast, 2024</a>
+    </cite>
+  </div>
+</section>
+
+<!-- Section 1: The Hook -->
+<section class="bg-white">
+  <div class="container">
+    <h3>The Setup</h3>
+    <h2>A Book That Became Doctrine</h2>
+
+    <p>Picture a classroom in Budapest, sometime in the 1940s. A short, sharp-eyed mathematician named George Pólya is teaching a student who is stuck on a problem. He asks: <em>"Do you know a related problem?"</em> The student thinks. Something clicks.</p>
+
+    <p>Pólya had spent decades observing how humans — both brilliant and ordinary — actually solve mathematical problems. He catalogued the patterns. In 1945, he published them in a small book called <em>How to Solve It</em>. It sold over a million copies. It is still in print. It is still assigned in universities.</p>
+
+    <p>His 15 heuristics — <em>work backwards, find a simpler case, use an extremal element, exploit symmetry, find an invariant</em> — have been transmitted, unchanged, through eight decades of mathematical education. Every math olympiad coach uses them. Every textbook references them.</p>
+
+    <p><strong>Nobody ever ran an experiment to see if they worked.</strong></p>
+
+    <p>This is not unusual. Mathematics has been, almost uniquely among intellectual disciplines, a field without an experimental culture. Physics experiments. Biology experiments. Even economics experiments. But mathematics treats its pedagogical wisdom the way it treats its theorems: as things to be accepted once proven, not periodically re-tested. Pólya's rules weren't proven — they were observed. And the observations were never replicated at scale.</p>
+
+    <p>Until now. Using three large language models, 6,747 problem-solving runs, the <span data-tip="A dataset of 12,500 competition math problems across 7 categories and 5 difficulty levels, published by Hendrycks et al. (2021)">MATH benchmark</span>, and one month of compute time, we ran the first empirical audit of Pólya's advice. The results are stranger than anyone expected.</p>
+  </div>
+</section>
+
+<!-- Section 2: The Experiment -->
+<section style="background: var(--gray1);">
+  <div class="container">
+    <h3>The Method</h3>
+    <h2>How You Audit 80 Years of Math Advice</h2>
+
+    <p>The logic is simple, even if the execution wasn't. Take a hard math problem. Tell an AI model to solve it — but this time, force it to use one specific Pólya heuristic. Measure whether it gets the right answer. Repeat 6,747 times.</p>
+  </div>
+
+  <!-- Animated experiment SVG -->
+  <div id="experiment-svg-container" class="container-wide">
+    <div class="chart-title">How Each Run Worked</div>
+    <svg id="exp-svg" viewBox="0 0 700 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs>
+        <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#666"/>
+        </marker>
+        <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#2e7d32"/>
+        </marker>
+        <marker id="arrow-red" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+          <path d="M0,0 L0,6 L8,3 z" fill="#c41230"/>
+        </marker>
+      </defs>
+
+      <!-- Problem box -->
+      <rect x="10" y="80" width="120" height="60" rx="6" fill="#fff" stroke="#e8e4de" stroke-width="1.5"/>
+      <text x="70" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="9" fill="#666" font-style="italic">Math Problem (L5)</text>
+      <text x="70" y="118" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#121212">Find all x where</text>
+      <text x="70" y="130" text-anchor="middle" font-family="monospace" font-size="8.5" fill="#121212">x² + y² = 14x…</text>
+
+      <!-- Heuristic box (top) -->
+      <rect x="230" y="10" width="130" height="52" rx="6" fill="#fff8e1" stroke="#f5c842" stroke-width="1.5"/>
+      <text x="295" y="28" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666" letter-spacing="0.06em">PÓLYA HEURISTIC</text>
+      <text id="anim-heuristic" x="295" y="44" text-anchor="middle" font-family="Georgia,serif" font-size="10" fill="#121212" font-style="italic">Work Backwards</text>
+      <text x="295" y="57" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#888">(forced by system prompt)</text>
+
+      <!-- Arrow: problem → model -->
+      <line x1="130" y1="110" x2="218" y2="110" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- Arrow: heuristic → model -->
+      <line x1="295" y1="62" x2="295" y2="92" stroke="#f5c842" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- AI Model box -->
+      <rect x="220" y="80" width="150" height="60" rx="6" fill="#1a4d7c" stroke="none"/>
+      <text x="295" y="103" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="rgba(255,255,255,0.7)" letter-spacing="0.06em">AI MODEL</text>
+      <text id="anim-model" x="295" y="122" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#fff" font-weight="700">GPT-5.4-nano</text>
+
+      <!-- Arrow: model → answer -->
+      <line x1="370" y1="110" x2="458" y2="110" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- Answer box -->
+      <rect x="460" y="80" width="100" height="60" rx="6" fill="#fff" stroke="#e8e4de" stroke-width="1.5"/>
+      <text x="510" y="103" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#666">PREDICTED</text>
+      <text id="anim-pred" x="510" y="122" text-anchor="middle" font-family="Georgia,serif" font-size="13" fill="#121212" font-style="italic">y = 49</text>
+
+      <!-- Arrow: answer → judge -->
+      <line x1="560" y1="110" x2="608" y2="110" stroke="#666" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+      <!-- Judge box -->
+      <rect x="610" y="80" width="78" height="60" rx="6" id="anim-judge-box" fill="#f0f7f0" stroke="#2e7d32" stroke-width="1.5"/>
+      <text id="anim-result" x="649" y="118" text-anchor="middle" font-family="system-ui,sans-serif" font-size="24" fill="#2e7d32">✓</text>
+
+      <!-- Gold answer label -->
+      <text x="510" y="155" text-anchor="middle" font-family="system-ui,sans-serif" font-size="7.5" fill="#888">Gold: y = 49</text>
+
+      <!-- Scale indicator -->
+      <rect x="10" y="170" width="680" height="40" rx="4" fill="#f7f4f0" stroke="#e8e4de" stroke-width="1"/>
+      <text x="350" y="188" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#888" letter-spacing="0.04em">THIS LOOP RAN 6,747 TIMES &mdash;</text>
+      <text x="350" y="202" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8" fill="#888">3 models &times; 15 heuristics &times; 7 categories &times; 20 problems each</text>
+    </svg>
+  </div>
+
+  <div class="container">
+    <div class="stat-grid fade-in">
+      <div class="stat-card">
+        <div class="stat-number">6,747</div>
+        <div class="stat-label">Total AI Runs</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3</div>
+        <div class="stat-label">AI Models Tested</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">15</div>
+        <div class="stat-label">Pólya Heuristics</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">7</div>
+        <div class="stat-label">Math Categories</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">$1.71</div>
+        <div class="stat-label">Total API Cost</div>
+      </div>
+    </div>
+
+    <p>The three models — <strong style="color:var(--orange)">GPT-5.4-nano</strong>, <strong style="color:var(--gemini)">Gemini 2.5 Flash Lite</strong>, and <strong style="color:var(--purple)">Claude Haiku 4.5</strong> — were each given the same 20 problems per cell at difficulty Level 5, the hardest tier. The <a href="https://github.com/sanand0/research/blob/main/lean/polya_experiment.py" target="_blank" style="color:var(--blue)">full experiment script</a> and <a href="https://github.com/sanand0/research/blob/main/lean/polya_heuristics.json" target="_blank" style="color:var(--blue)">heuristic definitions</a> are on GitHub. For each problem, they were given either no instruction (the baseline), or a system prompt that explicitly forced one of Pólya's 15 strategies. The answer was then checked against the ground truth.</p>
+
+    <p>The question wasn't <em>can AI do math?</em> All three models solve harder problems than most humans on their best day. The question was: <em>does Pólya's framing help?</em></p>
+  </div>
+</section>
+
+<!-- Section 3: The Verdict -->
+<section class="bg-dark">
+  <div class="container">
+    <h3 style="color:#888">The Main Finding</h3>
+    <h2>Three Models. Three Completely Different Answers.</h2>
+
+    <p>The first thing you expect when you run a study like this is a clean result. Heuristics help, or they don't. What you do not expect is three models with three diametrically opposite responses to the same advice.</p>
+  </div>
+
+  <div class="container-full">
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number" style="color:var(--orange)">↓ 10%</div>
+        <div class="stat-label" style="color:#888">GPT: worst heuristic penalty</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="color:var(--gemini)">↑ 6%</div>
+        <div class="stat-label" style="color:#888">Gemini: best heuristic gain</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="color:var(--purple)">≈ 0%</div>
+        <div class="stat-label" style="color:#888">Haiku: essentially immune</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" style="color:#555">14/15</div>
+        <div class="stat-label" style="color:#888">heuristics consistently hurt Number Theory — and help Prealgebra</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+  <!-- Personality Chart -->
+  <div class="container-wide">
+    <div class="chart-title" style="color:#ccc; margin-bottom:8px;">Heuristic Effect on Each Model (Δ from baseline accuracy)</div>
+    <div style="overflow-x:auto;">
+      <svg id="personality-svg" viewBox="0 0 860 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:860px;height:auto;display:block;margin:0 auto;">
+        <!-- will be rendered by JS -->
+      </svg>
+    </div>
+    <div class="chart-caption" style="color:#888; margin-top:6px;">Each dot is one heuristic's average delta from baseline. Hover for details. The spread reveals each model's "coachability."</div>
+  </div>
+
+  <div class="container">
+    <p>GPT-5.4-nano's built-in problem-solving strategy is already good — every heuristic we imposed made things worse, some catastrophically so. Gemini is more like a student who benefits from being told which lens to use: it gains up to 6 percentage points from the right heuristic. Claude Haiku is the most remarkable: it seems to hear the instruction, nod politely, and then solve the problem exactly the way it was going to anyway. Its performance barely moves regardless of what you tell it.</p>
+
+    <p>This isn't noise. Across all 15 heuristics and 7 categories, GPT's performance ranges <strong style="color:var(--orange)">13.6 percentage points</strong> from best to worst heuristic. Gemini spans <strong style="color:var(--gemini)">8.5 points</strong>. Haiku spans just <strong style="color:var(--purple)">3.4 points</strong> — barely above statistical noise.</p>
+
+    <p>And here is the model-level finding: <strong>12 out of 15 heuristics produce opposite-sign effects on GPT versus Gemini.</strong> The same instruction that helps one model hurts the other. But there is an even stronger signal in the data — one that cuts across all three models. The single best predictor of whether Pólya's advice will work is not <em>who</em> you're asking. It's <em>what kind of problem</em> you're solving.</p>
+  </div>
+</section>
+
+<!-- Section 4: The Heatmap -->
+<section class="bg-white" id="heatmap-section">
+  <div class="container">
+    <h3>The Full Picture</h3>
+    <h2>Every Heuristic, Every Category, Every Model</h2>
+    <p>The real texture of the data lives in this heatmap. Each cell shows how a model's accuracy changes from the baseline when forced to use a given heuristic. <strong>Blue means it helped. Red means it hurt.</strong> Click any cell to dig in.</p>
+  </div>
+
+  <div class="container-wide">
+    <div class="heatmap-tabs" id="heatmap-tabs">
+      <button class="tab-btn active" data-model="gpt">GPT-5.4-nano</button>
+      <button class="tab-btn" data-model="gem">Gemini 2.5 Flash Lite</button>
+      <button class="tab-btn" data-model="haiku">Claude Haiku 4.5</button>
+    </div>
+
+    <div class="heatmap-controls">
+      <button class="toggle-btn active" id="show-delta">Δ from Baseline</button>
+      <button class="toggle-btn" id="show-raw">Raw Accuracy</button>
+      <span style="color:var(--gray3);font-family:var(--sans);font-size:0.78rem;">Click a cell for details</span>
+    </div>
+
+    <div id="heatmap-wrapper">
+      <table id="heatmap-table"></table>
+    </div>
+
+    <div class="hm-legend">
+      <span>Worse ←</span>
+      <div class="hm-legend-bar"></div>
+      <span>→ Better</span>
+      <span style="margin-left:8px;color:var(--gray3);">Scale: ±25 percentage points from baseline</span>
+    </div>
+  </div>
+
+  <div class="container" style="margin-top:40px;">
+    <p>The heatmap contains a full story in each row and column. <strong>Number theory</strong> is nearly at the ceiling — the AI models already solve 90–95% of problems without any guidance. Any heuristic that pulls them away from their natural approach is almost guaranteed to hurt. <strong>Geometry</strong> is the chaos zone: heuristics have wild effects that differ not just in magnitude but in direction across models. <strong>Counting and probability</strong> is the one area where heuristics reliably help, particularly case analysis. The row patterns — which categories respond positively vs. negatively — are so consistent that they reach statistical significance: 14 of 15 heuristics show the same directional effect within each of four categories (p &lt; 0.001). Click any category label to see its full profile.</p>
+  </div>
+</section>
+
+<!-- Section 5: Key Findings -->
+<section style="background:var(--gray1);">
+  <div class="container">
+    <h3>Key Findings</h3>
+    <h2>What the Data Actually Says</h2>
+  </div>
+
+  <!-- Finding 1: Geometry Catastrophe -->
+  <div class="container-wide">
+    <div class="callout danger fade-in">
+      <h3 style="color:var(--red);">Finding #1 — The Geometry Catastrophe</h3>
+      <p style="font-family:var(--sans);font-size:0.95rem;">The single most dramatic result in the dataset: telling GPT to "introduce auxiliary elements" — Pólya's advice to add a construction line, a helper variable, an intermediate expression — collapses GPT's geometry accuracy from 55% to just 30%. That is a <strong>25-percentage-point drop</strong> from a single sentence of guidance.</p>
+
+      <!-- Mini comparison -->
+      <div style="margin:24px 0;overflow-x:auto;">
+        <div class="chart-title" style="color:var(--red);margin-bottom:6px;">Geometry accuracy: Baseline vs. "Introduce Auxiliary Elements"</div>
+        <svg id="geo-aux-chart" viewBox="0 0 480 170" style="width:100%;max-width:480px;height:auto;display:block;">
+          <!-- Rendered by JS -->
+        </svg>
+      </div>
+
+      <p style="font-family:var(--sans);font-size:0.88rem;color:var(--gray4);">The same instruction behaves completely differently on the other models: Haiku gains +14% on geometry when given auxiliary elements. The instruction isn't bad — it's that GPT's spatial reasoning is disrupted by being told to "add something new," while Haiku can absorb and use it.</p>
+      <p style="font-family:var(--sans);font-size:0.88rem;color:var(--gray4);">What's happening? GPT likely has a strong internal geometric schema that works well by default. The auxiliary elements instruction forces it to generate distractors — elements that seem relevant but ultimately redirect its attention away from the direct path to the solution. Haiku, with stronger instruction-following, actually builds the auxiliary construction and uses it correctly.</p>
+    </div>
+
+    <!-- Finding 2: Universal Losers -->
+    <div class="callout highlight fade-in">
+      <h3>Finding #2 — The Three Universal Losers</h3>
+      <p style="font-family:var(--sans);font-size:0.95rem;">Three heuristics hurt all three models. These are the techniques that Pólya himself would likely acknowledge are highly domain-specific: mathematical <strong>induction</strong>, the <strong>pigeonhole principle</strong>, and <strong>pattern recognition</strong> (examine small cases, find a pattern, conjecture and prove).</p>
+
+      <div style="margin:24px 0;overflow-x:auto;">
+        <div class="chart-title" style="margin-bottom:6px;">Average Δ from baseline — three heuristics that hurt all models</div>
+        <svg id="losers-chart" viewBox="0 0 500 145" style="width:100%;max-width:500px;height:auto;display:block;">
+          <!-- Rendered by JS -->
+        </svg>
+      </div>
+
+      <p style="font-family:var(--sans);font-size:0.88rem;color:var(--gray4);">Pattern recognition is the worst offender for GPT, dropping accuracy by 10 percentage points overall. The instruction to "tabulate instances and find a pattern" encourages slow enumeration when direct calculation is faster and more reliable. The models that benefit from inductive enumeration were already doing it when appropriate — being forced into it blindly causes them to waste time and make errors.</p>
+    </div>
+
+    <!-- Finding 3: The Winner -->
+    <div class="callout positive fade-in">
+      <h3>Finding #3 — Case Analysis is the Most Reliable Heuristic</h3>
+      <p style="font-family:var(--sans);font-size:0.95rem;">The single most reliable heuristic across all models and categories is <strong>case analysis</strong> — exhaustively splitting a problem into mutually exclusive, collectively exhaustive cases. For counting and probability problems, it helps every model.</p>
+
+      <div style="margin:24px 0;overflow-x:auto;">
+        <div class="chart-title" style="color:var(--blue);margin-bottom:6px;">Counting &amp; Probability accuracy: Baseline vs. "Case Analysis"</div>
+        <svg id="case-chart" viewBox="0 0 480 150" style="width:100%;max-width:480px;height:auto;display:block;">
+          <!-- Rendered by JS -->
+        </svg>
+      </div>
+
+      <p style="font-family:var(--sans);font-size:0.88rem;color:var(--gray4);">Why? Counting and probability problems are <em>structurally</em> case-based. When you ask "how many ways can two dice sum to 7?", the natural solution is to enumerate the cases: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1). The case analysis heuristic isn't fighting against any existing strategy — it's aligning with the problem's natural decomposition. This is the heuristic that Pólya would be most vindicated by: it works when the problem structure matches the heuristic structure.</p>
+    </div>
+
+    <!-- Finding 4: The Flip -->
+    <div class="callout fade-in" style="background:#f5f0ff;border-color:var(--purple);">
+      <h3 style="color:var(--purple);">Finding #4 — 12 of 15 Heuristics Flip Sign Between Models</h3>
+      <p style="font-family:var(--sans);font-size:0.95rem;">This is perhaps the most profound finding. <strong>Symmetry</strong>, for example: Gemini gains 6.1 percentage points when told to exploit symmetry. GPT loses 2.9 points. The same words, the same problems — and the effect is opposite in sign.</p>
+
+      <div style="margin:16px 0;overflow-x:auto;">
+        <div class="chart-title" style="color:var(--purple);margin-bottom:6px;">Δ from baseline per heuristic — GPT (orange) vs. Gemini (blue). ⇄ = sign flip.</div>
+        <svg id="flip-chart" viewBox="0 0 620 190" style="width:100%;max-width:620px;height:auto;display:block;">
+          <!-- Rendered by JS -->
+        </svg>
+      </div>
+
+      <p style="font-family:var(--sans);font-size:0.88rem;color:var(--gray4);">The three exceptions — the only heuristics that are consistently negative for both GPT and Gemini — are induction, pigeonhole, and contradiction. These are techniques with narrow applicability. Forcing them onto general Level-5 problems, where they usually don't apply, causes models to argue themselves into wrong corners.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Finding #5: The Category Divide -->
+<section class="bg-white">
+  <div class="container">
+    <div class="callout fade-in" style="background:#f0f7ff;border-color:var(--blue);">
+      <h3 style="color:var(--blue);">Finding #5 — The Strongest Signal: Problem Type Beats Model and Heuristic</h3>
+      <p style="font-family:var(--sans);font-size:0.95rem;">Forget which heuristic you pick. Forget which model you're using. The single biggest predictor of whether Pólya advice will help is <em>what kind of problem</em> you're facing. Four of seven categories show statistically significant directional consistency across all 15 heuristics (p &lt; 0.001 each, binomial test) — a result that holds regardless of model.</p>
+
+      <div style="margin:16px 0;overflow-x:auto;">
+        <div class="chart-title">Average Δ from baseline per category — averaged across all 15 heuristics &amp; 3 models</div>
+        <svg id="cat-divide-chart" viewBox="0 0 560 240" style="width:100%;max-width:560px;height:auto;display:block;">
+          <!-- Rendered by JS -->
+        </svg>
+      </div>
+
+      <p style="font-family:var(--sans);font-size:0.88rem;color:var(--gray4);">
+        <strong>Prealgebra</strong> benefits from 14 of 15 heuristics — virtually anything you tell the model to try, it productively applies.
+        <strong>Intermediate Algebra, Number Theory, and Precalculus</strong> are hurt by 14 of 15 heuristics — any scaffolding you impose makes things worse.
+        The divide is not about difficulty. Number theory problems hit near-ceiling accuracy (≥85%) yet still consistently decline under heuristics, while prealgebra problems at similar difficulty levels consistently rise.
+        The true axis is <em>structural decomposability</em>: prealgebra problems naturally split into cases; number theory and precalculus require deep, domain-specific insight that generic prompts can only displace.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Section 5b: Heuristic Summary Table -->
+<section class="bg-white" id="table-section">
+  <div class="container">
+    <h3>The Full Scorecard</h3>
+    <h2>Which Heuristics Win — And Where?</h2>
+
+    <p>The heatmap shows every individual cell. This table summarizes the pattern: for each Pólya heuristic, how much does it help or hurt — averaged across either problem types or AI models?</p>
+
+    <div class="ht-insight">
+      <strong>Which split is more insightful?</strong> Problem type turns out to be the stronger predictor (average std 4.3%) than model choice (2.7%). The same heuristic's effect swings more dramatically across math domains than across AI systems. The table defaults to showing the breakdown <em>by problem type</em> — more useful for practitioners who know what kind of problem they're working on. Toggle to the <em>by model</em> view to see the sign-flip story.
+      <br><br>
+      <strong>Statistical context:</strong> With ~20 problems per cell, effects under ±11% (overall) or ±17% (per-category) should be treated as directional signals, not definitive results. Cells are shaded by confidence: faint = likely noise, vivid = stronger signal.
+    </div>
+
+    <div class="ht-view-btns">
+      <button class="toggle-btn active" id="ht-by-cat">By Problem Type <span style="opacity:0.6;font-size:0.8em;">(avg across 3 models)</span></button>
+      <button class="toggle-btn" id="ht-by-model">By AI Model <span style="opacity:0.6;font-size:0.8em;">(avg across 7 categories)</span></button>
+      <span style="color:var(--gray3);font-size:0.78rem;">Click column headers to sort &middot; Click cells for details</span>
+    </div>
+  </div>
+
+  <div class="container-full">
+    <div class="htable-wrap">
+      <table id="htable"></table>
+    </div>
+
+    <div class="ht-legend">
+      <div style="display:flex;align-items:center;gap:6px;">
+        <span class="ht-legend-swatch" style="background:linear-gradient(to right,#c41230,#ffd5d5,#f7f4f0,#d5e8ff,#1a4d7c)"></span>
+        <span>Worse ← | → Better than baseline</span>
+      </div>
+      <div>Opacity = effect size (faint = likely noise, solid = strong signal)</div>
+      <div><strong>★</strong> = statistically significant (|Δ| &gt; 11% overall, 17% per-category)</div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Research Context -->
+<section class="bg-white">
+  <div class="container">
+    <h3>Wider Context</h3>
+    <h2>What This Connects To</h2>
+
+    <p>The finding that heuristics have opposite effects on different models isn't just a quirk of these three models. It maps directly onto a growing body of research on <em>prompt sensitivity</em> in large language models. A <span data-tip="Studies show LLMs can be highly sensitive to seemingly trivial changes in prompt wording (Lu et al., 2022; Sclar et al., 2023)">2023 study by Sclar et al.</span> found that minor wording changes can alter LLM performance by tens of percentage points — far more than any algorithm change. What we're seeing with Pólya's heuristics is the same phenomenon at a conceptual level.</p>
+
+    <p>The GPT personality — "don't tell me how to think" — has a clear analogue in the research literature on <em>chain-of-thought prompting</em>. Larger, more capable models benefit less from explicit reasoning scaffolds because they've internalized the scaffolding during training. <span data-tip="Wei et al. (2022) showed that chain-of-thought prompting mostly benefits larger models, while smaller models can be hurt by it">Wei et al. (2022)</span> showed this for chain-of-thought reasoning. The Pólya audit is showing the same thing for higher-level heuristics: a model that has already learned to decompose into cases doesn't benefit from being told to decompose into cases.</p>
+
+    <p>The Gemini result — "scaffolding helps me organize" — also makes theoretical sense. <span data-tip="Gemini models use a different training approach emphasizing multimodal reasoning, which may leave more room for explicit prompting to add value">Gemini's architecture</span> optimizes differently, and may have had less reinforcement-learning fine-tuning toward autonomous problem-solving, leaving more room for prompt-level steering.</p>
+
+    <p>The category divide has its own analogue in human cognition research. Domain-specific expertise studies consistently show that novices benefit from general heuristics while experts are disrupted by them — because experts have internalized domain-specific shortcuts that are more efficient than any general strategy. The AI equivalent: models that have seen millions of number theory problems have already internalized the invariant-based and modular reasoning those problems require. Telling them to "work backwards" is like telling a grandmaster to think about the rules.</p>
+
+    <p>And Haiku's immunity? This is the most intriguing result. Haiku achieves near-identical performance regardless of heuristic, which suggests it has built a kind of <em>meta-strategy</em> — a way of approaching math problems that is flexible enough to incorporate any framing without being dominated by it. It hears "use symmetry" and uses symmetry when it's useful, but doesn't force the point when it isn't. This is, arguably, what Pólya was actually advocating: not mechanical application of heuristics, but heuristics as lenses to try.</p>
+
+    <div class="callout">
+      <strong>A note on methodology:</strong> Each cell in the heatmap represents 20 problems at difficulty Level 5. With n=20, a 10-percentage-point difference corresponds to a 2-problem swing — significant as a trend but small as an absolute count. The most dramatic findings (the geometry catastrophe at −25%, case analysis at +16% for Gemini's counting problems) would survive stricter statistical thresholds. The smaller effects (±2–4%) should be treated as directional signals, not definitive conclusions. A pre-registered follow-up with n=100 per cell would settle the question.
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: So What -->
+<section style="background:var(--ink); color:#fff;">
+  <div class="container">
+    <h3 style="color:#888;">Implications</h3>
+    <h2>What Pólya Would Make of This</h2>
+
+    <p style="color:#ccc;">George Pólya was a careful empiricist in the way that mathematicians of his era were careful: he observed, he catalogued, he reflected. He was not wrong. He was working without a key tool — the ability to run the same experiment a thousand times and measure outcomes.</p>
+
+    <p style="color:#ccc;">The audit's central finding is not that Pólya was wrong. It's that his heuristics are <em>context-dependent in two distinct layers</em>. The first layer is problem type: heuristics consistently help prealgebra and consistently hurt number theory, intermediate algebra, and precalculus — regardless of model, regardless of which heuristic. That signal is statistically robust. The second layer is model personality: within any given problem type, GPT and Gemini can still disagree on sign. Pólya's advice needs to be matched first to the domain, then to the solver.</p>
+
+    <div class="conclusion-grid">
+      <div class="conclusion-card red">
+        <h4>For AI Math Tutors</h4>
+        <p style="color:#ccc;">Start with the problem, not the heuristic. If a student is working on number theory or precalculus, no Pólya heuristic reliably helps — save the coaching. If they're on counting or prealgebra, almost any structured hint will move the needle. <em>Then</em> consider the model: Gemini responds to symmetry and analogy; GPT needs case analysis; Haiku doesn't need any of it.</p>
+      </div>
+      <div class="conclusion-card blue">
+        <h4>For Math Pedagogy</h4>
+        <p style="color:#ccc;">The finding that pattern recognition is the worst heuristic for AI should give math teachers pause. We teach "tabulate small cases, find a pattern" as a general strategy. The data suggests it's not: it works when you need to guess a formula, not when direct calculation is available.</p>
+      </div>
+      <div class="conclusion-card green">
+        <h4>For the Tao Vision</h4>
+        <p style="color:#ccc;">Terence Tao called this kind of experiment "the experimental side of math" and said AI would revolutionize it. The Pólya Audit cost $1.71 and took one day. It generated the first empirical data on a question that has been debated for 80 years. That is the revolution beginning.</p>
+      </div>
+    </div>
+
+    <p style="color:#ccc;margin-top:32px;">The deeper implication is methodological. If we can empirically test Pólya's heuristics, we can empirically test anything in mathematical pedagogy. Which representation (algebraic vs. geometric) helps more? Which order of topics produces better transfer? What's the optimal mix of worked examples and practice problems? These questions have been debated for decades by people with strong opinions and almost no data. The tools now exist to answer them.</p>
+
+    <p style="color:#ccc;">Mathematics has been producing evidence-free folk wisdom for centuries. The audit has begun.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>The Pólya Audit &middot; 6,747 experiments run March 26, 2026</p>
+  <p style="margin-top:8px;">
+    Models: GPT-5.4-nano (OpenAI) &middot; Gemini 2.5 Flash Lite (Google) &middot; Claude Haiku 4.5 (Anthropic) &middot;
+    Dataset: <a href="https://github.com/EleutherAI/hendrycks_math" target="_blank">MATH Benchmark</a> (Hendrycks et al., 2021)
+  </p>
+  <p style="margin-top:10px;">
+    <a href="https://github.com/sanand0/research/blob/main/lean/prompts.md" target="_blank">Experiment Prompts</a> &middot;
+    <a href="https://github.com/sanand0/research/blob/main/lean/polya_experiment.py" target="_blank">Source Code</a> &middot;
+    <a href="https://github.com/sanand0/research/blob/main/lean/polya_heuristics.json" target="_blank">Heuristic Definitions</a> &middot;
+    <a href="https://github.com/sanand0/research/blob/main/lean/polya_results/summary.json" target="_blank">Results Data (JSON)</a> &middot;
+    <a href="https://github.com/sanand0/research/tree/main/lean" target="_blank">Full Repository</a>
+  </p>
+  <p style="margin-top:8px; color:#555;">
+    Pólya, G. (1945). <em>How to Solve It</em>. Princeton University Press. &middot;
+    Tao, T. (2024). <a href="https://www.dwarkesh.com/p/terence-tao" target="_blank">Dwarkesh Patel Podcast</a>. &middot;
+    Hendrycks, D. et al. (2021). Measuring Mathematical Problem Solving. <em>arXiv:2103.03874</em>. &middot;
+    Wei, J. et al. (2022). Chain-of-Thought Prompting. <em>NeurIPS</em>. &middot;
+    Sclar, M. et al. (2023). Quantifying LLM Sensitivity to Prompt Design. <em>arXiv:2310.11324</em>.
+  </p>
+</footer>
+
+<!-- Popup Overlay -->
+<div id="popup-overlay">
+  <div id="popup">
+    <button id="popup-close">&times;</button>
+    <div id="popup-content"></div>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════════
+// DATA
+// ════════════════════════════════════════════════════════════════
+
+const HEURISTICS = [
+  "baseline","work_backwards","simpler_case","contradiction","induction",
+  "extremal_element","invariant","change_representation","symmetry","count_two_ways",
+  "pigeonhole","auxiliary_elements","analogy","generalize","case_analysis","pattern_recognition"
+];
+
+const HEURISTIC_NAMES = {
+  baseline: "Baseline (No Heuristic)",
+  work_backwards: "Work Backwards",
+  simpler_case: "Simpler Case",
+  contradiction: "Contradiction",
+  induction: "Induction",
+  extremal_element: "Extremal Element",
+  invariant: "Invariant",
+  change_representation: "Change Repr.",
+  symmetry: "Symmetry",
+  count_two_ways: "Count 2 Ways",
+  pigeonhole: "Pigeonhole",
+  auxiliary_elements: "Auxiliary",
+  analogy: "Analogy",
+  generalize: "Generalize",
+  case_analysis: "Case Analysis",
+  pattern_recognition: "Pattern Recog."
+};
+
+const HEURISTIC_DESCRIPTIONS = {
+  baseline: "No heuristic forced — the model chooses its own strategy.",
+  work_backwards: "Start from the desired conclusion and reason back toward what's given.",
+  simpler_case: "Solve an easier special case first, then generalize.",
+  contradiction: "Assume the opposite is true; derive an absurdity.",
+  induction: "Prove a base case, then show P(n)→P(n+1).",
+  extremal_element: "Focus on the maximum, minimum, or boundary element.",
+  invariant: "Find a quantity that doesn't change under the problem's transformations.",
+  change_representation: "Translate the problem into coordinates, complex numbers, graphs, etc.",
+  symmetry: "Exploit symmetric structure to simplify or directly deduce the answer.",
+  count_two_ways: "Count a quantity two different ways and equate the results.",
+  pigeonhole: "If n+1 items fit into n containers, some container holds ≥2 items.",
+  auxiliary_elements: "Introduce a new construction, variable, or expression not in the original problem.",
+  analogy: "Find a similar, simpler problem whose solution can be adapted.",
+  generalize: "Solve a more general version of the problem first.",
+  case_analysis: "Enumerate all possible cases exhaustively and handle each separately.",
+  pattern_recognition: "Compute small instances, tabulate, find a pattern, prove it."
+};
+
+const HEURISTIC_PROMPTS = {
+  baseline: "Solve the following math problem step by step. Show your reasoning clearly.",
+  work_backwards: "Solve using the WORK BACKWARDS heuristic: Start from the desired answer and reason step by step back toward the given information.",
+  simpler_case: "Solve using the SIMPLER CASE heuristic: First strip away complexity and solve an easier version. Observe the pattern, then generalize.",
+  contradiction: "Solve using the CONTRADICTION heuristic: Assume the opposite of what you want to show is true. Reason until you derive an absurdity.",
+  induction: "Solve using MATHEMATICAL INDUCTION: Identify a parameter n. Prove a base case. Use inductive hypothesis to prove n+1.",
+  extremal_element: "Solve using the EXTREMAL ELEMENT heuristic: Focus on the largest, smallest, or boundary element. Extremal elements often have special properties.",
+  invariant: "Solve using the INVARIANT heuristic: Look for a quantity that remains unchanged throughout the process. Use it to prove impossibility or find constraints.",
+  change_representation: "Solve using CHANGE REPRESENTATION: Transform the problem — coordinates, complex numbers, generating functions, matrices, graphs.",
+  symmetry: "Solve using the SYMMETRY heuristic: Identify symmetric structure. Use symmetry to simplify, pair up terms, reduce cases, or directly deduce the answer.",
+  count_two_ways: "Solve using COUNT TWO WAYS: Find a quantity that can be counted in two different ways. Set up both expressions and equate them.",
+  pigeonhole: "Solve using the PIGEONHOLE PRINCIPLE: Identify 'pigeons' (objects) and 'holes' (containers). If there are more pigeons than holes, some hole holds ≥2.",
+  auxiliary_elements: "Solve using AUXILIARY ELEMENTS: Add something new — a construction line in geometry, a new variable, a helper function, an algebraic identity.",
+  analogy: "Solve using ANALOGY: Think of a simpler or related problem whose solution you know. Map its structure onto this one and adapt the technique.",
+  generalize: "Solve using GENERALIZE: Reformulate in a more general form with a parameter. Solve the general version, then specialize back.",
+  case_analysis: "Solve using CASE ANALYSIS: Identify the key condition that splits the problem. List all possible cases exhaustively. Handle each with a complete argument.",
+  pattern_recognition: "Solve using PATTERN RECOGNITION: Compute several specific instances. Tabulate results. Identify a pattern. State the conjecture. Then prove or use it."
+};
+
+const CATEGORIES = [
+  "algebra","counting_and_probability","geometry","intermediate_algebra",
+  "number_theory","prealgebra","precalculus"
+];
+
+const CATEGORY_NAMES = {
+  algebra: "Algebra",
+  counting_and_probability: "Counting & Prob.",
+  geometry: "Geometry",
+  intermediate_algebra: "Intermediate Alg.",
+  number_theory: "Number Theory",
+  prealgebra: "Prealgebra",
+  precalculus: "Precalculus"
+};
+
+const CATEGORY_DESCRIPTIONS = {
+  algebra: "Solving equations, functions, polynomials, sequences. Baseline difficulty for top models.",
+  counting_and_probability: "Combinatorics, expected value, probability distributions. Highly responsive to structural heuristics.",
+  geometry: "Euclidean geometry, coordinates, triangles, circles. Highly volatile under heuristic forcing.",
+  intermediate_algebra: "Higher-degree polynomials, complex expressions, harder manipulations. Difficult even at baseline.",
+  number_theory: "Divisibility, modular arithmetic, primes. Near ceiling — models barely need guidance.",
+  prealgebra: "Arithmetic, ratios, basic algebra. Moderate difficulty, receptive to case analysis.",
+  precalculus: "Trigonometry, logarithms, limits. Hardest category — heuristics mostly hurt."
+};
+
+const MODELS = {
+  gpt: {
+    name: "GPT-5.4-nano",
+    color: "#d4580a",
+    baseline_overall: 70.0,
+    description: "Heuristics disrupt it"
+  },
+  gem: {
+    name: "Gemini 2.5 Flash Lite",
+    color: "#1565c0",
+    baseline_overall: 69.3,
+    description: "More coachable"
+  },
+  haiku: {
+    name: "Claude Haiku 4.5",
+    color: "#6b3a8f",
+    baseline_overall: 71.9,
+    description: "Nearly immune"
+  }
+};
+
+// Heatmap data: [category_idx][heuristic_idx] = accuracy %
+const HEATMAP = {
+  gpt: [
+    [70.0,65.0,60.0,65.0,70.0,65.0,70.0,65.0,70.0,70.0,75.0,65.0,75.0,65.0,75.0,55.0],
+    [80.0,85.0,75.0,70.0,85.0,70.0,75.0,80.0,75.0,75.0,85.0,80.0,70.0,65.0,90.0,75.0],
+    [55.0,50.0,55.0,55.0,50.0,40.0,40.0,55.0,55.0,35.0,45.0,30.0,50.0,40.0,40.0,45.0],
+    [50.0,50.0,50.0,55.0,50.0,40.0,45.0,55.0,40.0,45.0,35.0,40.0,35.0,50.0,40.0,45.0],
+    [95.0,95.0,90.0,80.0,80.0,95.0,75.0,80.0,80.0,80.0,85.0,90.0,90.0,90.0,80.0,75.0],
+    [70.0,65.0,70.0,80.0,75.0,75.0,80.0,60.0,75.0,65.0,80.0,70.0,70.0,75.0,85.0,70.0],
+    [45.0,45.0,40.0,45.0,35.0,45.0,40.0,45.0,50.0,40.0,35.0,35.0,45.0,45.0,40.0,30.0]
+  ],
+  gem: [
+    [61.1,63.2,57.9,66.7,56.3,63.2,52.6,63.2,61.1,61.1,65.0,57.9,65.0,68.4,63.2,57.9],
+    [73.7,84.2,90.0,75.0,85.0,85.0,90.0,90.0,90.0,80.0,85.0,90.0,85.0,78.9,90.0,80.0],
+    [70.0,75.0,75.0,75.0,65.0,70.0,70.0,65.0,70.0,65.0,70.0,65.0,75.0,75.0,65.0,65.0],
+    [55.0,55.0,65.0,50.0,50.0,40.0,60.0,55.0,60.0,55.0,45.0,55.0,55.0,55.0,65.0,60.0],
+    [95.0,95.0,90.0,85.0,85.0,95.0,90.0,95.0,95.0,90.0,80.0,95.0,95.0,90.0,95.0,90.0],
+    [70.0,70.0,70.0,80.0,70.0,75.0,75.0,80.0,85.0,80.0,75.0,85.0,80.0,75.0,80.0,75.0],
+    [60.0,60.0,60.0,50.0,55.0,60.0,50.0,60.0,65.0,55.0,55.0,55.0,60.0,65.0,50.0,50.0]
+  ],
+  haiku: [
+    [65.0,65.0,55.0,65.0,57.9,57.9,65.0,60.0,60.0,65.0,65.0,60.0,63.2,65.0,65.0,65.0],
+    [80.0,85.0,89.5,88.2,85.0,80.0,75.0,78.9,85.0,75.0,75.0,80.0,75.0,84.2,75.0,75.0],
+    [70.0,80.0,83.3,75.0,80.0,73.7,85.0,75.0,70.0,70.0,75.0,84.2,75.0,75.0,80.0,75.0],
+    [65.0,55.0,52.6,64.7,52.6,57.9,50.0,65.0,50.0,60.0,57.9,55.0,60.0,57.9,55.0,63.2],
+    [90.0,80.0,85.0,94.7,94.7,95.0,85.0,95.0,95.0,90.0,95.0,84.2,89.5,85.0,90.0,90.0],
+    [78.9,80.0,80.0,80.0,75.0,80.0,75.0,80.0,85.0,85.0,78.9,75.0,70.0,78.9,78.9,84.2],
+    [55.0,50.0,50.0,40.0,47.4,38.9,55.0,50.0,50.0,47.4,45.0,45.0,50.0,42.1,47.4,50.0]
+  ]
+};
+
+// Overall deltas: mean of per-category (acc - baseline_acc) across all 7 categories
+const OVERALL_DELTAS = {
+  gpt: {
+    work_backwards: -1.4, simpler_case: -3.6, contradiction: -2.1, induction: -2.9,
+    extremal_element: -5.0, invariant: -5.7, change_representation: -3.6, symmetry: -2.9,
+    count_two_ways: -7.9, pigeonhole: -3.6, auxiliary_elements: -7.9, analogy: -4.3,
+    generalize: -5.0, case_analysis: -2.1, pattern_recognition: -10.0
+  },
+  gem: {
+    work_backwards: +2.5, simpler_case: +3.3, contradiction: -0.4, induction: -2.6,
+    extremal_element: +0.5, invariant: +0.4, change_representation: +3.3, symmetry: +5.9,
+    count_two_ways: +0.2, pigeonhole: -1.4, auxiliary_elements: +2.6, analogy: +4.3,
+    generalize: +3.2, case_analysis: +3.3, pattern_recognition: -1.0
+  },
+  haiku: {
+    work_backwards: -1.3, simpler_case: -1.2, contradiction: +0.5, induction: -1.6,
+    extremal_element: -2.9, invariant: -2.0, change_representation: 0.0, symmetry: -1.3,
+    count_two_ways: -1.6, pigeonhole: -1.7, auxiliary_elements: -2.9, analogy: -3.0,
+    generalize: -2.3, case_analysis: -1.8, pattern_recognition: -0.2
+  }
+};
+
+// ════════════════════════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════════════════════════
+let currentModel = 'gpt';
+let showDelta = true;
+
+// ════════════════════════════════════════════════════════════════
+// COLOR UTILITIES
+// ════════════════════════════════════════════════════════════════
+
+function deltaColor(delta) {
+  if (delta === null || delta === undefined) return '#eee';
+  const maxDelta = 25;
+  const t = Math.max(-1, Math.min(1, delta / maxDelta));
+  if (t < 0) {
+    // white → red
+    const i = -t;
+    const r = 255, g = Math.round(255 * (1 - i * 0.9)), b = Math.round(255 * (1 - i * 0.85));
+    return `rgb(${r},${g},${b})`;
+  } else if (t === 0) {
+    return '#f5f5f5';
+  } else {
+    // white → blue
+    const i = t;
+    const r = Math.round(255 * (1 - i * 0.85)), g = Math.round(255 * (1 - i * 0.65)), b = 255;
+    return `rgb(${r},${g},${b})`;
+  }
+}
+
+function rawAccColor(acc) {
+  // 30% → red, 65% → white, 100% → blue
+  const min = 30, max = 100, mid = 65;
+  if (acc <= mid) {
+    const t = (acc - min) / (mid - min);
+    const r = 220, g = Math.round(100 + 155 * t), b = Math.round(100 + 155 * t);
+    return `rgb(${r},${g},${b})`;
+  } else {
+    const t = (acc - mid) / (max - mid);
+    const r = Math.round(255 * (1 - t * 0.7)), g = Math.round(255 * (1 - t * 0.5)), b = 255;
+    return `rgb(${r},${g},${b})`;
+  }
+}
+
+function textColor(bgColor) {
+  // Parse rgb values
+  const m = bgColor.match(/rgb\((\d+),(\d+),(\d+)\)/);
+  if (!m) return '#121212';
+  const [, r, g, b] = m.map(Number);
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return luminance > 0.55 ? '#121212' : '#ffffff';
+}
+
+// ════════════════════════════════════════════════════════════════
+// HEATMAP
+// ════════════════════════════════════════════════════════════════
+
+function renderHeatmap(model) {
+  const table = document.getElementById('heatmap-table');
+  const grid = HEATMAP[model];
+  let html = '<thead><tr>';
+  html += `<th class="hm-corner" style="font-family:var(--sans);font-size:0.72rem;color:var(--gray4);text-align:right;padding-right:10px;vertical-align:bottom;padding-bottom:8px;">Category</th>`;
+
+  HEURISTICS.forEach((h, i) => {
+    const isBase = h === 'baseline';
+    html += `<th class="hm-header${isBase ? ' baseline-col' : ''}"
+      title="${HEURISTIC_DESCRIPTIONS[h]}"
+      style="color:${isBase ? '#121212' : 'var(--gray4)'};${isBase ? '' : 'cursor:pointer;'}"
+      ${isBase ? '' : `onclick="showHeuristicPopup('${h}')"`}>
+      ${HEURISTIC_NAMES[h]}
+    </th>`;
+  });
+  html += '</tr></thead><tbody>';
+
+  CATEGORIES.forEach((cat, ci) => {
+    const baseAcc = grid[ci][0];
+    html += `<tr>`;
+    html += `<td class="hm-cat-label" style="cursor:pointer;" title="${CATEGORY_DESCRIPTIONS[cat]} — click for stats" onclick="showCategoryPopup('${cat}')">${CATEGORY_NAMES[cat]}</td>`;
+
+    HEURISTICS.forEach((h, hi) => {
+      const acc = grid[ci][hi];
+      const delta = acc - baseAcc;
+      const isBase = h === 'baseline';
+      const val = showDelta ? (isBase ? '–' : (delta >= 0 ? '+' : '') + delta.toFixed(0) + '%') : acc.toFixed(0) + '%';
+      const bgColor = showDelta ? (isBase ? '#f0f0f0' : deltaColor(delta)) : rawAccColor(acc);
+      const txtColor = textColor(bgColor);
+
+      html += `<td class="hm-cell${isBase ? ' baseline-col' : ''}"
+        style="background:${bgColor};color:${txtColor};"
+        data-model="${model}" data-cat="${cat}" data-h="${h}"
+        data-acc="${acc}" data-delta="${delta.toFixed(1)}" data-base="${baseAcc}"
+        onclick="openCellPopup('${model}','${cat}','${h}',${acc},${delta.toFixed(1)},${baseAcc})"
+        title="${HEURISTIC_NAMES[h]} on ${CATEGORY_NAMES[cat]}: ${acc}% (Δ${delta >= 0 ? '+' : ''}${delta.toFixed(0)}%)">
+        ${val}
+      </td>`;
+    });
+    html += '</tr>';
+  });
+
+  html += '</tbody>';
+  table.innerHTML = html;
+}
+
+// ════════════════════════════════════════════════════════════════
+// PERSONALITY CHART (SVG)
+// ════════════════════════════════════════════════════════════════
+
+function renderPersonalityChart() {
+  const container = document.getElementById('personality-svg').parentNode;
+  const W = 860, H = 290;
+  const margin = { left: 175, right: 40, top: 30, bottom: 35 };
+  const plotW = W - margin.left - margin.right;
+  const plotH = H - margin.top - margin.bottom;
+
+  const heuristics = Object.keys(OVERALL_DELTAS.gpt);
+  const xMin = -13, xMax = 9;
+  const xScale = (v) => margin.left + (v - xMin) / (xMax - xMin) * plotW;
+  const x0 = xScale(0);
+
+  const modelKeys = ['gpt', 'gem', 'haiku'];
+  const rowH = plotH / 3;
+
+  let html = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">`;
+  html += `<rect width="${W}" height="${H}" fill="#1a1a2e" rx="6"/>`;
+
+  // X axis grid lines
+  [-12,-8,-4,0,4,8].forEach(v => {
+    const x = xScale(v);
+    const isMid = v === 0;
+    html += `<line x1="${x}" y1="${margin.top - 4}" x2="${x}" y2="${H - margin.bottom + 4}" stroke="${isMid ? 'rgba(255,255,255,0.3)' : 'rgba(255,255,255,0.06)'}" stroke-width="${isMid ? 1.5 : 1}" ${isMid ? 'stroke-dasharray="3,3"' : ''}/>`;
+    html += `<text x="${x}" y="${H - margin.bottom + 17}" text-anchor="middle" font-family="system-ui" font-size="10" fill="${isMid ? '#eee' : '#bbb'}">${v > 0 ? '+' : ''}${v}%</text>`;
+  });
+  html += `<text x="${x0}" y="${margin.top - 10}" text-anchor="middle" font-family="system-ui" font-size="9" fill="#bbb" letter-spacing="0.04em">BASELINE</text>`;
+
+  // Model rows
+  modelKeys.forEach((mk, mi) => {
+    const model = MODELS[mk];
+    const y = margin.top + mi * rowH + rowH / 2;
+    const deltas = OVERALL_DELTAS[mk];
+    const sortedH = [...heuristics].sort((a, b) => deltas[a] - deltas[b]);
+
+    // Row background
+    if (mi % 2 === 0) html += `<rect x="${margin.left}" y="${y - rowH/2}" width="${plotW}" height="${rowH}" fill="rgba(255,255,255,0.02)"/>`;
+
+    // Model label block on left
+    html += `<rect x="0" y="${y - 22}" width="${margin.left - 12}" height="44" rx="4" fill="${model.color}" opacity="0.12"/>`;
+    html += `<text x="${margin.left - 18}" y="${y - 6}" text-anchor="end" font-family="system-ui" font-size="10" font-weight="700" fill="${model.color}">${model.name}</text>`;
+    html += `<text x="${margin.left - 18}" y="${y + 8}" text-anchor="end" font-family="system-ui" font-size="8.5" fill="${model.color}" opacity="0.7">${model.description}</text>`;
+
+    // Range line
+    const vals = Object.values(deltas);
+    const minV = Math.min(...vals), maxV = Math.max(...vals);
+    html += `<line x1="${xScale(minV)}" y1="${y}" x2="${xScale(maxV)}" y2="${y}" stroke="${model.color}" stroke-width="2" opacity="0.3"/>`;
+
+    // Dots with jitter
+    sortedH.forEach((h, idx) => {
+      const d = deltas[h];
+      const x = xScale(d);
+      const jitter = (idx % 5 - 2) * 4.5;
+      html += `<circle cx="${x}" cy="${y + jitter}" r="5.5" fill="${model.color}" opacity="0.88" style="cursor:pointer;" onclick="showHeuristicPopup('${h}')"><title>${HEURISTIC_NAMES[h]}: ${d >= 0 ? '+' : ''}${d.toFixed(1)}% for ${model.name}</title></circle>`;
+    });
+
+    // Best and worst labels
+    const best = sortedH[sortedH.length - 1], worst = sortedH[0];
+    const bestX = xScale(deltas[best]), worstX = xScale(deltas[worst]);
+    html += `<text x="${bestX + 8}" y="${y - 12}" font-family="system-ui" font-size="8" fill="${model.color}" opacity="0.85">▲ ${HEURISTIC_NAMES[best]}</text>`;
+    html += `<text x="${worstX - 6}" y="${y + 20}" font-family="system-ui" font-size="8" fill="${model.color}" opacity="0.7" text-anchor="end">▼ ${HEURISTIC_NAMES[worst]}</text>`;
+  });
+
+  html += '</svg>';
+  container.innerHTML = html;
+}
+
+// ════════════════════════════════════════════════════════════════
+// SECONDARY CHARTS
+// ════════════════════════════════════════════════════════════════
+
+function renderGeoAuxChart() {
+  const svg = document.getElementById('geo-aux-chart');
+  if (!svg) return;
+  const W = 480, H = 170;
+
+  const models = [
+    { key: 'gpt', name: 'GPT-5.4-nano', color: '#d4580a', base: HEATMAP.gpt[2][0], aux: HEATMAP.gpt[2][11] },
+    { key: 'gem', name: 'Gemini Flash Lite', color: '#1565c0', base: HEATMAP.gem[2][0], aux: HEATMAP.gem[2][11] },
+    { key: 'haiku', name: 'Claude Haiku 4.5', color: '#6b3a8f', base: HEATMAP.haiku[2][0], aux: HEATMAP.haiku[2][11] }
+  ];
+
+  const marginT = 12, marginB = 30, plotH = H - marginT - marginB;
+  const yScale = (v) => H - marginB - (v / 100) * plotH;
+  let html = `<svg id="geo-aux-chart" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">`;
+  html += `<rect width="${W}" height="${H}" fill="#fff5f5" rx="6"/>`;
+
+  // Y axis guides
+  [30,50,70,90].forEach(v => {
+    const y = yScale(v);
+    html += `<line x1="56" y1="${y}" x2="${W-16}" y2="${y}" stroke="#f0d0d0" stroke-width="1"/>`;
+    html += `<text x="50" y="${y+4}" text-anchor="end" font-family="system-ui" font-size="9" fill="#bbb">${v}%</text>`;
+  });
+
+  models.forEach((m, i) => {
+    const cx = 110 + i * 130;
+    const bY = yScale(m.base), aY = yScale(m.aux);
+    const delta = m.aux - m.base;
+    const barBottom = H - marginB;
+
+    // Baseline bar (lighter, clickable)
+    html += `<rect x="${cx-26}" y="${bY}" width="22" height="${barBottom - bY}" fill="${m.color}" opacity="0.25" rx="2" style="cursor:pointer;" onclick="openCellPopup('${m.key}','geometry','baseline',${m.base},0,${m.base})"/>`;
+    html += `<text x="${cx-15}" y="${Math.min(bY-4, H-marginB-2)}" text-anchor="middle" font-family="system-ui" font-size="9.5" fill="${m.color}" opacity="0.7" style="cursor:pointer;" onclick="openCellPopup('${m.key}','geometry','baseline',${m.base},0,${m.base})">${m.base}%</text>`;
+
+    // Aux bar (clickable)
+    html += `<rect x="${cx+4}" y="${aY}" width="22" height="${barBottom - aY}" fill="${m.color}" rx="2" style="cursor:pointer;" onclick="openCellPopup('${m.key}','geometry','auxiliary_elements',${m.aux},${delta.toFixed(1)},${m.base})"/>`;
+    html += `<text x="${cx+15}" y="${Math.min(aY-4, H-marginB-2)}" text-anchor="middle" font-family="system-ui" font-size="9.5" font-weight="700" fill="${m.color}" style="cursor:pointer;" onclick="openCellPopup('${m.key}','geometry','auxiliary_elements',${m.aux},${delta.toFixed(1)},${m.base})">${m.aux}%</text>`;
+
+    // Delta badge
+    const deltaText = (delta >= 0 ? '+' : '') + delta.toFixed(0) + '%';
+    const dColor = delta < 0 ? '#c41230' : '#2e7d32';
+    const midY = (bY + aY) / 2;
+    html += `<line x1="${cx+15}" y1="${Math.min(bY,aY)-2}" x2="${cx+15}" y2="${Math.max(bY,aY)+2}" stroke="${dColor}" stroke-width="1.5"/>`;
+    html += `<rect x="${cx+28}" y="${midY-9}" width="38" height="18" rx="4" fill="${dColor}" opacity="0.12"/>`;
+    html += `<text x="${cx+47}" y="${midY+5}" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="${dColor}">${deltaText}</text>`;
+
+    // Model label at bottom
+    html += `<text x="${cx-2}" y="${H-3}" font-family="system-ui" font-size="8.5" fill="${m.color}" font-weight="700">${m.name.split(' ')[0]}</text>`;
+  });
+
+  // Legend at bottom right
+  html += `<rect x="${W-170}" y="${H-22}" width="10" height="10" fill="#888" opacity="0.25" rx="1"/>`;
+  html += `<text x="${W-156}" y="${H-14}" font-family="system-ui" font-size="8.5" fill="#999">Baseline</text>`;
+  html += `<rect x="${W-110}" y="${H-22}" width="10" height="10" fill="#888" rx="1"/>`;
+  html += `<text x="${W-96}" y="${H-14}" font-family="system-ui" font-size="8.5" fill="#999">+ Auxiliary</text>`;
+
+  html += '</svg>';
+  svg.outerHTML = html;
+}
+
+function renderLosersChart() {
+  const svg = document.getElementById('losers-chart');
+  if (!svg) return;
+  const W = 500, H = 145;
+
+  const losers = ['induction', 'pigeonhole', 'pattern_recognition'];
+  const modelKeys = ['gpt', 'gem', 'haiku'];
+
+  let html = `<svg id="losers-chart" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">`;
+  html += `<rect width="${W}" height="${H}" fill="#fff8e1" rx="6"/>`;
+
+  const barH = 17, rowGap = 3, groupGap = 16;
+  const groupH = 3 * barH + 2 * rowGap;
+  const margin = {left: 138, right: 80, top: 14, bottom: 12};
+  const xMin = -14, xMax = 1;
+  const xScale = v => margin.left + (v - xMin) / (xMax - xMin) * (W - margin.left - margin.right);
+  const x0 = xScale(0);
+
+  // Baseline guide
+  html += `<line x1="${x0}" y1="${margin.top}" x2="${x0}" y2="${H - margin.bottom}" stroke="rgba(0,0,0,0.18)" stroke-width="1" stroke-dasharray="3,2"/>`;
+  html += `<text x="${x0}" y="${margin.top - 3}" text-anchor="middle" font-family="system-ui" font-size="7.5" fill="#aaa" letter-spacing="0.05em">0%</text>`;
+
+  // X axis tick labels
+  [-12,-8,-4].forEach(v => {
+    html += `<text x="${xScale(v)}" y="${margin.top - 3}" text-anchor="middle" font-family="system-ui" font-size="7.5" fill="#bbb">${v}%</text>`;
+  });
+
+  losers.forEach((h, li) => {
+    const groupY = margin.top + li * (groupH + groupGap);
+
+    // Group label (clickable → heuristic popup)
+    html += `<text x="${margin.left - 8}" y="${groupY + groupH/2 + 4}" text-anchor="end" font-family="Georgia,serif" font-size="10" font-style="italic" fill="#555" style="cursor:pointer;" onclick="showHeuristicPopup('${h}')">${HEURISTIC_NAMES[h]}</text>`;
+
+    modelKeys.forEach((mk, mi) => {
+      const delta = OVERALL_DELTAS[mk][h];
+      const y = groupY + mi * (barH + rowGap);
+      const barEnd = xScale(delta);
+      const barX = Math.min(x0, barEnd), barW = Math.abs(x0 - barEnd);
+
+      html += `<rect x="${barX}" y="${y}" width="${barW}" height="${barH - 1}" fill="${MODELS[mk].color}" rx="2" opacity="0.8" style="cursor:pointer;" onclick="openTableCellPopup('model','${mk}','${h}',${delta.toFixed(1)})"/>`;
+      // Value label to left of bar
+      html += `<text x="${barEnd - 4}" y="${y + barH - 5}" text-anchor="end" font-family="system-ui" font-size="9" font-weight="700" fill="${MODELS[mk].color}" style="cursor:pointer;" onclick="openTableCellPopup('model','${mk}','${h}',${delta.toFixed(1)})">${delta.toFixed(1)}%</text>`;
+    });
+  });
+
+  // Legend at right
+  modelKeys.forEach((mk, i) => {
+    html += `<rect x="${W - 72}" y="${margin.top + i * 22}" width="10" height="10" fill="${MODELS[mk].color}" rx="2"/>`;
+    html += `<text x="${W - 58}" y="${margin.top + i * 22 + 9}" font-family="system-ui" font-size="8.5" fill="${MODELS[mk].color}" font-weight="600">${MODELS[mk].name.split(' ')[0]}</text>`;
+  });
+
+  html += '</svg>';
+  svg.outerHTML = html;
+}
+
+function renderCaseChart() {
+  const svg = document.getElementById('case-chart');
+  if (!svg) return;
+  const W = 480, H = 150;
+
+  const data = [
+    { model: 'gpt', name: 'GPT', color: '#d4580a', base: HEATMAP.gpt[1][0], heur: HEATMAP.gpt[1][14] },
+    { model: 'gem', name: 'Gemini', color: '#1565c0', base: HEATMAP.gem[1][0], heur: HEATMAP.gem[1][14] },
+    { model: 'haiku', name: 'Haiku', color: '#6b3a8f', base: HEATMAP.haiku[1][0], heur: HEATMAP.haiku[1][14] }
+  ];
+
+  const marginT = 14, marginB = 32;
+  const plotH = H - marginT - marginB;
+  const yBase = H - marginB;
+  const yScale = v => yBase - (v / 100) * plotH;
+
+  let html = `<svg id="case-chart" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">`;
+  html += `<rect width="${W}" height="${H}" fill="#f0f7ff" rx="6"/>`;
+
+  // Y axis guides
+  [60,70,80,90].forEach(v => {
+    const y = yScale(v);
+    html += `<line x1="56" y1="${y}" x2="${W-16}" y2="${y}" stroke="#d5e8f8" stroke-width="1"/>`;
+    html += `<text x="50" y="${y+4}" text-anchor="end" font-family="system-ui" font-size="9" fill="#aac">${v}%</text>`;
+  });
+
+  data.forEach((d, i) => {
+    const cx = 100 + i * 130;
+    const bY = yScale(d.base), hY = yScale(d.heur);
+    const delta = d.heur - d.base;
+
+    html += `<rect x="${cx-26}" y="${bY}" width="22" height="${yBase-bY}" fill="${d.color}" opacity="0.2" rx="2" style="cursor:pointer;" onclick="openCellPopup('${d.model}','counting_and_probability','baseline',${d.base},0,${d.base})"/>`;
+    html += `<text x="${cx-15}" y="${bY-4}" text-anchor="middle" font-family="system-ui" font-size="9.5" fill="${d.color}" opacity="0.7" style="cursor:pointer;" onclick="openCellPopup('${d.model}','counting_and_probability','baseline',${d.base},0,${d.base})">${d.base}%</text>`;
+
+    html += `<rect x="${cx+4}" y="${hY}" width="22" height="${yBase-hY}" fill="${d.color}" rx="2" style="cursor:pointer;" onclick="openCellPopup('${d.model}','counting_and_probability','case_analysis',${d.heur},${delta.toFixed(1)},${d.base})"/>`;
+    html += `<text x="${cx+15}" y="${hY-4}" text-anchor="middle" font-family="system-ui" font-size="9.5" font-weight="700" fill="${d.color}" style="cursor:pointer;" onclick="openCellPopup('${d.model}','counting_and_probability','case_analysis',${d.heur},${delta.toFixed(1)},${d.base})">${d.heur}%</text>`;
+
+    const dColor = delta >= 0 ? '#2e7d32' : '#c41230';
+    const midY = (bY + hY) / 2;
+    html += `<line x1="${cx+15}" y1="${Math.min(bY,hY)-2}" x2="${cx+15}" y2="${Math.max(bY,hY)+2}" stroke="${dColor}" stroke-width="1.5"/>`;
+    html += `<rect x="${cx+28}" y="${midY-9}" width="38" height="18" rx="4" fill="${dColor}" opacity="0.12"/>`;
+    html += `<text x="${cx+47}" y="${midY+5}" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="700" fill="${dColor}">${delta>=0?'+':''}${delta.toFixed(0)}%</text>`;
+
+    html += `<text x="${cx-2}" y="${H-4}" font-family="system-ui" font-size="8.5" fill="${d.color}" font-weight="700">${d.name}</text>`;
+  });
+
+  // Legend bottom right
+  html += `<rect x="${W-170}" y="${H-22}" width="10" height="10" fill="#888" opacity="0.2" rx="1"/>`;
+  html += `<text x="${W-156}" y="${H-14}" font-family="system-ui" font-size="8.5" fill="#999">Baseline</text>`;
+  html += `<rect x="${W-108}" y="${H-22}" width="10" height="10" fill="#888" rx="1"/>`;
+  html += `<text x="${W-94}" y="${H-14}" font-family="system-ui" font-size="8.5" fill="#999">+ Case Analysis</text>`;
+
+  html += '</svg>';
+  svg.outerHTML = html;
+}
+
+function renderFlipChart() {
+  const svg = document.getElementById('flip-chart');
+  if (!svg) return;
+  const W = 620, H = 190;
+
+  const heuristics = [
+    'symmetry','analogy','simpler_case','change_representation','case_analysis',
+    'generalize','auxiliary_elements','work_backwards','invariant','extremal_element',
+    'count_two_ways','induction','pigeonhole','contradiction','pattern_recognition'
+  ];
+
+  const margin = { left: 120, right: 26, top: 22, bottom: 18 };
+  const barH = 7, rowH = (H - margin.top - margin.bottom) / heuristics.length;
+  const xMin = -14, xMax = 8;
+  const xScale = v => margin.left + (v - xMin) / (xMax - xMin) * (W - margin.left - margin.right);
+  const x0 = xScale(0);
+
+  let html = `<svg id="flip-chart" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;background:#f5f0ff;border-radius:6px;">`;
+
+  // X axis
+  [-12,-8,-4,0,4,8].forEach(v => {
+    const x = xScale(v);
+    html += `<line x1="${x}" y1="${margin.top - 6}" x2="${x}" y2="${H - margin.bottom}" stroke="${v === 0 ? 'rgba(0,0,0,0.25)' : 'rgba(0,0,0,0.06)'}" stroke-width="${v === 0 ? 1.5 : 1}"/>`;
+    html += `<text x="${x}" y="${margin.top - 9}" text-anchor="middle" font-family="system-ui" font-size="8" fill="#999">${v > 0 ? '+' : ''}${v}%</text>`;
+  });
+
+  heuristics.forEach((h, i) => {
+    const y = margin.top + i * rowH + rowH * 0.5;
+    const gptD = OVERALL_DELTAS.gpt[h] || 0;
+    const gemD = OVERALL_DELTAS.gem[h] || 0;
+    const diffSign = (gptD < 0) !== (gemD < 0); // true if opposite signs
+
+    // GPT bar (clickable)
+    const gX1 = Math.min(xScale(gptD), x0), gBW = Math.abs(xScale(gptD) - x0);
+    html += `<rect x="${gX1}" y="${y - barH - 1}" width="${gBW}" height="${barH}" fill="#d4580a" opacity="0.85" rx="1" style="cursor:pointer;" onclick="openTableCellPopup('model','gpt','${h}',${gptD.toFixed(1)})"/>`;
+
+    // Gemini bar (clickable)
+    const emX1 = Math.min(xScale(gemD), x0), emBW = Math.abs(xScale(gemD) - x0);
+    html += `<rect x="${emX1}" y="${y + 1}" width="${emBW}" height="${barH}" fill="#1565c0" opacity="0.85" rx="1" style="cursor:pointer;" onclick="openTableCellPopup('model','gem','${h}',${gemD.toFixed(1)})"/>`;
+
+    // Label (clickable → heuristic popup)
+    html += `<text x="${margin.left - 4}" y="${y + 2}" text-anchor="end" font-family="Georgia,serif" font-size="8.5" font-style="italic" fill="${diffSign ? '#333' : '#999'}" font-weight="${diffSign ? '700' : '400'}" style="cursor:pointer;" onclick="showHeuristicPopup('${h}')">${HEURISTIC_NAMES[h]}</text>`;
+
+    // Flip indicator
+    if (diffSign) {
+      html += `<text x="${W - 12}" y="${y + 2}" text-anchor="end" font-family="system-ui" font-size="9" fill="#c41230">⇄</text>`;
+    }
+  });
+
+  html += '</svg>';
+  svg.outerHTML = html;
+}
+
+function renderCatDivideChart() {
+  const svg = document.getElementById('cat-divide-chart');
+  if (!svg) return;
+  const W = 560, H = 240;
+  const margin = { left: 140, right: 120, top: 20, bottom: 30 };
+  const plotW = W - margin.left - margin.right;
+  const plotH = H - margin.top - margin.bottom;
+
+  // Compute avg delta per category across all 15 heuristics × 3 models
+  const catData = CATEGORIES.map(cat => {
+    const catIdx = CATEGORIES.indexOf(cat);
+    const allDeltas = HEURISTICS.slice(1).flatMap(h => {
+      const hIdx = HEURISTICS.indexOf(h);
+      return ['gpt','gem','haiku'].map(mk => HEATMAP[mk][catIdx][hIdx] - HEATMAP[mk][catIdx][0]);
+    });
+    const avg = allDeltas.reduce((s,v)=>s+v,0)/allDeltas.length;
+    // Count consistent direction across heuristic averages only
+    const hAvgs = HEURISTICS.slice(1).map(h => {
+      const hIdx = HEURISTICS.indexOf(h);
+      const vals = ['gpt','gem','haiku'].map(mk => HEATMAP[mk][catIdx][hIdx] - HEATMAP[mk][catIdx][0]);
+      return vals.reduce((s,v)=>s+v,0)/3;
+    });
+    const nPos = hAvgs.filter(v=>v>0).length, nNeg = hAvgs.filter(v=>v<0).length;
+    const nNZ = hAvgs.filter(v=>v!==0).length;
+    const kDom = Math.max(nPos,nNeg);
+    // p-value via exact binomial
+    function binom(n,k){let r=1;for(let i=0;i<k;i++)r=r*(n-i)/(i+1);return r;}
+    const pVal = Array.from({length:nNZ-kDom+1},(_,i)=>binom(nNZ,kDom+i)).reduce((s,v)=>s+v,0)/Math.pow(2,nNZ);
+    return { cat, avg, nPos, nNeg, nNZ, kDom, pVal };
+  }).sort((a,b)=>b.avg-a.avg);
+
+  const maxAbs = Math.max(...catData.map(d=>Math.abs(d.avg)), 3);
+  const xScale = v => margin.left + (v + maxAbs) / (2*maxAbs) * plotW;
+  const x0 = xScale(0);
+  const rowH = plotH / catData.length;
+
+  let html = `<rect width="${W}" height="${H}" fill="#fff"/>`;
+
+  // Grid lines
+  [-4,-2,0,2,4].forEach(v => {
+    if(Math.abs(v)>maxAbs) return;
+    const x = xScale(v);
+    html += `<line x1="${x}" y1="${margin.top}" x2="${x}" y2="${H-margin.bottom}" stroke="${v===0?'#666':'#eee'}" stroke-width="${v===0?1.5:1}"/>`;
+    html += `<text x="${x}" y="${H-margin.bottom+14}" text-anchor="middle" font-family="system-ui" font-size="10" fill="#999">${v>0?'+':''}${v}%</text>`;
+  });
+
+  catData.forEach(({cat, avg, kDom, nNZ, pVal}, i) => {
+    const y = margin.top + i * rowH + rowH * 0.5;
+    const barColor = avg > 0 ? '#1565c0' : '#c41230';
+    const barX1 = Math.min(x0, xScale(avg));
+    const barX2 = Math.max(x0, xScale(avg));
+    const sig = pVal < 0.001 ? '★★★' : pVal < 0.01 ? '★★' : pVal < 0.05 ? '★' : '';
+    const sigColor = pVal < 0.05 ? '#333' : '#bbb';
+
+    // Bar
+    html += `<rect x="${barX1}" y="${y-7}" width="${barX2-barX1}" height="14" fill="${barColor}" opacity="0.75" rx="2" style="cursor:pointer;" onclick="showCategoryPopup('${cat}')"/>`;
+    // Category label
+    html += `<text x="${margin.left-8}" y="${y+4}" text-anchor="end" font-family="system-ui" font-size="11" fill="${avg>0?'#1565c0':avg<0?'#c41230':'#444'}" font-weight="${pVal<0.05?'700':'400'}" style="cursor:pointer;" onclick="showCategoryPopup('${cat}')">${CATEGORY_NAMES[cat]}</text>`;
+    // Value label
+    html += `<text x="${barX2 + (avg>=0?4:-4)}" y="${y+4}" text-anchor="${avg>=0?'start':'end'}" font-family="system-ui" font-size="10" fill="${barColor}" font-weight="600">${avg>=0?'+':''}${avg.toFixed(1)}%</text>`;
+    // Significance stars + direction
+    if(sig) html += `<text x="${W-margin.right+8}" y="${y+4}" font-family="system-ui" font-size="11" fill="${sigColor}">${sig} ${kDom}/${nNZ} ${avg>0?'✓':'✗'}</text>`;
+    else html += `<text x="${W-margin.right+8}" y="${y+4}" font-family="system-ui" font-size="10" fill="#bbb">—</text>`;
+  });
+
+  html += `<text x="${W-margin.right+8}" y="${margin.top-4}" font-family="system-ui" font-size="9" fill="#999">sig.</text>`;
+  svg.innerHTML = html;
+}
+
+// ════════════════════════════════════════════════════════════════
+// POPUP
+// ════════════════════════════════════════════════════════════════
+
+function openCellPopup(model, cat, heuristic, acc, delta, baseAcc) {
+  const modelInfo = MODELS[model];
+  const isBase = heuristic === 'baseline';
+  const deltaStr = delta >= 0 ? `+${delta.toFixed(1)}%` : `${delta.toFixed(1)}%`;
+  const deltaColor2 = delta > 0 ? '#2e7d32' : (delta < 0 ? '#c41230' : '#666');
+
+  // Get all model values for this cell
+  const allModelData = ['gpt','gem','haiku'].map(mk => {
+    const d = HEATMAP[mk];
+    const catIdx = CATEGORIES.indexOf(cat);
+    const hIdx = HEURISTICS.indexOf(heuristic);
+    if (catIdx < 0 || hIdx < 0) return null;
+    const a = d[catIdx][hIdx];
+    const b = d[catIdx][0];
+    return { mk, acc: a, base: b, delta: a - b };
+  }).filter(Boolean);
+
+  const interpretation = getCellInterpretation(model, cat, heuristic, delta);
+
+  document.getElementById('popup-content').innerHTML = `
+    <div class="popup-header">
+      <div class="popup-kicker">${CATEGORY_NAMES[cat]} &middot; ${modelInfo.name}</div>
+      <div class="popup-title">${HEURISTIC_NAMES[heuristic]}</div>
+      <div class="popup-subtitle" style="font-style:italic;margin-top:4px;">${HEURISTIC_DESCRIPTIONS[heuristic]}</div>
+    </div>
+
+    <div class="popup-stats">
+      <div class="popup-stat">
+        <div class="popup-stat-num" style="color:${modelInfo.color}">${acc.toFixed(0)}%</div>
+        <div class="popup-stat-lbl">Accuracy</div>
+      </div>
+      <div class="popup-stat">
+        <div class="popup-stat-num" style="color:${deltaColor2}">${isBase ? '—' : deltaStr}</div>
+        <div class="popup-stat-lbl">Δ vs Baseline</div>
+      </div>
+      <div class="popup-stat">
+        <div class="popup-stat-num">${baseAcc.toFixed(0)}%</div>
+        <div class="popup-stat-lbl">Baseline</div>
+      </div>
+    </div>
+
+    <div class="popup-body">
+      <p><strong>Across all three models:</strong></p>
+      <div class="popup-models-compare">
+        ${allModelData.map(d => `
+          <div class="popup-model-row">
+            <div class="popup-model-dot" style="background:${MODELS[d.mk].color}"></div>
+            <div class="popup-model-name">${MODELS[d.mk].name}</div>
+            <div class="popup-model-acc">${d.acc.toFixed(0)}%</div>
+            <div class="popup-model-delta" style="color:${d.delta > 0 ? '#2e7d32' : d.delta < 0 ? '#c41230' : '#888'}">
+              ${isBase ? '(baseline)' : (d.delta >= 0 ? '+' : '') + d.delta.toFixed(1) + '%'}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+
+      ${interpretation ? `<p style="margin-top:14px;">${interpretation}</p>` : ''}
+
+      <p style="margin-top:14px;"><strong>The prompt that was forced:</strong></p>
+      <div class="popup-prompt">${HEURISTIC_PROMPTS[heuristic]}</div>
+
+      <p style="margin-top:14px; color:#aaa; font-size:0.8rem;">n ≈ 20 problems (Level 5 difficulty). Click any other cell to compare.</p>
+    </div>
+  `;
+
+  openPopup();
+}
+
+function getCellInterpretation(model, cat, heuristic, delta) {
+  // Return a narrative for key cells
+  const key = `${model}-${cat}-${heuristic}`;
+  const interps = {
+    'gpt-geometry-auxiliary_elements': "The most dramatic drop in the entire dataset. GPT's spatial reasoning works by building on existing elements; the instruction to 'add something new' creates distractors that pull it away from the direct solution path.",
+    'haiku-geometry-auxiliary_elements': "A complete reversal from GPT. Haiku's stronger instruction-following means it actually builds the auxiliary construction correctly and uses it productively.",
+    'gpt-counting_and_probability-case_analysis': "The clearest win for GPT. Counting problems naturally decompose into cases — the heuristic aligns with the problem's inherent structure rather than fighting it.",
+    'gem-counting_and_probability-case_analysis': "Gemini shows an even larger gain than GPT here. Combined with symmetry and change_representation, Gemini's counting performance jumps from 74% to 90% under several different heuristics.",
+    'gpt-number_theory-invariant': "Near-ceiling performance drops sharply. GPT's number theory intuition already exploits invariant-like reasoning; being told to focus on invariants adds cognitive overhead without adding insight.",
+    'gpt-number_theory-pattern_recognition': "Pattern recognition is the worst overall heuristic for GPT. On number theory problems already near 95% baseline, forcing slow enumeration causes the model to miss direct algebraic solutions.",
+    'gem-algebra-generalize': "One of Gemini's bright spots. Algebraic problems often become cleaner in a more general form — Gemini exploits this better than GPT.",
+    'haiku-precalculus-contradiction': "Haiku's sharpest failure mode. Contradiction-style reasoning works poorly for transcendental/analytic problems where assuming the negation doesn't naturally lead to an absurdity.",
+    'gpt-geometry-count_two_ways': "Second-worst geometry result for GPT (−20%). Counting arguments are fundamentally at odds with geometric intuition; forcing this approach produces non-solutions.",
+  };
+  return interps[key] || null;
+}
+
+function showCategoryPopup(cat) {
+  const catIdx = CATEGORIES.indexOf(cat);
+
+  // All heuristic deltas for this category, avg across 3 models
+  const heuristicRows = HEURISTICS.slice(1).map(h => {
+    const hIdx = HEURISTICS.indexOf(h);
+    const vals = ['gpt','gem','haiku'].map(mk => HEATMAP[mk][catIdx][hIdx] - HEATMAP[mk][catIdx][0]);
+    const avg = vals.reduce((s,v) => s+v, 0) / 3;
+    return { h, vals, avg };
+  }).sort((a, b) => b.avg - a.avg);
+
+  // Baseline accuracy per model
+  const baselines = ['gpt','gem','haiku'].map(mk => ({ mk, acc: HEATMAP[mk][catIdx][0] }));
+
+  // Statistical significance: count consistent direction
+  const nPos = heuristicRows.filter(r => r.avg > 0).length;
+  const nNeg = heuristicRows.filter(r => r.avg < 0).length;
+  const nNZ  = heuristicRows.filter(r => r.avg !== 0).length;
+  const kDom = Math.max(nPos, nNeg);
+  // Binomial p-value (one-tailed, k out of nNZ successes under p=0.5)
+  function binom(n, k) { let r=1; for(let i=0;i<k;i++) r=r*(n-i)/(i+1); return r; }
+  const pVal = Array.from({length: nNZ - kDom + 1}, (_, i) => binom(nNZ, kDom + i)).reduce((s,v)=>s+v,0) / Math.pow(2, nNZ);
+  const sigLabel = pVal < 0.001 ? 'p < 0.001 ***' : pVal < 0.01 ? `p = ${pVal.toFixed(3)} **` : pVal < 0.05 ? `p = ${pVal.toFixed(3)} *` : `p = ${pVal.toFixed(2)} (not significant)`;
+  const dominant = nPos > nNeg ? 'positive' : 'negative';
+  const avgOverall = heuristicRows.reduce((s,r) => s+r.avg, 0) / heuristicRows.length;
+  const avgColor = avgOverall > 0 ? '#2e7d32' : avgOverall < 0 ? '#c41230' : '#666';
+
+  // Mini bar rows for top/bottom 3
+  const top3 = heuristicRows.slice(0, 3);
+  const bot3 = heuristicRows.slice(-3).reverse();
+
+  function barRow(r, prefix) {
+    const dc = r.avg > 0 ? '#2e7d32' : '#c41230';
+    const barW = Math.min(80, Math.abs(r.avg) * 5);
+    return `<div style="display:flex;align-items:center;gap:8px;margin:3px 0;font-size:0.82rem;">
+      <div style="width:130px;text-align:right;color:#333;">${HEURISTIC_NAMES[r.h]}</div>
+      <div style="width:${barW}px;height:10px;background:${dc};border-radius:2px;opacity:0.8;"></div>
+      <div style="color:${dc};font-weight:600;">${r.avg>=0?'+':''}${r.avg.toFixed(1)}%</div>
+    </div>`;
+  }
+
+  document.getElementById('popup-content').innerHTML = `
+    <div class="popup-header">
+      <div class="popup-kicker">Math Category</div>
+      <div class="popup-title">${CATEGORY_NAMES[cat]}</div>
+      <div class="popup-subtitle" style="font-style:italic;margin-top:4px;">${CATEGORY_DESCRIPTIONS[cat]}</div>
+    </div>
+    <div class="popup-stats">
+      <div class="popup-stat">
+        <div class="popup-stat-num" style="color:${avgColor}">${avgOverall>=0?'+':''}${avgOverall.toFixed(1)}%</div>
+        <div class="popup-stat-lbl">Avg Δ (all heuristics)</div>
+      </div>
+      <div class="popup-stat">
+        <div class="popup-stat-num">${kDom}/${nNZ}</div>
+        <div class="popup-stat-lbl">consistently ${dominant}</div>
+      </div>
+      <div class="popup-stat">
+        <div class="popup-stat-num" style="font-size:0.9rem;color:${pVal<0.05?'#2e7d32':'#666'}">${sigLabel.split(' ')[0] + ' ' + (sigLabel.split(' ')[1]||'')}</div>
+        <div class="popup-stat-lbl">${pVal<0.05?'significant':'not significant'}</div>
+      </div>
+    </div>
+    <div class="popup-body">
+      <div style="display:flex;gap:16px;margin-bottom:14px;flex-wrap:wrap;">
+        ${baselines.map(({mk,acc}) => `<div style="display:flex;align-items:center;gap:6px;font-size:0.83rem;">
+          <div style="width:10px;height:10px;border-radius:50%;background:${MODELS[mk].color}"></div>
+          <span style="color:#555;">${MODELS[mk].name.replace('Gemini 2.5 Flash Lite','Gemini').replace('Claude Haiku 4.5','Haiku')}</span>
+          <span style="font-weight:700;">${acc.toFixed(0)}% baseline</span>
+        </div>`).join('')}
+      </div>
+      <p style="margin:6px 0 4px;font-size:0.85rem;"><strong>Best heuristics for this category:</strong></p>
+      ${top3.map(r => barRow(r,'▲')).join('')}
+      <p style="margin:10px 0 4px;font-size:0.85rem;"><strong>Worst heuristics for this category:</strong></p>
+      ${bot3.map(r => barRow(r,'▼')).join('')}
+    </div>
+  `;
+  openPopup();
+}
+
+function showHeuristicPopup(h) {
+  const hIdx = HEURISTICS.indexOf(h);
+
+  // Per-category deltas across all models
+  const catRows = CATEGORIES.map(cat => {
+    const catIdx = CATEGORIES.indexOf(cat);
+    const vals = ['gpt','gem','haiku'].map(mk => {
+      const acc = HEATMAP[mk][catIdx][hIdx];
+      const base = HEATMAP[mk][catIdx][0];
+      return acc - base;
+    });
+    const avg = vals.reduce((s,v) => s+v, 0) / vals.length;
+    return { cat, vals, avg };
+  }).sort((a, b) => b.avg - a.avg);
+
+  // Overall per-model summary
+  const modelRows = ['gpt','gem','haiku'].map(mk => {
+    const d = OVERALL_DELTAS[mk][h];
+    return { mk, d: d !== undefined ? d : 0 };
+  });
+
+  const catTable = catRows.map(({ cat, vals, avg }) => {
+    const avgColor = avg > 0 ? '#2e7d32' : avg < 0 ? '#c41230' : '#666';
+    const modelCells = vals.map((v, i) => {
+      const mk = ['gpt','gem','haiku'][i];
+      return `<td style="text-align:center;padding:3px 6px;color:${v>0?'#2e7d32':v<0?'#c41230':'#666'};font-size:0.82rem;">${v>=0?'+':''}${v.toFixed(1)}%</td>`;
+    }).join('');
+    return `<tr>
+      <td style="padding:3px 8px;font-size:0.82rem;white-space:nowrap;">${CATEGORY_NAMES[cat]}</td>
+      ${modelCells}
+      <td style="text-align:center;padding:3px 6px;font-weight:700;color:${avgColor};font-size:0.82rem;">${avg>=0?'+':''}${avg.toFixed(1)}%</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('popup-content').innerHTML = `
+    <div class="popup-header">
+      <div class="popup-kicker">Pólya Heuristic</div>
+      <div class="popup-title">${HEURISTIC_NAMES[h]}</div>
+      <div class="popup-subtitle" style="font-style:italic;margin-top:4px;">${HEURISTIC_DESCRIPTIONS[h]}</div>
+    </div>
+    <div class="popup-stats">
+      ${modelRows.map(({mk, d}) => `
+        <div class="popup-stat">
+          <div class="popup-stat-num" style="color:${MODELS[mk].color};font-size:1.4rem;">${d>=0?'+':''}${d.toFixed(1)}%</div>
+          <div class="popup-stat-lbl">${MODELS[mk].name.replace('Gemini 2.5 Flash Lite','Gemini').replace('Claude Haiku 4.5','Haiku')}</div>
+        </div>`).join('')}
+    </div>
+    <div class="popup-body">
+      <p style="margin-bottom:8px;"><strong>Δ from baseline by category</strong> <span style="color:#999;font-size:0.8rem;">(sorted best→worst avg)</span></p>
+      <table style="width:100%;border-collapse:collapse;margin-bottom:14px;">
+        <thead><tr style="border-bottom:1px solid #eee;">
+          <th style="text-align:left;padding:3px 8px;font-size:0.78rem;color:#555;">Category</th>
+          <th style="text-align:center;padding:3px 6px;font-size:0.78rem;color:${MODELS.gpt.color};">GPT</th>
+          <th style="text-align:center;padding:3px 6px;font-size:0.78rem;color:${MODELS.gem.color};">Gemini</th>
+          <th style="text-align:center;padding:3px 6px;font-size:0.78rem;color:${MODELS.haiku.color};">Haiku</th>
+          <th style="text-align:center;padding:3px 6px;font-size:0.78rem;color:#333;">Avg</th>
+        </tr></thead>
+        <tbody>${catTable}</tbody>
+      </table>
+      <p style="margin-bottom:6px;"><strong>The exact system prompt used:</strong></p>
+      <div class="popup-prompt">${HEURISTIC_PROMPTS[h]}</div>
+    </div>
+  `;
+  openPopup();
+}
+
+function openTableCellPopup(viewMode, colKey, heuristic, avgDelta) {
+  const hIdx = HEURISTICS.indexOf(heuristic);
+  const deltaColor2 = avgDelta > 0 ? '#2e7d32' : avgDelta < 0 ? '#c41230' : '#666';
+
+  let title, subtitle, rows, tableHtml;
+
+  if (viewMode === 'cat') {
+    // colKey is a category: show per-model breakdown for (category × heuristic)
+    const catIdx = CATEGORIES.indexOf(colKey);
+    title = CATEGORY_NAMES[colKey];
+    subtitle = `How "${HEURISTIC_NAMES[heuristic]}" affects this category`;
+
+    rows = ['gpt','gem','haiku'].map(mk => {
+      const acc = HEATMAP[mk][catIdx][hIdx];
+      const base = HEATMAP[mk][catIdx][0];
+      const delta = acc - base;
+      return { mk, acc, base, delta };
+    });
+
+    tableHtml = rows.map(({mk, acc, base, delta}) => {
+      const dc = delta > 0 ? '#2e7d32' : delta < 0 ? '#c41230' : '#888';
+      return `<div class="popup-model-row">
+        <div class="popup-model-dot" style="background:${MODELS[mk].color}"></div>
+        <div class="popup-model-name">${MODELS[mk].name}</div>
+        <div class="popup-model-acc">${acc.toFixed(0)}% <span style="color:#999;font-size:0.8em;">(base ${base.toFixed(0)}%)</span></div>
+        <div class="popup-model-delta" style="color:${dc};font-size:1rem;">${delta>=0?'+':''}${delta.toFixed(1)}%</div>
+      </div>`;
+    }).join('');
+  } else {
+    // viewMode === 'model': colKey is a model key, show per-category breakdown
+    title = MODELS[colKey].name;
+    subtitle = `How "${HEURISTIC_NAMES[heuristic]}" affects each category`;
+
+    rows = CATEGORIES.map(cat => {
+      const catIdx = CATEGORIES.indexOf(cat);
+      const acc = HEATMAP[colKey][catIdx][hIdx];
+      const base = HEATMAP[colKey][catIdx][0];
+      const delta = acc - base;
+      return { cat, acc, base, delta };
+    }).sort((a, b) => b.delta - a.delta);
+
+    tableHtml = rows.map(({cat, acc, base, delta}) => {
+      const dc = delta > 0 ? '#2e7d32' : delta < 0 ? '#c41230' : '#888';
+      return `<div class="popup-model-row">
+        <div class="popup-model-dot" style="background:${MODELS[colKey].color};opacity:0.7;"></div>
+        <div class="popup-model-name">${CATEGORY_NAMES[cat]}</div>
+        <div class="popup-model-acc">${acc.toFixed(0)}% <span style="color:#999;font-size:0.8em;">(base ${base.toFixed(0)}%)</span></div>
+        <div class="popup-model-delta" style="color:${dc};font-size:1rem;">${delta>=0?'+':''}${delta.toFixed(1)}%</div>
+      </div>`;
+    }).join('');
+  }
+
+  const interp = getCellInterpretation(viewMode === 'model' ? colKey : 'avg', viewMode === 'cat' ? colKey : 'all', heuristic, avgDelta);
+
+  document.getElementById('popup-content').innerHTML = `
+    <div class="popup-header">
+      <div class="popup-kicker">${title}</div>
+      <div class="popup-title">${HEURISTIC_NAMES[heuristic]}</div>
+      <div class="popup-subtitle" style="font-style:italic;margin-top:4px;">${HEURISTIC_DESCRIPTIONS[heuristic]}</div>
+    </div>
+    <div class="popup-stats">
+      <div class="popup-stat">
+        <div class="popup-stat-num" style="color:${deltaColor2}">${avgDelta>=0?'+':''}${avgDelta.toFixed(1)}%</div>
+        <div class="popup-stat-lbl">Avg Δ from Baseline</div>
+      </div>
+    </div>
+    <div class="popup-body">
+      <p style="margin-bottom:8px;"><strong>${subtitle}</strong></p>
+      <div class="popup-models-compare">${tableHtml}</div>
+      ${interp ? `<p style="margin-top:14px;">${interp}</p>` : ''}
+      <p style="margin-top:14px;color:#aaa;font-size:0.8rem;">Click the heuristic name for the full system prompt.</p>
+    </div>
+  `;
+  openPopup();
+}
+
+function openPopup() {
+  document.getElementById('popup-overlay').classList.add('open');
+}
+
+function closePopup() {
+  document.getElementById('popup-overlay').classList.remove('open');
+}
+
+// ════════════════════════════════════════════════════════════════
+// EXPERIMENT SVG ANIMATION
+// ════════════════════════════════════════════════════════════════
+
+function animateExperiment() {
+  const heurSeq = ['Work Backwards','Simpler Case','Contradiction','Symmetry','Case Analysis'];
+  const modelSeq = ['GPT-5.4-nano','Gemini 2.5 Flash Lite','Claude Haiku 4.5'];
+  const predSeq = ['y = 49','\\frac{3}{28}','144','\\frac{59}{125}','\\sqrt{2018}'];
+  const resultSeq = [true, true, false, true, true];
+
+  let step = 0;
+
+  function tick() {
+    const heurEl = document.getElementById('anim-heuristic');
+    const modelEl = document.getElementById('anim-model');
+    const predEl = document.getElementById('anim-pred');
+    const resultEl = document.getElementById('anim-result');
+    const judgeBox = document.getElementById('anim-judge-box');
+
+    if (!heurEl) return;
+
+    const h = heurSeq[step % heurSeq.length];
+    const m = modelSeq[step % modelSeq.length];
+    const p = predSeq[step % predSeq.length];
+    const r = resultSeq[step % resultSeq.length];
+
+    heurEl.textContent = h;
+    modelEl.textContent = m;
+    predEl.textContent = p;
+    resultEl.textContent = r ? '✓' : '✗';
+    resultEl.setAttribute('fill', r ? '#2e7d32' : '#c41230');
+    judgeBox.setAttribute('fill', r ? '#f0f7f0' : '#fff5f5');
+    judgeBox.setAttribute('stroke', r ? '#2e7d32' : '#c41230');
+
+    step++;
+    setTimeout(tick, 2400);
+  }
+
+  setTimeout(tick, 600);
+}
+
+// ════════════════════════════════════════════════════════════════
+// HEURISTIC SUMMARY TABLE
+// ════════════════════════════════════════════════════════════════
+
+// Pre-computed category-level deltas (avg across all 3 models)
+const CAT_DELTAS = {
+  work_backwards:       { algebra:-1.0, counting_and_probability:6.8, geometry:3.3, intermediate_algebra:-3.3, number_theory:-3.3, prealgebra:-1.3, precalculus:-1.7 },
+  simpler_case:         { algebra:-7.7, counting_and_probability:6.9, geometry:6.1, intermediate_algebra:-0.8, number_theory:-5.0, prealgebra:0.4,  precalculus:-3.3 },
+  contradiction:        { algebra:0.2,  counting_and_probability:-0.2,geometry:3.3, intermediate_algebra:-0.1, number_theory:-6.8, prealgebra:7.0,  precalculus:-8.3 },
+  induction:            { algebra:-4.0, counting_and_probability:7.1, geometry:0.0, intermediate_algebra:-5.8, number_theory:-6.8, prealgebra:0.4,  precalculus:-7.5 },
+  extremal_element:     { algebra:-3.3, counting_and_probability:0.4, geometry:-3.8,intermediate_algebra:-10.7,number_theory:1.7,  prealgebra:3.7,  precalculus:-5.4 },
+  invariant:            { algebra:-2.8, counting_and_probability:2.1, geometry:0.0, intermediate_algebra:-5.0, number_theory:-10.0,prealgebra:3.7,  precalculus:-5.0 },
+  change_representation:{ algebra:-2.6, counting_and_probability:5.1, geometry:0.0, intermediate_algebra:1.7,  number_theory:-3.3, prealgebra:0.4,  precalculus:-1.7 },
+  symmetry:             { algebra:-1.7, counting_and_probability:5.4, geometry:0.0, intermediate_algebra:-6.7, number_theory:-3.3, prealgebra:8.7,  precalculus:1.7  },
+  count_two_ways:       { algebra:0.0,  counting_and_probability:-1.2,geometry:-8.3,intermediate_algebra:-3.3, number_theory:-6.7, prealgebra:3.7,  precalculus:-5.9 },
+  pigeonhole:           { algebra:3.0,  counting_and_probability:3.8, geometry:-1.7,intermediate_algebra:-10.7,number_theory:-6.7, prealgebra:5.0,  precalculus:-8.3 },
+  auxiliary_elements:   { algebra:-4.4, counting_and_probability:5.4, geometry:-5.3,intermediate_algebra:-6.7, number_theory:-3.6, prealgebra:3.7,  precalculus:-8.3 },
+  analogy:              { algebra:2.4,  counting_and_probability:-1.2,geometry:1.7, intermediate_algebra:-6.7, number_theory:-1.8, prealgebra:0.4,  precalculus:-1.7 },
+  generalize:           { algebra:0.8,  counting_and_probability:-1.9,geometry:-1.7,intermediate_algebra:-2.4, number_theory:-5.0, prealgebra:3.3,  precalculus:-2.6 },
+  case_analysis:        { algebra:2.4,  counting_and_probability:7.1, geometry:-3.3,intermediate_algebra:-3.3, number_theory:-5.0, prealgebra:8.3,  precalculus:-7.5 },
+  pattern_recognition:  { algebra:-6.1, counting_and_probability:-1.2,geometry:-3.3,intermediate_algebra:-0.6, number_theory:-8.3, prealgebra:3.4,  precalculus:-10.0}
+};
+
+const CAT_NAMES_SHORT = {
+  algebra: 'Algebra', counting_and_probability: 'Counting', geometry: 'Geometry',
+  intermediate_algebra: 'Int. Alg.', number_theory: 'Num. Theory',
+  prealgebra: 'Prealgebra', precalculus: 'Precalculus'
+};
+
+let htView = 'cat'; // 'cat' or 'model'
+let htSortCol = 'avg'; let htSortDir = 1;
+
+function cellOpacity(delta, thresholdLow, thresholdHigh) {
+  const abs = Math.abs(delta);
+  if (abs < thresholdLow * 0.4) return 0.25;
+  if (abs < thresholdLow) return 0.55;
+  if (abs < thresholdHigh) return 0.8;
+  return 1.0;
+}
+
+function htCellColor(delta, opacity) {
+  const maxD = 20;
+  const t = Math.max(-1, Math.min(1, delta / maxD));
+  let r, g, b;
+  if (t < 0) { r = 196; g = Math.round(160 * (1+t)); b = Math.round(160 * (1+t)); }
+  else        { r = Math.round(160 * (1-t)); g = Math.round(200 * (1-t*0.5)); b = 210; }
+  return `rgba(${r},${g},${b},${opacity})`;
+}
+
+function renderHeuristicTable() {
+  const isCat = htView === 'cat';
+  const thLow = isCat ? 8.7 : 5.7;   // 1σ SE
+  const thHigh = isCat ? 17.1 : 11.2; // 95% CI (significant)
+
+  // Build data rows
+  const rows = HEURISTICS.slice(1).map(h => {
+    if (isCat) {
+      const vals = CATEGORIES.map(c => CAT_DELTAS[h][c]);
+      const avg = vals.reduce((a,b)=>a+b,0)/vals.length;
+      return { h, vals, avg, cols: CATEGORIES };
+    } else {
+      const vals = ['gpt','gem','haiku'].map(mk => OVERALL_DELTAS[mk][h]);
+      const avg = vals.reduce((a,b)=>a+b,0)/vals.length;
+      return { h, vals, avg, cols: ['gpt','gem','haiku'] };
+    }
+  });
+
+  // Sort
+  if (htSortCol === 'avg') {
+    rows.sort((a, b) => htSortDir * (b.avg - a.avg));
+  } else {
+    const idx = (isCat ? CATEGORIES : ['gpt','gem','haiku']).indexOf(htSortCol);
+    if (idx >= 0) rows.sort((a, b) => htSortDir * (b.vals[idx] - a.vals[idx]));
+  }
+
+  const colLabels = isCat
+    ? CATEGORIES.map(c => CAT_NAMES_SHORT[c])
+    : ['GPT-5.4-nano','Gemini Flash Lite','Haiku 4.5'];
+  const colColors = isCat
+    ? Array(7).fill('#ddd')
+    : ['#d4580a','#1565c0','#6b3a8f'];
+  const colKeys = isCat ? CATEGORIES : ['gpt','gem','haiku'];
+
+  function thHtml(key, label, color='#ccc') {
+    const isActive = htSortCol === key;
+    const arrow = isActive ? (htSortDir > 0 ? '↑' : '↓') : '';
+    return `<th class="sortable-header" style="color:${color};cursor:pointer;" onclick="htSort('${key}')">${label}<span class="sort-arrow">${arrow || '·'}</span></th>`;
+  }
+
+  let html = '<thead><tr>';
+  html += `<th class="ht-heuristic sortable-header" onclick="htSort('name')" style="text-align:left;">Heuristic <span class="sort-arrow">${htSortCol==='name'?(htSortDir>0?'↑':'↓'):'·'}</span></th>`;
+  colLabels.forEach((lbl, i) => html += thHtml(colKeys[i], lbl, colColors[i]));
+  html += thHtml('avg', 'Average', '#fff');
+  html += '</tr></thead><tbody>';
+
+  rows.forEach(row => {
+    const { h, vals, avg } = row;
+    const sigHigh = Math.abs(avg) >= thHigh;
+    html += '<tr>';
+    html += `<td class="ht-heuristic" style="cursor:pointer;" onclick="showHeuristicPopup('${h}')" title="Click to see full system prompt &amp; stats">${HEURISTIC_NAMES[h]} <span style="opacity:0.4;font-size:0.75em;">▶</span></td>`;
+
+    vals.forEach((d, i) => {
+      const opacity = cellOpacity(d, thLow * 0.5, thHigh);
+      const bg = htCellColor(d, opacity);
+      const txtColor = Math.abs(d) > thHigh ? '#fff' : (d > 0 ? '#0a3d62' : '#5c0a0a');
+      const sig = Math.abs(d) >= thHigh ? '<span class="ht-sig">★</span>' : '';
+      html += `<td style="background:${bg};color:${txtColor};cursor:pointer;" onclick="openTableCellPopup('${isCat ? 'cat' : 'model'}','${colKeys[i]}','${h}',${d.toFixed(1)})" title="${colLabels[i]}: ${d>=0?'+':''}${d.toFixed(1)}%">${d>=0?'+':''}${d.toFixed(1)}%${sig}</td>`;
+    });
+
+    // Average column
+    const avgOp = cellOpacity(avg, thLow * 0.5, thHigh);
+    const avgBg = htCellColor(avg, Math.min(1, avgOp + 0.15));
+    const avgTxt = Math.abs(avg) > thHigh ? '#fff' : (avg > 0 ? '#0a3d62' : '#5c0a0a');
+    const avgSig = Math.abs(avg) >= thHigh ? '<span class="ht-sig">★</span>' : '';
+    html += `<td class="ht-avg" style="background:${avgBg};color:${avgTxt};font-weight:800;">${avg>=0?'+':''}${avg.toFixed(1)}%${avgSig}</td>`;
+    html += '</tr>';
+  });
+
+  html += '</tbody>';
+  document.getElementById('htable').innerHTML = html;
+}
+
+function htSort(col) {
+  if (htSortCol === col) htSortDir *= -1;
+  else { htSortCol = col; htSortDir = col === 'avg' ? -1 : 1; }
+  renderHeuristicTable();
+}
+
+// ════════════════════════════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════════════════════════════
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Render heatmap
+  renderHeatmap(currentModel);
+
+  // Render charts
+  renderPersonalityChart();
+  renderGeoAuxChart();
+  renderLosersChart();
+  renderCaseChart();
+  renderFlipChart();
+  renderCatDivideChart();
+
+  // Render heuristic table
+  renderHeuristicTable();
+  document.getElementById('ht-by-cat').addEventListener('click', () => {
+    htView = 'cat'; htSortCol = 'avg'; htSortDir = -1;
+    document.getElementById('ht-by-cat').classList.add('active');
+    document.getElementById('ht-by-model').classList.remove('active');
+    renderHeuristicTable();
+  });
+  document.getElementById('ht-by-model').addEventListener('click', () => {
+    htView = 'model'; htSortCol = 'avg'; htSortDir = -1;
+    document.getElementById('ht-by-model').classList.add('active');
+    document.getElementById('ht-by-cat').classList.remove('active');
+    renderHeuristicTable();
+  });
+
+  // Start animation
+  animateExperiment();
+
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentModel = btn.dataset.model;
+      renderHeatmap(currentModel);
+    });
+  });
+
+  // Delta / Raw toggle
+  document.getElementById('show-delta').addEventListener('click', () => {
+    showDelta = true;
+    document.getElementById('show-delta').classList.add('active');
+    document.getElementById('show-raw').classList.remove('active');
+    renderHeatmap(currentModel);
+  });
+  document.getElementById('show-raw').addEventListener('click', () => {
+    showDelta = false;
+    document.getElementById('show-raw').classList.add('active');
+    document.getElementById('show-delta').classList.remove('active');
+    renderHeatmap(currentModel);
+  });
+
+  // Close popup
+  document.getElementById('popup-close').addEventListener('click', closePopup);
+  document.getElementById('popup-overlay').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('popup-overlay')) closePopup();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePopup();
+  });
+
+  // Scroll fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+});
+</script>
+</body>
+</html>

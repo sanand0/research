@@ -1,0 +1,2681 @@
+{
+  "description": "Polya Audit results: LLM accuracy on MATH benchmark L5 problems by model, category, and heuristic",
+  "experiment_date": "2026-03-26",
+  "total_runs": 6747,
+  "models": [
+    "gpt-5.4-nano",
+    "gemini/gemini-flash-lite-latest",
+    "anthropic/claude-haiku-4-5-20251001"
+  ],
+  "heuristics": [
+    "baseline",
+    "work_backwards",
+    "simpler_case",
+    "contradiction",
+    "induction",
+    "extremal_element",
+    "invariant",
+    "change_representation",
+    "symmetry",
+    "count_two_ways",
+    "pigeonhole",
+    "auxiliary_elements",
+    "analogy",
+    "generalize",
+    "case_analysis",
+    "pattern_recognition"
+  ],
+  "categories": [
+    "algebra",
+    "counting_and_probability",
+    "geometry",
+    "intermediate_algebra",
+    "number_theory",
+    "prealgebra",
+    "precalculus"
+  ],
+  "by_model_heuristic": [
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "contradiction",
+      "acc": 72.18,
+      "n": 133
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "change_representation",
+      "acc": 71.94,
+      "n": 139
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "baseline",
+      "acc": 71.94,
+      "n": 139
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "pattern_recognition",
+      "acc": 71.74,
+      "n": 138
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "work_backwards",
+      "acc": 70.71,
+      "n": 140
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "symmetry",
+      "acc": 70.71,
+      "n": 140
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "simpler_case",
+      "acc": 70.59,
+      "n": 136
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "induction",
+      "acc": 70.59,
+      "n": 136
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "count_two_ways",
+      "acc": 70.5,
+      "n": 139
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "pigeonhole",
+      "acc": 70.29,
+      "n": 138
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "case_analysis",
+      "acc": 70.29,
+      "n": 138
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "invariant",
+      "acc": 70.0,
+      "n": 140
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "generalize",
+      "acc": 69.85,
+      "n": 136
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "extremal_element",
+      "acc": 69.63,
+      "n": 135
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "auxiliary_elements",
+      "acc": 68.84,
+      "n": 138
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "heuristic": "analogy",
+      "acc": 68.84,
+      "n": 138
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "symmetry",
+      "acc": 75.36,
+      "n": 138
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "analogy",
+      "acc": 73.57,
+      "n": 140
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "simpler_case",
+      "acc": 72.66,
+      "n": 139
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "change_representation",
+      "acc": 72.66,
+      "n": 139
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "case_analysis",
+      "acc": 72.66,
+      "n": 139
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "generalize",
+      "acc": 72.46,
+      "n": 138
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "auxiliary_elements",
+      "acc": 71.94,
+      "n": 139
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "work_backwards",
+      "acc": 71.74,
+      "n": 138
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "invariant",
+      "acc": 69.78,
+      "n": 139
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "extremal_element",
+      "acc": 69.78,
+      "n": 139
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "count_two_ways",
+      "acc": 69.57,
+      "n": 138
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "baseline",
+      "acc": 69.34,
+      "n": 137
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "contradiction",
+      "acc": 68.84,
+      "n": 138
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "pattern_recognition",
+      "acc": 68.35,
+      "n": 139
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "pigeonhole",
+      "acc": 67.86,
+      "n": 140
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "heuristic": "induction",
+      "acc": 66.91,
+      "n": 136
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "baseline",
+      "acc": 66.43,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "work_backwards",
+      "acc": 65.0,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "contradiction",
+      "acc": 64.29,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "case_analysis",
+      "acc": 64.29,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "symmetry",
+      "acc": 63.57,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "induction",
+      "acc": 63.57,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "simpler_case",
+      "acc": 62.86,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "pigeonhole",
+      "acc": 62.86,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "change_representation",
+      "acc": 62.86,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "analogy",
+      "acc": 62.14,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "generalize",
+      "acc": 61.43,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "extremal_element",
+      "acc": 61.43,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "invariant",
+      "acc": 60.71,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "count_two_ways",
+      "acc": 58.57,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "auxiliary_elements",
+      "acc": 58.57,
+      "n": 140
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "heuristic": "pattern_recognition",
+      "acc": 56.43,
+      "n": 140
+    }
+  ],
+  "by_model_category_heuristic": [
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "analogy",
+      "acc": 63.16,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "baseline",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "case_analysis",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "change_representation",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "contradiction",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "count_two_ways",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "extremal_element",
+      "acc": 57.89,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "generalize",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "induction",
+      "acc": 57.89,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "invariant",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "pattern_recognition",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "pigeonhole",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "simpler_case",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "symmetry",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "algebra",
+      "heuristic": "work_backwards",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "analogy",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "auxiliary_elements",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "baseline",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "case_analysis",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "change_representation",
+      "acc": 78.95,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "contradiction",
+      "acc": 88.24,
+      "n": 17
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "count_two_ways",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "extremal_element",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "generalize",
+      "acc": 84.21,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "induction",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "invariant",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "pattern_recognition",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "pigeonhole",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "simpler_case",
+      "acc": 89.47,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "symmetry",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "counting_and_probability",
+      "heuristic": "work_backwards",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "analogy",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "auxiliary_elements",
+      "acc": 84.21,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "baseline",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "case_analysis",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "change_representation",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "contradiction",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "count_two_ways",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "extremal_element",
+      "acc": 73.68,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "generalize",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "induction",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "invariant",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "pattern_recognition",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "pigeonhole",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "simpler_case",
+      "acc": 83.33,
+      "n": 18
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "symmetry",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "geometry",
+      "heuristic": "work_backwards",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "analogy",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "baseline",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "case_analysis",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "change_representation",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "contradiction",
+      "acc": 64.71,
+      "n": 17
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "count_two_ways",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "extremal_element",
+      "acc": 57.89,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "generalize",
+      "acc": 57.89,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "induction",
+      "acc": 52.63,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "invariant",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "pattern_recognition",
+      "acc": 63.16,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "pigeonhole",
+      "acc": 57.89,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "simpler_case",
+      "acc": 52.63,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "symmetry",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "intermediate_algebra",
+      "heuristic": "work_backwards",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "analogy",
+      "acc": 89.47,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "auxiliary_elements",
+      "acc": 84.21,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "baseline",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "case_analysis",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "change_representation",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "contradiction",
+      "acc": 94.74,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "count_two_ways",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "extremal_element",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "generalize",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "induction",
+      "acc": 94.74,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "invariant",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "pattern_recognition",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "pigeonhole",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "simpler_case",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "symmetry",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "number_theory",
+      "heuristic": "work_backwards",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "analogy",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "baseline",
+      "acc": 78.95,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "case_analysis",
+      "acc": 78.95,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "change_representation",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "contradiction",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "count_two_ways",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "extremal_element",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "generalize",
+      "acc": 78.95,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "induction",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "invariant",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "pattern_recognition",
+      "acc": 84.21,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "pigeonhole",
+      "acc": 78.95,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "simpler_case",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "symmetry",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "prealgebra",
+      "heuristic": "work_backwards",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "analogy",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "auxiliary_elements",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "baseline",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "case_analysis",
+      "acc": 47.37,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "change_representation",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "contradiction",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "count_two_ways",
+      "acc": 47.37,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "extremal_element",
+      "acc": 38.89,
+      "n": 18
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "generalize",
+      "acc": 42.11,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "induction",
+      "acc": 47.37,
+      "n": 19
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "invariant",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "pattern_recognition",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "pigeonhole",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "simpler_case",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "symmetry",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "anthropic/claude-haiku-4-5-20251001",
+      "category": "precalculus",
+      "heuristic": "work_backwards",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "analogy",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 57.89,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "baseline",
+      "acc": 61.11,
+      "n": 18
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "case_analysis",
+      "acc": 63.16,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "change_representation",
+      "acc": 63.16,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "contradiction",
+      "acc": 66.67,
+      "n": 18
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "count_two_ways",
+      "acc": 61.11,
+      "n": 18
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "extremal_element",
+      "acc": 63.16,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "generalize",
+      "acc": 68.42,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "induction",
+      "acc": 56.25,
+      "n": 16
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "invariant",
+      "acc": 52.63,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "pattern_recognition",
+      "acc": 57.89,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "pigeonhole",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "simpler_case",
+      "acc": 57.89,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "symmetry",
+      "acc": 61.11,
+      "n": 18
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "algebra",
+      "heuristic": "work_backwards",
+      "acc": 63.16,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "analogy",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "auxiliary_elements",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "baseline",
+      "acc": 73.68,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "case_analysis",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "change_representation",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "contradiction",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "count_two_ways",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "extremal_element",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "generalize",
+      "acc": 78.95,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "induction",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "invariant",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "pattern_recognition",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "pigeonhole",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "simpler_case",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "symmetry",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "counting_and_probability",
+      "heuristic": "work_backwards",
+      "acc": 84.21,
+      "n": 19
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "analogy",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "auxiliary_elements",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "baseline",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "case_analysis",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "change_representation",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "contradiction",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "count_two_ways",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "extremal_element",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "generalize",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "induction",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "invariant",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "pattern_recognition",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "pigeonhole",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "simpler_case",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "symmetry",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "geometry",
+      "heuristic": "work_backwards",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "analogy",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "baseline",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "case_analysis",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "change_representation",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "contradiction",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "count_two_ways",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "extremal_element",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "generalize",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "induction",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "invariant",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "pattern_recognition",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "pigeonhole",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "simpler_case",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "symmetry",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "intermediate_algebra",
+      "heuristic": "work_backwards",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "analogy",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "auxiliary_elements",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "baseline",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "case_analysis",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "change_representation",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "contradiction",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "count_two_ways",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "extremal_element",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "generalize",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "induction",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "invariant",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "pattern_recognition",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "pigeonhole",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "simpler_case",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "symmetry",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "number_theory",
+      "heuristic": "work_backwards",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "analogy",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "baseline",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "case_analysis",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "change_representation",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "contradiction",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "count_two_ways",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "extremal_element",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "generalize",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "induction",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "invariant",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "pattern_recognition",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "pigeonhole",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "simpler_case",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "symmetry",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "prealgebra",
+      "heuristic": "work_backwards",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "analogy",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "auxiliary_elements",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "baseline",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "case_analysis",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "change_representation",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "contradiction",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "count_two_ways",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "extremal_element",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "generalize",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "induction",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "invariant",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "pattern_recognition",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "pigeonhole",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "simpler_case",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "symmetry",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gemini/gemini-flash-lite-latest",
+      "category": "precalculus",
+      "heuristic": "work_backwards",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "analogy",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "baseline",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "case_analysis",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "change_representation",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "contradiction",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "count_two_ways",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "extremal_element",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "generalize",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "induction",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "invariant",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "pattern_recognition",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "pigeonhole",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "simpler_case",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "symmetry",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "algebra",
+      "heuristic": "work_backwards",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "analogy",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "auxiliary_elements",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "baseline",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "case_analysis",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "change_representation",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "contradiction",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "count_two_ways",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "extremal_element",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "generalize",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "induction",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "invariant",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "pattern_recognition",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "pigeonhole",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "simpler_case",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "symmetry",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "counting_and_probability",
+      "heuristic": "work_backwards",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "analogy",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "auxiliary_elements",
+      "acc": 30.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "baseline",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "case_analysis",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "change_representation",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "contradiction",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "count_two_ways",
+      "acc": 35.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "extremal_element",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "generalize",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "induction",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "invariant",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "pattern_recognition",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "pigeonhole",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "simpler_case",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "symmetry",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "geometry",
+      "heuristic": "work_backwards",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "analogy",
+      "acc": 35.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "baseline",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "case_analysis",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "change_representation",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "contradiction",
+      "acc": 55.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "count_two_ways",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "extremal_element",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "generalize",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "induction",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "invariant",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "pattern_recognition",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "pigeonhole",
+      "acc": 35.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "simpler_case",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "symmetry",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "intermediate_algebra",
+      "heuristic": "work_backwards",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "analogy",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "auxiliary_elements",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "baseline",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "case_analysis",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "change_representation",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "contradiction",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "count_two_ways",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "extremal_element",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "generalize",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "induction",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "invariant",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "pattern_recognition",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "pigeonhole",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "simpler_case",
+      "acc": 90.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "symmetry",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "number_theory",
+      "heuristic": "work_backwards",
+      "acc": 95.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "analogy",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "auxiliary_elements",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "baseline",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "case_analysis",
+      "acc": 85.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "change_representation",
+      "acc": 60.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "contradiction",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "count_two_ways",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "extremal_element",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "generalize",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "induction",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "invariant",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "pattern_recognition",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "pigeonhole",
+      "acc": 80.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "simpler_case",
+      "acc": 70.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "symmetry",
+      "acc": 75.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "prealgebra",
+      "heuristic": "work_backwards",
+      "acc": 65.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "analogy",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "auxiliary_elements",
+      "acc": 35.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "baseline",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "case_analysis",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "change_representation",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "contradiction",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "count_two_ways",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "extremal_element",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "generalize",
+      "acc": 45.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "induction",
+      "acc": 35.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "invariant",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "pattern_recognition",
+      "acc": 30.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "pigeonhole",
+      "acc": 35.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "simpler_case",
+      "acc": 40.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "symmetry",
+      "acc": 50.0,
+      "n": 20
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "category": "precalculus",
+      "heuristic": "work_backwards",
+      "acc": 45.0,
+      "n": 20
+    }
+  ]
+}
