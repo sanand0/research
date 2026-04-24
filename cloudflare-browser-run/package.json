@@ -1,0 +1,14 @@
+{
+  "name": "cloudflare-browser-run-samples",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8787",
+    "samples": "node scripts/run-local-samples.mjs"
+  },
+  "devDependencies": {
+    "@cloudflare/puppeteer": "^1.1.0",
+    "wrangler": "^4.41.0"
+  }
+}
