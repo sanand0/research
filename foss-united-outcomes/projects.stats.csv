@@ -1,0 +1,11 @@
+field,type,is_ascii,sum,min,max,range,sort_order,sortiness,min_length,max_length,sum_length,avg_length,stddev_length,variance_length,cv_length,mean,sem,geometric_mean,harmonic_mean,stddev,variance,cv,nullcount,n_negative,n_zero,n_positive,max_precision,sparsity
+Project,String,true,,AdonisJS,osvauld,,Unsorted,-0.1034,6,56,630,21,14.6014,213.2,0.6953,,,,,,,,0,,,,,0
+Sustenance,String,true,,No; early single-maintainer tool,Yes; managed service and active company/project,,Unsorted,0.0345,28,55,1304,43.4667,6.6067,43.6489,0.152,,,,,,,,0,,,,,0
+Contributors,String,true,,Healthy; GSoC and broader contributor ecosystem,Unknown; individual research fellowship,,Unsorted,0.1034,26,53,1365,45.5,6.1847,38.25,0.1359,,,,,,,,0,,,,,0
+Usage,String,true,,High; 100M+ messages and 110+ NGOs claimed,Unknown; adoption/use of research output not visible,,Unsorted,0.1724,29,61,1345,44.8333,7.3715,54.3389,0.1644,,,,,,,,0,,,,,0
+Quality,String,true,,"Dormant; files exist, recent activity limited","Usable; status, wiki, source and transparency links",,Unsorted,-0.1724,35,57,1352,45.0667,5.1377,26.3956,0.114,,,,,,,,0,,,,,0
+Community,String,true,,FOSS Hack-origin project grant,FOSS United public-interest nonprofit grants,,Unsorted,0.0345,25,55,1104,36.8,8.4079,70.6933,0.2285,,,,,,,,0,,,,,0
+Funding (INR),Integer,,28978000,18000,10950000,10932000,Unsorted,-0.1724,,,,,,,,965933.3333,360811.6743,315414.6286,103670.2952,1976246.9301,3905551928888.8896,204.5945,0,0,0,30,,0
+Resources,String,true,,FOSDEM exhibit-booth travel/showcase support,"VPS, backups and operations support",,Unsorted,0.0345,29,54,1045,34.8333,5.3234,28.3389,0.1528,,,,,,,,0,,,,,0
+Skills,String,true,,Blender education in Kannada,Unknown; check security/UX mentoring,,Unsorted,0.1034,28,50,1141,38.0333,5.0956,25.9656,0.134,,,,,,,,0,,,,,0
+Grant Year,String,true,,2020,2026,,Unsorted,0.3333,4,16,160,5.3333,3.5341,12.4898,0.6626,,,,,,,,0,,,,,0
