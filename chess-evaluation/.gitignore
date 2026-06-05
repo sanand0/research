@@ -1,0 +1,6 @@
+.env
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+bin/stockfish
+games/*/

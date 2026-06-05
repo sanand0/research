@@ -1,0 +1,395 @@
+{
+  "total_games": 44,
+  "groups": [
+    {
+      "model": "gpt-5.4-mini",
+      "reasoning_effort": "low",
+      "stockfish_elo": 1320,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 3,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 26658,
+        "completion_tokens": 168306,
+        "total_tokens": 194964,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 164452,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4-mini",
+      "reasoning_effort": "medium",
+      "stockfish_elo": 1500,
+      "games": 1,
+      "model_wins": 0,
+      "stockfish_wins": 0,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 1096,
+        "completion_tokens": 6739,
+        "total_tokens": 7835,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 6569,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4-mini",
+      "reasoning_effort": "none",
+      "stockfish_elo": 1320,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 3,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 20811,
+        "completion_tokens": 1562,
+        "total_tokens": 22373,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "reasoning_effort": "low",
+      "stockfish_elo": 1320,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 3,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 21900,
+        "completion_tokens": 69309,
+        "total_tokens": 91209,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 67504,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "reasoning_effort": "low",
+      "stockfish_elo": 1500,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 3,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 19431,
+        "completion_tokens": 54167,
+        "total_tokens": 73598,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 52539,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "reasoning_effort": "medium",
+      "stockfish_elo": 1320,
+      "games": 6,
+      "model_wins": 0,
+      "stockfish_wins": 4,
+      "draws": 2,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 102070,
+        "completion_tokens": 965730,
+        "total_tokens": 1067800,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 958855,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "reasoning_effort": "medium",
+      "stockfish_elo": 1500,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 3,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 24567,
+        "completion_tokens": 263728,
+        "total_tokens": 288295,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 261836,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "reasoning_effort": "none",
+      "stockfish_elo": 1320,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 2,
+      "draws": 1,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 38387,
+        "completion_tokens": 1904,
+        "total_tokens": 40291,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.4-nano",
+      "reasoning_effort": "none",
+      "stockfish_elo": 1500,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 3,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 15411,
+        "completion_tokens": 1040,
+        "total_tokens": 16451,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.5",
+      "reasoning_effort": "low",
+      "stockfish_elo": 1320,
+      "games": 2,
+      "model_wins": 1,
+      "stockfish_wins": 1,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 70303,
+        "completion_tokens": 155522,
+        "total_tokens": 225825,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 150526,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.5",
+      "reasoning_effort": "none",
+      "stockfish_elo": 1320,
+      "games": 2,
+      "model_wins": 0,
+      "stockfish_wins": 1,
+      "draws": 1,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 62351,
+        "completion_tokens": 2210,
+        "total_tokens": 64561,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.5",
+      "reasoning_effort": "none",
+      "stockfish_elo": 1500,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 2,
+      "draws": 1,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 32988,
+        "completion_tokens": 1600,
+        "total_tokens": 34588,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.5",
+      "reasoning_effort": "none",
+      "stockfish_elo": 1700,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 2,
+      "draws": 1,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 46742,
+        "completion_tokens": 2176,
+        "total_tokens": 48918,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.5",
+      "reasoning_effort": "none",
+      "stockfish_elo": 1900,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 2,
+      "draws": 1,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 24403,
+        "completion_tokens": 1265,
+        "total_tokens": 25668,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    },
+    {
+      "model": "gpt-5.5",
+      "reasoning_effort": "none",
+      "stockfish_elo": 2000,
+      "games": 3,
+      "model_wins": 0,
+      "stockfish_wins": 3,
+      "draws": 0,
+      "reported_cost": null,
+      "games_with_reported_cost": 0,
+      "usage": {
+        "prompt_tokens": 34974,
+        "completion_tokens": 1778,
+        "total_tokens": 36752,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      }
+    }
+  ]
+}
