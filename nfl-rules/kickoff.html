@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Kickoff That Came Back From the Dead · NFL Rules</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html">← All stories</a>
+  <span class="nav-sep">|</span>
+  <span>NFL Rules: Under the Hood</span>
+</nav>
+
+<header class="article-header">
+  <div class="article-cat">Special Teams · Safety · Rule Design</div>
+  <h1>The Kickoff That Came Back From the Dead</h1>
+  <p class="article-deck">For three seasons, the NFL's most dangerous play was quietly disappearing. Then the league ran a live experiment — and reversed everything.</p>
+  <div class="article-meta">Based on 14,479 regular-season play-by-play records, 2021–2025 &nbsp;·&nbsp; Official NFL Operations data</div>
+</header>
+
+<main class="article-body">
+
+<p>Picture the moment. A player catches the ball in his own end zone, glances downfield at eleven defenders thundering toward him, and quietly takes a knee. No run. No block. No tackle. Just a formality — and then the next play begins.</p>
+
+<p>In 2023, this happened on nearly <strong>3 of every 4 NFL kickoffs</strong>. And the league called it progress.</p>
+
+<p>They weren't wrong. The touchback — that quiet, bloodless end to a kickoff — had become the safest outcome for players on both teams. Fewer full-speed collisions. Fewer concussions. Fewer injuries to the special-teams players who often aren't even the stars of their rosters. A rule change that season made the touchback even more attractive: take a fair catch anywhere in the end zone, and you get a guaranteed spot at the 25-yard line. Almost nobody bothered running anymore.</p>
+
+<p>But the NFL was discovering something engineers have known for decades: optimize one variable and you accidentally break another. In this case, "safer" had quietly become synonymous with "boring." The kickoff — once one of football's most electric moments, the play that opens every half and follows every score — had become a bureaucratic formality.</p>
+
+<div class="chart-wrap">
+  <div class="chart-title">Returns and touchbacks almost perfectly swapped between 2023 and 2025</div>
+  <div class="chart-sub">Regular-season kickoffs: percentage resulting in a live return vs. touchback, 2021–2025</div>
+  <div id="chart-trend"></div>
+  <div class="chart-note">Hover over any point for details. Era markers show key rule changes. Source: nflverse play-by-play data.</div>
+</div>
+
+<p>The chart above tells the whole story. From 2021 to 2023, touchbacks climbed while returns fell. In 2023 they nearly crossed: 21% returns, 73% touchbacks. Then something dramatic happened. By 2025, the numbers had almost perfectly flipped: 74% returns, 21% touchbacks.</p>
+
+<p>What happened in between is one of the more remarkable governance experiments in professional sports. The NFL didn't tweak a rule. It redesigned the play from scratch.</p>
+
+<h2>The Experiment</h2>
+
+<p>The "dynamic kickoff," first trialed in 2024 for exactly one season, changed the fundamental geometry of the play. Before the reform, a kicker launched the ball while 22 players charged toward each other across 60 yards of open ground — speed amplified across that runway translating directly into force of collision. The most common injury in football was happening on one of its most frequent plays.</p>
+
+<p>The new format eliminated that runway. Both teams now line up much closer together — 40 yards apart instead of 60 — and are prohibited from running until the ball lands in a designated zone. The kicker must aim for that zone: kick it too deep and there's a penalty; kick it short and the returner has a clear path. The play looks less like a kickoff and more like a carefully choreographed face-off.</p>
+
+<div class="timeline">
+  <div class="tl-item">
+    <div class="tl-year">2022</div>
+    <div class="tl-text">A prior free-kick formation change, limiting the "wedge" blocking formation, becomes permanent.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-year">2023</div>
+    <div class="tl-text">Fair-catch touchback incentive: receiving teams may fair-catch anywhere in the end zone for a free spot at the 25-yard line. Return rate falls to 21%. Touchbacks hit 73%.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-year">2024</div>
+    <div class="tl-text">"Dynamic kickoff" trialed for one season only. Both teams align closer; kicker targets a landing zone. Return rate jumps from 21% to 33%.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-year">2025</div>
+    <div class="tl-text">Dynamic kickoff made permanent and further adjusted. Return rate reaches 74%. Touchback rate drops to 21%.</div>
+  </div>
+  <div class="tl-item">
+    <div class="tl-year">2026</div>
+    <div class="tl-text">Further tuning: onside-kick rules and out-of-bounds incentives adjusted. The experiment continues.</div>
+  </div>
+</div>
+
+<h2>Not Just Late-Game Desperation</h2>
+
+<p>Skeptics had an obvious alternative explanation: couldn't higher return rates simply reflect more teams attempting desperate onside kicks in the final minutes of blowout games? Trailing teams sometimes purposely kick short to try to recover the ball — that would inflate return rates without reflecting anything about the new rule design.</p>
+
+<p>The data says no.</p>
+
+<div class="chart-wrap">
+  <div class="chart-title">The shift held regardless of score — it's not just onside kicks</div>
+  <div class="chart-sub">Return rates by game state, 2023 vs. 2025 (regular season, non-onside plays)</div>
+  <div id="chart-buckets"></div>
+  <div class="chart-note">Score buckets exclude late-game attempts (final 2 minutes with large deficit). Source: nflverse kickoff adjusted analysis.</div>
+</div>
+
+<p>When you control for game state — tied games, close leads, close deficits — the 2025 return rate is consistently 3 to 4 times higher than in 2023. A tied game in 2023 produced a return just 21% of the time. The same situation in 2025 produced a return 80% of the time.</p>
+
+<p>That's not noise. That's a redesign working as intended.</p>
+
+<h2>The Price Tag</h2>
+
+<div class="stat-row">
+  <div class="stat-box">
+    <div class="num">+5.3</div>
+    <div class="lbl">yards further downfield that offenses now start, on average, after a kickoff</div>
+  </div>
+  <div class="stat-box">
+    <div class="num">5×</div>
+    <div class="lbl">increase in penalty rate on kickoffs — from 2.2% in 2023 to 10.7% in 2025</div>
+  </div>
+  <div class="stat-box">
+    <div class="num">2026</div>
+    <div class="lbl">When the NFL next adjusted the rules — the tuning is ongoing</div>
+  </div>
+</div>
+
+<p>The dynamic kickoff came with tradeoffs. Offenses now start around their own 31-yard line after a kickoff — up from the 25 or 26 that was standard from 2021 to 2023. Better starting position means more scoring opportunities. Penalty rates nearly quintupled, from 2.2% of kickoffs to 10.7%, as both teams are still learning the new geometry.</p>
+
+<p>The league keeps adjusting. The 2026 rule calendar included further changes to onside-kick declarations and out-of-bounds incentives. There will be more patches.</p>
+
+<h2>The Bigger Lesson</h2>
+
+<p>The most important thing about this story isn't the return rate. It's the method.</p>
+
+<p>The NFL piloted the dynamic kickoff "for one year only" — language in the official rule text that deliberately built in the possibility of walking it back. If 2024 had been a disaster, the league could have reverted. Because it worked, the rule was made permanent. Because it wasn't perfect, it was adjusted again in 2025 and 2026.</p>
+
+<div class="pullquote">"The rule looks less like a law book and more like a control system."</div>
+
+<p>The target metrics are legible in hindsight: fewer high-speed collisions, more live returns, better comeback equity, acceptable starting field position. The mechanisms — spatial constraints, landing zone requirements, out-of-bounds penalties — are the levers. The 2025 penalty spike is the unintended side effect. The 2026 adjustments are the patches.</p>
+
+<p>That framing travels well outside football. Every institution changes rules: pricing policies, review thresholds, incentive schemes, approval workflows. The common mistake is to treat those rules as permanent once enacted. The NFL's kickoff history argues for a different posture: set your metrics upfront, design for revision, and plan explicitly for patches. A good rule should have a target, an expected behavioral response, a monitoring plan, and a path to iterate. Rules are control systems. Manage them as such.</p>
+
+</main>
+
+<footer class="article-footer">
+  <strong>Methodology.</strong> Play-by-play data from nflverse, regular seasons 2021–2025. Return rate = plays resulting in a measurable return (not touchback or fair catch). Score-bucket analysis excludes plays with &gt;15-point deficit in the final 2 minutes (likely onside attempts). Starting field position estimated from the next scrimmage play in sequence. Penalty rate = plays with at least one penalty flag on the kickoff. This is descriptive, not causal — a rigorous analysis would control for team quality, weather, and game context.
+</footer>
+
+<div id="tip" class="tooltip"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+<script>
+(function() {
+  /* ── Data ── */
+  const seasons = [
+    { y: 2021, ret: 39.25, tb: 57.36, start: 25.71, pen: 3.81, kicks: 2915 },
+    { y: 2022, ret: 37.31, tb: 59.45, start: 25.98, pen: 3.70, kicks: 2841 },
+    { y: 2023, ret: 21.35, tb: 73.12, start: 25.67, pen: 2.18, kicks: 2839 },
+    { y: 2024, ret: 33.19, tb: 63.60, start: 30.25, pen: 5.72, kicks: 2956 },
+    { y: 2025, ret: 73.91, tb: 20.87, start: 30.94, pen: 10.69, kicks: 2928 }
+  ];
+
+  const buckets = [
+    { label: "Leading 8–14", r23: 16.2, r25: 71.3 },
+    { label: "Leading 1–7",  r23: 23.3, r25: 74.4 },
+    { label: "Tied",         r23: 21.3, r25: 80.3 },
+    { label: "Trailing 1–7", r23: 21.3, r25: 75.6 },
+    { label: "Trailing 8–14",r23: 20.9, r25: 75.1 }
+  ];
+
+  const tip = d3.select("#tip");
+  function showTip(event, html) {
+    tip.html(html).classed("vis", true)
+      .style("left", (event.clientX + 14) + "px")
+      .style("top",  (event.clientY - 38) + "px");
+  }
+  function hideTip() { tip.classed("vis", false); }
+
+  /* ── Chart 1: Trend ── */
+  (function() {
+    const M = { top: 34, right: 88, bottom: 44, left: 46 };
+    const W = 640, H = 280;
+    const iw = W - M.left - M.right;
+    const ih = H - M.top - M.bottom;
+
+    const svg = d3.select("#chart-trend").append("svg")
+      .attr("viewBox", `0 0 ${W} ${H}`)
+      .style("width","100%").style("height","auto").style("overflow","visible");
+
+    const g = svg.append("g").attr("transform", `translate(${M.left},${M.top})`);
+
+    const x = d3.scaleLinear().domain([2021, 2025]).range([0, iw]);
+    const y = d3.scaleLinear().domain([0, 88]).range([ih, 0]);
+
+    /* grid */
+    g.append("g").call(
+      d3.axisLeft(y).ticks(5).tickFormat("").tickSize(-iw)
+    ).call(g => g.select(".domain").remove())
+     .call(g => g.selectAll("line").attr("stroke","#e2e8f0").attr("stroke-dasharray","3,3"));
+
+    /* era bands */
+    const bands = [
+      { x0: 2022.65, x1: 2023.35, fill: "#fef9c3", label: "Fair-catch rule", cy: "#92400e" },
+      { x0: 2023.65, x1: 2024.35, fill: "#dbeafe", label: "Dynamic kickoff trial", cy: "#1e40af" }
+    ];
+    bands.forEach(b => {
+      g.append("rect")
+        .attr("x", x(b.x0)).attr("width", x(b.x1) - x(b.x0))
+        .attr("y", 0).attr("height", ih).attr("rx", 3)
+        .attr("fill", b.fill).attr("opacity", .7);
+      g.append("text")
+        .attr("x", x((b.x0 + b.x1) / 2)).attr("y", -10)
+        .attr("text-anchor","middle").attr("fill", b.cy)
+        .attr("font-size","10px").attr("font-weight","700").text(b.label);
+    });
+
+    /* axes */
+    g.append("g").attr("transform", `translate(0,${ih})`)
+      .call(d3.axisBottom(x).tickValues([2021,2022,2023,2024,2025]).tickFormat(d3.format("d")).tickSize(4))
+      .call(g => g.select(".domain").attr("stroke","#e2e8f0"))
+      .call(g => g.selectAll("text").attr("fill","#64748b").attr("font-size","12px"));
+
+    g.append("g")
+      .call(d3.axisLeft(y).ticks(5).tickFormat(d => d + "%").tickSize(0))
+      .call(g => g.select(".domain").remove())
+      .call(g => g.selectAll("text").attr("fill","#64748b").attr("font-size","12px").attr("dx","-3px"));
+
+    /* lines */
+    const lineOf = key => d3.line().x(d => x(d.y)).y(d => y(d[key])).curve(d3.curveMonotoneX);
+
+    const configs = [
+      { key: "tb",  color: "#b8892a", label: "Touchbacks" },
+      { key: "ret", color: "#1a3a6b", label: "Returns" }
+    ];
+
+    configs.forEach(({ key, color, label }) => {
+      const path = g.append("path")
+        .datum(seasons)
+        .attr("fill","none").attr("stroke", color)
+        .attr("stroke-width", 3).attr("stroke-linejoin","round")
+        .attr("d", lineOf(key));
+
+      const len = path.node().getTotalLength();
+      path.attr("stroke-dasharray", `${len} ${len}`)
+          .attr("stroke-dashoffset", len)
+          .transition().duration(1600).ease(d3.easeCubicInOut)
+          .attr("stroke-dashoffset", 0);
+
+      /* label at end */
+      const last = seasons[seasons.length - 1];
+      g.append("text")
+        .attr("x", x(2025) + 6).attr("y", y(last[key])).attr("dy","0.35em")
+        .attr("fill", color).attr("font-size","12px").attr("font-weight","700")
+        .text(label);
+
+      /* dots */
+      g.selectAll(null).data(seasons).join("circle")
+        .attr("cx", d => x(d.y)).attr("cy", d => y(d[key]))
+        .attr("r", 5).attr("fill", color)
+        .attr("stroke","white").attr("stroke-width", 2)
+        .style("cursor","pointer")
+        .on("mousemove", (ev, d) => showTip(ev,
+          `<strong>${d.y}</strong><br>
+          Returns: <strong>${d.ret.toFixed(1)}%</strong><br>
+          Touchbacks: <strong>${d.tb.toFixed(1)}%</strong><br>
+          Avg start: own ${d.start.toFixed(1)} yd<br>
+          Penalties: ${d.pen.toFixed(1)}% of kickoffs<br>
+          Kickoffs: ${d.kicks.toLocaleString()}`))
+        .on("mouseleave", hideTip);
+    });
+  })();
+
+  /* ── Chart 2: Score Buckets ── */
+  (function() {
+    const M = { top: 10, right: 14, bottom: 44, left: 110 };
+    const W = 620, H = 230;
+    const iw = W - M.left - M.right;
+    const ih = H - M.top - M.bottom;
+
+    const svg = d3.select("#chart-buckets").append("svg")
+      .attr("viewBox", `0 0 ${W} ${H}`)
+      .style("width","100%").style("height","auto");
+
+    const g = svg.append("g").attr("transform", `translate(${M.left},${M.top})`);
+
+    const ySc = d3.scaleBand().domain(buckets.map(d => d.label)).range([0, ih]).padding(.28);
+    const xSc = d3.scaleLinear().domain([0, 90]).range([0, iw]);
+
+    /* x axis */
+    g.append("g").call(
+      d3.axisTop(xSc).ticks(6).tickFormat(d => d + "%").tickSize(-ih)
+    ).call(g => g.select(".domain").remove())
+     .call(g => g.selectAll("text").attr("fill","#64748b").attr("font-size","11px"))
+     .call(g => g.selectAll("line").attr("stroke","#e2e8f0"));
+
+    /* y axis */
+    g.append("g").call(d3.axisLeft(ySc).tickSize(0))
+      .call(g => g.select(".domain").remove())
+      .call(g => g.selectAll("text").attr("fill","#1a1a1a").attr("font-size","12px").attr("dx","-4px"));
+
+    /* bars */
+    const barH = ySc.bandwidth() / 2 - 2;
+
+    buckets.forEach(d => {
+      const yBase = ySc(d.label);
+
+      /* 2023 bar */
+      g.append("rect")
+        .attr("x", 0).attr("y", yBase)
+        .attr("height", barH).attr("rx", 3)
+        .attr("fill", "#cbd5e1").attr("width", 0)
+        .on("mousemove", ev => showTip(ev,
+          `<strong>${d.label} — 2023</strong><br>Return rate: ${d.r23.toFixed(1)}%<br><em>Fair-catch era — most kicks touchbacks</em>`))
+        .on("mouseleave", hideTip)
+        .transition().duration(900).delay(200)
+        .attr("width", xSc(d.r23));
+
+      g.append("text")
+        .attr("x", xSc(d.r23) + 4).attr("y", yBase + barH / 2).attr("dy","0.35em")
+        .attr("fill","#64748b").attr("font-size","11px").attr("font-weight","600")
+        .text(d.r23.toFixed(0) + "%");
+
+      /* 2025 bar */
+      g.append("rect")
+        .attr("x", 0).attr("y", yBase + barH + 4)
+        .attr("height", barH).attr("rx", 3)
+        .attr("fill", "#1a3a6b").attr("width", 0)
+        .on("mousemove", ev => showTip(ev,
+          `<strong>${d.label} — 2025</strong><br>Return rate: ${d.r25.toFixed(1)}%<br><em>Dynamic kickoff permanent</em>`))
+        .on("mouseleave", hideTip)
+        .transition().duration(900).delay(400)
+        .attr("width", xSc(d.r25));
+
+      g.append("text")
+        .attr("x", xSc(d.r25) + 4).attr("y", yBase + barH + 4 + barH / 2).attr("dy","0.35em")
+        .attr("fill","#1a3a6b").attr("font-size","11px").attr("font-weight","600")
+        .text(d.r25.toFixed(0) + "%");
+    });
+
+    /* legend */
+    const leg = g.append("g").attr("transform", `translate(0,${ih + 22})`);
+    [["#cbd5e1","2023 (fair-catch era)"],["#1a3a6b","2025 (dynamic kickoff)"]].forEach(([c, l], i) => {
+      leg.append("rect").attr("x", i * 170).attr("width",12).attr("height",12).attr("rx",2).attr("fill",c);
+      leg.append("text").attr("x", i * 170 + 16).attr("y",9).attr("fill","#64748b").attr("font-size","12px").text(l);
+    });
+  })();
+})();
+</script>
+</body>
+</html>

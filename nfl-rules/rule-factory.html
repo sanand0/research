@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Committee Always Wins · NFL Rules</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .funnel-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      margin: 24px 0;
+    }
+    .funnel-tier {
+      width: 100%;
+      max-width: 480px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 8px;
+      padding: 16px 20px;
+      text-align: center;
+      cursor: default;
+      transition: background .2s;
+    }
+    .funnel-tier:hover { background: #254f96; }
+    .funnel-tier:nth-child(1) { max-width: 480px; opacity: .9; }
+    .funnel-tier:nth-child(2) { max-width: 360px; opacity: 1; }
+    .funnel-tier:nth-child(3) { max-width: 260px; }
+    .funnel-num { font-size: 38px; font-weight: 900; letter-spacing: -.04em; line-height: 1; }
+    .funnel-lbl { font-size: 13px; opacity: .8; margin-top: 5px; line-height: 1.4; }
+    .funnel-arrow { font-size: 20px; color: var(--border); text-align: center; }
+
+    .rate-row { display: flex; flex-direction: column; gap: 14px; margin: 24px 0; }
+    .rate-item {}
+    .rate-label { font-size: 14px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .rate-sublabel { font-size: 12px; color: var(--muted); margin-bottom: 8px; }
+    .rate-track { height: 40px; background: #f1f5f9; border-radius: 8px; overflow: hidden; }
+    .rate-fill {
+      height: 100%; border-radius: 8px;
+      display: flex; align-items: center;
+      justify-content: flex-end; padding: 0 12px;
+      width: 0; transition: width 1s ease;
+    }
+    .rate-fill span { font-size: 14px; font-weight: 800; color: #fff; }
+
+    .proposal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+      margin: 24px 0;
+    }
+    .prop-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 16px 14px;
+    }
+    .prop-card.passed { border-left: 4px solid #186b42; }
+    .prop-card.failed { border-left: 4px solid #c41e3a; }
+    .prop-badge {
+      font-size: 10px; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; padding: 3px 9px; border-radius: 20px;
+      display: inline-block; margin-bottom: 8px;
+    }
+    .prop-badge.passed { background: #dcfce7; color: #166534; }
+    .prop-badge.failed { background: #fee2e2; color: #991b1b; }
+    .prop-name { font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 4px; }
+    .prop-meta { font-size: 12px; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html">← All stories</a>
+  <span class="nav-sep">|</span>
+  <span>NFL Rules: Under the Hood</span>
+</nav>
+
+<header class="article-header">
+  <div class="article-cat">Governance · Power · Rule-Making</div>
+  <h1>The Committee Always Wins</h1>
+  <p class="article-deck">In four years of NFL rule-making, the Competition Committee proposed 11 changes. All 11 passed. Individual clubs proposed 15. Fewer than half survived.</p>
+  <div class="article-meta">Analysis of 2023–2026 NFL proposal and approval records &nbsp;·&nbsp; Official NFL Operations data</div>
+</header>
+
+<main class="article-body">
+
+<p>Every spring, the owners of all 32 NFL teams gather for the league's annual meeting. Teams have spent the previous months drafting proposals: rules they want changed, powers they want gained, imbalances they want corrected. Most clubs arrive with at least one proposal. Most leave disappointed.</p>
+
+<p>But one body at those meetings almost never leaves disappointed.</p>
+
+<p>The NFL Competition Committee — an advisory group that doesn't itself own a team — proposed 11 rule changes in the four seasons between 2023 and 2026. Every single one passed. Individual clubs, with real financial stakes in the game's outcomes, proposed 15 changes across the same period. Eight passed. Seven didn't.</p>
+
+<p>Understanding why those numbers are so different tells you something important about how the NFL actually works — and who actually controls it.</p>
+
+<h2>The Funnel</h2>
+
+<p>Start with the raw shape of recent rule-making. Between 2023 and 2026, the league considered 25 distinct rule change proposals. Some produced multiple votes across multiple years. At the end of the process, 18 distinct changes became permanent rules.</p>
+
+<div class="funnel-container">
+  <div class="funnel-tier">
+    <div class="funnel-num">25</div>
+    <div class="funnel-lbl">distinct rule changes proposed, 2023–2026</div>
+  </div>
+  <div class="funnel-arrow">↓</div>
+  <div class="funnel-tier">
+    <div class="funnel-num">17</div>
+    <div class="funnel-lbl">proposals that were both proposed and then approved</div>
+  </div>
+  <div class="funnel-arrow">↓</div>
+  <div class="funnel-tier">
+    <div class="funnel-num">18</div>
+    <div class="funnel-lbl">total distinct changes enacted (including 1 without a captured proposal)</div>
+  </div>
+</div>
+
+<p>A 68% success rate from proposal to enactment sounds reasonable — until you break it down by who's proposing.</p>
+
+<h2>The Gap</h2>
+
+<div class="rate-row" id="rate-rows">
+  <div class="rate-item">
+    <div class="rate-label">Competition Committee</div>
+    <div class="rate-sublabel">11 proposed &nbsp;·&nbsp; 11 approved &nbsp;·&nbsp; an 11-for-11 record across four seasons</div>
+    <div class="rate-track">
+      <div class="rate-fill" id="fill-cc" style="background: #186b42;">
+        <span>100%</span>
+      </div>
+    </div>
+  </div>
+  <div class="rate-item">
+    <div class="rate-label">Individual Clubs</div>
+    <div class="rate-sublabel">15 proposed &nbsp;·&nbsp; 8 approved &nbsp;·&nbsp; 7 failed outright</div>
+    <div class="rate-track">
+      <div class="rate-fill" id="fill-clubs" style="background: #1a3a6b;">
+        <span>53%</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>A 100% success rate versus a 53% rate isn't a random fluctuation. It reflects a structural reality: the Competition Committee's proposals arrive pre-negotiated. They've already been stress-tested against the interests of multiple teams, refined through internal review, and shaped by the committee's working relationships with the league office. When they reach the full owners' vote, they're not proposals anymore — they're recommendations. And recommendations from a body with no competitive interest in the outcome are much easier to adopt than proposals from a team that stands to gain from the change.</p>
+
+<div class="pullquote">"Club proposals are advocacy. Committee proposals are conclusions."</div>
+
+<h2>Who Proposed What — and What Happened</h2>
+
+<p>Here's a sampling of the proposals from the 2023–2026 period. Notice the pattern: club proposals that passed tend to be narrow and procedural. Club proposals that failed tend to be structural — the kind of changes that redistribute competitive advantage across the league.</p>
+
+<div class="proposal-grid" id="prop-grid"></div>
+
+<h2>The Detroit Exception</h2>
+
+<p>The Detroit Lions are the most striking case study in recent NFL advocacy. Between 2023 and 2026, Detroit submitted at least five proposals — more than any other individual club. Some passed: their push to protect a team's right to a third challenge after two successful ones was approved in 2024. Some failed: their proposal to fix playoff seeding, their proposal to remove automatic first downs for defensive penalties, their proposal to exempt injured players from the 90-man roster limit.</p>
+
+<p>Detroit's pattern illustrates both the promise and the limits of club-driven rule change. Individual teams can identify real problems. They can build a case. But getting that case through the full owners' vote requires either persuading 24 of 32 teams that the change serves everyone — or having it adopted by the Competition Committee, which carries its own institutional credibility.</p>
+
+<p>The most interesting signal in this dataset isn't which proposals passed. It's which ones are still failing despite recurring support. Those are the pressure points the game hasn't resolved yet.</p>
+
+<h2>The Committee's Role</h2>
+
+<p>The Competition Committee was established in the 1960s and has been shaping NFL rules ever since. It currently includes team representatives, coaches, and general managers, but its proposals reflect league-level thinking about competitive balance, player safety, and fan experience rather than any one team's interest.</p>
+
+<p>That structural advantage is, in most ways, a feature rather than a bug. Rules made by a body with no direct stake in the outcome are more likely to serve the league as a whole. The kickoff redesign — one of the most consequential rule changes in recent memory — passed through the Competition Committee, not through an individual team's proposal. So did the replay authority expansions that are quietly reshaping officiating.</p>
+
+<p>But it also means that teams with legitimate grievances — Detroit's complaints about automatic first downs, Green Bay's concerns about the tush push — need to either build a coalition among other clubs or somehow persuade the Competition Committee to take up their cause. Neither path is easy. And for the issues that keep failing, the gap between "real problem" and "political solution" may persist for years.</p>
+
+</main>
+
+<footer class="article-footer">
+  <strong>Methodology.</strong> Analysis covers proposed and approved canonical rule changes from official NFL Operations sources, 2023–2026. Competition Committee approval rate computed from canonical changes where the primary proposer_class is competition_committee. Club approval rate computed from canonical changes where the primary proposer_class is club. One approved change (passer down review, 2024) had no captured proposal and is classified as unknown. The 2023 resolution regarding the Bills-Bengals game and some bylaw changes are excluded from this count. Historical seed rows (pre-2022) are excluded.
+</footer>
+
+<script>
+/* Animate rate bars on load */
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.getElementById("fill-cc").style.width = "100%";
+    document.getElementById("fill-clubs").style.width = "53%";
+  }, 300);
+});
+
+/* Proposal cards */
+const proposals = [
+  { name: "Jersey number zero", proposer: "Philadelphia", year: 2023, status: "passed",
+    note: "Teams may now assign #0. Narrow, aesthetic, uncontroversial." },
+  { name: "Fair-catch kickoff touchback", proposer: "Competition Committee", year: 2023, status: "passed",
+    note: "Receiving teams may take a free fair catch anywhere in the end zone. Safety-focused, committee-backed." },
+  { name: "Failed 4th-down auto review", proposer: "Houston", year: 2023, status: "passed",
+    note: "Replay official can now automatically review failed 4th-down attempts. Procedural." },
+  { name: "4th-and-20 onside alternative", proposer: "Philadelphia", year: 2023, status: "failed",
+    note: "Give trailing teams a 4th-and-20 option instead of an onside kick. Structural. Still pending." },
+  { name: "Crackback block expansion", proposer: "NY Jets", year: 2023, status: "failed",
+    note: "Expand prohibition on specific blocking technique. Safety-focused but didn't build majority." },
+  { name: "Punt touchback to 25", proposer: "Competition Committee", year: 2023, status: "failed",
+    note: "Rare failed Committee proposal — even the committee couldn't pass it in 2023." },
+  { name: "Coach's challenge (3rd challenge)", proposer: "Detroit", year: 2024, status: "passed",
+    note: "Protects a team's ability to earn a 3rd challenge. Procedural improvement." },
+  { name: "Dynamic kickoff trial", proposer: "Competition Committee", year: 2024, status: "passed",
+    note: "Redesigned kickoff geometry, trialed for one year. Produced dramatic results." },
+  { name: "Regular-season overtime equity", proposer: "Philadelphia", year: 2025, status: "passed",
+    note: "Both teams guaranteed a possession in OT. Changed after controversial AFC Championship ending." },
+  { name: "Ban assisted QB sneak", proposer: "Green Bay", year: 2025, status: "failed",
+    note: "Would ban Eagles' 'tush push.' Competitive in nature — directly targets one team's advantage." },
+  { name: "Playoff seeding by record", proposer: "Detroit", year: 2025, status: "failed",
+    note: "Wild cards with better records should outrank weaker division champions. Structural fairness issue." },
+  { name: "Remove auto-first-down penalty", proposer: "Detroit", year: 2025, status: "failed",
+    note: "Defensive holding shouldn't automatically grant a first down. Imbalance, but no majority found." },
+  { name: "Video call free agency", proposer: "Pittsburgh", year: 2025, status: "passed",
+    note: "Teams may negotiate with free agents via video call. Procedural modernization." },
+  { name: "League disqualification consultation", proposer: "Competition Committee", year: 2026, status: "passed",
+    note: "League can consult with officials on disqualification decisions. Centralized authority increase." },
+  { name: "Emergency officiating override", proposer: "Competition Committee", year: 2026, status: "passed",
+    note: "League can correct clear misses by replacement officials. Most significant authority change." }
+];
+
+const grid = document.getElementById("prop-grid");
+proposals.forEach(p => {
+  const div = document.createElement("div");
+  div.className = `prop-card ${p.status}`;
+  div.innerHTML = `
+    <span class="prop-badge ${p.status}">${p.status === "passed" ? "✓ Passed" : "✗ Failed"}</span>
+    <div class="prop-name">${p.name}</div>
+    <div class="prop-meta">${p.proposer} · ${p.year}</div>
+    <div style="font-size:13px;color:#475569;margin-top:8px;line-height:1.5">${p.note}</div>
+  `;
+  grid.appendChild(div);
+});
+</script>
+</body>
+</html>

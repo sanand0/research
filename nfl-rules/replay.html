@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The New Watchers · NFL Rules</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Ladder visual override for this page */
+    .ladder-circle-1 { background: #475569; }
+    .ladder-circle-2 { background: #1a3a6b; }
+    .ladder-circle-3 { background: #186b42; }
+    .ladder-circle-4 { background: #b8892a; }
+    .ladder-circle-5 { background: #c41e3a; }
+
+    .ladder-stage {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .ladder-stage:hover { border-color: #94a3b8; box-shadow: 0 4px 12px rgba(0,0,0,.07); }
+    .ladder-stage.open { border-color: var(--primary); }
+
+    .ladder-header { display: flex; align-items: center; gap: 14px; }
+    .ladder-badge {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .ladder-main { flex: 1; }
+    .ladder-label { font-size: 15px; font-weight: 700; line-height: 1.2; }
+    .ladder-who { font-size: 12px; color: var(--muted); margin-top: 3px; }
+    .ladder-years { font-size: 11px; font-weight: 700; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+    .ladder-chevron { font-size: 14px; color: var(--muted); transition: transform .2s; flex-shrink: 0; }
+    .ladder-stage.open .ladder-chevron { transform: rotate(90deg); }
+
+    .ladder-detail {
+      max-height: 0; overflow: hidden;
+      transition: max-height .3s ease, padding .3s ease;
+      font-size: 14.5px; line-height: 1.6; color: #374151;
+      padding-left: 50px;
+    }
+    .ladder-stage.open .ladder-detail { max-height: 300px; padding-top: 10px; }
+
+    .event-pill {
+      display: inline-block;
+      font-size: 11px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 20px; margin: 2px;
+      background: #f1f5f9; color: #475569;
+    }
+    .event-pill.approved { background: #dcfce7; color: #166534; }
+    .event-pill.proposed { background: #fef9c3; color: #92400e; }
+  </style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html">← All stories</a>
+  <span class="nav-sep">|</span>
+  <span>NFL Rules: Under the Hood</span>
+</nav>
+
+<header class="article-header">
+  <div class="article-cat">Officiating · Technology · Governance</div>
+  <h1>The New Watchers</h1>
+  <p class="article-deck">Since 2023, the NFL has quietly built five layers of oversight over on-field decisions. The latest gives the league office direct override authority — no flag required.</p>
+  <div class="article-meta">Analysis of 22 replay and officiating rule changes, 2023–2026 &nbsp;·&nbsp; Official NFL Operations data</div>
+</header>
+
+<main class="article-body">
+
+<p>On January 20, 2019, during the NFC Championship game in New Orleans, a Los Angeles Rams defender launched himself into a Saints receiver who had not yet touched the ball. The penalty — pass interference, possibly helmet-to-helmet — was so obvious that the television commentators called it before the play was over. No flag was thrown. The Saints lost in overtime. The Rams went to the Super Bowl.</p>
+
+<p>The NFL received more than 90,000 formal complaints. A law firm filed a protest. The state of Louisiana briefly considered legislation. Polls showed most football fans believed the outcome of the game had been determined by a missed call.</p>
+
+<p>The league had no mechanism to fix it. Under the rules at the time, once the officials on the field made a decision, that decision was final. There was no appeal. No review. No correction.</p>
+
+<p>In 2026, that play would have been corrected. Not by a coach throwing a red flag. Not by a replay official in the booth. By someone watching from the NFL's offices — calling down to the field and saying, in effect: stop, we saw something.</p>
+
+<p>This authority didn't appear overnight. The NFL built it one rule at a time, beginning in 2023, as one of the most systematic authority-redistribution efforts in the history of professional sports.</p>
+
+<h2>Five Rungs Up the Ladder</h2>
+
+<p>Think of it as a ladder. At the bottom are the officials on the field, making real-time decisions with limited information. Each rung added since 2023 represents a new layer of oversight — a new way for someone with more information, or more institutional authority, to intervene.</p>
+
+<p>Click any stage to see what changed and when.</p>
+
+<div id="ladder">
+
+  <div class="ladder-stage" data-stage="1">
+    <div class="ladder-header">
+      <div class="ladder-badge" style="background:#475569">1</div>
+      <div class="ladder-main">
+        <div class="ladder-label">Coach / Club Challenge</div>
+        <div class="ladder-who">Who initiates: team coach &nbsp;·&nbsp; Who decides: replay official</div>
+      </div>
+      <div class="ladder-years">2023–2024</div>
+      <div class="ladder-chevron">›</div>
+    </div>
+    <div class="ladder-detail">
+      <p>Teams have been able to challenge calls since 1999, but recent changes expanded what they can ask to be reviewed. Detroit pushed to include personal fouls — calls that can swing momentum but were previously unreviewable. The 2024 change protected a team's ability to earn a third challenge after two successful challenges. Three events captured in this window. <br><span class="event-pill approved">Detroit, 2024 — approved</span></p>
+    </div>
+  </div>
+
+  <div class="ladder-stage" data-stage="2">
+    <div class="ladder-header">
+      <div class="ladder-badge" style="background:#1a3a6b">2</div>
+      <div class="ladder-main">
+        <div class="ladder-label">Replay Official / Booth Review</div>
+        <div class="ladder-who">Who initiates: replay official (no coach needed) &nbsp;·&nbsp; Who decides: replay official</div>
+      </div>
+      <div class="ladder-years">2023–2024</div>
+      <div class="ladder-chevron">›</div>
+    </div>
+    <div class="ladder-detail">
+      <p>The replay official in the broadcast booth can now initiate reviews without requiring a coach to burn a challenge. This was extended to cover failed fourth-down attempts — a change proposed by Houston and approved in 2023. Also covers clock violations: if there is "clear and obvious visual evidence" that the clock expired before a snap, the replay official can trigger review. Four events captured. <br><span class="event-pill approved">Houston, 2023 — failed 4th down review</span> <span class="event-pill approved">Comp. Committee, 2024 — game clock review</span></p>
+    </div>
+  </div>
+
+  <div class="ladder-stage" data-stage="3">
+    <div class="ladder-header">
+      <div class="ladder-badge" style="background:#186b42">3</div>
+      <div class="ladder-main">
+        <div class="ladder-label">Replay Assist</div>
+        <div class="ladder-who">Who initiates: replay booth &nbsp;·&nbsp; Who decides: on-field official (with guidance)</div>
+      </div>
+      <div class="ladder-years">2023–2025</div>
+      <div class="ladder-chevron">›</div>
+    </div>
+    <div class="ladder-detail">
+      <p>Replay assist is lighter-weight than full review: the booth can advise on-field officials on "specific, objective aspects" of a play — facts that are clearly visible on video, like whether a player was in bounds, whether a play was behind the line, or whether the clock had expired. The on-field official still makes the formal decision. But they're no longer deciding alone. This is the mechanism most likely to address the 2019 Saints situation: a factual miss, not a judgment call. Five events captured, the most of any stage. <br><span class="event-pill approved">Comp. Committee, 2025 — expanded to objective aspects of any play</span></p>
+    </div>
+  </div>
+
+  <div class="ladder-stage" data-stage="4">
+    <div class="ladder-header">
+      <div class="ladder-badge" style="background:#b8892a">4</div>
+      <div class="ladder-main">
+        <div class="ladder-label">League Consultation</div>
+        <div class="ladder-who">Who initiates: league/officiating department &nbsp;·&nbsp; Who decides: league + on-field officials jointly</div>
+      </div>
+      <div class="ladder-years">2026</div>
+      <div class="ladder-chevron">›</div>
+    </div>
+    <div class="ladder-detail">
+      <p>In 2026, the NFL approved a rule allowing league personnel to consult with on-field officials when considering disqualifications — even when no foul has been called. Previously, the league could only get involved after a flag was thrown. This changes the flow: the league can now initiate contact, not just respond. Disqualifications are high-stakes decisions — ejecting a player can alter a game fundamentally — and the league now has a direct line in before the call is made. Three events captured. <br><span class="event-pill approved">Comp. Committee, 2026 — disqualification consultation</span></p>
+    </div>
+  </div>
+
+  <div class="ladder-stage" data-stage="5">
+    <div class="ladder-header">
+      <div class="ladder-badge" style="background:#c41e3a">5</div>
+      <div class="ladder-main">
+        <div class="ladder-label">Emergency Centralized Override</div>
+        <div class="ladder-who">Who initiates: NFL Officiating department &nbsp;·&nbsp; Who decides: league office</div>
+      </div>
+      <div class="ladder-years">2026 — one year only</div>
+      <div class="ladder-chevron">›</div>
+    </div>
+    <div class="ladder-detail">
+      <p>The most significant rung. Approved for 2026 only — explicitly tied to the possibility of a referee labor stoppage — this rule allows the NFL Officiating department to "correct clear and obvious misses made by on-field officials that impact the game." Not advise. Not consult. Correct. This is the architecture that would have fixed the 2019 Saints call. The league framed it as a contingency for replacement officials, but the authority exists. Three events captured. <br><span class="event-pill approved">Comp. Committee, 2026 — emergency override</span></p>
+    </div>
+  </div>
+
+</div>
+
+<h2>What This Pattern Really Is</h2>
+
+<p>The replay changes of 2023–2026 are usually described in the sports press as "more replay" or "expanded review." That description is technically accurate but misses the architecture. This is an authority migration — a deliberate, staged transfer of decision-making power from the field to the booth to the league office.</p>
+
+<div class="pullquote">"Not just more replay. A map of who gets to say a mistake was made."</div>
+
+<p>The direction is consistent. Every change moves oversight further from the field and closer to a centralized, camera-enabled authority. Each step also changes the accountability structure: who asks for correction, who decides whether a correction is warranted, what standard of evidence is required, and what decisions are too consequential to leave to local judgment.</p>
+
+<p>That pattern has a name in technology governance: it's how institutions integrate AI and automation responsibly. You don't replace human judgment all at once. You add correction loops around it. First, create an appeal path. Then allow independent review. Then add assistive correction for factual questions. Then centralize the rare, high-stakes calls. Finally, define an emergency override for institutional failure.</p>
+
+<p>The NFL — a sport built on the authority of a referee's whistle — is working through exactly that progression. Whether by design or by accumulated pressure, it's building a governance architecture that would feel familiar to any technology company trying to answer the question: when should the machine override the human?</p>
+
+<h2>The Unanswered Question</h2>
+
+<p>The emergency override approved in 2026 is explicitly temporary — "for one year only," tied to the possible use of replacement officials during a labor dispute. But temporary rules have a way of becoming permanent. The rule will need to be reauthorized or it lapses. That decision will reveal something: does the NFL want this authority routinely, or only in a crisis?</p>
+
+<p>The honest answer is that the infrastructure for centralized override now exists. The software for remote officiating intervention has been tested. The league has demonstrated, in a real vote, that owners are willing to grant the league office that authority when the justification is compelling enough. The next time a famous call is missed — and there will be a next time — the question of whether to use standing override authority will be easier to answer.</p>
+
+<p>The ladder was built one rung at a time. The top isn't far.</p>
+
+</main>
+
+<footer class="article-footer">
+  <strong>Methodology.</strong> This analysis covers 22 replay and officiating rule events from the 2023–2026 NFL Operations dataset (proposed and approved). Events were classified by authority shift type: coach challenge scope, booth/replay review, replay assist, league consultation, and emergency centralized override. The 2019 Saints-Rams NFC Championship game is historical context outside the dataset window. The emergency override rule (2026 Proposal 5) was explicitly scoped to replacement official situations during a potential referee labor stoppage.
+</footer>
+
+<script>
+document.querySelectorAll(".ladder-stage").forEach(el => {
+  el.addEventListener("click", () => {
+    el.classList.toggle("open");
+  });
+});
+</script>
+</body>
+</html>

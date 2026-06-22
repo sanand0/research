@@ -14,3 +14,6 @@
 - 19 Nov 2025: [`india-data-professionals`](india-data-professionals/). GitHub API yields 790 data scientists/engineers in India (42% Bangalore-based) with best ROI—expandable to 15K-100K via additional keywords/locations/sources like Kaggle.
 - 22 Nov 2025: [`jakarta-schools`](jakarta-schools/). Compiled 105 private K-12 schools in Jakarta/Greater Jakarta with contacts—15 named decision-makers (principals, heads), 85 unique schools across SPK, Christian, Islamic, and national-plus categories.
 - 22 Nov 2025: [`repeated-letter-words`](repeated-letter-words/). Analyzed 370K English words to find 333 where >50% of letters are the same letter—POSSESSES (56% S) is the longest common example; includes Gardner-style and Munroe-style articles.
+- 02 Jun 2026: [`nfl-rules`](nfl-rules/). Analysis of NFL rule changes.
+- 12 Jun 2026: [`2026-06-test-exam`](2026-06-test-exam/). Solved and submitted the AI-Era Capability Test at 9/10; the only blocked point was an external AIPipe judge rejecting its manually entered bearer token.
+- 23 Jun 2026: [`xarray-linspace`](xarray-linspace/). Fixes [Should RangeIndex.linspace handle num=1 like numpy.linspace?](https://github.com/pydata/xarray/pull/11401)
