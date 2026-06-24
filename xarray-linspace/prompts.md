@@ -1,5 +1,22 @@
 # Prompts
 
+##
+
+<!--
+cd $PWD
+dev.sh -p ~/code/
+claude --dangerously-skip-permission
+-->
+
+Read ~/code/blog/posts/2026/proving-code-works-with-z3.md
+
+Write a single-page data story `index.html` (use the data-story SKILL) that explains how to use Z3 to formally verify code, highlighting that this led to a successful issue submission and a PR, as documented in this repo.
+
+Explain how this is relevant in the AI coding agent era where generation is cheap and verification is expensive.
+
+Use the chats for
+
+
 ## Fix bug
 
 <!--
@@ -49,5 +66,9 @@ You made some changes to my configuration - as a result, I get the following err
 /home/vscode/.local/share/mise/installs/github-cli/2.95.0/gh_2.95.0_linux_amd64/bin/gh auth git-credential store: 1: /home/vscode/.local/share/mise/installs/github-cli/2.95.0/gh_2.95.0_linux_amd64/bin/gh: not found
 
 Let me know what the changes were and revert them.
+
+---
+
+Is it possible to fold the test into an existing test function so that the test code becomes more elegant and maintainable? If so, do that.
 
 <!-- codex resume 019ef1b2-5aea-7221-982b-95c519fa8641 --yolo -->
