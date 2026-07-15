@@ -17,3 +17,4 @@
 - 02 Jun 2026: [`nfl-rules`](nfl-rules/). Analysis of NFL rule changes.
 - 12 Jun 2026: [`2026-06-test-exam`](2026-06-test-exam/). Solved and submitted the AI-Era Capability Test at 9/10; the only blocked point was an external AIPipe judge rejecting its manually entered bearer token.
 - 23 Jun 2026: [`xarray-linspace`](xarray-linspace/). Fixes [Should RangeIndex.linspace handle num=1 like numpy.linspace?](https://github.com/pydata/xarray/pull/11401)
+- 15 Jul 2026: [`ideation-protocol-optimization`](ideation-protocol-optimization/). Iteratively optimized an ideation skill against an evaluation rubric.
