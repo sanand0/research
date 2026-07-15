@@ -1,0 +1,55 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q spans school timing, tradable freight slots, passenger-weighted signals, disruption coordination, dynamic curbs, appointment scheduling and sector-specific weekdays. P is broad too, but several survivors cluster around queue control or trip substitution, such as \"origin pulse metering,\" \"destination virtual queues\" and \"trip demand response.\""
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P reaches substantially less familiar mechanisms such as \"trip capacity in escrow,\" a \"mandatory trip-substitution API,\" \"adaptive traffic firebreaks\" and an \"office-swap marketplace.\" Much of Q relies on recognizable scheduling and allocation moves such as \"school-start staggering,\" \"dynamic curb allocation\" and \"appointment-time coordination.\""
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P explicitly derives ideas from named rules in \"Computer networks\"—\"admission control,\" \"backpressure\" and \"multiplexing\"—and \"Forest-fire ecology\"—\"firebreaks,\" \"fuel reduction\" and \"distributed refuges.\" Q's \"similar to mobile-data plans\" is an analogy, not a developed structural transfer."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's practical choice uses \"infrastructure the city already owns\" and can be \"piloted corridor by corridor,\" while pairing curb management with disruption coordination. P selects more speculative mechanisms despite acknowledging risks such as destinations failing to coordinate and queues blocking local streets."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P gives a concrete prerequisite and failure mode for every survivor, including \"drivers may evade controlled exits,\" institutions may \"shift burdens to workers,\" and escrow could obstruct housing. Q mostly supplies one compressed label per idea, such as \"Employer resistance\" or \"Political backlash,\" without exposing underlying assumptions."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P names precise causal reversals: \"A queue need not occupy road space,\" \"less road-network connectivity can produce more total flow,\" and removing a few trips \"near collapse may have disproportionate value.\" Q's strongest formulation—turning congestion into \"an operational scheduling problem\"—is good, but comparable insight is not sustained across its set."
+    }
+  ],
+  "note": "P is stronger at mechanism-level invention, transfer and self-critique; Q is stronger at selecting an immediately credible municipal intervention."
+}

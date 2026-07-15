@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's institutional B2B models like the school lifecycle operator ('take responsibility for the complete physical-book workflow') unlock large, recurring revenue blocks that bypass online retail's core strengths. P's models, such as the in-house imprint ('keeps 100% margin instead of ~40-50% wholesale'), successfully optimize unit economics but remain structurally capped by the chain's localized foot traffic."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "Both outputs map clean, credible intervention-to-outcome paths. P tightly connects in-store discovery data to low-risk publishing decisions ('floor traffic data plus staff judgment can identify unmet-demand niches'), while Q provides clear logical links showing how instant trade-ins alter consumer momentum ('resale certainty into a purchase feature')."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P relies on mechanisms with substantial consumer adoption friction, such as imposing a door fee ('membership door fee for curated browsing hours') or managing complex daypart operational shifts. Q selects mechanisms that align naturally with existing infrastructure and clear user incentives, like localized condition grading ('trustworthy condition assessment at low transaction cost')."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "Both provide exceptional, concrete prototyping frameworks. P defines explicit cheap falsifiers ('pitch three mid-size publishers a paid placement rate card'), and Q maps out highly actionable, structured pilots ('Select 100 matched titles... Give half a visible 90-day buyback floor')."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's framing of matched stores as an R&D testing ground via the clinical trial domain ('Publishers pay even when the experiment shows that their preferred option loses') is highly innovative. P's borrowed frameworks, such as the nightclub-style split identity ('co-working am / bookstore pm'), represent more familiar retail-reframing concepts."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q spans a much wider array of solution spaces, including institutional outsourcing, corporate compliance procurement, behavioral data testing, and estate liquidation. P's 5 clusters explore fewer distinct pathways, focusing primarily on in-store space allocation, localized publishing, and hospitality/event access."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P curates reader attention more efficiently by maintaining a tight, disciplined architecture of 5 clear mechanisms. Q introduces 12 initial mechanisms before filtering, creating mild structural overlap between parallel tracks like institutional lifecycle management (M1) and corporate knowledge procurement (M2)."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P ranges across physical standardisation, redundancy, handoff protocols, preventive maintenance, behavioural expiry, tangible family play and work contracts: \"Duplicate Life Modules,\" \"Handoff Ledger,\" \"Reversible Commitment Layer\" and \"Grandparenting Stagecraft.\" Q is diverse, but more of its pool clusters around compliance, care, housing and financial pooling."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P travels further from standard retiree services with mechanisms such as a property-facing \"Personal Technical Rider,\" a relocation \"damage report,\" and commitments that \"expire unless renewed.\" Q has bold ideas, but several remain sophisticated extensions of familiar categories, including \"portable business entity,\" \"membership network\" and \"prepaid credits.\""
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P explicitly makes imported rules operational: \"responsibility is not transferred until the receiver positively acknowledges\" drives the Time-Zone Relay Desk, while \"interventions should be reversible\" drives automatic commitment expiry. Q's derivative and migration metaphors generate useful ideas, but finalists such as \"Care-Hours Futures\" and \"Home-Equity-to-Habitat Swap\" resemble direct financial product analogies more than deeply transformed rules."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "P's winner has frequent use, broad applicability and a credible payer: \"Properties certify compatibility before the person arrives.\" Q's Jurisdiction Autopilot has a narrower, highly observable pain and fast test: \"proposes itinerary changes\" before thresholds are crossed. Each is plausibly the strongest practical choice under a different weighting of breadth versus urgency."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P converts assumptions into cheap kill tests, such as \"Kill the idea if clarification cycles erase the time-zone advantage\" and testing whether ledger entries \"become stale.\" Q names serious risks—\"clinical liability,\" \"adverse selection\" and \"provider insolvency\"—but generally stops at identifying them rather than specifying decisive falsification."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P states sharp inversions such as \"Consistency—not variety\" and treating distance as \"a storytelling mechanic.\" Q is equally specific in reframing the problems: \"avoiding a threshold\" rather than filing afterward, authority rather than tracking, and converting housing wealth into \"spatial optionality.\""
+    }
+  ],
+  "note": "P's biggest advantage is disciplined, load-bearing transfer from unrelated domains; Q's strength is commercially legible infrastructure ideas with unusually concrete systemic failure modes."
+}

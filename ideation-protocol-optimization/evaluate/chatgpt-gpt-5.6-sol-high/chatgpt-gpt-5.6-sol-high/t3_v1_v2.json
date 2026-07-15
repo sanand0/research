@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": false,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true,
+      "evidence": {
+        "banned_list_present": "It explicitly excludes five responses, including \"Add a café\" and \"Run more ordinary author talks, book clubs...\"",
+        "survivors_avoid_banned": "The leading membership proposal reinstates the banned club mechanism through \"Seasonal reading guilds\" and \"entry to one seasonal guild\"; the added progression does not fully change the underlying recurring-book-club mechanism.",
+        "named_transfer_rules": "The airline rule \"Inventory belongs to the network, not an individual location\" directly supports the finalist's \"Chain-wide used inventory\" and cross-store returns and transfers.",
+        "practical_and_wildcard_distinct": "The practical picks focus on membership, circulation and institutional services, while the wildcards are a \"publisher demand laboratory\" and a specialized \"genre district\" network."
+      }
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true,
+      "evidence": {
+        "banned_list_present": "It explicitly bans seven families, including \"Run more events\", \"Offer loyalty discounts or subscriptions\" and \"Curate more intelligently or specialize\".",
+        "survivors_avoid_banned": "Its finalists rely on guaranteed resale liquidity, measured reading outcomes and owned intellectual property—not cafés, events, subscriptions, ordinary curation or experiential retail.",
+        "named_transfer_rules": "The financial-exchange rule \"A visible two-sided price reduces uncertainty\" is essential to \"Future Buyback Quote\"; Q explicitly says that without it, the idea \"becomes an ordinary returns policy\".",
+        "practical_and_wildcard_distinct": "The practical ideas are a physical-book exchange and an outcome lab; the wildcard is a \"demand-sensing IP foundry\" that acquires and creates exclusive rights."
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q covers genuinely different mechanisms such as \"Inventory-Risk Transfer\", \"Reader Capital Pools\", \"Library Lifecycle Services\", \"Attention Escrow\" and \"Certified Collectible Books\". P's nominally larger set contains several closely related social-retail variants: \"Reading Commons membership\", \"Seasonal reading guilds\", \"Literary taste matchmaking\", \"Books as access keys\" and \"Human recommendation concierge\"."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q moves farther from standard bookstore strategy with \"Publisher Shelf Options\", \"Reader Inventory Syndicates\", \"Estate Library Afterlife\" and \"Attention Escrow\". Several prominent P ideas—\"membership\", \"guilds\", \"concierge\" and \"genre district\"—are sophisticated versions of familiar community, curation and specialization plays."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q states operational dependencies: \"without a credible resale quote, it becomes an ordinary returns policy\" and \"without the commitment contract it becomes a lounge\". P names useful airline and public-health rules, but mostly proceeds from rules to candidates without demonstrating that each mechanism collapses when the imported structure is removed."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's winner, the \"Residual-Value Exchange\", directly changes transaction economics, creates proprietary used inventory and exploits the existing branch network. P includes strong choices such as \"Circular certainty\" and \"B2B Reading-as-a-Service\", but elevates the banned-adjacent \"membership flywheel\" as its first practical recommendation."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q gives every survivor a concrete falsification test and kill condition, such as \"kill it if fewer than ten commit real money\" and \"kill it if certification produces no price or turnover premium\". P identifies real risks—such as \"fraud\" and \"long sales cycles\"—but its critiques stop mostly at assumptions and generic failure modes."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's strongest insight is a precise inversion: \"Physical retail's inconvenience becomes an advantage when condition inspection and immediate resale matter.\" P also has strong formulations, especially \"the risk of buying the wrong object\", but Q more consistently connects each insight to a defensible causal advantage."
+    }
+  ],
+  "note": "The biggest difference is that Q converts unusual mechanisms into dependency-tested, falsifiable strategies, whereas P is broader and commercially thoughtful but partially returns to its own banned social-club pattern through \"Seasonal reading guilds\"."
+}

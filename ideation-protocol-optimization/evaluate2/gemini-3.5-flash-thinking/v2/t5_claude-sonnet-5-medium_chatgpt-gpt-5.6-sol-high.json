@@ -1,0 +1,42 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "tie",
+      "evidence": "P's \"Corporate congestion liability (S5)\" and Q's \"Trip-Generator Reliability Regime\" both target high-leverage institutional traffic generation. P's focus on freight chokepoints (\"S8\") and Q's focus on building-level consolidation (\"Building Logistics Kernel\") target similarly impactful bottlenecks."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "P provides a highly credible, decentralized causal path via an app-based \"decaying pheromone traffic broadcast (S2)\". Q offers an equally sound network-based mechanism using multi-party matching math to shorten trips in its \"Entitlement-Preserving Seat Exchange\"."
+    },
+    {
+      "dimension": "viability",
+      "winner": "tie",
+      "evidence": "P establishes real-world viability by anchoring its freight strategy (\"S8\") in data from an existing NYC pilot. Q addresses behavioral and political barriers directly by ensuring its matching framework \"preserves service entitlement\" so users do not resist location swaps."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "Both provide exceptionally crisp, low-cost prototyping steps. P describes clear data-buying and simulation protocols, while Q outlines precise field tests involving a human dispatcher at a single building or running offline matches on anonymized records."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "While P creatively borrows from ant foraging models, Q provides a brilliant and deeply non-obvious reframing by adapting kidney-exchange algorithms (\"Entitlement-Preserving Seat Exchange\") to resolve systemic school and clinic commute patterns without forcing users to give up their rights."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's mechanisms cover routing, zoning, and liability levers. Q achieves a broader reach across distinct regions of the solution space by systematically translating distributed computer systems architecture (caching, batching, deduplication) into physical transit solutions."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q demonstrates superior curation of the reader's attention by including a dedicated \"Merge by causal mechanism\" matrix that transparently groups and distills 21 granular ideas into 11 strictly distinct causal pathways, whereas P relies on a more informal pruning process."
+    }
+  ]
+}

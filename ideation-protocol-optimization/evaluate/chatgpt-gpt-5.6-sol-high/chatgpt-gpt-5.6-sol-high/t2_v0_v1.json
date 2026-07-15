@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P covers additional causal mechanisms such as emotional avoidance (\"Route around fear\"), comprehension (\"Purpose transparency\"), uncertainty reduction (\"Appointment rehearsal\"), and lateness recovery (\"same-day recovery queue\"). Q's eight survivors are well consolidated but somewhat narrower."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "tie",
+      "evidence": "P reaches unusual territory with a \"maximum wait guarantee\" and appointments as a \"transferable reservation\"; Q is comparably inventive with a \"care failover ladder\" and a \"reliability reciprocity contract\"."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q explicitly derives ideas from named rules such as \"Graceful degradation\", \"Redundancy\", and \"Virtual queues\", then carries graceful degradation into the finalist \"Care failover ladder\". P only offers a loose analogy: \"Airlines, restaurants, and ticketing systems manage capacity dynamically\"."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "Both select essentially the strongest practical mechanism: P's \"Soft cancellation plus automatic alternatives\" and Q's \"readiness handshake plus slot liquidity\" identify uncertainty early, preserve access, and recover otherwise wasted capacity."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q states concrete assumptions and failure modes for every survivor, including \"Arrival bunching\", \"Gaming, excessive offer messages\", \"Privacy concerns\", and the hospital being \"unable to honour its commitment\". P mainly supplies ratings and benefits, with few explicit ways its proposals could fail."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q repeatedly names precise causal insights, especially \"an 'unsure' patient is not yet a no-show. It is a recoverable state\" and \"The true scheduling unit may be the household\". P has good insights—such as reframing a slot as a \"transferable reservation\"—but articulates them less consistently."
+    }
+  ],
+  "note": "P has the broader mechanism spread; Q is substantially stronger in disciplined cross-domain transfer and explicit adversarial critique."
+}

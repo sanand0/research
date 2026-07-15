@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "tie",
+      "evidence": "P's \"care failover ladder\" preserves the \"next clinically useful step\" and its readiness-plus-liquidity mechanism recovers emerging no-shows early. Q's \"Reverse Appointment\" can remove unnecessary physical visits altogether, while protected exchange recovers scarce capacity. These attack comparably consequential bottlenecks through different pathways."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P says each reported blocker \"triggers an appropriate intervention,\" but the intervention capacity and response pathway remain partly unspecified. Q more tightly connects cause and effect: patients release slots because \"releasing capacity no longer threatens the patient's access,\" and elastic windows remove the need to predict circumstances far in advance."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P builds in adoption safeguards: uncertainty \"must never cause denial of care,\" digital paths need telephone or in-person equivalents, and fallbacks require clinical approval. Q's strongest wildcard explicitly \"require[s] clinical redesign, governance,\" while its exchange depends on guaranteeing a replacement \"within seven days,\" which may be difficult under severe capacity constraints."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P provides a concrete five-step flow beginning \"72 hours before the appointment\" and a measurable pilot. Q goes further across its leading mechanisms, specifying tests such as \"100 patients retain exact appointments\" versus 100 receiving a window, manual exchange cohorts, observable outcomes, and explicit conditions for killing each idea."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers strong reframings such as a \"reliability reciprocity contract\" and completing care rather than preserving the original visit. Q adds the more structurally unusual \"Reverse Appointment\"—beginning service before deciding whether an appointment is needed—along with protected multi-party appointment exchange and network-wide claim rights."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P spans early uncertainty detection, alternative care modes, flexible timing, capacity recycling, household coordination, provider reliability, and geographic access. Q covers those broad regions while adding distinct levers such as resolving \"employer or school permission,\" asynchronous clinician-first triage, cross-branch entitlement, and route-reliability-based scheduling."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P concentrates its recommendation on the coherent combination of \"readiness handshake plus slot-liquidity\" and clearly separates secondary wildcards. Q eventually selects three strong ideas, but retains narrower mechanisms such as \"Leave Clearance First,\" \"Companion Coupling,\" and \"Commute-Synchronized Scheduling,\" which dilute attention despite the later knockout."
+    }
+  ]
+}

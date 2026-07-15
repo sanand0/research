@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's core concept focuses primarily on calendar slots (\"Pre-loaded calendar embedding\"), while Q uncovers more high-frequency, impactful daily bottlenecks with interventions like \"Compulsion Tollbooth,\" which redirects the \"first daily launch of a user-selected compulsive app\" to capture user attention within highly active daily habits."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "P maps explicit step-by-step causal linkages (\"causes decision cost... to drop to ~zero → increases conversion\"), and Q balances this rigor perfectly with clear, linear strings (\"Calendar transition → contextual micro-session → repeated immediate recovery → DAU\") mapping out every survivor's path."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly screens ideas based on their ability to \"survive contact\" with real user behaviors and technical constraints. Conversely, Q elevates highly fragile mechanics like \"Compulsion Tollbooth,\" admitting that \"operating-system restrictions, irritation, and easy bypass threaten survival in real use\" without presenting a clear way to circumvent those ecosystem limits."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "Both outputs are exceptional at framing precise testing strategies. P designs a cheap test tracking the \"repeat-send-rate within two weeks\" rather than a one-time gimmick, while Q outlines building a specific \"browser extension for Gmail or Slack with a user-invoked 'pause before send' button\" to isolate metrics before writing automation."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's ultimate recommendations settle on familiar themes of calendars and social features. Q delivers highly novel behavioral reframings, such as \"Pleasure Primer,\" which uniquely positions meditation as \"sensory amplification rather than stress treatment\" to prime pleasurable activities."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's conceptual space narrows into 6 merged variations. Q explores a much wider surface area of the solution space across 14 candidates, leveraging distinct causal mechanisms ranging from digital workflow speed anomalies (\"tab thrashing\") to alternative morning routine interactions (\"Alarm Interlock\")."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P implements an aggressive, structured \"Pairwise knockout\" stage that actively removes clutter to leave the reader with exactly two highly distinct recommendations. Q dilutes its curation by ultimately delivering a spread of four separate recommended implementations."
+    }
+  ]
+}

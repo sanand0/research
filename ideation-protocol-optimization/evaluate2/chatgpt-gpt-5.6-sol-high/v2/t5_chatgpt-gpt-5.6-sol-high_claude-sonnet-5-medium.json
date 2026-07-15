@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Trip-Generator Reliability Regime\" and \"Service Edge Network\" can reduce recurring demand across schools, hospitals, offices, malls, and services. Q's \"Freight curfew\" and \"school start-time staggering\" target important but narrower traffic segments, while its broader \"de-annex the destination\" lever works only over a very long horizon."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies direct pathways such as making \"the building—not each occupant—the logistics customer\" and preserving an entitlement while changing its location. Q's freight and school-scheduling mechanisms are credible, but the claimed benefit from a \"decaying pheromone traffic broadcast\" is less secure because redistributed routing can merely move congestion or create new feedback effects."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's \"off-peak delivery incentive\" and school-day natural experiment build on familiar actors, schedules, and enforcement structures. Several leading P mechanisms require harder institutional coordination or acceptance, including multi-party \"Seat Exchange\" cycles, local service replication, and cross-organization congestion obligations."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P concretely defines what changes and how to test it, for example adding \"a common receiving point and a human dispatcher\" and measuring vehicle entries against a control building. Q also supplies tests, but mechanisms such as adding \"a decay function\" to routing data leave the signal, driver response, and deployment model comparatively underspecified."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P offers several unusual but intelligible causal reframings, including buildings as logistics customers, constraint-preserving school or clinic exchange cycles, and procurement of verified trip deletion. Q's \"corporate congestion liability\" is similarly inventive, but freight timing, school staggering, tradable credits, and destination dispersal are more established congestion levers, while the ant analogy adds novelty with weaker practical grounding."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans service relocation, cross-household task aggregation, building-level logistics, entitlement exchange, institutional accountability, destination sharding, origin–destination swaps, and outage-duration reduction. Q covers useful regions such as scheduling, freight, land use, information, and pricing, but several proposals cluster around temporal shifting or tradable allocation, including \"off-peak driving,\" \"freight curfew,\" intersection slots, curb slots, and trip credits."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "P explicitly merges overlaps into \"eleven distinct survivors\" and finishes with three well-defended recommendations, but devotes substantial attention to candidate tables and repeated knockouts. Q is more compressed, yet preserves weaker additions such as intersection booking and \"decaying pheromone\" routing alongside its stronger freight and institutional-liability mechanisms."
+    }
+  ]
+}

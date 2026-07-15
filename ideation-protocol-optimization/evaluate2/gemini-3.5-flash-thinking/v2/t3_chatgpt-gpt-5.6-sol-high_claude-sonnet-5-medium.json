@@ -1,0 +1,43 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's mechanisms target high-value economic bottlenecks, such as shifting to business-to-business models that unlock large institutional budgets (\"schools, employers and parents\"). In contrast, Q's primary service mechanism targets lower-leverage consumer transactions (\"$25 paid 'reading diagnostic' session\")."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P establishes robust causal links, illustrating how physical stores possess a localized reverse-logistics advantage over online retail for asset grading and recirculation. Q relies on larger causal leaps, such as \"Slow Ship Arbitrage,\" which assumes a mid-size chain can successfully undercut Amazon's massive supply chain scale through a simple lifestyle positioning."
+    },
+    {
+      "dimension": "viability",
+      "winner": "tie",
+      "evidence": "Both outputs are highly realistic about real-world friction. P explicitly designs low-tech validation gates to bypass tech bottlenecks (\"Manual pricing, condition grading, spreadsheets\"), while Q systematically filters out its own high-friction concepts during its knockout round (\"legal/structural friction too high for a 3-year execution window\")."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P provides superior precision regarding what to measure during prototyping (\"returned units resell quickly enough to beat the original new-book gross profit\") and maps out a highly concrete \"Three-year sequence.\" Q outlines tests, but they lack specific success thresholds."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "Both documents excel at lateral thinking by borrowing structural rules from unrelated domains. P successfully maps bookstore survival to the mechanics of \"Financial exchanges\" and \"Clinical care,\" while Q establishes compelling frameworks derived from \"Farmers markets\" and \"Gyms/fitness studios.\""
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P covers a wide array of distinct causal pathways, including inventory risk transfer upstream, attention escrow, and IP creation. Q displays equivalent breadth, spanning shared revenue structures (\"Author Equity Stakes\"), data brokerages, and real-estate optimization."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's ideation pool remains tightly focused on the actual mechanics of the book asset and the act of reading. Q dilutes its focus by including weak or generic retail tropes like converting square footage into arbitrary coworking spaces (\"real product is the room\") or relying on simple marketing gimmicks."
+    }
+  ]
+}

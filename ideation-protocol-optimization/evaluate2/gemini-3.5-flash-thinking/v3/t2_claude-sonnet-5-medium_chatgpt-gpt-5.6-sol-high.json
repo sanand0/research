@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P proposes an \"Open-access/same-day scheduling model\" to shrink the decay window. Q introduces \"Automatic modality failover\" and \"Condition-triggered follow-up,\" reframing the objective around \"clinically useful encounters completed.\" Q targets the absolute optimization of the clinician's fixed time, addressing a more systemic bottleneck than P's adjustment of booking windows."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers logical hypotheses for its interventions, such as \"Co-presence + light social contract raises attendance\" for group slots. Q anchors its primary mechanisms in empirical reality, explicitly integrating published medical literature (PubMed citations) to validate the causal pathways of its failover and condition-triggered models."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's wildcard \"Patient-to-patient appointment resale/trade board\" introduces severe clinical sorting, privacy, and equity hurdles in a public chain context. Q manages operational constraints gracefully, building guardrails directly into the design of its top idea, such as checking for clinical eligibility at booking and waiting a strict \"five minutes after the scheduled time\" before executing a fallback."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "While P outlines clean testing structures (\"Convert 20% of one primary-care clinic's slots...\"), Q provides exceptional testing specifications. Q outlines exact parameters for tracking success (e.g., \"clinician minutes, unresolved cases, and results by age, language\") alongside explicit financial and operational kill metrics."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "P uses creative concepts like the \"resale/trade board,\" but Q demonstrates a structural leap in creativity. By mapping atomic principles from cloud computing (\"Modality failover,\" \"Chain-wide care window\") and industrial maintenance (\"Condition-triggered follow-up\"), Q completely transforms the problem from a patient-compliance issue into a resource-architecture design challenge."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P spans a highly diverse solution space covering social mechanics (\"Peer accountability network\"), spatial delivery (\"Satellite mini-clinics\"), and scheduling operations. Q matches this diversity through a structurally rich mix of network pooling (\"Chain-wide care window\"), administrative shifts (\"Employer protected-time handshake\"), and clinical workflow modularity."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P curates the reader's focus efficiently, evaluating a tight list of 11 distinct options down to 9 well-mapped survivors. Q delivers excellent analysis but dilutes its initial pool with 16 candidates, introducing near-duplicates and adjacent concepts (like \"Rolling-entry group clinic\" and \"Certainty-class booking\") that create unnecessary volume."
+    }
+  ]
+}

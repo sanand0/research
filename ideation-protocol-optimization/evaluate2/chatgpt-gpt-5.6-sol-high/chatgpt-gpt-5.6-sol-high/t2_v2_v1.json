@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Reverse Appointment\" can remove unnecessary physical visits altogether, while its \"Elastic Attendance Window\" and protected exchange attack timing risk and trapped capacity. Q's \"readiness handshake\" and \"care failover ladder\" are valuable, but more often detect, redirect, or salvage an impending failure rather than eliminate the underlying attendance requirement."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P consistently specifies the causal link, such as protected replacement causing patients to release slots they would otherwise retain, and explicitly tests the required assumption. Q's claim that \"each blocker triggers an appropriate intervention\" leaves the crucial intervention unspecified, and its micro-commitment only assumes that a small action will increase attendance."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's recommended flow—72-hour self-report, protected rescheduling, and an opt-in standby pool—can be layered onto existing scheduling operations and includes equity guardrails. P's strongest structural ideas require heavier changes, including virtual-queue capacity management for \"Elastic Attendance Windows\" and clinical governance for \"Reverse Appointments.\""
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P defines concrete prototypes, comparison groups, sample sizes, outcomes, and termination conditions, such as guaranteeing releasers a replacement \"within seven days\" and killing the pilot if slots cannot be matched. Q gives a useful pilot flow and metrics, but mechanisms such as the \"care failover ladder\" and \"neighbourhood access mesh\" combine several operationally different interventions."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P introduces several plausible structural reframings: late-bound service access, transferable appointment rights, and beginning care before deciding whether attendance is necessary. Q's \"reliability reciprocity contract\" is notably original, but its main portfolio relies more heavily on familiar confirmation, standby, fallback-modality, and micro-commitment mechanisms."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans distinct levers including timing-risk absorption, checkpointed care, transferable capacity, mobile delivery, transport-reliability matching, third-party permission, cross-branch portability, and removal of unnecessary visits. Q covers several important regions, but \"care failover ladder\" and \"neighbourhood access mesh\" bundle location, modality, transport, and partial-care variants rather than developing equally distinct causal pathways."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P ultimately concentrates attention on three clearly differentiated recommendations—\"Elastic Attendance Windows,\" \"Protected Appointment Exchange,\" and \"Reverse Appointments\"—after explicitly merging overlaps. Q retains overlapping early-signal mechanisms such as the \"readiness handshake\" and \"micro-commitment,\" and its final portfolio spreads attention across three practical ideas, two wildcards, and a combined pilot."
+    }
+  ]
+}

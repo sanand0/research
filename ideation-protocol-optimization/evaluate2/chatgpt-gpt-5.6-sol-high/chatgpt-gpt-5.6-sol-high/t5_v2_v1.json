@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Trip-Generator Reliability Regime\" can influence major destinations, but Q combines comparable \"destination traffic budgets\" with direct threshold interventions such as \"trip demand response\" and \"origin pulse metering,\" giving its strongest mechanisms greater potential to prevent network-wide breakdown."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P connects mechanisms to observable trip removal, for example consolidating building visits and testing \"vehicle entries\" against a control. Q's \"adaptive traffic firebreaks\" and \"origin pulse metering\" plausibly prevent spillback, but their benefits depend more heavily on uncertain displacement and queue-management effects."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest portfolio includes institution-wide obligations and \"entitlement-preserving\" school or clinic exchanges, which face substantial governance and stakeholder barriers. Q's \"trip demand response\" pilot, \"destination virtual queues,\" and metering around garages can be introduced incrementally through existing operators and infrastructure."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies concrete changes and tests, such as adding \"a common receiving point and a human dispatcher\" and measuring entries, failures, completion time, and satisfaction. Q explains mechanisms clearly but usually stops at broader pilots such as recruiting volunteers or delaying admission slots."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P offers unusually distinct but plausible levers such as \"Entitlement-Preserving Seat Exchange,\" \"Vendor Job Exchange,\" and purchasing verified \"trip deletion.\" Q has strong reframings such as \"adaptive traffic firebreaks\" and virtual queues, but several derive from the more familiar principle of controlling when traffic enters a saturated network."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans service relocation, household and building aggregation, cross-firm job exchange, entitlement swaps, institutional accountability, outcome procurement, origin-destination relocation, and outage compression. Q spans several important regions, but \"origin pulse metering,\" \"destination virtual queues,\" demand response, and firebreaks cluster around admission control and overload management."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P repeatedly revisits candidates through a pool, survivor table, critiques, and multiple knockout rounds, including repeated comparisons such as \"Vendor Job Exchange defeats Housing–Job Swap Chains.\" Q retains some overlap among network-control ideas but presents a more direct evaluated set and a compact final portfolio."
+    }
+  ]
+}

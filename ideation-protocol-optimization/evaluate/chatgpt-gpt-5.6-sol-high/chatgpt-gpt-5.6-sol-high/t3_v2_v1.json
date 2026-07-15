@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": false,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans materially different engines such as “Inventory-Risk Transfer,” “Shelf-as-Media Exchange,” “Library Lifecycle Services,” and “Attention Escrow.” Q’s pool is broad, but several survivors cluster around the same community-and-curation mechanism: “Reading Commons membership,” “Seasonal reading guilds,” “Books as access keys,” and “Human recommendation concierge.”"
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P reaches beyond standard bookstore strategy with “Publisher Shelf Options,” “Reader Inventory Syndicates,” “Attention Escrow,” and “Estate Library Afterlife.” Q foregrounds more familiar moves such as “membership,” “reading guilds,” “quiet-space access,” and “genre specialisation”; its leading membership bundle also revives the banned “book clubs” as “seasonal guilds” and “small-group salons.”"
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P states dependency explicitly: “Future Buyback Quote requires two-sided pricing” and “Reading Diagnosis fails structurally without assessment and follow-up.” Q names useful airline and public-health rules, but the transfer is lighter; for example, “membership status” merely “unlocks advance copies, reserved seating” rather than fundamentally determining the business mechanism."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P’s winner has a chain-specific compounding logic: it “uses the chain’s existing footprint” and creates “direct customer value, proprietary inventory and repeated physical visits.” Q includes strong circular-resale and B2B picks, but leads with a “membership flywheel” built around guilds, salons and quiet-space access—less defensible and partly a disguise of its own banned ordinary events."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P gives falsifiable thresholds and kill conditions, such as “kill it if fewer than ten commit real money” and “kill it if attribution is disputed or no repeat budget appears.” Q identifies real risks—“fraud,” “long sales cycles,” and “procurement complexity”—but generally stops at one-line failure modes without specifying decisive tests."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P sharply reframes a liability: “Physical retail’s inconvenience becomes an advantage when condition inspection and immediate resale matter.” Q is equally specific in observing that “the principal barrier to physical discovery is not always price; it is the risk of buying the wrong object,” and that organisations may pay “to create behaviour” rather than buy books."
+    }
+  ],
+  "note": "The biggest difference is that P builds unusual mechanisms from explicit structural transfers and subjects them to kill tests, whereas Q repeatedly returns to polished variants of membership, community, events and curation."
+}

@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q spans materially different mechanisms: action gating (\"Temptation Toll\"), pre-decision cooling (\"Decision Escrow\"), exposure training (\"Stress Inoculation Lab\"), interpersonal distribution (\"Gift a Pause\"), and lapse recovery (\"Return Without Shame\"). P is strong but clusters more heavily around contextual triggering, adaptive sessions, ambient delivery, and on-demand relief."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q goes further beyond standard wellness ideation with \"place selected distracting apps behind a brief pause,\" meditation before a \"purchase, resignation, social post, or major decision,\" and training with \"controlled versions\" of stressful cues. P's best departures—\"anti-engagement,\" a \"meditation API,\" and proving users \"underestimate the effect\"—are also strong, making the edge clear but not decisive."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q explicitly derives ideas from named domains and structural rules: public transit's \"routes intersect existing journeys\" yields the Transition Layer, while immune systems' \"exposure creates memory\" yields Stress Inoculation and Mental Antibodies. P contains analogies such as an \"emotional-regulation layer across software,\" but no finalist is derived from a named external domain rule."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "P selects a highly testable combination—\"Help me now\" plus an \"expected-vs-actual check\"—that creates frequent use occasions without depending on major integrations. Q likewise leads with \"Emotional Triage + One-Button Intervention\" and stages Transition Layer and Mental Antibodies afterward. Both recommendations are tightly aligned with increasing DAU and rank among their strongest candidates."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q gives each survivor a concrete dependency and failure mode, such as \"predictions could be inaccurate or sound medically overconfident,\" \"users may disable permissions or resent the gate,\" and controlled discomfort could \"amplify anxiety.\" P acknowledges \"platform dependence and integration complexity\" and supplies directional scores, but most candidates lack similarly specific assumptions or ways they could fail."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q repeatedly states precise causal insights: browsing needs \"the same executive function that stress has already impaired,\" users may prefer \"an estimate of future relief\" over historical effort, and meditation may be a \"category problem\" because it is treated as a destination rather than a layer. P also articulates strong insights—especially \"faulty forecasting\" and competing with \"irritation and scrolling\"—but does so less consistently across its finalists."
+    }
+  ],
+  "note": "The biggest difference is that Q turns external-domain rules into traceable mechanisms and then tests them against explicit assumptions and failure modes; P is polished and practical but less structurally derived."
+}

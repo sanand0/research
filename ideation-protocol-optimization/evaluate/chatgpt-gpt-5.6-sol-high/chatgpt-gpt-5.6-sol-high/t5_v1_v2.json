@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": false,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q spans more orthogonal causal units: \"move service capacity nearer demand,\" \"reallocate jobs across firms,\" \"alter origin–destination topology,\" and \"reduce the duration of temporary road-capacity losses.\" P is broad, but several prominent mechanisms cluster around real-time flow suppression: \"origin pulse metering,\" \"destination virtual queues,\" \"trip demand response,\" and \"adaptive traffic firebreaks.\""
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q reaches farther into unusual institutional mechanisms such as \"School-Seat Swap Cycles,\" \"Vendor Job Exchange,\" and \"Housing–Job Swap Chains.\" P has strong surprises—especially \"office-swap marketplace\" and \"trip-capacity escrow\"—but its leading practical ideas remain closer to sophisticated demand and network management."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Both perform real transfer: P uses named rules such as \"Admission control,\" \"Backpressure,\" and \"Firebreaks.\" Q goes further by testing structural dependence—\"Cycles unlock matches\" directly enables multi-party seat exchanges—and explicitly rejects decorative borrowing: \"dropped because the borrowing was merely rhetorical.\""
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's selections survive explicit knockouts and target recurring generators, buildings, and entitlement-linked journeys. P selects \"reward people for cancelling or delaying trips\" as its best practical idea even after banning requests for commuters to reorganize voluntarily, making the recommendation partly a thin return to the excluded mode."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "tie",
+      "evidence": "P names concrete failure modes such as \"users may game rewards,\" \"drivers may evade controlled exits,\" and institutions may \"challenge the policy legally.\" Q supplies similarly concrete falsifiers, including measuring \"distance savings and incompatibility rates\" and killing the seat-exchange idea if \"feasible cycles are rare or users reject most technically valid exchanges.\""
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P crisply states mechanisms such as \"A queue need not occupy road space\" and \"less road-network connectivity can produce more total flow.\" Q is equally specific with \"the building is a natural transaction-compression layer\" and the observation that entitlements are often \"attached to that building.\""
+    }
+  ],
+  "note": "Q's biggest advantage is disciplined movement into institution-, entitlement-, and exchange-level mechanisms; P is excellent at network-control invention but its top practical choice partially reintroduces its own banned voluntary trip-shifting approach."
+}

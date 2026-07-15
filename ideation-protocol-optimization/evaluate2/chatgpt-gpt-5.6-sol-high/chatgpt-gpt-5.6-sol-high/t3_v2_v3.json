@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "Q's \"book-lifecycle operator for schools\" can secure meaningful recurring contracts, but P combines the chain-wide \"Residual-Value Exchange\" with an \"Outcome & Credential Lab\" and \"Demand-Backed Local IP Foundry,\" potentially transforming transaction economics, institutional revenue, and product scarcity simultaneously."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Local IP Foundry\" requires the chain to detect demand, acquire rights, produce content, and sell it profitably, while Q's \"Institutional lifecycle operator\" follows a more direct path from removing schools' sourcing, distribution, recovery, and disposal workload to recurring service fees."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Outcome & Credential Lab\" and \"Inventory-Risk Transfer\" require new educational credibility or publisher risk-sharing behaviour. Q's school lifecycle service builds more directly on existing procurement, inventory, branch, and logistics capabilities, with administrators paying for identifiable operational relief."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies a two-store test with \"30-, 60- and 90-day buyback quotes\" and explicit stop conditions; Q similarly specifies a \"100-title buyback-floor experiment\" measuring conversion, returns, grading cost, resale time, and total margin. Both make their leading mechanisms readily testable."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "Q's strongest reframings include \"Sell publisher decisions, not shelf exposure\" and guaranteed resale. P adds comparably plausible but less conventional levers such as transferring inventory risk upstream, selling verified reading outcomes, and pre-funding chain-owned intellectual property from observed local demand."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "Q credibly spans institutional operations, circular resale, publisher experimentation, and literacy contracts. P covers those regions while also introducing distinct pathways through inventory-risk transfer, owned rights, publisher-funded attention, household-library management, distributed book infrastructure, and collectible authentication."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P retains attention-consuming speculative mechanisms such as \"Reader Capital Pools,\" \"Attention Escrow,\" and \"Civic Memory Nodes\" before reaching its recommendations. Q explicitly removes mechanisms judged \"too peripheral, labour-intensive, or weakly connected\" and concentrates its final portfolio around four mutually reinforcing businesses."
+    }
+  ]
+}

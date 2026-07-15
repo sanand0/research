@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's concepts like the \"Commit–Reveal Book\" target the core cognitive assimilation bottleneck of reading (\"surfaces a visible difference between two recorded mental states\"). Q focuses on artificial pacing gates (\"Decomposer Reading\") or abandons text entirely (\"Somatic Transcription\"), which minimizes the true value-producing leverage for readers engaging with text."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P provides tightly engineered causal loops connecting structural changes directly to cognitive shifts. Q's \"Somatic Transcription\" introduces a significant causal leap, assuming that complex paragraph-level meaning can be reliably encoded and recovered through \"a 10-move gesture sequence\" with \"no visual/verbal channel at all,\" lacking any credible baseline mechanism for non-linguistic semantic decoding."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's proposals align naturally with user incentives and existing reading behaviors (\"work with fiction, essays, textbooks... across existing digital devices\"). Conversely, Q's \"Decomposer Reading\" relies on high-friction access blocks that invite extreme user frustration (\"lock chapter N+1 until chapter N has measurably faded\"), and its somatic option suffers from severe adoption barriers."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies its mechanisms clearly through structural formulas (\"Claim × irreversible prediction × later evidence\") and details highly concrete prototyping tactics (\"tracing paper, removable labels, graphite rubbings\"). Q's testing ideas are sound, but its candidates are less operationally mapped out in the initial sections."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "Both outputs showcase brilliant cross-disciplinary reframings. P introduces fascinating conceptual crossovers using cryptographic protocols (\"Future-Self Secret Share\"), while Q excellently maps contract law principles to content consumption rules (\"Consideration Reading\")."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "While P's variety is high-quality, it remains focused mostly on cognitive and text-structural manipulation. Q stretches across a broader, more structurally distinct set of solution regions, incorporating environmental triggers (\"Geographic Book\"), legalistic reciprocity (\"Consideration Reading\"), proxy agents, and kinesics."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P demonstrates superior filtering discipline, utilizing explicit dimensional matrices and systematic \"pairwise knockout\" brackets to filter 20 candidates down to 4 balanced ideas. Q leaves more standard concepts in its pool (\"Geographic Book\") and advances a highly impractical mechanism to its final two choices."
+    }
+  ]
+}

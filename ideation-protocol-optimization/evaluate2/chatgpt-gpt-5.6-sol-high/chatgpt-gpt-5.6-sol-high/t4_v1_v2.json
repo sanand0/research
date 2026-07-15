@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's strongest formats alter major reading functions: \"Evidence-Harvest Book\" makes reality supply missing material, while \"Contradiction Dossier\" replaces exposition with evidence arbitration. Q's \"Commit–Reveal Book\" is comparably strong, but mechanisms such as \"Pulse-Gated Prose\" and \"Grammatical Skeleton\" mainly alter pacing or decoding and have narrower likely benefits."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P gives relatively direct pathways: \"Prediction-First Book\" makes expectation explicit before revelation, and \"Recall Mirror\" exposes reconstruction and misunderstanding. Q's commit–reveal pathway is credible, but claims that physiological gating improves readiness or that \"small mutations can communicate an idea unavailable in any single version\" depend on more speculative links."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P foregrounds formats that can be adopted with modest changes, such as \"carefully placed prediction prompts\" and presenting conflicting records as a \"Contradiction Dossier.\" Q's practical commit–reveal format is viable, but several leading mechanisms require destructive materials, physiological interaction, forced delays, or substantial reader retraining."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P explains mechanisms clearly, for example asking readers to \"retell what happened\" in Recall Mirror, but its prototype guidance is usually brief. Q specifies concrete operations and falsifiable trials, such as sealing predictions before evidence and comparing delayed recall, or constructing a palimpsest with \"tracing paper, removable labels, graphite rubbings, and cut-outs.\""
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers non-obvious mechanisms such as \"Tactile Syntax\" and making \"the environment...a co-author.\" Q introduces more unusual but still intelligible causal reframings: \"Absent Core\" communicates only through surrounding traces, \"Grammatical Skeleton\" separates linguistic roles, and \"Succession Palimpsest\" makes reading irreversibly transform later readability."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans cognitive prediction and recall, evidence reconstruction, bodily performance, tactile grammar, environmental collection, spatial memory, timed release, and multi-reader protocols. Q also spans commitment, physiological pacing, temporal fragmentation, textual mutation, absence, and physical adjacency, but more of its portfolio clusters around withholding, transforming, or fragmenting the text."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P retains overlapping mechanisms such as \"Prediction-First Book\" and \"Commitment Edition,\" plus related distributed-reading variants including \"Secret-Sharing Edition\" and \"Intergenerational Relay Book.\" Q explicitly merges overlaps—such as Commit–Reveal with Evidence Escrow—and concentrates attention on eight differentiated survivors with concrete knockout comparisons."
+    }
+  ]
+}

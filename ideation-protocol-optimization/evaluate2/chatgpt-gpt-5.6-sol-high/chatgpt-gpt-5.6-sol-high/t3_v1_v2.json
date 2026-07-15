@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"membership flywheel\" and \"B2B Reading-as-a-Service\" can improve loyalty and recurring revenue; Q's \"Residual-Value Exchange,\" \"Outcome & Credential Lab,\" and \"Demand-Backed Local IP Foundry\" more directly alter transaction economics, access institutional budgets, and create non-price-matchable supply."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P credibly links buybacks to a \"discover → buy → read → return or resell\" loop, but several bets such as the \"publisher demand laboratory\" depend on less-established demand. Q more consistently specifies the causal hinge and falsifier, such as killing the exchange if returned stock cannot \"resell profitably.\""
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P emphasizes adoptable extensions of existing capabilities—\"monthly book credit,\" controlled buybacks, guilds, and managed institutional libraries. Q's portfolio relies more heavily on difficult new behaviours or counterparties, including publishers retaining inventory risk, readers financing title pools, and customers paying for \"Attention Escrow.\""
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies pilots such as buybacks covering \"200–300 titles,\" six representative stores, controls, and operating metrics. Q provides equally concrete prototypes and stopping rules, including quoting 30-, 60-, and 90-day buybacks on \"200 high-velocity titles\" and preselling a six-week outcome cohort."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers non-obvious concepts such as \"books as access keys,\" literary matchmaking, and publisher reader research. Q introduces more structurally unusual yet relevant levers, including \"Inventory-Risk Transfer,\" \"Library Lifecycle Services,\" \"Attention Escrow,\" and authenticated collectible-book markets."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P spans community subscriptions, resale, institutional services, publishing, logistics, space, and curation, though several mechanisms cluster around membership and social participation. Q covers more causally distinct regions: liquidity, outcome verification, upstream risk transfer, media monetization, customer capital, collection lifecycle management, attention contracts, and provenance markets."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P retains overlapping mechanisms such as \"Reading Commons membership,\" \"seasonal reading guilds,\" \"books as access keys,\" and \"human recommendation concierge\" before combining them. Q more explicitly merges candidates by causal pathway and concentrates its recommendation on three systems: exchange, measured outcomes, and demand-backed intellectual property."
+    }
+  ]
+}

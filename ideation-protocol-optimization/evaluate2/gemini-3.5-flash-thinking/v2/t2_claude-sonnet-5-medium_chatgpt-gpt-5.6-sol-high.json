@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's recommendations like the 'Visible social-cost waitlist' rely on a text copy tweak ('3 other patients are hoping for this time slot'), which has limited impact on hard structural barriers. Q proposes structural shifts like 'Elastic Attendance Windows' and 'Reverse Appointments' that eliminate timing risk and unnecessary physical visits entirely, targeting much more consequential bottlenecks."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's 'Visible social-cost waitlist' assumes no-shows are primarily driven by an abstract transaction structure, ignoring real-world logistical constraints. Q's 'Elastic Attendance Windows' and 'Protected Appointment Exchange' provide clearer causal paths by directly addressing the root causes of patient volatility and the fear of losing queue priority ('releasing a scarce appointment risks being pushed to the back of the queue')."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "Q's 'Elastic Attendance Windows' risk severe operational disruptions ('bunching creates unacceptable clinical overload') and 'Reverse Appointments' require heavy clinical redesign. P focuses on highly viable, low-cost options for a resource-constrained public hospital chain, such as risk-triaged calls and a simple text copy change ('deployable in days, with no new tooling')."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "Both outputs provide exceptionally concrete testing methodologies. P outlines a clear data-pull and A/B test parameters ('control message vs. one line added'), while Q explicitly specifies sample sizes and precise clinical tracking protocols ('100 patients retain exact appointments, 100 receive a three-hour guaranteed window')."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's primary idea of 'Risk-triaged human callback' is a common practice in modern healthcare operations. Q introduces highly novel reframings by borrowing core concepts from software fault tolerance ('graceful degradation') and kidney exchanges to establish a 'Protected Appointment Exchange', moving far beyond standard patient nudges."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's solutions predominantly cluster around communication adjustments and risk stratification. Q's candidates cover a much wider, causally distinct set of operational innovations, including asynchronous clinical pre-work ('Checkpointed Care'), transport reliability synchronization, and modular service downgrades."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both P and Q exhibit excellent curation. They strictly define and enforce rigorous ban lists to exclude obvious ideas, use systematic scoring frameworks to filter out generic concepts, and present a highly refined, non-redundant set of final recommendations without any padding."
+    }
+  ]
+}

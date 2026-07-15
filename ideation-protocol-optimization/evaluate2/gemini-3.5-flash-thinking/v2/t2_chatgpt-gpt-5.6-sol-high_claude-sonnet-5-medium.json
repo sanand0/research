@@ -1,0 +1,42 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's core proposals like 'Elastic Attendance Windows' re-architect the fundamental appointment structure to absorb systemic timing risk. In contrast, Q's top recommendations, such as the 'Risk-triaged human callback,' act as localized behavioral mitigations that leave the underlying operational bottleneck untouched."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "Both outputs construct highly credible intervention-to-outcome pathways. P deeply understands that 'precision transfers all timing risk to the patient,' while Q cleverly reframes a no-show as a dynamic 'status that can be monitored' via its 'Boarding-call check-in window.' Both feature exceptional, rigorous falsification challenges."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q explicitly tailors its solutions to a resource-constrained public chain, offering a friction-free 'copy change, deployable in days' for its waitlist idea. P's ideas, while powerful, introduce substantial operational friction, requiring complex clinical redesigns or risking 'clinical overload' due to patient arrival bunching."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "Both outputs provide pristine, highly actionable test designs. P defines explicit experimental cells ('100 patients retain exact appointments. 100 receive a three-hour guaranteed window'), matching the operational specificity of Q's data-driven pilot ('Pull 6-12 months of scheduling/EHR data, build a simple logistic model')."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's conceptual borrowing from computer science fields introduces highly original reframings, such as treating care as an asynchronous sequence via 'Checkpointing.' Q's domain borrowing from airlines and restaurants is well-executed but yields more familiar behavioral nudges like a 'Visible social-cost waitlist.'"
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P's candidate pool spans an impressive range of temporal, clinical, and network-routing dimensions (e.g., 'Reverse Appointment' vs. 'Chain Swap Pool'). Q achieves an equally robust distribution across behavioral, financial, relational, and administrative vectors (e.g., 'Clinician-anchored booking' vs. 'Household unit scheduling')."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Curation is excellent in both versions. P systematically collapses 16 initial candidates down to 10 distinct mechanisms before isolating 3 final recommendations. Q handles its pool with equal discipline, using a rigorous pairwise knockout matrix to filter out redundant variations and merge near-duplicates."
+    }
+  ]
+}

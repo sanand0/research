@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's core concepts like the \"Building Logistics Kernel\" and \"Seat Exchange\" focus on the structural elimination of trip demand. Q focuses more on moving traffic around or optimizing existing trips, such as through a \"Freight curfew\" (S8) or \"Pheromone traffic broadcast\" (S2)."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P logically tracks how \"four- or five-party cycle[s]\" can resolve strict eligibility constraints to shorten commutes. Q's \"Pheromone traffic broadcast\" (S2) relies on an ant-colony metaphor without explaining how it structurally alters or improves upon existing live-traffic rerouting protocols already used by apps like Waze."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly designs around user friction, noting that its exchange cycles alter locations \"without asking participants to surrender the entitlement they value.\" Q's \"Freight curfew\" (S8) fails to account for heavy real-world friction like nighttime labor costs, delivery receipt logistics, and residential noise ordinances."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P details clear operational boundaries, defining a test that uses a \"human dispatcher who can consolidate selected deliveries and service jobs\" for a single building. Q is more abstract, suggesting implementations like adding a vague \"decay function layered onto routing data\" (S2)."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P introduces brilliant, non-obvious cross-domain frameworks by mapping distributed computing algorithms and kidney-paired donations directly to urban transit patterns (\"Civic Edge Cache\", \"School-Seat Swap Cycles\"). Q relies on familiar transport tropes framed in new wording, such as intersection reservations (S1) and school hour staggering (S7)."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's mechanisms span entirely distinct socio-technical vectors, ranging from B2B operational swaps (\"Vendor Job Exchange\") to asset-recovery management (\"Capacity-Outage Compression\"). Q's diversity is more superficial, leaning heavily on traditional regulatory interventions like zoning (S6) and insurance telematics (S3)."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P curates cleanly, evaluating a broad pool of 21 candidates down to 11 distinct causal families via rigorous knockout reasoning. Q's curation feels rushed and contains a logical error, stating that \"12 of these score below 0.3\" despite only listing 10 items total in its candidate table."
+    }
+  ]
+}

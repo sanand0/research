@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P combines system-level levers such as a \"city-wide tradable trip-credit market,\" \"corporate congestion liability,\" and destination dispersal, which could change total demand and urban traffic structure. Q's \"Building Logistics Kernel\" and service localization mainly reduce particular classes of recurring trips, while its broad \"Trip-Generator Reliability Regime\" leaves the corrective mechanism unspecified."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"decaying pheromone traffic broadcast\" may merely redistribute congestion, and \"de-annex the destination\" could create longer cross-city trips. Q more consistently connects interventions to fewer vehicle movements: a building \"combine[s] receiving, returns...and service calls,\" while seat exchanges explicitly shorten journeys under fixed capacity and eligibility constraints."
+    },
+    {
+      "dimension": "viability",
+      "winner": "tie",
+      "evidence": "P's \"freight curfew + off-peak delivery incentive\" and school staggering are implementable, but app-provider dependence and long-horizon zoning weaken other leading proposals. Q's one-building logistics pilot is practical, but service replication and \"Entitlement-Preserving Seat Exchange\" require substantial institutional coordination and user acceptance."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P clearly tests freight and institutional attribution, but concepts such as a \"decay function layered onto routing data\" remain technically underspecified. Q states concrete operating changes—such as a \"common receiving point and a human dispatcher\"—and identifies the participants, workflow, comparison group, and failure criteria."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers unusual ideas such as intersection booking and \"pheromone\" routing, but some novelty is weakly connected to congestion reduction. Q's \"Vendor Job Exchange,\" cyclic school or clinic swaps, and treating a building as the logistics customer are non-obvious reframings with identifiable causal pathways."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P spans scheduling, routing information, pricing, land use, consolidation, and institutional liability, but several proposals cluster around allocating or pricing scarce road time. Q credibly covers service localization, trip batching, cross-firm job exchange, entitlement exchange, destination accountability, spatial sharding, relocation, and temporary-capacity recovery."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P elevates two weakly supported wildcards—\"decaying pheromone traffic broadcast\" and \"de-annex the destination\"—alongside its stronger freight and liability ideas. Q explicitly merges related proposals and finishes with three comparatively coherent mechanisms: institutional accountability, building-level logistics consolidation, and entitlement-preserving exchange."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "check_evidence": {
+    "P": {
+      "banned_list_present": "\"These five familiar approaches, including near-duplicates, are excluded.\"",
+      "survivors_avoid_banned": "The finalists use substantive mechanisms such as \"Reality supplies missing material\" and \"No individual receives the complete work,\" rather than cosmetic audio, branching, or gamification.",
+      "named_transfer_rules": "The cryptographic rule \"understanding can be demonstrated without reproducing\" directly generates the finalist \"Zero-Knowledge Book.\"",
+      "practical_and_wildcard_distinct": "\"Prediction-First Book\" records expectations, while \"Evidence-Harvest Book\" requires observations and encounters from the reader's world."
+    },
+    "Q": {
+      "banned_list_present": "\"These seven mechanisms are excluded, including cosmetic variations.\"",
+      "survivors_avoid_banned": "The practical runner-up explicitly says, \"The pauses are not rewards or locks,\" while the wildcard makes reading \"physically transform\" the book.",
+      "named_transfer_rules": "\"Commit–reveal\" directly structures the practical winner, and ecological succession directly structures \"Successive textual ecosystems.\"",
+      "practical_and_wildcard_distinct": "\"Commit–Reveal Book\" seals prior beliefs; \"Succession Palimpsest\" irreversibly changes the material artifact."
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans epistemic proof, memory reflection, elapsed time, context sensing, collective consensus, bodily performance, physical geography, real-world evidence, tactile grammar, and intergenerational transmission. Q is diverse but clusters more heavily around textual omission, mutation, sequencing, and material transformation, as in \"Absent Core,\" \"Semantic Drift Edition,\" and \"Succession Palimpsest.\""
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q reaches further beyond standard ideation with mechanisms such as \"nouns and verbs × separate passes,\" \"permanently missing main text,\" and a single reader acting as \"multiple parties in a cryptographic protocol.\" P's strongest ideas are inventive, but several—\"Prediction-First,\" \"Memory-Palace,\" and \"Contradiction Dossier\"—are easier for a smart generalist to generate quickly."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q makes the transfers load-bearing: \"removing the borrowed rule would collapse the format.\" Its ecological principles become irreversible substrate change, disturbance, and succession in the final artifact. P's cryptographic transfers are strong, but some gastronomy transfers, such as \"conceptual courses\" and \"aftertaste,\" risk being metaphorical packaging."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q selects its strongest scalable epistemic mechanism—\"readers must discover... what they themselves believed before being persuaded\"—and its most distinctive physical mechanism—reading that \"alter[s] the future readability of the book.\" P's choices are good, but \"Prediction-First\" is less transformed from an established learning technique, and \"Evidence-Harvest\" can shade toward an activity book."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q specifies cheap disconfirmation criteria, such as \"no improvement in recall, belief revision, or recognition of surprise\" and killing the palimpsest if readers \"cannot explain how an earlier act changed the meaning available later.\" P identifies real risks—\"privacy concerns,\" \"dominant participants,\" and \"manufacturing is expensive\"—but usually stops short of operational falsification."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P offers precise formulations such as \"A reader's expectation is unwritten text\" and \"The environment becomes a co-author.\" Q is equally sharp with \"prior interpretation is made temporarily irreversible\" and \"Reading need not merely alter the reader. It can alter the future readability of the book.\""
+    }
+  ],
+  "note": "P offers the broader spread of reading mechanisms; Q is more disciplined about load-bearing transfers, falsifiable critique, and selecting unusually strong finalists."
+}

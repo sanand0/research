@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans late-bound access, checkpointed care, transferable rights, third-party permission and demand relocation—e.g. “Leave Clearance First,” “Neighborhood Pop-Up Batch” and “Reverse Appointment.” Q is diverse, but several survivors remain variants of pre-visit communication, fallback routing or schedule flexibility."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P reaches mechanisms such as “appointment entitlement transferable within an eligible household,” “exact slot assigned only after the patient begins travelling” and care beginning “before deciding whether an appointment is needed.” Q retains more readily generated ideas such as a “readiness handshake,” “micro-commitment” and virtual queuing."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P names rules—“graceful degradation,” “checkpointing,” “late binding” and kidney-exchange “chains”—then states which ideas “depend on” each rule and rejects decorative borrowing such as “Appointment blockchain.” Q names useful rules, but provides less analysis of indispensability or failed analogies."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "P’s choice directly reduces timing fragility by replacing “exact-time compliance with late-bound service access.” Q’s choice identifies the “recoverable state” of an “unsure” patient and couples it with protected release and refilling. Both are credible practical leaders, with different operational risks."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P gives every survivor a specific “Assumption that must hold” and a measurable “Cheapest falsification,” including explicit kill conditions such as demand being “too dispersed to fill a half-day mobile session.” Q lists genuine failure modes, but mostly stops at labels such as “low response rates” or “operational complexity.”"
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P states compact causal reversals: “Scarcity can increase no-shows,” “precision transfers all timing risk to the patient,” and “A no-show is partly a property of service design.” Q also has strong insights—especially “an ‘unsure’ patient is not yet a no-show”—but they are less consistently sharp across its recommendations."
+    }
+  ],
+  "note": "P’s biggest advantage is mechanism-level originality backed by explicit falsification; Q’s strongest advantage is a coherent, implementation-ready combined pilot."
+}

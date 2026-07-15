@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Curb operating system\" and \"Backpressure gates\" directly protect junction discharge and prevent network-wide spillback at saturated bottlenecks. Q's \"Trip-Generator Reliability Regime\" could influence major destinations, but its impact depends on institutions subsequently finding effective remedies, making its strongest leverage less direct."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly links controlled curb dwell to fewer blocked lanes and downstream admission control to reduced spillback. Q's \"Building Logistics Kernel\" has a similarly credible consolidation pathway, but its leading \"Reliability Regime\" specifies accountability while leaving the actual congestion-reducing intervention open."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P proposes reversible interventions using recognizable municipal capabilities, such as a \"ten-block pilot\" with bay reservations and a \"three-junction trial\" for gating. Q's building dispatcher is feasible, but mechanisms such as \"Entitlement-Preserving Seat Exchange\" and cross-firm \"Vendor Job Exchange\" require difficult compatibility, trust, privacy, and acceptance arrangements."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P concretely specifies digital bay reservations, activity-based dwell limits, cameras, overflow locations, and comparative block testing. Q likewise specifies a common receiving point, human dispatcher, control building, measured vehicle entries, and an anonymized pre-implementation test for seat exchanges."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers non-obvious but adjacent operational levers such as \"Destination street-impact budgets\" and shared \"service-round cooperatives.\" Q introduces more unusual plausible causal structures, notably multi-party school or clinic seat exchanges, cross-company job swaps, and attaching services to already unavoidable journeys."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P ranges across curb control, admission gating, incident clearance, turn removal, building queue absorption, destination obligations, and service consolidation, but several mechanisms remain concentrated on street and queue operations. Q additionally spans service localization, household task batching, institutional accountability, entitlement exchange, cross-firm work allocation, event distribution, residential matching, and outage compression."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "P ultimately foregrounds four strong mechanisms, but its pool contains overlapping variants such as \"Curb operating system,\" \"Curb compaction,\" and \"Guaranteed-space entry tokens.\" Q more explicitly merges overlaps into causal families, yet retains speculative additions such as \"Housing–Job Swap Chains\" and \"Event Mirroring,\" which partly offset that stronger pruning."
+    }
+  ]
+}

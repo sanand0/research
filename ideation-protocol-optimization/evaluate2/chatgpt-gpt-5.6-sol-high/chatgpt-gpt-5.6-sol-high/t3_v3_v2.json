@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "tie",
+      "evidence": "P's school model takes responsibility for the \"complete physical-book workflow,\" creating recurring institutional revenue, while Q's outcome lab sells \"verified improvement\" and its IP foundry creates exclusive products. Both combine a chain-wide consumer exchange with a potentially consequential institutional or proprietary-revenue engine."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P links \"one contract, one inventory record, and one accountable operator\" directly to workload reduction, service fees, procurement margin, and recovered value. Q's \"reading lab\" and IP foundry are coherent, but rely more heavily on the bookstore acquiring credible assessment, instructional, rights-acquisition, and publishing capabilities before the proposed gains follow."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's leading mechanism can start as \"one paid, manually operated pilot\" and addresses an existing school administrative burden. Q's strongest alternatives beyond the shared resale exchange require institutions to buy bookstore-issued outcomes or the chain to \"secure rights\" and produce proprietary content, creating larger adoption and capability hurdles within three years."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies school sourcing, kitting, replacement, collection, grading, and disposal, and proposes a \"100-title buyback-floor experiment.\" Q similarly specifies cross-branch returns, condition grading, centralized routing, pre-tests and post-tests, and a \"six-week cohort.\" Both make the mechanisms and initial prototypes readily understandable."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers non-obvious mechanisms such as selling publishers \"decision-grade evidence\" and contracting for literacy outcomes. Q adds the reasonably plausible reframing of shifting inventory exposure through \"Publisher Shelf Options\" and converting observed unmet demand into a \"demand-backed IP foundry,\" giving it a modestly stronger set of novel economic levers."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans outsourced institutional operations, circular resale, local manufacturing, accessible formats, estate acquisition, preservation, publisher experimentation, and outcome contracts. Q also ranges widely—from \"Inventory-Risk Transfer\" to \"Attention Escrow\"—but some of its additional regions, notably reader capital pools and attention escrow, have weaker credible paths to materially improving the chain."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly removes mechanisms that are \"too peripheral, labour-intensive, or weakly connected\" and builds its three-year sequence primarily around the surviving school and resale engines. Q narrows to three recommendations, but later reintroduces inventory-risk agreements and publisher demand tests, while several low-probability mechanisms such as \"Reader Capital Pools\" and \"Attention Escrow\" consume attention in the portfolio."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q retains ten meaningfully different mechanisms, including \"Leave Clearance First,\" \"Any-Clinic Claim Token,\" and \"Reverse Appointment.\" P's eight are diverse, but several cluster around advance confirmation, flexible scheduling, and capacity recovery."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q reaches farther beyond standard hospital operations with ideas such as \"Resolve third-party permission before creating commitment\" and \"Begin service before deciding whether an appointment is needed.\" P's strongest ideas—\"readiness handshake,\" \"arrival windows,\" and a \"standby pool\"—are thoughtful but more recognizable."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q explicitly loads ideas onto named rules such as \"graceful degradation,\" \"checkpointing,\" \"late binding,\" and kidney-exchange \"chains,\" then rejects decorative analogies like \"Appointment blockchain.\" P names useful rules, but the connection from borrowing to finalist is less systematically demonstrated."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's combined recommendation catches the recoverable state—\"an ‘unsure’ patient is not yet a no-show\"—and immediately reuses released capacity. Q's winner, a \"three-hour guaranteed window,\" may help timing uncertainty but does not address patients unable to attend that day and risks \"arrival clustering.\""
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q supplies a concrete \"Cheapest falsification\" for every survivor, includes explicit kill conditions, and concedes that auto-downgrading \"salvages no-shows more directly than it prevents them.\" P lists credible assumptions and failure modes, but they are less tightly tied to falsifiable tests."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "Both state sharp causal insights rather than slogans. P says \"an ‘unsure’ patient is not yet a no-show\" and reframes the target as \"completed care episodes.\" Q says \"Scarcity can increase no-shows\" and that \"A no-show is partly a property of service design.\""
+    }
+  ],
+  "note": "Q is the stronger divergence-and-falsification exercise; P makes the more convincing near-term operational recommendation."
+}

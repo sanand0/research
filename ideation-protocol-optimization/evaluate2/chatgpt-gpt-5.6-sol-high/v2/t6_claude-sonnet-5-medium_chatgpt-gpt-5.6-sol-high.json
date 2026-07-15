@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Body Double Estate Trustee\" addresses a serious but episodic incapacity and estate-access problem; Q's \"Personal Technical Rider\" and \"Time-Zone Relay Desk\" target recurring mobility friction and continued earning, creating broader day-to-day value for remote-working retirees."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Colony Anchor Network\" assumes strangers will commit to a persistent group, while its \"Pension Geo-Router\" depends on difficult cross-jurisdictional legality. Q more directly links interventions to outcomes: properties certify against a \"minimum viable work-and-life environment,\" and commitments \"expire unless renewed.\""
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "P's strongest concepts require substantial legal, privacy, or institutional acceptance, including \"liability-bearing transfer of care custody,\" an \"always-on locator,\" and a cross-border estate institution. Q can test its main mechanisms with spreadsheets, manual handoffs, envelopes, and expiry calendars before requiring major infrastructure."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P explains the Estate Trustee as \"durable POA + document vault + local-notary network + succession triggers,\" but several other proposals remain abstract. Q specifies users, payers, operating steps, and prototypes—for example, a rider covering \"15–25 variables\" followed by an \"arrival acceptance test.\""
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P offers unusual institutional levers such as membership belonging to a rotating \"micro-colony\" rather than a location. Q offers comparably non-obvious but grounded reframings, including treating time-zone difference as purchasable \"inventory\" and distance as a storytelling mechanic in \"Grandparenting Stagecraft.\""
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P spans legal custody, collective belonging, continuous safety signaling, pension routing, transport cooperation, reciprocal housing, and enforced travel pacing. Q spans property certification, work handoffs, redundancy, commitment expiry, family play, knowledge inheritance, failure drills, and environmental identity cues."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P ultimately concentrates attention on two differentiated recommendations—\"Body Double Estate Trustee\" and \"Colony Anchor Network\"—after explicit knockouts. Q's useful portfolio is diluted by overlapping continuity mechanisms such as \"Handoff Ledger,\" \"Delegation Ladder,\" \"Location Dependency Graph,\" and \"Continuity Maintenance Schedule.\""
+    }
+  ]
+}

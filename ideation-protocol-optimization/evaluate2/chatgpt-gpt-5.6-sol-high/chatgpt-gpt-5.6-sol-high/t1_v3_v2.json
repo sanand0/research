@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Transition Tax\" and \"Compulsion Tollbooth\" inherit frequency from existing routines. Q retains that lever in \"Transition Gateway\" while adding \"State-Change Utility,\" where meditation unlocks meetings, focus mode, or workday closure; this broader concrete utility offers slightly greater potential to drive sustained daily use."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P gives direct chains such as \"calendar transition → contextual micro-session → repeated immediate recovery → DAU\" and explicitly tests bypass, recurrence, and post-event benefit. Q's \"Personal Causality Lab\" and \"Ephemeral Departures\" depend more heavily on uncertain assumptions that measurement curiosity or imposed scarcity will translate into repeated meditation."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P acknowledges constraints such as \"operating-system restrictions, irritation, and easy bypass\" and selects the more deployable calendar mechanism. Q's leading portfolio includes a cognitive experiment requiring credible measurements and live sessions that \"cannot be rewound,\" creating greater user-friction and operational risks."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies implementations such as appending a \"90-second reset\" after meetings and testing real calendar events. Q is comparably concrete, proposing a browser extension that intercepts the first meeting link and controlled comparisons for its measurement and departure mechanisms."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest reframings—\"Risk-Event Interlock\" and \"Personal Efficacy Ledger\"—are non-obvious but remain contextual intervention and evidence loops. Q adds plausibly distinct levers such as \"Ephemeral Departures,\" \"Tomorrow Relay,\" and meditation that changes the device's operating state, yielding more novel causal pathways."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P covers evidence, action completion, and physiological detection, but many proposals attach a micro-session to another trigger: calendar events, app launches, alarms, objects, wearables, or phone orientation. Q spans gateways, personal experimentation, delayed reveal, temporal scarcity, third-party waiting states, anonymous synchrony, emotional reconciliation, device-state change, and therapist integration."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P retains several closely related trigger-attachment mechanisms, including \"Transition Tax,\" \"Physical Anchor Kit,\" \"Alarm Interlock,\" and \"Face-Down Trigger.\" Q more consistently consolidates overlaps into mechanisms such as \"Transition Gateway,\" \"High-Stakes Buffer,\" and \"State-Change Utility,\" producing a less repetitive portfolio despite retaining a few speculative ideas."
+    }
+  ]
+}

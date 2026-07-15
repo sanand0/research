@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Commit–Reveal Book\" makes prior interpretation \"temporarily irreversible,\" and \"Succession Palimpsest\" makes reading alter future readability; Q's \"Rule-Later Edition\" and \"Model-Boundary Edition\" mainly improve model formation within familiar reading workflows. P's strongest mechanisms would more fundamentally expand what reading can be."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Pulse-Gated Prose\" assumes physiological transitions indicate cognitive readiness, while \"Succession Palimpsest\" assumes irreversible alteration improves interpretation. Q gives tighter pathways, such as cases producing a provisional rule before correction in \"Rule-Later\" and independent encodings making misunderstanding detectable in \"Error-Correcting Edition.\""
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Future-Self Secret Share\" requires delayed installments and memory-dependent reconstruction, and \"Succession Palimpsest\" requires destructible physical production. Q's \"Rule-Later\" can be tested by rewriting twelve pages, while \"Context-Locked\" uses a simple envelope booklet, creating lower adoption and production barriers."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P concretely specifies that readers record expectations and falsifiers before evidence, then proposes a controlled six-page test. Q specifies a four-part \"Rule-Later\" unit and an unfamiliar transfer problem. Both make the user operation and cheapest prototype readily understandable."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P introduces unusual but coherent levers such as a book whose layers are physically transformed by reading and complementary fragments distributed across a reader's \"past, present, and future\" selves. Q's \"Rule-Later\" and \"Model-Boundary\" are useful reframings, but remain closer to established instructional sequencing and conceptual chunking."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans belief precommitment, physiological gating, destructive material transformation, grammatical decomposition, spatial folding, temporal self-separation, and meaning through textual mutation. Q spans contextual timing, hypothesis generation, redundancy, evidence ordering, and longitudinal annotation, but more of its portfolio clusters around correcting or externalizing mental models."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P ultimately promotes the high-friction \"Future-Self Secret Share\" despite explicitly anticipating \"unacceptable dropout,\" alongside the production-heavy \"Succession Palimpsest.\" Q removes mechanisms likely to become \"interpretive busywork\" and recommends a more consistently useful set: \"Rule-Later,\" \"Model-Boundary,\" \"Context-Locked,\" and \"Error-Correcting.\""
+    }
+  ]
+}

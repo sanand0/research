@@ -1,0 +1,42 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"condition-triggered follow-up\" can eliminate unnecessary scheduled visits, while \"anchor-event clinic\" removes an entire additional journey. Q's \"Reverse Appointment\" has comparable structural potential, but its other leading mechanism, \"Protected Appointment Exchange,\" mainly converts likely absences into releases and replacements rather than removing the underlying attendance burden."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "P explicitly traces mechanisms such as \"travel or work disruption no longer destroys the encounter\" and states falsifiers. Q similarly specifies assumptions and tests, such as whether \"patients conceal emerging conflicts because releasing a scarce appointment risks being pushed to the back of the queue.\" Both acknowledge their central dependencies and failure modes."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"automatic modality failover\" can be restricted to clinician-approved visits and piloted through a single outbound call after non-arrival. Q's \"Elastic Attendance Windows\" risk arrival bunching, while \"Protected Appointment Exchange\" requires an oversubscribed service to guarantee rapid replacement capacity—the scarcity that motivated patients to retain slots initially."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P concretely specifies eligibility marking, a five-minute failover trigger, comparison groups, metrics, and kill criteria. Q likewise defines mechanisms operationally—for example, a three-hour guaranteed window with a virtual queue—and supplies bounded pilots and rejection conditions. Both make their strongest proposals readily testable."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P offers non-obvious but plausible levers such as attaching care to \"an event the patient already reliably attends\" and triggering follow-up from clinical condition. Q contributes similarly distinctive mechanisms through a \"Protected Appointment Exchange,\" checkpointed care, and beginning service before deciding whether physical attendance is necessary."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P spans demand elimination, modality substitution, journey bundling, proxy attendance, employer permission, mobile delivery, delegation, and flexible capacity. Q spans late-bound access, checkpointing, transferable appointment rights, geographic relocation, transport synchronization, third-party permission, companion coordination, and asynchronous triage. Both cover comparably broad causal regions despite some internal overlap."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q explicitly consolidates variants—for example, candidates 1, 9, and 13 become \"Elastic Attendance Window,\" while 4, 5, 6, and 14 become \"Protected Appointment Exchange\"—and flags that auto-downgrading is weaker against the literal metric. P separately retains closely related flexibility variants such as \"Chain-wide care window,\" \"Certainty-class booking,\" \"Venue-preserving switch,\" and \"Late-arrival guarantee,\" and includes \"Dual-use clinical session,\" which mitigates idle capacity rather than reducing no-shows."
+    }
+  ]
+}

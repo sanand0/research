@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P ranges from material grammar—“Texture ... encode[s] voice, emphasis, chronology”—to lifespan-scale transmission—“exceed an individual lifespan”—and reality-supplied content. Q has good variety, but pairs such as “Peripheral Book”/“Ritual Book” and “Book as Excavation”/“Conversation Reconstruction” share substantial mechanisms."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P reaches mechanisms such as “Zero-Knowledge Book,” “Intergenerational Relay Book,” and “Tactile Syntax.” Q’s strongest surprises—“Forgetting Book” and “Dream-Responsive Book”—sit beside more readily generated extensions such as “Minor-Character Lens” and “Adversarial Edition.”"
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P explicitly derives formats from “Molecular gastronomy” and “Cryptographic protocols,” including rules such as “Control when an ingredient is released” and “A secret can be distributed so no participant possesses the whole.” Q names no source domain or transferable structural rule."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "P’s practical choice has a credible mechanism and prototype: “capturing [expectation] makes surprise, learning and conceptual change observable.” Q’s “Semantic Zoom Book” is equally defensible because its “positional continuity” directly supports both skimming and deep study. Both wildcards make distributed incompleteness central rather than decorative."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P states testable assumptions and concrete failures for every finalist, such as “privacy concerns, unreliable sensing and unwanted interruptions” and “dominant participants may force superficial agreement.” Q mostly supplies ratings; its clearest uncertainty is only the table entry “Uncertain” for understanding."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P sharply states that “A reader’s expectation is unwritten text” and that other people can become “necessary reading instruments.” Q is comparably precise in naming “positional continuity” and saying the fragmented book exists “between readers rather than inside a copy.”"
+    }
+  ],
+  "note": "P’s biggest advantage is disciplined cross-domain derivation plus explicit failure analysis; Q’s best ideas are strong, but its process leaves their structural origins and risks less developed."
+}

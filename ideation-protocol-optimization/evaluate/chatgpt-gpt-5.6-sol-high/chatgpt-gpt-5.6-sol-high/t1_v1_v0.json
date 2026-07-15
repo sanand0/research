@@ -1,0 +1,55 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans materially different mechanisms: behavioral gates (\"Temptation Toll\"), pre-action delay (\"Decision Escrow\"), interpersonal distribution (\"Gift a Pause\"), exposure training (\"Stress Inoculation Lab\"), household coordination, and silent co-presence. Q is diverse but clusters more heavily around contextual triggering, adaptive delivery, and integrations: \"Calendar-triggered decompression,\" \"Ambient meditation layer,\" \"Meditation attached to an existing ritual,\" and \"Meditation API.\""
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P reaches farther beyond standard personalization and contextual prompts with ideas such as placing distractions \"behind a 30-second breathing pause,\" routing consequential actions through \"Decision Escrow,\" and training with \"controlled doses of discomfort.\" Q has strong departures such as the \"anti-engagement\" product and software API, but more of its pool resembles ideas a strong generalist might quickly produce, including \"adaptive session length,\" \"emotional first aid button,\" and ritual integrations."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P explicitly extracts named structural rules from unrelated systems—public transit's \"routes intersect existing journeys\" and \"visible arrival information reduces uncertainty,\" plus immune systems' \"exposure creates memory\"—then derives Transition Layer, Relief ETA, Mental Antibodies, and Stress Inoculation. Q uses software metaphors such as \"compiler,\" \"SDK/API,\" and \"infrastructure,\" but does not state and apply an underlying transfer rule."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's practical choice tightly combines immediate state-based entry, personalized evidence, feasible testing, and a DAU-relevant metric: \"days with a resolved need.\" It also specifies a controlled experiment using \"seven-day active days\" and \"time-to-start.\" P's Emotional Triage is equally plausible, but its final recommendation expands into a five-part portfolio, including harder integrations and the riskier \"Temptation Toll,\" rather than concentrating the initial bet as sharply."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P names a falsifiable assumption and a concrete failure mode for every survivor, such as predictions that \"could be inaccurate or sound medically overconfident,\" Gift a Pause feeling \"passive-aggressive,\" and stress exposure potentially amplifying anxiety. Q mostly supplies favorable scores and broad caveats; its wildcard critique is largely \"platform dependence and integration complexity,\" without equivalent idea-by-idea scrutiny."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P repeatedly states sharp causal theses, especially \"Browsing meditation content requires the same executive function that stress has already impaired\" and \"The main competitor is not another meditation app; it is the cost of starting a separate activity.\" Q also has strong formulations—particularly \"faulty forecasting\" and users not deciding \"abstractly, to meditate\"—but several conclusions are broader positioning claims such as becoming \"infrastructure for mental-state transitions.\""
+    }
+  ],
+  "note": "The biggest difference is that P systematically generates and stress-tests mechanisms through explicit cross-domain rules, while Q is more focused and execution-ready in choosing its practical product experiment."
+}

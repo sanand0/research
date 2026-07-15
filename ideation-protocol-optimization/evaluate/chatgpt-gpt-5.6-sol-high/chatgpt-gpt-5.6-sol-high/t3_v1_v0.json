@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans materially different engines: \"buyback wallet,\" \"publisher reader-research network,\" \"local micro-press,\" \"daypart-based space monetisation,\" and \"civic reading contracts.\" Q is diverse, but more of its pool clusters around facilitated communities, memberships, and recommendations."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P reaches further beyond standard experiential retail through ideas such as \"community-funded shelves,\" a \"publisher demand laboratory,\" and converting multiple branches into a \"genre district.\" Q's strongest departures—\"protected attention,\" community hosts, and the \"Human Taste Graph\"—are sharp but somewhat closer to familiar community-bookstore models."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P explicitly derives finalists from named rules in unrelated domains: Airlines supplies \"Inventory belongs to the network\" and \"Unused time-bound capacity expires,\" producing the availability promise and daypart monetisation. Q uses analogies such as \"similar to personal shopping\" but imports no named structural rule that carries causal load."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "Both select credible three-year anchors. P's \"membership flywheel\" combines recurring revenue, relationships, and repeat visits; Q's \"Reader House Network\" similarly integrates membership, paid journeys, local communities, and institutional sales. Each is among its version's strongest proposals rather than a novelty chosen for spectacle."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P names concrete assumptions and failure modes for every survivor, including \"Customers perceive it as paying to enter a shop,\" \"Fraud, damaged returns,\" and \"Technology and transfer costs exceed benefits.\" Q acknowledges risks such as \"corrupting trust\" and sets kill criteria, but does not stress-test most mechanisms individually."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P offers specific causal insights such as \"the risk of buying the wrong object\" and turning branch duplication into a \"network effect.\" Q is equally incisive with \"Books become the curriculum,\" \"protected attention,\" and \"From stores containing the same books to a network containing different people.\""
+    }
+  ],
+  "note": "P is the stronger mechanism portfolio and transfer exercise; Q is the tighter, more unified operating concept."
+}

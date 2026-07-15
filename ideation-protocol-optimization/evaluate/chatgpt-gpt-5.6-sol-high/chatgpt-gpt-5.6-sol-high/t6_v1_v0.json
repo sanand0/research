@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q reaches mechanisms absent from P, including live simulation (\"Nomad Failure Rehearsal\"), recurring social cohorts (\"Friendship Portability Protocol\"), death logistics (\"Nomad Executor Vault\"), pet mobility and an \"End-of-Nomadism Transition Service\". P is structurally varied but concentrates more heavily on compliance, care and asset conversion."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P repeatedly moves beyond obvious category adaptations with \"Care-Hours Futures\", \"Home-Equity-to-Habitat Swap\", \"Parametric Relocation Switch\" and \"Reverse Timeshare Market Maker\". Much of Q's initial pool—such as \"Portable Care Circle\", \"Slow-Travel Housing Exchange\" and \"Portable Social Club Subscription\"—is readily foreseeable."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P explicitly derives products from \"migratory-bird ecology\" and \"financial derivatives\", using rules such as \"Options preserve future choice\" and \"Illiquid or uncertain resources become usable through pooling, exchange and standardisation\". Those rules materially generate finalists such as \"Care-Hours Futures\" and \"Home-Equity-to-Habitat Swap\". Q names unusual concepts but supplies no named source domain or transferred structural rule."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "P sensibly chooses \"Jurisdiction Autopilot\" for its \"narrow user, observable pain, low operational burden and a fast software MVP\". Q makes essentially the same strong entry choice with the \"Retirement Residency Simulator\", noting that it avoids \"initially requiring a global physical network\". Both recommendations fit the brief and offer credible expansion paths."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P states concrete assumptions and failure modes for every candidate, including \"Legal liability, incomplete rules\" and \"Provider insolvency, labour shortages and uneven quality\". Q grades \"Operational difficulty\" and \"Defensibility\" but rarely specifies what would actually invalidate an idea."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P consistently states precise causal insights, such as \"Customers may pay more to avoid creating a legal obligation than to receive help complying with one\" and care insecurity arising from \"availability, not only affordability\". Q has strong moments—especially \"mobility without social disposability\"—but its insights are less consistently explicit across the selected products."
+    }
+  ],
+  "note": "P is stronger at rule-driven invention and rigorous falsification; Q covers a somewhat wider range of life situations but relies more on familiar service-category recombination."
+}

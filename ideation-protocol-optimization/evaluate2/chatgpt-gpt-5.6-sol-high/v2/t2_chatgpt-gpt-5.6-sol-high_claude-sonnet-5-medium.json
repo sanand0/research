@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P's \"Elastic Attendance Windows\" and \"Reverse Appointments\" remove exact-time or unnecessary physical-attendance requirements, directly changing major structural causes of no-shows. Q's strongest proposed lever, \"Risk-triaged human callback,\" mainly intensifies outreach and is less likely to produce a comparably large system-level reduction."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P clearly links \"protected replacement\" to earlier slot release and links asynchronous review to eliminating avoidable appointments. Q's \"Visible social-cost waitlist\" depends on an uncertain leap from displaying waiting demand to changed attendance, while its \"Neighborhood kiosk pre-check-in\" may create commitment without resolving the underlying attendance barrier."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P offers bounded implementations such as manually guaranteeing releasers \"a replacement within seven days\" and piloting windows in one clinic. Q's \"slot auto-releases\" default risks cancelling vulnerable patients who fail to check in, while physical neighborhood kiosks add infrastructure and third-party-site dependencies."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies what changes operationally: patients receive a \"three-hour guaranteed window,\" enter a virtual queue, and are sequenced by current arrivals and priority. Q gives useful tests, but its merged \"K/F\" mechanism shifts between a functioning slot marketplace and merely adding \"one line\" to confirmation copy, leaving the implemented intervention less coherent."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P introduces several plausible structural reframings, including \"late-bound service access,\" appointment rights transferable without loss of future access, and care beginning before deciding whether attendance is necessary. Q relies more heavily on familiar commitment devices, callbacks, lotteries, social-pressure copy, and mandatory check-ins."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P spans distinct causal regions: timing flexibility, care checkpointing, modality substitution, protected capacity exchange, location portability, mobile delivery, third-party permission, and removal of unnecessary visits. Q's portfolio is more concentrated around commitment and communication, including \"pledge,\" \"callback,\" \"identity nudge,\" \"waitlist counter,\" and \"check-in window.\""
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly consolidates variants and ultimately focuses attention on three differentiated mechanisms: \"Elastic Attendance Windows,\" \"Protected Appointment Exchange,\" and \"Reverse Appointments.\" Q retains several weak or overlapping commitment interventions and ranks \"Risk-triaged human callback\" first despite having banned solutions whose core mechanism is \"reminding the patient closer to the appointment.\""
+    }
+  ]
+}

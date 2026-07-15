@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Client Continuity Cooperative\" removes a major barrier to earning income, while \"Frailty Escrow\" addresses catastrophic loss of autonomy. Q's \"Personal Technical Rider\" and \"Grandparenting Stagecraft\" reduce important setup and family-role frictions, but generally produce less consequential gains."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's \"Reversible Commitment Layer\" directly makes obligations expire and its \"Personal Technical Rider\" directly tests accommodation compatibility. P's \"Frailty Escrow\" depends on legally executable cross-jurisdiction authority, while its cooperative assumes expert work can be documented and substituted without substantial quality loss."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q can prototype its rider with a spreadsheet, its relay with \"20 overnight reviews,\" and its family product with envelopes. P's strongest ideas require harder institutional machinery: \"pooled underwriting,\" a legally structured escrow, property-operator process changes, or reliable backup professionals."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P concretely specifies that cooperative members \"document their recurring work, nominate compatible backups, and contract through the cooperative.\" Q similarly defines the rider's variables, property certification and arrival test; both outputs provide understandable users, workflows and falsifiable prototypes."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P offers credible reframings such as belonging through \"being needed\" and converting irregular retirees into a reliable pooled supplier. Q is comparably inventive in treating time-zone difference as \"inventory,\" distance as a storytelling mechanic and commitments as things that should \"decay by default.\""
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest range covers work continuity, housing underwriting, incapacity governance and role-based belonging. Q spans those broad concerns through distinct additional levers including environmental certification, asynchronous time-zone exchange, automatic obligation expiry, physical family play, knowledge inheritance and rehearsed failure procedures."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's final portfolio concentrates attention on four central continuity failures: client trust, housing credibility, diminished capacity and belonging. Q also selects strong ideas, but weaker additions such as \"Move Condition Receipt,\" \"Identity Capsule\" and \"Proxy Presence Appliance\" dilute the portfolio with diagnostic or accessory-like value."
+    }
+  ]
+}

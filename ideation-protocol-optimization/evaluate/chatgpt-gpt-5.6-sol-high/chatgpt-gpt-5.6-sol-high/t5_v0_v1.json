@@ -1,0 +1,68 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "check_evidence": {
+    "P": {
+      "banned_list_present": "It explicitly says “Ban the obvious” and discards “road expansion,” “generic awareness campaigns,” and other standard answers.",
+      "survivors_avoid_banned": "Its finalists are “Dynamic curb allocation combined with a no-simultaneous-disruption rule” and “Employer peak-hour budgets,” neither merely restating a banned approach.",
+      "named_transfer_rules": "Analogies such as road access being “similar to mobile-data plans” do not supply a named structural rule used by a finalist.",
+      "practical_and_wildcard_distinct": "The practical choice reallocates curb space and coordinates disruptions; the wildcard caps employer-generated peak arrivals."
+    },
+    "Q": {
+      "banned_list_present": "It explicitly lists five removed categories under “Conventional ideas banned,” including “Build more roads” and “Charge drivers more.”",
+      "survivors_avoid_banned": "The finalists use virtual queues, origin metering, traffic firebreaks and workspace exchange rather than thinly renaming the prohibited categories.",
+      "named_transfer_rules": "“Adaptive traffic firebreaks” directly applies the forest-ecology rule “Firebreaks: selectively disconnect a network,” while origin metering applies “Admission control” and “Backpressure.”",
+      "practical_and_wildcard_distinct": "Its practical picks manage departure timing and network entry; its wildcards alter network connectivity or decouple employment from workplace location."
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q spans upstream flow control, off-road queuing, threshold demand response, fleet-capacity exchange, parcel consolidation, errand bundling, destination relocation, workspace relocation, topology control, development offsets and software-mediated trip substitution. P is broad, but several entries share the same temporal-spreading mechanism, including “School-start staggering,” “Appointment-time coordination,” “Event departure choreography” and “Artificial midweek weekend.”"
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q reaches farther with “Trip-capacity escrow for development,” a “Mandatory trip-substitution API,” queues that “need not occupy road space,” and the proposition that “less road-network connectivity can produce more total flow.” P has strong surprises such as “Employer peak-hour budgets” and an “Artificial midweek weekend,” but more of its pool consists of sophisticated scheduling and allocation variants."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q names source domains and operational rules—computer-network “Admission control,” “Backpressure” and “Multiplexing,” plus ecological “Firebreaks,” “Fuel reduction” and “Distributed refuges”—then derives mechanisms that depend on them. P offers occasional analogies, such as access plans “similar to mobile-data plans,” but no finalist built around a named imported rule."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "P selects a high-feasibility combination that “uses infrastructure the city already owns” and “can be piloted corridor by corridor.” Q selects its strongest balanced candidate—trip demand response scores “8” for impact, novelty and speed—and pairs it with testable pilots during “predicted breakdown conditions.” Both choices are defensible relative to their own pools."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q states falsifiable assumptions and concrete failure paths for every survivor, such as “Queues may block local streets,” firms may resist “surrendering dispatch control,” and traffic restrictions may “interfere with emergency access.” P mostly compresses critique into labels such as “Employer resistance,” “Limited adoption” and “Political backlash,” which identify concerns but rarely expose the causal failure."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q repeatedly isolates precise counterintuitive claims: “A queue need not occupy road space,” “removing a few percent of trips near collapse may have disproportionate value,” and connectivity “can transmit failure under extreme load.” P articulates one especially good reframing—congestion becomes “an operational scheduling problem”—but most ideas are described primarily as interventions rather than explicit, transferable insights."
+    }
+  ],
+  "note": "The biggest difference is that Q systematically derives finalists from named cross-domain principles and stress-tests them, while P relies more on a strong but largely unstructured collection of policy inventions."
+}

@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's mechanisms are unusually orthogonal: \"fading text × memory dependence,\" \"syntactic reconstruction,\" \"spatial syntax,\" and \"meaning as trajectory.\" Q retains partial overlaps, notably \"Prediction-First Book\" versus \"Commitment Edition,\" and several variants of delayed or conditional release."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P reaches formats such as \"Absent-Core Manuscript,\" \"Grammatical Skeleton,\" and \"Succession Palimpsest.\" Q's strongest pool also contains more readily generated ideas such as \"Prediction-First Book,\" \"Timed-Release Book,\" \"Memory-Palace Route,\" and \"Contradiction Dossier.\""
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P states load-bearing rules—\"Commit–reveal,\" \"Secret sharing,\" and \"Pioneer layers modify the substrate\"—and explicitly requires that \"removing the borrowed rule would collapse the format.\" Q's cryptographic transfers are strong, but its gastronomy-derived \"aftertastes\" and \"palate-cleanser interludes\" are more metaphorical."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P selects a practical mechanism that requires readers to record \"what would change their mind\" before evidence, plus the materially transformative \"Succession Palimpsest.\" Q leads with \"Prediction-First Book,\" a useful but more familiar active-reading intervention, while stronger novelties remain in its wildcard set."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P gives concrete falsifiers such as \"no improvement in recall, belief revision, or recognition of surprise\" and \"cannot articulate relationships between successive layers.\" Q identifies real risks, but often at the looser level of \"could feel evaluative\" or readers \"may abandon the work.\""
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "Both state precise mechanism-level insights. P says \"the reader's prior interpretation is made temporarily irreversible\" and that reading can \"alter the future readability of the book.\" Q says \"A reader's expectation is unwritten text\" and \"The environment becomes a co-author.\""
+    }
+  ],
+  "note": "P is more rigorously pruned, structurally transferred, and falsifiable; Q is broader but retains more familiar and overlapping mechanisms."
+}

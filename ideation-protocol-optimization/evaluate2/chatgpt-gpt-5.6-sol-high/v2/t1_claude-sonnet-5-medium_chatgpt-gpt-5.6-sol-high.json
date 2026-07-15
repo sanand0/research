@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Sponsor-a-Session\" and \"Ambient Co-Presence\" add external accountability or social pull, but their effect depends on users caring about sponsorship or communal signals. Q's \"Transition Gateway\" makes meditation the doorway to an already frequent action, while \"Personal Causality Lab\" creates a recurring reason to inspect one's state, targeting daily initiation more directly."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P assumes a \"collective calm\" score or aggregate sponsor visibility will reliably motivate individual practice, a relatively speculative link. Q's claim that a gateway \"inherits frequency from an existing daily behaviour\" and its fixed-departure scarcity mechanism provide clearer, more immediate paths from intervention to repeated app use."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest portfolio includes employer monitoring, an access-for-prosocial-action exchange, synthetic community scores, and money-at-stake, all of which introduce acceptance, privacy, coercion, or friction risks. Q acknowledges bypass and abandonment risks while proposing comparatively adoptable tests such as a meeting-link extension, a 20-second attention test, and scheduled access to existing audio."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P gives concrete pilots, such as pre-paying \"50 seats\" and testing a \"collective calm\" score, but some mechanisms remain ambiguous about the actual user experience. Q specifies exact product changes—intercepting \"the first calendar-meeting link,\" running a \"45-second\" protocol, or offering sessions at ten-minute departures—and defines observable failure conditions."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P introduces credible non-obvious levers such as \"Sponsor-a-Session,\" passive \"Ambient Co-Presence,\" and an \"Environmental Trigger Object.\" Q is comparably inventive with meditation as a daily causal experiment, a functional gateway to another action, and transit-like \"Ephemeral Departures\" rather than merely applying novel terminology."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P spans third-party stakes, physical cues, anonymous synchrony, contextual sensing, prosocial exchange, and narrative re-engagement. Q spans self-measurement, delayed revelation, temporal scarcity, behavioural gateways, embedded waiting-time use, emotional closure, and device-state utility; both cover similarly broad and causally distinct regions."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "P retains several weak or off-objective additions, including \"Un-App\" delivery that may not count as app DAU, lockout-based \"Fallow Weeks,\" a synthetic commons score, and an ethically rejected \"Near-Miss Progress Bar.\" Q removes decorative analogies, merges overlaps cleanly, and concentrates its recommendations on three comparatively coherent mechanisms: gateway, measurement, and scarcity."
+    }
+  ]
+}

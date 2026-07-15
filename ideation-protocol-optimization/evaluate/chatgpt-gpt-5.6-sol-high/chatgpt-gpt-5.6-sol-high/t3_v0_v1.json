@@ -1,0 +1,55 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P is rich but clusters around community, membership and recommendations: \"reading seasons,\" \"reader membership,\" \"reader-to-reader matching\" and \"community members operating clubs.\" Q spans more independent mechanisms, including distributed logistics (\"one virtual inventory pool\"), risk reversal (\"guarantee and buyback wallet\"), institutional contracting, publisher research, upstream IP ownership, real-estate yield management and \"community-funded shelves.\""
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P has strong surprises such as selling \"protected attention,\" turning customers into operators and creating a \"Human Taste Graph.\" Q goes somewhat further with mechanisms such as \"the economic buyer need not be the reader,\" a \"publisher demand laboratory,\" floor space treated as \"perishable inventory,\" and neighbourhood achievements that \"unlock donations, celebrations, or new stock.\""
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q explicitly derives ideas from named unrelated domains. From \"Airlines\" it extracts rules including \"Inventory belongs to the network, not an individual location\" and \"Unused time-bound capacity expires and should be yield-managed,\" which directly produce chain-wide inventory and daypart monetisation. From \"Public health\" it derives segmented reading protocols and institutional wellbeing services. P contains analogies such as concierge shopping but no named, decomposed transfer rule supporting a finalist."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P makes a disciplined primary choice: \"Best practical idea: the Reader House Network,\" then integrates membership, paid journeys, local authority and institutional sales into one operating model. Q's membership and B2B choices are strong, but elevating \"Circular certainty\" to an equal best-practical position is less secure given its own substantial risks: \"Fraud, damaged returns, low resale demand\" and potentially difficult handling economics."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q states a concrete assumption and failure mode for every surviving mechanism, including \"Customers perceive it as paying to enter a shop,\" \"Long sales cycles and custom-work creep,\" \"Biased samples or compromised customer trust\" and \"Talent is scarce and difficult to scale consistently.\" P offers useful safeguards and one explicit trust risk, but its scoring table gives unsupported numbers and omits comparable assumption-by-assumption scrutiny."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q repeatedly names precise causal insights, such as \"the principal barrier to physical discovery is not always price; it is the risk of buying the wrong object\" and \"the chain's highest-value customer may be an organisation paying to create behaviour.\" P has strong formulations—especially \"Books become the curriculum\" and \"the network of trusted humans\"—but fewer are isolated and tested as explicit non-obvious claims."
+    }
+  ],
+  "note": "The biggest difference is that Q systematically converts named cross-domain rules into a broader mechanism portfolio and stress-tests each one, while P is more coherent and decisive about its central operating model."
+}

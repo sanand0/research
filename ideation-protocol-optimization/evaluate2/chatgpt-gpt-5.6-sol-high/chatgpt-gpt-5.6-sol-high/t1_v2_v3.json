@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "tie",
+      "evidence": "P's Transition Gateway \"inherits frequency from an existing daily behaviour,\" while Q's Compulsion Tollbooth similarly routes an established compulsive launch through meditation. Both also add personal-efficacy mechanisms, giving their strongest proposals comparable potential to move DAU."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's Ephemeral Departures depends on the uncertain claim that \"scarcity and synchrony outweigh the convenience of on-demand access.\" Q more consistently links immediate value to return behaviour, such as Risk-Event Interlock producing \"avoided regret or error\" and Compulsion Tollbooth borrowing an existing daily action."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P proposes intercepting a meeting and opening it only after a protocol, with bypass risk acknowledged. Q generally preserves user control through a \"prominent 90-second reset\" or a \"visible bypass and a strict once-per-day maximum,\" making sustained acceptance more plausible while still testing the mechanism."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies prototypes such as a browser extension that plays a \"45-second silent breathing protocol,\" while Q specifies concrete trials such as attaching reset links to calendar events and testing an Android or iOS Shortcuts prototype. Both clearly state the intervention, user context, and falsification test."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P introduces credible uncommon levers such as delayed self-authored revelation in Tomorrow Relay and non-rewindable \"departures\" that convert abundance into urgency. Q's strongest ideas—calendar resets, app-launch tollbooths, and pre-send pauses—are useful but more familiar forms of contextual habit attachment."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans personal experimentation, delayed reveal, temporal scarcity, embedded waiting, anonymous synchrony, emotional reconciliation, device-state change, and therapist-facing artifacts. Q covers several distinct paths, including physiological detection and efficacy evidence, but much of its portfolio repeats the broader pattern of attaching a micro-session to an existing trigger."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's final portfolio isolates three clearly different pathways: Transition Gateway, Personal Causality Lab, and Ephemeral Departures. Q's recommendations include both Transition Tax and Compulsion Tollbooth, which differ in context but substantially share the premise of parasitizing an existing daily transaction, slightly diluting the final selection."
+    }
+  ]
+}

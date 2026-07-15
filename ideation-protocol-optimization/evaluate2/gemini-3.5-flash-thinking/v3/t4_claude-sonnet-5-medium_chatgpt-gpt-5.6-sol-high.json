@@ -1,0 +1,42 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's primary recommendation, 'Transmission-gated reading,' operates primarily as a viral growth or access layer ('gate progress... on demonstrated transmission'). In contrast, Q targets the core cognitive bottleneck of text comprehension with formats like the 'Rule-Later Edition' ('Books deliver finished language faster than readers can build, test, and retain an internal model'), offering greater leverage to fundamentally transform how readers process information."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P relies on unproven, highly speculative assumptions for its wildcard, explicitly noting that it 'assumes sleep-state audio produces retrievable narrative content, not noise.' Q's mechanisms are grounded in established learning behaviors, tracing clear lines where 'prediction before prose creates visible error, visible error demands model revision' to systematically update internal understanding."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's top concept introduces severe user friction by forcing readers to recruit friends before continuing ('you can't read chapter 3 until two other people have started chapter 1'). Q's 'Rule-Later' and 'Model-Boundary' editions alter layout syntax and structural segmentation, meaning they can survive real-world market constraints and fit seamlessly within existing print or digital publishing pipelines."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "Both outputs provide exceptionally crisp, actionable definitions and testing procedures. P outlines a clear 'A/B this unlock mechanic against a standard paywall in an existing serialized-fiction app,' while Q explicitly breaks its format down into specific 'four-part units' and describes a concrete application problem to test transfer."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P introduces highly distinctive reframings by importing paradigms from epidemiology and sleep architecture ('Dream-incubation'). Q is equally inventive, mapping technical systems architecture like 'Error-correcting codes' into textual formats ('Checksum Book') where semantic lapses trigger noticeable text contradictions."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P populates a diverse solution space across biological, physical, and network mechanisms ('Scent-sequence,' 'Biometric-adaptive,' 'Transmission-gated'). Q covers an equally expansive but distinct matrix focused on structural, cognitive, and informational architecture ('Eroding Pages,' 'Causal Rebinding,' 'Forensic Dossier')."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both models show high discipline in curating their ideas. P systematically excludes a 7-item '30-second mode' list and uses a strict pairwise knockout phase to isolate 2 final formats. Q maps 24 concepts across multiple dimensions, systematically merges near-duplicates (e.g., C17, C18, and C19 into 'Error-Correcting Edition'), and filters them down to a tight portfolio of 4 recommendations."
+    }
+  ]
+}

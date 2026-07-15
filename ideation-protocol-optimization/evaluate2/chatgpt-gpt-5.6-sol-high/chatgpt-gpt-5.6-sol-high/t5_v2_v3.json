@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Building Logistics Kernel\" and \"Trip-Generator Reliability Regime\" reduce distributed trip generation; Q's \"Curb operating system\" and \"Backpressure gates\" directly prevent lane obstruction and network-wide spillback at saturated bottlenecks, offering greater system-level impact."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Entitlement-Preserving Seat Exchange\" plausibly shortens trips but depends on compatible multi-party matches and user acceptance. Q more tightly connects interventions to traffic flow: \"holding vehicles upstream prevents downstream spillback\" and controlled curb dwell restores junction discharge."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's service replication and seat exchanges require new facilities, interoperable entitlements, or sensitive institutional coordination. Q pairs harder policies with readily reversible mechanisms such as \"digital bay reservations,\" temporary entry gates, and an opt-in \"service-round cooperative.\""
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies a \"common receiving point and a human dispatcher\" with a control-building comparison; Q specifies \"digital bay reservations,\" activity-specific dwell limits, and alternating treated blocks. Both make the changed operation and falsifying pilot unusually concrete."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "Q offers inventive traffic-control variants such as \"Backpressure gates,\" but P introduces less familiar causal levers including \"Entitlement-Preserving Seat Exchange,\" \"Vendor Job Exchange,\" and cyclic \"Housing–Job Swap Chains\" that alter trip geography rather than traffic handling."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans service relocation, cross-household batching, inter-firm job exchange, entitlement swaps, institutional obligations, event distribution, residential exchange, and outage compression. Q is credible but more concentrated around curb control, admission gating, queue containment, and fleet coordination."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P gives substantial attention to comparatively fragile additions such as \"Event Mirroring Network\" and \"Housing–Job Swap Chains.\" Q's final portfolio centers on four stronger mechanisms, though items like \"Destination-coded platoon waves\" show that its earlier pool is not entirely free of dilution."
+    }
+  ]
+}

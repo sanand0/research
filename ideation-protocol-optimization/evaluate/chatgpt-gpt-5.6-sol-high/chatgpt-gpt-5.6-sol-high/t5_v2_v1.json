@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": false,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q retains distinct mechanisms including \"origin pulse metering,\" \"empty-leg capacity exchange,\" \"office-swap marketplace,\" \"adaptive traffic firebreaks,\" \"trip-capacity escrow,\" and a \"mandatory trip-substitution API.\" P is similarly broad, but its \"Service Edge Network\" and \"Anchor Piggyback Hubs\" both move services closer to existing demand, leaving Q with a slight edge in genuinely separate mechanisms."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P reaches farther beyond standard transport thinking with \"Vendor Job Exchange,\" \"Entitlement-Preserving Seat Exchange,\" \"Housing–Job Swap Chains,\" and procurement of \"verified recurring-trip elimination.\" Q contains strong surprises such as \"Adaptive traffic firebreaks,\" but also more readily anticipated ideas such as parcel microhubs, mobile services, and demand-response rewards."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P imports precise rules—\"Cycles unlock matches,\" \"Preserve entitlement, change counterpart,\" and \"Make compatibility explicit\"—and makes the finalist seat exchange depend on multi-party cycles and constraint checking. It also explicitly rejects decorative borrowing: \"A ‘donor-style congestion awareness campaign’ was dropped.\" Q's \"Firebreaks\" and \"Backpressure\" transfers are meaningful, but generally carry less structural detail and fewer interacting rules."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q recommends mechanisms that act directly on network breakdown: \"relocate waiting time,\" release vehicles in \"coordinated batches,\" and prevent blocked intersections from \"propagating congestion.\" P's top choice, the \"Trip-Generator Reliability Regime,\" is chiefly an accountability framework that must induce some separate remedy; its claim that it can \"compel action across several mechanisms\" makes it less directly causal than Q's selected interventions. Q loses some credit because its leading \"cancelling or delaying trips\" concept is close to its own ban on voluntary schedule reorganization."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P pairs each assumption with a concrete falsification procedure, such as \"Offline-match 100 completed jobs from three firms\" or \"Examine the fifty worst congestion episodes and estimate the removable minutes.\" Q names real risks—such as institutions gaming counts and restrictions harming adjacent neighborhoods—but its critiques are less operationally testable and its 1–10 scores are unsupported."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P offers crisp causal reframings such as \"A 500-unit building currently behaves like 500 unrelated logistics customers\" and separating an entitlement from its location. Q is equally sharp when it states that \"A queue need not occupy road space\" and that connectivity can \"transmit failure under extreme load.\" Both name specific mechanisms rather than relying on generic innovation language."
+    }
+  ],
+  "note": "P is stronger at deep structural transfer and falsifiable reasoning; Q is slightly broader and selects more direct traffic-network interventions, but one leading finalist closely resembles its own banned demand-shifting category."
+}

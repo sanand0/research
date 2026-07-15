@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Personal Technical Rider\" and \"Time-Zone Relay Desk\" mainly improve setup reliability and productive work. Q's \"Care-Hours Futures\" and \"Home-Equity-to-Habitat Swap\" target more fundamental constraints—access to care and housing wealth locked to one location—so their potential impact is greater if successful."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "P directly links property certification against a \"minimum viable work-and-life environment\" to fewer failed arrivals. Q similarly links \"approaching legal, tax, pension, insurance and visa thresholds\" to preventive itinerary changes. Both provide credible intervention-to-outcome paths while acknowledging their key assumptions."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P proposes tests using a spreadsheet rider, manually executed overnight reviews and \"envelopes, inexpensive objects\" for families. Q has viable entries such as \"Jurisdiction Autopilot,\" but several leading mechanisms require care to be standardised across countries or \"housing and longevity risks\" to be pooled, creating substantially greater regulatory and operational barriers."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P consistently specifies the buyer, workflow and falsifiable prototype, such as comparing \"setup time, unresolved problems and first-week work output.\" Q gives a concrete MVP for \"Jurisdiction Autopilot,\" but concepts such as \"Care-Hours Futures\" remain closer to a network-level proposition than a clearly testable operating model."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P offers grounded reframings such as making destinations conform to a personal technical specification, treating time-zone difference as \"inventory,\" and using distance as a family storytelling mechanism. Q's \"Care-Hours Futures\" and \"Home-Equity-to-Habitat Swap\" are also novel, but depend more heavily on familiar financial pooling and exchange structures with uncertain practical fit."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P credibly spans environmental compatibility, asynchronous expert work, commitment expiry and tangible family interaction. Q additionally covers legal-threshold avoidance, portable business administration, health recovery, family authority, housing exchange, mission-based work, parametric relocation, portable care and conversion of home equity, reaching more causally distinct core bottlenecks."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's recommendations concentrate attention on four clearly separated pathways: \"Personal Technical Rider,\" \"Time-Zone Relay Desk,\" \"Grandparenting Stagecraft\" and \"Reversible Commitment Layer.\" Q retains adjacent housing-conversion mechanisms—\"Seasonal Habitat Exchange,\" \"Reverse Timeshare Market Maker\" and \"Home-Equity-to-Habitat Swap\"—and elevates two acknowledged low-speed infrastructure bets, making its final portfolio less disciplined."
+    }
+  ]
+}

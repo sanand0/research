@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "check_evidence": {
+    "P": {
+      "banned_list_present": "It explicitly says the conventional ideas are \"removed\" and lists \"Better streaks,\" \"More push notifications,\" and \"Points, badges, levels, leaderboards.\"",
+      "survivors_avoid_banned": "The finalists rely on distinct mechanisms such as \"Emotional Triage,\" \"Personal Mental Antibodies,\" and \"Stress Inoculation Lab,\" rather than rewards, reminders, or catalogue expansion.",
+      "named_transfer_rules": "The finalist \"Transition Layer\" depends on the public-transit rule that \"routes intersect existing journeys,\" while \"Mental Antibodies\" depends on immune-system memory.",
+      "practical_and_wildcard_distinct": "The practical pick \"Emotional Triage\" routes users by immediate need; the wildcard \"Temptation Toll\" intercepts distracting-app usage."
+    },
+    "Q": {
+      "banned_list_present": "Its opening BAN section explicitly excludes \"Streaks, points, badges,\" \"Push notifications,\" \"More content,\" and \"Generic personalization.\"",
+      "survivors_avoid_banned": "The finalists use inherited transitions, personal experimentation, and scarcity: \"Transition Gateway,\" \"Personal Causality Lab,\" and \"Ephemeral Departures.\"",
+      "named_transfer_rules": "\"Ephemeral Departures\" directly uses public transit's rule that \"Fixed departures convert vague intention into arrival behaviour\"; this timing constraint is the mechanism itself.",
+      "practical_and_wildcard_distinct": "\"Transition Gateway\" attaches meditation to existing doorways, whereas \"Ephemeral Departures\" creates urgency through scheduled, non-rewindable sessions."
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "tie",
+      "evidence": "P ranges from interpersonal distribution (\"Gift a Pause\") and household coordination to exposure training and app interception. Q ranges from delayed revelation (\"Tomorrow Relay\") and third-party queues to physical \"Calm Tile\" deployment and therapist artifacts. Neither clearly dominates in mechanism diversity."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q contains several mechanisms far outside the standard meditation-app repertoire: \"Tomorrow Envelope,\" \"Ephemeral Departures,\" \"double-entry accounting,\" and meditation that \"changes the device into a distraction-restricted work state.\" P is strong but includes more readily generated concepts such as \"Emotional Triage,\" \"One-button adaptive session,\" and \"Return without shame.\""
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q states structural rules, derives ideas that require them, and explicitly rejects decorative analogy: \"Zen Metro Map was dropped because it borrowed transit aesthetics rather than transit mechanics.\" Its accounting transfer also maps \"counter-entry,\" \"reconciliation,\" and \"audit trail\" into product mechanics. P's transit and immune-system transfers are useful but less thoroughly stress-tested."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's winner directly inherits daily frequency from existing behavior: \"The app does not need to create a meditation habit. It needs to become the doorway to a habit that already exists.\" P's first recommendation, \"Emotional Triage,\" improves initiation and relevance but does not itself establish as strong a reason for daily recurrence."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q gives each survivor a \"Cheapest falsifying observation\" and supplies explicit kill conditions such as \"Kill the idea if bypass rates remain high after three uses.\" P names real risks—such as predictions sounding \"medically overconfident\" and stress training amplifying anxiety—but does not operationalize falsification as consistently."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P sharply reframes selection friction—\"The home screen should behave like an emergency room, not Netflix\"—and attention competition—\"meditation can parasitise their demand.\" Q is equally specific with \"become the doorway to a habit that already exists\" and \"On-demand abundance may suppress daily use.\" Both name concrete causal claims rather than platitudes."
+    }
+  ],
+  "note": "Q is more disciplined about structural transfer, falsification, and choosing a mechanism tied directly to daily frequency; P offers an equally broad but more clinically and emotionally oriented portfolio."
+}

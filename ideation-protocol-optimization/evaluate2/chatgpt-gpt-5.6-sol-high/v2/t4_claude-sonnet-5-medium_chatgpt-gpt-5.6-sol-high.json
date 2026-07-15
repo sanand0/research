@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest practical mechanism, \"Decomposer Reading,\" changes pacing by forcing memory decay, while Q's \"Commit–Reveal Book\" makes readers expose beliefs before evidence and directly transforms persuasion, surprise, and learning. Q's strongest mechanisms more often alter the core cognitive act of reading rather than impose unusual access conditions."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P explicitly depends on uncertain leaps such as \"forced forgetting produces deeper integration\" and recovering meaning through gestures alone. Q's \"record what they think... then receive the text\" has a more direct pathway from prediction to active comparison and belief revision, while its physical formats likewise specify how altered pages change later interpretation."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's leading mechanisms require readers to tolerate \"mandatory 72-hour gaps,\" travel to fixed coordinates, surrender disclosures, or learn a gesture language. Q can prototype \"Commit–Reveal\" as a simple form and \"Succession Palimpsest\" with tracing paper, labels, and cut-outs, imposing less behavioral and technical friction."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P concretely describes tests such as locking chapters until memory fades, but mechanisms like \"light quiz shows... genuinely faded\" leave the gate ambiguous. Q specifies reader actions, delivery sequence, materials, controls, and failure conditions—for example, committing predictions before opening each evidence section."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P offers non-obvious reframings such as \"Somatic Transcription\" and a book that surfaces passages only when life matches a plot beat. Q is comparably inventive with a \"Succession Palimpsest,\" an unavailable \"Absent Core,\" and temporally separated selves acting as cryptographic shares; neither has a clear originality advantage after discounting eccentricity alone."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P spans memory decay, bodily performance, reciprocal exchange, geographic gating, social dependency, and event-triggered delivery. Q spans epistemic commitment, physiological pacing, destructive material transformation, linguistic decomposition, temporal reconstruction, spatial syntax, and meaning through mutation. Both cover similarly broad and causally distinct territory."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P retains low-value or weakly motivated additions such as \"Book Inheritance,\" \"Negative Option Reading,\" and \"Debt Reading,\" which dilute its stronger mechanisms. Q explicitly consolidates overlaps into mechanisms such as \"Commit–Reveal Book\" and \"Absent Core,\" then advances a more consistently useful survivor set."
+    }
+  ]
+}

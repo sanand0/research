@@ -1,0 +1,43 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P proposes \"permit overbooking\" and targeting a \"keystone node,\" which relies on high-level macro-allocation systems or isolated infrastructure. Q proposes a \"Curb operating system\" and \"Backpressure gates,\" which directly target the physical triggers of systemic gridlock, explicitly addressing how localized friction causes \"spillback that reduces the capacity of the entire network.\""
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's mechanisms rely on highly speculative cross-domain behavioral leaps, such as idea #6 assuming that \"peak-pricing habits transfer across domains\" from utility bills to road choices. Conversely, Q outlines tight, mechanically grounded causal pathways rooted in fluid dynamics, explaining how \"Controlled dwell reduces double-parking and merge turbulence, which restores junction discharge capacity.\""
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's solutions introduce massive institutional and regulatory hurdles, such as assuming a comprehensive, pre-existing \"road-access permit\" system can easily be overbooked and fined. Q provides highly viable, progressive interventions that can be piloted locally with low friction, such as a \"ten-block pilot\" for curb reservations or an opt-in trial \"across three buildings for six weeks.\""
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "Both outputs excel at establishing concrete operational parameters and testing logic. P provides clear pre-deployment simulation criteria (\"simulate removing top-1 node vs. top-10 nodes\"), while Q outlines excellent physical field controls (\"Alternate treated and untreated blocks for four weeks; kill or redesign the idea unless lane-obstruction minutes... fall\")."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "Both entries exhibit outstanding creativity by importing frameworks from completely distinct fields. P uniquely maps airline yield management (\"permit overbooking\") and utility cross-billing to city transit, while Q beautifully adapts concepts from operating systems (\"Backpressure gates\") and immunology (\"Hotspot immune memory\")."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P and Q both span highly diverse regions of the solution space. P covers permit markets, zoning incentives, parking buybacks, and utility pricing channels. Q successfully explores digital curb reservation architectures, automated dynamic turn meshes, destination-level impact budgets, and localized logistics cooperatives."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P curates a distinct, non-redundant set of 10 candidate ideas and explicitly filters them down to the strongest recommendations. Q dilutes its focus by listing 16 items that contain clear padding and conceptual near-duplicates, such as overlapping ideas for curb management (#1 \"Curb operating system\" and #6 \"Curb compaction\") and off-street queuing (#8 \"Queue-neutral building code\" and #16 \"Block mobility lobbies\")."
+    }
+  ]
+}

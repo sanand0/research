@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Transition Gateway\" inherits daily frequency from unavoidable behaviors and can directly make meditation a doorway to meetings or apps. Q's \"Emotional Triage\" and \"Payoff Preview\" mainly improve the experience after users arrive, while its similarly leveraged \"Transition Layer\" is less central to the recommended portfolio."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly links mechanisms to DAU, such as \"a gateway inherits frequency from an existing daily behaviour,\" and supplies falsifying tests and failure conditions. Q's claim that \"90 seconds was enough\" may motivate use, but depends on noisy benefit prediction, while Emotional Triage does not itself create a clear reason to open the app daily."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's \"Emotional Triage\" can be tested as a new entry screen and \"Payoff Preview\" as a lightweight pre-session layer, requiring little new user behavior. P's leading \"Transition Gateway\" requires interception permissions and risks bypass, while \"Ephemeral Departures\" adds scheduling inconvenience and continuous live-programming demands."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies a \"browser extension that intercepts the first calendar-meeting link,\" a 45-second protocol, a control condition, fourteen-day active days, and kill criteria. Q describes concrete interfaces such as state buttons and transition triggers, but its experiments and decision thresholds are generally less fully specified."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P introduces uncommon causal levers such as \"Personal Causality Lab,\" \"Ephemeral Departures,\" and meditation that \"changes the device operating state.\" Q offers strong reframings such as \"Personal Mental Antibodies\" and \"Stress Inoculation Lab,\" but several leading ideas—triage, predicted relief, and contextual prompts—are closer to advanced personalization."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P spans personal experimentation, delayed revelation, scarcity, behavioral gateways, embedded waiting, functional state change, physical cues, and therapist integration. Q spans contextual interception, expected-payoff signaling, problem triage, decision buffering, interpersonal gifts, trigger-specific retrieval, controlled stress rehearsal, household coordination, and lapse recovery."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly merges overlaps, then narrows attention to \"Transition Gateway,\" \"Personal Causality Lab,\" and \"Ephemeral Departures.\" Q retains overlapping pairs such as \"Transition Layer\" and \"Temptation Toll,\" plus \"Payoff Preview\" and \"Relief ETA,\" and repeats them across survivor, recommendation, wildcard, and portfolio sections."
+    }
+  ]
+}

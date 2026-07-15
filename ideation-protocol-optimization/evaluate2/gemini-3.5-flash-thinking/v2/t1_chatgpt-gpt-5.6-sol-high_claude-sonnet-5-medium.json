@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's 'Transition Gateway' directly intercepts high-frequency everyday behaviors, embedding the app 'before opening a user-selected distracting app' to secure reliable daily interactions. Q's top recommendation, 'Sponsor-a-Session', reframes the challenge as a 'B2B distribution problem,' which secures organizational buy-in but provides a much weaker daily behavioral leverage point for the individual user."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P provides a tight causal chain for its primary recommendation, where completing a brief session physically unlocks a required digital state: it will 'unlock the selected app, change status, or activate focus mode.' Q's 'Sponsor-a-Session' relies on a much looser causal path where an employer receives an 'aggregate weekly adherence number,' which lacks an immediate daily mechanism to compel regular individual user return."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's concepts account for real-world execution, suggesting a 'browser extension' to navigate technical limits. Conversely, Q introduces deep viability flaws by putting forward 'Near-Miss Progress Bar,' which it flags as an ethical violation that 'risks manufacturing the exact compulsive-checking behavior' a wellness app should avoid, and 'Frictionless Delivery,' which explicitly 'removes the \"open the app\" unit of DAU entirely,' undermining the brief's core metric."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P outlines explicit testing protocols with crisp details, such as running a '45-second silent breathing protocol' and specific failure thresholds ('Kill the idea if bypass rates remain high after three uses'). Q's test descriptions are comparatively high-level and abstract, advising to 'pitch one existing corporate wellness/EAP partner' or display a score that can be 'semi-synthetic for the test' without defining concrete user-facing parameters."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "Both outputs showcase impressive lateral thinking. P cleverly reframes the app as a clinical tracking tool via the 'Personal Causality Lab' to prove 'whether meditation measurably changes their cognition.' Q is equally inventive, successfully drawing on non-obvious structural frameworks like crop rotation to pitch 'Commons Stewardship' and financial stakes for 'Anti-Streak Insurance.'"
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's candidate pool heavily concentrates on context triggers, scheduling adjustments, and cognitive utility. Q explores a much broader and more diverse spectrum of behavioral forces, spanning financial loss aversion ('Anti-Streak Insurance'), narrative devices ('Skipped Session Letter'), and ecological resource management ('Commons Stewardship')."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P maintains strict curation, filtering 20 concepts down to a final set of three actionable, brief-compliant recommendations. Q compromises its selectivity by devoting substantial space to ideas it admits are structurally or ethically disqualified, explicitly noting that candidate K is 'deprioritized on ethical grounds' and candidate D 'forces redefinition of engagement' away from the requested metric."
+    }
+  ]
+}

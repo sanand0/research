@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's Transition Gateway makes meditation \"the doorway to a habit that already exists,\" directly inheriting daily frequency. Q's Sponsor-a-Session argues that \"one employer partnership can move thousands of users,\" but distribution and sponsorship do not as directly ensure that those users become daily active users."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explains that a gateway \"inherits frequency from an existing daily behaviour\" and that the Causality Lab creates repeated demand for another measurement. Q's Commons Stewardship expects a dipping \"collective calm\" score to raise individual sessions, while Sponsor-a-Session assumes awareness of third-party payment will improve adherence; both require less-supported motivational leaps."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P anticipates concrete failure modes such as gateway \"bypass rates,\" measurement fatigue, and departure-related abandonment. Q's leading mechanisms require enterprise sales and privacy-sensitive aggregate reporting for Sponsor-a-Session, while Commons Stewardship proposes a \"semi-synthetic\" collective score that risks distrust or perceived manipulation."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies a \"browser extension that intercepts the first calendar-meeting link,\" a 45-second protocol, a control condition, and kill criteria. Q also offers tests, but concepts such as \"Frictionless Delivery\" merge the contradictory pathways of making meditation an app-opening toll and eliminating the app open through SMS or voice."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P combines unusual but plausible levers such as meditation as a personal causal experiment, fixed \"departures,\" emotional reconciliation, and a session that changes device state. Q introduces distinctive financial and communal ideas, but several novel-looking proposals reduce to table-stakes gamification or reminders, including the \"Near-Miss Progress Bar,\" \"Meditation Exchange Market,\" and state-triggered notification."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P credibly spans behavioural gateways, self-measurement, scarcity and synchrony, functional state changes, physical triggers, and therapist integration. Q similarly spans third-party financial stakes, passive co-presence, environmental objects, teaching-to-learn, collective stewardship, and concealed content; neither has a clear breadth advantage after weak variants are discounted."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P converges on three mechanisms with distinct causal roles and explicitly rejects weaker overlaps such as \"transit aesthetics rather than transit mechanics.\" Q elevates the speculative Sponsor-a-Session and Commons Stewardship while retaining diluted or ineligible additions such as Un-App delivery, state-triggered notifications, and the rejected Near-Miss mechanism."
+    }
+  ]
+}

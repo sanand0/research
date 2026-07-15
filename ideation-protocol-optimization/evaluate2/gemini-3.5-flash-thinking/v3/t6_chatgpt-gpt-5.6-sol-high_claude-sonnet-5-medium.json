@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's core concepts, like the 'Frailty Escrow' and 'Client Continuity Cooperative,' address fundamental lifecycle and economic risks for aging individuals. Q's 'Domicile arbitrage optimizer' focuses heavily on administrative compliance ('tax-residency day-counts, visa limits, and insurance eligibility windows'), which provides less structural leverage than managing functional decline and income preservation."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's 'Client Continuity Cooperative' provides a logical path where pooling backup capacity directly reduces 'key-person risk' for clients. In contrast, Q's 'Symbiosis stress index' relies on a fragile causal assumption that tracking 'relational-signal decay' can reliably serve as a predictive, actionable indicator for individual health or fraud crises before they manifest."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's recommendations leverage actionable, market-tested frameworks like 'pooled underwriting' and explicit legal escrows. Q's wildcard mechanism requires highly invasive tracking of personal networks ('call frequency, local contact turnover, transaction pattern shifts'), which faces near-insurmountable friction from privacy regulations, data access limitations, and user adoption boundaries."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P outlines clear, actionable market experiments, such as offering 'full indemnity to three long-stay operators in exchange for deposit-free, accelerated approval.' Q's validation steps lean heavily toward passive analytical data work, such as running a 'retrospective study on known crisis cases' or backtesting a rule engine against old logs."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "Both outputs excel at cross-domain reframing. P introduces compelling structural concepts derived from container shipping and constitutional governance ('Two-Key Autonomy'), while Q contributes a highly creative ecological metaphor with the 'Symbiosis stress index,' moving past basic biometrics to map support network health."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's final mix covers a broad surface area including professional risk mitigation, fintech underwriting, elder law, and structural social obligations ('Role Guild'). Q's survivors are far narrower in scope, concentrating primarily on algorithmic rules engines and behavioral data monitoring solutions."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both documents exhibit exceptional discipline. P and Q both establish strict upfront constraints that ban obvious legacy concepts (like senior coliving or travel insurance subscriptions) and utilize rigorous pairwise knockouts to prune their candidate pools down to their highest-value ideas."
+    }
+  ]
+}

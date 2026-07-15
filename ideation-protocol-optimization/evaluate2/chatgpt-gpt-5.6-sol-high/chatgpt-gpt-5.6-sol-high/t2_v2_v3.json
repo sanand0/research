@@ -1,0 +1,42 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "tie",
+      "evidence": "P's \"Reverse Appointment\" removes physical attendance when it is unnecessary, while its \"Elastic Attendance Window\" absorbs timing uncertainty. Q similarly combines \"condition-triggered follow-up,\" which eliminates low-value routine bookings, with \"automatic modality failover,\" which preserves care after non-arrival. Both attack consequential structural bottlenecks."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "P explicitly links protected replacement to earlier slot release and tests the key assumption that patients retain appointments for fear of losing access. Q clearly links modality failover to use of the already-reserved clinician time and acknowledges that telemedicine evidence \"does not by itself prove\" real-time failover. Both provide credible, appropriately qualified causal paths."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Protected Appointment Exchange\" depends on guaranteeing scarce replacement capacity \"within seven days,\" and its elastic windows risk arrival bunching. Q's leading mechanism can be restricted to clinician-marked eligible visits and activated using the existing slot: \"one outbound call after five minutes of non-arrival.\" Q's strongest practical mechanism requires less system-wide reallocation."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies a randomized two-week window pilot and a manual exchange with 30–50 standby patients. Q specifies eligibility marking, a five-minute failover trigger, randomized clinic-days, and explicit failure criteria. Both make the changed workflow and initial prototype readily understandable."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Protected Appointment Exchange\" changes cancellation from surrender into a transferable right with preserved future access, and \"Checkpointed Care\" makes preliminary work retain value after disruption. Q's strongest unusual mechanisms—\"condition-triggered follow-up\" and \"anchor-event clinic\"—are valuable, but its leading modality failover and flexible-window mechanisms are more familiar."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P spans late-bound timing, transferable appointment rights, checkpointed care, mobile delivery, third-party permission, companion coordination, and appointment elimination. Q spans need-triggered scheduling, modality substitution, anchor-event bundling, modular care, proxy attendance, institutional punctuality, mobile delivery, and delegation. Each covers several important causal regions absent from the other."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly merges overlapping candidates such as departure dispatch and day passes into \"Elastic Attendance Window,\" then concentrates on three recommendations. Q claims a pool \"after merging causal overlaps\" but retains close variants such as \"chain-wide care window,\" \"certainty-class booking,\" and \"late-arrival guarantee,\" plus the off-objective \"dual-use clinical session,\" which dilutes the portfolio."
+    }
+  ]
+}

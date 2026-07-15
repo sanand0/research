@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's mechanisms like 'Compulsion Tollbooth' and 'Risk-Event Interlock' target high-frequency, high-emotion daily bottleneck actions (opening addictive apps or sending high-velocity messages) to force immediate user engagement. Q's 'Pre-loaded calendar embedding' and 'Someone-else-triggers' focus on lower-leverage moments, relying on passive scheduling or fragile external social initiative."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "Both outputs present exceptionally tight causal logic. P cleanly maps pathways like 'Existing compulsive launch → unavoidable grounding step → daily piggybacked use', while Q matches this clarity with chains such as 'session auto-prepped... → decision cost at trigger moment to drop to ~zero → increases conversion'."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest ideas ('Compulsion Tollbooth' and 'Risk-Event Interlock') face prohibitive real-world technical and privacy friction, requiring deep OS accessibility logging or browser extensions to track typing speed and app launches. Q's chosen winner, 'Pre-loaded calendar embedding', elegantly uses standard calendar API integrations, making it far more technically viable and likely to survive real platform constraints."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P outlines explicit product boundaries and quantitative experimental tests ('fixed and immediate—no browsing... Kill the idea if fewer than 15% use it on three distinct days'). Q's operational testing is directional but lacks firm numerical benchmarks, proposing to 'audit a sample of connected calendars for % with recurring... events' without defining a hard success threshold."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P introduces highly novel framings by applying industrial safety engineering and tax withholding structures to attention, yielding genuinely fresh mechanisms like the 'Fragmentation Circuit Breaker' and 'Compulsion Tollbooth'. Q's concepts, though creatively framed through kitchen and air traffic control metaphors, ultimately resolve into more traditional calendar scheduling blocks and peer-to-peer accountability nudges."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explores a much wider and more distinct range of technical and environmental solution vectors, including physical anchors ('Physical Anchor Kit'), device physics ('Face-Down Trigger'), and morning routine interception ('Alarm Interlock'). Q's candidate pool is tighter but visually constrained, focusing heavily on calendar states and interpersonal messaging loops."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both outputs demonstrate superb curation and respect for the reader's attention. Each successfully employs a highly structured 'Pairwise knockout' framework to filter down a diverse initial brainstorm into a tight, optimized set of distinct recommendations rather than leaving a bloated list."
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's top mechanisms like 'automatic modality failover' and 'condition-triggered follow-up' salvage lost capacity immediately or structurally eliminate unnecessary demand. Q's 'open-access/same-day scheduling' offers good leverage, but its second recommendation, the 'patient-to-patient appointment resale/trade board', yields lower leverage due to heavy administrative and participation friction among public hospital patients."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P establishes a tight causal link for 'automatic modality failover' by converting an unarrived physical slot into an immediate remote encounter. In contrast, Q's 'resale/trade board' relies on the problematic assumption that patients can safely and accurately swap specialized clinical slots ('clinically safe to swap patients into a slot type'), creating high risks of mismatching care needs."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's recommendations fit cleanly within public healthcare frameworks, utilizing provider-side triage ('clinicians mark whether the visit is eligible') to manage risk. Q's 'appointment resale/trade board' introduces massive data privacy (HIPAA/confidentiality), equity, and administrative hurdles that make real-world deployment highly unviable for a public hospital chain."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P defines explicit protocols, timing parameters, and test boundaries ('If the patient has not arrived five minutes after... staff activate the safest eligible fallback'). P also provides highly specific metrics and quantitative 'kill triggers' for its pilots, whereas Q's tests are more generic ('compare no-show rate to the rest of the clinic over 8 weeks')."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P applies compelling cross-domain frameworks, such as cloud computing failovers and condition-based industrial maintenance, resulting in unique concepts like 'anchor-event clinics' and real-time channel shifting. Q relies on more familiar industry concepts like open-access booking and airline-style ticket transfers."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P maps out a broader solution space across 16 candidates, covering capacity pooling, proxy attendance, clinical modularity, and employer credentials. Q's solution space is narrower, focusing heavily on scheduling timeline modifications and social/logistical supports."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both outputs exhibit excellent selectivity by explicitly banning low-value '30-second mode' solutions (reminders, simple nudges) and using structured knockout frameworks to filter down to their final recommendations."
+    }
+  ]
+}

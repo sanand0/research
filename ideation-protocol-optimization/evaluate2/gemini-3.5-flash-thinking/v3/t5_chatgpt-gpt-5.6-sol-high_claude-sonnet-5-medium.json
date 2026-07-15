@@ -1,0 +1,43 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's mechanisms target highly levered physical triggers of network collapse, noting how 'a few unpredictable curb maneuvers repeatedly consume an active lane and disrupt junction discharge.' Q focuses on macroeconomic volume allocation via 'permit overbooking,' which is less directly levered against the sudden localized phase transitions that cause gridlock."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P relies on sound traffic physics, demonstrating how 'Holding vehicles upstream prevents downstream spillback, which preserves network throughput.' Q's core mechanism relies on 'permit overbooking with deviation-based fines' under the assumption that 'supply self-corrects,' failing to explain how post-hoc financial penalties prevent physical gridlock in real time once vehicles are already on the road."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P's recommendations target organizational actors and commercial infrastructure, such as 'Destination street-impact budgets' and commercial curb rules. Q introduces extreme political and operational friction by suggesting 'utility bills carry a peak-commute-hour surcharge' or issuing tracking fines for permit 'deviation' on open city roads, which are legally and socially unviable compared to P's bounded commercial pilots."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P outlines clear, actionable field experiments, proposing a 'ten-block pilot' to measure if 'lane-obstruction minutes and travel-time variability fall.' Q's proposed testing mechanisms rely almost entirely on desktop modeling rather than physical implementation, such as running a 'simulation model comparing \"fix top 1 node\" vs. \"fix top 10 nodes\".'"
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "Both outputs show exceptional creativity by cross-pollinating concepts from external domains. P masterfully adapts operating system principles ('Curb operating system', 'Backpressure gates'), while Q introduces highly novel economic and ecological analogies, such as airline-style 'permit overbooking' and utility bill integration."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P's solution portfolio spans spatial curb management, localized network gating, institutional demand accountability, and logistical aggregation. Q covers an equally diverse array of levers, including permit trading markets, cross-domain utility pricing, structural bottleneck interventions, and informational dashboards."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both outputs strictly filter their initial candidate ideas to protect reader attention. P uses a rigorous 'Pairwise knockout' process to narrow 16 distinct ideas down to 4 balanced recommendations, while Q employs a 'typicality score' and explicit survivability criteria to distill its pool down to 2 core finalists."
+    }
+  ]
+}

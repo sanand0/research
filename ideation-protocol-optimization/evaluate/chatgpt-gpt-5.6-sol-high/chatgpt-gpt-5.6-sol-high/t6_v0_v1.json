@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q spans materially different mechanisms: a \"portable business entity,\" \"objective risk triggers,\" standardised \"Care-Hours Futures,\" and an asset-conversion \"Home-Equity-to-Habitat Swap.\" P is broad, but more of its pool clusters around planners, concierges, memberships and coordination services such as \"Continuity OS,\" \"Care Circle,\" \"Destination Planner\" and \"Trusted Local Proxy Network.\""
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q reaches further with mechanisms such as \"Reverse Timeshare Market Maker,\" \"Care-Hours Futures\" and \"Home-Equity-to-Habitat Swap.\" P has strong departures—especially \"Friendship Portability Protocol\" and \"Nomad Failure Rehearsal\"—but more of its remaining set resembles sophisticated extensions of familiar travel and retirement services."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q explicitly derives finalists from named rules in \"migratory-bird ecology\" and \"financial derivatives,\" including \"Options preserve future choice\" and \"Illiquid or uncertain resources become usable through pooling, exchange and standardisation.\" The resulting \"Care-Hours Futures\" and \"Home-Equity-to-Habitat Swap\" depend on those structures. P contains metaphors such as \"friendship as portable infrastructure\" but no named cross-domain rule generating a finalist."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "tie",
+      "evidence": "Both identify threshold-avoidance software as the strongest entry point. P calls the \"Retirement Residency Simulator\" the \"Best entry product\" because it avoids requiring a global physical network; Q launches \"Jurisdiction Autopilot\" because it has a \"narrow user, observable pain, low operational burden and a fast software MVP.\" Both are credible strongest choices for the brief."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q names testable assumptions and concrete failure modes, such as \"Countries and clients will accept a standardised intermediary structure,\" \"False triggers, unused reserved capacity,\" and \"Provider insolvency, labour shortages and uneven quality.\" P mostly supplies aggregate labels such as \"Operational difficulty: High\" and broad moat claims like \"trusted partners, and high switching costs,\" with less direct confrontation of failure."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q repeatedly states precise causal insights: \"Family anxiety is often a governance failure, not a sensor or communication failure\" and \"Owning money does not guarantee that a trusted person will appear.\" P also has sharp formulations—\"friendship as portable infrastructure\" and \"reassurance without infantilization\"—but Q connects such insights more consistently to product mechanisms and buyer behaviour."
+    }
+  ],
+  "note": "The biggest difference is that Q converts explicit cross-domain rules into structurally novel products and then stress-tests them, while P offers a rich but more service-centric portfolio."
+}

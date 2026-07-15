@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's recommendations focus on individual consumer value additions like \"Reading Prescriptions\"; Q introduces structural shifts targeting institutional budgets (\"Sell reading outcomes to schools, employers and parents\") and asset ownership (\"Demand-Backed Local IP Foundry\"), which resolve far more consequential growth bottlenecks."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P relies on the psychological leap that a \"provenance story increases willingness-to-pay\" for used copies. Q grounds its main loop in pure transaction economics (\"Purchase price − guaranteed residual value\") and outlines an explicitly self-reinforcing timeline where new book sales directly feed proprietary used supply."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's diagnostic service requires \"trained staff act like optometrists,\" scaling high labor friction across a chain. Q sidesteps this by targeting enterprise buyers with high willingness-to-pay and de-risking retail capital through supply-side shifts like \"Publisher Shelf Options.\""
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P outlines basic experimental tests (\"offer a $25 'reading diagnostic'\"). Q provides highly definitive operational guardrails (\"guaranteed 30-, 60- and 90-day buyback quotes on 200 high-velocity titles\") matched with a distinct phased transition plan from manual testing to automated network routing."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P introduces highly creative domain mappings using fitness frameworks (\"Reading Trainer Membership\"). Q matches this ingenuity by elegantly treating books as tradeable securities with concepts like \"Attention Escrow\" and \"Reader Inventory Syndicates.\""
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's surviving pool largely consists of consumer retail variations (slow shipping, curation, subscriptions). Q's mechanisms cover vastly distinct sectors of the solution space, ranging from B2G municipal contracts (\"Civic Memory Nodes\") to physical production (“Local IP Foundry”) and B2B workplace infrastructure."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both outputs strictly reject standard industry platitudes in their \"BAN\" sections and use rigorous, structured knockout processes to distill large candidate pools into a tight, actionable set of core recommendations."
+    }
+  ]
+}

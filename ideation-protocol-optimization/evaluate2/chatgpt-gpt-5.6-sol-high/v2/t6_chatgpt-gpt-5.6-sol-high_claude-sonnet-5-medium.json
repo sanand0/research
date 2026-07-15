@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Personal Technical Rider,\" \"Time-Zone Relay Desk,\" and \"Reversible Commitment Layer\" address frequent barriers to productive mobility, income, and sustainable relocation. Q's \"Body Double Estate Trustee\" addresses a severe but episodic contingency, while \"Colony Anchor Network\" targets belonging through a commitment-heavy institution, so its strongest mechanisms are generally narrower or less broadly consequential."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies direct pathways such as properties certifying compatibility to reduce failed arrivals and commitments expiring by default to prevent \"location debt.\" Q's pathways depend more often on uncertain links: an \"always-on locator\" does not itself ensure effective assistance, and a \"legally-registered micro-colony\" does not clearly establish durable belonging."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's strongest ideas can begin with low-friction workflows: a \"spreadsheet-based rider,\" manually prepared overnight reviews, or mailed story kits. Q's leading ideas require harder adoption conditions, including cross-jurisdictional legal custody for the \"Estate Trustee,\" willingness to join a fixed group of strangers for \"Colony Anchor,\" and substantial privacy concessions for \"Retiree Squawk ID.\""
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P concretely defines users, payers, operating steps, and prototypes—for example, a rider covering \"15–25 variables\" with an \"arrival acceptance test\" and a relay using standardized decision packets. Q gives useful falsifiers, but mechanisms such as a \"persistent, legally-registered micro-colony\" and \"durable POA + document vault + local-notary network\" leave more of the actual service operation unresolved."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P offers plausible reframings such as treating time-zone difference as purchasable \"inventory\" and making commitments \"decay by default.\" Q is comparably non-obvious in treating membership as belonging to a persistent group rather than a location and framing fixed-domicile assumptions as the estate-planning gap. Neither has a clear originality advantage once plausibility is considered."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P credibly spans environmental certification, asynchronous expert work, automatic obligation expiry, physical family play, continuity transfer, knowledge preservation, and relocation diagnostics. Q spans legal custody, group belonging, safety broadcasting, care handoffs, financial routing, and pacing constraints, but several regions rely on fragile regulatory or behavioral assumptions, reducing the credible breadth of the portfolio."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "P explicitly merges overlaps such as \"Legacy compiler\" into \"Knowledge Estate\" and ultimately foregrounds four differentiated recommendations. Q similarly collapses \"Reverse Homestay Registry\" into \"Symbiont Host Matching\" and narrows to one practical and one wildcard choice. Both retain some marginal candidates, but neither clearly curates attention better after normalization."
+    }
+  ]
+}

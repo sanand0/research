@@ -1,0 +1,53 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "tie",
+      "evidence": "P consolidates into \"twelve mechanisms\" spanning measurement, delayed reveal, gateways, queues, physical infrastructure, and clinical artifacts. Q adds relational and capability mechanisms such as \"Gift a Pause,\" \"Household Quiet Windows,\" and \"Stress Inoculation Lab,\" but has overlap between \"Transition Layer\" and \"Temptation Toll.\""
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Personal Causality Lab,\" \"Tomorrow Relay,\" and \"Ephemeral Departures\" are farther from standard retention ideation. Q includes more immediately available concepts such as \"Emotional Triage,\" \"One-button adaptive session,\" and \"Return Without Shame,\" though its wildcards are strong."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P extracts load-bearing rules—\"Fixed departures convert vague intention into arrival behaviour\" and \"Every consequential entry requires a corresponding counter-entry\"—then explicitly rejects decorative borrowing. Q's transit transfer is solid, but \"Personal mental antibodies\" relies more heavily on metaphor."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P selects \"Transition Gateway\" because it \"inherits frequency from an existing daily behaviour,\" directly addressing DAU. Q leads with \"Emotional Triage\" and \"Payoff Preview,\" which improve the experience after users arrive but provide a weaker reason to open the app daily."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P pairs each assumption with a \"Cheapest falsifying observation\" and gives concrete termination conditions such as \"Kill the idea if bypass rates remain high after three uses.\" Q names real risks—\"Interruptions may feel invasive\" and predictions may seem \"medically overconfident\"—but its tests and rejection thresholds are less developed."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "P crisply states that meditation should become \"the doorway to a habit that already exists.\" Q is equally specific with \"the home screen should behave like an emergency room, not Netflix\" and the proposal to \"parasitise\" demand from distracting apps."
+    }
+  ],
+  "note": "P is more rigorous about causal DAU mechanisms, falsification, and final selection; Q is broader and rhetorically strong but promotes several ideas that mainly improve in-app conversion."
+}

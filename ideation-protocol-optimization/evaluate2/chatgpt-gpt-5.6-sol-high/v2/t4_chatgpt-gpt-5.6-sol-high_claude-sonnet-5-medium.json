@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Commit–Reveal Book\" changes the epistemic act by exposing prior beliefs before evidence, while \"Succession Palimpsest\" makes reading alter future readability. Q's \"Decomposer Reading\" and \"Somatic Transcription\" are radical, but forced forgetting and gesture-only intake have less reliable potential to improve how books are understood."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P gives credible pathways such as recording \"what would change their mind\" before revealing evidence, making belief revision directly observable. Q assumes that locking chapters until memory has \"measurably faded\" will deepen integration and that movements can transmit paragraph-level meaning, but neither effect follows without substantial missing dependencies."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P can prototype its strongest idea with a \"six-page essay as a simple form\" and test pulse gating with ordinary input controls. Q's leading formats impose severe adoption burdens: mandatory 72-hour gaps, travel to GPS coordinates, personal disclosure as payment, or learning an unspecified gesture code."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies the reader flow for commit–reveal, the physical operations of the palimpsest, and concrete comparison tests. Q is clear about surface behavior, but key operations remain unresolved: how a \"light quiz\" proves genuine forgetting and how one can \"encode one paragraph as 10 gestures\" with recoverable semantics."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P combines unusual but intelligible levers, such as treating one person's \"past, present, and future versions\" as cryptographic parties and making interpretation physically transform the book. Q's \"Somatic Transcription\" and \"Consideration Reading\" are also novel, but their novelty depends more heavily on questionable semantic transmission or access friction."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P spans epistemic commitment, physiological pacing, temporal secret sharing, destructive material succession, syntactic decomposition, inference from absence, spatial adjacency, and meaning through textual mutation. Many of Q's proposals—including \"Geographic Book,\" \"Book Inheritance,\" \"Consideration Reading,\" \"Negative Option Reading,\" and \"Decomposer Reading\"—are variants of gating when text becomes accessible."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly merges causal duplicates—such as \"Commit–Reveal Edition + Evidence Escrow\"—and removes weaker variants before presenting a differentiated survivor set. Q retains comparatively weak additions such as \"Reverse Archaeology\" and \"Marginalia Relay,\" while several other candidates repeat the same access-gate premise under different triggers."
+    }
+  ]
+}

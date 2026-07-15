@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's 'Sponsor-a-Session' builds a corporate accountability model that relies on long-cycle B2B engagement, whereas Q's 'Transition Gateway' directly intercepts high-frequency routines like 'joining the first work meeting,' targeting a more immediate behavioral bottleneck for daily activation."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P proposes 'Frictionless Delivery' which it admits 'removes the open the app unit of DAU entirely,' undermining its own causal path to the metric, whereas Q's 'Transition Gateway' presents a tight, logically sound sequence that converts unavoidable daily workflows directly into app sessions."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P promotes a 'Near-Miss Progress Bar' despite explicitly noting that it 'risks manufacturing the exact compulsive-checking behavior a meditation product should be reducing,' whereas Q filters its concepts to ensure all recommendations are ethically viable and user-acceptable."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P outlines high-level validation steps like pitching a 'wellness/EAP partner,' while Q provides highly specific prototyping instructions, detailing a 'browser extension that intercepts the first calendar-meeting link each day' alongside clear thresholds for failure like 'bypass rates.'"
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P introduces highly creative cross-domain reframings like agronomy-based 'Commons Stewardship,' while Q matches this depth with structural innovations like an accounting-inspired 'Open-Loop Ledger'; both avoid obvious copycat features."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "Both sets successfully break out of the table-stakes constraints, with P mapping out distinct financial, physical, and community levers, and Q spanning an equally rich landscape of cognitive testing, operational scarcity, and environmental triggers."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P dilutes its final presentation by retaining options it acknowledges are brief-mismatches or ethically compromised, whereas Q systematically filters 20 candidates into 12 merged mechanisms, curating a clean final set of recommendations without filler."
+    }
+  ]
+}

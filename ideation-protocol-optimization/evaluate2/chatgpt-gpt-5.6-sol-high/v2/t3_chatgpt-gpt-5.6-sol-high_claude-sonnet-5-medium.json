@@ -1,0 +1,45 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P combines a chain-wide \"Residual-Value Exchange\" with an \"Outcome & Credential Lab\" and demand-backed proprietary IP, potentially changing transaction economics, institutional revenue, and product scarcity. Q's strongest levers—\"Circular Provenance Loop\" and a $25 \"Reading Prescriptions\" service—are useful but generally narrower in economic impact."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P clearly traces buyback quotes to returned inventory, higher-margin resale, repeat visits, and liquidity, and ties the outcome lab to diagnostics and verified improvement. Q gives credible paths for buybacks and prescriptions, but combinations such as \"Publisher-as-Customer (discovery floor + trend data)\" and \"Circular Provenance Loop\" conflate causally distinct mechanisms whose components may not reinforce one another."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's leading tests—a two-store buyback pilot and a one-store \"$25 paid reading diagnostic\"—require modest capability changes and can be adopted incrementally. Several of P's strongest alternatives, including selling verified outcomes to institutions and becoming a \"demand-sensing IP foundry,\" require new expertise, sales channels, assessment credibility, and rights-production capabilities within three years."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies eligibility, return periods, condition grading, cross-branch routing, presold cohorts, pre-tests, post-tests, kill criteria, and a staged three-year rollout. Q also provides concrete pilots, such as tracking repeat visits for the buyback program, but gives less detail on how prescriptions, provenance pricing, or publisher data products would operate beyond the initial test."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P offers plausible reframings such as shifting inventory risk upstream, selling measured reading outcomes, creating demand-backed local intellectual property, and treating shelves as measurable media. Q has novel proposals such as \"Author Equity Stakes\" and \"Slow Ship Arbitrage,\" but its most plausible recommendations largely reduce to a buyback loop and paid human recommendation."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P credibly spans resale liquidity, learning credentials, inventory-risk allocation, proprietary publishing, advertising revenue, collection management, distributed access infrastructure, and authentication markets. Q spans several regions too, including consignment, rental, workspace, coaching, paid placement, and resale, but more of its portfolio clusters around monetizing shelves, staff, or circulating books."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "P uses explicit merging, falsification tests, and knockouts to concentrate on \"Residual-Value Exchange,\" the outcome lab, and the IP foundry, though speculative items such as \"Reader Capital Pools\" consume attention. Q ends with only \"Circular Provenance Loop\" and \"Reading Prescriptions,\" but retains dilutive mechanisms such as \"Slow Ship Arbitrage\" and \"Bookstore-as-Studio\" and merges distinct ideas under broad labels."
+    }
+  ]
+}

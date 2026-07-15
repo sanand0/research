@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Commit–Reveal Book\" and \"Succession Palimpsest\" mainly deepen reflection and make interpretation consequential; Q's \"Zero-Knowledge Book\" and \"Evidence-Harvest Book\" additionally target whether understanding transfers into usable knowledge and real-world observation, offering broader potential impact."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Pulse-Gated Prose\" assumes physiological transitions indicate readiness, and \"Future-Self Secret Share\" assumes delayed incompleteness produces synthesis—both uncertain links. Q's \"Prediction-First Book\" connects prediction to attention, while \"Contradiction Dossier\" directly makes credibility assessment the reading activity, yielding more credible causal paths."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest practical mechanism, \"Commit–Reveal Book,\" is viable, but prominent alternatives require sensors, destructive materials, or multi-day fragmentation. Q pairs low-friction formats such as \"Prediction-First Book\" and \"Contradiction Dossier\" with explicit recognition of adoption risks, making its strongest portfolio easier to deploy and sustain."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies concrete prototypes such as a \"six-page essay\" with commitment and control groups and an \"eight-page handmade edition\" with tracing paper and cut-outs. Q explains mechanisms clearly—for example, \"carefully placed prediction prompts and delayed reveals\"—but usually stops short of equally precise usage or testing procedures."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P introduces unusually distinct causal forms such as \"meaning in mutation rather than stable statements,\" a book whose reading \"physically transforms\" later layers, and syntax split across passes. Q's \"Tactile Syntax\" and \"Evidence-Harvest Book\" are original, but several leading mechanisms resemble established prediction, recall, dossier, or spaced-release practices."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P spans belief commitment, temporal fragmentation, mutable media, physiological pacing, grammatical decomposition, absence, folding, and semantic drift. Q covers those broad territories while also adding mastery proofs, environmental evidence collection, role-based access, inter-reader consensus, bodily performance, tactile grammar, and intergenerational stewardship."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly \"Merge[s] by causal mechanism\" and narrows its portfolio to eight survivors and four recommendations. Q claims a merged set but retains close relatives such as \"Prediction-First Book\" and \"Commitment Edition,\" and gives substantial attention to weaker entries such as \"Tasting-Menu Book,\" diluting the strongest mechanisms."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true,
+      "evidence": {
+        "banned_list_present": "It explicitly removes “Generic SMS,” “Fines,” “Blanket or algorithmic overbooking,” and other conventional approaches.",
+        "survivors_avoid_banned": "The finalists use branching pathways such as “uncertain response opens a short blocker menu,” rather than disguised reminders or punishment.",
+        "named_transfer_rules": "It names “Fault-tolerant computing” and the rule “Graceful degradation preserves the core outcome,” which directly becomes the “Care failover ladder.”",
+        "practical_and_wildcard_distinct": "The practical pick identifies and reallocates uncertain bookings; the wildcard redefines success as completing “the next clinically useful step.”"
+      }
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true,
+      "evidence": {
+        "banned_list_present": "It explicitly excludes “More reminder messages,” “Financial penalties,” “Blanket overbooking,” and similar defaults.",
+        "survivors_avoid_banned": "Its finalists rely on “Yes · Maybe · No” branching and a controlled appointment exchange, not generic reminders, penalties, or blanket overbooking.",
+        "named_transfer_rules": "It mentions that “Airlines, restaurants, and ticketing systems manage capacity dynamically,” but does not name and derive the finalist from a specific structural rule.",
+        "practical_and_wildcard_distinct": "The practical idea is uncertainty triage with alternative care paths; the wildcard is a patient-to-patient slot “swap” system."
+      }
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q covers additional causal mechanisms such as reducing procedural uncertainty through an “appointment rehearsal,” explaining clinical purpose, creating a “same-day recovery queue,” and addressing fear with a nurse or peer navigator. P is broad but consolidates more heavily around scheduling, routing, and capacity recovery."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P moves beyond ordinary attendance tactics by treating missed attendance as a fault-tolerance problem: “completing the next clinically useful step,” making “the household” the scheduling unit, and targeting the hospital’s own unreliability. Q has strong ideas, but more of them resemble advanced versions of familiar flexible booking and patient-support practices."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P explicitly extracts rules from “Fault-tolerant computing” and “Theme parks,” including “Graceful degradation,” “Redundancy,” and “Virtual queues,” then maps them into concrete mechanisms. Q’s industry analogy—“Airlines, restaurants, and ticketing systems”—supports the exchange idea but remains a loose comparison rather than a worked structural transfer."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "Both select early uncertainty capture, but P pairs it tightly with recoverable capacity: “an ‘unsure’ patient is not yet a no-show” and the slot can be reclaimed immediately. It also recommends measuring “completed care episodes within 7 and 30 days,” avoiding the narrower optimization of Q’s primary metric, “unused clinician capacity.”"
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P states testable assumptions and concrete failure modes for every survivor, such as “arrival bunching,” “gaming,” “privacy concerns,” “low route density,” and digital exclusion. Q mainly assigns difficulty labels and gives benefits; it does not comparably interrogate how its finalists could fail."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P states precise mechanism-level insights: uncertainty is “a recoverable state,” “Attendance is not binary,” and hospital delays can train patients to treat times as approximate. Q articulates useful reframings such as a “transferable reservation,” but its practical rationale is less sharply separated from the feature description."
+    }
+  ],
+  "note": "P is stronger at disciplined cross-domain derivation, explicit falsifiability, and metric reframing; Q has slightly wider human and behavioural coverage."
+}

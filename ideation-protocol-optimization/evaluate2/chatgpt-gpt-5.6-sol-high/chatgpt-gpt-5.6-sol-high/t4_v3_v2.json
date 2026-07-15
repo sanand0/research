@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Rule-Later Edition\" and \"Model-Boundary Edition\" directly target model construction and transfer, potentially changing what readers understand and can apply. Q's \"Commit–Reveal Book\" has comparable leverage, but \"Pulse-Gated Prose\" and \"Succession Palimpsest\" chiefly alter pacing or experience, with less consequential likely benefit."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P gives credible chains such as cases → reader-generated rule → corrective contrast → improved transfer, and transformed redundancy → detectable, recoverable misunderstanding. Q's commit–reveal pathway is similarly sound, but claims that a \"slow exhale\" signals cognitive readiness or that physical transformation produces cumulative interpretation rely on weaker dependencies."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P can prototype \"Rule-Later\" by rewriting twelve pages and \"Model-Boundary\" by resegmenting an essay, with modest reader behaviour change. Q's strongest alternative requires clause-level gating, sustained physiological interaction, destructive materials, or installments that readers cannot revisit, creating greater adoption and production friction."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P concretely specifies four-part Rule-Later units and an A/B transfer test; Q specifies what readers record in Commit–Reveal and a six-page controlled test. Both make the proposed change, reader interaction, prototype, and falsification criterion similarly clear."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers strong reframings such as \"Context-Locked\" passages and an \"Error-Correcting Edition,\" but many mechanisms adapt established prediction, induction, retrieval, or evidence-first learning techniques. Q introduces more unusual plausible levers, especially treating \"past, present, and future versions\" as secret-sharing parties and making reading physically transform later-readable layers."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P ranges across prediction, rule induction, contextual timing, longitudinal annotation, conceptual segmentation, redundancy, and evidence ordering. Q covers those epistemic regions while also adding causally distinct embodied pacing (\"Pulse-Gated Prose\"), destructive substrate change (\"Succession Palimpsest\"), syntactic reconstruction, spatial folding, temporal secret sharing, and meaning through textual mutation."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "P removes framing-only or busywork mechanisms and concentrates on \"Rule-Later,\" \"Model-Boundary,\" \"Context-Locked,\" and \"Error-Correcting.\" Q likewise merges overlaps and foregrounds four recommendations, though speculative choices such as \"Pulse-Gated Prose\" remain. Both curate meaningfully but retain some lower-confidence material."
+    }
+  ]
+}

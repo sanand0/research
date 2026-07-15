@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest proposal ('Personal Technical Rider') focuses on resolving operational and workspace discomforts. In contrast, Q's 'Body Double Estate Trustee' targets the much higher-stakes bottleneck of legal vulnerability and 'statelessness-by-choice' for an aging, domicile-free cohort."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P outlines clear, direct causal chains from intervention to outcome, such as standardizing physical spaces to guarantee day-one work productivity. Q relies on major leaps, such as assuming local third parties will willingly sign legal 'liability agreements' for incoming travelers in its 'Sector Handoff Care Chain'."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P's concepts are highly deployable and intentionally sidestep regulatory hurdles (e.g., starting with a 'spreadsheet-based rider'). Q's ideas face severe real-world friction, with Q itself noting that its 'Geo-Router's regulatory assumption is the shakiest' and its pacing rule 'strips agency from an autonomy-selected population' leading to market rejection."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P provides extreme granularity on product configurations ('Desk and chair geometry. Monitor arrangement... Approach test') and granular instructions for its cheap tests. Q remains more abstract, proposing high-level research exercises like 'interview five cross-border estate/immigration lawyers' instead of immediate product tests."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "Both versions introduce excellent, non-obvious reframings. P introduces the brilliant mechanism of default-decaying obligations ('Reversible Commitment Layer'), while Q cleanly imports structural frameworks from air traffic control and biology ('Separation Minima Pacing Rule', 'Colony Anchor Network')."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P develops a broad array of 18 distinct mechanisms that span physical hardware, B2B workflows, behavioral defaults, and asynchronous family relationships. Q's pool of 16 ideas leans more uniformly toward tracking, legal routing, and institutional coordination structures."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both outputs demonstrate exceptional discipline by establishing strict 'BAN' boundaries to filter out seven generic generalist ideas immediately, using rigorous matrix charts to filter out weak or repetitive concepts."
+    }
+  ]
+}

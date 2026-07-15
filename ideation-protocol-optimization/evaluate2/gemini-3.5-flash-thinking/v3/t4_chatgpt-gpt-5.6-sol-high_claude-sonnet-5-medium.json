@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P targets the cognitive bottleneck of active comprehension (\"Books deliver finished language faster than readers can build... a model\"), restructuring text to optimize schema retention. Q focuses on breaking the structural constraints of \"one mind, one continuous session,\" but its primary recommendation (\"Transmission-gated\") functions more as a viral distribution loop than a leverage point that transforms the reading experience itself."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P maps out tight cognitive causal paths, explaining how a \"failed hypothesis creates a precise location into which the author's model can fit.\" Q relies on highly speculative leaps; its wildcard option (\"Dream-incubation\") assumes without biological backing that \"sleep-state audio produces retrievable narrative content, not noise,\" which undermines its causal credibility."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's ideas (such as the \"Rule-Later Edition\" or \"Context-Locked Edition\") require no specialized technology and can be immediately deployed using basic printing formats or envelopes. Q's \"Transmission-gated\" format introduces immense social friction that is highly likely to cause user abandonment, while its \"Dream-incubation\" requires specialized biometric conditions to function."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P outlines explicit architectural parameters for its formats, specifying a strict \"repeated four-part units\" layout for its main recommendation. Q describes its concepts clearly at a high level but provides fewer precise structural details on how the book's internal content is actually re-engineered."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P delivers excellent structural reframings by borrowing from engineering concepts like \"Error-Correcting Codes\" to prevent cognitive drops. Q displays an equally impressive level of non-obvious ideation by drawing from epidemiology and sleep science to propose \"Transmission-gated\" and \"Dream-incubation\" reading models."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "tie",
+      "evidence": "P's mechanisms effectively span internal text structures, information states, and cognitive sequence constraints. Q explores a completely different but equally diverse region of the solution space, mapping formats across geographic triggers, biological states, and socially synchronized networks."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P applies a strict filter to its concepts, explicitly discarding candidates that \"alter framing but do not reliably produce a better internal model.\" Q utilizes a knockout bracket but still includes a viral growth hack (\"Transmission-gated\") that acts as a gatekeeper to content rather than a pure reading format mechanism."
+    }
+  ]
+}

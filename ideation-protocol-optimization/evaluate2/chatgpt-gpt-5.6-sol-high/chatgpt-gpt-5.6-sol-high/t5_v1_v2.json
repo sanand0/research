@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P combines system-level levers such as \"destination traffic budgets,\" \"origin pulse metering,\" and \"adaptive traffic firebreaks,\" which could affect congestion across major network bottlenecks. Q's strongest direct lever, the \"Building Logistics Kernel,\" is narrower, while its broad \"Trip-Generator Reliability Regime\" still depends on institutions finding effective remedies."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "P credibly links \"removing a few percent of trips near collapse\" and preventing downstream spillback to improved flow. Q similarly gives direct pathways such as making \"the building—not each occupant—the logistics customer\" and exchanging service locations while preserving entitlements. Both also contain mechanisms whose effects depend on substantial coordination."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"meter vehicles at garage and neighborhood exits\" and dynamically restricted road links face substantial compliance, displacement, and political risks. Q offers more adoptable entry points, such as adding \"a common receiving point and a human dispatcher\" or computing hypothetical seat exchanges before moving anyone."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P concretely describes interventions such as releasing vehicles \"in coordinated batches,\" but several proposals stop at the policy concept. Q repeatedly specifies the actor and prototype—for example, recruit one building, consolidate selected jobs, and compare vehicle entries with a control building—making implementation and falsification clearer."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P introduces plausible non-obvious levers including an \"office-swap marketplace\" and \"adaptive traffic firebreaks.\" Q is comparably inventive with \"entitlement-preserving seat exchange\" and a \"Vendor Job Exchange\" using multi-party matching rather than ordinary routing."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans direct network-flow control (\"origin pulse metering\"), responsive demand reduction, freight consolidation, workplace relocation, development offsets, and institutional traffic budgets. Q includes outage reduction and accountability, but much of its portfolio—\"Service Edge Network,\" \"Household Task Compiler,\" \"Building Logistics Kernel,\" and seat exchanges—clusters around localizing, aggregating, or reallocating trips."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's practical shortlist gives three related peak-management mechanisms: \"trip demand response,\" \"destination virtual queues,\" and \"origin pulse metering.\" Q's selected \"Trip-Generator Reliability Regime,\" \"Building Logistics Kernel,\" and \"Entitlement-Preserving Seat Exchange\" preserve three more distinct causal levers and therefore use the reader's attention more efficiently."
+    }
+  ]
+}

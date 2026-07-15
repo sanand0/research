@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Emotional Triage\" and \"Payoff Preview\" mainly improve initiation after the user reaches the app. Q's \"Transition Gateway\" inherits frequency from an existing daily behavior, while \"Personal Causality Lab\" creates an additional daily reason to return, giving Q stronger direct leverage on DAU."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P credibly argues that \"Browsing meditation content requires the same executive function that stress has already impaired,\" but several ideas depend on uncertain benefit predictions or voluntary trigger recognition. Q more tightly links cause to outcome: a gateway \"inherits frequency from an existing daily behaviour,\" and each recommendation includes a falsifiable dependency and kill condition."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P's \"Emotional Triage\" can be tested as a new entry screen using existing content, and \"Personal Mental Antibodies\" largely reuses sessions that already worked. Q's \"Personal Causality Lab\" requires trustworthy repeated cognitive measurement, while \"Ephemeral Departures\" deliberately removes convenience and requires sustained live-session operations."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P gives concrete examples such as targeting \"After a calendar meeting\" and \"Before opening a user-selected distracting app.\" Q goes further by specifying prototypes, comparisons, and failure thresholds—for example, intercepting the first meeting link with a browser extension and killing the test if bypass rates remain high."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers strong reframings such as \"Stress Inoculation Lab\" and making meditation a \"Temptation Toll.\" Q adds several plausible mechanisms with less conventional causal levers, including personal randomized self-experimentation, delayed self-authored reveals, and \"Ephemeral Departures\" that use scarcity rather than availability to drive action."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans controlled exposure, pre-decision interruption, anonymous co-presence, household coordination, interpersonal gifting, lapse recovery, emotional unloading, and context-triggered practice. Q is also broad, but \"Meeting Vestibule,\" \"Chosen App Gate,\" \"Queue Calm SDK,\" \"Loading-Screen Silence,\" and \"Calm Tile\" substantially cluster around embedding meditation in recurring contexts."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P retains overlaps such as \"Payoff Preview\" with \"Relief ETA\" and \"Transition Layer\" with \"Temptation Toll,\" then recommends several related bets. Q explicitly merges variants into mechanisms such as \"Transition Gateway\" and \"High-Stakes Buffer\" and concentrates its final attention on two practical ideas and one wildcard."
+    }
+  ]
+}

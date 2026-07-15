@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's strongest proposal, \"risk-triaged human callback,\" improves outreach to likely absentees; Q's \"Elastic Attendance Window\" and \"Reverse Appointment\" remove exact-time compliance or unnecessary physical attendance, addressing larger structural sources of no-shows."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P credibly links targeted callbacks to attendance, but proposals such as \"visible social-cost waitlist\" and a kiosk assumed to create a \"stronger cue\" depend on uncertain behavioral effects. Q more directly connects mechanisms to outcomes: protected replacement encourages early slot release, while late-bound windows absorb timing uncertainty."
+    },
+    {
+      "dimension": "viability",
+      "winner": "tie",
+      "evidence": "P's \"top-decile\" callback pilot and confirmation-copy test are inexpensive, but human calling requires recurring staff capacity and \"auto-cancelled unless\" check-in risks excluding vulnerable patients. Q's elastic windows require workflow changes, yet its manual \"replacement within seven days\" exchange pilot is adoptable and aligns patient incentives."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies model inputs, a targeted callback group, and an A/B message test; Q similarly specifies a \"three-hour guaranteed window,\" virtual queue, randomized comparison, and a 30–50-patient manual exchange. Both make their leading mechanisms readily testable."
+    },
+    {
+      "dimension": "originality",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P offers non-obvious variations such as \"boarding-call check-in\" and neighborhood pre-check-in, but several remain commitment or outreach interventions. Q introduces deeper reframings—\"late-bound service access,\" transferable appointment rights with protected access, and care beginning before deciding whether attendance is needed."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P spans targeted contact, positive incentives, clinician relationships, physical cues, household coordination, social pressure, and active check-in. Q covers distinct structural levers including timing-risk absorption, checkpointed care, graceful degradation, transferable rights, mobile delivery, third-party permission, cross-branch portability, and eliminating unnecessary visits."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P retains weaker or overlapping items such as a pledge, clinician-identity messaging, a social-cost SMS, and two attendance rewards, and it conflates an actual slot marketplace with mere waitlist visibility. Q more consistently merges by causal pathway and elevates three complementary mechanisms: flexible access, protected exchange, and appointment avoidance."
+    }
+  ]
+}

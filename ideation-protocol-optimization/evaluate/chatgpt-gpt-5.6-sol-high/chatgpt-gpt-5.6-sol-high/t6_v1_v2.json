@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q sustains more distinct mechanisms, including environmental certification (\"Personal Technical Rider\"), regional redundancy (\"Duplicate Life Modules\"), preventive maintenance, reversible commitments, asynchronous physical play, load shedding and burstwork. P is also broad, but several ideas cluster around cross-border administration, housing exchange and portable care."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q moves further beyond standard retiree services with ideas such as commitments that \"expire unless renewed,\" a room-scale \"cognitive ‘home state’,\" and distance used \"as a storytelling mechanic.\" P has strong departures such as \"Care-Hours Futures,\" but its leading pick, \"Jurisdiction Autopilot,\" remains closer to familiar compliance software."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q explicitly assigns operational rules to candidates—\"Positive handoff,\" \"Preventive maintenance,\" \"Reversible intervention\"—and makes finalists depend on them. For example, the relay requires acknowledgement and a standardized handoff packet, while commitments decay by default. P derives credible concepts from \"migratory-bird ecology\" and \"financial derivatives,\" but some borrowing is looser and less visibly carried into the final product mechanics."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's \"Personal Technical Rider\" directly targets a frequent, retiree-specific problem, has an institutional payer—\"Property operators pay to qualify\"—and can be tested with a spreadsheet. P's \"Jurisdiction Autopilot\" is credible, but its claim of a \"fast software MVP\" understates the legal-liability and rule-maintenance difficulty that P itself identifies."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q converts assumptions into concrete falsification tests, such as \"Kill the idea if clarification cycles erase the time-zone advantage\" and testing whether ledger entries \"become stale without heavy prompting.\" P names real risks—\"provider insolvency,\" \"clinical liability,\" \"hostile incumbent contracts\"—but generally stops short of specifying decisive observations that would invalidate an idea."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "Both articulate sharp, mechanism-level insights. P observes that users may pay \"to avoid creating a legal obligation\" and that money does not ensure \"a trusted person will appear.\" Q reframes time-zone difference as \"inventory\" and argues that mobility may be limited by \"the residue left behind by every previous place.\" Neither set relies mainly on platitudes."
+    }
+  ],
+  "note": "The biggest difference is that Q turns its borrowed rules into explicit product dependencies and falsifiable tests, whereas P offers broader venture concepts with stronger portfolio and business-model framing."
+}

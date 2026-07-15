@@ -1,0 +1,46 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P combines a \"Residual-Value Exchange,\" verified reading outcomes, and a \"Demand-Backed Local IP Foundry,\" changing transaction economics, institutional revenue, and product ownership. Q's strongest levers—\"Circular certainty,\" membership, and \"B2B Reading-as-a-Service\"—are valuable but rely more on improving participation and ancillary revenue around conventional retail."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P specifies reinforcing pathways such as buybacks producing \"proprietary used-book liquidity\" and diagnostics producing \"measured transformation,\" with explicit falsification tests. Q also gives a credible \"discover → buy → read → return or resell\" loop, but claims such as membership monetising \"identity, ritual, place and relationship\" depend on a less firmly demonstrated conversion into sustained profit."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q emphasizes relatively familiar, incrementally deployable mechanisms: a \"simple paid membership,\" controlled buybacks, managed institutional libraries, and publisher research pilots. P's portfolio depends more heavily on difficult new capabilities or counterparties, including publishers retaining inventory risk, stores credentialing learning, and the chain becoming an IP producer."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P translates mechanisms into concrete prototypes, such as placing \"30-, 60- and 90-day buyback quotes on 200 high-velocity titles\" and preselling a six-week, 30-person cohort with kill criteria. Q provides useful rollout details—six pilot stores, 200–300 buyback titles, and ten anchor contracts—but its membership and B2B bundles leave more ambiguity about the minimum viable service."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P introduces several plausible but uncommon causal levers, including \"Publisher Shelf Options,\" \"Attention Escrow,\" guaranteed residual-value pricing, and demand-backed ownership of local intellectual property. Q's notable ideas such as \"Seasonal reading guilds,\" memberships, genre-specialized stores, and managed libraries are mostly recognizable extensions of community retail, events, curation, and subscriptions."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans distinct mechanisms in asset liquidity, outcome certification, inventory-risk allocation, advertising markets, IP creation, collection stewardship, civic archiving, attention contracts, and authentication. Q spans resale, social membership, institutional services, publishing research, space use, and specialization, but several items—\"Reading Commons membership,\" guilds, access keys, and concierge service—share the same belonging-and-engagement pathway."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P explicitly merges overlaps, subjects survivors to falsification and pairwise knockout, then concentrates on two practical mechanisms and one wildcard. Q retains overlapping entries such as \"B2B Reading-as-a-Service\" and \"Civic reading contracts,\" and recommends five bundled strategies, including membership components previously separated as guilds, access keys, and concierge service."
+    }
+  ]
+}

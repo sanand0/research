@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "P",
+      "margin": 2,
+      "evidence": "P targets structural bottlenecks through mechanisms such as \"Home-Equity-to-Habitat Swap,\" \"Care Escrow and Family SLA,\" and legal-threshold avoidance. Q's strongest mechanisms, including \"Personal Technical Rider\" and \"Grandparenting Stagecraft,\" improve important but generally narrower aspects of mobility, work setup, and family connection."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q directly connects a \"machine-readable specification\" to property certification and proposes testing it with a spreadsheet before building infrastructure. P's \"Jurisdiction Autopilot\" is credible but depends on accurately representing changing multi-country rules and converting them into recommendations without crossing into unreliable legal advice."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q's leading products can begin with lightweight manual tests, such as \"20 overnight reviews\" or a \"manual cancellation-and-expiry calendar.\" P's practical ideas require legal accuracy, trusted local responders, or coordinated cross-border operations, while its wildcards explicitly require substantial \"actuarial and regulatory learning.\""
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies concrete MVPs such as \"location import, manual work-day classification\" and rules for five jurisdiction pairs. Q is similarly specific, proposing a spreadsheet-based rider for 20 users and defined measurements such as setup time, unresolved problems, and first-week work output."
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "P reframes care insecurity as uncertain availability rather than merely affordability and converts housing wealth into \"spatial optionality.\" Q comparably reframes time-zone difference as purchasable working-day \"inventory\" and distance from grandchildren as a storytelling mechanism rather than only a communication problem."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P spans legal-threshold avoidance, portable business administration, health recovery, family crisis governance, mission-based work, risk-triggered relocation, care capacity, and housing-asset conversion. Q spans several distinct regions—environment compatibility, asynchronous expert work, family play, continuity, and commitment decay—but covers fewer major financial, healthcare, legal, and housing mechanisms."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q subjects survivors to explicit falsification tests such as \"kill the idea if clarification cycles erase the time-zone advantage\" and finishes with four sharply differentiated recommendations. P distinguishes practical ideas from wildcards, but still devotes substantial attention to mechanisms it concedes may require years of regulatory, provider, or actuarial development."
+    }
+  ]
+}

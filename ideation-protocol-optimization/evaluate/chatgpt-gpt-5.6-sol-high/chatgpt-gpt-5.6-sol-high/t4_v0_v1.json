@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "P": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": false,
+      "practical_and_wildcard_distinct": true
+    },
+    "Q": {
+      "banned_list_present": true,
+      "survivors_avoid_banned": true,
+      "named_transfer_rules": true,
+      "practical_and_wildcard_distinct": true
+    }
+  },
+  "comparisons": [
+    {
+      "dimension": "spread",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q spans substantially different mechanisms: material semantics (\"Tactile Syntax\"), embodied performance (\"Somatic Score\"), proof-gated access (\"Zero-Knowledge Book\"), elapsed-time release, group consensus, real-world evidence collection, and intergenerational transmission. P is also diverse, but several ideas cluster around alternate views, contextual release, and adaptive sequencing."
+    },
+    {
+      "dimension": "non_obviousness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q reaches farther with concepts such as \"Completion is designed to exceed an individual lifespan,\" texture as \"a semantic channel comparable to tense or punctuation,\" and proving understanding \"without reproducing the author’s explanation.\" P has strong outliers—especially \"Forgetting Book\" and \"Dream-Responsive Book\"—but more of its pool resembles familiar adaptive, perspective-switching, or epistolary formats."
+    },
+    {
+      "dimension": "transfer_quality",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q explicitly derives formats from named domains and structural rules: under \"Cryptographic protocols,\" it imports \"Information is revealed only when the correct proof or key is supplied\" into the \"Zero-Knowledge Book,\" and \"A secret can be distributed so no participant possesses the whole\" into the \"Secret-Sharing Edition.\" P uses suggestive labels such as \"Semantic Zoom\" and \"Memory-Palace Edition\" but does not state and apply a named transfer rule."
+    },
+    {
+      "dimension": "selection_soundness",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "Q’s recommendations combine feasible mechanisms—\"requires only carefully placed prediction prompts\"—with strong format-level wildcards such as \"Some chapters should not be written by the author\" and a work that \"exists only in conversation.\" P’s \"Semantic Zoom Book\" is highly usable, but is closer to sophisticated layered publishing than a radical new way to read."
+    },
+    {
+      "dimension": "critique_honesty",
+      "winner": "Q",
+      "margin": 2,
+      "evidence": "Q gives concrete assumptions and mechanism-specific risks throughout: \"Dominant participants may force superficial agreement,\" \"Readers may abandon the work or manipulate device clocks,\" and tactile grammar faces \"Manufacturing\" cost and unfamiliar conventions. P mainly assigns ratings such as \"Practicality: Low\" or \"Improves understanding: Uncertain\" without similarly testing its proposals."
+    },
+    {
+      "dimension": "insight_articulation",
+      "winner": "tie",
+      "evidence": "Both state sharp, mechanism-level insights. P identifies \"positional continuity\" and says the fragmented book \"exists between readers rather than inside a copy.\" Q similarly names a reader’s expectation as \"unwritten text,\" perspective as \"an access-control system,\" and time as \"punctuation.\" These are specific claims rather than generic novelty assertions."
+    }
+  ],
+  "note": "The biggest difference is that Q systematically converts explicit rules from unrelated domains into reading mechanisms, while P relies more on strong standalone invention."
+}

@@ -1,0 +1,41 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "tie",
+      "evidence": "P's 'Decomposer Reading' creates high leverage by forcing memory decay as an active processing step, while Q's 'Commit–Reveal Book' targets the reader's epistemic accountability before receiving information. Both offer powerful, non-obvious cognitive levers that structurally upgrade the value of reading."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "Both provide exceptionally tight causal pathways backed by clear validation experiments. P proposes testing Decomposer reading by checking 'depth of recall/insight against free-pacing controls,' while Q outlines an equally solid verification method for 'Pulse-Gated Prose' by comparing 'comprehension and abandonment' against fixed-interval pauses."
+    },
+    {
+      "dimension": "viability",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's recommendations require intense behavioral friction, such as waiting for forced forgetting or learning a non-verbal language ('Somatic Transcription'). Q offers much higher near-term viability with 'Commit–Reveal Book' and 'Pulse-Gated Prose,' noting they can be implemented using 'a simple form' or deployed 'across existing digital devices' without alienating the user."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "Both outputs excel at detailing exactly how their mechanisms function and can be prototyped. P explicitly maps out a test to 'encode one paragraph as a 10-move gesture sequence,' which matches Q's highly actionable specification requiring a reader to 'hold a key through a slow exhale before consequential clauses appear.'"
+    },
+    {
+      "dimension": "originality",
+      "winner": "tie",
+      "evidence": "Both outputs effectively bypass obvious paradigms by utilizing advanced lateral borrowing. P introduces highly original mechanisms like 'Decomposer Reading' inspired by ecological decay, while Q generates equally inventive frameworks like applying cryptographic protocols to text visibility in 'Commit–Reveal Book.'"
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P details only two distinct mechanisms in its final recommendations section. Q delivers a broader, more robustly distributed final portfolio by expanding four entirely distinct causal pathways spanning epistemic gates, physiological gating, ecological degradation of physical text, and temporal secret sharing."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "tie",
+      "evidence": "Both models exhibit rigorous screening discipline. They establish a strict 7-item 'BAN' list of conventional tropes (such as P's ban on 'summary apps' and Q's ban on 'compression') and successfully use structured knockout rounds to purge redundant ideas from their final selections."
+    }
+  ]
+}

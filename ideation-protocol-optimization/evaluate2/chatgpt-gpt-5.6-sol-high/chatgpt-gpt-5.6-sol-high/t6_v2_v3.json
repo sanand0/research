@@ -1,0 +1,44 @@
+{
+  "comparisons": [
+    {
+      "dimension": "leverage",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P's \"Personal Technical Rider\" and \"Grandparenting Stagecraft\" reduce recurring setup friction and family-role erosion; Q's \"Client Continuity Cooperative\" and \"Frailty Escrow\" target the more consequential bottlenecks of sustained employability and safe transition after diminished capacity."
+    },
+    {
+      "dimension": "causal_soundness",
+      "winner": "tie",
+      "evidence": "P clearly links property certification to \"fewer failed arrivals\" and structured handoffs to overnight expert output; Q similarly links documented backups to lower client key-person risk and portable underwriting to reduced deposits. Both expose their key assumptions through falsifiable tests."
+    },
+    {
+      "dimension": "viability",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P can begin with a \"spreadsheet-based rider,\" manual overnight reviews, and mailed story kits. Q's strongest portfolio includes a \"portable guarantee backed by...pooled underwriting\" and a \"legally structured control system,\" which face materially heavier institutional, regulatory, and cross-jurisdictional dependencies."
+    },
+    {
+      "dimension": "operational_clarity",
+      "winner": "tie",
+      "evidence": "P specifies a rider with \"15–25 variables,\" an arrival test, users, payers, and pilot measurements; Q specifies documented work, nominated backups, contractual guarantees, and concrete adoption tests. Both make the proposed change and first prototype readily understandable."
+    },
+    {
+      "dimension": "originality",
+      "winner": "P",
+      "margin": 1,
+      "evidence": "P offers unusually fresh causal levers such as commitments that \"decay by default\" and distance becoming a physical storytelling mechanic in \"Grandparenting Stagecraft.\" Q's \"being needed\" Role Guild and pooled continuity are thoughtful reframings, but more closely resemble service clubs, cooperatives, guarantees, and advance directives."
+    },
+    {
+      "dimension": "mechanism_diversity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P credibly spans environmental standardization, asynchronous expert work, family play, and automatic commitment expiry. Q reaches further across distinct institutional pathways: professional risk pooling, housing underwriting, delegated authority, reciprocal roles, task custody, fraud attestation, settlement options, and multi-party home exchange."
+    },
+    {
+      "dimension": "selectivity",
+      "winner": "Q",
+      "margin": 1,
+      "evidence": "P retains several adjacent continuity-diagnostics mechanisms, including \"Handoff Ledger,\" \"Continuity Maintenance Schedule,\" \"Delegation Ladder,\" \"Location Dependency Graph,\" and \"Load-Shed Switch.\" Q more consistently separates pathways, explicitly distinguishing, for example, \"Frailty Escrow\" as decision governance from \"One-Click Landing\" as reserved physical capacity."
+    }
+  ]
+}
