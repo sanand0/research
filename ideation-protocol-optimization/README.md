@@ -76,7 +76,5 @@ Here are my takeaways: <!-- https://claude.ai/chat/8e13e695-564c-47f2-8446-747a7
 2. ⭐ Rubric design is really knowing what you want/need. To do this, iterating on output matters.
 3. Position bias is real. Always check if an (P, Q) comparison matches a (Q, P) comparison.
 4. Models are still biased towards longer content, and potentially towards their own output.
-5. A 20-word prompt tied the full skill on selection, so most of a protocol's words are scaffolding.
-6. Convergence is the weakest step across every version and the likeliest place the next real gain hides.
 
-**Takeaway**: Figure out what you _really_ want, first. Then, ask a smart model for a prompt that optimizes for it. Benchmark if you'll use it a lot.
+**How to optimize a prompt or skill**: Research and figure out what you _really_ want, first. Then, ask a smart model for a prompt that optimizes for it. Benchmark only if you'll use it a lot - it's still a lot of work, and meta-prompting does a good job. [gbrain skillopt](https://github.com/garrytan/gbrain/blob/master/docs/guides/skillopt.md) might be premature optimization.

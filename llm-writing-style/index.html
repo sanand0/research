@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LLM Writing Styles</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20fill='%230969da'%20width='64'%20height='64'%20rx='12'/%3E%3Ctext%20x='32'%20y='44'%20text-anchor='middle'%20font-family='Helvetica,Arial,sans-serif'%20font-size='30'%20font-weight='bold'%20fill='%23fff'%3EAa%3C/text%3E%3C/svg%3E" />
+<script src="https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js"></script>
+<style>
+/* GitHub Primer palette & components */
+:root {
+  --bg: #ffffff;
+  --bg-subtle: #f6f8fa;
+  --ink: #1f2328;
+  --ink-dim: #59636e;
+  --line: #d1d9e0;
+  --accent: #0969da;
+  --accent-fg: #ffffff;
+  --accent-soft: #ddf4ff;
+  --hover: #f3f4f6;
+  --overlay-shadow: 0 8px 24px rgba(140, 149, 159, 0.2);
+}
+[data-theme="dark"] {
+  --bg: #0d1117;
+  --bg-subtle: #161b22;
+  --ink: #e6edf3;
+  --ink-dim: #9198a1;
+  --line: #30363d;
+  --accent: #4493f8;
+  --accent-fg: #ffffff;
+  --accent-soft: #121d2f;
+  --hover: #1c2128;
+  --overlay-shadow: 0 8px 24px #010409;
+}
+* { box-sizing: border-box; }
+html { scrollbar-color: var(--line) transparent; }
+body {
+  margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+  font-size: 14px; line-height: 1.5; color: var(--ink); background: var(--bg);
+}
+.mono-font { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+
+header {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  padding: 0.7rem 1rem; border-bottom: 1px solid var(--line); background: var(--bg-subtle);
+}
+h1 { font-size: 1rem; font-weight: 600; margin: 0; display: flex; align-items: center; gap: 0.5rem; }
+h1 svg { width: 18px; height: 18px; color: var(--ink-dim); }
+#description { color: var(--ink-dim); margin: 0; flex: 1 1 20rem; font-size: 0.85rem; }
+
+.btn {
+  border: 1px solid var(--line); background: var(--bg-subtle); color: var(--ink);
+  border-radius: 6px; padding: 3px 12px; cursor: pointer; font: inherit; font-size: 0.85rem;
+  display: inline-flex; align-items: center; gap: 0.35rem; line-height: 20px;
+  transition: background 0.12s;
+}
+.btn:hover { background: var(--hover); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+.btn svg { width: 16px; height: 16px; }
+.btn[aria-pressed="true"] { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.counter {
+  background: color-mix(in srgb, var(--ink) 10%, transparent);
+  border-radius: 999px; padding: 0 6px; font-size: 0.75rem; font-weight: 500; line-height: 18px;
+}
+
+#controls {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;
+  padding: 0.55rem 1rem; border-bottom: 1px solid var(--line);
+}
+.ctl-label { color: var(--ink-dim); font-size: 0.8rem; }
+select {
+  border: 1px solid var(--line); background: var(--bg-subtle); color: var(--ink);
+  border-radius: 6px; padding: 3px 6px; font: inherit; font-size: 0.85rem; cursor: pointer;
+}
+select:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
+.sep { width: 1px; align-self: stretch; background: var(--line); margin: 0 0.3rem; }
+
+/* GitHub-style select menu */
+.dd { position: relative; }
+.dd summary { list-style: none; }
+.dd summary::-webkit-details-marker { display: none; }
+.dd-menu {
+  position: absolute; z-index: 20; top: calc(100% + 4px); left: 0;
+  min-width: 18rem; max-width: 26rem; background: var(--bg); border: 1px solid var(--line);
+  border-radius: 12px; box-shadow: var(--overlay-shadow); overflow: hidden;
+}
+.dd-head {
+  display: flex; align-items: center; padding: 7px 7px 7px 16px;
+  border-bottom: 1px solid var(--line); font-size: 0.75rem; font-weight: 600;
+}
+.dd-head span { flex: 1; }
+.dd-head button {
+  border: 0; background: none; color: var(--accent); cursor: pointer; font: inherit;
+  font-size: 0.75rem; padding: 2px 8px; border-radius: 6px;
+}
+.dd-head button:hover { background: var(--hover); }
+.dd-list { max-height: min(24rem, 60vh); overflow-y: auto; padding: 4px 0; }
+.dd-item {
+  display: flex; align-items: flex-start; gap: 8px; width: 100%; text-align: left;
+  border: 0; background: none; color: var(--ink); cursor: pointer; font: inherit;
+  font-size: 0.85rem; padding: 6px 16px;
+}
+.dd-item:hover, .dd-item:focus-visible { background: var(--hover); outline: none; }
+.dd-item svg { width: 16px; height: 16px; flex: none; margin-top: 2px; visibility: hidden; color: var(--ink); }
+.dd-item[aria-checked="true"] svg { visibility: visible; }
+.dd-item .desc { display: block; color: var(--ink-dim); font-size: 0.75rem; }
+
+.hint { color: var(--ink-dim); font-size: 0.75rem; padding: 0.4rem 1rem; margin: 0; border-bottom: 1px solid var(--line); }
+
+/* The single scroller */
+#grid-wrap { flex: 1; overflow: auto; padding: 0 1rem 2rem; }
+#grid { display: grid; gap: 0; min-width: min-content; }
+.corner { position: sticky; top: 0; left: 0; z-index: 4; background: var(--bg); }
+.col-head {
+  position: sticky; top: 0; z-index: 3; background: var(--bg-subtle);
+  border: 1px solid var(--line); border-left: 0; padding: 8px 12px; font-weight: 600; font-size: 0.85rem;
+}
+.grid-inner .col-head:first-of-type { border-left: 1px solid var(--line); }
+.row-head {
+  position: sticky; left: 0; z-index: 2; background: var(--bg-subtle);
+  border: 1px solid var(--line); border-top: 0; padding: 8px 12px; font-weight: 600; font-size: 0.85rem;
+  width: 11rem;
+}
+.sub { display: block; font-weight: 400; font-size: 0.75rem; color: var(--ink-dim); }
+.head-btn { all: unset; cursor: pointer; }
+.head-btn:hover, .head-btn:focus-visible { color: var(--accent); text-decoration: underline; }
+.cell {
+  background: var(--bg); border: 1px solid var(--line); border-left: 0; border-top: 0;
+  padding: 10px 12px; overflow: hidden; position: relative;
+  max-height: var(--cell-max, 24rem); cursor: pointer;
+}
+.cell:hover { background: var(--bg-subtle); }
+.cell:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.cell.faded::after {
+  content: ""; position: absolute; inset: auto 0 0 0; height: 2.5rem;
+  background: linear-gradient(transparent, var(--bg));
+}
+.cell:hover.faded::after { background: linear-gradient(transparent, var(--bg-subtle)); }
+.sample { margin-bottom: 0.8rem; }
+.sample:last-child { margin-bottom: 0; }
+.sample-tag {
+  display: inline-block; font-size: 0.7rem; font-weight: 600; color: var(--accent);
+  background: var(--accent-soft); border-radius: 999px; padding: 0 8px; margin-bottom: 4px;
+}
+.output {
+  font: inherit; font-size: 0.85rem; line-height: 1.55;
+  white-space: pre-wrap; overflow-wrap: break-word; margin: 0;
+}
+body.mono .output { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 0.78rem; }
+.missing { color: var(--ink-dim); font-style: italic; font-size: 0.85rem; }
+
+dialog {
+  border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink);
+  max-width: min(52rem, 92vw); max-height: 85vh; padding: 0; box-shadow: var(--overlay-shadow);
+}
+dialog::backdrop { background: rgba(1, 4, 9, 0.6); }
+.dlg-head {
+  display: flex; align-items: center; gap: 0.6rem; padding: 12px 16px;
+  border-bottom: 1px solid var(--line); background: var(--bg-subtle);
+}
+.dlg-head h2 { font-size: 0.95rem; font-weight: 600; margin: 0; flex: 1; }
+.dlg-body { padding: 16px; overflow: auto; max-height: calc(85vh - 4rem); }
+.dlg-meta { color: var(--ink-dim); font-size: 0.8rem; margin: 0 0 0.6rem; }
+.prompt-box {
+  background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+  border-radius: 6px; padding: 10px 12px; margin: 0 0 1rem;
+  font-size: 0.85rem;
+}
+#error {
+  margin: 2rem 1rem; background: var(--bg-subtle); border: 1px solid var(--line);
+  border-radius: 6px; padding: 1rem 1.2rem; max-width: 40rem;
+}
+#error code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--hover); padding: 0 4px; border-radius: 4px; }
+@media (max-width: 700px) {
+  .row-head { width: 7rem; }
+  #description { display: none; }
+}
+</style>
+</head>
+<body>
+<header>
+  <h1><i data-lucide="pen-line"></i> LLM Writing Styles</h1>
+  <p id="description"></p>
+  <button class="btn" id="font-toggle" aria-pressed="false" title="Toggle monospace output">
+    <i data-lucide="code"></i> mono
+  </button>
+  <button class="btn" id="theme-toggle" title="Toggle dark mode"><i data-lucide="moon"></i></button>
+</header>
+
+<div id="controls"></div>
+<p class="hint">Click a cell for full text and the style prompt (copyable). Click a row / column header for details. Arrow keys move between cells, Enter opens. The URL captures the view — share it.</p>
+<div id="grid-wrap"><div id="grid" role="grid" class="grid-inner"></div></div>
+<div id="error" hidden></div>
+
+<dialog id="dlg">
+  <div class="dlg-head">
+    <h2 id="dlg-title"></h2>
+    <button class="btn" id="dlg-copy" title="Copy"><i data-lucide="copy"></i> copy</button>
+    <form method="dialog"><button class="btn" title="Close"><i data-lucide="x"></i></button></form>
+  </div>
+  <div class="dlg-body" id="dlg-body"></div>
+</dialog>
+
+<script type="module">
+// @ts-check
+const $ = (s, el = document) => el.querySelector(s);
+const grid = $("#grid"), controls = $("#controls"), dlg = $("#dlg");
+
+let data;
+try {
+  data = await (await fetch("results.json")).json();
+} catch (e) {
+  const err = $("#error");
+  err.hidden = false;
+  err.innerHTML = `Could not load <code>results.json</code> (${e.message}).<br>
+    If you opened this via <code>file://</code>, serve the folder instead:<br>
+    <code>uv run python -m http.server 8000</code> then open <code>http://localhost:8000/</code>`;
+  throw e;
+}
+
+$("#description").textContent = data.description;
+
+// Dimension registry. Value order everywhere follows results.json order.
+const dims = {
+  task: { label: "Tasks", ids: data.tasks.map((t) => t.id), name: (id) => id, info: Object.fromEntries(data.tasks.map((t) => [t.id, t])) },
+  style: { label: "Styles", ids: data.styles.map((s) => s.id), name: (id) => dims.style.info[id].name, info: Object.fromEntries(data.styles.map((s) => [s.id, s])) },
+  model: { label: "Models", ids: data.models, name: (id) => id.split("/").slice(-1)[0], info: {} },
+};
+const lookup = new Map(data.results.map((r) => [`${r.task}|${r.style}|${r.model}`, r.output]));
+
+// ---- State (bookmarkable via #?key=value) ----
+const defaults = { rows: "style", cols: "model", task: [dims.task.ids[0]], style: [...dims.style.ids], model: [...dims.model.ids] };
+const state = structuredClone(defaults);
+
+function readHash() {
+  const p = new URLSearchParams(location.hash.replace(/^#\??/, ""));
+  for (const k of ["rows", "cols"]) if (p.has(k) && dims[p.get(k)]) state[k] = p.get(k);
+  for (const d of Object.keys(dims))
+    if (p.has(d)) state[d] = p.get(d).split(",").filter((id) => dims[d].ids.includes(id));
+  if (state.rows === state.cols) state.cols = Object.keys(dims).find((d) => d !== state.rows);
+}
+function writeHash() {
+  const p = new URLSearchParams();
+  p.set("rows", state.rows); p.set("cols", state.cols);
+  for (const d of Object.keys(dims))
+    if (state[d].length !== dims[d].ids.length || d === "task") p.set(d, state[d].join(","));
+  history.replaceState(null, "", "#?" + p.toString());
+}
+
+// ---- Controls: built ONCE, then synced in place so focus is never lost ----
+const refs = { axis: {}, counters: {}, items: {} };
+
+function buildControls() {
+  const label = (t) => Object.assign(document.createElement("span"), { className: "ctl-label", textContent: t });
+  for (const axis of ["rows", "cols"]) {
+    controls.append(label(axis === "rows" ? "Rows:" : "Columns:"));
+    const sel = document.createElement("select");
+    sel.setAttribute("aria-label", axis);
+    for (const d of Object.keys(dims)) sel.add(new Option(d, d));
+    sel.onchange = () => {
+      const other = axis === "rows" ? "cols" : "rows";
+      if (state[other] === sel.value) state[other] = state[axis]; // swap
+      state[axis] = sel.value;
+      update();
+    };
+    refs.axis[axis] = sel;
+    controls.append(sel);
+  }
+  controls.append(Object.assign(document.createElement("div"), { className: "sep" }));
+
+  for (const d of Object.keys(dims)) {
+    const dd = document.createElement("details");
+    dd.className = "dd";
+    const summary = document.createElement("summary");
+    summary.className = "btn";
+    const counter = Object.assign(document.createElement("span"), { className: "counter" });
+    refs.counters[d] = counter;
+    summary.append(`${dims[d].label} `, counter, icon("chevron-down"));
+    const menu = document.createElement("div");
+    menu.className = "dd-menu";
+    const head = document.createElement("div");
+    head.className = "dd-head";
+    head.append(
+      Object.assign(document.createElement("span"), { textContent: `Filter ${dims[d].label.toLowerCase()}` }),
+      menuBtn("All", () => { state[d] = [...dims[d].ids]; update(); }),
+      menuBtn("None", () => { state[d] = []; update(); }),
+    );
+    const list = document.createElement("div");
+    list.className = "dd-list";
+    list.setAttribute("role", "menu");
+    refs.items[d] = {};
+    for (const id of dims[d].ids) {
+      const b = document.createElement("button");
+      b.className = "dd-item";
+      b.setAttribute("role", "menuitemcheckbox");
+      b.append(icon("check"));
+      const text = document.createElement("span");
+      text.append(dims[d].name(id));
+      const desc = d === "task" ? dims.task.info[id].text : d === "model" ? id : "";
+      if (desc) text.append(Object.assign(document.createElement("span"), { className: "desc", textContent: desc.length > 90 ? desc.slice(0, 90) + "…" : desc }));
+      if (d === "style") b.title = dims.style.info[id].prompt;
+      b.append(text);
+      b.onclick = () => {
+        state[d] = state[d].includes(id) ? state[d].filter((x) => x !== id) : dims[d].ids.filter((x) => state[d].includes(x) || x === id);
+        update();
+      };
+      refs.items[d][id] = b;
+      list.append(b);
+    }
+    menu.append(head, list);
+    dd.append(summary, menu);
+    controls.append(dd);
+  }
+  // Close menus on outside click / Escape
+  document.addEventListener("click", (e) => {
+    for (const dd of controls.querySelectorAll("details[open]")) if (!dd.contains(e.target)) dd.open = false;
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") for (const dd of controls.querySelectorAll("details[open]")) dd.open = false;
+  });
+}
+function syncControls() {
+  for (const axis of ["rows", "cols"]) refs.axis[axis].value = state[axis];
+  for (const d of Object.keys(dims)) {
+    refs.counters[d].textContent = `${state[d].length}/${dims[d].ids.length}`;
+    for (const [id, b] of Object.entries(refs.items[d])) b.setAttribute("aria-checked", String(state[d].includes(id)));
+  }
+}
+function menuBtn(text, fn) {
+  const b = document.createElement("button");
+  b.textContent = text;
+  b.onclick = fn;
+  return b;
+}
+function icon(name) {
+  const i = document.createElement("i");
+  i.dataset.lucide = name;
+  return i;
+}
+
+// ---- Grid ----
+function renderGrid() {
+  const [rd, cd] = [state.rows, state.cols];
+  const sd = Object.keys(dims).find((d) => d !== rd && d !== cd); // stacked-in-cell dim
+  const rows = state[rd], cols = state[cd], stack = state[sd];
+  grid.innerHTML = "";
+  grid.style.gridTemplateColumns = `max-content repeat(${cols.length}, minmax(20rem, 34rem))`;
+  grid.append(el("div", "corner", ""));
+  for (const c of cols) grid.append(headCell("col-head", cd, c));
+  rows.forEach((r) => {
+    grid.append(headCell("row-head", rd, r));
+    cols.forEach((c) => {
+      const combos = stack.map((s) => ({ [rd]: r, [cd]: c, [sd]: s }));
+      const cell = el("div", "cell");
+      cell.tabIndex = 0;
+      cell.setAttribute("role", "gridcell");
+      for (const combo of combos) {
+        const out = lookup.get(`${combo.task}|${combo.style}|${combo.model}`);
+        const sample = el("div", "sample");
+        if (stack.length > 1) sample.append(el("div", "sample-tag", dims[sd].name(combo[sd])));
+        sample.append(out != null ? el("pre", "output", out) : el("div", "missing", "no result"));
+        cell.append(sample);
+      }
+      if (!combos.length) cell.append(el("div", "missing", `no ${dims[sd].label.toLowerCase()} selected`));
+      cell.onclick = () => openCellDialog(combos);
+      cell.onkeydown = (e) => cellKeys(e, cols.length);
+      grid.append(cell);
+      requestAnimationFrame(() => cell.classList.toggle("faded", cell.scrollHeight > cell.clientHeight));
+    });
+  });
+}
+function headCell(cls, d, id) {
+  const div = el("div", cls);
+  const btn = el("button", "head-btn", dims[d].name(id));
+  btn.onclick = () => openInfoDialog(d, id);
+  btn.title = d === "style" ? "Show style prompt" : d === "task" ? "Show task text" : id;
+  div.append(btn);
+  if (d === "model") div.append(el("span", "sub", id.split("/").slice(0, -1).join("/")));
+  if (d === "task") div.append(el("span", "sub", dims.task.info[id].text.slice(0, 80) + "…"));
+  return div;
+}
+function el(tag, cls, text) {
+  const e = document.createElement(tag);
+  e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+function cellKeys(e, ncols) {
+  const cells = [...grid.querySelectorAll(".cell")];
+  const i = cells.indexOf(e.currentTarget);
+  const moves = { ArrowRight: i + 1, ArrowLeft: i - 1, ArrowDown: i + ncols, ArrowUp: i - ncols };
+  if (e.key in moves) { e.preventDefault(); cells[moves[e.key]]?.focus(); }
+  if (e.key === "Enter") e.currentTarget.click();
+}
+
+// ---- Dialogs ----
+let copyText = "";
+function openDlg(title, bodyNodes, copy) {
+  $("#dlg-title").textContent = title;
+  $("#dlg-body").replaceChildren(...bodyNodes);
+  copyText = copy;
+  dlg.showModal();
+}
+function openCellDialog(combos) {
+  const nodes = [], copies = [];
+  for (const c of combos) {
+    const out = lookup.get(`${c.task}|${c.style}|${c.model}`) ?? "(no result)";
+    nodes.push(
+      el("p", "dlg-meta", `${dims.style.name(c.style)} · ${dims.model.name(c.model)} · task: ${c.task}`),
+      el("div", "prompt-box", dims.style.info[c.style].prompt),
+      el("pre", "output", out),
+    );
+    copies.push(dims.style.info[c.style].prompt);
+  }
+  const c0 = combos[0];
+  openDlg(combos.length === 1 ? dims.style.name(c0.style) : "Comparison", nodes, [...new Set(copies)].join("\n\n"));
+}
+function openInfoDialog(d, id) {
+  if (d === "style") {
+    const s = dims.style.info[id];
+    openDlg(s.name, [el("p", "dlg-meta", `id: ${s.id} — copy this prompt to ask any model to write in this style`), el("div", "prompt-box", s.prompt)], s.prompt);
+  } else if (d === "task") {
+    const t = dims.task.info[id];
+    openDlg(`Task: ${t.id}`, [el("p", "dlg-meta", t.purpose), el("div", "prompt-box", t.text)], t.text);
+  } else {
+    openDlg(dims.model.name(id), [el("p", "dlg-meta", id)], id);
+  }
+}
+$("#dlg-copy").onclick = async (e) => {
+  await navigator.clipboard.writeText(copyText);
+  e.currentTarget.lastChild.textContent = " copied!";
+  setTimeout(() => (e.currentTarget.lastChild.textContent = " copy"), 1200);
+};
+
+// ---- Theme & font toggles ----
+const root = document.documentElement;
+root.dataset.theme = localStorage.theme ?? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+$("#theme-toggle").onclick = () => {
+  root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+  localStorage.theme = root.dataset.theme;
+};
+$("#font-toggle").onclick = (e) => {
+  document.body.classList.toggle("mono");
+  e.currentTarget.setAttribute("aria-pressed", String(document.body.classList.contains("mono")));
+};
+
+function update() { writeHash(); syncControls(); renderGrid(); lucide.createIcons(); }
+readHash();
+buildControls();
+addEventListener("hashchange", () => { readHash(); update(); });
+update();
+</script>
+</body>
+</html>

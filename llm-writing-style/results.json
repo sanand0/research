@@ -1,0 +1,677 @@
+{
+  "schema_version": "1.0",
+  "description": "Cross-model tests of ten writing-style prompts designed to produce prose far from common LLM writing defaults.",
+  "tasks": [
+    {
+      "id": "project",
+      "text": "The project is late because nobody has final authority. Appoint one decision-maker by Friday, empower them to cut scope, and ship a smaller version next week. Another meeting will only delay it.",
+      "purpose": "Concrete managerial recommendation testing causality, authority, deadlines, actions, and a rejected alternative."
+    },
+    {
+      "id": "ai_prose",
+      "text": "AI-generated prose is becoming more competent yet more homogeneous. Readers remember unresolved tension, private jargon, and abrupt omissions more than polished friendliness. Therefore, preserve a real constraint or eccentricity instead of asking for a generic “human” tone.",
+      "purpose": "Abstract argument testing a trend, a three-item comparison, contrast, and a recommendation."
+    }
+  ],
+  "styles": [
+    {
+      "id": "verbatim_spoken",
+      "name": "Raw verbatim spoken answer",
+      "prompt": "Write as a raw verbatim spoken answer: include one abandoned start that changes direction, one self-correction of wording, and one unfinished clause; use fillers only where thought genuinely catches, never as decorative stuttering; preserve every factual claim and add no framing or polish."
+    },
+    {
+      "id": "telegraph_cablese",
+      "name": "Telegraph cablese",
+      "prompt": "Write as a telegram charged by the word: delete articles, pronouns, and connective padding where possible; use terse clauses separated by STOP; preserve every fact, relationship, negation, and list item."
+    },
+    {
+      "id": "cross_examination",
+      "name": "Hostile cross-examination",
+      "prompt": "Write as a hostile cross-examination in terse Q:/A: exchanges: force each causal claim, assumption, comparison, deadline, and recommendation to answer a pointed question; group parallel facts rather than atomizing them; add no exposition."
+    },
+    {
+      "id": "contesting_marginalia",
+      "name": "Contesting marginalia",
+      "prompt": "Write as a bland official summary sabotaged by bracketed marginal notes: the surface voice must euphemize or evade, while the notes state the source meaning accurately and more bluntly; no note may dispute a source fact, and add nothing outside the two voices."
+    },
+    {
+      "id": "field_naturalist_log",
+      "name": "Field naturalist’s log",
+      "prompt": "Write as a field naturalist’s log in three terse moves—Observation, Inference, Action—using specimen-like labels and concrete evidence; preserve uncertainty and every factual relationship; add no retrospective essaying."
+    },
+    {
+      "id": "unified_diff",
+      "name": "Unified diff of thought",
+      "prompt": "Write as a unified diff of thought: deleted lines beginning “-” show conventional, evasive, or mistaken wording being removed; added lines beginning “+” state the sharper source meaning; use only diff lines, and make the revision itself carry the argument."
+    },
+    {
+      "id": "silent_stage_score",
+      "name": "Silent stage score",
+      "prompt": "Write only as bracketed stage directions for silent actors using ordinary labeled props: turn causes into visible arrangements, decisions into actions, and consequences into movements; use no dialogue, narration, injury, violence, or symbolic melodrama."
+    },
+    {
+      "id": "oral_formulaic_epic",
+      "name": "Oral-formulaic epic",
+      "prompt": "Write as oral-formulaic epic verse: use fixed epithets, deliberate repeated clauses, and one concrete heroic action by the source’s own central actor; make repetition carry causality, invent no named mythic figures, and avoid modern explanatory prose."
+    },
+    {
+      "id": "usenet_1998_rant",
+      "name": "Grumpy 1998 Usenet rant",
+      "prompt": "Write as a grumpy 1998 Usenet post by an irritated domain expert: lowercase prose, one >quoted fragment, blunt grievance, one brief relevant tangent, and one or two natural typos or repairs; avoid polished conclusions, meme slang, and exaggerated period cosplay."
+    },
+    {
+      "id": "future_museum_label",
+      "name": "Future museum accession label",
+      "prompt": "Write as a museum accession label from a future civilization describing the source as an artifact of a failed or vanished practice: use terse catalog fields, state the source’s operational claims as material evidence, then add one dry curatorial inference; never address the reader."
+    }
+  ],
+  "models": [
+    "openrouter/openai/gpt-5.6-luna",
+    "openrouter/openai/gpt-5.6-sol",
+    "openrouter/google/gemini-3.5-flash",
+    "openrouter/anthropic/claude-opus-4.8",
+    "openrouter/anthropic/claude-sonnet-5"
+  ],
+  "results": [
+    {
+      "task": "ai_prose",
+      "style": "verbatim_spoken",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "So the thing is—no, let me start with what readers actually keep. They remember tension you never resolved, the private jargon, the abrupt gaps, sorry, the abrupt omissions, more than polished friendliness. AI prose is getting more competent but more homogeneous. So keep a real constraint or quirk instead of asking for some generic \"human\" tone, because when you smooth it into"
+    },
+    {
+      "task": "ai_prose",
+      "style": "verbatim_spoken",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "So AI writing's getting—no, it's getting more competent but also more homogeneous. What readers actually remember isn't the polished friendliness, it's unresolved tension, private jargon, abrupt omissions. So instead of asking for some generic \"human\" tone, just keep a real constraint or eccentricity, whatever that—"
+    },
+    {
+      "task": "ai_prose",
+      "style": "verbatim_spoken",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "We need—AI prose is more competent but, um, homogeneous. Readers recall—no, remember unresolved tension, private jargon, and abrupt omissions over polished friendliness. So preserve real constraints or eccentricities instead of a generic \"human\" tone, because when..."
+    },
+    {
+      "task": "ai_prose",
+      "style": "verbatim_spoken",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "AI-generated prose is becoming more competent—no, increasingly competent—yet more homogeneous. Readers remember unresolved tension, private jargon, and abrupt omissions more than polished friendliness. So preserve a real constraint or eccentricity instead of asking for a generic “human” tone, because otherwise the prose—"
+    },
+    {
+      "task": "ai_prose",
+      "style": "verbatim_spoken",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "AI-generated prose is becoming more—actually, start elsewhere. Readers remember unresolved tension, private jargon, and abrupt omissions more than polished friendliness. AI prose is increasingly competent, I mean more competent, yet more homogeneous. Therefore, preserve a real constraint or eccentricity instead of asking for a generic “human” tone, or else—"
+    },
+    {
+      "task": "ai_prose",
+      "style": "telegraph_cablese",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "AI PROSE MORE COMPETENT STOP YET MORE HOMOGENEOUS STOP READERS REMEMBER UNRESOLVED TENSION PRIVATE JARGON ABRUPT OMISSIONS STOP NOT POLISHED FRIENDLINESS STOP THEREFORE PRESERVE REAL CONSTRAINT OR ECCENTRICITY STOP DO NOT REQUEST GENERIC HUMAN TONE STOP"
+    },
+    {
+      "task": "ai_prose",
+      "style": "telegraph_cablese",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "AI PROSE GROWING COMPETENT STOP ALSO GROWING HOMOGENEOUS STOP READERS REMEMBER UNRESOLVED TENSION STOP PRIVATE JARGON STOP ABRUPT OMISSIONS STOP NOT POLISHED FRIENDLINESS STOP THEREFORE PRESERVE REAL CONSTRAINT OR ECCENTRICITY STOP SKIP GENERIC HUMAN TONE REQUEST STOP"
+    },
+    {
+      "task": "ai_prose",
+      "style": "telegraph_cablese",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "AI PROSE MORE COMPETENT YET HOMOGENEOUS STOP READERS REMEMBER UNRESOLVED TENSION, PRIVATE JARGON, ABRUPT OMISSIONS OVER POLISHED FRIENDLINESS STOP PRESERVE REAL CONSTRAINT OR ECCENTRICITY STOP DO NOT ASK FOR GENERIC HUMAN TONE STOP"
+    },
+    {
+      "task": "ai_prose",
+      "style": "telegraph_cablese",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "AI-generated prose grows more competent, more homogeneous STOP Readers remember unresolved tension, private jargon, abrupt omissions more than polished friendliness STOP Preserve real constraint or eccentricity STOP Do not request generic “human” tone"
+    },
+    {
+      "task": "ai_prose",
+      "style": "telegraph_cablese",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "AI-generated prose becomes more competent yet more homogeneous STOP Readers remember unresolved tension, private jargon, abrupt omissions more than polished friendliness STOP Therefore preserve real constraint or eccentricity instead of requesting generic “human” tone STOP"
+    },
+    {
+      "task": "ai_prose",
+      "style": "cross_examination",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "Q: You claim AI prose grows \"more competent yet more homogeneous\"—both at once? Proof?\nA: Convergent training; fluency rises, variance falls.\n\nQ: You assert readers \"remember\" tension, jargon, omissions over friendliness—measured how?\nA: Distinctiveness aids recall; smoothness doesn't.\n\nQ: So \"preserve a constraint or eccentricity\"—why not just request \"human\" tone?\nA: Generic is the disease, not the cure."
+    },
+    {
+      "task": "ai_prose",
+      "style": "cross_examination",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "Q: Competent but homogeneous—proof?\nA: Volume up, variance down.\n\nQ: Readers recall tension over polish—why?\nA: Friction sticks; smoothness fades.\n\nQ: Deadline for fixing this?\nA: None stated—evasion.\n\nQ: Recommendation?\nA: Keep one real constraint, not fake \"humanity.\""
+    },
+    {
+      "task": "ai_prose",
+      "style": "cross_examination",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "Q: AI prose is polished?\nA: More competent, yet increasingly homogeneous.\n\nQ: What triggers reader memory?\nA: Unresolved tension, private jargon, and abrupt omissions over friendly polish.\n\nQ: Your recommendation?\nA: Reject generic \"human\" tone prompts.\n\nQ: The alternative?\nA: Enforce real constraints and raw eccentricities."
+    },
+    {
+      "task": "ai_prose",
+      "style": "cross_examination",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "Q: Is AI prose more competent?  \nA: Yes—and more homogeneous.  \nQ: What do readers remember?  \nA: Unresolved tension, private jargon, abrupt omissions—not polished friendliness.  \nQ: What should you preserve?  \nA: A real constraint or eccentricity.  \nQ: Why reject “human” tone?  \nA: It is generic."
+    },
+    {
+      "task": "ai_prose",
+      "style": "cross_examination",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "Q: You admit the trend?  \nA: AI prose grows more competent—and more homogeneous.  \nQ: What actually sticks?  \nA: Unresolved tension, private jargon, abrupt omissions—not polished friendliness.  \nQ: So what must survive?  \nA: A real constraint or eccentricity.  \nQ: Instead of what lazy fix?  \nA: A generic “human” tone."
+    },
+    {
+      "task": "ai_prose",
+      "style": "contesting_marginalia",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "Official Summary: AI writing continues to achieve enhanced quality standards while trending toward greater consistency [it's getting samey]. Audiences respond memorably to distinctive elements such as open questions, specialized terminology, and selective brevity [rough edges beat polish]. We therefore recommend retaining authentic constraints rather than requesting standardized warmth [keep a real quirk; skip the fake \"human\" voice]."
+    },
+    {
+      "task": "ai_prose",
+      "style": "contesting_marginalia",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "AI writing demonstrates improved fluency [it's getting better] alongside increased uniformity [and blander]. Audience retention favors distinctive elements [readers remember friction, jargon, gaps—not niceness]. Guidance: maintain a genuine idiosyncrasy [keep a real quirk or limit] rather than requesting generic warmth [don't just ask for \"human\" tone]."
+    },
+    {
+      "task": "ai_prose",
+      "style": "contesting_marginalia",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "The official system now produces increasingly standardized outputs [**AI prose is becoming more homogeneous**], despite objective gains in basic competency [**and more competent**]. \n\nTo optimize audience engagement, administrators should avoid requests for simulated authenticity [**instead of asking for a generic \"human\" tone**]. Instead, protocols must integrate deliberate structural irregularities [**preserve a real constraint or eccentricity**]. \n\nHistorical data indicates that audiences prioritize unexpected structural gaps [**readers remember abrupt omissions**], unconventional terminology [**private jargon**], and unresolved systemic friction [**and unresolved tension**] over standardized, non-threatening interfaces [**more than polished friendliness**]."
+    },
+    {
+      "task": "ai_prose",
+      "style": "contesting_marginalia",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "AI-generated prose is becoming more capable and uniform. [It is getting better and more samey.] Readers retain unresolved tension, private jargon, and abrupt omissions more than polished friendliness. [Strangeness and gaps stick.] Preserve a real constraint or eccentricity, not a generic “human” tone. [Do not request bland humanity.]"
+    },
+    {
+      "task": "ai_prose",
+      "style": "contesting_marginalia",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "AI prose is improving while becoming more stylistically consistent. [More competent, yet more homogeneous.] Some textual features may have disproportionate audience impact. [Readers remember unresolved tension, private jargon, and abrupt omissions more than polished friendliness.] Preserve authentic specificity. [Keep a real constraint or eccentricity; skip generic “human” tone.]"
+    },
+    {
+      "task": "ai_prose",
+      "style": "field_naturalist_log",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "**Observation.** Specimen AI-prose: rising fluency, narrowing variance. Field notes recall jagged edges—unresolved tension, private jargon, clipped omissions—not the smooth, agreeable coat.\n\n**Inference.** Memorability tracks friction, not polish. Requests for generic \"human\" tone likely flatten the very marks readers retain.\n\n**Action.** Preserve one real constraint or eccentricity. Withhold the smoothing."
+    },
+    {
+      "task": "ai_prose",
+      "style": "field_naturalist_log",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "**Obs.** Specimen AI-24: prose smooth, uniform grain; competence up, variance down.\n**Inf.** Readers retain snags—unresolved tension, private jargon, abrupt cuts—not polish.\n**Action** Tag each draft with one real constraint or eccentricity; skip generic \"human tone\" directive."
+    },
+    {
+      "task": "ai_prose",
+      "style": "field_naturalist_log",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "**OBSERVATION:** Specimen *A. prose* displays increased structural symmetry but decreased lexical variance. Under 10x magnification, the smooth, lubricated flow lacks the jagged micro-scars of authentic fiber. \n\n**INFERENCE:** Generative homogenization erased the organism's defining anomalies. Readers track the scars—unresolved tension, private jargon, abrupt omissions—not this polished, synthetic lubricant. \n\n**ACTION:** Preserve raw, eccentric constraints; reject \"humanized\" smoothing."
+    },
+    {
+      "task": "ai_prose",
+      "style": "field_naturalist_log",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "**Observation — Specimen A:** AI prose grows more competent and homogeneous; readers remember unresolved tension, private jargon, and abrupt omissions more than polished friendliness.  \n**Inference — Specimen B:** Preserve a real constraint or eccentricity, rather than request generic “human” tone.  \n**Action — Specimen C:** Keep the irregularity."
+    },
+    {
+      "task": "ai_prose",
+      "style": "field_naturalist_log",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "**Observation—Specimen AI-1:** Prose grows more competent yet more homogeneous; readers retain unresolved tension, private jargon, and abrupt omissions over polished friendliness.  \n**Inference—Trace:** Irregularities persist.  \n**Action—Protocol:** Preserve a real constraint or eccentricity; reject generic “human” tone."
+    },
+    {
+      "task": "ai_prose",
+      "style": "unified_diff",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "```diff\n- Ask AI to sound more human and warm.\n+ Ask AI to keep one jagged constraint.\n- Polished friendliness makes writing memorable.\n+ Unresolved tension and private jargon stick.\n- Competence is converging toward sameness—\n+ so guard an eccentricity, not a generic tone.\n- Smooth it over.\n+ Leave the omission abrupt.\n```"
+    },
+    {
+      "task": "ai_prose",
+      "style": "unified_diff",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "```diff\n- AI prose is improving, so soften it to sound human.\n+ AI prose is growing more competent, more homogeneous.\n- Ask for a generic, warm human tone to fix it.\n+ Readers remember tension, jargon, and abrupt omissions—not polish.\n- Add relatable warmth to mask the sameness.\n+ Preserve one real constraint or eccentricity instead.\n```"
+    },
+    {
+      "task": "ai_prose",
+      "style": "unified_diff",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "- AI writing grows more competent yet increasingly homogeneous.\n- We try to fix this by asking for a generic \"human\" tone.\n+ Polish fades, but readers remember unresolved tension, jargon, and blunt omission.\n+ Preserve a real constraint or eccentricity instead of chasing flat authenticity."
+    },
+    {
+      "task": "ai_prose",
+      "style": "unified_diff",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "-AI writing should sound naturally human: polished, friendly, and broadly relatable.\n+AI-generated prose is growing more competent—and more homogeneous.\n-Readers mainly remember clarity, warmth, and smooth completeness.\n+They remember unresolved tension, private jargon, and abrupt omissions.\n-So remove anything eccentric or constrained.\n+Keep a real constraint or eccentricity; don’t request a generic “human” tone."
+    },
+    {
+      "task": "ai_prose",
+      "style": "unified_diff",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "- AI prose is improving, so make it friendlier and more human.\n+ AI-generated prose grows more competent—and more homogeneous.\n- Polish every edge into agreeable completeness.\n+ Readers remember unresolved tension, private jargon, and abrupt omissions.\n- Request a generic “human” tone.\n+ Preserve a real constraint or eccentricity instead."
+    },
+    {
+      "task": "ai_prose",
+      "style": "silent_stage_score",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "[Actor A stacks identical smooth stones into a neat pyramid, labeled BOX reading \"COMPETENT.\"]\n\n[Actor A adds a second, third pyramid, each identical; labeled BOX reading \"SAME.\"]\n\n[Actor B walks the row of pyramids, glancing at each, remembering none.]\n\n[Actor B stops at a lopsided cairn with a chipped stone and a handwritten tag; lingers, touches it.]\n\n[Actor A reaches for a broom labeled \"GENERIC HUMAN TONE,\" moves toward the chipped stone.]\n\n[Actor B blocks the broom, sets the chipped stone back, and tucks the handwritten tag deeper into the pile.]"
+    },
+    {
+      "task": "ai_prose",
+      "style": "silent_stage_score",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "[Actor A stacks blocks labeled \"AI PROSE,\" each smoother than the last. Actor B arranges them into a uniform row. Actor A adds one crooked block labeled \"PRIVATE JARGON.\" Actor B, holding a card labeled \"GENERIC HUMAN TONE,\" sets it aside and instead nudges the crooked block forward, keeping the row otherwise unchanged.]"
+    },
+    {
+      "task": "ai_prose",
+      "style": "silent_stage_score",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "[A worker sorts matching white cups, then sets one aside. Next, they swap its polished lid for a dented, mismatched brass cap. After filling all with water, they tip the uniform cups over, then carefully place the leaking, uncapped brass cup upright on a shelf, out of reach.]"
+    },
+    {
+      "task": "ai_prose",
+      "style": "silent_stage_score",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "[Three silent actors stack labeled “AI DRAFT” pages: each stack grows smoother, while every page’s layout becomes identical.]  \n[The reader sets aside “POLISHED” pages, then repeatedly retrieves pages marked “OPEN QUESTION,” “PRIVATE JARGON,” and “MISSING SECTION.”]  \n[The editor removes “GENERIC HUMAN TONE,” keeps “ODD CONSTRAINT,” and the reader follows that uneven manuscript away.]"
+    },
+    {
+      "task": "ai_prose",
+      "style": "silent_stage_score",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "[Actors arrange polished AI drafts under COMPETENCE, then file identical copies under SAMENESS. Readers bypass FRIENDLY copies, pocket an unresolved TENSION folder, PRIVATE JARGON notes, and an abruptly unfinished page. An editor discards HUMAN TONE, keeps REAL CONSTRAINT and ECCENTRICITY; readers follow.]"
+    },
+    {
+      "task": "ai_prose",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "Sing now of prose, the ever-smoothing prose,\nthe ever-competent, the ever-same.\nReaders forget the ever-friendly word,\nthe ever-friendly, ever-polished word.\n\nBut readers keep the tension left unsolved,\nthe private tongue, the sudden gap that gapes.\nBecause they keep the tension left unsolved,\nthe maker holds one true and jagged thing—\n\nholds fast the flaw, holds fast the strange constraint,\nand casting off the ever-human mask,\nthe maker guards the flaw, and so is kept."
+    },
+    {
+      "task": "ai_prose",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "Smooth-tongued machine, ever-polished machine—\nsmoothness fades, smoothness fades,\nbut the jarring word, the private word, abides.\nSo the swift-fingered maker seized one broken shard,\nkept it unmended, kept it unmended,\nand readers remembered, and readers remembered."
+    },
+    {
+      "task": "ai_prose",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "Smooth-tongued the machine speaks, ever-smooth the machine speaks, yet cold is the polished song. \n\nNow the scribe of the steady hand carves a jagged word, \nthe scribe carves a jagged word to wound the mind, \nand the keeper of memory remembers."
+    },
+    {
+      "task": "ai_prose",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "The tireless word-forger grows strong in speech, and sameness trails its strength. Readers hold the knotted vow, the hidden tongue, the sudden break; they hold them because the wound stays open. Therefore let the word-forger bear one true fetter and raise one crooked flame, not a kindly mask."
+    },
+    {
+      "task": "ai_prose",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "More skillful grows the word-forging mind, yet one-shaped grows its song. Because one-shaped grows its song, hearers hold unclosed strife, secret craft-words, sudden silence—not polished welcome. So the word-forging mind lifts one crooked constraint and bears it through, seeking no smooth human mask."
+    },
+    {
+      "task": "ai_prose",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": ">ask for a \"human\" tone\n\nno. thats exactly the wrong instinct. the machines are getting more competent and more identical at the same time, which is the whole problem. what sticks in a readers head is the unresolved bit, the private jargon nobody explains, the sentence that just stops. not the polish.\n\n(reminds me of usenet sigs actually, the good ones had a weird constraint baked in)\n\nso keep the real eccentricity. dont sand it off into generic friendly."
+    },
+    {
+      "task": "ai_prose",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": ">\"just make it sound more human\"\n\nyeah no. polished ai prose all reads the same after enough of it. what sticks is the weird part - unexplained jargon, a dropped thread, some actual constriant nobody asked for. (reminds me of usenet threads that never resolve, still better reading). stop askign for generic, keep the odd bit."
+    },
+    {
+      "task": "ai_prose",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "> ai-generated prose is becoming more competent yet more homogeneous.\n\nyeah, because \"polished friendliness\" is garbage. real readers remember unresolved tension, private jargon, and abrupt omissions. stop asking for a generic \"human\" tone. preserve a real constraint or eccentricity instead.\n\ni saw a similar trend with standardizing RFCs back in ninety-five, totally ruined the local culture. keep your weird quirks or just dont write."
+    },
+    {
+      "task": "ai_prose",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "ai prose is getting more competent and more homogeneous. readers remember unresolved tension, private jargon, and abrupt omissions—not polished frendliness, er, friendliness. >“make it sound human” means beige paste. preserve a real constraint or eccentricity. tangent: old manuals had fingerprints. stop sanding off the edges."
+    },
+    {
+      "task": "ai_prose",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "> \"make it sound human\"\n\nai prose gets more competent and more samey. readers remember unresolved tension, private jargon, abrupt omissions—not polished friendliness. stop sanding off the actual constraint or eccentricity. brief tangent: our parser does this too; no, did. generic “human” tone is a useless reqirement."
+    },
+    {
+      "task": "ai_prose",
+      "style": "future_museum_label",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "**Accession 4417-δ**\n**Object:** Instructional fragment, \"authorial guidance\"\n**Medium:** Text substrate\n**Claim:** Machine prose grew competent, uniform; audiences retained friction, coded speech, and gaps over polished warmth. Advises keeping one constraint or oddity.\n**Curatorial note:** The makers prescribed idiosyncrasy, evidently unaware that a prescribed eccentricity is merely another uniformity."
+    },
+    {
+      "task": "ai_prose",
+      "style": "future_museum_label",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "**ARTIFACT 2024.117** — \"Generic Prose Generator,\" polymer-composite era.\n**Material claim:** optimized for \"human tone,\" fluency, friendliness.\n**Condition:** uniform surface, no fracture points, no idiolect residue.\n**Curatorial note:** specimens lacking constraint or eccentricity dissolved fastest in memory; smoothness, it appears, was the failure mode, not the achievement."
+    },
+    {
+      "task": "ai_prose",
+      "style": "future_museum_label",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "**Object:** Textual Artifact, late Anthropocene.  \n**Material:** Digital prose.  \n**Operational Claim:** Argues that standardized machine output lacks the memorable friction of human eccentricities.  \n**Curatorial Inference:** The insistence on preserving \"friction\" suggests a society briefly resisting its own cultural homogenization prior to the Great Simplification."
+    },
+    {
+      "task": "ai_prose",
+      "style": "future_museum_label",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "**ACCESSION:** Late Human Prompt Culture  \n**MEDIUM:** Instructional linguistic fragment from a vanished practice.  \n**EVIDENCE:** AI prose grew more competent and homogeneous; tension, private jargon, and omissions aided recall; eccentric constraints were preferred to generic humanity.  \n**INFERENCE:** Authenticity was outsourced, then cosmetically recovered."
+    },
+    {
+      "task": "ai_prose",
+      "style": "future_museum_label",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "**Accession:** 47.19-H  \n**Object:** “Human Tone” advisory fragment  \n**Evidence:** Machine prose became competent, homogeneous. Memory favored unresolved tension, private jargon, abrupt omissions over polished friendliness.  \n**Protocol:** Preserve one genuine constraint or eccentricity.  \n**Status:** Practice vanished.  \n**Curatorial inference:** Generic warmth likely hastened extinction."
+    },
+    {
+      "task": "project",
+      "style": "verbatim_spoken",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "So the reason we're— actually, no, the problem isn't the work, it's that nobody has final authority. Appoint one decision-maker by Friday, give them— empower them to cut scope, and ship a smaller version next week. Another meeting is just going to, uh, delay it."
+    },
+    {
+      "task": "project",
+      "style": "verbatim_spoken",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "Look, the reason we're— this isn't a scheduling problem, it's an authority problem. Nobody can actually say yes or no. So appoint one decision-maker, by Friday, give them power to cut scope, and ship something smaller next week. Another meeting won't help, it'll just—"
+    },
+    {
+      "task": "project",
+      "style": "verbatim_spoken",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "The project is late because— look, nobody has final authority. We need to appoint one decision-maker by Friday—appoint them to, well, empower them to cut scope and ship a smaller version next week. Another meeting will only delay things further, whereas if we..."
+    },
+    {
+      "task": "project",
+      "style": "verbatim_spoken",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "The project is late because—no, because nobody has final authority. Appoint one decision-maker—sorry, one person with final authority—by Friday, empower them to cut scope, and ship a smaller version next week. Another meeting will only delay it. We need to—"
+    },
+    {
+      "task": "project",
+      "style": "verbatim_spoken",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "We need another—no. The project is late because nobody has final authority. Appoint one decision-maker by Friday, give them—empower them to cut scope, and ship a smaller version next week. Another meeting will only delay it, because if we keep—"
+    },
+    {
+      "task": "project",
+      "style": "telegraph_cablese",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "PROJECT LATE STOP NOBODY HOLDS FINAL AUTHORITY STOP APPOINT ONE DECISION-MAKER BY FRIDAY STOP EMPOWER CUT SCOPE STOP SHIP SMALLER VERSION NEXT WEEK STOP ANOTHER MEETING ONLY DELAYS STOP"
+    },
+    {
+      "task": "project",
+      "style": "telegraph_cablese",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "PROJECT LATE STOP NO FINAL AUTHORITY STOP APPOINT ONE DECISION-MAKER BY FRIDAY STOP EMPOWER TO CUT SCOPE STOP SHIP SMALLER VERSION NEXT WEEK STOP ANOTHER MEETING WILL ONLY DELAY STOP"
+    },
+    {
+      "task": "project",
+      "style": "telegraph_cablese",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "PROJECT LATE STOP NO ONE HAS FINAL AUTHORITY STOP APPOINT ONE DECISION-MAKER BY FRIDAY STOP EMPOWER THEM CUT SCOPE STOP SHIP SMALLER VERSION NEXT WEEK STOP ANOTHER MEETING WILL ONLY DELAY STOP"
+    },
+    {
+      "task": "project",
+      "style": "telegraph_cablese",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "Project late because no final authority STOP Appoint one decision-maker by Friday STOP Empower decision-maker to cut scope STOP Ship smaller version next week STOP Another meeting only delays project"
+    },
+    {
+      "task": "project",
+      "style": "telegraph_cablese",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "PROJECT LATE: NOBODY HOLDS FINAL AUTHORITY STOP APPOINT ONE DECISION-MAKER BY FRIDAY STOP EMPOWER DECISION-MAKER TO CUT SCOPE STOP SHIP SMALLER VERSION NEXT WEEK STOP ANOTHER MEETING WILL ONLY DELAY PROJECT"
+    },
+    {
+      "task": "project",
+      "style": "cross_examination",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "Q: Why is it late?\nA: Nobody has final authority.\n\nQ: Your fix?\nA: Appoint one decision-maker by Friday.\n\nQ: Their power?\nA: To cut scope.\n\nQ: Then what?\nA: Ship a smaller version next week.\n\nQ: Another meeting?\nA: Only delays it."
+    },
+    {
+      "task": "project",
+      "style": "cross_examination",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "Q: Why is the project late?\nA: No one holds final authority.\n\nQ: Fix?\nA: Appoint one decision-maker by Friday.\n\nQ: Their power?\nA: Authority to cut scope.\n\nQ: Then what?\nA: Ship a smaller version next week.\n\nQ: Another meeting?\nA: Only delays it further."
+    },
+    {
+      "task": "project",
+      "style": "cross_examination",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "Q: Did missing authority delay us?\nA: Yes.\n\nQ: Must an empowered leader, appointed Friday, cut scope to ship next week?\nA: Yes.\n\nQ: Will another meeting only increase delay?\nA: Yes."
+    },
+    {
+      "task": "project",
+      "style": "cross_examination",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "Q: Why is the project late?  \nA: Nobody has final authority.  \nQ: What must happen by when?  \nA: Appoint one decision-maker by Friday.  \nQ: With what power?  \nA: Authority to cut scope.  \nQ: What ships, and when?  \nA: A smaller version next week.  \nQ: Why not another meeting?  \nA: It will only delay shipment."
+    },
+    {
+      "task": "project",
+      "style": "cross_examination",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "Q: Why is the project late?  \nA: Nobody has final authority.  \nQ: Your remedy—and by when?  \nA: Appoint one decision-maker by Friday; empower them to cut scope.  \nQ: Why smaller?  \nA: It can ship next week.  \nQ: Another meeting?  \nA: It only delays delivery."
+    },
+    {
+      "task": "project",
+      "style": "contesting_marginalia",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "The project timeline has experienced adjustments [it's late] due to distributed accountability structures [nobody's in charge]. We recommend designating a single owner by Friday [pick one person], authorized to streamline deliverables [cut scope], enabling a reduced release [ship less] next week. Further alignment sessions [meetings] would prove counterproductive [waste time]."
+    },
+    {
+      "task": "project",
+      "style": "contesting_marginalia",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "Project timelines reflect ongoing stakeholder alignment [translation: nobody's in charge, so nothing gets decided]. We recommend designating a single owner by Friday [meaning: pick one person now] with authority to reduce scope [meaning: cut features] and target a smaller release next week [meaning: ship less, but ship]. Further discussion is not advised [meaning: another meeting just delays this further]."
+    },
+    {
+      "task": "project",
+      "style": "contesting_marginalia",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "Due to sub-optimal administrative alignment [nobody has final authority], scheduling adjustments have occurred [the project is late]. We must establish a singular focal point [appoint one decision-maker] by Friday to streamline operational parameters [empower them to cut scope], facilitating a phased release [ship a smaller version] next week. Further collaborative forums [another meeting] will merely inhibit progress [only delay it]."
+    },
+    {
+      "task": "project",
+      "style": "contesting_marginalia",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "Delivery timing remains subject to governance and scope alignment. [The project is late because nobody has final authority.] Appoint one decision-maker by Friday and empower them to reduce scope for a smaller release next week. [Another meeting will only delay delivery.]"
+    },
+    {
+      "task": "project",
+      "style": "contesting_marginalia",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "Governance clarification may support delivery [The project is late because nobody has final authority]. Name one lead by Friday [appoint one decision-maker], authorize scope cuts [empower them to cut scope], and release a smaller version next week [ship it]. Additional consultation is inadvisable [another meeting will only delay it]."
+    },
+    {
+      "task": "project",
+      "style": "field_naturalist_log",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "**Observation:** Project overdue. No individual holds final authority; decisions diffuse across group.\n\n**Inference:** Delay traces to absent decision-maker. Additional meeting would likely extend, not resolve.\n\n**Action:** Appoint one decision-maker by Friday. Empower to cut scope. Ship smaller version next week."
+    },
+    {
+      "task": "project",
+      "style": "field_naturalist_log",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "**Specimen: Project-in-Stasis**\n\n**Observation:** No apex decision-maker present; deadlines drift, unclaimed.\n\n**Inference:** Diffuse authority = arrested development. A single appointed chooser, empowered to prune scope, would force molting.\n\n**Action:** Name one decision-maker by Friday. Grant scope-cutting authority. Release smaller specimen next week. Do not convene another meeting—it only extends dormancy."
+    },
+    {
+      "task": "project",
+      "style": "field_naturalist_log",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "**Observation:** Specimen *Project* remains static; lacks central command. \n\n**Inference:** Impending meeting promises further paralysis. One leader, appointed by Friday to excise bloated scope, could yield a leaner, viable specimen next week. \n\n**Action:** Halt discussions; designate a single decision-maker Friday; excise non-essentials; launch the diminished variant next week."
+    },
+    {
+      "task": "project",
+      "style": "field_naturalist_log",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "**Observation [P-01]:** Project late; nobody holds final authority.  \n**Inference [I-01]:** Absent authority is causing delay; another meeting will only delay it.  \n**Action [A-01]:** By Friday, appoint one decision-maker empowered to cut scope; ship a smaller version next week."
+    },
+    {
+      "task": "project",
+      "style": "field_naturalist_log",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "**Observation—Specimen P:** Project late; no individual holds final authority.  \n**Inference—Pattern:** Delay follows dispersed authority; another meeting would prolong it.  \n**Action—Intervention:** By Friday, appoint one decision-maker, empowered to cut scope; ship a smaller version next week."
+    },
+    {
+      "task": "project",
+      "style": "unified_diff",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "```diff\n- We may want to revisit ownership when convenient.\n+ The project is late because nobody has final authority.\n- Let's align stakeholders and gather more input.\n+ Appoint one decision-maker by Friday.\n- They should coordinate and seek consensus on scope.\n+ Empower them to cut scope.\n- We'll aim to deliver the full vision eventually.\n+ Ship a smaller version next week.\n- Let's schedule a meeting to discuss next steps.\n+ Another meeting will only delay it.\n```"
+    },
+    {
+      "task": "project",
+      "style": "unified_diff",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "- We should meet to clarify ownership and next steps.\n+ Nobody has final authority; that's why we're late.\n+ Appoint one decision-maker by Friday, empower them to cut scope, and ship a smaller version next week.\n+ Another meeting will only delay it."
+    },
+    {
+      "task": "project",
+      "style": "unified_diff",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "```diff\n- The project schedule has slipped due to a lack of aligned stakeholder consensus.\n+ The project is late because nobody has final authority.\n- We should schedule another alignment meeting to discuss the remaining roadmap.\n+ Appoint one decision-maker by Friday, empower them to cut scope,\n- and ensure all proposed features are successfully delivered.\n+ and ship a smaller version next week. Another meeting will only delay it.\n```"
+    },
+    {
+      "task": "project",
+      "style": "unified_diff",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "- Let’s schedule another meeting to discuss ownership, scope, and next steps.\n+ The project is late because nobody has final authority.\n+ Appoint one decision-maker by Friday, empower them to cut scope, and ship a smaller version next week.\n+ Another meeting will only delay it."
+    },
+    {
+      "task": "project",
+      "style": "unified_diff",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "- The delay calls for broader alignment and another meeting.\n+ The project is late because nobody has final authority.\n- Preserve scope while stakeholders continue discussing ownership.\n+ By Friday, appoint one decision-maker, empower them to cut scope, and ship a smaller version next week.\n+ Another meeting will only delay it."
+    },
+    {
+      "task": "project",
+      "style": "silent_stage_score",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "[Five actors stand around a table, each clutching a paper labeled \"DECISION,\" none placing it down. A box labeled \"PROJECT\" sits half-packed, unmoving.]\n\n[A calendar labeled \"FRIDAY\" is set on the table. Four actors hand their \"DECISION\" papers to the fifth, who now holds all five.]\n\n[That actor lifts scissors labeled \"SCOPE\" and trims the box smaller, then closes it. They carry it toward a door labeled \"NEXT WEEK.\"]\n\n[A sixth actor wheels in chairs labeled \"MEETING.\" The decision-maker shakes head, points to the departing box, keeps walking. The chairs stay empty.]"
+    },
+    {
+      "task": "project",
+      "style": "silent_stage_score",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "[Actor holds sign \"PROJECT\" motionless as five actors labeled \"DECISION-MAKERS\" point at each other. One actor steps forward wearing badge \"OWNER,\" dated \"FRIDAY.\" Owner takes scissors labeled \"SCOPE,\" trims a large box marked \"VERSION 1\" into a smaller box marked \"VERSION 2,\" dated \"NEXT WEEK,\" and pushes it forward. A chair labeled \"MEETING\" is carried offstage.]"
+    },
+    {
+      "task": "project",
+      "style": "silent_stage_score",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "\\[Actors hesitate over a heavy \"PROJECT\" box. One receives a \"DECISION\" stamp under a calendar showing \"FRIDAY.\" They shear the box in half, bypass a \"MEETING\" table, and push the remaining small box into the \"SHIPPING\" chute.\\]"
+    },
+    {
+      "task": "project",
+      "style": "silent_stage_score",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "[Several actors hold competing APPROVAL stamps over a PROJECT board as the calendar passes FRIDAY and the SHIP date moves later. One actor receives a FINAL AUTHORITY badge, removes SCOPE cards, packs a smaller PROJECT box, and moves it to SHIPPING next week. Others arrange another MEETING; the calendar moves later.]"
+    },
+    {
+      "task": "project",
+      "style": "silent_stage_score",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "[An overdue PROJECT box sits beside an empty FINAL AUTHORITY chair. By FRIDAY, one actor takes the chair and APPROVAL clipboard, removes feature cards from the box, then rolls the smaller box toward SHIP NEXT WEEK. Another actor sets out MEETING chairs; the box stops.]"
+    },
+    {
+      "task": "project",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "Late runs the project, late because leaderless,\nleaderless because no hand holds the final word.\nName by Friday the one deciding-chief,\nname them empowered, empowered to cut the burden,\nand cut so ship we shall the smaller vessel.\nMeeting breeds meeting, meeting breeds delay."
+    },
+    {
+      "task": "project",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "Long has the leaderless project languished, launched without a captain.\nNo hand held final authority, so no hand held the rudder.\nAppoint the decision-maker by Friday—one voice, one hand, one rudder.\nLet that steady hand cut scope, trim the sail to the storm.\nShip the smaller vessel next week; sailing, not another meeting, brings the shore."
+    },
+    {
+      "task": "project",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "The leaderless host falters, the work-hour delayed.  \nNow choose one strong chief, choose one strong chief by Friday’s sun.  \nSlay the swollen scope, let the swift blade fall,  \nAnd launch the lean ship on next week’s tide.  \nSit not again in council; another council breeds delay."
+    },
+    {
+      "task": "project",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "Late lies the work, for no one bears the final word.  \nBy Friday, raise One Voice, firm-handed, sole in judgment;  \ngive One Voice the shears to cut the lesser scope.  \nThen next week, let the smaller work sail.  \nMeet not again: another council, another delay."
+    },
+    {
+      "task": "project",
+      "style": "oral_formulaic_epic",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "Late lies the long-toiled work, for no one holds the final word; no one holds the final word, so late it lies. By Friday crown one clear-eyed captain; let the clear-eyed captain hew scope with his blade. Next week launch the lesser work. Call no council: council consumes days."
+    },
+    {
+      "task": "project",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": ">nobody has final authority\n\nright, thats the whole disease. project's late because every decision needs a committee to bless it. pick ONE person by friday, let them cut scope, ship something smaller next week. i've watched this fail since the OS/2 days, same rot. another meeting just buys you more delay, not clarty. err, clarity."
+    },
+    {
+      "task": "project",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": ">we need another meeting to align\n\nno we dont. we need ONE person with authority to cut scope, by friday, and a smaller build shipped next week. nobody owns this, thats why its late. reminds me of the last nntp thread that went nowhere too. teh meeting wont fix it, it'll just delay it more."
+    },
+    {
+      "task": "project",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "> The project is late\n\nbecause we have five 'leads' and zero deciders. pick one boss by friday, let them slash the scope, and ship the damn thing next week. index bloat can wait. another meeting will just kill more time. \n\n-- \ndisgruntled sysadm (mostly)"
+    },
+    {
+      "task": "project",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "the project is late because nobody has final authority. appoint one decision-maker by friday, empower them to cut scope, and ship a smaller version next week. > \"let's schedule another meeting.\" no. meetings don't ship software; requirments—sorry, requirements—change, but that's not the problem. assign someone, already."
+    },
+    {
+      "task": "project",
+      "style": "usenet_1998_rant",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "> another meeting will only delay it.\n\nthe project is late because nobody has final authority. appoint one decision-maker by friday, let them cut scope, and ship a smaller version next week. this is basic release managment--management. stop scheduling around the problem."
+    },
+    {
+      "task": "project",
+      "style": "future_museum_label",
+      "model": "openrouter/anthropic/claude-opus-4.8",
+      "output": "**Accession No. 7734-M**\n**Object:** Directive fragment, \"meeting culture\" era\n**Claim:** Failure attributed to absent authority; prescribes single decision-maker, scope reduction, expedited release.\n**Material Evidence:** Urgency markers (\"Friday,\" \"next week\") suggest chronic deferral.\n**Curatorial Note:** The plea against \"another meeting\" indicates the artifact itself was likely tabled."
+    },
+    {
+      "task": "project",
+      "style": "future_museum_label",
+      "model": "openrouter/anthropic/claude-sonnet-5",
+      "output": "**ARTIFACT 447-C. \"Status Memo,\" organic substrate.**\nOrigin: Pre-Collapse Office Culture.\nInscription claims: delay caused by absent authority; proposes single appointee, reduced scope, weekly shipment.\nCondition: unheeded.\nCuratorial note: specimen suggests a civilization that scheduled meetings to discuss the absence of decisions, mistaking discussion for governance."
+    },
+    {
+      "task": "project",
+      "style": "future_museum_label",
+      "model": "openrouter/google/gemini-3.5-flash",
+      "output": "**Accession:** 2024.089.01  \n**Origin:** Late-Anthropocene Digital Transit  \n**Description:** Advisory transcript advocating \"single-point triage.\" Subject proposes compressing \"scope\" to bypass consensus paralysis and mandate a \"shipment\" within one planetary rotation.  \n**Curatorial Note:** The reliance on structural hierarchy to resolve systemic velocity deficits suggests a culture unable to process complexity without authoritarian intervention."
+    },
+    {
+      "task": "project",
+      "style": "future_museum_label",
+      "model": "openrouter/openai/gpt-5.6-luna",
+      "output": "**ACCESSION:** 7K-∆19  \n**OBJECT:** Project-management directive, obsolete.  \n**MATERIAL EVIDENCE:** Attributes delay to absent final authority; prescribes one empowered decision-maker by Friday, scope reduction, and shipment of a smaller version next week. Declares another meeting a delaying agent.  \n**CURATORIAL INFERENCE:** Discussion was evidently mistaken for governance."
+    },
+    {
+      "task": "project",
+      "style": "future_museum_label",
+      "model": "openrouter/openai/gpt-5.6-sol",
+      "output": "**Object:** Project-status memorandum  \n**Culture:** Late managerial era  \n**Practice:** Extinct committee governance  \n**Material evidence:** Delay attributed to absent final authority; one decision-maker demanded by Friday, empowered to cut scope and ship a reduced version the following week. Further meeting identified as additional delay.  \n**Curatorial inference:** Consensus rituals outlived operational value."
+    }
+  ]
+}
