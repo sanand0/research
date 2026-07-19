@@ -38,4 +38,10 @@ A few issues to fix:
 - When changing the layout (rows / columns), the cell loses focus, so I can't press arrow keys repeatedly to change layouts - fix that.
 - The colors (both dark and light modes) and font choices look too Claude-like. Instead, copy the design of any popular site that's relevant for such content.
 
+---
+
+- Clicking on the "Copy" button should produce some visual feedback.
+- Clicking outside a modal should close the modal.
+- The "Copy" button in a result .cell should copy all the tasks, styles, and outputs displayed in the cell, joined as Markdown, separated by headers.
+
 <!-- claude --resume e6af023a-5a1d-409d-b73e-e676c4a0ee78 --dangerously-skip-permissions -->

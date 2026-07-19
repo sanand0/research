@@ -132,6 +132,10 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
 }
 .cell:hover { background: var(--bg-subtle); }
 .cell:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.cell-copy { position: absolute; top: 6px; right: 6px; z-index: 1; padding: 3px 6px; opacity: 0; }
+.cell:hover .cell-copy, .cell:focus-within .cell-copy { opacity: 1; }
+.copied { color: #1a7f37; border-color: #1a7f37; }
+[data-theme="dark"] .copied { color: #3fb950; border-color: #3fb950; }
 .cell.faded::after {
   content: ""; position: absolute; inset: auto 0 0 0; height: 2.5rem;
   background: linear-gradient(transparent, var(--bg));
@@ -363,6 +367,13 @@ function renderGrid() {
         cell.append(sample);
       }
       if (!combos.length) cell.append(el("div", "missing", `no ${dims[sd].label.toLowerCase()} selected`));
+      if (combos.length) {
+        const copyBtn = el("button", "btn cell-copy");
+        copyBtn.title = "Copy cell as Markdown";
+        copyBtn.append(icon("copy"));
+        copyBtn.onclick = (e) => { e.stopPropagation(); copyFlash(copyBtn, cellMarkdown(combos)); };
+        cell.append(copyBtn);
+      }
       cell.onclick = () => openCellDialog(combos);
       cell.onkeydown = (e) => cellKeys(e, cols.length);
       grid.append(cell);
@@ -387,11 +398,27 @@ function el(tag, cls, text) {
   return e;
 }
 function cellKeys(e, ncols) {
+  if (e.target !== e.currentTarget) return; // let the cell's copy button handle its own Enter
   const cells = [...grid.querySelectorAll(".cell")];
   const i = cells.indexOf(e.currentTarget);
   const moves = { ArrowRight: i + 1, ArrowLeft: i - 1, ArrowDown: i + ncols, ArrowUp: i - ncols };
   if (e.key in moves) { e.preventDefault(); cells[moves[e.key]]?.focus(); }
   if (e.key === "Enter") e.currentTarget.click();
+}
+
+// ---- Copy helpers ----
+// Markdown for everything shown in a cell: one header + output per sample.
+const cellMarkdown = (combos) =>
+  combos
+    .map((c) => `## ${dims.style.name(c.style)} · ${dims.model.name(c.model)} · ${c.task}\n\n${lookup.get(`${c.task}|${c.style}|${c.model}`) ?? "(no result)"}`)
+    .join("\n\n");
+async function copyFlash(btn, text) {
+  await navigator.clipboard.writeText(text);
+  const old = [...btn.childNodes];
+  btn.classList.add("copied");
+  btn.replaceChildren(icon("check"), old.some((n) => n.nodeType === Node.TEXT_NODE) ? " copied!" : "");
+  lucide.createIcons();
+  setTimeout(() => { btn.classList.remove("copied"); btn.replaceChildren(...old); }, 1200);
 }
 
 // ---- Dialogs ----
@@ -427,11 +454,9 @@ function openInfoDialog(d, id) {
     openDlg(dims.model.name(id), [el("p", "dlg-meta", id)], id);
   }
 }
-$("#dlg-copy").onclick = async (e) => {
-  await navigator.clipboard.writeText(copyText);
-  e.currentTarget.lastChild.textContent = " copied!";
-  setTimeout(() => (e.currentTarget.lastChild.textContent = " copy"), 1200);
-};
+$("#dlg-copy").onclick = (e) => copyFlash(e.currentTarget, copyText);
+// Click on the backdrop (outside the dialog's content) closes it.
+dlg.onclick = (e) => { if (e.target === dlg) dlg.close(); };
 
 // ---- Theme & font toggles ----
 const root = document.documentElement;
