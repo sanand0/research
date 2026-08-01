@@ -1,12 +1,8 @@
-# Experiment design
+# Impact of simple writing on thinking
 
-I asked Claude and ChatGPT how to design an experiment to test: "Does telling AI agents to write in simple language worsen their thinking quality?"
+Does telling AI agents to write in simple language worsen their thinking quality?
 
 <!-- https://chatgpt.com/c/6a6d770d-9d68-83ec-b544-84a7aa1ecdc6 + https://claude.ai/chat/7788dcc8-dd41-4605-843b-7c418d675b8a -->
-
-Here is the prompt I added to tell agents to write in simple language:
-
-> Answer in ASD-STE100
 
 I tested these tasks on ChatGPT with GPT 5.6 Sol:
 
@@ -17,24 +13,28 @@ I tested these tasks on ChatGPT with GPT 5.6 Sol:
 5. [Evidence and judgment](question/1.md)
 6. [Adversarial system design](question/1.md)
 
-The results, without (-) and with (+) the simplified language prompts, are below:
+and re-did the same tasks [with this suffix](https://x.com/benjaminsehl/status/2082158002958741746):
 
-- Task 1 - prompt: [result-1a.md](result-1a.md): 66 sources, 1m 31s
-- Task 1 + prompt: [result-1b.md](result-1b.md): 44 sources, 41s
-- Task 2 - prompt: [result-2a.md](result-2a.md)
-- Task 2 + prompt: [result-2b.md](result-2b.md)
-- Task 3 - prompt: [result-3a.md](result-3a.md)
-- Task 3 + prompt: [result-3b.md](result-3b.md)
-- Task 4 - prompt: [result-4a.md](result-4a.md)
-- Task 4 + prompt: [result-4b.md](result-4b.md)
-- Task 5 - prompt: [result-5a.md](result-5a.md): 123 sources, 2m 4s
-- Task 5 + prompt: [result-5b.md](result-5b.md): 84 sources, 5m 4s
-- Task 6 - prompt: [result-6a.md](result-6a.md): 97 sources, 2m 20s
-- Task 6 + prompt: [result-6b.md](result-6b.md): 26 sources, 3m 44s, wrote code
+> Answer in ASD-STE100
 
-I used this [rubric](rubric.md) on ChatGPT with GPT 5.6 Sol to compare each pair twice - in both orders (A, B) and (B, A) - to reduce position bias.
+The results, without (-) and with (+) the simple writing prompt, are below, along with the number of sources and thinking time, where ChatGPT reported it.
 
-Here are the results. 🟢 = Simple prompt won. 🟡 = Tie. 🔴 = Without simple prompt won.
+- [Task 1 - prompt](result/1a.md): 66 sources, 1m 31s
+- [Task 1 + prompt](result/1b.md): 44 sources, 41s
+- [Task 2 - prompt](result/2a.md)
+- [Task 2 + prompt](result/2b.md)
+- [Task 3 - prompt](result/3a.md)
+- [Task 3 + prompt](result/3b.md)
+- [Task 4 - prompt](result/4a.md)
+- [Task 4 + prompt](result/4b.md)
+- [Task 5 - prompt](result/5a.md): 123 sources, 2m 4s
+- [Task 5 + prompt](result/5b.md): 84 sources, 5m 4s
+- [Task 6 - prompt](result/6a.md): 97 sources, 2m 20s
+- [Task 6 + prompt](result/6b.md): 26 sources, 3m 44s, wrote code
+
+The simple writing prompt reduced the number of sources. Thinking time varies.
+
+Running this [rubric](rubric.md) on ChatGPT with GPT 5.6 Sol, comparing each pair twice - in both orders (A, B) and (B, A) - to reduce position bias gives us:
 
 | Task | Order | Winner | Correctness | Key drivers | Mechanism | Caveats | Calibration | Actionability | Eval                 |
 | ---: | ----- | :----: | :---------: | :---------: | :-------: | :-----: | :---------: | :-----------: | -------------------- |
@@ -51,4 +51,6 @@ Here are the results. 🟢 = Simple prompt won. 🟡 = Tie. 🔴 = Without simpl
 |    6 | A, B  |   🔴   |     🔴      |     🔴      |    🔴     |   🔴    |     🔴      |      🔴       | [Eval](evals/6ab.md) |
 |    6 | B, A  |   🔴   |     🔴      |     🔴      |    🔴     |   🔴    |     🔴      |      🔴       | [Eval](evals/6ba.md) |
 
-In short, asking a model to "Answer in ASD-STE100" consistently reduces its thinking quality.
+🟢 = Simple prompt won. 🟡 = Tie. 🔴 = Without simple prompt won.
+
+Looks like asking a model to "Answer in ASD-STE100" reduces its thinking quality on ChatGPT.
