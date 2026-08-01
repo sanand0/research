@@ -1,5 +1,6 @@
 # Research
 
+- 01 Aug 2026: [`simplification-prompt`](simplification-prompt/). Asking a model to simplify its writing also reduces its thinking quality.
 - 18 Jul 2026: [`llm-writing-style`](llm-writing-style/). Have models write in different writing styles and compare them. See [LLM Writing Style](https://sanand0.github.io/research/llm-writing-style/).
 - 15 Jul 2026: [`ideation-protocol-optimization`](ideation-protocol-optimization/). Iteratively optimized an ideation skill against an evaluation rubric.
 - 23 Jun 2026: [`xarray-linspace`](xarray-linspace/). Fixes [Should RangeIndex.linspace handle num=1 like numpy.linspace?](https://github.com/pydata/xarray/pull/11401)
