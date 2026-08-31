@@ -3,7 +3,7 @@
 # requires-python = ">=3.11"
 # dependencies = ["click>=8.1"]
 # ///
-"""Fill missing task × style × model outputs in results.json using llm."""
+"""Fill missing task × style × model outputs in results.json using llm via openrouter."""
 
 from __future__ import annotations
 

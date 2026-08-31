@@ -106,11 +106,16 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
 .dd-item[aria-checked="true"] svg { visibility: visible; }
 .dd-item .desc { display: block; color: var(--ink-dim); font-size: 0.75rem; }
 
-.hint { color: var(--ink-dim); font-size: 0.75rem; padding: 0.4rem 1rem; margin: 0; border-bottom: 1px solid var(--line); }
-
-/* The single scroller */
-#grid-wrap { flex: 1; overflow: auto; padding: 0 1rem 2rem; }
-#grid { display: grid; gap: 0; min-width: min-content; }
+/* The single scroller. The hint and the task banner scroll away with the grid, but stay pinned
+   horizontally so sideways scrolling does not strand them. The side gutters live on the grid
+   itself, so nothing shows through beside the sticky row headers. */
+#grid-wrap { flex: 1; overflow: auto; padding: 0 0 2rem; }
+.hint, #task-banner {
+  position: sticky; left: 0; margin: 0; padding: 0.4rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.hint { color: var(--ink-dim); font-size: 0.75rem; }
+#grid { display: grid; gap: 0; min-width: min-content; padding: 0 1rem; }
 .corner { position: sticky; top: 0; left: 0; z-index: 4; background: var(--bg); }
 .col-head {
   position: sticky; top: 0; z-index: 3; background: var(--bg-subtle);
@@ -122,7 +127,22 @@ select:focus-visible { outline: 2px solid var(--accent); outline-offset: -1px; }
   border: 1px solid var(--line); border-top: 0; padding: 8px 12px; font-weight: 600; font-size: 0.85rem;
   width: 11rem;
 }
+.row-head.wide { width: 22rem; }
 .sub { display: block; font-weight: 400; font-size: 0.75rem; color: var(--ink-dim); }
+.sub.full { white-space: pre-wrap; margin-top: 4px; }
+
+/* Source task, shown above the grid whenever it is neither the row nor the column axis.
+   Tag and text run on one line so several tasks stay compact. */
+#task-banner { background: var(--accent-soft); padding-bottom: 0.55rem; }
+#task-banner[hidden] { display: none; }
+#task-banner .sample { margin-bottom: 0.3rem; }
+#task-banner .sample:last-child { margin-bottom: 0; }
+#task-banner .sample-tag { margin: 0 0.4rem 0 0; vertical-align: baseline; }
+#task-banner .output { display: inline; font-size: 0.85rem; }
+.banner-label {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em;
+  color: var(--ink-dim); margin: 0 0 0.2rem;
+}
 .head-btn { all: unset; cursor: pointer; }
 .head-btn:hover, .head-btn:focus-visible { color: var(--accent); text-decoration: underline; }
 .cell {
@@ -166,10 +186,16 @@ dialog::backdrop { background: rgba(1, 4, 9, 0.6); }
 .dlg-head h2 { font-size: 0.95rem; font-weight: 600; margin: 0; flex: 1; }
 .dlg-body { padding: 16px; overflow: auto; max-height: calc(85vh - 4rem); }
 .dlg-meta { color: var(--ink-dim); font-size: 0.8rem; margin: 0 0 0.6rem; }
+.box-label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink-dim); margin: 0 0 0.25rem; }
+.task-box {
+  background: var(--bg-subtle); border: 1px solid var(--line);
+  border-radius: 6px; padding: 10px 12px; margin: 0 0 1rem;
+  font-size: 0.85rem; white-space: pre-wrap;
+}
 .prompt-box {
   background: var(--accent-soft); border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
   border-radius: 6px; padding: 10px 12px; margin: 0 0 1rem;
-  font-size: 0.85rem;
+  font-size: 0.85rem; white-space: pre-wrap;
 }
 #error {
   margin: 2rem 1rem; background: var(--bg-subtle); border: 1px solid var(--line);
@@ -193,8 +219,11 @@ dialog::backdrop { background: rgba(1, 4, 9, 0.6); }
 </header>
 
 <div id="controls"></div>
-<p class="hint">Click a cell for full text and the style prompt (copyable). Click a row / column header for details. Arrow keys move between cells, Enter opens. The URL captures the view — share it.</p>
-<div id="grid-wrap"><div id="grid" role="grid" class="grid-inner"></div></div>
+<div id="grid-wrap">
+  <p class="hint">Click a cell for full text and the style prompt (copyable). Click a row / column header for details. Arrow keys move between cells, Enter opens. The URL captures the view — share it.</p>
+  <div id="task-banner" hidden></div>
+  <div id="grid" role="grid" class="grid-inner"></div>
+</div>
 <div id="error" hidden></div>
 
 <dialog id="dlg">
@@ -348,6 +377,7 @@ function renderGrid() {
   const [rd, cd] = [state.rows, state.cols];
   const sd = Object.keys(dims).find((d) => d !== rd && d !== cd); // stacked-in-cell dim
   const rows = state[rd], cols = state[cd], stack = state[sd];
+  renderTaskBanner(sd === "task");
   grid.innerHTML = "";
   grid.style.gridTemplateColumns = `max-content repeat(${cols.length}, minmax(20rem, 34rem))`;
   grid.append(el("div", "corner", ""));
@@ -381,15 +411,31 @@ function renderGrid() {
     });
   });
 }
-function headCell(cls, d, id) {
-  const div = el("div", cls);
+function headCell(cls, d, id, label) {
+  if (id == null) return el("div", cls, label); // static band header, nothing to open
+  const div = el("div", d === "task" && cls.startsWith("row-head") ? cls + " wide" : cls);
   const btn = el("button", "head-btn", dims[d].name(id));
   btn.onclick = () => openInfoDialog(d, id);
   btn.title = d === "style" ? "Show style prompt" : d === "task" ? "Show task text" : id;
   div.append(btn);
   if (d === "model") div.append(el("span", "sub", id.split("/").slice(0, -1).join("/")));
-  if (d === "task") div.append(el("span", "sub", dims.task.info[id].text.slice(0, 80) + "…"));
+  // The task is the thing every style is rewriting, so headers carry it in full.
+  if (d === "task") div.append(el("span", "sub full", dims.task.info[id].text));
   return div;
+}
+// The task is what every cell is rewriting. When it sits on an axis its header carries the
+// full text; when it is stacked into the cells it has no header, so show it above the grid.
+function renderTaskBanner(show) {
+  const banner = $("#task-banner");
+  banner.hidden = !show || !state.task.length;
+  if (banner.hidden) return;
+  banner.replaceChildren(el("p", "banner-label", state.task.length > 1 ? "Original tasks" : "Original task"));
+  for (const id of state.task) {
+    const s = el("div", "sample");
+    if (state.task.length > 1) s.append(el("div", "sample-tag", id));
+    s.append(el("pre", "output", dims.task.info[id].text));
+    banner.append(s);
+  }
 }
 function el(tag, cls, text) {
   const e = document.createElement(tag);
@@ -435,7 +481,11 @@ function openCellDialog(combos) {
     const out = lookup.get(`${c.task}|${c.style}|${c.model}`) ?? "(no result)";
     nodes.push(
       el("p", "dlg-meta", `${dims.style.name(c.style)} · ${dims.model.name(c.model)} · task: ${c.task}`),
+      el("p", "box-label", "Original task"),
+      el("div", "task-box", dims.task.info[c.task].text),
+      el("p", "box-label", "Style prompt"),
       el("div", "prompt-box", dims.style.info[c.style].prompt),
+      el("p", "box-label", "Output"),
       el("pre", "output", out),
     );
     copies.push(dims.style.info[c.style].prompt);

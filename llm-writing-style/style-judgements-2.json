@@ -1,0 +1,594 @@
+{
+  "judgements": [
+    {
+      "task": "messy",
+      "a": "executive_decision",
+      "b": "risk_register",
+      "winner": "risk_register",
+      "probe": true,
+      "t": 1785570762845
+    },
+    {
+      "task": "messy",
+      "a": "self_contained_explainer",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785570774559
+    },
+    {
+      "task": "messy",
+      "a": "self_contained_explainer",
+      "b": "sensitive_direct",
+      "winner": "sensitive_direct",
+      "probe": false,
+      "t": 1785570804876
+    },
+    {
+      "task": "messy",
+      "a": "executive_decision",
+      "b": "self_contained_explainer",
+      "winner": "self_contained_explainer",
+      "probe": false,
+      "t": 1785570817800
+    },
+    {
+      "task": "loaded",
+      "a": "commentary_stack",
+      "b": "technical_precision",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785570841091
+    },
+    {
+      "task": "loaded",
+      "a": "exploratory_reasoning",
+      "b": "sensitive_direct",
+      "winner": "sensitive_direct",
+      "probe": false,
+      "t": 1785570853033
+    },
+    {
+      "task": "messy",
+      "a": "insider_note",
+      "b": "sensitive_direct",
+      "winner": "insider_note",
+      "probe": true,
+      "t": 1785570862526
+    },
+    {
+      "task": "messy",
+      "a": "commentary_stack",
+      "b": "technical_precision",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785570869993
+    },
+    {
+      "task": "loaded",
+      "a": "executive_decision",
+      "b": "self_contained_explainer",
+      "winner": "executive_decision",
+      "probe": false,
+      "t": 1785570872407
+    },
+    {
+      "task": "loaded",
+      "a": "insider_note",
+      "b": "sensitive_direct",
+      "winner": "sensitive_direct",
+      "probe": false,
+      "t": 1785570876224
+    },
+    {
+      "task": "messy",
+      "a": "technical_precision",
+      "b": "sensitive_direct",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785570898072
+    },
+    {
+      "task": "loaded",
+      "a": "technical_precision",
+      "b": "risk_register",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785570902442
+    },
+    {
+      "task": "messy",
+      "a": "spare_memorable",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785570920989
+    },
+    {
+      "task": "loaded",
+      "a": "exploratory_reasoning",
+      "b": "sensitive_direct",
+      "winner": "sensitive_direct",
+      "probe": true,
+      "t": 1785570935613
+    },
+    {
+      "task": "loaded",
+      "a": "technical_precision",
+      "b": "spare_memorable",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785570941002
+    },
+    {
+      "task": "loaded",
+      "a": "insider_note",
+      "b": "commentary_stack",
+      "winner": "insider_note",
+      "probe": false,
+      "t": 1785570954726
+    },
+    {
+      "task": "loaded",
+      "a": "executive_decision",
+      "b": "sensitive_direct",
+      "winner": "executive_decision",
+      "probe": false,
+      "t": 1785570966037
+    },
+    {
+      "task": "messy",
+      "a": "sensitive_direct",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785570972388
+    },
+    {
+      "task": "messy",
+      "a": "technical_precision",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785570982150
+    },
+    {
+      "task": "loaded",
+      "a": "risk_register",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": true,
+      "t": 1785570986152
+    },
+    {
+      "task": "messy",
+      "a": "executive_decision",
+      "b": "commentary_stack",
+      "winner": "executive_decision",
+      "probe": false,
+      "t": 1785571001703
+    },
+    {
+      "task": "loaded",
+      "a": "executive_decision",
+      "b": "technical_precision",
+      "winner": "executive_decision",
+      "probe": false,
+      "t": 1785571007679
+    },
+    {
+      "task": "loaded",
+      "a": "spare_memorable",
+      "b": "risk_register",
+      "winner": "risk_register",
+      "probe": false,
+      "t": 1785571019990
+    },
+    {
+      "task": "loaded",
+      "a": "self_contained_explainer",
+      "b": "spare_memorable",
+      "winner": "self_contained_explainer",
+      "probe": false,
+      "t": 1785571030176
+    },
+    {
+      "task": "loaded",
+      "a": "technical_precision",
+      "b": "sensitive_direct",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785571039746
+    },
+    {
+      "task": "messy",
+      "a": "self_contained_explainer",
+      "b": "spare_memorable",
+      "winner": "self_contained_explainer",
+      "probe": false,
+      "t": 1785571056567
+    },
+    {
+      "task": "messy",
+      "a": "exploratory_reasoning",
+      "b": "commentary_stack",
+      "winner": "exploratory_reasoning",
+      "probe": false,
+      "t": 1785571058621
+    },
+    {
+      "task": "loaded",
+      "a": "technical_precision",
+      "b": "edited_speech",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785571064829
+    },
+    {
+      "task": "loaded",
+      "a": "executive_decision",
+      "b": "commentary_stack",
+      "winner": "executive_decision",
+      "probe": false,
+      "t": 1785571066702
+    },
+    {
+      "task": "loaded",
+      "a": "risk_register",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785571071741
+    },
+    {
+      "task": "messy",
+      "a": "insider_note",
+      "b": "technical_precision",
+      "winner": "insider_note",
+      "probe": false,
+      "t": 1785571083489
+    },
+    {
+      "task": "messy",
+      "a": "insider_note",
+      "b": "exploratory_reasoning",
+      "winner": "insider_note",
+      "probe": false,
+      "t": 1785571086684
+    },
+    {
+      "task": "loaded",
+      "a": "exploratory_reasoning",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785571091602
+    },
+    {
+      "task": "loaded",
+      "a": "self_contained_explainer",
+      "b": "exploratory_reasoning",
+      "winner": "exploratory_reasoning",
+      "probe": false,
+      "t": 1785571094525
+    },
+    {
+      "task": "loaded",
+      "a": "sensitive_direct",
+      "b": "risk_register",
+      "winner": "sensitive_direct",
+      "probe": false,
+      "t": 1785571098361
+    },
+    {
+      "task": "loaded",
+      "a": "executive_decision",
+      "b": "spare_memorable",
+      "winner": "executive_decision",
+      "probe": false,
+      "t": 1785571103147
+    },
+    {
+      "task": "messy",
+      "a": "commentary_stack",
+      "b": "spare_memorable",
+      "winner": "spare_memorable",
+      "probe": false,
+      "t": 1785571106028
+    },
+    {
+      "task": "messy",
+      "a": "executive_decision",
+      "b": "exploratory_reasoning",
+      "winner": "exploratory_reasoning",
+      "probe": false,
+      "t": 1785571109041
+    },
+    {
+      "task": "messy",
+      "a": "exploratory_reasoning",
+      "b": "sensitive_direct",
+      "winner": "exploratory_reasoning",
+      "probe": false,
+      "t": 1785571115810
+    },
+    {
+      "task": "loaded",
+      "a": "insider_note",
+      "b": "risk_register",
+      "winner": "risk_register",
+      "probe": false,
+      "t": 1785571118007
+    },
+    {
+      "task": "messy",
+      "a": "insider_note",
+      "b": "sensitive_direct",
+      "winner": "insider_note",
+      "probe": false,
+      "t": 1785571124957
+    },
+    {
+      "task": "loaded",
+      "a": "insider_note",
+      "b": "exploratory_reasoning",
+      "winner": "exploratory_reasoning",
+      "probe": false,
+      "t": 1785571137270
+    },
+    {
+      "task": "loaded",
+      "a": "executive_decision",
+      "b": "exploratory_reasoning",
+      "winner": "executive_decision",
+      "probe": false,
+      "t": 1785571143647
+    },
+    {
+      "task": "messy",
+      "a": "commentary_stack",
+      "b": "risk_register",
+      "winner": "risk_register",
+      "probe": false,
+      "t": 1785571147086
+    },
+    {
+      "task": "messy",
+      "a": "insider_note",
+      "b": "risk_register",
+      "winner": "insider_note",
+      "probe": false,
+      "t": 1785571149786
+    },
+    {
+      "task": "loaded",
+      "a": "insider_note",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785571151313
+    },
+    {
+      "task": "loaded",
+      "a": "self_contained_explainer",
+      "b": "insider_note",
+      "winner": "self_contained_explainer",
+      "probe": false,
+      "t": 1785571152648
+    },
+    {
+      "task": "messy",
+      "a": "self_contained_explainer",
+      "b": "insider_note",
+      "winner": "self_contained_explainer",
+      "probe": false,
+      "t": 1785571162471
+    },
+    {
+      "task": "loaded",
+      "a": "commentary_stack",
+      "b": "spare_memorable",
+      "winner": "spare_memorable",
+      "probe": false,
+      "t": 1785571165874
+    },
+    {
+      "task": "messy",
+      "a": "self_contained_explainer",
+      "b": "exploratory_reasoning",
+      "winner": "exploratory_reasoning",
+      "probe": false,
+      "t": 1785571171719
+    },
+    {
+      "task": "loaded",
+      "a": "exploratory_reasoning",
+      "b": "commentary_stack",
+      "winner": "exploratory_reasoning",
+      "probe": false,
+      "t": 1785571173817
+    },
+    {
+      "task": "messy",
+      "a": "spare_memorable",
+      "b": "sensitive_direct",
+      "winner": "sensitive_direct",
+      "probe": false,
+      "t": 1785571181056
+    },
+    {
+      "task": "loaded",
+      "a": "executive_decision",
+      "b": "spare_memorable",
+      "winner": "executive_decision",
+      "probe": true,
+      "t": 1785571190894
+    },
+    {
+      "task": "loaded",
+      "a": "self_contained_explainer",
+      "b": "sensitive_direct",
+      "winner": "sensitive_direct",
+      "probe": false,
+      "t": 1785571195413
+    },
+    {
+      "task": "messy",
+      "a": "commentary_stack",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785571198170
+    },
+    {
+      "task": "loaded",
+      "a": "executive_decision",
+      "b": "commentary_stack",
+      "winner": "executive_decision",
+      "probe": true,
+      "t": 1785571200019
+    },
+    {
+      "task": "messy",
+      "a": "executive_decision",
+      "b": "risk_register",
+      "winner": "risk_register",
+      "probe": false,
+      "t": 1785571204268
+    },
+    {
+      "task": "messy",
+      "a": "risk_register",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785571209011
+    },
+    {
+      "task": "loaded",
+      "a": "spare_memorable",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785571215374
+    },
+    {
+      "task": "loaded",
+      "a": "commentary_stack",
+      "b": "edited_speech",
+      "winner": "edited_speech",
+      "probe": false,
+      "t": 1785571217308
+    },
+    {
+      "task": "messy",
+      "a": "exploratory_reasoning",
+      "b": "technical_precision",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785571231616
+    },
+    {
+      "task": "loaded",
+      "a": "self_contained_explainer",
+      "b": "risk_register",
+      "winner": "risk_register",
+      "probe": false,
+      "t": 1785571234815
+    },
+    {
+      "task": "messy",
+      "a": "technical_precision",
+      "b": "risk_register",
+      "winner": "technical_precision",
+      "probe": false,
+      "t": 1785571239566
+    },
+    {
+      "task": "messy",
+      "a": "executive_decision",
+      "b": "spare_memorable",
+      "winner": "spare_memorable",
+      "probe": false,
+      "t": 1785571250790
+    },
+    {
+      "task": "messy",
+      "a": "executive_decision",
+      "b": "insider_note",
+      "winner": "insider_note",
+      "probe": false,
+      "t": 1785571252574
+    },
+    {
+      "task": "messy",
+      "a": "spare_memorable",
+      "b": "risk_register",
+      "winner": "risk_register",
+      "probe": false,
+      "t": 1785571259556
+    }
+  ],
+  "ranking": [
+    {
+      "id": "edited_speech",
+      "score": 4.762795980076414,
+      "n": 13,
+      "wins": 12
+    },
+    {
+      "id": "technical_precision",
+      "score": 3.580611412665535,
+      "n": 12,
+      "wins": 9
+    },
+    {
+      "id": "insider_note",
+      "score": 2.3669362544550774,
+      "n": 13,
+      "wins": 7
+    },
+    {
+      "id": "risk_register",
+      "score": 2.3394212286947913,
+      "n": 14,
+      "wins": 7
+    },
+    {
+      "id": "sensitive_direct",
+      "score": 2.312289940536826,
+      "n": 14,
+      "wins": 7
+    },
+    {
+      "id": "exploratory_reasoning",
+      "score": 2.1459120185958147,
+      "n": 13,
+      "wins": 7
+    },
+    {
+      "id": "executive_decision",
+      "score": 1.7314700137580383,
+      "n": 15,
+      "wins": 9
+    },
+    {
+      "id": "self_contained_explainer",
+      "score": 1.5925541299840236,
+      "n": 12,
+      "wins": 5
+    },
+    {
+      "id": "spare_memorable",
+      "score": -0.10872514182041493,
+      "n": 13,
+      "wins": 3
+    },
+    {
+      "id": "commentary_stack",
+      "score": null,
+      "n": 13,
+      "wins": 0
+    }
+  ]
+}

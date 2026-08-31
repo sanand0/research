@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Style Bench — blind forced choice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#12100d; --paper-2:#1a1713; --rule:#332c22; --ink:#ece3d4; --ink-dim:#9b9081;
+  --a:#e2703a; --b:#4c9a92; --warn:#c9553d; --ok:#7ea262;
+  --grain:radial-gradient(circle at 20% 10%,rgba(226,112,58,.06),transparent 45%),
+          radial-gradient(circle at 85% 80%,rgba(76,154,146,.06),transparent 45%);
+}
+[data-theme="light"]{
+  --paper:#f4efe4; --paper-2:#fbf8f1; --rule:#ddd2bd; --ink:#211c15; --ink-dim:#6d6354;
+  --a:#b8500f; --b:#2c6f68; --warn:#a03a24; --ok:#4d7134;
+  --grain:radial-gradient(circle at 20% 10%,rgba(184,80,15,.05),transparent 45%),
+          radial-gradient(circle at 85% 80%,rgba(44,111,104,.05),transparent 45%);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);background-image:var(--grain);background-attachment:fixed;
+  color:var(--ink);font:400 15px/1.6 "IBM Plex Mono",ui-monospace,monospace;}
+header{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap;
+  padding:14px 20px;border-bottom:1px solid var(--rule);position:sticky;top:0;z-index:5;
+  background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px)}
+h1{font-size:15px;margin:0;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.sp{flex:1}
+button,select,label.file{font:inherit;font-size:13px;color:var(--ink);background:transparent;
+  border:1px solid var(--rule);border-radius:2px;padding:5px 11px;cursor:pointer;transition:.15s}
+button:hover,label.file:hover{border-color:var(--a);color:var(--a)}
+button:disabled{opacity:.35;cursor:default}
+main{max-width:1180px;margin:0 auto;padding:22px 20px 90px}
+.meta{font-size:12px;color:var(--ink-dim);letter-spacing:.06em}
+.src{border:1px solid var(--rule);border-left:3px solid var(--ink-dim);background:var(--paper-2);
+  padding:13px 16px;margin-bottom:22px;border-radius:2px}
+.src h2{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-dim);margin:0 0 7px}
+.src p{margin:0;font-family:Literata,Georgia,serif;font-size:14px;line-height:1.65;color:var(--ink-dim)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:800px){.pair{grid-template-columns:1fr}}
+.card{border:1px solid var(--rule);border-radius:2px;background:var(--paper-2);
+  padding:0 0 12px;display:flex;flex-direction:column;cursor:pointer;transition:.18s;
+  animation:rise .35s both}
+.card:nth-child(2){animation-delay:.07s}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+.card:hover{transform:translateY(-2px)}
+.card[data-side=A]:hover{border-color:var(--a);box-shadow:0 0 0 1px var(--a)}
+.card[data-side=B]:hover{border-color:var(--b);box-shadow:0 0 0 1px var(--b)}
+.tag{font-size:11px;letter-spacing:.2em;padding:8px 14px;border-bottom:1px solid var(--rule);
+  display:flex;justify-content:space-between;align-items:center}
+.card[data-side=A] .tag{color:var(--a)} .card[data-side=B] .tag{color:var(--b)}
+.key{opacity:.55;font-size:10px;letter-spacing:.1em}
+.body{padding:15px 18px;font-family:Literata,Georgia,serif;font-size:15px;line-height:1.72;
+  flex:1}
+.bar{position:fixed;left:0;right:0;bottom:0;border-top:1px solid var(--rule);
+  background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(8px);
+  padding:9px 20px;display:flex;gap:16px;align-items:center;font-size:12px;color:var(--ink-dim);flex-wrap:wrap}
+.prog{flex:1;min-width:120px;height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--a),var(--b));transition:width .3s}
+table{border-collapse:collapse;width:100%;font-size:13px;margin-top:8px}
+th,td{text-align:left;padding:6px 9px;border-bottom:1px solid var(--rule)}
+th{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-dim);font-weight:500}
+td.n{text-align:right;font-variant-numeric:tabular-nums}
+.hint{font-size:12px;color:var(--ink-dim);margin:20px 0 0;line-height:1.8}
+kbd{border:1px solid var(--rule);border-bottom-width:2px;border-radius:3px;padding:1px 6px;font-size:11px}
+.setup{max-width:640px;margin:60px auto;text-align:left}
+.setup h2{font-family:Literata,serif;font-weight:400;font-size:25px;margin:0 0 12px}
+.setup p{color:var(--ink-dim);line-height:1.8;font-size:13px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:14px 0}
+input[type=file]{display:none}
+.pill{border:1px solid var(--rule);padding:3px 9px;border-radius:99px;font-size:11px;color:var(--ink-dim)}
+.err{color:var(--warn)}
+</style>
+</head>
+<body>
+<header>
+  <h1>Style&nbsp;Bench</h1>
+  <span class="pill" id="mode">setup</span>
+  <span class="sp"></span>
+  <button id="theme">◐ theme</button>
+  <button id="results" disabled>results</button>
+  <button id="export" disabled>export</button>
+  <button id="reset">reset</button>
+</header>
+<main id="app"></main>
+<div class="bar" id="bar" hidden>
+  <span id="count">0</span>
+  <span class="prog"><i id="pi" style="width:0"></i></span>
+  <span id="eta"></span>
+  <span><kbd>←</kbd>/<kbd>→</kbd> pick · <kbd>↓</kbd> too close · <kbd>u</kbd> undo</span>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked@16.4.1/lib/marked.umd.js"></script>
+<script>
+const $=s=>document.querySelector(s), app=$('#app');
+const LS='stylebench.v1';
+let DATA=null, PLAN=[], I=0, LOG=[], CFG={styles:10,tasks:2,repeat:.1};
+
+/* ---------- theme + url state ---------- */
+const setTheme=t=>{document.documentElement.dataset.theme=t;localStorage.setItem('sb.theme',t);};
+setTheme(localStorage.getItem('sb.theme')||'dark');
+$('#theme').onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark');
+const urlSet=o=>{const p=new URLSearchParams(location.hash.slice(1).split('?')[1]||'');
+  Object.entries(o).forEach(([k,v])=>p.set(k,v));history.replaceState(null,'','#judge?'+p);};
+
+/* ---------- load ---------- */
+async function boot(){
+  const saved=localStorage.getItem(LS);
+  try{
+    const r=await fetch('results3.json');
+    if(r.ok){ DATA=await r.json(); return ready(saved); }
+  }catch(e){}
+  setup('Could not read <code>results3.json</code> directly — browsers block that for local files. Pick it manually.');
+}
+function setup(msg){
+  app.innerHTML=`<div class="setup">
+    <h2>Blind forced choice</h2>
+    <p>${msg}</p>
+    <div class="row">
+      <label class="file">choose results3.json<input type="file" id="f" accept=".json"></label>
+      <span class="meta" id="fs"></span>
+    </div>
+    <p>You will see two versions of the <em>same</em> source text, written in two different styles,
+    with the style names hidden and the sides randomised. One question only:
+    <strong style="color:var(--ink)">which one would you actually send?</strong>
+    Answer fast — first instinct is the signal. About ten minutes.</p>
+  </div>`;
+  $('#f').onchange=e=>{const fl=e.target.files[0];if(!fl)return;
+    const rd=new FileReader();rd.onload=()=>{try{DATA=JSON.parse(rd.result);ready(localStorage.getItem(LS));}
+      catch(err){$('#fs').innerHTML='<span class="err">not valid JSON</span>';}};rd.readAsText(fl);};
+}
+function ready(saved){
+  if(saved){try{const s=JSON.parse(saved);LOG=s.log||[];PLAN=s.plan||[];I=s.i||0;}catch(e){}}
+  if(!PLAN.length) PLAN=buildPlan();
+  $('#reset').onclick=()=>{if(confirm('Discard all judgements?')){localStorage.removeItem(LS);location.reload();}};
+  $('#export').onclick=exportJSON; $('#results').onclick=showResults;
+  render();
+}
+
+/* ---------- plan: which styles, which tasks, which pairs ---------- */
+function coordOf(s){return s.measured_coordinates||s.coordinates||{};}
+function pickStyles(n){
+  // ship candidates only, then spread them out in coordinate space (maximin)
+  const pool=DATA.styles.filter(s=>['composite','costume'].includes(s.kind));
+  const axes=[...new Set(pool.flatMap(s=>Object.keys(coordOf(s))))];
+  const vec=s=>axes.map(a=>+(coordOf(s)[a]||0));
+  const dist=(x,y)=>Math.hypot(...x.map((v,i)=>v-y[i]));
+  if(pool.length<=n) return pool;
+  const chosen=[pool[0]];
+  while(chosen.length<n){
+    let best=null,bd=-1;
+    for(const s of pool){ if(chosen.includes(s))continue;
+      const d=Math.min(...chosen.map(c=>dist(vec(s),vec(c))));
+      if(d>bd){bd=d;best=s;} }
+    chosen.push(best);
+  }
+  return chosen;
+}
+function buildPlan(){
+  const styles=pickStyles(CFG.styles).map(s=>s.id);
+  const want=['loaded','messy','numeric','uncertain','incident','project'];
+  const have=DATA.tasks.map(t=>t.id);
+  const tasks=want.filter(t=>have.includes(t)).slice(0,CFG.tasks);
+  const out=[];
+  for(const t of tasks){
+    const seen={}; styles.forEach(s=>seen[s]=0);
+    const pairs=[];
+    for(let i=0;i<styles.length;i++)for(let j=i+1;j<styles.length;j++)pairs.push([styles[i],styles[j]]);
+    shuffle(pairs);
+    // greedy: prefer pairs whose members have been compared least
+    const target=Math.round(styles.length*3);  // ~6 appearances each
+    while(pairs.length&&out.filter(p=>p.task===t).length<target){
+      pairs.sort((p,q)=>(seen[p[0]]+seen[p[1]])-(seen[q[0]]+seen[q[1]]));
+      const [a,b]=pairs.shift(); seen[a]++;seen[b]++;
+      out.push({task:t,a,b,flip:Math.random()<.5});
+    }
+  }
+  // reliability probes: repeat some pairs with the sides swapped
+  const probes=Math.max(3,Math.round(out.length*CFG.repeat));
+  for(let k=0;k<probes;k++){const p=out[Math.floor(Math.random()*out.length)];
+    out.push({...p,flip:!p.flip,probe:true});}
+  return shuffle(out);
+}
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+
+/* ---------- render one comparison ---------- */
+const out=(sid,tid)=>(DATA.results.find(r=>r.style===sid&&r.task===tid)||{}).output||'(missing)';
+const taskText=tid=>(DATA.tasks.find(t=>t.id===tid)||{}).text||'';
+function render(){
+  if(I>=PLAN.length) return showResults();
+  const p=PLAN[I];
+  const [L,R]=p.flip?[p.b,p.a]:[p.a,p.b];
+  $('#mode').textContent=p.task; $('#bar').hidden=false;
+  $('#results').disabled=LOG.length<6; $('#export').disabled=!LOG.length;
+  app.innerHTML=`
+    <div class="src"><h2>source text · ${p.task}</h2><p>${esc(taskText(p.task))}</p></div>
+    <div class="pair">
+      <div class="card" data-side="A" data-id="${esc(L)}"><div class="tag"><span>A</span><span class="key">←</span></div><div class="body">${marked.parse(out(L,p.task))}</div></div>
+      <div class="card" data-side="B" data-id="${esc(R)}"><div class="tag"><span>B</span><span class="key">→</span></div><div class="body">${marked.parse(out(R,p.task))}</div></div>
+    </div>
+    <p class="hint">Which would you actually send? Don't deliberate — take the first one you'd reach for.
+    If they're genuinely level, press <kbd>↓</kbd>.</p>`;
+  document.querySelectorAll('.card').forEach(c=>c.onclick=()=>choose(c.dataset.id));
+  const pct=Math.round(100*I/PLAN.length);
+  $('#pi').style.width=pct+'%';
+  $('#count').textContent=`${I} / ${PLAN.length}`;
+  $('#eta').textContent=`~${Math.max(1,Math.round((PLAN.length-I)*8/60))} min left`;
+  urlSet({i:I});
+}
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+function choose(winner){
+  const p=PLAN[I];
+  LOG.push({task:p.task,a:p.a,b:p.b,winner,probe:!!p.probe,t:Date.now()});
+  I++;save();render();
+}
+function save(){localStorage.setItem(LS,JSON.stringify({log:LOG,plan:PLAN,i:I}));}
+addEventListener('keydown',e=>{
+  if(I>=PLAN.length)return;
+  const p=PLAN[I],[L,R]=p.flip?[p.b,p.a]:[p.a,p.b];
+  if(e.key==='ArrowLeft')choose(L);
+  else if(e.key==='ArrowRight')choose(R);
+  else if(e.key==='ArrowDown')choose(null);
+  else if(e.key==='u'&&I>0){I--;LOG.pop();save();render();}
+});
+
+/* ---------- Bradley-Terry + what predicts preference ---------- */
+function bt(logs){
+  const ids=[...new Set(logs.flatMap(l=>[l.a,l.b]))];
+  const w={},n={}; ids.forEach(i=>{w[i]=1;n[i]=0;});
+  const wins={},pairs={};
+  logs.filter(l=>l.winner).forEach(l=>{
+    wins[l.winner]=(wins[l.winner]||0)+1;
+    const k=[l.a,l.b].sort().join('|'); pairs[k]=(pairs[k]||0)+1;
+    n[l.a]++;n[l.b]++;
+  });
+  for(let it=0;it<300;it++){
+    const nw={};
+    ids.forEach(i=>{
+      let d=0;
+      logs.filter(l=>l.winner&&(l.a===i||l.b===i)).forEach(l=>{
+        const o=l.a===i?l.b:l.a; d+=1/(w[i]+w[o]);
+      });
+      nw[i]=d>0?(wins[i]||0)/d:w[i];
+    });
+    const g=Math.exp(Object.values(nw).reduce((s,v)=>s+Math.log(Math.max(v,1e-9)),0)/ids.length);
+    ids.forEach(i=>w[i]=nw[i]/g);
+  }
+  return ids.map(i=>({id:i,score:Math.log(w[i]),n:n[i],wins:wins[i]||0})).sort((x,y)=>y.score-x.score);
+}
+function pearson(x,y){const n=x.length,mx=x.reduce((a,b)=>a+b,0)/n,my=y.reduce((a,b)=>a+b,0)/n;
+  let a=0,b=0,c=0;for(let i=0;i<n;i++){const u=x[i]-mx,v=y[i]-my;a+=u*v;b+=u*u;c+=v*v;}
+  return b&&c?a/Math.sqrt(b*c):0;}
+function showResults(){
+  $('#bar').hidden=true; $('#mode').textContent='results'; $('#export').disabled=false;
+  const done=LOG.filter(l=>l.winner);
+  const probes=LOG.filter(l=>l.probe&&l.winner);
+  const byKey={};LOG.filter(l=>l.winner).forEach(l=>{const k=[l.task,...[l.a,l.b].sort()].join('|');(byKey[k]=byKey[k]||[]).push(l.winner);});
+  const rep=Object.values(byKey).filter(v=>v.length>1);
+  const consist=rep.length?rep.filter(v=>v.every(x=>x===v[0])).length/rep.length:null;
+  const rank=bt(done);
+  const S=Object.fromEntries(DATA.styles.map(s=>[s.id,s]));
+  const axes=[...new Set(rank.flatMap(r=>Object.keys(coordOf(S[r.id]||{}))))].filter(a=>
+    rank.some(r=>+(coordOf(S[r.id]||{})[a]||0)!==0));
+  const corr=axes.map(a=>({a,r:pearson(rank.map(r=>+(coordOf(S[r.id]||{})[a]||0)),rank.map(r=>r.score))}))
+    .sort((x,y)=>Math.abs(y.r)-Math.abs(x.r));
+  app.innerHTML=`<div class="setup" style="max-width:820px">
+    <h2>What you actually chose</h2>
+    <p>${done.length} judgements · ${LOG.length-done.length} called level ·
+    ${consist===null?'no repeat probes yet':`<strong style="color:${consist>.75?'var(--ok)':'var(--warn)'}">${Math.round(consist*100)}% self-consistent</strong> on ${rep.length} repeated pairs`}.
+    ${consist!==null&&consist<.7?'<span class="err">Below ~70% means your own choices are close to coin-flips — treat the ranking as weak.</span>':''}</p>
+    <table><thead><tr><th>#</th><th>style</th><th>fidelity</th><th class="n">strength</th><th class="n">wins</th><th class="n">seen</th></tr></thead><tbody>
+    ${rank.map((r,i)=>`<tr><td class="n">${i+1}</td><td>${esc(r.id)}</td>
+      <td class="meta">${esc((S[r.id]||{}).fidelity||'')}</td>
+      <td class="n">${r.score.toFixed(2)}</td><td class="n">${r.wins}</td><td class="n">${r.n}</td></tr>`).join('')}
+    </tbody></table>
+    <h2 style="margin-top:34px;font-size:19px">What predicts what you picked</h2>
+    <p>Correlation between each design axis and preference strength. A strong number means you are
+    consistently choosing a property, not a style — which lets you score styles you never judged.</p>
+    <table><thead><tr><th>axis</th><th class="n">r</th><th>reading</th></tr></thead><tbody>
+    ${corr.map(c=>`<tr><td>${esc(c.a)}</td><td class="n">${c.r.toFixed(2)}</td>
+      <td class="meta">${Math.abs(c.r)<0.3?'nothing':(c.r>0?'you prefer more of this':'you prefer less of this')}</td></tr>`).join('')}
+    </tbody></table>
+    <p class="hint">With ${rank.length} styles, treat |r| under about 0.5 as suggestive at best.
+    Export and re-fit properly if you want a number you would quote.</p>
+    <div class="row"><button onclick="I=0;location.reload()">judge again</button></div>
+  </div>`;
+}
+function exportJSON(){
+  const blob=new Blob([JSON.stringify({judgements:LOG,ranking:bt(LOG.filter(l=>l.winner))},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='style-judgements.json';a.click();
+}
+boot();
+</script>
+</body>
+</html>

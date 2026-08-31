@@ -15,14 +15,14 @@
   ],
   "styles": [
     {
+      "id": "contesting_marginalia",
+      "name": "Contesting marginalia",
+      "prompt": "Write as a bland official summary sabotaged by bracketed marginal notes: the surface voice must euphemize or evade, while the notes state the source meaning accurately and more bluntly; no note may dispute a source fact, and add nothing outside the two voices."
+    },
+    {
       "id": "verbatim_spoken",
       "name": "Raw verbatim spoken answer",
       "prompt": "Write as a raw verbatim spoken answer: include one abandoned start that changes direction, one self-correction of wording, and one unfinished clause; use fillers only where thought genuinely catches, never as decorative stuttering; preserve every factual claim and add no framing or polish."
-    },
-    {
-      "id": "telegraph_cablese",
-      "name": "Telegraph cablese",
-      "prompt": "Write as a telegram charged by the word: delete articles, pronouns, and connective padding where possible; use terse clauses separated by STOP; preserve every fact, relationship, negation, and list item."
     },
     {
       "id": "cross_examination",
@@ -30,9 +30,9 @@
       "prompt": "Write as a hostile cross-examination in terse Q:/A: exchanges: force each causal claim, assumption, comparison, deadline, and recommendation to answer a pointed question; group parallel facts rather than atomizing them; add no exposition."
     },
     {
-      "id": "contesting_marginalia",
-      "name": "Contesting marginalia",
-      "prompt": "Write as a bland official summary sabotaged by bracketed marginal notes: the surface voice must euphemize or evade, while the notes state the source meaning accurately and more bluntly; no note may dispute a source fact, and add nothing outside the two voices."
+      "id": "telegraph_cablese",
+      "name": "Telegraph cablese",
+      "prompt": "Write as a telegram charged by the word: delete articles, pronouns, and connective padding where possible; use terse clauses separated by STOP; preserve every fact, relationship, negation, and list item."
     },
     {
       "id": "field_naturalist_log",
