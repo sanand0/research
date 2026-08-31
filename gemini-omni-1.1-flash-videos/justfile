@@ -1,0 +1,48 @@
+set shell := ["bash", "-euo", "pipefail", "-c"]
+
+project := "2026-08-31-gemini-omni-1.1-flash"
+dest := env_var("HOME") + "/r2/media/" + project
+
+# Build the four completed proof videos. API generation only runs when its
+# checkpointed MP4 is missing; WebM re-encodes only when the MP4 is newer.
+build:
+    @test -f output/01-fix-one-thing/final/compare.mp4 || ./01_fix_one_thing.py
+    @test -f output/02-still-me-at-30-seconds/final/demo.mp4 || ./02_still_me_at_30_seconds.py --resolution 720p --output-dir output/02-still-me-at-30-seconds/final
+    @test -f output/03-first-last-frame/final/demo.mp4 || ./03_first_last_frame.py
+    @test -f output/04-video-reference-motion/final/demo.mp4 || ./04_video_reference_motion.py
+    @just encode output/01-fix-one-thing/final/compare.mp4 output/01-fix-one-thing/final/demo.webm
+    @just encode output/02-still-me-at-30-seconds/final/demo.mp4 output/02-still-me-at-30-seconds/final/demo.webm
+    @just encode output/03-first-last-frame/final/demo.mp4 output/03-first-last-frame/final/demo.webm
+    @just encode output/04-video-reference-motion/final/demo.mp4 output/04-video-reference-motion/final/demo.webm
+
+# User-preferred AV1/Opus settings. Skip when output is already newer.
+encode input output:
+    @if [[ -f "{{output}}" && "{{output}}" -nt "{{input}}" ]]; then \
+      echo "up to date: {{output}}"; \
+    else \
+      echo "encoding: {{input}} -> {{output}}"; \
+      ffmpeg -y -i "{{input}}" -c:v av1_nvenc -preset p6 -tune uhq -rc vbr -cq 55 -b:v 0 -spatial-aq 1 -temporal-aq 1 -c:a libopus -b:a 24k -vbr on -compression_level 10 "{{output}}"; \
+    fi
+
+# Copy the public page, proof videos, and useful raw inputs/outputs to R2.
+deploy: build
+    @mkdir -p "{{dest}}"/{01-fix-one-thing,02-still-me-at-30-seconds,03-first-last-frame,04-video-reference-motion}
+    @cp index.html "{{dest}}/index.html"
+    @cp output/01-fix-one-thing/final/base.mp4 "{{dest}}/01-fix-one-thing/base.mp4"
+    @cp output/01-fix-one-thing/final/edited.mp4 "{{dest}}/01-fix-one-thing/edited.mp4"
+    @cp output/01-fix-one-thing/final/compare.mp4 "{{dest}}/01-fix-one-thing/demo.mp4"
+    @cp output/01-fix-one-thing/final/demo.webm "{{dest}}/01-fix-one-thing/demo.webm"
+    @cp output/02-still-me-at-30-seconds/final/sequence/03.mp4 "{{dest}}/02-still-me-at-30-seconds/raw.mp4"
+    @cp output/02-still-me-at-30-seconds/final/demo.mp4 "{{dest}}/02-still-me-at-30-seconds/demo.mp4"
+    @cp output/02-still-me-at-30-seconds/final/demo.webm "{{dest}}/02-still-me-at-30-seconds/demo.webm"
+    @cp output/03-first-last-frame/final/video.mp4 "{{dest}}/03-first-last-frame/raw.mp4"
+    @cp output/03-first-last-frame/final/demo.mp4 "{{dest}}/03-first-last-frame/demo.mp4"
+    @cp output/03-first-last-frame/final/demo.webm "{{dest}}/03-first-last-frame/demo.webm"
+    @cp output/03-first-last-frame/assets/first.png "{{dest}}/03-first-last-frame/first.png"
+    @cp output/03-first-last-frame/assets/last.png "{{dest}}/03-first-last-frame/last.png"
+    @cp output/04-video-reference-motion/assets/motion-reference.mp4 "{{dest}}/04-video-reference-motion/reference.mp4"
+    @cp output/04-video-reference-motion/explore/candidate-01.mp4 "{{dest}}/04-video-reference-motion/generated.mp4"
+    @cp output/04-video-reference-motion/final/video.mp4 "{{dest}}/04-video-reference-motion/final-720p.mp4"
+    @cp output/04-video-reference-motion/final/demo.mp4 "{{dest}}/04-video-reference-motion/demo.mp4"
+    @cp output/04-video-reference-motion/final/demo.webm "{{dest}}/04-video-reference-motion/demo.webm"
+    @echo "deployed: {{dest}}"

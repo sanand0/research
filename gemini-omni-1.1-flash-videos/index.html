@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Gemini Omni 1.1 Flash: four video-control experiments</title>
+<meta name="description" content="I tested Gemini Omni 1.1 Flash on surgical editing, 30-second extension, first/last-frame control, and video-reference motion. Here are the prompts, videos, costs, failures, and lessons.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg:#f7f4ee; --fg:#1f211f; --muted:#696c66; --paper:#fffdf8; --soft:#eeebe3;
+    --line:#d7d2c7; --accent:#b33a2e; --accent-soft:#f4ded8;
+    --good:#176b4a; --good-soft:#dfeee7; --warn:#8a5a00; --warn-soft:#f6ead0; --code:#ebe7de;
+  }
+  :root[data-theme="dark"] {
+    --bg:#151615; --fg:#edece7; --muted:#aaa9a2; --paper:#1d1e1c; --soft:#232420;
+    --line:#383a34; --accent:#ff8f7f; --accent-soft:#442823;
+    --good:#74d3a8; --good-soft:#1c382d; --warn:#f1c36a; --warn-soft:#3b301c; --code:#292a26;
+  }
+  :root[data-theme="light"] { color-scheme:light; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg:#151615; --fg:#edece7; --muted:#aaa9a2; --paper:#1d1e1c; --soft:#232420;
+      --line:#383a34; --accent:#ff8f7f; --accent-soft:#442823;
+      --good:#74d3a8; --good-soft:#1c382d; --warn:#f1c36a; --warn-soft:#3b301c; --code:#292a26;
+    }
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:1.03rem/1.72 Literata,Georgia,serif; }
+  header, main, footer { width:min(1080px, calc(100% - 2rem)); margin-inline:auto; }
+  header { padding:4.5rem 0 1.5rem; position:relative; }
+  h1, h2, h3, nav, .card b, .pill, .eyebrow, summary, th { font-family:"Space Grotesk",sans-serif; }
+  h1 { font-size:clamp(2.8rem,8vw,6rem); line-height:.92; letter-spacing:-.055em; max-width:980px; margin:.3rem 0 1.35rem; text-wrap:balance; }
+  h2 { font-size:clamp(2rem,4.8vw,3.45rem); line-height:1.01; letter-spacing:-.04em; margin:0 0 1rem; max-width:900px; text-wrap:balance; }
+  h3 { margin:2rem 0 .5rem; }
+  p, li { max-width:72ch; }
+  a { color:var(--accent); text-decoration-thickness:.08em; text-underline-offset:.18em; }
+  strong { font-weight:700; }
+  .kicker, .meta, .note, .proof-links { color:var(--muted); }
+  .kicker, .eyebrow, .pill { text-transform:uppercase; letter-spacing:.10em; font:600 .72rem/1.3 "IBM Plex Mono",monospace; }
+  .meta { font-size:.9rem; max-width:88ch; }
+  .theme { position:absolute; right:0; top:1.4rem; border:1px solid var(--line); border-radius:999px; background:var(--paper); color:var(--fg); padding:.45rem .75rem; cursor:pointer; font-family:"Space Grotesk",sans-serif; }
+  .lede { font-size:clamp(1.18rem,2.2vw,1.48rem); line-height:1.52; max-width:70ch; }
+  nav { position:sticky; top:0; z-index:10; width:100%; display:flex; gap:.45rem; overflow-x:auto; scrollbar-width:none; border-block:1px solid var(--line); padding:.65rem max(1rem,calc((100vw - 1080px)/2)); margin:1rem 0 3.5rem; background:color-mix(in srgb,var(--bg) 88%,transparent); backdrop-filter:blur(12px); font-size:.82rem; white-space:nowrap; }
+  nav::-webkit-scrollbar { display:none; }
+  nav a { color:var(--fg); text-decoration:none; padding:.38rem .65rem; border-radius:999px; }
+  nav a:hover, nav a:focus-visible { background:var(--soft); outline:none; }
+  .overview { margin:1.5rem 0 4.5rem; }
+  .capability-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:.65rem; margin:1.35rem 0; }
+  .card { background:var(--paper); border:1px solid var(--line); padding:1.05rem; border-radius:.7rem; min-height:145px; }
+  .card b { display:block; font-size:1.15rem; line-height:1.18; letter-spacing:-.02em; margin:.25rem 0 .55rem; }
+  .card p { margin:0; font-size:.86rem; line-height:1.45; color:var(--muted); }
+  .card .metric { font:600 .74rem/1.2 "IBM Plex Mono",monospace; color:var(--accent); }
+  .experiment { margin:0 0 6rem; padding-top:2rem; border-top:1px solid var(--line); }
+  .experiment-head { display:grid; grid-template-columns:7rem 1fr; gap:1.25rem; align-items:center; margin-bottom:1.25rem; }
+  .number { font:600 .72rem/1.4 "IBM Plex Mono",monospace; color:var(--muted); padding-top:.45rem; }
+  .result { display:grid; grid-template-columns:auto 1fr; gap:.75rem; align-items:center; background:var(--good-soft); border:1px solid color-mix(in srgb,var(--good) 35%,var(--line)); padding:.9rem 1rem; border-radius:.6rem; margin:1.1rem 0; max-width:76ch; }
+  .result .pill { color:var(--good); margin-top:.18rem; }
+  .result p, .gotcha p { margin:0; }
+  .gotcha { display:grid; grid-template-columns:auto 1fr; gap:.75rem; align-items:center; background:var(--warn-soft); border:1px solid color-mix(in srgb,var(--warn) 35%,var(--line)); padding:.95rem 1rem; border-radius:.6rem; margin:1.2rem 0 1.5rem; max-width:76ch; }
+  .gotcha .pill { color:var(--warn); margin-top:.18rem; }
+  figure { margin:1.6rem 0 .65rem; }
+  video { width:100%; height:auto; display:block; background:#000; border-radius:.65rem; border:1px solid var(--line); box-shadow:0 10px 30px color-mix(in srgb,#000 12%,transparent); }
+  figcaption, .proof-links { margin:.5rem .15rem 1.4rem; font-size:.84rem; line-height:1.5; }
+  details { background:var(--paper); border:1px solid var(--line); border-radius:.6rem; padding:.8rem 1rem; margin:.8rem 0; max-width:84ch; }
+  summary { cursor:pointer; font-weight:600; }
+  pre { overflow:auto; background:var(--code); padding:1rem; border-radius:.45rem; font:.78rem/1.55 "IBM Plex Mono",monospace; white-space:pre-wrap; }
+  code { font-family:"IBM Plex Mono",monospace; font-size:.87em; }
+  table { border-collapse:collapse; width:100%; margin:1.2rem 0 1.6rem; font-size:.88rem; background:var(--paper); border:1px solid var(--line); }
+  th, td { padding:.65rem .7rem; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+  th { font-size:.78rem; }
+  th:last-child, td:last-child { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  tr:last-child td { border-bottom:0; }
+  .endpoint { display:grid; grid-template-columns:1fr 1fr; gap:.65rem; margin:1rem 0; }
+  .endpoint img { width:100%; display:block; border-radius:.5rem; border:1px solid var(--line); }
+  section:not(.overview) { margin-block:5rem; }
+  .section-intro { font-size:1.12rem; max-width:68ch; }
+  footer { border-top:1px solid var(--line); margin-top:5rem; padding:2rem 0 4rem; color:var(--muted); font-size:.86rem; }
+  @media (max-width:800px) { .capability-grid { grid-template-columns:1fr 1fr; } .experiment-head { grid-template-columns:1fr; gap:.2rem; } .number { padding-top:0; } }
+  @media (max-width:560px) { header { padding-top:3.5rem; } .capability-grid { grid-template-columns:1fr; } .endpoint { grid-template-columns:1fr; } table { font-size:.78rem; } th,td { padding:.5rem .4rem; } nav { margin-bottom:2.6rem; } .result,.gotcha { grid-template-columns:1fr; gap:.3rem; } }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto; } }
+</style>
+<header>
+  <button class="theme" type="button" aria-label="Toggle light and dark theme">Light / dark</button>
+  <div class="kicker">Experiment log | 31 Aug 2026</div>
+  <h1>Gemini Omni 1.1 Flash: I tried the controls</h1>
+  <p class="lede">Google released <a href="https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash">Gemini Omni 1.1 Flash</a> on 27 Aug 2026. I was less interested in whether it could make another beautiful 8-second video. We had already tried that sort of thing. The annoying problems were: can I fix one mistake without changing five other things? Can a person survive past 10 seconds? Can I tell a shot where to end? Can a video itself specify motion?</p>
+  <p>So I tested those four things. The videos below are the tests, not illustrations of the tests. I kept the prompts, API parameters, usage, failures, and even the experiments I threw away.</p>
+  <p class="meta">Source: <a href="https://github.com/sanand0/research/tree/main/gemini-omni-1.1-flash-videos">github.com/sanand0/research/gemini-omni-1.1-flash-videos</a>. Google references: <a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/">launch post</a>, <a href="https://ai.google.dev/gemini-api/docs/omni">Omni guide</a>, <a href="https://ai.google.dev/gemini-api/docs/pricing">pricing</a>, <a href="https://ai.google.dev/gemini-api/docs/changelog">release notes</a>, <a href="https://github.com/googleapis/python-genai">Python SDK</a>.</p>
+</header>
+<nav aria-label="On this page"><a href="#edit">Specific edits</a><a href="#extend">10s -> 30s</a><a href="#frames">End frame</a><a href="#motion">Motion reference</a><a href="#cost">Cost</a><a href="#lessons">Gotchas</a></nav>
+<main>
+  <section class="overview" aria-labelledby="what">
+    <h2 id="what">Omni 1.1 makes video more controllable</h2>
+    <p class="section-intro"><a href="https://ai.google.dev/gemini-api/docs/omni">Google's API guide</a> now documents stateful editing, extension, first/last-frame interpolation, and image/video references in one model. Those map unusually well to the problems we had hit in earlier video-generation work. Short clips were already easy. <strong>Changing and continuing them was the expensive bit.</strong></p>
+    <div class="capability-grid">
+      <div class="card"><span class="metric">EDIT</span><b>Change one thing</b><p>0.986 SSIM before/after at 720p. Gotcha: 360p editing changed much more.</p></div>
+      <div class="card"><span class="metric">EXTEND</span><b>10 sec -> 30 sec</b><p>Same person and voice across two extensions. Gotcha: keep speech away from joins.</p></div>
+      <div class="card"><span class="metric">DIRECT</span><b>Aim for an end frame</b><p>Start/end SSIM 0.974 / 0.973. The eight seconds between them were invented.</p></div>
+      <div class="card"><span class="metric">REFERENCE</span><b>Copy motion from video</b><p>Works, but reference adherence varied. A 720p rerun did not reproduce the best draft.</p></div>
+    </div>
+    <p class="meta">All experiments so far cost about <strong>$13.14</strong>, including discarded generations and one accidental duplicate. Exact token-level accounting stays in <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/COSTS.md">COSTS.md</a>.</p>
+  </section>
+
+  <article class="experiment" id="edit">
+    <div class="experiment-head"><div class="number">EXPERIMENT 01</div><h2>It can change one thing without remaking the shot</h2></div>
+    <figure>
+    <video controls preload="metadata" playsinline>
+      <source src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/01-fix-one-thing/demo.webm" type="video/webm">
+      <source src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/01-fix-one-thing/demo.mp4" type="video/mp4">
+      <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/01-fix-one-thing/demo.webm">Open the proof video</a>.
+    </video>
+    <figcaption class="proof-links">Raw model output: <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/01-fix-one-thing/base.mp4">before</a> | <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/01-fix-one-thing/edited.mp4">after</a> | <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/01_fix_one_thing.py">script</a> | <a href="https://ai.google.dev/gemini-api/docs/omni#stateful_video_editing">Google: stateful video editing</a></figcaption>
+    </figure>
+    <p>I made a shop scene with an orange payment terminal, then gave it one edit: <strong>change only the terminal to cobalt blue; keep everything else the same.</strong></p>
+    <div class="result"><span class="pill">Result</span><p>The 720p result is almost frame-identical outside the edit. SSIM is 0.986, with substantial change concentrated around the terminal.</p></div>
+    <div class="gotcha"><span class="pill">Watch for</span><p><strong>360p edit fidelity did not predict 720p.</strong> The same edit at 360p had SSIM 0.70 and changed much more. Cheap drafts are useful for searching ideas, but I would not use them to judge surgical edit quality.</p></div>
+    <details><summary>Exact prompts</summary><pre>BASE
+Exactly 8 seconds. Single continuous locked-off shot, no cuts.
+
+A small-business owner in a cobalt-blue apron stands behind a modern neighbourhood shop counter. An ORANGE payment terminal is clearly visible on the counter. A red ceramic mug sits to the left and a green plant to the right.
+
+She scans one parcel, taps the orange terminal once, puts a receipt into a paper bag, then smiles.
+
+Natural shop ambience. No dialogue. No music. No text overlays.
+
+EDIT
+Change only the orange payment terminal to cobalt blue. Keep everything else the same.</pre></details>
+    <details><summary>API parameters and run</summary><pre>model = "gemini-omni-1.1-flash"
+response_format = {
+  "type": "video",
+  "aspect_ratio": "16:9",
+  "resolution": "360p" or "720p",
+  "duration": "8s",
+  "delivery": "uri"
+}
+
+Explore: 3 independent 360p base videos; edit candidate 1.
+Final: fresh 720p base; edit with previous_interaction_id=base.id.</pre></details>
+    <p><strong>Cost:</strong> $2.84 in usage-backed calls, plus about $0.82 for an accidental duplicate 720p base generation caused by a logging <code>BrokenPipe</code> after the API call had already succeeded. I fixed the resume/logging bug afterwards.</p>
+  </article>
+
+  <article class="experiment" id="extend">
+    <div class="experiment-head"><div class="number">EXPERIMENT 02</div><h2>It can extend a 10-second scene to 30 seconds</h2></div>
+    <figure>
+    <video controls preload="metadata" playsinline>
+      <source src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/02-still-me-at-30-seconds/demo.webm" type="video/webm">
+      <source src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/02-still-me-at-30-seconds/demo.mp4" type="video/mp4">
+      <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/02-still-me-at-30-seconds/demo.webm">Open the proof video</a>.
+    </video>
+    <figcaption class="proof-links"><a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/02-still-me-at-30-seconds/raw.mp4">Raw 30-second model output</a> | <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/02_still_me_at_30_seconds.py">script</a> | <a href="https://ai.google.dev/gemini-api/docs/omni#video_extension">Google: video extension</a></figcaption>
+    </figure>
+    <div class="result"><span class="pill">Result</span><p>The final output is 30.016 seconds. The person, face, voice, jacket, room, mug, terminal, camera, and lighting stay remarkably stable across both extensions.</p></div>
+    <div class="gotcha"><span class="pill">Watch for</span><p><strong>Leave about two seconds of silence around an extension join if speech matters.</strong> My first draft put speech across the 20-second boundary. The model rewrote the tail and created an audible false start. Google's <a href="https://ai.google.dev/gemini-api/docs/omni#prompts_for_extending_a_video">prompt guide says final input frames may be edited</a> to make an extension seamless. Moving speech away from the join fixed it.</p></div>
+    <details><summary>Exact prompts</summary><pre>TURN 1
+Exactly 10 seconds. Single continuous locked-off medium shot, no cuts. A woman in a distinctive cobalt-blue jacket stands behind a small-business counter. A red ceramic mug is on her left and a blue payment terminal on her right. Warm morning light. In the first six seconds, she says in a crisp calm Indian-English voice: 'Ten seconds used to be the wall. Continuing meant starting over.' Then she stays silent for the rest of the shot and slowly picks up the red mug. No music. Natural room ambience.
+
+TURN 2
+Continue the same unbroken scene for exactly 10 more seconds. Preserve exactly the same woman, voice, clothing, room, camera, lighting and ambience. In the first six seconds of this extension, she sets the mug down and says: 'Same face. Same voice. Same room. This is the second ten seconds.' Then she stays silent for the rest of this extension. No music.
+
+TURN 3
+Continue the same unbroken scene for exactly 10 more seconds. Preserve exactly the same woman, voice, clothing, room, camera, lighting and ambience. In the first six seconds of this extension, she says: 'Thirty seconds. One continuous story, not three unrelated clips.' Then she stays silent and smiles naturally until the end. No music.</pre></details>
+    <details><summary>API parameters and run</summary><pre>model = "gemini-omni-1.1-flash"
+response_format = {
+  "type": "video", "aspect_ratio": "16:9",
+  "resolution": "720p", "duration": "10s", "delivery": "uri"
+}
+
+Turn 1: normal generation.
+Turn 2: previous_interaction_id=turn1.id
+Turn 3: previous_interaction_id=turn2.id
+
+I first tried explicit video task="extend" together with previous_interaction_id.
+The API rejected that combination with HTTP 400, so the working version relies on prompting, which Google recommends trying first.</pre></details>
+    <p><strong>Cost:</strong> $1.09 for the useful-but-bad 360p draft + $3.23 for the clean 720p final = <strong>$4.32</strong>. The rejected HTTP 400 returned no usage; I count it as $0.</p>
+  </article>
+
+  <article class="experiment" id="frames">
+    <div class="experiment-head"><div class="number">EXPERIMENT 03</div><h2>It can aim for a specific final frame</h2></div>
+    <figure>
+    <video controls preload="metadata" playsinline>
+      <source src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/03-first-last-frame/demo.webm" type="video/webm">
+      <source src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/03-first-last-frame/demo.mp4" type="video/mp4">
+      <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/03-first-last-frame/demo.webm">Open the proof video</a>.
+    </video>
+    <div class="endpoint">
+      <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/03-first-last-frame/first.png"><img loading="lazy" src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/03-first-last-frame/first.png" alt="Supplied first frame"></a>
+      <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/03-first-last-frame/last.png"><img loading="lazy" src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/03-first-last-frame/last.png" alt="Supplied last frame"></a>
+    </div>
+    <figcaption class="proof-links"><a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/03-first-last-frame/raw.mp4">Raw generated interpolation</a> | <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/03_first_last_frame.py">script</a> | <a href="https://ai.google.dev/gemini-api/docs/omni#first_and_last_frame_interpolation">Google: first/last-frame interpolation</a></figcaption>
+    </figure>
+    <p>I took one frame from Experiment 1 and made two overlapping crops locally. No image model was involved. I passed those as <code>&lt;FIRST_FRAME&gt;</code> and <code>&lt;LAST_FRAME&gt;</code>.</p>
+    <div class="result"><span class="pill">Result</span><p>The generated first frame matches my supplied first frame at SSIM 0.974; the last matches at 0.973. The eight seconds in between are invented.</p></div>
+    <div class="gotcha"><span class="pill">Watch for</span><p><strong>This test used compatible endpoints from the same scene.</strong> It shows strong endpoint control, not that arbitrary first and last images will interpolate plausibly.</p></div>
+    <details><summary>Exact prompt and API parameters</summary><pre>[# Sources &lt;FIRST_FRAME&gt;@Image1 &lt;LAST_FRAME&gt;@Image2]
+Smooth cinematic camera move from the supplied first frame to the supplied last frame. Preserve the exact woman, cobalt-blue apron, payment terminal, red mug, counter, plants, shop layout and warm lighting. The camera smoothly moves from the left-hand viewpoint to the right-hand viewpoint with natural parallax. Single continuous shot, constant smooth camera speed, no jump cuts. Subtle shop ambience. No dialogue. Use Image1 as the exact starting frame and Image2 as the exact final frame.
+
+model = "gemini-omni-1.1-flash"
+input = [first-image, last-image, prompt]
+response_format = {
+  "type": "video", "aspect_ratio": "16:9",
+  "resolution": "360p" or "720p", "duration": "8s", "delivery": "uri"
+}
+
+3 x 360p candidates + 1 x 720p final.</pre></details>
+    <p><strong>Cost:</strong> $1.67. This is the cleanest capability of the four for me because the endpoint is objectively testable.</p>
+  </article>
+
+  <article class="experiment" id="motion">
+    <div class="experiment-head"><div class="number">EXPERIMENT 04</div><h2>It can use another video as a motion reference</h2></div>
+    <figure>
+    <video controls preload="metadata" playsinline>
+      <source src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/04-video-reference-motion/demo.webm" type="video/webm">
+      <source src="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/04-video-reference-motion/demo.mp4" type="video/mp4">
+      <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/04-video-reference-motion/demo.webm">Open the proof video</a>.
+    </video>
+    <figcaption class="proof-links"><a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/04-video-reference-motion/reference.mp4">3-second reference</a> | <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/04-video-reference-motion/generated.mp4">best clean 360p result</a> | <a href="https://media.s-anand.net/2026-08-31-gemini-omni-1.1-flash/04-video-reference-motion/final-720p.mp4">720p rerun (weaker)</a> | <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/04_video_reference_motion.py">script</a> | <a href="https://ai.google.dev/gemini-api/docs/omni#using_tags_in_prompts_to_set_image_and_video_roles">Google: video-reference tags</a></figcaption>
+    </figure>
+    <p>This one fooled me once.</p>
+    <div class="gotcha"><span class="pill">Bad test</span><p><strong>Do not describe the same motion in the text prompt if you are testing video-reference motion.</strong> My first prompt did that. The output looked good, but I could not tell whether the motion came from the video or my words. I threw away all four generations. They cost $1.70.</p></div>
+    <p>Then I removed the choreography completely. The text only says to copy the unusual sequence of poses from <code>&lt;VIDEO_REF_0&gt;</code>. The left side of the proof is the 3-second reference slowed to the same eight-second timeline; the right is the new scene. <a href="https://ai.google.dev/gemini-api/docs/omni#limitations">Google currently allows up to three video references of up to three seconds each and ignores reference-video audio.</a></p>
+    <details><summary>Clean prompt and API parameters</summary><pre>[# References &lt;VIDEO_REF_0&gt;@Video1]
+Copy only the body movement from &lt;VIDEO_REF_0&gt;. A faceless cobalt-blue training mannequin on a brightly lit football pitch performs the same unusual sequence of full-body poses, in the same order and with the same relative timing as the reference. Reproduce the motion faithfully; do not simplify it into a generic wave or exercise. Full body visible throughout. Fixed camera. Single continuous shot. No cuts. Do not copy the reference figure's appearance, colors, text or background. No dialogue. Use Video1 as a movement reference, not as a source for video editing.
+
+model = "gemini-omni-1.1-flash"
+input = [uploaded-3s-video-reference, prompt]
+response_format = {
+  "type": "video", "aspect_ratio": "16:9",
+  "resolution": "360p" or "720p", "duration": "8s", "delivery": "uri"
+}
+
+3 x 360p candidates + 1 x 720p rerun.</pre></details>
+    <div class="result"><span class="pill">Result</span><p>The clean run cost $1.70. Candidate 1 transfers the motion clearly enough for me even though the text never describes the choreography.</p></div>
+    <div class="gotcha"><span class="pill">Watch for</span><p><strong>A 720p rerun is a new stochastic generation, not the 360p winner at higher resolution.</strong> Candidates 2 and 3 were weaker, and the 720p rerun was weaker too. With no seed/replay control here, I would generate several finals or keep the best draft and upscale it. Also, <a href="https://ai.google.dev/gemini-api/docs/omni#limitations">reference-video audio is ignored</a>.</p></div>
+  </article>
+
+  <section id="cost">
+    <h2>Four experiments cost about $13</h2>
+    <p><a href="https://ai.google.dev/gemini-api/docs/pricing">Google's Standard pricing</a> is $1.50/M input tokens, $9/M text/thinking output, and $17.50/M video output. Google says 720p uses 5,792 video tokens/sec, about $0.10/sec before the smaller text/input component. The <a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/">launch post</a> says 360p is about one-third the cost of 720p and up to 60% faster.</p>
+    <p>I calculate each call from the usage returned by the API. This is an estimate, not Google's invoice.</p>
+    <table>
+      <thead><tr><th>What</th><th>What happened</th><th>Cost</th></tr></thead>
+      <tbody>
+        <tr><td>Initial smoke test</td><td>3s, 360p</td><td>$0.11</td></tr>
+        <tr><td>Experiment 1</td><td>3 drafts + edit + 720p base/edit</td><td>$2.84</td></tr>
+        <tr><td>Experiment 2</td><td>bad 360p sequence + good 720p sequence</td><td>$4.32</td></tr>
+        <tr><td>Experiment 3</td><td>3 drafts + 720p final</td><td>$1.67</td></tr>
+        <tr><td>Experiment 4, discarded</td><td>4 valid generations, invalid experiment design</td><td>$1.70</td></tr>
+        <tr><td>Experiment 4, clean</td><td>3 drafts + 720p rerun</td><td>$1.70</td></tr>
+        <tr><td>Accidental duplicate</td><td>completed 720p call; usage metadata lost after logging failure</td><td>~$0.82</td></tr>
+        <tr><td><strong>All in</strong></td><td>$12.32 backed by recorded API usage + estimated duplicate</td><td><strong>~$13.14</strong></td></tr>
+      </tbody>
+    </table>
+    <p>There was also one HTTP 400 when I combined <code>previous_interaction_id</code> with an explicit extension task. It returned no usage and generation never started, so I record it as $0. The <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/COSTS.md">full cost ledger</a> lists every successful call, discarded attempt, failure, token count, and estimated cost.</p>
+  </section>
+
+  <section id="lessons">
+    <h2>The controls work, with a few important gotchas</h2>
+    <div class="result"><span class="pill">Useful</span><p><strong>Surgical editing is the biggest workflow change for me.</strong> Generating a plausible clip was already possible. Changing one thing without destroying the rest was the problem.</p></div>
+    <div class="gotcha"><span class="pill">Gotcha</span><p><strong>Keep speech about two seconds away from extension joins.</strong> The model may rewrite the tail of the previous clip. My first run turned that into an audible false start.</p></div>
+    <div class="result"><span class="pill">Useful</span><p><strong>First + last frame is the most testable control.</strong> I can specify two images, measure both endpoints, and immediately see whether the model did what I asked.</p></div>
+    <div class="gotcha"><span class="pill">Gotcha</span><p><strong>Reference motion is not deterministic choreography replay.</strong> It worked, but adherence varied substantially across generations.</p></div>
+    <p>Google's 360p mode is useful for exploration. In my simple text-to-video calls it was roughly $0.035/generated second, close to the one-third-of-720p story. But the phrase "rerun the winner at 720p" is misleading when the winner depends on stochastic details. There is no winner to rerun unless the API gives me reproducible generation.</p>
+    <p>I had planned a fifth experiment called "Fail cheaply": generate six cheap drafts and finish one. I have not run it yet. After Experiment 4, I would change the question slightly: <em>how often does a cheap draft predict what I will get in an expensive final?</em></p>
+  </section>
+
+  <section id="build">
+    <h2>The experiments are reproducible and resumable</h2>
+    <p>The scripts use the official <a href="https://github.com/googleapis/python-genai"><code>google-genai</code> Python SDK</a>, run as standalone <a href="https://docs.astral.sh/uv/guides/scripts/">uv scripts</a>, and store an interaction ID, token usage, cost estimate, prompt, and output for each completed step. They resume from the last completed MP4+JSON checkpoint.</p>
+    <p><a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/justfile"><code>just build</code></a> only invokes an experiment if its proof MP4 is missing, and only recompresses a WebM if the source MP4 is newer. On a fresh clone that means API calls and real spend. Published outputs are the specific stochastic runs described on this page.</p>
+    <p>I compressed the four proof videos using NVIDIA AV1 + Opus:</p>
+    <pre>ffmpeg -i input.mp4 -c:v av1_nvenc -preset p6 -tune uhq -rc vbr -cq 55 -b:v 0 -spatial-aq 1 -temporal-aq 1 -c:a libopus -b:a 24k -vbr on -compression_level 10 output.webm</pre>
+    <table>
+      <thead><tr><th>Proof</th><th>MP4</th><th>WebM</th><th>Smaller</th></tr></thead>
+      <tbody>
+        <tr><td>Fix one thing</td><td>2.18 MB</td><td>0.29 MB</td><td>86.6%</td></tr>
+        <tr><td>30 seconds</td><td>4.65 MB</td><td>0.45 MB</td><td>90.4%</td></tr>
+        <tr><td>First + last</td><td>1.27 MB</td><td>0.15 MB</td><td>88.0%</td></tr>
+        <tr><td>Motion reference</td><td>0.66 MB</td><td>0.11 MB</td><td>84.0%</td></tr>
+      </tbody>
+    </table>
+    <p>The complete implementation is in <a href="https://github.com/sanand0/research/tree/main/gemini-omni-1.1-flash-videos">the experiment directory</a>: <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/common.py">shared API/resume code</a>, <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/README.md">README</a>, and <a href="https://github.com/sanand0/research/blob/main/gemini-omni-1.1-flash-videos/COSTS.md">every API cost</a>.</p>
+  </section>
+
+  <section id="references">
+    <h2>Sources and implementation</h2>
+    <ul>
+      <li><a href="https://blog.google/innovation-and-ai/technology/developers-tools/build-with-gemini-omni-1-1-flash/">Google: Build with Gemini Omni 1.1 Flash</a> - launch examples, first/last frames, 360p drafting.</li>
+      <li><a href="https://ai.google.dev/gemini-api/docs/omni">Gemini API: Generate and edit videos with Gemini Omni Flash</a> - editing, extension, references, tags, constraints, prompting.</li>
+      <li><a href="https://ai.google.dev/gemini-api/docs/models/gemini-omni-flash">Gemini Omni Flash model page</a> - model ID, supported inputs, resolution/duration limits.</li>
+      <li><a href="https://ai.google.dev/gemini-api/docs/pricing">Gemini Developer API pricing</a> - token prices and 720p video token rate.</li>
+      <li><a href="https://ai.google.dev/gemini-api/docs/changelog">Gemini API release notes</a> - 1.1 GA on 27 Aug 2026.</li>
+      <li><a href="https://github.com/googleapis/python-genai">Google Gen AI Python SDK</a> - the SDK used by the scripts.</li>
+      <li><a href="https://github.com/sanand0/research/tree/main/gemini-omni-1.1-flash-videos">My code, prompts, build and cost ledger</a>.</li>
+    </ul>
+  </section>
+</main>
+<footer>
+  <p>31 Aug 2026. I generated the model outputs with <code>gemini-omni-1.1-flash</code>. Captions, comparison layouts, endpoint crops, the stick-figure reference, SSIM checks, and WebM compression are local deterministic processing. The media URLs are absolute so this same page can be served from GitHub Pages or media.s-anand.net.</p>
+</footer>
+<script>
+  const root = document.documentElement;
+  document.querySelector('.theme').addEventListener('click', () => {
+    const dark = root.dataset.theme === 'dark' || (!root.dataset.theme && matchMedia('(prefers-color-scheme: dark)').matches);
+    root.dataset.theme = dark ? 'light' : 'dark';
+    localStorage.setItem('theme', root.dataset.theme);
+  });
+  const saved = localStorage.getItem('theme'); if (saved) root.dataset.theme = saved;
+</script>
