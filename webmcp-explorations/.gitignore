@@ -1,0 +1,8 @@
+# Generated evidence from browser/WebMCP probes.
+# The compact result tables and reproduction scripts are committed instead.
+raw/
+
+# Local runtime/download artifacts.
+downloads/
+*.log
+.DS_Store

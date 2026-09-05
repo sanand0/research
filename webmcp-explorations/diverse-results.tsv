@@ -1,0 +1,20 @@
+site	url	category	runtime_tools	tested_action	result	note
+jsonstat	https://jsonstat.com/webmcp/	stateful data explorer	12	fetch/filter/pivot/export	worked	Loaded OECD JSON-stat, filtered 3 countries x 3 years, pivoted, exported 3-row CSV
+webmcp-flow	https://webmcp-flow.vercel.app/	graph editor	7	add nodes/edges/layout/get graph	worked	All mutation tools misleadingly annotate readOnly=true
+Bandarra text editor	https://bandarra.me/apps/webmcp-text-editor/	document editor + subagents	26	list docs/skills; planner/summarizer	partial	Discovery worked; subagent calls returned top-level success=true but nested status=failed
+Scholar Sidekick	https://scholar-sidekick.com/	citation verification	7	resolve/verify/retraction/format	worked	Caught deliberately fake title for a real DOI; response can be very large
+CamJam	https://www.camjam.co.nz/	surf planning	5	region search + spot detail	worked	Spot detail includes hazards plus structured forecast/tide context
+Core Web Vitals	https://www.corewebvitals.io/state-of-cwv/explorer	analytics dataset	3	list options/get_metrics	worked	Machine-readable provenance/credit instructions included in result
+Simple Tool Stack	https://simpletoolstack.com/	utility discovery	1	discover tools	worked	Route-specific tools appear after opening discovered href
+Simple Tool Stack JSON	https://simpletoolstack.com/dev-data/json-formatter	local transformation	1	format/sort JSON	worked	Structured result with validity and stats
+Hopi	https://hopi.co.uk/	calculator discovery	2	hopi_search	worked	Homepage discovers specialized route/tool
+Hopi working days	https://hopi.co.uk/working-days-calculator/	calculator	3	working-days calculation	worked	Route adds hopi_working_days_calculator dynamically
+webmcp.sh	https://webmcp.sh/	route-aware app gateway	4	gateway/navigate/re-list	worked with race	0 tools immediately after open; 4 after 250ms; /sql-repl exposes SQL tools after navigation
+QR Code Crafter	https://qrcodecrafter.com/	artifact generation + verification	10	generate_verified_qr	worked	Returns bounded receipt, hash, decode proof, quality checks, and re-fetch instructions instead of asset bytes
+Chrome analytics demo	https://googlechromelabs.github.io/webmcp-tools/demos/analytics-dashboard/	UI analytics	1	query	partial	Changed filters/chart state but returned only acknowledgement, not data
+Chrome real-estate demo	https://googlechromelabs.github.io/webmcp-tools/demos/real-estate-map/	map search	1	search_location	partial	Invocation success but output=null; result requires UI inspection
+Chrome pizza demo	https://googlechromelabs.github.io/webmcp-tools/demos/pizza-maker/	configurator	7	discovery only	available	Semantic state operations: size/style/layers/toppings/share
+FriendlyGUID	https://www.friendlyguid.com/	utility	0	discovery	no runtime tools	Directory/site claims can differ from this session
+NYC RSVPs	https://nycrsvps.com/	reservation timing	0	discovery	no runtime tools	No tools in this session
+Cocktail Glass	https://cocktail.glass/	recipe search	0	discovery	no runtime tools	No tools in this session
+Marketing Manager Jobs	https://marketingmanagerjobs.com/	job search	0	discovery	no runtime tools	No tools in this session

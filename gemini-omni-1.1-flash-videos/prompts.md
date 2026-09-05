@@ -2,7 +2,13 @@
 
 # Initial research, 31 Aug 2026
 
-<!-- https://chatgpt.com/c/6a94ec56-9118-83ec-996a-691a3283cf61 -->
+<!--
+
+v1: Gemini Omni 1.1 Flash Features: https://chatgpt.com/c/6a94e0ad-08d0-83ec-8f8e-4d9e3240da64
+v2: Use cases: https://chatgpt.com/c/6a94e67e-42b8-83ec-a29d-bc69a6fcd509
+v3: Run the experiments below: thttps://chatgpt.com/c/6a94ec56-9118-83ec-996a-691a3283cf61
+
+-->
 
 What are people reporting consistently as the most noteworthy features of Gemini Omni 1.1 Flash? Research extensively, share a prioritized list.
 

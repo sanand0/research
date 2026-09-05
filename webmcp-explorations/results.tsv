@@ -1,0 +1,13 @@
+site	url	directory_tools	agent_browser_tools	result	note
+Allbirds	https://www.allbirds.com	10	10	works	Shopify surface; catalog and policy search invoked successfully
+Away	https://www.awaytravel.com	10	10	works	Normalized tool surface is identical to Allbirds
+OpenAI Developers	https://developers.openai.com	5	5	works	search_openai_docs invoked successfully
+Astronomer	https://www.astronomer.io	4	4	works	get_discovery_endpoints returned agent-skills/API/MCP/OpenAPI URLs
+webmcp.com	https://webmcp.com	6	6	works	about invoked successfully
+Chrome Labs flight demo	https://googlechromelabs.github.io/webmcp-tools/demos/react-flightsearch/	1	1	works	State-changing search visibly updated the page
+QuickNode	https://www.quicknode.com	5	0	mismatch	Normal page loaded; still zero tools after 8 s
+Customer.io	https://customer.io	3	0	mismatch	Normal page loaded; still zero tools after 8 s
+Render	https://render.com	6	0	mismatch	Normal page loaded; still zero tools after 8 s
+ZipRecruiter	https://www.ziprecruiter.com	1	0	blocked	Redirected to ziprecruiter.ie and Cloudflare verification
+Omio	https://www.omio.com	2	0	blocked	Cloudflare verification
+RedBus	https://www.redbus.in	2	0	blocked	Navigation failed with ERR_HTTP2_PROTOCOL_ERROR

@@ -1,0 +1,8 @@
+workflow	sites	steps	result	prominent_failure	evidence
+agent-facing launch QA	agent-ready.dev;admintoolkit.io;webmcp.com;quicknode.com	5	Worked; independent checks + runtime probe disagreed in useful ways	readability score/llms result did not predict runtime WebMCP; redirect policies differed	raw/round3/agent-readiness-workflow/
+energy decision from bill text	switchai.it	5	Worked on synthetic bill; parsed and explicit calculations converged	empty schema hid required commodity; inconsistent cost basis and sensitivity wording	raw/round3/energy-workflow/
+stateful roster	toban.app	7	Worked in-session; idempotency and weekday rotation verified	"local saved" state disappeared in fresh isolated session	raw/round3/roster-workflow2/
+historical outing + menu + QR	fyndling.de;qrcodecrafter.com	4	Event search/details and menu worked; QR generation worked	camp-cooking constraint violated; JSON-string output broke first URL handoff	raw/round3/medieval-day-workflow/
+Peppol compliance loop	peppolvalidator.com	3	Format detection, validation, rule explanation worked	explainer contradicted validator XPath/test for BR-06	raw/round3/peppol-workflow/
+research integrity	scholar-sidekick.com;qrcodecrafter.com	6	Detected fabricated title + retracted paper; OA/export/QR worked	3-entry audit returned 147297 bytes; duplicate notices across registries	raw/round3/research-integrity/
+analysis to artifact	jsonstat.com	5	Filtered dataset exported as real 279-byte browser CSV	cross-site file transport is host-specific, not a WebMCP primitive	raw/round3/artifact-handoff/
