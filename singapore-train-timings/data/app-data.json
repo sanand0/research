@@ -1,0 +1,135 @@
+{
+  "asOf": "2026-07-31",
+  "published": "2026-08-14",
+  "latest": {
+    "months": ["May 2026", "Jun 2026", "Jul 2026"],
+    "punctuality": {
+      "MRT": [99.10, 99.32, 99.29],
+      "NSL": [99.74, 99.75, 99.69],
+      "EWL": [99.39, 99.84, 99.85],
+      "NEL": [98.78, 98.99, 99.46],
+      "CCL": [97.65, 98.21, 98.59],
+      "DTL": [99.92, 99.83, 98.84],
+      "TEL": [99.51, 99.64, 99.64]
+    },
+    "delivery": {
+      "MRT": [99.81, 99.82, 99.71],
+      "NSL": [99.98, 99.98, 99.99],
+      "EWL": [99.97, 99.97, 99.96],
+      "NEL": [99.91, 99.94, 99.89],
+      "CCL": [99.21, 99.30, 99.52],
+      "DTL": [99.94, 99.92, 99.20],
+      "TEL": [99.60, 99.99, 99.99]
+    }
+  },
+  "mkbf": {
+    "months": ["Aug 2025", "Sep 2025", "Oct 2025", "Nov 2025", "Dec 2025", "Jan 2026", "Feb 2026", "Mar 2026", "Apr 2026", "May 2026", "Jun 2026", "Jul 2026"],
+    "MRT": [1740000, 1670000, 1670000, 1610000, 1610000, 1670000, 1740000, 1740000, 2220000, 2350000, 2360000, 2370000],
+    "NSL": [1650000, 1240000, 1240000, 1240000, 1100000, 1240000, 1240000, 1240000, 1420000, 1650000, 1650000, 1650000],
+    "EWL": [1680000, 1690000, 1690000, 1450000, 1270000, 1450000, 1440000, 1450000, 2020000, 2020000, 2020000, 2020000],
+    "NEL": [2140000, 2160000, 2170000, 2190000, 2200000, 2210000, 4420000, 4450000, 4450000, 4460000, 4460000, 4470000],
+    "CCL": [1250000, 1490000, 1490000, 1480000, 2460000, 1830000, 1800000, 2370000, 2360000, 2370000, 2400000, 2450000],
+    "DTL": [2760000, 2770000, 2780000, 2780000, 2790000, 2790000, 2800000, 2100000, 4200000, 4200000, 4200000, 4200000],
+    "TEL": [311000, 287000, 299000, 287000, 325000, 373000, 415000, 374000, 356000, 355000, 355000, 373000]
+  },
+  "annual": {
+    "years": [2020, 2021, 2022, 2023, 2024, 2025],
+    "punctuality": {
+      "MRT": [99.40, 99.65, 99.53, 99.59, 99.35, 99.38],
+      "NSL": [99.30, 99.68, 99.59, 99.66, 99.40, 99.39],
+      "EWL": [99.43, 99.69, 99.25, 99.64, 99.30, 99.40],
+      "NEL": [99.37, 99.29, 99.08, 99.19, 98.85, 98.79],
+      "CCL": [98.96, 99.82, 99.91, 99.65, 99.45, 99.51],
+      "DTL": [99.93, 99.78, 99.81, 99.80, 99.74, 99.80],
+      "TEL": [98.99, 99.78, 99.88, 99.92, 99.70, 99.60]
+    },
+    "delivery": {
+      "MRT": [99.95, 99.93, 99.94, 99.95, 99.78, 99.84],
+      "NSL": [99.99, 99.94, 99.95, 99.95, 99.96, 99.93],
+      "EWL": [99.98, 99.94, 99.96, 99.98, 99.42, 99.82],
+      "NEL": [99.71, 99.81, 99.90, 99.89, 99.88, 99.82],
+      "CCL": [99.99, 99.99, 99.99, 99.99, 99.80, 99.67],
+      "DTL": [99.93, 99.90, 99.87, 99.91, 99.94, 99.92],
+      "TEL": [99.99, 99.99, 99.87, 99.93, 99.61, 99.62]
+    },
+    "mrtSevereDelays": [6, 3, 7, 5, 7, 7],
+    "mrtMileage": [39177000, 39871000, 39696000, 39453000, 39644000, 40157000]
+  },
+  "monthlySevereDelays": {
+    "months": ["Aug 2025", "Sep 2025", "Oct 2025", "Nov 2025", "Dec 2025", "Jan 2026", "Feb 2026", "Mar 2026", "Apr 2026", "May 2026", "Jun 2026", "Jul 2026"],
+    "MRT": [2, 2, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+    "TEL": [0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0]
+  },
+  "incidents": [
+    {"date": "2025-08-12", "line": "NEL", "passengers": ">50,000", "share": "9.7%"},
+    {"date": "2025-08-28", "line": "DTL", "passengers": "<5,000", "share": "<1.0%"},
+    {"date": "2025-09-01", "line": "CCL", "passengers": "<5,000", "share": "<1.0%"},
+    {"date": "2025-09-16", "line": "EWL", "passengers": "5,000–50,000", "share": "<1.0%"},
+    {"date": "2025-11-11", "line": "EWL", "passengers": "<5,000", "share": "<1.0%"},
+    {"date": "2025-09-17", "line": "TEL", "passengers": "5,000–50,000", "share": "4.1%"},
+    {"date": "2026-05-03", "line": "TEL", "passengers": "5,000–50,000", "share": "12.3%"}
+  ],
+  "comparison": {
+    "punctuality": [
+      {"system": "Seoul Metro", "value": 99.99, "period": "2024"},
+      {"system": "Hong Kong MTR", "value": 99.90, "period": "Apr–Jun 2026"},
+      {"system": "Taipei Metro", "value": 99.48, "period": "2024"},
+      {"system": "Singapore MRT", "value": 99.29, "period": "Jul 2026"},
+      {"system": "Tokyo Metro", "value": 98.00, "period": "Jul–Sep 2025"}
+    ],
+    "severe2024": [
+      {"system": "Nagoya Subway", "value": 0.00},
+      {"system": "Toei Subway", "value": 0.06},
+      {"system": "Singapore MRT", "value": 0.18},
+      {"system": "Osaka Metro", "value": 0.20},
+      {"system": "Tokyo Metro", "value": 0.26},
+      {"system": "Yokohama Subway", "value": 0.31}
+    ]
+  },
+  "ridership": {
+    "year": 2025,
+    "mrtDailyThousands": 3490,
+    "lrtDailyThousands": 209,
+    "railLengthKm": 271.3,
+    "mrtKmOperatedThousands": 47623
+  },
+  "sources": [
+    {
+      "id": "latest-report",
+      "publisher": "Land Transport Authority",
+      "title": "Performance of Rail Service Reliability: Aug 2025 to Jul 2026",
+      "url": "https://www.lta.gov.sg/content/dam/ltagov/who_we_are/statistics_and_publications/statistics/pdf/Rail_Service_Reliability_Performance_Aug_2025_to_Jul_2026.pdf",
+      "local": "data/raw/rail-reliability-2025-08-to-2026-07.pdf",
+      "coverage": "Aug 2025–Jul 2026",
+      "downloaded": "2026-09-07"
+    },
+    {
+      "id": "historical-report",
+      "publisher": "Land Transport Authority",
+      "title": "Historical Rail Service Reliability Performance",
+      "url": "https://www.lta.gov.sg/content/dam/ltagov/who_we_are/statistics_and_publications/statistics/pdf/Annex%E2%80%93Historical_Rail_Service_Reliability_Performance.pdf",
+      "local": "data/raw/rail-reliability-historical-2020-2025.pdf",
+      "coverage": "2020–2025",
+      "downloaded": "2026-09-07"
+    },
+    {
+      "id": "ridership",
+      "publisher": "Singapore Department of Statistics / LTA",
+      "title": "Public Transport Operation and Ridership, Annual",
+      "url": "https://data.gov.sg/datasets/d_ba615ec4cc5d9f5b7800ad82057f36f1/view",
+      "local": "data/raw/ridership-annual.json",
+      "coverage": "1990–2025",
+      "downloaded": "2026-09-07"
+    },
+    {
+      "id": "gtfs-descriptor",
+      "publisher": "Land Transport Authority DataMall",
+      "title": "GTFS Schedule (Train) descriptor",
+      "url": "https://datamall.lta.gov.sg/content/datamall/en/search_datasets.html",
+      "local": "data/raw/gtfs-schedule-descriptor.zip",
+      "coverage": "Descriptor timestamp 31 Jul 2026",
+      "downloaded": "2026-09-07",
+      "limitation": "The embedded signed timetable URL had expired; it is not used in the analysis."
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# Reproducible source downloads (the browser-ready analysis stays tracked)
+data/raw/
+data/raw/.part
+
+# Local screenshots, reports, caches and server state
+*.png
+*.jpg
+*.webp
+.pytest_cache/
+__pycache__/
+.coverage
+.DS_Store

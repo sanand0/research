@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An evidence-based commuter guide to Singapore MRT timing and reliability.">
+  <title>Platform Promise — Singapore train timing, honestly</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1917'/%3E%3Cpath d='M14 38h36M18 26h28' stroke='%236ce5c8' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='22' cy='46' r='4' fill='%23ffd166'/%3E%3Ccircle cx='42' cy='46' r='4' fill='%23ffd166'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#story">Skip to findings</a>
+  <header class="topbar">
+    <a class="brand" href="#story?line=MRT" aria-label="Platform Promise home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+      <span>Platform Promise</span>
+    </a>
+    <nav aria-label="Page navigation">
+      <a href="#story">The answer</a>
+      <a href="#lines">Your line</a>
+      <a href="#incidents">Bad days</a>
+      <button id="sources-button" class="text-button" type="button">Sources</button>
+      <button id="theme-button" class="icon-button" type="button" aria-label="Switch to light theme" title="Switch theme">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2m0 14v2M3 12h2m14 0h2M5.64 5.64l1.42 1.42m9.88 9.88 1.42 1.42M18.36 5.64l-1.42 1.42M7.06 16.94l-1.42 1.42M16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
+  <main id="story">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Singapore MRT · official data through July 2026</p>
+        <h1>The train is probably on time.<br><em>Your trip can still wobble.</em></h1>
+        <p class="dek">Singapore’s latest official score says <strong>99.29%</strong> of MRT trips finished within two minutes of schedule. That sounds like Japan—and at system level, it is in the same league. But this number is measured at the end of a line, not at your platform.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#lines">Check my line</a>
+          <button class="secondary-button" id="method-button" type="button">What “on time” means</button>
+        </div>
+      </div>
+      <div class="departure-board reveal" aria-label="Key findings departure board">
+        <div class="board-header"><span>NETWORK</span><time datetime="2026-07">JUL 2026</time></div>
+        <div class="board-row"><span>Trips on time*</span><strong>99.29%</strong></div>
+        <div class="board-row"><span>Service delivered</span><strong>99.71%</strong></div>
+        <div class="board-row"><span>&gt;30 min delays</span><strong>0</strong></div>
+        <div class="board-row accent"><span>Daily MRT rides†</span><strong>3.49m</strong></div>
+        <p>*End-of-line/turnaround, within 2 minutes. †2025 average.</p>
+      </div>
+    </section>
+
+    <section class="answer-band" aria-labelledby="answer-heading">
+      <div>
+        <p class="section-number">01 / THE SHORT ANSWER</p>
+        <h2 id="answer-heading">Singapore passes the Japan test—carefully.</h2>
+      </div>
+      <div class="answer-copy">
+        <p>In 2024, Singapore recorded <strong>0.18 severe delays per million train-km</strong>. Tokyo Metro recorded 0.26; Nagoya recorded none. In the latest punctuality comparison, Singapore sat at 99.29% and Tokyo Metro at 98.00%.</p>
+        <p class="caveat">But the clocks and definitions differ across cities. This is evidence that Singapore belongs among reliable metro systems—not proof that every Singapore train shadows a Japanese timetable.</p>
+      </div>
+    </section>
+
+    <section id="lines" class="explorer section-shell" aria-labelledby="line-heading">
+      <div class="section-heading">
+        <p class="section-number">02 / PICK YOUR LINE</p>
+        <h2 id="line-heading">Turn 99% into something you can feel.</h2>
+        <p>Select a line. Each square below is one of 1,000 scheduled end-to-end trips, using July’s official punctuality rate. Amber squares finished more than two minutes late.</p>
+      </div>
+      <div class="line-tabs" role="tablist" aria-label="Train line">
+        <button role="tab" data-line="MRT" aria-selected="true">Network</button>
+        <button role="tab" data-line="NSL">North–South</button>
+        <button role="tab" data-line="EWL">East–West</button>
+        <button role="tab" data-line="NEL">North East</button>
+        <button role="tab" data-line="CCL">Circle</button>
+        <button role="tab" data-line="DTL">Downtown</button>
+        <button role="tab" data-line="TEL">Thomson–East Coast</button>
+      </div>
+
+      <div class="line-card">
+        <div class="line-summary">
+          <p class="eyebrow" id="selected-line-name">MRT network</p>
+          <p class="big-number"><span id="punctuality-value">99.29</span><small>%</small></p>
+          <p id="trip-translation">About 7 in 1,000 trips finished more than two minutes late.</p>
+          <div class="metric-pair">
+            <div><span>Service delivered</span><strong id="delivery-value">99.71%</strong></div>
+            <div><span>12-month MKBF</span><strong id="mkbf-value">2.37m km</strong></div>
+          </div>
+        </div>
+        <div>
+          <div id="waffle" class="waffle" role="img" aria-label="1,000 trip punctuality grid"></div>
+          <div class="waffle-key"><span><i class="dot on-time"></i> within 2 min</span><span><i class="dot late"></i> over 2 min</span></div>
+        </div>
+      </div>
+      <div class="commuter-note" aria-live="polite">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Zm0-14v5m0 3v.01"/></svg>
+        <p><strong>What to do:</strong> <span id="line-advice">Treat the published score as network context, not a personal arrival guarantee. Check service alerts before a time-critical trip.</span></p>
+      </div>
+    </section>
+
+    <section class="trend section-shell" aria-labelledby="trend-heading">
+      <div class="section-heading compact">
+        <p class="section-number">03 / THE LONG VIEW</p>
+        <h2 id="trend-heading">Reliability is high. It is not perfectly flat.</h2>
+        <p>Annual end-of-line punctuality stayed between 99.35% and 99.65% network-wide from 2020–2025. Line-level variation is more useful than that calm headline.</p>
+      </div>
+      <div class="chart-card">
+        <div class="chart-toolbar">
+          <div>
+            <h3 id="trend-title">MRT network punctuality</h3>
+            <p>Share of trips ending within 2 minutes of schedule</p>
+          </div>
+          <button id="trend-help" class="text-button" type="button">Why not start at zero?</button>
+        </div>
+        <svg id="trend-chart" class="trend-chart" viewBox="0 0 900 360" role="img" aria-labelledby="trend-title trend-desc">
+          <desc id="trend-desc">Line chart of annual train punctuality from 2020 to 2025.</desc>
+        </svg>
+      </div>
+    </section>
+
+    <section id="incidents" class="incidents section-shell" aria-labelledby="incident-heading">
+      <div class="section-heading">
+        <p class="section-number">04 / THE BAD DAYS</p>
+        <h2 id="incident-heading">Rare does not mean small.</h2>
+        <p>No conventional MRT delay exceeded 30 minutes from December 2025 through July 2026. Yet one North East Line disruption in August 2025 affected more than 50,000 passengers. The tail matters.</p>
+      </div>
+      <div class="incident-layout">
+        <div class="calendar-card">
+          <h3>Twelve months of severe delays</h3>
+          <p>Each column is one month. Marks are incidents over 30 minutes.</p>
+          <div id="incident-strip" class="incident-strip" role="img" aria-label="Monthly severe MRT delay incidents from August 2025 to July 2026"></div>
+        </div>
+        <button class="impact-card" type="button" data-incident="0">
+          <span>12 AUG 2025 · NEL</span>
+          <strong>&gt;50,000</strong>
+          <p>estimated passengers affected</p>
+          <small>9.7% of the line’s daily passengers →</small>
+        </button>
+      </div>
+    </section>
+
+    <section class="rules section-shell" aria-labelledby="rules-heading">
+      <div class="section-heading compact">
+        <p class="section-number">05 / COMMUTER RULES</p>
+        <h2 id="rules-heading">Three habits beat one reassuring number.</h2>
+      </div>
+      <ol class="rule-grid">
+        <li><span>01</span><h3>Budget the transfer, not the train.</h3><p>The official score is end-to-end. Walking, interchange queues and an irregular gap can dominate a short journey.</p></li>
+        <li><span>02</span><h3>Check alerts when lateness is costly.</h3><p>System reliability is excellent, but the rare disruption can affect tens of thousands at once. Aggregate history cannot tell you what is happening now.</p></li>
+        <li><span>03</span><h3>Read “99%” with its fine print.</h3><p>Punctuality means within two minutes at a terminal or turnaround. Service delivery means scheduled distance operated. Neither is your platform wait.</p></li>
+      </ol>
+    </section>
+
+    <section class="limits-band">
+      <div><p class="section-number">WHAT WE CANNOT SAY</p><h2>No public history of every train arriving at every platform.</h2></div>
+      <div><p>LTA now lists GTFS schedule and real-time train feeds, but the downloaded schedule descriptor’s signed data link had expired when checked. No API key was available here, and real-time feeds are not historical archives.</p><p>So this app does <strong>not</strong> invent station delay percentiles, waiting times or route-specific guarantees. A collector can add those later by archiving the new feeds.</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Platform Promise</strong> · Built from downloaded Singapore government datasets.</p>
+    <p>Last data: July 2026 · Downloaded 7 Sep 2026 · <button id="footer-sources" class="text-button" type="button">Inspect sources & method</button></p>
+  </footer>
+
+  <dialog id="detail-dialog">
+    <form method="dialog"><button class="dialog-close" aria-label="Close dialog">×</button></form>
+    <div id="dialog-content"></div>
+  </dialog>
+
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+  <noscript><p class="noscript">JavaScript adds the line explorer. Core findings and limitations remain readable above.</p></noscript>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
