@@ -116,3 +116,15 @@ For hierarchical Bayesian phenotypes, convergence checks include all sampled lat
 ### Fresh-outcome rule
 
 Once a sealed outcome has been unsealed, do not select or tune additional latent predictors against that outcome. New scientific questions must use a fresh sealed outcome, independent replication cohort, or be labeled explicitly exploratory/post-hoc.
+
+### Outcome-information gate
+
+Raw sample size is not enough. Before investing in a fresh experiment, use public aggregate information (not sealed individual outcomes) to estimate how much outcome information exists.
+
+- Binary/time-to-event: record expected event count, not only N. Prefer >=80 events for modest multivariable tests; if far lower, simplify the estimand/model or reject the candidate before outcome access.
+- Continuous/count: record usable N plus aggregate variability/range when publicly reported.
+- Flag designs with <10 outcome events per effective parameter as high-risk for imprecision unless a prespecified regularized/sparse model justifies them.
+
+### Identifier-type gate
+
+Before outcome unseal, normalize join-key types and verify that predictor/design-only namespaces produce the expected nonzero overlap. String-vs-integer parsing errors must not be discovered only after outcome access.

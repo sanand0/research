@@ -408,3 +408,13 @@ Before freeze, outcome-bearing source fields (`Viable`, `Colony Death`, `Last Vi
 The first frozen H004 execution failed before fitting any model because `Colony Number` was parsed as integer in the precomputed feature CSV and string in the freshly streamed PLOS source. Set intersection was therefore empty and Patsy later failed while trying to encode zero-level categorical factors. Diagnosis viewed only aggregate row/type counts; no coefficient/result existed. One aggregate source fact became visible during debugging: across all 362 study colonies, April 2015 contained 278 `Viable` and 84 `Not Viable` rows. This was not used to change any predictor, cohort, model, sensitivity, or decision rule.
 
 Erratum: cast `Colony Number` to string on both sides before the frozen join. Scientific specification unchanged.
+
+### H004 result and closure
+
+After the ID-type erratum, the frozen model fit 225 Alberta colonies: 204 survived to the April 2015 assessment and 21 did not.
+
+Primary three-point trajectory OR 0.864 (95% CI 0.301–2.478, p=.785). The prespecified June→August trajectory flipped sign (OR 1.221, CI 0.590–2.528); apiary-fixed three-point model OR 0.743 (CI 0.247–2.230). Decision: **H004 not supported; SENSITIVE** because the trajectory sign is not stable.
+
+A post-hoc known-signal validation found August size in the expected positive direction but also imprecise (region-adjusted OR 1.529, CI 0.958–2.440). With only 21 failures, the full model had ~3.5 failure events per parameter and rough 80% detectable OR ~4.5 at the observed SE. This converts H004 from an apparent N=225 design into an outcome-information failure.
+
+Protocol updated: future candidate screening uses event count/effective outcome information, not raw sample size alone.
