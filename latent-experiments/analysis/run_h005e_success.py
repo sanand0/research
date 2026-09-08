@@ -28,6 +28,8 @@ def parse_success(value: object) -> float:
         if float(value) in (0.0, 1.0):
             return float(value)
     text = str(value).strip().lower()
+    if text == "not checked":
+        return np.nan
     if text in {"yes", "1"}:
         return 1.0
     if text in {"no", "0"}:

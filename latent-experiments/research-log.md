@@ -436,3 +436,7 @@ H005 asks whether settlement-to-early-incubation MCP contraction predicts eventu
 Frozen H005 commit `b6245d6158252c74fbd12a02ca290951993d0d08` failed before model fitting because an eligible season had an empty `success` label. A post-unseal diagnostic inspected **availability only**, not yes/no values: 245/268 frozen seasons have known success and 23 are missing/blank. Missingness is not obviously random: unlabeled seasons are younger on average and have lower mean contraction.
 
 Therefore H005 is **not executable as preregistered**; it will not be retroactively rewritten as a successful preregistration. Before viewing any yes/no counts or coefficients, H005-E freezes an explicitly exploratory complete-case GEE plus MCP99 and observed-predictor IPW sensitivities. Any H005-E signal requires independent replication.
+
+#### H005-E source-status parser erratum
+
+The first H005-E execution failed before any fit or yes/no count because NestTool `success` also contains the explicit status `not checked`. The frozen H005-E plan already defines complete cases as only `yes`, `no`, 1, or 0; therefore `not checked` is outcome-unavailable by the frozen rule. Implementation erratum: map exactly `not checked` to missing. No cohort criterion, predictor, model, sensitivity, or interpretation changed.
