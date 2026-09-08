@@ -456,3 +456,22 @@ Final H005-E analyzable cohort: 229 seasons / 98 birds, with 156 successes and 7
 A fresh killifish lifelong-behavior dataset was screened because it has 121 natural deaths and exceptionally rich continuous longitudinal behavior. It was rejected at the original-analysis-gap gate: the 2026 source paper explicitly trains behavior-based models to forecast future lifespan from young animals. The dataset is excellent, but that question is not latent.
 
 After five experiments, recurring failures were consolidated into `candidate-scorecard.md`. H006 will not proceed to substantive predictor modeling until open access, novelty gap, outcome vocabulary, outcome information, temporal provenance, predictor measurability, join integrity, fresh outcome, and replication-path gates all pass.
+
+### 2026-09-08 H006 scout: Jacobaea rejection and duckweed candidate
+- Jacobaea H006 Markov-history idea rejected at the granularity gate: the sole S1 workbook contains 280 field-year-treatment aggregate rows (`stages_cover_div`), not persistent individual plant histories. The paper says matrix transitions were calculated from pooled stage counts; individual-level Markov dependence cannot be tested from released data.
+- Duckweed caloric-restriction dataset promoted as a fresh candidate because it has two independent experiments with daily reproduction histories and complete Experiment-2 deaths.
+- Morphology->lifespan idea rejected: frond surface-area measurements were collected after death/experiment termination in both experiments, so morphology fails temporal provenance as an early predictor.
+- Candidate H006 refined to early reproduction vs later lifespan within treatment, using a fixed day-7 landmark to prevent variable observation-window leakage.
+- Minor seal imperfection: opening Dryad's rendered preview to test row availability exposed one example Experiment-2 row including one `date.last.repro` value. No aggregate, association, model, or additional outcome rows were inspected; the value will not be used in specification decisions.
+
+### 2026-09-08 H006 preregistration verification
+
+Before any further Duckweed outcome rows were opened, the staged H006 bundle was checked against `freeze-006.sha256`. Every manifest entry matched both the working-tree bytes and the Git index. `hypothesis-006.md` was absent from `HEAD` and had no path history, confirming that H006 had not previously been committed.
+
+Static implementation audit against the author R code confirmed that the daily date-named columns are counts of offspring produced on each calendar day, that birth is age day 1, and that reproductive lifespan is `date.last.repro - date.birth + 1`. The frozen Python implementation preserves the specified landmark eligibility, age-day 1..landmark count, within-treatment standardization, remaining lifespan, stratified Cox model, day-5 sensitivity, mandatory Experiment-1 replication, and post-unseal known-signal check.
+
+`git diff --cached --check` reports whitespace errors only inside verbatim upstream evidence captures (`dryad.html`, `part1.R`, `part2.R`). These files are deliberately left byte-identical to the frozen provenance copies rather than reformatted.
+
+A synthetic end-to-end test first failed because the test fixture accidentally made early reproduction constant within every Experiment-1 treatment. The frozen script correctly rejected this with its zero/undefined within-treatment SD guard. After regenerating only the `/tmp` synthetic fixture with predictor variation orthogonal to treatment, the frozen script executed the day-7 discovery, day-5 sensitivity, Experiment-1 replication, known-signal validation, and PH diagnostic successfully without code changes. A requested second identical execution was repeatedly blocked before LocalMCP execution by the platform safety classifier, so byte-for-byte rerun verification remains a tooling limitation at the preregistration stage rather than being represented as passed.
+
+No real Experiment-1 or Experiment-2 CSV was acquired or inspected during these checks, and no additional individual Duckweed outcome row was viewed.
