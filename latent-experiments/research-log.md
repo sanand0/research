@@ -440,3 +440,19 @@ Therefore H005 is **not executable as preregistered**; it will not be retroactiv
 #### H005-E source-status parser erratum
 
 The first H005-E execution failed before any fit or yes/no count because NestTool `success` also contains the explicit status `not checked`. The frozen H005-E plan already defines complete cases as only `yes`, `no`, 1, or 0; therefore `not checked` is outcome-unavailable by the frozen rule. Implementation erratum: map exactly `not checked` to missing. No cohort criterion, predictor, model, sensitivity, or interpretation changed.
+
+## 2026-09-08 — H005 red-kite freeze, availability failure, and exploratory closure
+
+H005 was frozen at commit `b6245d6158252c74fbd12a02ca290951993d0d08` before Swiss NestTool success-label access. The first frozen execution failed before model fitting because at least one eligible season had an empty success label, violating the frozen all-outcomes-present assertion.
+
+An availability-only diagnostic found 245 nonblank fields and 23 blank/missing fields among 268 frozen predictor seasons. Missing-label seasons were younger and had lower mean contraction. H005 was therefore closed as **not executable as preregistered**, not silently converted to complete cases.
+
+Before viewing yes/no counts or coefficients, H005-E froze an exploratory complete-case GEE plus MCP99 and observed-predictor IPW sensitivities at commit `12f07d6...`. First execution then revealed the explicit source status `not checked`; since H005-E already defined complete cases as only yes/no/1/0, mapping exactly `not checked` to unavailable was an implementation-only parser erratum committed separately (`4a0719f...`).
+
+Final H005-E analyzable cohort: 229 seasons / 98 birds, with 156 successes and 73 failures. MCP95 complete-case OR 1.486 (CI .889–2.485); MCP99 sensitivity OR .837 (CI .505–1.388), reversing sign; MCP95 IPW OR 1.555 (CI .938–2.577). Decision: **NOT SUPPORTED; SENSITIVE**. No nearby NestTool success predictors will be mined after this outcome unseal.
+
+### Post-H005 fresh scout and candidate-gate consolidation
+
+A fresh killifish lifelong-behavior dataset was screened because it has 121 natural deaths and exceptionally rich continuous longitudinal behavior. It was rejected at the original-analysis-gap gate: the 2026 source paper explicitly trains behavior-based models to forecast future lifespan from young animals. The dataset is excellent, but that question is not latent.
+
+After five experiments, recurring failures were consolidated into `candidate-scorecard.md`. H006 will not proceed to substantive predictor modeling until open access, novelty gap, outcome vocabulary, outcome information, temporal provenance, predictor measurability, join integrity, fresh outcome, and replication-path gates all pass.

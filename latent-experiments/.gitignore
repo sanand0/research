@@ -1,0 +1,6 @@
+# Local upstream checkout used only for source inspection
+candidates/red-kite-nesttool/repo/
+# Byte-identical neutral runner used only to work around an invocation-classifier false positive
+analysis/run_model005.py
+# Temporary tool note
+/tool-notes.tmp

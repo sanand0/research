@@ -128,3 +128,19 @@ Raw sample size is not enough. Before investing in a fresh experiment, use publi
 ### Identifier-type gate
 
 Before outcome unseal, normalize join-key types and verify that predictor/design-only namespaces produce the expected nonzero overlap. String-vs-integer parsing errors must not be discovered only after outcome access.
+
+## Phase-4 gates learned from H005
+
+### Temporal-provenance gate
+
+A predictor labelled with an early phase/date is not automatically an early predictor. Before freeze, trace when **every ingredient** used to construct it became knowable. If an early feature depends on a reference point, segmentation, calibration, label, or location inferred from future observations, treat it as future-leaking and exclude it from prospective/early-warning claims.
+
+### Outcome-status vocabulary gate
+
+Before freezing an outcome model, establish the complete **set of source outcome statuses** without inspecting their positive/negative distribution or predictor associations. Define usable outcomes by explicit membership in valid labels, not by non-null/nonblank checks. Distinguish values such as `yes`, `no`, `not checked`, `unknown`, `censored`, blanks, and true missingness.
+
+Freeze the expected `usable_outcome` row count before unseal. If that count fails after unseal, the preregistered analysis is non-executable unless the frozen plan already specifies the missing-status handling.
+
+### Confirmatory-to-exploratory demotion rule
+
+If a frozen cohort/outcome assumption fails after unseal and fixing it changes the analysis population, do not silently call the corrected analysis preregistered. Close the original as non-executable and, only if outcome values remain unseen, freeze a separately named exploratory salvage with explicit missingness assumptions. Any signal from that salvage requires independent replication.

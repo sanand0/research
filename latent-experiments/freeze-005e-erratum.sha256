@@ -1,0 +1,6 @@
+# H005-E original freeze manifest remains in freeze-005e.sha256.
+# This erratum records the separately committed parser-only change that maps the explicit source status `not checked` to outcome-unavailable, consistent with the frozen yes/no/1/0 complete-case rule.
+753ec05ca6f7431fa231876e920012362df7590e707bf10c2c0d61fe09fcd8cf  analysis/run_h005e_success.py  # pre-erratum hash at freeze
+f9774e44bb093cb22f1d8dbf39d82cea38cac3bb1c12b4b2138a0d4192d8cfd1  analysis/run_h005e_success.py  # post-erratum current hash
+12f07d6  H005-E exploratory freeze commit
+4a0719f  parser-erratum commit
