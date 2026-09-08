@@ -1,0 +1,14 @@
+{
+  "claim_id": "C001",
+  "status": "feasibility",
+  "protein": "BLAT_ECOLX",
+  "question": "Are cross-assay TEM-1 DMS disagreements mostly calibratable scale/noise, or reproducible mutation-specific context effects?",
+  "discovery": ["BLAT_ECOLX_Firnberg_2014", "BLAT_ECOLX_Stiffler_2015"],
+  "confirmation": ["BLAT_ECOLX_Jacquier_2013"],
+  "control": ["BLAT_ECOLX_Deng_2012"],
+  "metadata_access": "accessed",
+  "discovery_scores": "not_accessed",
+  "confirmation_scores": "not_accessed",
+  "control_scores": "not_accessed",
+  "holdout_note": "Procedural holdout only; public data and model pretraining prevent a claim of secure blinding."
+}

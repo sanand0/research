@@ -1,0 +1,5 @@
+{"event":"project_init","date":"2026-09-09","git_base":"f90a42435cf513830146c2420a751de6e3381bb4","claim_id":null}
+{"event":"input_metadata","date":"2026-09-09","claim_id":"C001","input_id":"proteingym_DMS_substitutions_reference","sha256":"a8f498011532a74aa9fe556a50555a75e928c5837d19c06a87592ae04049b308","bytes":208734,"role":"metadata","access":"accessed"}
+{"event":"evidence_role_freeze","date":"2026-09-09","claim_id":"C001","discovery":["BLAT_ECOLX_Firnberg_2014","BLAT_ECOLX_Stiffler_2015"],"confirmation":["BLAT_ECOLX_Jacquier_2013"],"control":["BLAT_ECOLX_Deng_2012"],"scores_accessed":false}
+{"event":"feasibility_result","date":"2026-09-09","claim_id":"C001","outcome":"pass","repeated_proteins":24,"assays_in_repeated_groups":55,"tem1_assays":4,"downloaded_source_bytes":208734,"scientific_progress":"feasibility_only"}
+{"event":"progress_checkpoint","date":"2026-09-09","claim_id":"C001","question_still_matters":true,"next_test_can_change_conclusion":true,"continue":true,"engineering_progress":"state_and_audit_layer_initialized","scientific_progress":"feasibility_only"}
