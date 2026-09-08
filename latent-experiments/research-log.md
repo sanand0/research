@@ -430,3 +430,9 @@ An archive-semantics failure was caught outcome-blind: NestTool uses exact MCP a
 A GPS-density gate requiring >=100 fixes in settlement and >=100 fixes in early incubation yields 268 seasons from 115 birds across six years. MCP95 and MCP99 contraction rankings agree strongly (rho ~0.83). Contraction95 is strongly related to current early-incubation range (rho ~-0.69), making current MCP mandatory: H005 is explicitly a history-beyond-current-state estimand.
 
 H005 asks whether settlement-to-early-incubation MCP contraction predicts eventual nesting success among observed nesting attempts, using bird-clustered binomial GEE. The primary MCP95 model and MCP99 sensitivity are fixed in `hypothesis-005.md` and `analysis-plan-005.md`; no success labels have been persisted or inspected before the freeze.
+
+### H005 outcome-availability failure and exploratory salvage freeze
+
+Frozen H005 commit `b6245d6158252c74fbd12a02ca290951993d0d08` failed before model fitting because an eligible season had an empty `success` label. A post-unseal diagnostic inspected **availability only**, not yes/no values: 245/268 frozen seasons have known success and 23 are missing/blank. Missingness is not obviously random: unlabeled seasons are younger on average and have lower mean contraction.
+
+Therefore H005 is **not executable as preregistered**; it will not be retroactively rewritten as a successful preregistration. Before viewing any yes/no counts or coefficients, H005-E freezes an explicitly exploratory complete-case GEE plus MCP99 and observed-predictor IPW sensitivities. Any H005-E signal requires independent replication.
