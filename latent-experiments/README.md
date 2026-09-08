@@ -25,3 +25,5 @@ The key methodological outcome is positive: cross-paper latent joins are feasibl
 - `analysis/portable_chronotype_calibration.json` — outcome-free calibration of portable timing/use phenotypes
 
 Current blocker: Dryad raw-file downloads require human confirmation in this environment. Do not bypass it; obtain Year-1 data through normal authorized access before proceeding.
+
+- `replication-alberta-farr-001.md` — frozen same-site 2018/19 survival-replication feasibility/design; Farr outcome rows still sealed

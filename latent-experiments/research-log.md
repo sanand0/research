@@ -223,3 +223,53 @@ This supports a portable external model using only RFID timestamps and dates: `f
 `replication-amherst-001.md` freezes a staged replication before Year-2 IDs are viewed. Key safeguards: >=10 events per bird-day, >=5 qualifying days, date-fixed-effect phenotypes, design-only Year-2 feeder unseal first, primary exposure-match >=80% of Year-1 events at feeders still observable in Year 2, and only then individual redetection membership.
 
 The replication is explicitly labelled `next-winter redetection`, not survival.
+
+
+## 2026-09-08 — second replication scout: Oregon rejected, Farr/Arteaga promoted
+
+### Oregon lead: promising filenames, wrong outcome
+
+Dryad DOI `10.5061/dryad.hdr7sqvj9` (*Experimentally induced flight costs do not lead to increased reliance on supplemental food in winter by a small songbird*) initially looked promising because its archive includes `hourly_visitation_rate.csv` and `proportion_returning.csv`. Metadata/API inspection showed six small analysis datasets. Direct Dryad file downloads returned HTTP 401 in this environment.
+
+Reading the source-paper description clarified that `proportion returning` refers to birds returning to feeders after an experimental feather-clipping treatment, not next-winter return or annual survival. It is therefore **rejected as a replication of chronotype -> later survival/redetection**. This is another reminder not to infer outcome semantics from filenames.
+
+### Farr et al. 2021: public UABG RFID survival outcome found on OSF
+
+A much stronger same-site lead was found: Farr, Haave-Audet, Thompson & Mathot (2021), *No effect of passive integrated transponder tagging method on survival or body condition in a northern population of Black-capped Chickadees*. Their OSF project `zvfpb` is directly accessible and contains four files: `RFID.csv`, `NORFID.csv`, metadata, and complete R analysis code.
+
+Crucially, `RFID.csv` has **not been downloaded or opened**. Only the metadata and code were read. Public metadata says the RFID survival file contains unique individual ID, redetection method, survival/event time, censoring, catching season/date and sex. The R code confirms Cox survival analysis and an RFID-only (`PIT == D`) survival analysis.
+
+### Arteaga-Torres 2018/19 predictor stream confirmed in detail
+
+The Figshare electronic supplement for the 2018/19 predator experiment was downloaded and inspected. It establishes that:
+
+- RFID antennas were installed at feeders from early October 2018;
+- batteries and SD cards were serviced every four days;
+- registrations stored **date, time and PIT-tag hex code**;
+- antenna clock drift was checked against observer tags and was never >1 minute over a four-day interval;
+- duplicated RFID registrations within 5 seconds were removed in the authors' analyses;
+- one feeder had a four-day battery failure, which the authors excluded;
+- treatment dates and times are fully enumerated in supplementary Table S1.
+
+The main paper additionally states that the readers registered the time and identity of all PIT-tagged feeder visitors, and treatment days occurred every second day with rest periods. Thus the archive is potentially suitable for a conservative chronotype phenotype using only non-experimental days.
+
+### Blocker: identifier namespace mismatch
+
+The predictor stream is keyed by 10-digit PIT-tag hex code. Farr's survival release is keyed by a study `ID`; its R code treats at least some values as short numeric identifiers (`68`, `107`, `249`). No public mapping has yet been found.
+
+A related 2019/20 UABG open dataset (Haave-Audet) demonstrates that the group otherwise publishes individual outcomes directly under `TransponderHexCode`, reinforcing that an explicit mapping is the correct linkage mechanism rather than probabilistic matching.
+
+**Hard rule:** do not open Farr `RFID.csv` until an auditable `ID <-> PIT hex` mapping is obtained. Never infer mapping from row order, sex, capture dates or outcome patterns.
+
+### Design failure caught before outcome: survival clock / immortal time
+
+Farr's event clock begins at capture, but the candidate chronotype is measured later in winter 2018/19. A naive Cox model from capture would assign pre-chronotype immortal time to the chronotype predictor.
+
+`replication-alberta-farr-001.md` therefore freezes a landmark/left-truncated survival design before any Farr outcome rows are opened. The primary timing phenotype uses non-experimental days only, date-fixed-effect random intercepts, duplicate removal <5s, and feeder-use adjustment. The analysis stops if mapping, continuous raw coverage, sample size, or left-truncation semantics cannot be established.
+
+### Current replication ranking
+
+1. **Farr/Arteaga UABG 2018/19** — scientifically clean same-site different-year replication if ID mapping and raw Dryad access are solved; strongest outcome follow-up, but currently two hard data-linkage/access blockers.
+2. **Amherst 2020/21 -> 2021/22** — independent population and raw two-winter RFID; cleaner independence, but Year-2 feeder coverage changed and Dryad raw download is WAF-blocked.
+3. **Multi-winter UABG archive** — highest eventual information/power and best route to capture-mark-recapture, but requires assembling data across projects/authors.
+4. **Oregon experimental feeder dataset** — rejected for current replication because its return outcome is post-treatment feeder return, not annual redetection.

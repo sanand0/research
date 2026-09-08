@@ -227,3 +227,10 @@ The reusable system should enforce:
 - negative-results retention.
 
 This may be the strongest SciPy contribution even if every substantive hypothesis is null.
+
+
+## Replication-scout update after initial report
+
+Two further candidates were investigated after the first report. The Oregon flight-cost dataset was rejected for this purpose because its `proportion returning` outcome is return to feeders after experimental treatment, not annual return/survival.
+
+A stronger UABG candidate emerged by joining Farr et al. (2021) RFID survival data on OSF with Arteaga-Torres et al. (2020) 2018/19 feeder RFID data on Dryad. The predictor stream is documented as date/time/PIT-hex and the survival release is documented as ID/event/censor/sex. However, the namespaces do not yet have an auditable public mapping, and the raw timing archive remains behind Dryad's human-confirmation flow. `replication-alberta-farr-001.md` freezes the feasibility and left-truncated survival design before the Farr outcome file is opened.
