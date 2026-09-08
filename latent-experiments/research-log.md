@@ -343,3 +343,9 @@ Decision: **H002 not supported; STABLE across preregistered forks.**
 A separate scipy logistic fit using posterior-mean phenotypes gave OR 0.754 (CI 0.437–1.301), independently confirming the negative/null direction. The frozen outcome JSON hash was identical across two reruns.
 
 Per the fresh-outcome rule, no H003 will be mined against this now-unsealed survival column.
+
+### Post-H002 next-step scout
+
+A focused scan of the already-discovered Mathot-lab OSF graph found many adjacent projects (diurnal feeder use, body temperature, social information, caching, recapture bias), but no immediate clean pairing of the 2020/21 raw timestamp stream with a fresh, subsequent annual-survival outcome. The q8a62 recapture dataset concerns recapture attempts in 2019/2020 and is not a direct future-survival endpoint for the 2020/21 timing stream.
+
+Decision: stop mining the now-unsealed p3hz4 outcome and stop lateral chickadee archaeology for now. The next agent-led experiment should move to a fresh outcome/dataset, while Amherst remains the best independent H001 replication if its Year-1 raw file becomes normally accessible.
