@@ -273,3 +273,50 @@ Farr's event clock begins at capture, but the candidate chronotype is measured l
 2. **Amherst 2020/21 -> 2021/22** — independent population and raw two-winter RFID; cleaner independence, but Year-2 feeder coverage changed and Dryad raw download is WAF-blocked.
 3. **Multi-winter UABG archive** — highest eventual information/power and best route to capture-mark-recapture, but requires assembling data across projects/authors.
 4. **Oregon experimental feeder dataset** — rejected for current replication because its return outcome is post-treatment feeder return, not annual redetection.
+
+## 2026-09-08 — H002 candidate mining inside the 2018/19 risk-taking cohort
+
+### Replication linkage success, raw-timestamp failure
+
+Public OSF projects from the Mathot lab were traced systematically rather than by filename search alone. The `p3hz4` risk-taking/survival cohort contains 79 birds. Outcome-blind direct identifier comparison established that **74/79 p3hz4 IDs match the Arteaga 2018/19 PIT-hex IDs exactly**. This resolved the earlier belief that a separate ID crosswalk was required for most of the cohort.
+
+A second earlier assumption failed: HTTP range inspection of the ~937 MB `BCCH_Mob.zip` central directory showed eight large WAV files plus housekeeping entries. It is a mobbing-call stimulus archive, **not continuous RFID feeder logs**. The public 2018/19 release therefore does not provide the all-day timestamp stream required for the proposed chronotype replication. That replication remains blocked despite successful identifier linkage.
+
+A 2020/21 OSF project (`h4693`) does contain a ~16.9 MB timestamp-level feeder stream, confirming the lab's later data format, but it is the wrong winter for the p3hz4 outcome cohort.
+
+### Outcome-blind alternative hypotheses inside p3hz4
+
+The source paper/code models average feeding rate and average latency-to-resume-feeding against annual survival. It does not test individual response slopes or residual behavioral predictability against survival.
+
+A predictor-only copy of the public source was created with the survival column physically excluded: 1,009 observations, 79 birds. Sixty-nine birds experienced all four treatments; 73 had at least two visual-present and two visual-absent observations; median repeated observations per bird = 14.
+
+#### Rejected A: individual visual-cue plasticity
+
+A random visual-cue slope model converged and estimated nonzero slope variance, but the individual slope ranking **failed replication within the experiment**: Rep 1–2 vs Rep 3–4 slopes correlated negatively (Pearson ~-0.34; Spearman ~-0.32). Rejected before survival access.
+
+Lesson: a fitted random-slope variance does not establish a reproducible individual trait.
+
+#### Rejected B: individual temperature plasticity
+
+The full random temperature-slope variance was essentially on the optimizer boundary (~0.0024) and split fits were inconsistent. Rejected before survival access.
+
+#### Advanced C: residual behavioral predictability
+
+Simple outcome-blind residual metrics showed modest but consistently positive split-half reliability. This motivated a proper hierarchical location-scale model rather than choosing whichever residual metric looked best.
+
+### Hierarchical location-scale pre-outcome gate
+
+`analysis/h002_predictability_preoutcome.py` models bird-specific mean log latency and bird-specific residual log-SD with partial pooling. Acceptance thresholds were recorded before viewing the hierarchical result. Four-chain NUTS reruns then produced:
+
+- full between-bird log-SD heterogeneity `sigma_log_sigma`: median 0.268, 95% interval 0.196–0.348;
+- max R-hat 1.00 and zero divergences in all primary/split/robust fits; minimum bulk ESS >=620;
+- Rep 1–2 vs 3–4 predictability rho 0.373 (bootstrap 95% CI 0.134–0.575);
+- odd vs even rho 0.442 (0.230–0.614);
+- primary vs mean model expanded with feeder+replicate rho 0.969 (0.936–0.985);
+- Normal vs Student-t(5) likelihood rho 0.969 (0.938–0.982);
+- predictability vs number of observations rho 0.182;
+- predictability vs mean latency rho -0.457, making mean latency a mandatory survival covariate.
+
+The phenotype therefore passes the pre-outcome gate but is only moderately reliable; a future null may be attenuated by measurement error.
+
+H002 is frozen in `hypothesis-002.md` and `analysis-plan-002.md` before survival unsealing.

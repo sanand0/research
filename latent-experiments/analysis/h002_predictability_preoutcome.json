@@ -1,0 +1,234 @@
+{
+  "input": "candidates/replication-alberta-2018/p3hz4_predictors.csv",
+  "outcome_columns_checked_absent": true,
+  "primary_fit": {
+    "n_rows": 1009,
+    "n_birds": 79,
+    "expanded_mean_model": false,
+    "robust_student_t": false,
+    "max_rhat": 1.0,
+    "worst_rhat_parameter": "alpha",
+    "min_ess_bulk": 910.0,
+    "worst_ess_parameter": "beta[0]",
+    "divergences": 0,
+    "sigma_log_sigma_median": 0.26767837318144894,
+    "sigma_log_sigma_q025": 0.19555744320769997,
+    "sigma_log_sigma_q975": 0.34792619821695264,
+    "fixed_effect_posterior_means": {
+      "sex": 0.011620858310277085,
+      "temp": 0.16678654152934477,
+      "treatment_2": 0.2265148044232453,
+      "treatment_2_x_temp": -0.007756945446472306,
+      "treatment_3": 1.2291596622575942,
+      "treatment_3_x_temp": -0.13104648280686246,
+      "treatment_4": 1.1863835130713458,
+      "treatment_4_x_temp": -0.015870096500669974
+    }
+  },
+  "expanded_fit": {
+    "n_rows": 1009,
+    "n_birds": 79,
+    "expanded_mean_model": true,
+    "robust_student_t": false,
+    "max_rhat": 1.0,
+    "worst_rhat_parameter": "alpha",
+    "min_ess_bulk": 1300.0,
+    "worst_ess_parameter": "alpha",
+    "divergences": 0,
+    "sigma_log_sigma_median": 0.2570604184845384,
+    "sigma_log_sigma_q025": 0.18640030387647052,
+    "sigma_log_sigma_q975": 0.3390577427399855,
+    "fixed_effect_posterior_means": {
+      "sex": -0.027354194502521995,
+      "temp": 0.13779017665437704,
+      "treatment_2": 0.2202181050963481,
+      "treatment_2_x_temp": 0.010913367175206376,
+      "treatment_3": 1.2217783876744157,
+      "treatment_3_x_temp": -0.08393618237087064,
+      "treatment_4": 1.191094797728984,
+      "treatment_4_x_temp": 0.05988688454972612,
+      "feeder_4": 0.68219454176695,
+      "feeder_9": -0.529632052880289,
+      "feeder_10": -0.14808392718877444,
+      "feeder_11": 0.07367838486416803,
+      "feeder_12": -0.3519284691160044,
+      "feeder_14": -0.18827190073207878,
+      "feeder_16": -0.03292127264005706,
+      "rep_2": -0.22946397524057607,
+      "rep_3": -0.25994280171746464,
+      "rep_4": -0.13636332733442383
+    }
+  },
+  "robust_fit": {
+    "n_rows": 1009,
+    "n_birds": 79,
+    "expanded_mean_model": false,
+    "robust_student_t": true,
+    "max_rhat": 1.0,
+    "worst_rhat_parameter": "alpha",
+    "min_ess_bulk": 570.0,
+    "worst_ess_parameter": "beta[0]",
+    "divergences": 0,
+    "sigma_log_sigma_median": 0.2377068259573255,
+    "sigma_log_sigma_q025": 0.1425855194294703,
+    "sigma_log_sigma_q975": 0.3290649065904229,
+    "fixed_effect_posterior_means": {
+      "sex": -0.0009611207352682493,
+      "temp": 0.21187608823065965,
+      "treatment_2": 0.2008198809675628,
+      "treatment_2_x_temp": 0.0025289730284022843,
+      "treatment_3": 1.244110695710702,
+      "treatment_3_x_temp": -0.161456446124667,
+      "treatment_4": 1.2401485676305088,
+      "treatment_4_x_temp": -0.041737257507688585
+    }
+  },
+  "split_fits": {
+    "rep12": {
+      "n_rows": 534,
+      "n_birds": 74,
+      "expanded_mean_model": false,
+      "robust_student_t": false,
+      "max_rhat": 1.0,
+      "worst_rhat_parameter": "alpha",
+      "min_ess_bulk": 910.0,
+      "worst_ess_parameter": "alpha",
+      "divergences": 0,
+      "sigma_log_sigma_median": 0.24089209816291843,
+      "sigma_log_sigma_q025": 0.13141639289772233,
+      "sigma_log_sigma_q975": 0.3556265980350654,
+      "fixed_effect_posterior_means": {
+        "sex": 0.06966504394248978,
+        "temp": -0.04478181018051877,
+        "treatment_2": 0.0334925848974543,
+        "treatment_2_x_temp": 0.1233862708118749,
+        "treatment_3": 1.464012379677159,
+        "treatment_3_x_temp": -0.09410366870951249,
+        "treatment_4": 1.2939984650355607,
+        "treatment_4_x_temp": 0.1256062722224693
+      }
+    },
+    "rep34": {
+      "n_rows": 475,
+      "n_birds": 70,
+      "expanded_mean_model": false,
+      "robust_student_t": false,
+      "max_rhat": 1.0,
+      "worst_rhat_parameter": "alpha",
+      "min_ess_bulk": 940.0,
+      "worst_ess_parameter": "beta[0]",
+      "divergences": 0,
+      "sigma_log_sigma_median": 0.302983717762269,
+      "sigma_log_sigma_q025": 0.1965585967594108,
+      "sigma_log_sigma_q975": 0.4265428215696118,
+      "fixed_effect_posterior_means": {
+        "sex": 0.017923168097709805,
+        "temp": 0.313143484686032,
+        "treatment_2": 0.3524589328159712,
+        "treatment_2_x_temp": 0.09962422726518629,
+        "treatment_3": 0.7102276077053692,
+        "treatment_3_x_temp": -0.3607964346224463,
+        "treatment_4": 0.7696360962031497,
+        "treatment_4_x_temp": -0.24939003693620707
+      }
+    },
+    "odd": {
+      "n_rows": 518,
+      "n_birds": 76,
+      "expanded_mean_model": false,
+      "robust_student_t": false,
+      "max_rhat": 1.0,
+      "worst_rhat_parameter": "alpha",
+      "min_ess_bulk": 1100.0,
+      "worst_ess_parameter": "sigma_bird_mean",
+      "divergences": 0,
+      "sigma_log_sigma_median": 0.2552349900534033,
+      "sigma_log_sigma_q025": 0.15063422238496732,
+      "sigma_log_sigma_q975": 0.36134672567017573,
+      "fixed_effect_posterior_means": {
+        "sex": 0.05493962306590709,
+        "temp": 0.12302505261104668,
+        "treatment_2": 0.17166579757341605,
+        "treatment_2_x_temp": 0.1668413432215645,
+        "treatment_3": 1.2793510472059373,
+        "treatment_3_x_temp": -0.16903369636931864,
+        "treatment_4": 1.3444196310162702,
+        "treatment_4_x_temp": -0.05808150367675918
+      }
+    },
+    "even": {
+      "n_rows": 491,
+      "n_birds": 75,
+      "expanded_mean_model": false,
+      "robust_student_t": false,
+      "max_rhat": 1.0,
+      "worst_rhat_parameter": "alpha",
+      "min_ess_bulk": 620.0,
+      "worst_ess_parameter": "sigma_log_sigma",
+      "divergences": 0,
+      "sigma_log_sigma_median": 0.215932934627482,
+      "sigma_log_sigma_q025": 0.07431469452282173,
+      "sigma_log_sigma_q975": 0.33825882910929617,
+      "fixed_effect_posterior_means": {
+        "sex": 0.03949341695797733,
+        "temp": 0.3008388312111252,
+        "treatment_2": 0.0738336507014103,
+        "treatment_2_x_temp": -0.3442146377902453,
+        "treatment_3": 1.0347921910655686,
+        "treatment_3_x_temp": -0.2756262934178867,
+        "treatment_4": 0.8749737858037945,
+        "treatment_4_x_temp": -0.021489745940283644
+      }
+    }
+  },
+  "reliability": {
+    "rep12_vs_rep34": {
+      "n": 65,
+      "pearson_r": 0.36184321807722725,
+      "spearman_rho": 0.3728583916083916,
+      "spearman_bootstrap_95ci": [
+        0.1342126271396653,
+        0.5753423009623797
+      ]
+    },
+    "odd_vs_even": {
+      "n": 72,
+      "pearson_r": 0.4626840096381693,
+      "spearman_rho": 0.44150749244324405,
+      "spearman_bootstrap_95ci": [
+        0.22978166567526295,
+        0.6144508227535231
+      ]
+    }
+  },
+  "stability": {
+    "primary_vs_expanded": {
+      "n": 79,
+      "pearson_r": 0.9714557502734781,
+      "spearman_rho": 0.9693524829600779,
+      "spearman_bootstrap_95ci": [
+        0.9364470046644177,
+        0.98543316244554
+      ]
+    },
+    "primary_vs_robust_student_t": {
+      "n": 79,
+      "pearson_r": 0.9681553257116062,
+      "spearman_rho": 0.9687682570593963,
+      "spearman_bootstrap_95ci": [
+        0.9382076880342439,
+        0.9824395342284195
+      ]
+    },
+    "spearman_log_sigma_vs_n_obs": 0.18186912328966193,
+    "spearman_log_sigma_vs_mean_latency": -0.4565968841285297
+  },
+  "acceptance_rules_set_before_hls_result": {
+    "sampler": "max R-hat <= 1.01, no divergences, and minimum bulk ESS >= 200 for summarized global parameters",
+    "split_reliability": "Spearman rho must be > 0 in both independent replicate partitions",
+    "mean_model_stability": "primary vs expanded Spearman rho >= 0.80",
+    "outlier_robustness": "primary Normal vs Student-t(nu=5) Spearman rho >= 0.80",
+    "observation_count_dependence": "absolute Spearman rho < 0.30 preferred; otherwise flag as material limitation",
+    "source_signal": "visual-containing treatment coefficients remain strongly positive on log latency scale"
+  }
+}
