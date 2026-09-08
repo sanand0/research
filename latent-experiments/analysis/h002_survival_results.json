@@ -1,0 +1,112 @@
+{
+  "n_posterior_draws_available": 4000,
+  "n_imputations": 1000,
+  "primary_n_ge4": {
+    "threshold_n_obs": 4,
+    "adjust_mean_latency": true,
+    "n_birds": 74,
+    "survivors": 43,
+    "non_survivors": 31,
+    "successful_imputations": 1000,
+    "failed_imputations": 0,
+    "unpredictability": {
+      "beta": -0.18518328190814895,
+      "se": 0.32569385710153387,
+      "ci95_beta": [
+        -0.8235432418271553,
+        0.4531766780108575
+      ],
+      "odds_ratio": 0.8309519714315924,
+      "ci95_odds_ratio": [
+        0.43887386009669027,
+        1.5733021298509942
+      ],
+      "p_two_sided": 0.5696406408130084,
+      "between_imputation_sd_beta": 0.19457936795646583
+    },
+    "mean_latency_beta_across_imputations": {
+      "mean": -0.11671644055188278,
+      "sd": 0.1560626175884272
+    }
+  },
+  "sensitivity_n_ge6": {
+    "threshold_n_obs": 6,
+    "adjust_mean_latency": true,
+    "n_birds": 68,
+    "survivors": 39,
+    "non_survivors": 29,
+    "successful_imputations": 1000,
+    "failed_imputations": 0,
+    "unpredictability": {
+      "beta": -0.1937756045754814,
+      "se": 0.3368914656380248,
+      "ci95_beta": [
+        -0.85408287722601,
+        0.4665316680750472
+      ],
+      "odds_ratio": 0.8238427500721639,
+      "ci95_odds_ratio": [
+        0.4256734068927628,
+        1.5944544945873278
+      ],
+      "p_two_sided": 0.5651648074852433,
+      "between_imputation_sd_beta": 0.19704435294424064
+    },
+    "mean_latency_beta_across_imputations": {
+      "mean": -0.1612592649984929,
+      "sd": 0.1569154290242445
+    }
+  },
+  "sensitivity_n_ge8": {
+    "threshold_n_obs": 8,
+    "adjust_mean_latency": true,
+    "n_birds": 62,
+    "survivors": 38,
+    "non_survivors": 24,
+    "successful_imputations": 1000,
+    "failed_imputations": 0,
+    "unpredictability": {
+      "beta": -0.20850091061675521,
+      "se": 0.3646774726714286,
+      "ci95_beta": [
+        -0.9232687570527552,
+        0.5062669358192448
+      ],
+      "odds_ratio": 0.8118002954632563,
+      "ci95_odds_ratio": [
+        0.39721850588311125,
+        1.6590861451660528
+      ],
+      "p_two_sided": 0.5674977364958713,
+      "between_imputation_sd_beta": 0.20934082044191185
+    },
+    "mean_latency_beta_across_imputations": {
+      "mean": 0.034363505694047475,
+      "sd": 0.1723982918173581
+    }
+  },
+  "sensitivity_unadjusted_n_ge4": {
+    "threshold_n_obs": 4,
+    "adjust_mean_latency": false,
+    "n_birds": 74,
+    "survivors": 43,
+    "non_survivors": 31,
+    "successful_imputations": 1000,
+    "failed_imputations": 0,
+    "unpredictability": {
+      "beta": -0.144651177076976,
+      "se": 0.2958841179394355,
+      "ci95_beta": [
+        -0.7245840482382695,
+        0.43528169408431755
+      ],
+      "odds_ratio": 0.8653240853484703,
+      "ci95_odds_ratio": [
+        0.48452606651679647,
+        1.5453983272089025
+      ],
+      "p_two_sided": 0.6249282124585345,
+      "between_imputation_sd_beta": 0.16660276641281932
+    }
+  }
+}

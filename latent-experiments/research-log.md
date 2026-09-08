@@ -320,3 +320,26 @@ Simple outcome-blind residual metrics showed modest but consistently positive sp
 The phenotype therefore passes the pre-outcome gate but is only moderately reliable; a future null may be attenuated by measurement error.
 
 H002 is frozen in `hypothesis-002.md` and `analysis-plan-002.md` before survival unsealing.
+
+## 2026-09-08 — H002 freeze, unseal and result
+
+H002 passed all predictor-side gates and was frozen at git commit `63d7838337926959e1b147b6fcf06783b2132b9d` at 2026-09-08T16:49:34+08:00. The survival file was absent at commit time; manifest and script syntax checks passed.
+
+### Outcome extraction surprise
+
+The public p3hz4 source file has 1,009 repeated behavioral rows but only 79 non-missing annual-survival entries — one per bird. An initial pandas assertion failed because `(NaN > 0)` becomes False, unlike R `ifelse`, which preserves NA. The source author code binarizes and then `slice(1)` per ID. Reproducing that exact first-row convention yields 44 positive and 35 zero outcomes, matching the publication.
+
+### Frozen H002 result
+
+The preregistered uncertainty-propagating logistic analysis completed all 1,000 imputations without failure:
+
+- primary N>=4: OR 0.831, 95% CI 0.439–1.573, p=.570;
+- N>=6: OR 0.824, CI 0.426–1.594, p=.565;
+- N>=8: OR 0.812, CI 0.397–1.659, p=.567;
+- unadjusted for mean latency: OR 0.865, CI 0.485–1.545, p=.625.
+
+Decision: **H002 not supported; STABLE across preregistered forks.**
+
+A separate scipy logistic fit using posterior-mean phenotypes gave OR 0.754 (CI 0.437–1.301), independently confirming the negative/null direction. The frozen outcome JSON hash was identical across two reruns.
+
+Per the fresh-outcome rule, no H003 will be mined against this now-unsealed survival column.

@@ -94,3 +94,25 @@ After the primary test, prefer an independent population or season to additional
 When outcome files also contain design metadata needed to define observation opportunity, separate them programmatically: first extract design-only information with individual membership suppressed; freeze the eligible cohort and observation model; only then expose individual outcome membership.
 
 The observable endpoint must match the sampling design. Do not call non-detection `death` or `survival` when dispersal or changed detector coverage are plausible.
+
+## Phase-3 gates learned from H002
+
+### Individual-trait reproducibility gate
+
+A nonzero random-effect or random-slope variance does **not** establish a persistent individual trait. Before relating a derived individual phenotype to an outcome, require outcome-blind stability across independent repeat blocks/splits when the study design permits it. Reject traits whose individual ranking reverses or collapses even if the full mixed model converges.
+
+### Archive-semantics gate
+
+Before treating a large archive as a data source, inspect its manifest/README/central directory. Filenames and size are not evidence of scientific content.
+
+### Cross-language missing-value gate
+
+When reproducing an author pipeline in a different language, explicitly test missing-value and categorical transformation semantics. R `NA`, pandas `NaN`, SQL `NULL`, and boolean casts do not necessarily behave equivalently.
+
+### Full latent diagnostic gate
+
+For hierarchical Bayesian phenotypes, convergence checks include all sampled latent/random-effect parameters, not just population-level coefficients. Record max R-hat, minimum bulk ESS and divergences.
+
+### Fresh-outcome rule
+
+Once a sealed outcome has been unsealed, do not select or tune additional latent predictors against that outcome. New scientific questions must use a fresh sealed outcome, independent replication cohort, or be labeled explicitly exploratory/post-hoc.
