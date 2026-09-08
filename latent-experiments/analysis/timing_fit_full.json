@@ -1,0 +1,32 @@
+{
+  "first": {
+    "converged": true,
+    "nobs": 11761,
+    "random_intercept_variance": 743.9045205977638,
+    "residual_variance": 2701.0755874159204,
+    "fixed_effects": {
+      "Intercept": 14.131522892522897,
+      "C(AgeSex)[T.A Male]": 15.86839037300983,
+      "C(AgeSex)[T.J Female]": -4.339169181407082,
+      "C(AgeSex)[T.J Male]": -0.5477096068876618,
+      "z_Temperature": -1.7382988557733938,
+      "z_Daylength": 23.356007204358058
+    },
+    "llf": -63362.38495529926
+  },
+  "total": {
+    "converged": true,
+    "nobs": 11761,
+    "random_intercept_variance": 457.8218867617287,
+    "residual_variance": 640.6654970678125,
+    "fixed_effects": {
+      "Intercept": 67.94159244771761,
+      "C(AgeSex)[T.A Male]": 13.685670612220438,
+      "C(AgeSex)[T.J Female]": 6.097566875754918,
+      "C(AgeSex)[T.J Male]": 15.176457670382602,
+      "z_Temperature": -4.152606068075015,
+      "z_Daylength": -8.31529772012543
+    },
+    "llf": -54969.24533491119
+  }
+}

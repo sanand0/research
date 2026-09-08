@@ -1,0 +1,19 @@
+{
+  "bird_days": 4969,
+  "birds": 138,
+  "two_core_birds": [
+    "3B001878E9",
+    "3B0018A4C3"
+  ],
+  "fixed_effects": {
+    "C(Age_Sex)[0Female]": -1.5322691419597128,
+    "C(Age_Sex)[0Male]": -1.2034087782577303,
+    "C(Age_Sex)[1Female]": -1.1750547944817071,
+    "C(Age_Sex)[1Male]": -2.007974343876402,
+    "C(Age_Sex)[0Female]:TempL0": -0.2854878816949731,
+    "C(Age_Sex)[0Male]:TempL0": 0.07223675713350089,
+    "C(Age_Sex)[1Female]:TempL0": -0.3602964202507448,
+    "C(Age_Sex)[1Male]:TempL0": 0.08879672449120297
+  },
+  "note": "No survival file read."
+}
