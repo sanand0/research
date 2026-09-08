@@ -1,0 +1,26 @@
+{
+  "n_complete_adult": 225,
+  "n_complete_brood": 225,
+  "regions": {
+    "Southern Alberta": 116,
+    "Northern Alberta": 109
+  },
+  "apiaries": 6,
+  "correlations_spearman": {
+    "three_point_vs_recent": 0.7587452591656132,
+    "three_point_vs_may_aug": 0.9968952802359884,
+    "three_point_vs_aug_size": 0.7807513391571155,
+    "three_point_vs_may_size": -0.8471257844011627,
+    "adult_vs_brood_three_point": -0.315003160556258
+  },
+  "slope_sd": 0.2624579192802024,
+  "slope_resid_after_aug_region_treatments_sd": 0.11772209509066617,
+  "residual_fraction_sd": 0.4485370280063259,
+  "slope_quantiles": {
+    "0.05": 0.018134643988193512,
+    "0.25": 0.1536430657416831,
+    "0.5": 0.36538090934988043,
+    "0.75": 0.6028306236768934,
+    "0.95": 0.78812506642862
+  }
+}

@@ -1,0 +1,1475 @@
+
+---
+title: "Supplement 5: Statistical Analysis"
+output:
+  html_document
+---    
+Original analysis with:
+
+RStudio build 576 "Spotted Wakerobin"
+
+R version 4.2.2 (2022-10-31 ucrt) "Innocent and Trusting"
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+Running under: Windows 10 x64 (build 19044)
+
+Packages:
+
+car_3.1-1      carData_3.0-5  survival_3.4-0 emmeans_1.8.2  nlme_3.1-160  pander_0.6.5   dplyr_1.0.10
+
+See bottom of document for current settings.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+# Packages
+
+library(dplyr)
+library(pander)
+library(nlme)
+library(emmeans)
+require(survival)
+require(car)
+panderOptions("table.split.table", 150)
+```
+
+```{r}
+# Dataset
+
+BHP<-read.csv("S2_File.csv", stringsAsFactors=TRUE) 
+P15 <- read.csv("S3_File.csv", stringsAsFactors = T)
+
+```
+
+```{r}
+# Set factors and levels
+
+BHP$Region<-factor(BHP$Region, levels=c("Southern Alberta", "Northern Alberta", "Prince Edward Island"))
+BHP$Date<-factor(BHP$Date, levels=c("May 2014", "June 2014", "August 2014", "November 2014", "April 2015", "May 2015", "June 2015", "August 2015", "November 2015", "April 2016", "May 2016"))
+BHP$Month<-factor(BHP$Month, levels=c("May", "June", "August", "November", "April"))
+BHP$Viable<-factor(BHP$Viable, levels = c("Viable", "Not Viable"))
+BHP$ColonyGroup<-factor(BHP$ColonyGroup)
+BHP$Start<-factor(BHP$Start, levels = c("Original", "2014", "2015"))
+BHP$EverSplit<-factor(BHP$EverSplit, levels = c("No", "Yes"))
+BHP$Split2014<-factor(BHP$Split2014, levels = c("No", "2014"))
+BHP$Split2015<-factor(BHP$Split2015, levels = c("No", "2015"))
+
+```
+
+# __1. Colony Survival__
+
+Colony survival was analyzed as a Cox proportional hazards model. Region was a stratified factor because a prior version of the model produced results indicating that hazards were not proportional among regions. For colonies in the fumagillin treated group, the pre-treatment period and post treatment period were distinguished in the analyzed dataset using the tmerge function. The cluster function and robust standard errors were used to account for relatedness among colonies split from a single parent. The final model below was reduced from the model showing all interactions of the three factors (Region, Patties, Fumagillin) by successively removing non-significant higher order interactions.
+
+#  
+```{r}
+BHP$Weeks<-as.numeric(BHP$Weeks)
+
+# Create variable that has the value NA if a colony was not treated with fumagillin in November 2014 and the time of treatment (in weeks) if it was treated. 
+
+Fume.App1<-BHP$Weeks[BHP$Date=="November 2014"]
+Fume<-BHP$Fumagillin[BHP$Date=="November 2014"]
+Fume.App1[Fume =="No"]<-NA
+
+# Create a variable that has the value 0 if the colony was a split created from parents which had already received a fumagillin treatment and NA otherwise. This indicates the time of treatment for splits created in 2015 in the fumagillin group.
+
+Fume.2015Splits<-as.numeric(Fume)
+Fume.2015Splits[Fume=="No"]<-NA
+Fume.2015Splits[Fume=="Yes"]<-0
+Start<-BHP$Start[BHP$Date=="August 2015"]
+Fume.2015Splits[Start!="2015"]<- NA
+
+# Integrate the two new variables to the dataset.
+
+BHP<-cbind(BHP, Fume.App1, Fume.2015Splits)
+
+# Reduce Dataset to One Row per Colony and only needed columns
+
+BHPsurv<-BHP[(BHP$Viable=="Viable" & BHP$Date == "May 2016")|(!is.na(BHP$Colony.Death) &BHP$Colony.Death == 1),c("Colony.Number", "Region", "Patties", "Last.Viable", "Weeks", "Colony.Death", "Fume.App1", "Fume.2015Splits", "ColonyGroup")]
+
+#  The initial dataset has one line per colony and defines the period of observation for each colony:
+
+newBHPsurv <- tmerge(data1=BHPsurv[, c(1,2,3,5,6, 9)], data2=BHPsurv, id=Colony.Number, tstop=Weeks)
+
+# In the following, fumagillin treated colonies are split into 2 or 3 non overlapping periods, based on the dates of fumagillin application. 
+
+newBHPsurv <- tmerge(newBHPsurv, BHPsurv, id=Colony.Number,
+	death = event(Weeks, Colony.Death),
+	Fume = tdc(Fume.App1),
+	Fume = tdc(Fume.2015Splits))
+
+# The Cox proportional hazards model:
+	
+cphfr <- coxph(Surv(tstart, tstop, death) ~ strata(Region) * Patties + Fume, newBHPsurv, cluster=ColonyGroup)
+```
+  
+#
+
+__Model Code in R:__
+
+cphfr <- coxph(Surv(tstart, tstop, death) ~ strata(Region) * Patties + Fume, newBHPsurv, cluster=ColonyGroup)
+
+#
+  
+__Analysis of Variance__
+
+```{r}
+pander(Anova(cphfr, test.statistic = "Wald"))
+
+```
+  
+#
+
+__Effect Estimates__
+
+```{r}
+
+pander(cphfr)
+```
+
+__Hazard Ratios__
+
+p values are shown without adjustment for multiple comparisons. For the within-region effects, the Bonferroni-adjusted threshold for evaluating significance would be p=0.05/3 = 0.0167.
+
+```{r}
+
+emm <- emmeans(cphfr, ~ Patties | Region)
+seem <- summary(pairs(emm, reverse = T), by = NULL, type="response", adjust = "none", infer = c(T, T))
+names(seem)[1] <- "Patties effect"
+pander(seem)
+
+emm <- emmeans(cphfr, ~ Fume)
+seem <- summary(pairs(emm, reverse = T), by = NULL, type = "response", adjust = "none", infer = c(T, T))
+names(seem)[1] <- "Fumagillin effect"
+pander(seem)
+
+```
+  
+#  
+
+__Proportional Hazards Assumption Test__
+
+```{r}
+
+pander(cox.zph(cphfr)$table)
+
+```
+  
+  
+
+# __2. Queen Survival - Successful Supercedures Only (Both Natural and Manual)__
+
+Queen survival was analyzed as a Cox proportional hazards model. Region was a stratified factor because a prior version of the model produced results indicating that hazards were not proportional among regions. For colonies in the fumagillin treated group, the pre-treatment period and post treatment period were distinguished in the analyzed dataset using the tmerge function. The cluster function and robust standard errors were used to account for relatedness among colonies split from a single parent. Multiple queen events per colony were possible and distinguished in the dataset using the tmerge function. Only queen deaths that were not associated with a colony death were included in this model. The final model below was reduced from the model showing all interactions of the three factors (Region, Patties, Fumagillin) by successively removing non-significant higher order interactions.
+
+
+```{r}
+# Reduce Dataset to One Row per Colony and only needed columns
+
+BHPsurv<-BHP[(BHP$Viable=="Viable" & BHP$Date == "May 2016")|(!is.na(BHP$Colony.Death) &BHP$Colony.Death == 1),c("Colony.Number", "Region", "Patties", "Last.Viable", "Weeks", "Queen.Event", "Colony.Death", "Fume.App1", "Fume.2015Splits", "ColonyGroup")]
+BHPsurv$Queen.Event[is.na(BHPsurv$Queen.Event)]<-0
+BHPW<-BHP
+BHPW$Weeks[BHPW$Queen.Event==0]<-NA
+
+
+#  The initial dataset has one line per colony and defines the period of observation for each colony:
+
+Qsurv <- tmerge(data1=BHPsurv[, c(1:3,6,7,10)], data2=BHPsurv, id=Colony.Number, tstop=Weeks)
+
+# In the following, fumagillin treated colonies are split into 2 or 3 non overlapping periods, based on the dates of fumagillin application. Then, additional lines are added for each queen replacement experienced by a colony.
+
+Qsurv <- tmerge(Qsurv, BHPsurv, id=Colony.Number,
+	Fume = tdc(Fume.App1),
+	Fume= tdc(Fume.2015Splits))
+
+BHPMay14<-BHPW[BHPW$Date=="May 2014",]
+BHPMay14$Weeks[BHPMay14$Queen.Event==1]<-0.5
+Qsurv<-tmerge(Qsurv,BHPMay14, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPJun14<-BHPW[BHPW$Date=="June 2014",]
+Qsurv<-tmerge(Qsurv,BHPJun14, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPAug14<-BHPW[BHPW$Date=="August 2014",]
+Qsurv<-tmerge(Qsurv,BHPAug14, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPNov14<-BHPW[BHPW$Date=="November 2014",]
+Qsurv<-tmerge(Qsurv,BHPNov14, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPApr15<-BHPW[BHPW$Date=="April 2015",]
+Qsurv<-tmerge(Qsurv,BHPApr15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPMay15<-BHPW[BHPW$Date=="May 2015",]
+Qsurv<-tmerge(Qsurv,BHPMay15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPJun15<-BHPW[BHPW$Date=="June 2015",]
+Qsurv<-tmerge(Qsurv,BHPJun15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPAug15<-BHPW[BHPW$Date=="August 2015",]
+Qsurv<-tmerge(Qsurv,BHPAug15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPNov15<-BHPW[BHPW$Date=="November 2015",]
+Qsurv<-tmerge(Qsurv,BHPNov15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPMay16<-BHPW[BHPW$Date=="May 2016",]
+Qsurv<-tmerge(Qsurv,BHPMay16, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+
+# Sample Model Results Follow:
+
+BHPtr<-coxph(Surv(tstart, tstop, Queen) ~ strata(Region) + Patties + Fume, Qsurv, cluster=ColonyGroup)
+
+```
+
+
+__Model Code in R:__
+
+BHPtr<-coxph(Surv(tstart, tstop, Queen) ~ strata(Region) + Patties + Fume, Qsurv, cluster=ColonyGroup)
+
+
+__Analysis of Variance__
+
+```{r}
+pander(Anova(BHPtr), test.statistic = "Wald")
+```
+
+__Effect Estimates__
+
+```{r}
+pander(BHPtr)
+```
+
+__Hazard Ratios__
+
+```{r}
+
+emm <- emmeans(BHPtr, ~ Patties)
+
+seem <- summary(pairs(emm, reverse = T), by = NULL, adjust = "none", type = "response", infer = c(T, T))
+names(seem)[1] <- "Patties effect"
+pander(seem)
+
+emm <- emmeans(BHPtr, ~ Fume)
+seem <- summary(pairs(emm, reverse = T), by = NULL, adjust = "none", type = "response", infer = c(T, T))
+names(seem)[1] <- "Fumagillin effect"
+pander(seem)
+```
+
+__Test of Hazard Proportionality__
+
+```{r}
+pander(cox.zph(BHPtr)$table)
+
+```
+
+
+# __3. Queen Survival - Colony Death Treated as Queen Failure__
+
+The above models considered queen replacement event which did not accompany the death of the colony. In other words, it considered only successful queen replacement events. Many colonies which died became queenless long before the last bees disappeared; such cases can be thought of as failed queen replacement events. However we cannot reliably distinguish all colonies that died from queen loss. The following model is the same as the queen survival model except that all colony deaths are counted as queen events.
+
+
+```{r}
+Qsurv <- tmerge(data1=BHPsurv[,c(1:3,6,7,10)], data2=BHPsurv, id=Colony.Number, tstop=Weeks)
+
+# In the following, fumagillin treated colonies are split into 2 or 3 non overlapping periods, based on the dates of fumagillin application. 
+
+Qsurv <- tmerge(Qsurv, BHPsurv, id=Colony.Number,
+	Fume = tdc(Fume.App1),
+	Fume= tdc(Fume.2015Splits),
+	Queen=event(Weeks, Colony.Death))
+
+BHPMay14<-BHP[BHP$Date=="May 2014",]
+BHPMay14$Weeks[BHPMay14$Queen.Event==1]<-0.5
+Qsurv<-tmerge(Qsurv,BHPMay14, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPJun14<-BHP[BHP$Date=="June 2014",]
+Qsurv<-tmerge(Qsurv,BHPJun14, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPAug14<-BHP[BHP$Date=="August 2014",]
+Qsurv<-tmerge(Qsurv,BHPAug14, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPNov14<-BHP[BHP$Date=="November 2014",]
+Qsurv<-tmerge(Qsurv,BHPNov14, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPApr15<-BHP[BHP$Date=="April 2015",]
+Qsurv<-tmerge(Qsurv,BHPApr15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPMay15<-BHP[BHP$Date=="May 2015",]
+Qsurv<-tmerge(Qsurv,BHPMay15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPJun15<-BHP[BHP$Date=="June 2015",]
+Qsurv<-tmerge(Qsurv,BHPJun15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPAug15<-BHP[BHP$Date=="August 2015",]
+Qsurv<-tmerge(Qsurv,BHPAug15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPNov15<-BHP[BHP$Date=="November 2015",]
+Qsurv<-tmerge(Qsurv,BHPNov15, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+
+BHPMay16<-BHP[BHP$Date=="May 2016",]
+Qsurv<-tmerge(Qsurv,BHPMay16, id=Colony.Number,
+	Queen=event(Weeks, Queen.Event))
+```
+
+__Model Code in R__
+
+BHPtr<-coxph(Surv(tstart, tstop, Queen) ~ strata(Region) + Patties + Fume, Qsurv, cluster=Colony.Number)
+
+
+```{r}
+
+# Sample Model Results Follow:
+
+BHPtr<-coxph(Surv(tstart, tstop, Queen) ~ strata(Region) + Patties + Fume, Qsurv, cluster=Colony.Number)
+
+```
+
+__Analysis of Variance__
+
+```{r}
+pander(Anova(BHPtr))
+```
+
+__Effect Estimates__
+
+```{r}
+pander(BHPtr)
+```
+
+
+__Hazard Ratios__
+
+```{r}
+
+emm <- emmeans(BHPtr, ~ Patties)
+
+seem <- summary(pairs(emm, reverse = T), by = NULL, adjust = "none", type = "response", infer = c(T, T))
+names(seem)[1] <- "Patties effect"
+pander(seem)
+
+emm <- emmeans(BHPtr, ~ Fume)
+seem <- summary(pairs(emm, reverse = T), by = NULL, adjust = "none",type = "response", infer = c(T, T))
+names(seem)[1] <- "Fumagillin effect"
+pander(seem)
+```
+
+__Test of Hazard Proportionality__
+
+```{r}
+pander(cox.zph(BHPtr)$table)
+
+```
+
+
+# __4. Adult Bee Population__
+
+__Description__
+
+This is a linear mixed effects model using the nlme package in R. There are four fixed main effects (Date, Region Patties, and Fumagillin) and one random effect (Colony). Successive observations on each colony were expected to be correlated autoregressively. A different variance is used for each region-date combination, because plots of residuals from models without this adjustment were highly heteroskedastic. Data from the first time point ("May 2014") was excluded from the model because there was no data for one region on that date.
+
+Many variants of the model were considered, including 
+
+1. Splitting the "Date" term into two terms which accounted for length of treatment and seasonal effects separately. This would have allowed the May 2014 data to be included in the dataset.
+2. Separate models within each region
+3. Date, Region, and Apiary as random effects
+4. Split colonies excluded, or the populations of the daughter colony attributed to the parent.
+5. Different correlation terms, or no correlation term.
+
+Results of these models informed comments in the text, but were not dramatically different from those reported, and the alternatives were inferior as judged by model fit criteria (Akaike Informative Criterion, Bayesion Informative Criterion, likelihood ratio tests using maximum likelihood prior to fixed effect reduction)
+
+Because fumagillin was applied in fall 2014, that is, between the third and fourth population assessement, effects of fumagillin are not interpretable except in contrasts that specify the date term.
+
+### __Full Model Code Prior to Fixed Effect Reduction__
+
+bhpad<- lme(Adults ~ (Date+ Region+ Patties+ Fumagillin)^4 , 
+          random = ~1|Colony.Number, 
+          BHPad[BHPad$Date !="May 2014",],
+          correlation=corAR1(),
+          weights=varIdent(form= ~1|Assessment* Region), 
+          method = "REML",
+	        control=lmeControl(opt="optim"))
+
+### __Model Code as Reported__
+
+bhpadr<-lme(Adults~(Date+ Region+ Patties+ Fumagillin) ^3 - Date:Patties:Fumagillin - Date:Region:Patties, random = ~1|Colony.Number, 
+          BHPad[BHPad$Date !="May 2014",],
+          correlation=corAR1(),
+          weights=varIdent(form= ~1|Assessment* Region), 
+          method = "REML",
+	        control=lmeControl(opt="optim"))
+
+__Adult Bee Analysis of Variance__
+
+	        
+```{r}
+BHPad <- droplevels(BHP[!is.na(BHP$Adults), c("Colony.Number","ColonyGroup","EverSplit", "Region", "Patties", "Fumagillin", "Date", "Assessment", "Month", "Adults")])
+
+BHPad$Assessment <- as.integer(BHPad$Date)
+
+bhpadr<-lme(Adults~(Date+ Region+ Patties+ Fumagillin) ^3 - Date:Patties:Fumagillin - Date:Region:Patties, random = ~1|Colony.Number, 
+          BHPad[BHPad$Date !="May 2014",],
+          correlation=corAR1(),
+          weights=varIdent(form= ~1|Assessment* Region), 
+          method = "REML",
+	        control=lmeControl(opt="optim"))
+pander(anova(bhpadr, type = "marginal"))
+```
+
+### __Contrasts and Estimated Marginal Means__
+
+#
+
+
+#### __Protein Supplements Averaged Across All Regions and Dates After June 2014__
+
+Only one comparison; significance threshold = 0.05.
+```{r}
+pbdm<-emmeans(bhpadr, revpairwise ~ Patties, at=list(Date = c("August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer=T, adjust="none")
+spbd<-summary(pbdm$contrasts)
+names(spbd)[1] <- "Contrast of Protein Treatments" 
+pander(spbd, "The effect of Patties averaged over Fumagillin, Region, and Dates after June 2014")
+
+spbd<-summary(pbdm$emmeans)
+names(spbd)[1] <- "Protein Treatment" 
+pander(spbd, "Estimated Marginal Means for Patties averaged over Fumagillin, Region, and Dates after June 2014")
+```
+
+#### __Interaction of Protein Supplements and Date (Across Regions)__
+
+All 6 comparisons are meaningful; significance threshold = 0.05/6 = 0.0083.
+```{r}
+pbdm<-emmeans(bhpadr, revpairwise ~ Patties|Date, at=list(Date = c("June 2014", "August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer=T, adjust="none")
+spbd<-summary(pbdm$contrasts)
+spbd<-arrange(spbd,Date)
+names(spbd)[1] <- "Contrast of Protein Treatments" 
+pander(spbd, "The effect of Patties averaged over Fumagillin and Region, by Date")
+spbd<-summary(pbdm$emmeans)
+names(spbd)[1] <- "Protein Treatment" 
+pander(spbd, "Estimated Marginal Means for Patty treatment groups averaged over Fumagillin and Region, by Date")
+```
+
+#### __Interaction of Protein Supplements and Region (Across the 5 Dates after June 2014)__
+
+All 3 comparison are meaningful; significance threshold = 0.05/3 = 0.0167.
+```{r}
+pbdm<-emmeans(bhpadr, revpairwise ~ Patties|Region, at=list(Date = c("August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer=T, adjust="none")
+spbd<-summary(pbdm$contrasts)
+spbd<-arrange(spbd,Region)
+names(spbd)[1] <- "Contrast of Protein Treatments" 
+pander(spbd, "The effect of Patties, by Region, last 5 dates of Trial")
+spbd<-summary(pbdm$emmeans)
+names(spbd)[1] <- "Protein Treatments" 
+pander(spbd, "Estimated Marginal Means for Patties, by Region, Last 5 dates of Trial")
+```
+
+#### __Effect of Patties Within Each Region and Date__
+
+All 18 comparisons are meaningful; significance threshold = 0.05/18 = 0.00278.
+```{r}
+pbd<-emmeans(bhpadr, revpairwise ~ Patties|Region + Date, at=list(Date = c("June 2014", "August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer=T,adjust="none" )
+spbd<-summary(pbd$contrasts)
+spbd<-arrange(spbd,Region, Date)
+names(spbd)[1] <- "Contrast of Protein Treatments" 
+pander(spbd, "The effect of Patties averaged over Fumagillin, by Region and Date, from June 2014")
+```
+
+#### __Effect of Fumagillin Treatments, All Dates After the First Treatment, Combined__
+
+Only one contrast; significance threshold =0.05.
+```{r}
+fbd<-emmeans(bhpadr, revpairwise ~ Fumagillin, at=list(Date = c("May 2015", "June 2015", "August 2015", "May 2016")), infer=T,adjust="none")
+sfbd<-summary(fbd$contrasts)
+names(spbd)[1] <- "Contrast of Fumagillin Treatments" 
+pander(sfbd, "The effect of Fumagillin averaged over Patties, Region, and Date, for dates after the first treatment")
+sfbd<-summary(fbd$emmeans)
+names(spbd)[1] <- "Fumagillin Treatment" 
+pander(sfbd, "Estimated Marginal Means for Fumagillin averaged over Patties, Region, and Date, for dates after the first treatment")
+```
+
+#### __Effect of Fumagillin by Date__
+
+Contrasts are meaningful beginning May 2015; significance threshold = 0.05/4= 0.0125.
+```{r}
+fbd<-emmeans(bhpadr, revpairwise ~ Fumagillin|Date, at=list(Date = c("August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer=T,adjust="none")
+sfbd<-summary(fbd$contrasts)
+sfbd<-arrange(sfbd,Date)
+names(spbd)[1] <- "Contrast of Fumagillin Treatments" 
+pander(sfbd, "The effect of Fumagillin averaged over Patties and Region, by Date, after June 2014")
+sfbd<-summary(fbd$emmeans)
+sfbd<-arrange(sfbd,Date)
+names(spbd)[1] <- "Fumagillin Treatment" 
+
+pander(sfbd, "Estimated Marginal Means for Fumagillin averaged over Patties and Region, by Date, after June 2014")
+```
+
+#### __Effect of Fumagillin by Region, Including Only Dates After the First Treatment__
+
+All contrasts are meaningful; significance threshold = 0.05/3 = 0.0167.
+```{r}
+fbd<-emmeans(bhpadr, revpairwise ~ Fumagillin|Region, at=list(Date = c( "May 2015", "June 2015", "August 2015", "May 2016")), infer=T,adjust="none")
+sfbd<-summary(fbd$contrasts)
+sfbd<-arrange(sfbd,Region)
+names(spbd)[1] <- "Contrast of Fumagillin Treatments" 
+pander(sfbd, "The effect of Fumagillin averaged over Patties and Date, by Region")
+sfbd<-summary(fbd$emmeans)
+names(spbd)[1] <- "Fumagillin Treatment" 
+sfbd<-arrange(sfbd,Region)
+pander(sfbd, "Estimated Marginal Means for Fumagillin averaged over Patties and Date, by Region")
+```
+
+#### __Fumagillin by Region and Date__
+
+All listed contrasts are meaningful; significance thresholed = 0.05/12 = .00417
+```{r}
+
+fbd<-emmeans(bhpadr, revpairwise ~ Fumagillin|Region + Date, at=list(Date = c( "May 2015", "June 2015", "August 2015", "May 2016")), infer=T, adjust="none")
+sfbd<-summary(fbd$contrasts)
+sfbd<-arrange(sfbd,Region, Date)
+names(spbd)[1] <- "Contrast of Fumagillin Treatments" 
+pander(sfbd, "The effect of Fumagillin averaged over Patties, by Region and Date, after June 2014")
+```
+
+#### __Fumagillin by Region, Date, and Patties__
+These results are provided in support of figure 2 only. The four way interaction was not significant in the analysis of variance. In keeping with the presentation in that figure only contrasts between the designated treatment group (here, fumagillin) and the totally untreated control are considered. Also, measurement dates that precede the treatment application are ignored. There are therefore (for Fumagillin), 12 meaningful contrasts and the threshold value is p=0.05/12 = 0.00417. 
+
+```{r}
+
+fbd<-emmeans(bhpadr, revpairwise ~ Fumagillin|Date + Region + Patties, at=list(Date = c("June 2014", "August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer=T,adjust="none")
+sfbd<-summary(fbd$contrasts)
+sfbd<-arrange(sfbd,Region, Patties, Date)
+names(sfbd)[1]<-"Contrast of Fumagillin Treatment in Colonies Without Protein Supplements"
+pander(sfbd[sfbd$Patties == "No" & (sfbd$Date == "May 2015"|sfbd$Date=="June 2015"|sfbd$Date == "August 2015"| sfbd$Date == "May 2016"),], "The effect of Fumagillin, by Date, Region, and Patties")
+```
+
+#### __Patties by Region, Date, and Fumagillin__
+These results are provided in support of figure 2 only. The four way interaction was not significant in the analysis of variance. In keeping with the presentation in that figure only contrasts between the designated treatment group (here, Patties) and the totally untreated control are considered. Also, the first measurement date in each region preceded the first treatment date. There are therefore (for Patties), 17 meaningful contrasts and the threshold value is p=0.05/17 = 0.00294. However, only the 12  contrasts for dates after the first fumagillin application are reflected on the graph. For earlier dates, see the contrasts in the above table "Patties by Region and Date".
+
+```{r}
+
+fbd<-emmeans(bhpadr, revpairwise ~ Patties|Date + Region + Fumagillin, at=list(Date = c("June 2014", "August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer=T,adjust="none")
+sfbd<-summary(fbd$contrasts)
+sfbd<-arrange(sfbd,Region, Fumagillin, Date)
+names(sfbd)[1] <- "Contrast of Protein Treatments in Colonies Without Fumagillin Treatments" 
+pander(sfbd[sfbd$Fumagillin == "No",], "The effect of Protein Supplements, by Date, Region, and Patties")
+
+```
+
+#### __Patties + Fumagillin by Region & Date__
+These results are provided in support of figure 2 only. The four way interaction was not significant in the analysis of variance. In keeping with the presentation in that figure only contrasts between the designated treatment group (here, the double treatment of Patties and Fumagillin) and the totally untreated control are considered. Also, measurement dates that precede the fumagillin application are ignored. There are therefore (for Patties + Fumagillin ), 12 meaningful contrasts and the threshold value is p=0.05/12 = 0.00417. 
+
+```{r}
+
+fbd<-emmeans(bhpadr, revpairwise ~ Patties + Fumagillin|Date + Region, at=list(Date = c("June 2014", "August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer=T,adjust="none")
+sfbd<-summary(fbd$contrasts)
+sfbd<-arrange(sfbd,Region, Date)
+names(sfbd)[1] <- "Contrast of Both Treatments to No Treatment" 
+pander(sfbd[c(16,22, 28, 34, 52, 58, 64, 70, 88, 94, 100, 106),], "The effect of the combined treatment of Protein and Fumagillin, by Date, Region, and Patties")
+
+```
+
+
+# __5. Sealed Brood Population__
+
+The model for sealed brood was the same as that for adult bees, except that the correlation term was dropped because it did not improve the model fit statistics for brood.
+
+This is a linear mixed effects model using the nlme package in R. There are four fixed main effects (Date, Region Patties, and Fumagillin) and one random effect (Colony). There were repeated observations on each colony, which are expected to be correlated. A different variance is used for each region-date combination. Data from the first time point ("May 2014") was excluded from the model because there was no data for one region on that date.
+
+Many variants of the model were considered, including 
+
+1. Splitting the "Date" term into two terms which accounted for length of treatment and seasonal effects seperately. This would have allowed the May 2014 data to be included in the dataset.
+2. Seperate models within each region
+3. Date, Region, and Apiary as random effects
+4. Split colonies excluded, or the populations of the daughter colony attributed to the parent.
+
+Results of these models informed comments in the text, but were not dramatically different from those reported.
+
+
+### __Full Model Code Before Fixed Effect Reduction__
+
+bhpbr<-lme(Worker.Cells ~ (Region+ Date+ Patties+ Fumagillin)^4, 
+          random = ~1|Colony.Number, 
+          BHPbr[BHPbr$Date !="May 2014",],
+          weights=varIdent(form= ~1|Assessment* Region), 
+          method = "REML")
+          
+### __Model Code as Reported__
+
+bhpbr<-lme(Worker.Cells ~ (Region+ Date+ Patties+ Fumagillin)^3- Date:Patties:Fumagillin- Region:Date:Patties, 
+          random = ~1|Colony.Number, 
+          BHPbr[BHPbr$Date !="May 2014",],
+          weights=varIdent(form= ~1|Assessment* Region), 
+          method = "REML")
+          
+__Sealed Brood Analysis of Variance__
+
+```{r}
+BHPbr <- droplevels(BHP[!is.na(BHP$Worker.Cells), c("Colony.Number","ColonyGroup","EverSplit", "Region", "Patties", "Fumagillin", "Date", "Assessment", "Month", "Worker.Cells")])
+BHPbr$Assessment <- as.integer(BHPbr$Date)
+
+bhpbr<-lme(Worker.Cells ~ (Region+ Date+ Patties+ Fumagillin)^3- Date:Patties:Fumagillin- Region:Date:Patties, 
+          random = ~1|Colony.Number, 
+          BHPbr[BHPbr$Date !="May 2014",],
+          weights=varIdent(form= ~1|Assessment* Region), 
+          method = "REML")
+
+          
+anova(bhpbr, type = "marginal")
+
+```
+
+### __Treatment Contrasts__
+
+
+#### __Protein Supplements - Combined Dates After June 2014, Across Levels of Region and Fumagillin__
+
+Only one contrast: significance threshold = 0.05
+```{r} 
+bhpbrpd<-emmeans(bhpbr, revpairwise~Patties, at=list(Date=c("August 2014", "May 2015", "June 2015", "August 2015", "May 2016")), infer = T, adjust="none")
+sbhpbrpd<-summary(bhpbrpd$contrasts)
+sbhpbrpd<-arrange(sbhpbrpd)
+names(sbhpbrpd)[1] <- "Contrast of Protein Treatments" 
+pander(sbhpbrpd)
+
+sbhpbrpd<-summary(bhpbrpd$emmeans)
+sbhpbrpd<-arrange(sbhpbrpd)
+names(sbhpbrpd)[1] <- "Protein Treatment" 
+pander(sbhpbrpd)
+
+```
+
+#### __Protein Supplements After June 2014 - Combined Dates by Region__
+
+ There are three within region comparisons so the significance threshold is 0.05/3 = 0.0167. 
+
+```{r}
+ 
+bhpbrpr<-emmeans(bhpbr, revpairwise~Patties| Region, infer = T, adjust="none", at=list(Date=c("August 2014", "May 2015", "June 2015", "August 2015", "May 2016")))
+sbhpbrpr<-summary(bhpbrpr$contrasts)
+sbhpbrpr<-arrange(sbhpbrpr, Region)
+names(sbhpbrpr)[1] <- "Contrast of Protein Treatments" 
+pander(sbhpbrpr)
+rm(sbhpbrpr)
+
+sbhpbrpr<-summary(bhpbrpr$emmeans)
+sbhpbrpr<-arrange(sbhpbrpr, Region)
+names(sbhpbrpr)[1] <- "Protein Treatment" 
+pander(sbhpbrpr)
+rm(sbhpbrpr)
+
+```
+
+#### __Interaction of Patties and Date - Across All Regions__
+
+All six within date comparisons are meaningful, so the significance threshold is 0.05/6 = 0.00833. 
+
+```{r} 
+bhpbrpd<-emmeans(bhpbr, revpairwise~Patties| Date, infer = T, adjust="none")
+sbhpbrpd<-summary(bhpbrpd$contrasts)
+sbhpbrpd<-arrange(sbhpbrpd, Date)
+names(sbhpbrpd)[1] <- "Contrast of Protein Treatments" 
+pander(sbhpbrpd)
+rm(sbhpbrpd)
+sbhpbrpd<-summary(bhpbrpd$emmeans)
+names(sbhpbrpd)[1] <- "Protein Treatment" 
+sbhpbrpd<-arrange(sbhpbrpd, Date)
+pander(sbhpbrpd)
+rm(sbhpbrpd)
+```
+
+#### __Interaction of Patties and Date - By Region__
+
+All 18 comparisons are meaningful, so the significance threshold is 0.05/18 = 0.00278. 
+
+```{r} 
+bhpbrpd<-emmeans(bhpbr, revpairwise~Patties| Date+ Region, infer = T, adjust="none")
+sbhpbrpd<-summary(bhpbrpd$contrasts)
+sbhpbrpd<-arrange(sbhpbrpd, Region, Date)
+names(sbhpbrpd)[1] <- "Contrast of Protein Treatments" 
+pander(sbhpbrpd)
+rm(sbhpbrpd)
+
+```
+
+#### __Fumagillin After August 2014 - Regions Combined__
+
+```{r} 
+bhpbrpd<-emmeans(bhpbr, revpairwise~Fumagillin, at=list(Date=c( "May 2015", "June 2015", "August 2015", "May 2016")), infer = T,  adjust="none")
+sbhpbrpd<-summary(bhpbrpd$contrasts)
+sbhpbrpd<-arrange(sbhpbrpd)
+names(sbhpbrpd)[1] <- "Contrast of Fumagillin Treatments" 
+pander(sbhpbrpd)
+rm(sbhpbrpd)
+
+sbhpbrpd<-summary(bhpbrpd$emmeans)
+sbhpbrpd<-arrange(sbhpbrpd)
+names(sbhpbrpd)[1] <- "Fumagillin Treatment" 
+pander(sbhpbrpd)
+rm(sbhpbrpd)
+```
+
+
+#### __Fumagillin After August 2014 - by Region__
+
+ There are three within region comparisons so the significance threshold is 0.05/3 = 0.0167. 
+
+```{r}
+ 
+bhpbrpr<-emmeans(bhpbr, revpairwise~Fumagillin| Region, infer = T, adjust="none", at=list(Date=c( "May 2015", "June 2015", "August 2015", "May 2016")))
+sbhpbrpr<-summary(bhpbrpr$contrasts)
+sbhpbrpr<-arrange(sbhpbrpr, Region)
+names(sbhpbrpr)[1] <- "Contrast of Fumagillin Treatments" 
+pander(sbhpbrpr)
+rm(sbhpbrpr)
+
+sbhpbrpr<-summary(bhpbrpr$emmeans)
+sbhpbrpr<-arrange(sbhpbrpr, Region)
+names(sbhpbrpr)[1] <- "Fumagillin Treatment" 
+pander(sbhpbrpr)
+rm(sbhpbrpr)
+```
+
+#### __Interaction of Fumagillin and Date - Across All Regions__
+
+Four within date comparisons are meaningful, so the significance threshold is 0.05/4 = 0.0125. 
+
+```{r} 
+bhpbrpd<-emmeans(bhpbr, revpairwise~Fumagillin| Date, infer = T,  adjust="none")
+sbhpbrpd<-summary(bhpbrpd$contrasts)
+sbhpbrpd<-arrange(sbhpbrpd, Date)
+names(sbhpbrpd)[1] <- "Contrast of Fumagillin Treatments" 
+pander(sbhpbrpd)
+rm(sbhpbrpd)
+sbhpbrpd<-summary(bhpbrpd$emmeans)
+sbhpbrpd<-arrange(sbhpbrpd, Date)
+names(sbhpbrpd)[1] <- "Fumagillin Treatment" 
+pander(sbhpbrpd)
+rm(sbhpbrpd)
+```
+
+
+
+__Fumagillin within Date and Region__
+
+After the first fumagillin application there are four inspection dates in each of the three regions (=12 comparisons within region and date). Therefore the significance limit is 0.05/12 =  0.00417.
+```{r}
+bhpbrfrd<-emmeans(bhpbr, revpairwise~Fumagillin|Region + Date, infer = T,  adjust="none")
+sbhpbrfrd<-summary(bhpbrfrd$contrasts)
+sbhpbrfrd<-arrange(sbhpbrfrd, Region, Date)
+names(sbhpbrfrd)[1] <- "Contrast of Fumagillin Treatments" 
+pander(sbhpbrfrd, "Effect of Fumagillin by Region and Date, not adjusted for multiple comparisons, whole model")
+rm(sbhpbrfrd)
+
+```
+
+#### __Patties by Region, Date, and Fumagillin__
+
+These results are provided in support of figure 3 only. The four way interaction was not significant in the analysis of variance. In keeping with the presentation in that figure only contrasts between the designated treatment group (here, Patties) and the totally untreated control are considered. Also, the first measurement date in each region preceded the first treatment date. There are therefore (for Patties), 17 meaningful contrasts and the threshold value is p=0.05/17 = 0.00294. However, only the 12  contrasts for dates after the first fumagillin application are reflected on the graph. For earlier dates, see the contrasts in the above table "Interaction of Patties and Date, by Region".
+
+```{r} 
+bhpbrpd<-emmeans(bhpbr, revpairwise~Patties| Date+ Region + Fumagillin, infer = T, adjust="none")
+sbhpbrpd<-summary(bhpbrpd$contrasts)
+sbhpbrpd<-arrange(sbhpbrpd, Fumagillin, Region, Date)
+names(sbhpbrpd)[1] <- "Contrast of Protein Treatments in Colonies Without Fumagillin" 
+pander(sbhpbrpd[sbhpbrpd$Fumagillin == "No",])
+rm(sbhpbrpd)
+
+```
+#### __Fumagillin by Region, Date, and Patties__
+
+These results are provided in support of figure 3 only. The four way interaction was not significant in the analysis of variance. In keeping with the presentation in that figure only contrasts between the designated treatment group (here, fumagillin) and the totally untreated control are considered. Also, measurement dates that precede the treatment application are ignored. There are therefore (for Fumagillin), 12 meaningful contrasts and the threshold value is p=0.05/12 = 0.00417. 
+
+```{r} 
+bhpbrpd<-emmeans(bhpbr, revpairwise~Fumagillin| Date+ Region + Patties, infer = T, adjust="none")
+sbhpbrpd<-summary(bhpbrpd$contrasts)
+sbhpbrpd<-arrange(sbhpbrpd, Patties, Region, Date)
+names(sbhpbrpd)[1] <- "Contrast of Fumagillin Treatments in Colonies Without Protein Supplements" 
+pander(sbhpbrpd[sbhpbrpd$Patties == "No" & (sbhpbrpd$Date == "May 2015"| sbhpbrpd$Date == "June 2015"| sbhpbrpd$Date == "August 2015"|sbhpbrpd$Date == "May 2016" ),])
+rm(sbhpbrpd)
+
+```
+
+
+#### __Patties + Fumagillin by Region & Date__
+These results are provided in support of figure 3 only. The four way interaction was not significant in the analysis of variance. In keeping with the presentation in that figure only contrasts between the designated treatment group (here, the double treatment of Patties and Fumagillin) and the untreated control are considered. Also, measurement dates that precede the fumagillin application are ignored. There are therefore (for Patties + Fumagillin ), 12 meaningful contrasts and the threshold value is p=0.05/12 = 0.00417. 
+
+```{r} 
+bhpbrpd<-emmeans(bhpbr, revpairwise~Fumagillin + Patties| Date+ Region, infer = T, adjust="none")
+sbhpbrpd<-summary(bhpbrpd$contrasts)
+sbhpbrpd<-arrange(sbhpbrpd, Region, Date)
+names(sbhpbrpd)[1] <- "Contrast Between Colonies That Received Both Treatments and Colonies that Received Neither" 
+pander(sbhpbrpd[c(16,22,28,34,52,58,64,70,88,94,100,106),])
+rm(sbhpbrpd)
+
+```
+
+# __6. Cluster Size__
+
+### __Full Model__
+
+seam<-lme(Seams~winter* Month* Region* Patties+ winter* Month* Region* Fumagillin, data=clusterns , random = ~1 |Colony.Number, correlation = corAR1(form = ~Assessment|Colony.Number), na.action=na.omit, 
+	        control=lmeControl(opt="optim"),
+	        weights=varIdent(form=~1|Region* winter* Month))
+	        
+__Model Description__
+
+Colonies which were split in August were excluded from the cluster size dataset for the following winter because the recent split affected the size and survival frequency. Colonies which were not viable in April were also excluded from the dataset for the previous fall (that is, the same colonies are being compared before and after winter, each year). The interaction of patties and fumagillin was excluded from the model because in PEI there were no non-split colonies in one treatment group at the end of the study.
+
+This is a linear mixed effects model using the nlme package in R.There are five fixed effects: winter (1 or 2), Month (November or April), Region (Southern Alberta, Northern Alberta, or Prince Edward Island), Patties (Yes or No), and Fumagillin (Yes or No). The dependent variable is cluster size, which is the estimated number of inter-frame spaces filled with clustering bees during cold weather. Colony is a random effect, and colonies are measured repeatedly; correlations are expected between the measurements for a colony. Different variances are permitted for each combination of region and date. 
+
+Alternative models were considered in depth and inform the text but are not presented; these included
+
+1. Different ways of accounting for split colonies (including them in the model, modelling them separately, or attributing all bees from the splits to the parent colony)
+2. Separate analyses by region
+3. Modelling the change in cluster size between November and April as the dependent variable, with or without initial cluster size as an additional independent variable.
+4. Correlation structures other than AR1, nested random effects within apiary or region.
+
+```{r}
+
+# Create subsets by month
+
+Nov2014<-BHP[BHP$Assessment==4,]
+Apr2015<-BHP[BHP$Assessment==5,]
+Nov2015<-BHP[BHP$Assessment==9,]
+Apr2016<-BHP[BHP$Assessment==10,]
+```
+```{r}
+# Add Variable: Winter
+
+winter<-rep ("Winter 1", times = 362)
+Nov2014<-cbind(Nov2014, winter)
+Apr2015<-cbind(Apr2015, winter)
+
+winter<-rep ("Winter 2", times = 362)
+Nov2015<-cbind(Nov2015, winter)
+Apr2016<-cbind(Apr2016, winter)
+
+```
+
+```{r}
+# Create subsets that exclude same-year splits
+
+Nov2014ns<-Nov2014[Nov2014$Start == "Original" & Nov2014$Split2014=="No",]
+Apr2015ns<-Apr2015[Apr2015$Start == "Original" & Apr2015$Split2014=="No",]
+
+
+Nov2015ns<-Nov2015[Nov2015$Start !="2015" & Nov2015$Split2015 == "No",]
+Apr2016ns<-Apr2016[Apr2016$Start !="2015" & Apr2016$Split2015 == "No",]
+
+# Create November datasets that include the change in cluster size over winter as a variable
+
+weightdiff<-Nov2014ns$Colony.Weight - Apr2015ns$Colony.Weight
+seamdiff<-Nov2014ns$Seams - Apr2015ns$Seams
+Nov2014nsdiff<-cbind(Nov2014ns, seamdiff, weightdiff)
+
+seamdiff<-Nov2015ns$Seams - Apr2016ns$Seams
+weightdiff<-Nov2015ns$Colony.Weight - Apr2016ns$Colony.Weight
+Nov2015nsdiff<-cbind(Nov2015ns,seamdiff, weightdiff)
+```
+```{r}
+# Add AprViable as an indicator of survival.
+
+AprViable<-Apr2015ns$Viable
+Nov2014ns<-cbind(Nov2014ns, AprViable)
+Apr2015ns<-cbind(Apr2015ns, AprViable)
+Nov2014nsdiff<-cbind(Nov2014nsdiff, AprViable)
+
+AprViable<-Apr2016ns$Viable
+Nov2015ns<-cbind(Nov2015ns, AprViable)
+Apr2016ns<-cbind(Apr2016ns, AprViable)
+Nov2015nsdiff<-cbind(Nov2015nsdiff, AprViable)
+```
+
+```{r}
+# Reconstitute Datasets
+
+clusterns<-rbind(Nov2014ns,Apr2015ns,Nov2015ns,Apr2016ns)
+clusternsdiff<-rbind(Nov2014nsdiff, Nov2015nsdiff)
+
+```
+```{r}
+#Drop colonies that did not survive the winter
+
+clusterns <- droplevels(clusterns[clusterns$AprViable == "Viable", c("Colony.Number", "Viable", "Region", "Patties", "Fumagillin", "Assessment", "Month", "winter", "Seams")])
+clusternsdiff <- droplevels(clusternsdiff[clusternsdiff$AprViable == "Viable", c("Colony.Number", "Viable", "Region", "Patties", "Fumagillin", "Assessment", "Month", "winter", "Seams", "seamdiff", "Colony.Weight", "weightdiff")])
+
+
+```
+```{r}
+
+seam<-lme(Seams~(winter+ Month+ Region)^3 + Patties*(winter+ Month+ Region) +Fumagillin , data=clusterns , random = ~1 |Colony.Number, correlation = corAR1(form = ~Assessment|Colony.Number), na.action=na.omit, 
+	        control=lmeControl(opt="optim"),
+	        weights=varIdent(form=~1|Region* winter* Month))
+
+
+anova(seam, type = "marginal")
+```
+# Contrasts
+
+The following table includes estimates for the effects of Patties within region and date, even though treatment effects above two way interactions were dropped from the model. Assuming this is acceptable, all estimates are of interest; that is, 12 pairwise comparisons, so the significance threshold is 0.05/12 = 0.004167. 
+```{r} 
+
+
+patcon<-emmeans(seam, revpairwise~Patties| Region + winter+ Month, adjust="none")
+spatcon<-summary(patcon$contrasts)
+spatcon<-arrange(spatcon, Region, winter, Month)
+names(spatcon)[1]<-"Contrast of Protein Treatments"
+pander(spatcon, "Effect of Patties by Region and Date ")
+rm(spatcon, patcon)
+```
+
+```{r}
+patcon<-emmeans(seam, revpairwise~Patties| Month, adjust="none")
+spatcon<-summary(patcon$contrasts)
+spatcon<-arrange(spatcon, Month)
+names(spatcon)[1]<-"Contrast of Protein Treatments"
+pander(spatcon, "Effect of Patties by Month")
+rm(spatcon, patcon)
+
+patcon<-emmeans(seam, revpairwise~Patties| winter, adjust="none")
+spatcon<-summary(patcon$contrasts)
+spatcon<-arrange(spatcon, winter)
+names(spatcon)[1]<-"Contrast of Protein Treatments"
+pander(spatcon, "Effect of Patties by winter")
+rm(spatcon, patcon)
+
+patcon<-emmeans(seam, revpairwise~Patties| Region, adjust="none")
+spatcon<-summary(patcon$contrasts)
+spatcon<-arrange(spatcon, Region)
+names(spatcon)[1]<-"Contrast of Protein Treatments"
+pander(spatcon, "Effect of Patties by Region ")
+rm(spatcon, patcon)
+
+patcon<-emmeans(seam, revpairwise~Patties, adjust="none")
+spatcon<-summary(patcon$contrasts)
+panderOptions("table.split.table" ,150)
+names(spatcon)[1]<-"Contrast of Protein Treatments"
+rm(spatcon, patcon)
+```
+
+# __7. Change in Cluster Size During Winter__
+
+__Maximum Likelihood Model__
+
+seamd<-lme(seamdiff~(winter+ Region+ Patties)^3+ (winter+ Region+ Fumagillin)^3, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, method= "ML", weights=varIdent(form=~1|Region*winter))
+
+__Model-as-Reported__
+
+seamdr<-lme(seamdiff~winter* Region+ Patties+ Fumagillin, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, method="REML", weights=varIdent(form=~1|Region*winter))
+
+__Analysis of Variance for Change in Cluster Size__
+
+```{r}
+
+seamd<-lme(seamdiff~(winter+ Region+ Patties)^3+ (winter+ Region+ Fumagillin)^3, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, method= "ML", weights=varIdent(form=~1|Region*winter))
+
+seamdr<-lme(seamdiff~winter* Region+ Patties+ Fumagillin, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, method="REML", weights=varIdent(form=~1|Region*winter))
+
+
+anova(seamdr, type = "marginal")
+```
+
+__Effect Estimates__
+
+```{r}
+bhpbrfrd<-emmeans(seamdr, revpairwise~Patties, adjust="none")
+sbhpbrfrd<-summary(bhpbrfrd$contrasts)
+names(sbhpbrfrd)[1]<-"Contrast of Protein Treatments"
+pander(sbhpbrfrd, "Effect of Patties")
+rm(sbhpbrfrd)
+```
+
+# __8. Change in Cluster Size During Winter, Including Initial Cluster Size as a Fixed Effect__
+
+__Full Model - Maximum Likelihood__
+
+seamdc<-lme(seamdiff~(Seams+ winter+ Region+ Patties)^3+ (Seams+ winter+ Region+ Fumagillin)^3, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, method = "ML", weights=varIdent(form=~1|Region*winter))
+```{r}
+seamdc<-lme(seamdiff~(Seams+ winter+ Region+ Patties)^3+ (Seams+ winter+ Region+ Fumagillin)^3, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, method = "ML", weights=varIdent(form=~1|Region*winter))
+```
+
+__Maximum Likelihood Comparison of Unreduced Model for Change in Cluster Size, with and Without Initial Cluster Size in Model__
+
+```{r}
+anova(seamd,seamdc)
+```
+
+The model that includes initial cluster size is clearly a better fit to the data.
+
+__Model-as-Reported__
+
+```{r}
+seamdc<-lme(seamdiff~(Seams+ winter+ Region)^3 + Patties*Region + Fumagillin, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, weights=varIdent(form=~1|Region*winter), method = "REML")
+
+
+anova(seamdc, type = "marginal")
+
+
+bhpbrfrd<-emmeans(seamdc, revpairwise~Patties, adjust="none", at = list(Region = c("Northern Alberta", "Southern Alberta", "Prince Edward Island")))
+sbhpbrfrd<-summary(bhpbrfrd$contrasts)
+sbhpbrfrd<-arrange(sbhpbrfrd)
+names(sbhpbrfrd)[1]<-"Contrast of Protein Treatments"
+pander(sbhpbrfrd, "Main effect of protein supplements on change in cluster size")
+rm(sbhpbrfrd)
+
+bhpbrfrd<-emmeans(seamdc, revpairwise~Patties|Region, adjust="none", at = list(Region = c("Northern Alberta", "Southern Alberta", "Prince Edward Island")))
+sbhpbrfrd<-summary(bhpbrfrd$contrasts)
+sbhpbrfrd<-arrange(sbhpbrfrd)
+names(sbhpbrfrd)[1]<-"Contrast of Protein Treatments"
+pander(sbhpbrfrd, "Interaction of protein supplements and region on change in cluster size")
+rm(sbhpbrfrd)
+
+
+bhpbrfrd<-emmeans(seamdc, revpairwise~Seams|winter + Region, adjust="none", at = list(Region = c("Northern Alberta", "Southern Alberta", "Prince Edward Island"), Seams = c(quantile(clusternsdiff$Seams, 0.05, na.rm=TRUE), quantile (clusternsdiff$Seams, 0.95, na.rm=TRUE))))
+sbhpbrfrd<-summary(bhpbrfrd$contrasts)
+sbhpbrfrd<-arrange(sbhpbrfrd)
+names(sbhpbrfrd)[1]<-"Contrast of hives with large (95th percentile) and small (5th percentile) initial cluster size"
+pander(sbhpbrfrd, "The effect of initial cluster size, region, and year on the change in cluster size during winter")
+rm(sbhpbrfrd)
+```
+
+
+# __9. Colony Weight__
+
+### __Full Model__
+
+cweight<-lme(Colony.Weight~winter* Month* Region* Patties+ winter* Month* Region* Fumagillin, data=clusterns , random = ~1|Colony.Number, na.action=na.omit, 
+	        control=lmeControl(opt="optim"),
+	        weights=varIdent(form=~1|Region* winter* Month))
+	        
+__Model Description__
+
+Colonies which were split in August were excluded from the weight dataset for the following winter because the recent split affected the weight and survival frequency. Colonies which were not viable in April were also excluded from the dataset for the previous fall (that is, the same colonies are being compared before and after winter, each year). The interaction of patties and fumagillin was excluded from the model because in PEI there were no non-split colonies in one treatment group at the end of the study.
+
+This is a linear mixed effects model using the nlme package in R.There are five fixed effects: winter (1 or 2), Month (November or April), Region (Southern Alberta, Northern Alberta, or Prince Edward Island), Patties (Yes or No), and Fumagillin (Yes or No). The dependent variable is colony weight, which is the combined weight of bees, stored feed, comb, and woodenware.Hive lids and bottom boards were not weighed or their weight was subtracted from the total. Colony is a random effect, and colonies are measured repeatedly; correlations are expected between the measurements for a colony. Different variances are permitted for each combination of region and date. The correlation term did not contribute to the model fit and was dropped.
+
+Alternative models were considered in depth and inform the text but are not presented; these included
+
+1. Different ways of accounting for split colonies (including them in the model or modelling them separately)
+2. Separate analyses by region
+3. Modelling the change in weight between November and April as the dependent variable, with or without initial cluster size as an additional independent variable.
+4. Correlation structures other than AR1, nested random effects within apiary or region.
+
+```{r}
+clusterns<-rbind(Nov2014ns,Apr2015ns,Nov2015ns,Apr2016ns)
+clusterns <- droplevels(clusterns[clusterns$AprViable == "Viable", c("Colony.Number", "Viable", "Region", "Patties", "Fumagillin", "Assessment", "Month", "winter", "Seams", "Colony.Weight")])
+
+
+cweight<-lme(Colony.Weight~(winter+ Month+ Region+ Patties)^3+ (winter+ Month+ Region+ Fumagillin)^3 - winter:Month:Fumagillin - Month:Region:Patties - Month:Region:Fumagillin - winter:Month:Patties - winter:Region:Patties - winter:Patties - Month:Fumagillin - Region:Patties, data=clusterns , random = ~1|Colony.Number,  na.action=na.omit, 
+	        control=lmeControl(opt="optim"),
+	        weights=varIdent(form=~1|Region* winter* Month))
+anova(cweight, type = "marginal")
+```
+
+# Contrasts
+
+```{r} 
+colwei<-emmeans(cweight, revpairwise~Patties| Month, adjust="none")
+scolwei<-summary(colwei$contrasts)
+scolwei<-arrange(scolwei)
+names(scolwei)[1]<-"Contrast of Protein Treatments"
+pander(scolwei, "Patties by Month")
+rm(scolwei,colwei)
+
+colwei<-emmeans(cweight, revpairwise~Fumagillin| winter+ Region, adjust="none")
+scolwei<-summary(colwei$contrasts)
+scolwei<-arrange(scolwei)
+names(scolwei)[1]<-"Contrast of Fumagillin Treatments"
+pander(scolwei, "Fumagillin by Winter and Region")
+rm(scolwei,colwei)
+
+colwei<-emmeans(cweight, revpairwise~Fumagillin| Region, adjust="none")
+scolwei<-summary(colwei$contrasts)
+scolwei<-arrange(scolwei)
+names(scolwei)[1]<-"Contrast of Fumagillin Treatments"
+pander(scolwei ,"Fumagillin by Region")
+rm(scolwei,colwei)
+
+```
+
+Winter, Month, and Region and their interactions are all highly significant. Protein supplements had a significant interaction with month.Supplemented colonies weighed 2 kg more than unsupplemented colonies in November, but not in April. Fumagillin had a three way interaction with winter and Region.Fumagillin treated colonies weighed less on average in both years and in all regions, but the difference was significant only in southern Alberta in the first winter. Fumagillin had a significant interaction with Region. Fumagillin treated colonies weighed less in all regions, but the difference was significant only in Southern Alberta
+
+The effect of removing splits and dead colonies from the dataset is to clarify the effect of patties. It is an interaction with month, and the regional differences are artefacts.
+
+
+## 10. Change in Colony Weight During Winter
+
+__Whole Model Without Split Colonies__
+
+weightd<-lme(weightdiff~(winter+ Region+ Patties+ Fumagillin)^4, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, weights=varIdent(form=~1|Region*winter))
+
+anova(weightd, type = "marginal")
+
+```{r}
+weightd<-lme(weightdiff~(winter+ Region+ Patties)^3+ (winter+ Region+ Fumagillin)^3, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, weights=varIdent(form=~1|Region*winter), method = "ML")
+
+plot(weightd)
+qqnorm(weightd, abline=c(0,1))
+
+anova(weightd, type = "marginal")
+```
+
+__Reduced Model__
+```{r}
+weightd<-lme(weightdiff~winter* Region + Patties + Fumagillin, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, weights=varIdent(form=~1|Region*winter))
+
+anova(weightd, type = "marginal")
+```
+
+```{r}
+colwei<-emmeans(weightd, revpairwise~Patties, adjust="none")
+scolwei<-summary(colwei$contrasts)
+scolwei<-arrange(scolwei)
+names(scolwei)[1]<-"Contrast of Protein Treatments"
+pander(scolwei)
+rm(scolwei,colwei)
+```
+
+## __11. Change in Colony Weight, with Initial Cluster Size as a Factor in the Model__
+
+```{r}
+# To include both colony size and weight in a single analysis, the dataset must be reconstituted from the original file.
+
+Nov2014<-BHP[BHP$Assessment==4,]
+Apr2015<-BHP[BHP$Assessment==5,]
+Nov2015<-BHP[BHP$Assessment==9,]
+Apr2016<-BHP[BHP$Assessment==10,]
+
+winter<-rep ("Winter 1", times = 362)
+Nov2014<-cbind(Nov2014, winter)
+Apr2015<-cbind(Apr2015, winter)
+winter<-rep ("Winter 2", times = 362)
+Nov2015<-cbind(Nov2015, winter)
+Apr2016<-cbind(Apr2016, winter)
+
+Nov2014ns<-Nov2014[Nov2014$Start == "Original" & Nov2014$Split2014=="No",]
+Apr2015ns<-Apr2015[Apr2015$Start == "Original" & Apr2015$Split2014=="No",]
+Nov2015ns<-Nov2015[Nov2015$Start !="2015" & Nov2015$Split2015 == "No",]
+Apr2016ns<-Apr2016[Apr2016$Start !="2015" & Apr2016$Split2015 == "No",]
+
+weightdiff<-Nov2014ns$Colony.Weight - Apr2015ns$Colony.Weight
+Nov2014nsdiff<-cbind(Nov2014ns, weightdiff)
+weightdiff<-Nov2015ns$Colony.Weight - Apr2016ns$Colony.Weight
+Nov2015nsdiff<-cbind(Nov2015ns,weightdiff)
+
+AprViable<-Apr2015ns$Viable
+Nov2014nsdiff<-cbind(Nov2014nsdiff, AprViable)
+AprViable<-Apr2016ns$Viable
+Nov2015nsdiff<-cbind(Nov2015nsdiff, AprViable)
+
+clusternsdiff<-rbind(Nov2014nsdiff, Nov2015nsdiff)
+
+clusternsdiff <- droplevels(clusternsdiff[clusternsdiff$AprViable == "Viable" & !is.na(clusternsdiff$Seams), c("Colony.Number", "Viable", "Region", "Patties", "Fumagillin", "Assessment", "Month", "winter", "Seams", "Colony.Weight", "weightdiff")])
+```
+
+__Full Model__
+
+weighted<-lme(weightdiff~(Seams + winter+ Region+ Patties)^3+ (Seams + winter+ Region+ Fumagillin)^3, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, weights=varIdent(form=~1|Region*winter), method = "ML")
+
+__ANOVA__
+```{r}
+
+weighted<-lme(weightdiff~(Seams + winter+ Region+ Patties)^3+ (Seams + winter+ Region+ Fumagillin)^3, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, weights=varIdent(form=~1|Region*winter), method = "ML")
+```
+__Reduced Model__
+
+weighted<-lme(weightdiff~(winter+ Region+ Patties)^3+ Seams* Region+ Fumagillin, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, weights=varIdent(form=~1|Region*winter), method = "REML")
+anova(weighted, type = "marginal")
+
+```{r}
+weighted<-lme(weightdiff~(winter+ Region+ Patties)^3+ Seams*Region+ Fumagillin, data=clusternsdiff, random = ~1|Colony.Number, na.action=na.omit, weights=varIdent(form=~1|Region*winter), method = "REML")
+
+anova(weighted, type = "marginal")
+
+```
+__Contrasts for Protein Treatments__
+
+```{r}
+
+
+colwei<-emmeans(weighted, revpairwise~Patties| winter + Region, adjust="none")
+scolwei<-summary(colwei$contrasts)
+scolwei<-arrange(scolwei)
+names(scolwei)[1]<-"Contrast of Protein Treatments"
+pander(scolwei)
+rm(scolwei,colwei)
+
+colwei<-emmeans(weighted, revpairwise~Patties| winter, adjust="none")
+scolwei<-summary(colwei$contrasts)
+scolwei<-arrange(scolwei)
+names(scolwei)[1]<-"Contrast of Protein Treatments"
+pander(scolwei)
+rm(scolwei,colwei)
+
+colwei<-emmeans(weighted, revpairwise~Patties| Region, adjust="none")
+scolwei<-summary(colwei$contrasts)
+scolwei<-arrange(scolwei)
+names(scolwei)[1]<-"Contrast of Protein Treatments"
+pander(scolwei)
+rm(scolwei,colwei)
+
+colwei<-emmeans(weighted, revpairwise~Patties, adjust="none")
+scolwei<-summary(colwei$contrasts)
+scolwei<-arrange(scolwei)
+names(scolwei)[1]<-"Contrast of Protein Treatments"
+pander(scolwei)
+rm(scolwei,colwei)
+
+```
+__Effect of Colony Size, by Region__
+```{r}
+emmip(weighted, Region~Seams, at=list(Seams = c(2,18)))
+
+
+
+```
+
+# __12. Honey Production__
+
+### __Full Model__
+
+fm_hp4 <- lme(Honey ~ (Region + Date) * Patties * Fumagillin + Region * Date, Xhp, 
+              random = ~ 1 | Colony.Number, 
+              weights = varIdent(form = ~ 1 | Region * Date))
+              
+__Model Description__
+
+Honey production was measured only in Northern and Southern Alberta. This is a linear mixed effects model using the nlme package in R and the dependent variable (Honey) is the total surplus honey crop produced per year. There are 4 fixed effects (Region: Southern Alberta and Northern Alberta, Date:2014 and 2015, Patties: Yes and No, Fumagillin: Yes and No). Colony is a random effect. Different variances are permitted for each region:date combination. Since fumagillin was not applied until fall 2014, results for 2014 reflect the effects of region and patties only. 
+
+```{r}
+# Remove the missing for Honey and unused factor levels, retain only the relevant variables
+Xhp <- droplevels(BHP[!is.na(BHP$Honey), 
+                     c("Colony.Number", "Region", "Patties", "Fumagillin", "Date", "Honey")])
+
+# final model
+fm_hp4 <- lme(Honey ~ (Region + Date) * Patties * Fumagillin + Region * Date, Xhp, 
+              random = ~ 1 | Colony.Number, 
+              weights = varIdent(form = ~ 1 | Region * Date))
+anova(fm_hp4, type = "marginal")
+
+mmFavg <- emmeans(fm_hp4, revpairwise ~ Region | Date, infer = T)
+smmFavg <- summary(mmFavg$contrasts)
+names(mmFavg)[1]<-"Contrast of Regions"
+pander(smmFavg, "The effect of Region (contrast) on honey production in 2014 and 2015")
+
+mmFavg <- emmeans(fm_hp4, revpairwise ~ Patties | Date, infer = T)
+smmFavg <- summary(mmFavg$contrasts)
+names(smmFavg)[1]<-"Contrast of Protein Treatments"
+pander(smmFavg, "The effect of protein supplements on honey production in 2014 and 2015")
+
+mmFavg <- emmeans(fm_hp4, revpairwise ~ Fumagillin | Region + Date, at = list(Date = "August 2015"), 
+                  infer = T)
+smmFavg <- summary(mmFavg$contrasts)
+names(smmFavg)[1]<-"Contrast of Fumagillin Treatments"
+pander(smmFavg, "The effect of Fumagillin (contrast) in 2015 by Region averaged over Patties")
+
+# averages by Patties
+mmF <- emmeans(fm_hp4, revpairwise ~ Fumagillin | Region + Date + Patties, 
+               at = list(Date = "August 2015"), infer = T)
+smmF <- summary(mmF$contrasts)
+smmF <- arrange(smmF, Region, Date)
+
+names(smmF)[1]<-"Contrast of Fumagillin Treatments"
+pander(smmF, "The effect of Fumagillin (contrast) in 2015 by Region and Patties")
+
+# Look at effect of Patties in 2014 and 2015 averaged over the Fumagillin levels
+mmPavg <- emmeans(fm_hp4, revpairwise ~ Patties | Region + Date, infer = T)
+smmPavg <- summary(mmPavg$contrasts)
+smmPavg <- arrange(smmPavg, Region, Date)
+
+names(smmPavg)[1]<-"Contrast of Protein Treatments"
+pander(smmPavg, "The effect of Patties (contrast) by Region and averaged over Fumagillin in 2014 and in 2015")
+
+# Look at the effect of Patties by Region and Fumagillin in 2015 only since Fumagillin was not applied in 2014
+mmP <- emmeans(fm_hp4, revpairwise ~ Patties | Region + Date + Fumagillin, 
+               at = list(Date = "August 2015"), infer = T)
+smmP <- summary(mmP$contrasts)
+smmP <- arrange(smmP, Region, Date)
+
+names(smmPavg)[1]<-"Contrast of Protein Treatments"
+pander(smmP, "The effect of Patties (contrast) in 2015 by Region and Fumagillin")
+
+```
+
+__Contrasts of each treatment group to all others within Northern Alberta in 2015__
+
+These are shown only in support of Fig 9, where the contrasts of interest are the within-region contrasts in 2015 between the group that received neither treatment and each of the other three groups.In the context of the figure, there are six such contrasts, three for each region, so the Bonferroni adjusted significance threshold is 0.05/6=0.0083.
+```{r}
+mmP <- emmeans(fm_hp4, revpairwise ~ Patties + Region + Date + Fumagillin, at = list(Date = "August 2015", Region = "Northern Alberta"), infer = T, adjust = "none")
+
+smmP <- summary(mmP$contrasts)
+smmP <- arrange(smmP)
+
+# Remove the missing for Honey and unused factor levels, retain only the relevant variables
+Xhp <- droplevels(BHP[!is.na(BHP$Honey), 
+                     c("Colony.Number", "Region", "Patties", "Fumagillin", "Date", "Honey")])
+
+# final model
+fm_hp4 <- lme(Honey ~ (Region + Date) * Patties * Fumagillin + Region * Date, Xhp, 
+              random = ~ 1 | Colony.Number, 
+              weights = varIdent(form = ~ 1 | Region * Date))
+anova(fm_hp4, type = "marginal")
+
+mmFavg <- emmeans(fm_hp4, revpairwise ~ Region | Date, infer = T)
+smmFavg <- summary(mmFavg$contrasts)
+names(mmFavg)[1]<-"Contrast of Regions"
+pander(smmFavg, "The effect of Region (contrast) on honey production in 2014 and 2015")
+
+mmFavg <- emmeans(fm_hp4, revpairwise ~ Patties | Date, infer = T)
+smmFavg <- summary(mmFavg$contrasts)
+names(smmFavg)[1]<-"Contrast of Protein Treatments"
+pander(smmFavg, "The effect of protein supplements on honey production in 2014 and 2015")
+
+mmFavg <- emmeans(fm_hp4, revpairwise ~ Fumagillin | Region + Date, at = list(Date = "August 2015"), 
+                  infer = T)
+smmFavg <- summary(mmFavg$contrasts)
+names(smmFavg)[1]<-"Contrast of Fumagillin Treatments"
+pander(smmFavg, "The effect of Fumagillin (contrast) in 2015 by Region averaged over Patties")
+
+# averages by Patties
+mmF <- emmeans(fm_hp4, revpairwise ~ Fumagillin | Region + Date + Patties, 
+               at = list(Date = "August 2015"), infer = T)
+smmF <- summary(mmF$contrasts)
+smmF <- arrange(smmF, Region, Date)
+
+names(smmF)[1]<-"Contrast of Fumagillin Treatments"
+pander(smmF, "The effect of Fumagillin (contrast) in 2015 by Region and Patties")
+
+# Look at effect of Patties in 2014 and 2015 averaged over the Fumagillin levels
+mmPavg <- emmeans(fm_hp4, revpairwise ~ Patties | Region + Date, infer = T)
+smmPavg <- summary(mmPavg$contrasts)
+smmPavg <- arrange(smmPavg, Region, Date)
+
+names(smmPavg)[1]<-"Contrast of Protein Treatments"
+pander(smmPavg, "The effect of Patties (contrast) by Region and averaged over Fumagillin in 2014 and in 2015")
+
+# Look at the effect of Patties by Region and Fumagillin in 2015 only since Fumagillin was not applied in 2014
+mmP <- emmeans(fm_hp4, revpairwise ~ Patties | Region + Date + Fumagillin, 
+               at = list(Date = "August 2015"), infer = T)
+smmP <- summary(mmP$contrasts)
+smmP <- arrange(smmP, Region, Date)
+
+names(smmPavg)[1]<-"Contrast of Protein Treatments"
+pander(smmP, "The effect of Patties (contrast) in 2015 by Region and Fumagillin")
+
+```
+
+__Contrasts of each treatment group to all others within Northern Alberta in 2015__
+
+These are shown only in support of Fig 9, where the contrasts of interest are the within-region contrasts in 2015 between the group that received neither treatment and each of the other three groups.In the context of the figure, there are six such contrasts, three for each region, so the Bonferroni adjusted significance threshold is 0.05/6=0.0083.
+```{r}
+mmP <- emmeans(fm_hp4, revpairwise ~ Patties + Fumagillin | Date + Region, at = list(Date = "August 2015"), infer = T, adjust = "none")
+
+smmP <- summary(mmP$contrasts)
+smmP <- arrange(smmP)
+names(smmP)[1]<-"Contrast of Treatment Groups (Patties:Fumagillin) Against the Untreated Group"
+pander(smmP[c(1,2,4,7,8,10),], "The contrasts among treatment groups in 2015")
+
+```
+
+# __13. Pollen Collection 2014__
+
+### __Full Model__
+
+pol14ndr<-lme(sqrt(Total.Pollen.per.Day) ~ Date + Patty* Region, random = ~1|Apiary, data=p14, weights = varIdent( form = ~1|Date* Region), method = "REML")
+
+__Model Description__
+
+This is a linear mixed effects model using the nlme package from R. In 2014, pollen was collected once from each colony in Northern and Southern Alberta. The dependent variable in the model is the square root of the amount of pollen per day collected by the colony. The square root transformation was used because the residuals from untransformed models had a skewed distribution and deviated from the normal quantile function. Since fumagillin had not yet been applied in 2014, there are only three fixed effects: Date (Various between July 1 and August 8, 2014), Region (Southern or Northern Alberta), and Patty (Yes or No). Since each colony was measured only once, apiary is used as the random term. Different variances are used for each region and date.
+
+The pollen collections were conducted during the canola bloom. The experimental design was that protein supplements were applied throughout the active season except during the canola bloom, so this model tests the effect of recent (but not current) protein supplementation on pollen foraging activity.
+
+```{r}
+p14<-droplevels(BHP[!is.na(BHP$Pollen.per.Day.2014), c("Region","Apiary", "Pollen.Dates.2014", "Patties", "Fumagillin", "Pollen.per.Day.2014")])
+
+pol14nd<-lme(sqrt(Pollen.per.Day.2014) ~ Pollen.Dates.2014 + Patties* Region, random = ~1|Apiary, data=p14, weights = varIdent( form = ~1|Pollen.Dates.2014* Region), method = "REML")
+
+anova(pol14nd, type = "marginal")
+
+mm4 <- emmeans(pol14nd, revpairwise ~ Patties | Region, regrid = "response", bias.adjust = T)
+s4 <- summary(mm4$contrasts, infer = T)
+s4 <- arrange(s4, Region)
+names(s4)[1]<-"Contrast of Protein Treatments"
+pander(s4, "Back-transformed approximate treatment effect of Patties by Region averaged over the dates")
+pander(summary(mm4$emmeans, infer=T), "Pollen Collection Emmeans by Region")
+
+mm4 <- emmeans(pol14nd, revpairwise ~ Region, regrid = "response", bias.adjust = T)
+s4 <- summary(mm4$contrasts, infer = T)
+s4 <- arrange(s4)
+names(s4)[1]<-"Contrast of Regions"
+pander(s4, "Back-transformed approximate treatment effect of Patties by Region averaged over the dates")
+
+mm4 <- emmeans(pol14nd, revpairwise ~ Patties, regrid = "response", bias.adjust = T)
+s4 <- summary(mm4$contrasts, infer = T)
+s4 <- arrange(s4)
+names(smmP)[1]<-"Contrast of Protein Treatments"
+pander(s4, "Back-transformed approximate treatment effect of Patties by Region averaged over the dates")
+```
+
+# __14. Pollen Collection 2015__
+
+### __Full Model__
+
+mmsr1 <- lme(sqrt(Pollen.per.Day) ~ (Region + Season + Patty) ^ 2, 
+             random = ~ 1 | Colony, data = p15m, method = "REML", 
+             weights = varIdent(form = ~ 1 | Apiary * Season),  
+             control = lmeControl(opt = "optim"))
+
+__Model Description__
+
+This is a linear mixed effects model using the nlme package from R. In 2015, pollen was collected approximately every two weeks from the same subset of colonies in each apiary. The dependent variable in the model is the square root of the amount of pollen per day collected by the colony. The square root transformation was used because the residuals from untransformed models had a skewed distribution and deviated from the normal quantile function. Prior fumagillin treatment was not expected to influence pollen collection, and did not, so it was dropped from the model. Because colonies were sampled repeatedly, colony was used as the random term in the model. The quantity of pollen collected is non-linearly related to date and varies greatly from day to day. Therefore the date term was simplified by collapsing it into three categories: early, mid, and late season. For Alberta colonies, the mid season corresponds to the canola bloom, when protein supplements were not applied.
+
+
+```{r}
+
+P15$Start <- as.Date(P15$Start, "%m/%d/%y")
+p15 <- droplevels(P15[!is.na(P15$Pollen.per.Day), c("Colony", "Region","Apiary", "Patty", "Fumagillin", "Start", "Pollen.per.Day")])
+
+
+p15m <- p15 %>% 
+  mutate(Season = case_when(Start < "2015-07-01" ~ 'Early',
+                            Start < "2015-08-11" ~ 'Mid',
+                            Start < "2015-11-30" ~ 'Late'))
+
+
+mmsr1 <- lme(sqrt(Pollen.per.Day) ~ (Region + Season + Patty) ^ 2, 
+             random = ~ 1 | Colony, data = p15m, method = "REML", 
+             weights = varIdent(form = ~ 1 | Apiary * Season),  
+             control = lmeControl(opt = "optim"))
+anova(mmsr1, type = "marginal")
+
+
+# Patty effect averaged over Region
+emm1 <- emmeans(mmsr1, revpairwise ~ Patty | Season, regrid = "response", bias.adjust = T)
+s1 <- summary(emm1$contrasts, infer = T)
+s1 <- arrange(s1)
+
+names(emm1)[1]<-"Contrast of Protein Treatments"
+pander(s1, "Back-transformed approximate treatment effect of Patty by Season and averaged over Region")
+
+
+emm1 <- emmeans(mmsr1, revpairwise ~ Region | Season, regrid = "response", bias.adjust = T)
+s1 <- summary(emm1$contrasts, infer = T)
+s1 <- arrange(s1)
+
+names(smmP)[1]<-"Contrast of Regions"
+pander(s1, "Back-transformed approximate treatment effect of Region by Season and averaged over Patty")
+
+sessionInfo()
+```

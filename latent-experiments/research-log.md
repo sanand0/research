@@ -349,3 +349,56 @@ Per the fresh-outcome rule, no H003 will be mined against this now-unsealed surv
 A focused scan of the already-discovered Mathot-lab OSF graph found many adjacent projects (diurnal feeder use, body temperature, social information, caching, recapture bias), but no immediate clean pairing of the 2020/21 raw timestamp stream with a fresh, subsequent annual-survival outcome. The q8a62 recapture dataset concerns recapture attempts in 2019/2020 and is not a direct future-survival endpoint for the 2020/21 timing stream.
 
 Decision: stop mining the now-unsealed p3hz4 outcome and stop lateral chickadee archaeology for now. The next agent-led experiment should move to a fresh outcome/dataset, while Amherst remains the best independent H001 replication if its Year-1 raw file becomes normally accessible.
+
+## 2026-09-08 — fresh-domain scout after H002
+
+### Red kite NestTool candidate: scientifically strong, operationally blocked
+
+A fresh candidate was identified in Oppel et al.'s red-kite NestTool data: 258 Swiss individual-seasons plus an independent German GPS validation population. The public analysis script shows the published nesting-success classifier uses movement summaries across settlement, incubation and chick phases; late chick-stage nest attendance is explicitly important to success classification. A latent early-warning question therefore remains: whether settlement/pre-breeding movement alone predicts later breeding success.
+
+The 26.9 KB analysis script downloaded successfully from Zenodo, but Zenodo blob delivery for larger files repeatedly timed out: API metadata, a 6.6 MB package ZIP, a 4 KB range request on the German tracking CSV, and a normal 53 MB German CSV download all failed. These failures were logged. The candidate is preserved but not pursued in this environment rather than weakening data-access safeguards.
+
+### Blue-tit Silwood candidate: accessible and explicitly latent
+
+Figshare record 11856108 is fully accessible and contains small public data/code. The author code confirms the source analysis tests female laying-date intercept and budburst reaction-norm slope against lifetime breeding success. The paper explicitly discusses heterogeneity in individual residual variance as potentially interesting but does not model it.
+
+A streaming extractor now persists predictor columns only; clutch-size/hatchling outcomes remain sealed. The predictor file has 2,278 rows from 1,447 females. Budburst is available for only 658 rows / 517 females and yields only 32 females with >=3 paired LD-BD observations, so an individual residual-variance phenotype conditional on observed budburst is rejected as too sparse. The full laying-date record is much richer: 502 females have >=2 observations, 220 >=3, and 77 >=4 (maximum 7). Candidate H003 therefore uses laying-date predictability after year and age adjustment, with split-half reliability evaluated among >=4-observation females.
+
+### Blue-tit H003 candidate rejected before outcome
+
+Outcome-blind feasibility found 1,282 females whose last observed year was before 2019; 439 had >=2 laying records, 193 >=3, 69 >=4. A cheap year+age-adjusted residual-SD screen already had weak independent-half reliability (odd/even rho=.083; early/late rho=.148).
+
+A partially pooled Bayesian location-scale model nevertheless found clear population heterogeneity in female residual laying-date SD (`sigma_log_sigma` median .533, 3–97% quantiles .446–.636), with the full fit converging. However, among the 69 females with >=4 observations the independent odd/even posterior ranking was rho=.166, below the frozen .20 gate; split fits also had 6 and 31 divergences. Candidate H003 is therefore rejected without viewing clutch-size or hatchling values. No sampler tuning or phenotype search was attempted after failure.
+
+This is a useful distinction: population-level heterogeneity in residual variance does not imply a sufficiently measurable individual "predictability" phenotype. With 3–7 lifetime breeding records, ranking individuals by variance is too noisy for the proposed fitness join.
+
+## 2026-09-08 — fresh-domain continuation: blue tit rejection, red-kite blocker, honey-bee H004 freeze
+
+### Blue-tit H003 closed before outcome
+
+The Silwood laying-date predictability candidate was outcome-blind. Although the full hierarchical location-scale fit estimated clear population heterogeneity, individual predictability rankings failed the frozen independent-half gate (odd/even posterior rho ~0.166 < 0.20) and split fits had divergences. H003 was rejected without opening clutch-size/hatchling outcomes. No sampler/threshold tuning was done after failure.
+
+### Red-kite early-warning candidate preserved, not executed
+
+NestTool's published success model uses information from later nesting/chick stages, leaving a distinct question about pre-breeding movement predicting later reproductive success. Small code files were accessible but Zenodo delivery of the large GPS streams repeatedly timed out, including range requests. Candidate preserved; no outcome mining.
+
+### Honey-bee H004 — predictor-side gate
+
+Peirson et al.'s PLOS supplements provide 362 colonies with repeated population measurements and survival. Raw outcome-containing CSV was never saved. A streaming extractor persisted only Alberta May/June/August 2014 predictors.
+
+Predictor cohort:
+- 240 Alberta colonies total;
+- 225 complete adult-population histories (116 Southern Alberta, 109 Northern Alberta);
+- 6 apiaries;
+- May/June/August 2014 use the same source visual population-estimation method.
+
+Primary history predictor is the OLS slope of log1p adult population vs actual inspection date across the three 2014 points. Outcome-blind diagnostics:
+- three-point vs June→August slope rho ~0.759;
+- three-point slope vs August size rho ~0.781, so August size is mandatory;
+- after August size + region + treatments, residual slope SD remains ~44.9% of marginal slope SD.
+
+Interpretation is deliberately **history beyond snapshot**, not an independent biological "growth trait." The slope conditional on final size necessarily contains prior-size information.
+
+H004 asks whether that history predicts first-winter viability at April 2015. Primary logistic model adjusts August size, region, protein supplementation and fumagillin assignment. Recent-slope and apiary-fixed-effect models are frozen sensitivities.
+
+Before freeze, outcome-bearing source fields (`Viable`, `Colony Death`, `Last Viable`) were absent from persisted predictor data and no post-August individual outcome values were viewed or summarized.
