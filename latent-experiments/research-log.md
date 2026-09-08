@@ -402,3 +402,9 @@ Interpretation is deliberately **history beyond snapshot**, not an independent b
 H004 asks whether that history predicts first-winter viability at April 2015. Primary logistic model adjusts August size, region, protein supplementation and fumagillin assignment. Recent-slope and apiary-fixed-effect models are frozen sensitivities.
 
 Before freeze, outcome-bearing source fields (`Viable`, `Colony Death`, `Last Viable`) were absent from persisted predictor data and no post-August individual outcome values were viewed or summarized.
+
+### H004 unseal implementation erratum
+
+The first frozen H004 execution failed before fitting any model because `Colony Number` was parsed as integer in the precomputed feature CSV and string in the freshly streamed PLOS source. Set intersection was therefore empty and Patsy later failed while trying to encode zero-level categorical factors. Diagnosis viewed only aggregate row/type counts; no coefficient/result existed. One aggregate source fact became visible during debugging: across all 362 study colonies, April 2015 contained 278 `Viable` and 84 `Not Viable` rows. This was not used to change any predictor, cohort, model, sensitivity, or decision rule.
+
+Erratum: cast `Colony Number` to string on both sides before the frozen join. Scientific specification unchanged.

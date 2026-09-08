@@ -17,9 +17,11 @@ FEATURES=Path('analysis/bee_h004_features.csv')
 OUT=Path('analysis/bee_h004_survival_results.json')
 
 f=pd.read_csv(FEATURES)
+f["Colony Number"]=f["Colony Number"].astype(str)
 with urllib.request.urlopen(URL, timeout=30) as r:
     # Raw outcome-containing source is held in memory only and never persisted.
     raw=pd.read_csv(io.BytesIO(r.read()), usecols=['Colony Number','Date','Viable','Colony Death'])
+raw["Colony Number"]=raw["Colony Number"].astype(str)
 ids=set(f['Colony Number'])
 r=raw[raw['Colony Number'].isin(ids)].copy()
 # Primary endpoint: viable at the April 2015 post-winter assessment.
