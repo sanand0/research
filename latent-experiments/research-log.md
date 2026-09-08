@@ -418,3 +418,15 @@ Primary three-point trajectory OR 0.864 (95% CI 0.301–2.478, p=.785). The pres
 A post-hoc known-signal validation found August size in the expected positive direction but also imprecise (region-adjusted OR 1.529, CI 0.958–2.440). With only 21 failures, the full model had ~3.5 failure events per parameter and rough 80% detectable OR ~4.5 at the observed SE. This converts H004 from an apparent N=225 design into an outcome-information failure.
 
 Protocol updated: future candidate screening uses event count/effective outcome information, not raw sample size alone.
+
+## 2026-09-08 — H005 red-kite early range-contraction candidate, pre-outcome freeze preparation
+
+A fresh NestTool candidate was screened after H004's outcome-information failure. The public Swiss prepared data contain 697 individual-seasons and sufficient known nesting-success outcomes; the H005 predictor cohort restricts to field-observed nests with early movement data.
+
+A temporal-provenance audit rejected seemingly early nest-relative variables (`revisitsSettle`, `timeSettle`, distance-to-nest metrics): NestTool first infers a candidate nest location from season-wide tracking and then computes those phase summaries, so they leak future information. Phase-specific MCP areas are self-contained and retained.
+
+An archive-semantics failure was caught outcome-blind: NestTool uses exact MCP area `1` as a synthetic missing-phase fill; the first extractor incorrectly treated all values <=1 as missing even though sub-unit areas are valid. Correcting to exact-1 exclusion yielded 287 complete early MCP histories.
+
+A GPS-density gate requiring >=100 fixes in settlement and >=100 fixes in early incubation yields 268 seasons from 115 birds across six years. MCP95 and MCP99 contraction rankings agree strongly (rho ~0.83). Contraction95 is strongly related to current early-incubation range (rho ~-0.69), making current MCP mandatory: H005 is explicitly a history-beyond-current-state estimand.
+
+H005 asks whether settlement-to-early-incubation MCP contraction predicts eventual nesting success among observed nesting attempts, using bird-clustered binomial GEE. The primary MCP95 model and MCP99 sensitivity are fixed in `hypothesis-005.md` and `analysis-plan-005.md`; no success labels have been persisted or inspected before the freeze.
