@@ -123,3 +123,103 @@ The last correlation reinforces the preregistered need to adjust for feeding amo
 - explicit false victories that will not count as discovery.
 
 Individual survival labels remain unopened as of this entry.
+
+## 2026-09-08 — Step 6 outcome unsealed and tested
+
+### Outcome unsealing boundary
+
+The step-6 analysis plan and derived predictors were committed at `d15b1f54b4c9dfe08dd479fcea2734463616569e`, timestamp `2026-09-08T14:08:19+08:00`. Individual `Survived` labels were read only after that commit.
+
+Outcome counts: 138 source-A birds total; 80 detected next fall and 58 not detected. The predeclared timing join contains 137 birds because one source-A bird (`01103F82A5`) was already excluded by Hobbs et al.'s sex-data rule. Primary joined outcome count: 79 detected, 58 not detected.
+
+### Primary result: stable null
+
+Frozen model: `Survived ~ early_z + total_z + C(AgeSex)`.
+
+Early-chronotype beta = +0.2736 (SE 0.2090), OR 1.3147 per SD earlier, 95% CI 0.8728–1.9803, p=.1904. This does not meet the preregistered support rule.
+
+All preregistered major specifications retained the positive sign and crossed the null:
+
+- no total-feeder adjustment: OR 1.231, CI 0.871–1.740, p=.240;
+- Jan9-Feb14 timing window: OR 1.416, CI 0.943–2.125, p=.094;
+- residual-mean timing phenotype: OR 1.324, CI 0.876–2.001, p=.183;
+- frozen spatial-residual adjustment: OR 1.315, CI 0.872–1.982, p=.191;
+- quadratic term: p=.956.
+
+2,000/2,000 predictor-uncertainty draws also remained null: combined OR 1.302, CI 0.857–1.978.
+
+Leave-one-bird-out beta range +0.207 to +0.341; zero sign reversals. The positive point estimate is not driven by one bird.
+
+Conclusion under frozen rules: **STABLE NULL / INCONCLUSIVE FOR MODEST EFFECTS**, not discovery.
+
+### Post-outcome known-signal validation: failure
+
+A naive check used mean off-territory rate and the frozen residualized off-territory phenotype to see whether they recovered LaRocque et al.'s known negative association with survival. Both were essentially zero (p~.98), even though the published random-effect analysis found a negative association.
+
+This showed that the residualized-mean approximation was inadequate for hierarchical binary off-territory behaviour. It also demonstrated why a latent-experiment pipeline needs source-paper known-signal reproduction, not merely plausible feature engineering.
+
+### Post-outcome known-signal validation: recovery
+
+`analysis/validate_sourceA.py` fitted a binomial mixed model with random bird and core-feeder effects and the source paper's fixed age-sex × temperature structure. Its bird random effects recover the published survival direction and similar magnitude:
+
+- Python beta -0.352 per standardized off-territory random effect; OR 0.703; 95% CI 0.495–1.0005; p=.0503.
+- source author-code posterior mode ~-0.245, CrI -0.503 to -0.050.
+
+A clearly post-hoc chronotype model adjusted using this improved off-territory random effect still gives OR 1.328, CI 0.879–2.004, p=.178. Early chronotype and off-territory propensity correlate only r=-0.050.
+
+Thus correcting the weak frozen spatial approximation does not rescue or overturn the chronotype result.
+
+### Information / power limitation
+
+Using the observed primary SE as a first-order information approximation, a beta around 0.585 (OR ~1.80) would be needed for ~80% conventional two-sided power at the current N. If the observed beta ~0.274 were the true effect and SE scaled ideally as 1/sqrt(N), about 627 comparable bird-years would be required. This is a planning approximation, not formal prospective power analysis.
+
+The current confidence interval itself is the more important message: effects from OR 0.87 to 1.98 remain compatible with the data. The null is not evidence of no effect.
+
+### Replication scout
+
+1. Haave-Audet 2019/20 UABG OSF `62Y7K`: public survival labels + experimental/baseline summaries, but archived analysis data do not contain the raw all-day RFID visit stream needed for chronotype. Not a direct replication as released.
+2. Mathot et al. 2018/19 UABG risk-taking/survival: paper explicitly states RFID recorded ID/date/time and later survival for 79 birds. Related Dryad archive has a ~937 MB `BCCH_Mob.zip`, but the 2022 Figshare deposit inspected exposes supplementary material without an obvious individual survival table. Very promising same-site replication if IDs can be linked across deposits or obtained from authors.
+3. Latimer & Zuckerberg 2014/15 Dryad: public capture histories support weekly/overwinter survival but the inspected release contains capture history rather than raw timestamped RFID. Not direct.
+4. Amherst College two-winter Dryad `10.5061/dryad.sj3tx96c2`: explicitly has raw `RFID_data_Yr1.csv` and `RFID_data_Yr2.csv` plus bird metadata for both years. This is the strongest independent-population replication lead if IDs persist and Year2 redetection is biologically defensible. Dryad's file API returned HTTP 401 from this environment, so the raw files were not yet inspected locally.
+
+Full result, limitations and ranked next steps are in `RESULTS-001.md`.
+
+## 2026-09-08 — replication hardening and portable phenotype calibration
+
+### LocalMCP verification
+
+LocalMCP was explicitly checked at the start of this continuation and worked. The existing experiment artifacts and the pre-outcome freeze commit `d15b1f5` were intact.
+
+### Failure/recovery: stochastic known-signal validation
+
+A repository verification rerun found that `analysis/validate_sourceA.py` was not bit-reproducible: `BinomialBayesMixedGLM.fit_vb()` produced slightly different random effects across runs. Setting NumPy's global seed was insufficient. Current statsmodels exposes an explicit `rng=` argument; using `fit_vb(rng=20260908)` fixed the source of nondeterminism. The substantive off-territory validation remains unchanged (OR ~0.703, p ~.0503).
+
+### Amherst replication: design evidence and access blocker
+
+Rothberg et al. report 74 unique RFID-detected chickadees in Year 1 (21 Nov 2020–1 Mar 2021), using 10 feeders across two forest tracts. Year 2 used eight feeders only in the larger tract. Thus Year-2 absence cannot be interpreted as death; the external endpoint must be next-winter redetection conditional on comparable observation opportunity.
+
+Dryad metadata confirms Year1/Year2 raw RFID files and bird tables. Actual file downloads currently trigger AWS WAF / human confirmation. Several ordinary curl/API/browser attempts failed. The CAPTCHA/WAF was not bypassed. Year-2 individual membership remains sealed.
+
+A process error was corrected: `Birds_Yr1.csv` contains 23 attribute records, but this is not the Year-1 RFID population; the paper reports 74 RFID birds. Feasibility counts must be grounded in the observational stream, not a metadata subset.
+
+### Success: portable chronotype calibrated before external outcomes
+
+`analysis/calibrate_portable_chronotype.py` tests external-study-compatible phenotype constructions on Alberta predictor data only. No survival outcome is read.
+
+Against the full Hobbs phenotype:
+
+- no-demographics (temperature + daylength) early chronotype: Pearson r=.9615, Spearman rho=.9247;
+- daylength-only: r=.9614, rho=.9248;
+- intercept-only: r=.9482, rho=.8812;
+- **date-fixed-effects**: r=.9612, rho=.9230;
+- date-fixed-effects + daily total count: only r=.7692, rho=.6360 — rejected before external outcome access.
+
+For total feeder use, the date-fixed-effect phenotype correlates r=.9613 / rho=.9545 with the full Hobbs total-use random effect.
+
+This supports a portable external model using only RFID timestamps and dates: `first_clock_minutes ~ C(date) + (1|bird)` and `daily_total_events ~ C(date) + (1|bird)`. Date fixed effects absorb all common day-level timing shifts, making explicit sunrise/weather covariates unnecessary for the cross-population phenotype.
+
+### Amherst protocol frozen
+
+`replication-amherst-001.md` freezes a staged replication before Year-2 IDs are viewed. Key safeguards: >=10 events per bird-day, >=5 qualifying days, date-fixed-effect phenotypes, design-only Year-2 feeder unseal first, primary exposure-match >=80% of Year-1 events at feeders still observable in Year 2, and only then individual redetection membership.
+
+The replication is explicitly labelled `next-winter redetection`, not survival.

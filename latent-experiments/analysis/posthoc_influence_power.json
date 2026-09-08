@@ -1,0 +1,21 @@
+{
+  "leave_one_out": {
+    "fits": 137,
+    "fails": [],
+    "beta_min": 0.2071228005555199,
+    "beta_max": 0.34067949470983744,
+    "beta_median": 0.27085523210651075,
+    "sign_flips": 0,
+    "min_bird": "01103F692D",
+    "max_bird": "01103FE0CE"
+  },
+  "rough_detectability": {
+    "current_n": 137,
+    "current_beta": 0.27362887272462555,
+    "current_se": 0.2089956021596667,
+    "approx_beta_for_80pct_power_two_sided_alpha05_using_current_se": 0.5851876860470667,
+    "corresponding_OR": 1.7953279120197163,
+    "approx_n_to_detect_observed_beta_if_SE_scales_as_sqrt_inverse_n": 626.5952267504018,
+    "warning": "First-order approximation, not a formal power analysis; assumes design/event fraction/covariate structure remain similar."
+  }
+}

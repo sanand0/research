@@ -1,0 +1,79 @@
+{
+  "purpose": "Calibrate external-study-compatible phenotypes using Alberta predictor data only; no survival outcome is read.",
+  "early_chronotype": {
+    "no_demographics": {
+      "n": 143,
+      "pearson_r": 0.9615142509348779,
+      "spearman_rho": 0.9247307856462784,
+      "converged": true,
+      "random_intercept_variance": 789.4382163721798,
+      "residual_variance": 2701.0848919272676
+    },
+    "daylength_only": {
+      "n": 143,
+      "pearson_r": 0.9614488801215166,
+      "spearman_rho": 0.9248497980892347,
+      "converged": true,
+      "random_intercept_variance": 787.6215634761875,
+      "residual_variance": 2703.7968695732334
+    },
+    "intercept_only": {
+      "n": 143,
+      "pearson_r": 0.9482170350093065,
+      "spearman_rho": 0.8811558160149708,
+      "converged": true,
+      "random_intercept_variance": 801.4496363943148,
+      "residual_variance": 3226.0529126993
+    },
+    "date_fixed_effects": {
+      "n": 143,
+      "pearson_r": 0.9611663527613291,
+      "spearman_rho": 0.9229989494074,
+      "converged": true,
+      "random_intercept_variance": 803.8866801208571,
+      "residual_variance": 2469.7087269945687
+    },
+    "date_fixed_effects_plus_daily_total": {
+      "n": 143,
+      "pearson_r": 0.7691827557234154,
+      "spearman_rho": 0.6359778718933647,
+      "converged": true,
+      "random_intercept_variance": 576.3820384515572,
+      "residual_variance": 2169.68884906377
+    }
+  },
+  "total_feeder_use": {
+    "no_demographics": {
+      "n": 143,
+      "pearson_r": 0.9627104513268909,
+      "spearman_rho": 0.9577587905052694,
+      "converged": true,
+      "random_intercept_variance": 481.40651428508863,
+      "residual_variance": 640.7066999941061
+    },
+    "daylength_only": {
+      "n": 143,
+      "pearson_r": 0.9627331076530293,
+      "spearman_rho": 0.9580460619193012,
+      "converged": true,
+      "random_intercept_variance": 483.06653483899595,
+      "residual_variance": 657.0052691544471
+    },
+    "intercept_only": {
+      "n": 143,
+      "pearson_r": 0.9592671329246505,
+      "spearman_rho": 0.9564004071046324,
+      "converged": true,
+      "random_intercept_variance": 492.1591678621347,
+      "residual_variance": 741.519747663871
+    },
+    "date_fixed_effects": {
+      "n": 143,
+      "pearson_r": 0.9613287884515047,
+      "spearman_rho": 0.9545454545454545,
+      "converged": true,
+      "random_intercept_variance": 485.89620655123247,
+      "residual_variance": 569.3201063953038
+    }
+  }
+}

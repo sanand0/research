@@ -1,0 +1,281 @@
+{
+  "unsealed_outcome_summary": {
+    "survival_rows": 138,
+    "survived_1": 80,
+    "survived_0": 58,
+    "survival_rate": 0.5797101449275363,
+    "primary_join_n": 137
+  },
+  "primary": {
+    "name": "primary",
+    "formula": "Survived ~ early_z + total_z + C(AgeSex)",
+    "n": 137,
+    "events_1": 79,
+    "events_0": 58,
+    "converged": true,
+    "aic": 196.04495336190428,
+    "deviance": 184.04495336190428,
+    "term": {
+      "beta": 0.27362887272462577,
+      "se": 0.20899560215966684,
+      "z": 1.3092566058666675,
+      "p": 0.19044744348058562,
+      "beta_ci95": [
+        -0.13599498043558278,
+        0.6832527258848343
+      ],
+      "odds_ratio": 1.314726780717288,
+      "odds_ratio_ci95": [
+        0.8728470137895353,
+        1.9803086687904154
+      ],
+      "supports_nonzero_95": false
+    },
+    "all_coefficients": {
+      "Intercept": 0.5089588953949943,
+      "C(AgeSex)[T.A Male]": -0.20636030758763507,
+      "C(AgeSex)[T.J Female]": -0.12993512197010565,
+      "C(AgeSex)[T.J Male]": -0.44735391609885694,
+      "early_z": 0.27362887272462577,
+      "total_z": -0.12381641491281528
+    },
+    "illustrative_probabilities": {
+      "AgeSex": "J Female",
+      "total_z": 0.0,
+      "by_early_z": {
+        "-1": 0.5263243619141793,
+        "0": 0.5936376273939972,
+        "1": 0.6576079812081861
+      }
+    }
+  },
+  "without_total_feeder_adjustment": {
+    "name": "without_total_feeder_adjustment",
+    "formula": "Survived ~ early_z + C(AgeSex)",
+    "n": 137,
+    "events_1": 79,
+    "events_0": 58,
+    "converged": true,
+    "aic": 194.40270294169977,
+    "deviance": 184.40270294169977,
+    "term": {
+      "beta": 0.20783811018717477,
+      "se": 0.17670238977135663,
+      "z": 1.1762042972712825,
+      "p": 0.23951324770514593,
+      "beta_ci95": [
+        -0.1384922097468431,
+        0.5541684301211927
+      ],
+      "odds_ratio": 1.23101386481244,
+      "odds_ratio_ci95": [
+        0.8706700339826776,
+        1.7404930412370319
+      ],
+      "supports_nonzero_95": false
+    },
+    "all_coefficients": {
+      "Intercept": 0.5058505904278432,
+      "C(AgeSex)[T.A Male]": -0.21080576874956805,
+      "C(AgeSex)[T.J Female]": -0.11851370552719782,
+      "C(AgeSex)[T.J Male]": -0.4450358797527086,
+      "early_z": 0.20783811018717477
+    }
+  },
+  "phenotype_uncertainty_sensitivity": {
+    "draws_requested": 2000,
+    "draws_successful": 2000,
+    "draws_failed": 0,
+    "mean_beta": 0.263987768186159,
+    "between_draw_sd_beta": 0.051921104892381914,
+    "mean_within_model_se": 0.2067595002418044,
+    "combined_se": 0.21320816849345464,
+    "beta_ci95": [
+      -0.1539002420610121,
+      0.68187577843333
+    ],
+    "odds_ratio": 1.30211226900861,
+    "odds_ratio_ci95": [
+      0.8573575449672014,
+      1.9775837642714305
+    ],
+    "supports_nonzero_95": false,
+    "beta_quantiles_from_phenotype_draws_only": [
+      0.1621529814526145,
+      0.26390879058968697,
+      0.36437039789485204
+    ]
+  },
+  "sensitivity": {
+    "shared_window": {
+      "name": "shared_window",
+      "formula": "Survived ~ early_z + total_z + C(AgeSex)",
+      "n": 137,
+      "events_1": 79,
+      "events_0": 58,
+      "converged": true,
+      "aic": 194.36927085091608,
+      "deviance": 182.36927085091608,
+      "term": {
+        "beta": 0.34759879254556564,
+        "se": 0.20734553860740101,
+        "z": 1.6764228199948277,
+        "p": 0.09365540214914277,
+        "beta_ci95": [
+          -0.058790995479999664,
+          0.7539885805711309
+        ],
+        "odds_ratio": 1.4156641607726022,
+        "odds_ratio_ci95": [
+          0.9429038197244008,
+          2.1254607035972883
+        ],
+        "supports_nonzero_95": false
+      },
+      "all_coefficients": {
+        "Intercept": 0.5178147591479008,
+        "C(AgeSex)[T.A Male]": -0.22721214434189235,
+        "C(AgeSex)[T.J Female]": -0.1310395530202065,
+        "C(AgeSex)[T.J Male]": -0.45757403660800045,
+        "early_z": 0.34759879254556564,
+        "total_z": -0.04548740068857502
+      }
+    },
+    "residual_mean": {
+      "name": "residual_mean_phenotype",
+      "formula": "Survived ~ early_z + total_z + C(AgeSex)",
+      "n": 137,
+      "events_1": 79,
+      "events_0": 58,
+      "converged": true,
+      "aic": 195.9693651252362,
+      "deviance": 183.9693651252362,
+      "term": {
+        "beta": 0.28067259476048806,
+        "se": 0.2108057439721756,
+        "z": 1.3314276426809994,
+        "p": 0.18304833884920413,
+        "beta_ci95": [
+          -0.13249907115914772,
+          0.6938442606801238
+        ],
+        "odds_ratio": 1.3240200418649581,
+        "odds_ratio_ci95": [
+          0.8759037476810089,
+          2.001394646273979
+        ],
+        "supports_nonzero_95": false
+      },
+      "all_coefficients": {
+        "Intercept": 0.5045351351827371,
+        "C(AgeSex)[T.A Male]": -0.1876859506997199,
+        "C(AgeSex)[T.J Female]": -0.12794367280371136,
+        "C(AgeSex)[T.J Male]": -0.4514951158657417,
+        "early_z": 0.28067259476048806,
+        "total_z": -0.1255445886731342
+      }
+    },
+    "spatial_adjustment": {
+      "name": "spatial_adjustment",
+      "formula": "Survived ~ early_z + total_z + offT_z + C(AgeSex)",
+      "n": 137,
+      "events_1": 79,
+      "events_0": 58,
+      "converged": true,
+      "aic": 198.0449193198184,
+      "deviance": 184.0449193198184,
+      "term": {
+        "beta": 0.27355805981917847,
+        "se": 0.209347169982422,
+        "z": 1.3067196458502304,
+        "p": 0.19130794395638817,
+        "beta_ci95": [
+          -0.13675485361175338,
+          0.6838709732501103
+        ],
+        "odds_ratio": 1.3146336843903257,
+        "odds_ratio_ci95": [
+          0.8721840126871345,
+          1.9815333679518334
+        ],
+        "supports_nonzero_95": false
+      },
+      "all_coefficients": {
+        "Intercept": 0.5089410725549959,
+        "C(AgeSex)[T.A Male]": -0.20634077005737886,
+        "C(AgeSex)[T.J Female]": -0.12990174888264736,
+        "C(AgeSex)[T.J Male]": -0.4473316284742886,
+        "early_z": 0.27355805981917847,
+        "total_z": -0.12371572741007222,
+        "offT_z": 0.0010253520222568274
+      }
+    },
+    "quadratic": {
+      "name": "quadratic",
+      "formula": "Survived ~ early_z + early_z2 + total_z + C(AgeSex)",
+      "n": 137,
+      "events_1": 79,
+      "events_0": 58,
+      "converged": true,
+      "aic": 198.0418223657974,
+      "deviance": 184.0418223657974,
+      "term": {
+        "beta": 0.2640519302822337,
+        "se": 0.27016332320770114,
+        "z": 0.9773788949110276,
+        "p": 0.3283816075342296,
+        "beta_ci95": [
+          -0.2654584531485147,
+          0.7935623137129821
+        ],
+        "odds_ratio": 1.3021958179414228,
+        "odds_ratio_ci95": [
+          0.7668543026056112,
+          2.2112596128136053
+        ],
+        "supports_nonzero_95": false
+      },
+      "all_coefficients": {
+        "Intercept": 0.5125054337596447,
+        "C(AgeSex)[T.A Male]": -0.20131600918621065,
+        "C(AgeSex)[T.J Female]": -0.12966728679072606,
+        "C(AgeSex)[T.J Male]": -0.4477928996351838,
+        "early_z": 0.2640519302822337,
+        "early_z2": -0.005051625746605522,
+        "total_z": -0.12247784551301602
+      },
+      "quadratic_term": {
+        "beta": -0.005051625746605522,
+        "se": 0.09058111540497608,
+        "z": -0.055769083037014694,
+        "p": 0.9555257647602593,
+        "beta_ci95": [
+          -0.18258734961982492,
+          0.17248409812661386
+        ],
+        "odds_ratio": 0.9949611122565019,
+        "odds_ratio_ci95": [
+          0.8331118687449279,
+          1.1882529250171867
+        ],
+        "supports_nonzero_95": false
+      }
+    }
+  },
+  "stability_classification": "STABLE",
+  "stability_details": {
+    "signs": {
+      "primary": 1,
+      "shared_window": 1,
+      "residual_mean": 1,
+      "spatial_adjustment": 1
+    },
+    "supports_nonzero_95": {
+      "primary": false,
+      "shared_window": false,
+      "residual_mean": false,
+      "spatial_adjustment": false
+    }
+  },
+  "interpretation_guardrail": "Association with next-fall detection/apparent survival only; not a causal or confirmed mortality effect."
+}

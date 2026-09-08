@@ -1,0 +1,18 @@
+{
+  "n_birddays": 4969,
+  "n_birds": 138,
+  "n_survival_join": 138,
+  "vb_variance_log_sd": {
+    "bird": 0.7734372716057327,
+    "core": 1.0276923962313056
+  },
+  "survival_beta": -0.3517120160383624,
+  "se": 0.1796886367385876,
+  "p": 0.05030733775456879,
+  "or": 0.7034826845379932,
+  "or_ci95": [
+    0.4946547312191951,
+    1.0004713514515708
+  ],
+  "published_reference": "LaRocque author code posterior-mode coefficient ~ -0.245, CrI -0.503 to -0.050"
+}

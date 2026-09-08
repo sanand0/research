@@ -1,0 +1,15 @@
+{
+  "n": 137,
+  "early_beta": 0.2833030897047275,
+  "early_se": 0.21014927061241864,
+  "early_p": 0.1776249084726922,
+  "early_or": 1.3275074546911292,
+  "early_or_ci95": [
+    0.8793415307806869,
+    2.004085989997489
+  ],
+  "offT_beta": -0.3564199591540494,
+  "offT_p": 0.05084305756312266,
+  "corr_early_offT": -0.050128257201939114,
+  "label": "POST-HOC improved spatial adjustment; not part of frozen primary/sensitivity decision rule"
+}
