@@ -8,27 +8,47 @@ This project is separate from `latent-experiments/`. The pilot is evidence about
 
 ## Current status
 
-**C001 (repeated TEM-1 deep-mutational-scanning maps) stopped before confirmation. C002 (neuronal criticality vs subsampling/analysis artifact) is next for feasibility.**
+**C001 and C002 both stopped before confirmation. No substantive discovery claim yet. Next: one bounded C003 feasibility gate, then fresh scouting if it only restates mature Taylor's-law results.**
 
-C001 asked whether disagreements among same-protein DMS maps were mostly calibratable assay scale/noise or reproducible biological context dependence. Firnberg 2014 + Stiffler 2015 were discovery evidence; Jacquier 2013 was reserved confirmation and Deng 2012 a method-contrast control. **Jacquier and Deng scores remain unopened.**
+### C001 — repeated TEM-1 DMS maps: stopped
 
-### What C001 established
+Firnberg 2014 + Stiffler 2015 were discovery evidence; Jacquier 2013 was reserved confirmation and Deng 2012 a method-contrast control. **Jacquier and Deng scores remain unopened.**
 
-- ProteinGym discovery access is operationally excellent: range reads retrieved only the chosen assays; 4,782 missense mutations overlap Firnberg and Stiffler.
-- ProteinGym leaves the chosen source scores numerically unchanged: Firnberg `linear`; Stiffler fitness at 2500 µg/mL ampicillin.
-- The maps are strongly rank-correlated (Spearman ~0.937) but are on different numerical scales, so raw score subtraction is invalid.
-- Primary literature already establishes selection-strength-dependent TEM-1 mutational effects; the broad “does context matter?” question is therefore not a good new scientific target.
-- A sharper position-residual detector **fails empirical calibration**. After position-blocked monotone mapping, Firnberg→Stiffler residual position eta² is 0.215. Five actual same-condition Stiffler replicate pairs produce eta² 0.186–0.454 and all falsely reject the nominal residual-permutation null. The cross-study pattern therefore sits inside observed technical replicate structure.
-- A known large context shift (Stiffler 39→2500) gives eta² 0.526, so the detector can see large selection changes; it simply cannot justify the subtler cross-study claim.
-- `results/c001_calibration.json` reproduced exactly across two stochastic runs; SHA-256 `2eae5d560d0683778176677c167aa79a39458788556c0f1f249c7da6ebdb5e8b`.
+What survived:
 
-Reusable lesson: **a cross-assay residual null must accept real same-condition replicate pairs before any structured residual is called biological.** Residual permutation alone was far too optimistic because technical errors are themselves position-structured.
+- 4,782 common missense mutations; rank correlation ~.937 despite incompatible raw scales.
+- ProteinGym preserves the chosen source scores numerically.
+- Primary literature already establishes selection-strength-dependent TEM-1 effects.
+- A tempting structured-residual statistic fails its empirical null: Firnberg→Stiffler position eta²=.215, while five actual same-condition Stiffler replicate pairs span .186-.454 and all reject the naive permutation null.
+- Independent percentile-rank residuals make the stop stronger: cross-study eta²=.246 versus replicate range .298-.470.
+
+Reusable lesson: **a cross-assay residual null must accept real same-condition replicates before structured residuals are called biology.** See `results/c001_calibration.json` and commit `2d5a21e`.
+
+### C002 — neuronal criticality / subsampling: stopped
+
+Allen Visual Coding Neuropixels supplied a strong operational testbed. Design metadata were used before spike access to freeze `functional_connectivity` sessions with a continuous ~30-minute spontaneous period. A VISp eligibility rule produced 12 discovery + 12 confirmation mice.
+
+Only discovery mouse `767871931` was opened. **Eleven other eligible discovery mice and all 12 confirmation mice remain unopened.**
+
+A FOSS multistep-regression (MR) estimator was calibrated at 4-ms bins with a frozen exponential-fit applicability gate R²>=.90:
+
+- aggregate branching simulations at true m=.8/.98/.99 remain essentially unbiased under 100%/50%/25% event sampling;
+- independent Poisson/null data fail applicability despite occasionally returning raw m near 1;
+- the real mouse's primary 32/16/8-unit subsets all fail applicability; across ten alternative 32-unit subsets only 7/10 pass;
+- fixed-neuron simulations with strong rate heterogeneity and static mixed timescales give 60/60 valid fits;
+- simple global/asynchronous state-switch stress tests give 60/60 valid full-session fits.
+
+Thus the real subset-dependent low-R² behavior is not reproduced by the bounded branching-family calibrations. Continuing would require progressively richer post-outcome model invention in a mature criticality debate, so C002 is stopped rather than rescued. See `RESULTS-C002.md`.
+
+Reusable lesson: **“subsampling-invariant” estimation is conditional on model applicability. Gate the correlation/dynamical form itself before interpreting a near-one parameter.**
+
+All four stochastic C002 result files reproduced byte-identically across two runs.
 
 ## Candidate ranking
 
-1. **C002 — neuronal criticality under subsampling.** Competing explanations: genuine near-critical cortical dynamics versus critical-looking avalanche statistics induced by subsampling/binning/analysis choices. Consequential, experimentally discriminable, and excellent live-demo potential. First Zenodo control-code probe timed out, but Allen public electrophysiology offers an independent and well-maintained evidence ecosystem.
-2. **C003 — ecological Taylor's law.** Competing explanations: biological interactions/environmental stochasticity versus feasible-set/sampling constraints. Cheap interventions on census length and constrained randomization, with small open datasets; however the mechanism debate is mature and novelty space may be narrower.
-3. **Fresh scout if C002/C003 fail cheap gates.** Do not preserve a candidate merely to keep activity going.
+1. **C003 — ecological Taylor's law, feasibility only.** Competing explanations: biological interactions/environmental stochasticity versus feasible-set/sampling constraints. Proceed only if primary literature + a specific dataset expose a sharper unresolved discriminator than “constraints can create Taylor's law.”
+2. **Fresh discrepancy scout.** Preferred immediately if C003's cheap gate shows the mechanism debate already covers the obvious tests.
+3. **Do not reopen C001/C002 confirmation.** Their active methods/questions failed before confirmation; preserved holdouts are not invitations to rescue them.
 
 ## Minimal execution layer
 
@@ -49,4 +69,4 @@ Reusable lesson: **a cross-assay residual null must accept real same-condition r
 
 ## SciPy India fit
 
-Current conference requirements checked 2026-09-09: 30-minute in-person talk including Q&A; FOSS/OSI-licensed focus; CFP closes 19 Oct 2026 23:59 IST. AI/data-driven discovery and reproducibility are plausible tracks. The eventual live loop should let the audience choose among prespecified discriminating tests, commit a prediction, and reveal a fresh computation without relying on proprietary software.
+Current conference requirements checked 2026-09-09: 30-minute in-person talk including Q&A; FOSS/OSI-licensed focus; CFP closes 19 Oct 2026 23:59 IST. AI/data-driven discovery and reproducibility are plausible tracks. The live loop should make **failed calibration and stopping** first-class outcomes, not only successful discoveries.

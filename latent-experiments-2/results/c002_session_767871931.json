@@ -1,0 +1,160 @@
+{
+  "claim_id": "C002",
+  "session_id": 767871931,
+  "role": "discovery",
+  "region": "VISp",
+  "unit_selection": "32 good units, deterministic session-specific random subset; nested 16/8 subsets",
+  "dt_ms": 4,
+  "kmax": 200,
+  "source": {
+    "url": "https://allen-brain-observatory.s3.us-west-2.amazonaws.com/visual-coding-neuropixels/ecephys-cache/session_767871931/session_767871931.nwb",
+    "spontaneous_start_s": 4397.997357597576,
+    "duration_s": 1800.0,
+    "loaded_units": 201,
+    "spike_count": 1396379,
+    "timestamp_payload_MB": 114.136608
+  },
+  "full_block": {
+    "32": {
+      "m": 0.9633297716689642,
+      "tau_ms": 107.06786056117102,
+      "r2": 0.8806775707798974,
+      "applicable": false
+    },
+    "16": {
+      "m": 0.9884566674163979,
+      "tau_ms": 344.51651042796993,
+      "r2": 0.879944860134448,
+      "applicable": false
+    },
+    "8": {
+      "m": 0.9966437892388313,
+      "tau_ms": 1189.8191447476515,
+      "r2": 0.6861119977537956,
+      "applicable": false
+    }
+  },
+  "random_32_unit_subsets": [
+    {
+      "replicate": 0,
+      "m": 0.9676406462031737,
+      "tau_ms": 121.60089810988815,
+      "r2": 0.9329337460508285,
+      "applicable": true
+    },
+    {
+      "replicate": 1,
+      "m": 0.9857452280256432,
+      "tau_ms": 278.6029999773516,
+      "r2": 0.8396822916517109,
+      "applicable": false
+    },
+    {
+      "replicate": 2,
+      "m": 0.9825293846372508,
+      "tau_ms": 226.94999846620527,
+      "r2": 0.9421549361833886,
+      "applicable": true
+    },
+    {
+      "replicate": 3,
+      "m": 0.9274134993504226,
+      "tau_ms": 53.081549140186695,
+      "r2": 0.8530373775392375,
+      "applicable": false
+    },
+    {
+      "replicate": 4,
+      "m": 0.9845156188741664,
+      "tau_ms": 256.3196203043495,
+      "r2": 0.917752350394524,
+      "applicable": true
+    },
+    {
+      "replicate": 5,
+      "m": 0.9767870945128976,
+      "tau_ms": 170.31010884856997,
+      "r2": 0.9080426634964128,
+      "applicable": true
+    },
+    {
+      "replicate": 6,
+      "m": 0.9879741127472745,
+      "tau_ms": 330.61175799543577,
+      "r2": 0.9615841426482309,
+      "applicable": true
+    },
+    {
+      "replicate": 7,
+      "m": 0.9773917870519082,
+      "tau_ms": 174.91923187814368,
+      "r2": 0.8572701071147036,
+      "applicable": false
+    },
+    {
+      "replicate": 8,
+      "m": 0.9897899835958258,
+      "tau_ms": 389.7687215149507,
+      "r2": 0.9292861847689626,
+      "applicable": true
+    },
+    {
+      "replicate": 9,
+      "m": 0.9694490755596431,
+      "tau_ms": 128.91859271397934,
+      "r2": 0.9381228376635682,
+      "applicable": true
+    }
+  ],
+  "windows_300s": [
+    {
+      "window": 0,
+      "start_s": 0,
+      "m": 0.9030556424405661,
+      "tau_ms": 39.22679748485719,
+      "r2": 0.8011523090701179,
+      "applicable": false
+    },
+    {
+      "window": 1,
+      "start_s": 300,
+      "m": 0.9631543806389883,
+      "tau_ms": 106.54856016586137,
+      "r2": 0.8599643532943453,
+      "applicable": false
+    },
+    {
+      "window": 2,
+      "start_s": 600,
+      "m": 0.8870556643111186,
+      "tau_ms": 33.37573638989849,
+      "r2": 0.7959754306436876,
+      "applicable": false
+    },
+    {
+      "window": 3,
+      "start_s": 900,
+      "m": 0.9796811181354196,
+      "tau_ms": 194.85438358682134,
+      "r2": 0.7505291910848391,
+      "applicable": false
+    },
+    {
+      "window": 4,
+      "start_s": 1200,
+      "m": 0.9781549554438524,
+      "tau_ms": 181.10052695081816,
+      "r2": 0.8260014955904256,
+      "applicable": false
+    },
+    {
+      "window": 5,
+      "start_s": 1500,
+      "m": 0.9756408907794122,
+      "tau_ms": 162.2013970316695,
+      "r2": 0.8685029952006389,
+      "applicable": false
+    }
+  ],
+  "interpretation_rule": "m is uninterpretable whenever applicable=false; do not tune kmax/R2 gate on real data."
+}

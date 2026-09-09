@@ -134,3 +134,113 @@ Independent stability check: replacing isotonic residuals with simple percentile
 - Two DuckDB exploratory queries failed from query-construction mistakes (window function inside aggregate; CTE reused across statements). Neither affected stored scientific results; corrected narrow queries were used.
 - First calibration execution stopped before results because 19/4,996 Stiffler rows lack the second replicate column at every duplicated concentration. Recovery: each real-null pair now has an explicit complete-case cohort (N=4,763 within the cross-study overlap), while the cross-study/context-shift cohorts remain N=4,782.
 - Expanded calibration exceeded the default 30-second LocalMCP cap. The identical code was rerun unchanged with a bounded 60-second cap, then rerun again; result hashes matched.
+
+## 2026-09-09 — C002 Allen Neuropixels feasibility and first discovery calibration
+
+### Access and observation semantics
+
+- Allen Visual Coding Neuropixels is operationally accessible through the public `allen-brain-observatory` S3 bucket using unsigned HTTP. The documented `aws s3` route could not be used because LocalMCP lacks the AWS CLI; direct public HTTP listing/range access works.
+- Cached metadata only: 58 sessions / 58 mice: 32 `brain_observatory_1.1`, 26 `functional_connectivity`. Metadata hashes are in `ledger.jsonl`.
+- Session NWBs are ~2.6–2.9 GB, but HDF5-over-HTTP range reads work. Raw AP-band files are hundreds of GB/probe and are not needed.
+- A design-only inspection of `brain_observatory_1.1` session 715093703 found fragmented spontaneous periods. No spike values were read.
+- A primary-source check plus design-only inspection showed `functional_connectivity` sessions contain a standardized continuous ~30-minute spontaneous/no-stimulus block. The initial 16/16 BO role split was therefore explicitly superseded, before spike values, by a sex+genotype-stratified 13/13 FC split. The 32 BO sessions remain an external reserve.
+- VISp metadata then supplied a further pre-spike eligibility gate: 24/26 FC sessions have >=32 `quality=good` VISp units. One discovery session (`819701982`) and one confirmation session (`819186360`) lack qualifying VISp units. Frozen analyzable sets are therefore 12 discovery + 12 confirmation mice. Confirmation spikes remain untouched.
+
+### Cheap execution feasibility
+
+- Discovery session 767871931 has a longest spontaneous interval of 1802.507 s and 201 good VISp units.
+- A preliminary 64-unit range-read/binned probe needed ~30 MB of timestamp payload and ~22 s locally for a full 30-minute block. Controlled unit-count reductions and 1/5/10 ms binning are operationally cheap.
+- Final guarded VISp script range-reads 114 MB of timestamp payload to reconstruct all 201 qualifying VISp units for the first 1800 s of the spontaneous block; no full NWB is downloaded.
+
+### Sharpened scientific discrepancy
+
+The mature question “does subsampling affect avalanche statistics?” is not enough. A sharper target emerged from current literature:
+
+- a 2026 reviewed preprint reports near-critical spontaneous mouse-V1 dynamics from pooled Allen two-photon recordings because individual spontaneous recordings are short;
+- Destexhe & Touboul show noncritical systems can satisfy common avalanche criticality hallmarks;
+- Wilting & Priesemann's multistep-regression (MR) method is designed to infer propagation strength under subsampling;
+- recent work on the same Allen functional-connectivity recordings reports distinct neural states separated by abrupt transitions, making stationarity itself a material assumption.
+
+Working discriminator: in long spike-resolved individual-mouse V1 recordings, does a subsampling-aware dynamical estimator remain applicable and stable across observed-neuron subsets, and eventually does it agree with prespecified avalanche criteria? This is not a direct falsification of calcium-imaging results because modality and animals differ.
+
+### MR calibration before Allen interpretation
+
+`analysis/c002_mr_calibrate.py` uses `mrestimator==0.2.0`, 4 ms bins, lags 1..200, and a frozen applicability gate R² >= .90. The gate is essential: independent Poisson simulations return meaningless raw `m` values near 1 but have R² around zero/negative.
+
+Synthetic aggregate branching calibration, five seeds each and 100%/50%/25% binomial event sampling:
+
+- true m=.8: 15/15 applicable, MAE ~.002;
+- true m=.98: 15/15 applicable, MAE ~.0021;
+- true m=.99: 15/15 applicable, MAE ~.0015;
+- Poisson/non-propagating null: 0/5 applicable.
+
+This validates the implementation for the published aggregate/binomial-subsampling setting. It does **not** yet calibrate fixed-neuron subsampling in a heterogeneous spatial network.
+
+### First discovery mouse: method assumption under test, not criticality result
+
+Only discovery session `767871931` spike values have been accessed. Confirmation spike values remain untouched.
+
+Final guarded result from `results/c002_session_767871931.json`:
+
+- primary deterministic 32-unit VISp subset: m=.9633, R²=.8807 -> **not applicable**;
+- nested 16 units: m=.9885, R²=.8799 -> not applicable;
+- nested 8 units: m=.9966, R²=.6861 -> not applicable;
+- ten alternative deterministic random 32-unit subsets: 7/10 pass the R² gate; passing raw estimates span ~.968-.990; 3/10 fail applicability;
+- all six fixed 300-second windows of the primary 32-unit subset fail the R² gate.
+
+Earlier ad-hoc exploratory subsets gave different pass/fail patterns (including one 32-unit subset with R²>.94 and a 128-unit window split in which late windows passed). The standardized rerun did not reproduce that pattern. This strengthens, rather than weakens, the key feasibility finding: **which recorded neurons are selected materially changes whether the MR model is applicable in this mouse.**
+
+Do not call this evidence for or against near-criticality. Synthetic event thinning and real fixed-unit thinning are different observation processes. The next calibration must explicitly simulate fixed neuron identities, heterogeneous rates/connectivity, and random fixed-neuron subsets before the real subset variability can be judged surprising.
+
+### Three-step checkpoint
+
+- Does the question still matter? **Yes.** “Near-critical cortex” is a substantive dynamical claim, and pooled/threshold-based versus individual/subsampling-aware evidence could change that interpretation.
+- Can the next test change the conclusion? **Yes.** Fixed-neuron network simulations can show whether the apparent real subset instability is expected under the MR method's intended assumptions or signals a model/observation mismatch.
+- Does progress justify another step? **Yes, narrowly.** One discovery mouse exposed a load-bearing calibration gap before confirmation was spent. Do not scan the remaining 11 mice until that gap is resolved.
+
+## 2026-09-09 — C002 fixed-neuron calibration, stress tests, and stop
+
+### Fixed-neuron calibration
+
+After the first discovery mouse showed strong dependence on which 32 VISp neurons were selected, a post-outcome **method diagnostic** was specified. This is not confirmatory evidence because the simulation family was designed after one mouse was inspected.
+
+`analysis/c002_fixed_neuron_calibrate.py` models 512 explicit neuron identities in eight modules, with fixed lognormal within-module event weights and random fixed 32-neuron observation subsets. It preserves the 4-ms bin and MR estimator/gate used previously.
+
+- Common m=.98 with strong rate heterogeneity: **30/30 applicable**, R² .9974-.9997, m .9767-.9819.
+- Static mixed module timescales m=.85,.90,.94,.96,.975,.985,.99,.995: **30/30 applicable**, R² .9866-.9998, applicable m .9711-.9966.
+
+Thus fixed-neuron sampling and substantial static rate/timescale heterogeneity do not reproduce the Allen mouse's low-R² failures.
+
+### State-switch stress test
+
+Because primary literature reports state transitions in these Allen recordings, a second explicitly post-first-mouse method diagnostic used three fixed 300-s segments.
+
+- Global `.90 -> .99 -> .90`: 30/30 full fits applicable, minimum R² .9860.
+- Asynchronous module switches: 30/30 full fits applicable, minimum R² .9902.
+- Every within-state segment fit also passes the .90 gate.
+
+These deliberately simple state changes also fail to reproduce the real observation. This does **not** prove nonstationarity is irrelevant; it only says these prespecified branching-family stress cases are insufficient.
+
+### C002 stop decision
+
+C002 is stopped after one discovery mouse and before confirmation. Eleven eligible discovery mice and all 12 confirmation mice remain unopened.
+
+The next move on C002 would require progressively richer post-outcome model invention (oscillations, refractory structure, latent state models, spatial coupling, etc.) until some simulation reproduces the first mouse. In a mature criticality debate, that is adaptive rescue rather than a clean discriminating experiment. Preserve the failure instead.
+
+Reusable lesson: “subsampling-invariant estimator” is conditional on the dynamical/correlation model being applicable. Always gate the fit form itself on real data; a plausible raw near-one parameter is not evidence when the fit fails.
+
+### Computational reproducibility
+
+All four C002 result-producing scripts were executed twice with identical explicit inputs/seeds and reproduced byte-identical SHA-256 hashes:
+
+- aggregate MR calibration: `4cbdc7249d6f60ac9aa9025a8add628af7b58d5930b8f4d38c04cdbff65e492b`;
+- Allen session 767871931: `58d6b672550ece5843ea98d2643ab34b14b3c5c21aabe0552fea1873bc863365`;
+- fixed-neuron calibration: `3757409dad78d6ac79e0b41f2f2d09277a4949c473b0e80f9f0fd37e5cfdb570`;
+- state-switch calibration: `6e0150da212fd74d65e0c5a4bdb7244bafe84b3dfabdc8a2e08d460b4af5ba20`.
+
+### Tool/engineering failures
+
+- LocalMCP has no AWS CLI; unsigned S3 HTTP listing/range reads were used instead.
+- First remote HDF5 attempt lacked `aiohttp`; adding the explicit dependency fixed it before spike access.
+- An initial fixed-neuron calibration exceeded a 120-s command limit without producing a result; the exact design was preserved and rerun with a bounded 300-s execution allowance, completing in ~125 s.
+- Inspecting `mrestimator.coefficients.sm_method` initially failed because the package-level name resolves to the exported function rather than the module; `importlib.import_module` fixed the source inspection.

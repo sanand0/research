@@ -1,6 +1,6 @@
 # Research
 
-- 09 Sep 2026: [`latent-experiments-2`](latent-experiments-2/). Agent-driven scientific discovery with reserved confirmation evidence; first TEM-1 path stopped when real replicate nulls invalidated a tempting residual detector.
+- 09 Sep 2026: [`latent-experiments-2`](latent-experiments-2/). Agent-driven scientific discovery with reserved confirmation evidence; TEM-1 and neural-criticality paths both stopped by calibration/applicability gates before confirmation.
 - 07 Sep 2026: [`singapore-train-timings`](singapore-train-timings/). A quick check to see how Singapore trains compare with Japanese trains. See [Singapore Train Timings](https://sanand0.github.io/research/singapore-train-timings/).
 - 31 Aug 2026: [`gemini-omni-1.1-flash-videos`](gemini-omni-1.1-flash-videos/). Research and experiments on Gemini Omni 1.1 Flash video generation. See [Gemini Omini 1.1 Flash](https://sanand0.github.io/research/gemini-omni-1.1-flash-videos/).
 - 01 Aug 2026: [`simplification-prompt`](simplification-prompt/). Asking a model to simplify its writing also reduces its thinking quality.
