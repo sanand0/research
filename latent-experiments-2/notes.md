@@ -335,3 +335,45 @@ Dunić & Vilibić 2026 report 1,400 oceanography papers, with sharply rising dat
 ### Scout conclusion
 
 No survivor. The key correction is methodological: **search for the implied discriminating experiment before implementing a new-dataset analysis.** Topic-level and dataset-level novelty searches were insufficient for C004; the exact paired chamber-vs-EC query killed it immediately.
+
+## 2026-09-09 — Fresh discrepancy scout 002
+
+Search strategy changed after scout 001: prefer intervention-enabled disputes, repeated measurements, ground-truthed lineage experiments and natural experiments; search the exact discriminator before implementation.
+
+### C007 sea-star wasting / Vibrio causation — rejected because decisive measurement is absent
+
+- Prentice et al. 2025 (`10.1038/s41559-025-02797-2`) report controlled *Vibrio pectenicida* FHCF-3 challenge causing sunflower sea-star wasting disease.
+- Work et al. 2026 (`10.1038/s41559-026-03091-5`) argue gross wasting does not establish lesion causation and request pathology/microscopy spatially linking bacteria with lesion development. Author reply (`10.1038/s41559-026-03092-4`) agrees pathology would be useful and says experimental samples were retained for it.
+- Earlier pathology work shows gross wasting-like lesions can be induced without an infectious agent, so gross phenotype is not a pathogen-specific case definition.
+- Dryad `10.5061/dryad.5mkkwh7g9` metadata: version 19, CC0, ~1.2 MB; separate figure/code bundles and sequencing scripts. Public evidence includes disease trajectories and coelomic-fluid sequencing; it does not include lesion histology/spatial pathogen localization. Post-exposure sequencing samples are tied to substantial signs/first autotomy rather than a clean preclinical serial tissue series.
+- Dryad file-list metadata were accessible. A direct file API download returned HTTP 401; no numeric outcome rows were downloaded.
+- **STOP before outcomes.** Reanalysis of the available proxy cannot create the missing tissue observation that defines the disagreement.
+
+### C008 ReDeeM mtDNA lineage-tracing artifacts — rejected on prior art
+
+- Lareau et al. 2026 (`10.1038/s41586-026-10777-0`) argue low-support/fragment-end variants create artificial cell links and unstable phylogenies.
+- Weng, Weissman & Sankaran reply (`10.1038/s41586-026-10776-1`) with alternate filtering/alignment/edge-trimming analyses and comparison to CRISPR lineage ground truth.
+- Independent 2026 MitoDrift work also benchmarks ReDeeM filtering regimes against orthogonal lineage labels.
+- The initially attractive experiment — choose filters without biological outcomes, then score against orthogonal lineage truth and confirm on another batch — is therefore already substantially executed.
+- **STOP before outcomes.** This could produce useful software validation, not the intended new scientific loop.
+
+### C009 InAs–Al parity signal versus superconducting gap — rejected because proposed ground truth is disputed proxy
+
+- Microsoft 2025 (`10.1038/s41586-024-08445-2`) reports h/2e-periodic bimodal quantum-capacitance random telegraph signals interpreted as fermion-parity readout.
+- Legg 2026 (`10.1038/s41586-026-10567-8`) argues transport maps place parity measurements in disordered/apparently gapless regions. Microsoft reply (`10.1038/s41586-026-10568-7`) argues strong-coupling Andreev enhancement makes finite local conductance a poor direct DOS proxy and that stable parity signal itself is inconsistent with a gapless system.
+- Open archive/code are strong operationally: Zenodo `10.5281/zenodo.14804380`, GitHub `microsoft/azure-quantum-parity-readout`; TGP tune-up is a separate ~20 MB bundle and covers devices A1/A2/B1. Code-only inspection shows A2 parity data vary `V_wire`; published A2 operating point `V_wire≈-1.8446 V` is inside the A2 TGP range `-1.846..-1.841 V`, so device-level discovery/confirmation would be possible in principle.
+- However the proposed transport-derived "gap robustness" score is exactly the measurement interpretation under dispute. A parity-vs-conductance correlation would not adjudicate whether finite conductance means a gapless DOS. An independent same-setting spectroscopic gap measurement is absent. A later 2026 InAs–Pb RF spectroscopy experiment is a different device/material and cannot ground-truth the 2025 Al phase space.
+- Zenodo API/README access timed out twice from LocalMCP during feasibility; no measured parity/transport values were opened.
+- **STOP before outcomes.** Technically attractive but scientifically non-identifying.
+
+### Scout 002 conclusion
+
+No survivor. This scout exposed a stricter failure mode than prior-art duplication: **the decisive observable can be absent even in a rich open dataset**. If the mechanism dispute is about an unmeasured latent quantity, correlation among disputed proxies cannot settle it.
+
+Scout 003 must therefore verify the decisive observable is already measured, public, and independent enough to discriminate A/B before a candidate is ranked. Preferred structures: paired methods plus reference standard; randomized perturbation with measured mediator+outcome; pre-state/fate lineage plus orthogonal label; natural experiment with unaffected control plus direct intermediate mechanism.
+
+### Tool/access failures during scout 002
+
+- A bundled Dryad files-list fetch+parse was blocked before LocalMCP execution; split network fetch and local parse succeeded.
+- Dryad metadata/file listing worked, but `/api/v2/files/.../download` returned HTTP 401. This did not matter scientifically because the decisive pathology variable was absent from the public file descriptions.
+- Zenodo record and README requests for record 14804380 each timed out after 15 s. GitHub code was sufficient for metadata/coordinate feasibility; no attempt was made to work around the live-access weakness after C009 failed the identifiability gate.

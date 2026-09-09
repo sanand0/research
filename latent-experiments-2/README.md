@@ -8,7 +8,7 @@ This project is separate from `latent-experiments/`. The pilot is evidence about
 
 ## Current status
 
-**C001 and C002 stopped before confirmation; C003 completed a positive discovery but failed frozen independent confirmation; fresh scout 001 produced no survivor after C004 was killed by prior art and C005/C006 failed the clean-confirmation gate. No independently confirmed new scientific claim yet. Next: intervention-focused fresh scout 002.**
+**C001 and C002 stopped before confirmation; C003 completed a positive discovery but failed frozen independent confirmation; fresh scouts 001 and 002 both produced no survivor. Scout 002 rejected three explicit expert disagreements because the decisive observable was missing (C007), the discriminator was already published (C008), or the only available mechanism proxy was itself disputed (C009). No independently confirmed new scientific claim yet. Next: measurement-complete fresh scout 003.**
 
 ### C001 — repeated TEM-1 DMS maps: stopped
 
@@ -61,6 +61,13 @@ Reusable lesson: **`b<2` alone is mechanistically non-diagnostic.** In all eight
 C004 used newly released ABCFlux v2 to ask whether CH4 observation-network representativeness is a between-ecosystem/time problem or a within-stratum sparse-measurement problem. Synthetic calibration showed ecosystem×month weighting can remove class oversampling but not preferential high-flux-day sampling. The exact needed empirical chamber-vs-eddy-covariance comparison, however, was already published across ten sites and multiple timescales in July 2026, so C004 was rejected before real flux outcomes. C005 (unperceived LO decoding) and C006 (data-availability statements) were demoted for weak clean confirmation / mature prior art. See `scouts/FRESH-SCOUT-001.md`.
 
 Reusable lesson: **search for the implied discriminating experiment before investing in a newly enabled dataset analysis.**
+
+
+### Fresh scout 002 — no survivor
+
+C007 (sea-star wasting disease) was an unusually consequential explicit causation dispute, but the critics' decisive requested evidence is lesion histopathology/spatial pathogen localization. The public Dryad/NCBI evidence contains disease trajectories and coelomic-fluid sequencing, not that pathology; reanalyzing the proxy cannot manufacture the missing observation. C008 (ReDeeM mitochondrial lineage tracing) had excellent orthogonal lineage ground truth, but the exact filter-vs-ground-truth discriminator is already addressed in the 2026 reply and MitoDrift work. C009 (InAs–Al parity readout versus a superconducting gap) had excellent open code and device-level holdout potential, but the obvious transport-derived "gap" score is itself the physical proxy under dispute; without an orthogonal gap measurement at the same tuning points, a correlation analysis cannot adjudicate the disagreement. See `scouts/FRESH-SCOUT-002.md`.
+
+Reusable lesson: **verify that the decisive observable is actually present and independent of the disputed proxy before treating an open dataset as capable of resolving a mechanism dispute.**
 
 ## Minimal execution layer
 
