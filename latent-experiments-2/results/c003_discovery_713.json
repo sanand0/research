@@ -1,0 +1,156 @@
+{
+  "claim_id": "C003",
+  "source": "BioTIME study 713",
+  "null_replicates": 999,
+  "primary_rule": "b lower-tail p <= .025 AND CVratio upper-tail p <= .025",
+  "study_gate": ">=2/3 plots pass under both exponential and lognormal null-weight families",
+  "plots": {
+    "Plot-1": {
+      "n_years": 24,
+      "all_species": 30,
+      "eligible_species": 14,
+      "observed": {
+        "b": 1.5065129076874566,
+        "cvratio": 2.9576388954352835,
+        "n_species": 14
+      },
+      "families": {
+        "exponential": {
+          "b": {
+            "observed": 1.5065129076874566,
+            "null_median": 1.6514424655735234,
+            "null_q025": 1.5715977435096387,
+            "null_q975": 1.7243889984356593,
+            "lower_tail_p": 0.001
+          },
+          "cvratio": {
+            "observed": 2.9576388954352835,
+            "null_median": 2.151304804861659,
+            "null_q025": 1.9162235351827457,
+            "null_q975": 2.430495676199601,
+            "upper_tail_p": 0.001
+          },
+          "joint_pass": true
+        },
+        "lognormal": {
+          "b": {
+            "observed": 1.5065129076874566,
+            "null_median": 1.6416118117899925,
+            "null_q025": 1.561492658274078,
+            "null_q975": 1.7152083358718238,
+            "lower_tail_p": 0.002
+          },
+          "cvratio": {
+            "observed": 2.9576388954352835,
+            "null_median": 2.2044623788287523,
+            "null_q025": 1.9422510109590414,
+            "null_q975": 2.499612945697286,
+            "upper_tail_p": 0.001
+          },
+          "joint_pass": true
+        }
+      },
+      "both_families_pass": true
+    },
+    "Plot-2": {
+      "n_years": 24,
+      "all_species": 27,
+      "eligible_species": 14,
+      "observed": {
+        "b": 1.3218401271366944,
+        "cvratio": 2.5750289354944966,
+        "n_species": 14
+      },
+      "families": {
+        "exponential": {
+          "b": {
+            "observed": 1.3218401271366944,
+            "null_median": 1.4254616015139332,
+            "null_q025": 1.3090809594222717,
+            "null_q975": 1.537410286879394,
+            "lower_tail_p": 0.044
+          },
+          "cvratio": {
+            "observed": 2.5750289354944966,
+            "null_median": 2.2675787447939837,
+            "null_q025": 2.007255269040453,
+            "null_q975": 2.5777136587158775,
+            "upper_tail_p": 0.028
+          },
+          "joint_pass": false
+        },
+        "lognormal": {
+          "b": {
+            "observed": 1.3218401271366944,
+            "null_median": 1.4029291340804935,
+            "null_q025": 1.2766242374357708,
+            "null_q975": 1.5223643628223393,
+            "lower_tail_p": 0.096
+          },
+          "cvratio": {
+            "observed": 2.5750289354944966,
+            "null_median": 2.3247108412469815,
+            "null_q025": 2.065300074259445,
+            "null_q975": 2.6814245456971886,
+            "upper_tail_p": 0.069
+          },
+          "joint_pass": false
+        }
+      },
+      "both_families_pass": false
+    },
+    "Plot-3": {
+      "n_years": 24,
+      "all_species": 29,
+      "eligible_species": 15,
+      "observed": {
+        "b": 1.2587136670738612,
+        "cvratio": 2.63894446521705,
+        "n_species": 15
+      },
+      "families": {
+        "exponential": {
+          "b": {
+            "observed": 1.2587136670738612,
+            "null_median": 1.4690386089872047,
+            "null_q025": 1.3585715502167741,
+            "null_q975": 1.5723058895657909,
+            "lower_tail_p": 0.001
+          },
+          "cvratio": {
+            "observed": 2.63894446521705,
+            "null_median": 2.0632959275393365,
+            "null_q025": 1.8087043038380894,
+            "null_q975": 2.3885140612807745,
+            "upper_tail_p": 0.001
+          },
+          "joint_pass": true
+        },
+        "lognormal": {
+          "b": {
+            "observed": 1.2587136670738612,
+            "null_median": 1.452638094964895,
+            "null_q025": 1.3444751172530203,
+            "null_q975": 1.5616311298294094,
+            "lower_tail_p": 0.001
+          },
+          "cvratio": {
+            "observed": 2.63894446521705,
+            "null_median": 2.1217315762898203,
+            "null_q025": 1.8450945668412932,
+            "null_q975": 2.423558118645717,
+            "upper_tail_p": 0.001
+          },
+          "joint_pass": true
+        }
+      },
+      "both_families_pass": true
+    }
+  },
+  "family_pass_counts": {
+    "exponential": 2,
+    "lognormal": 2
+  },
+  "both_families_pass_count": 2,
+  "discovery_gate_pass": true
+}

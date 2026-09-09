@@ -1,0 +1,94 @@
+{
+  "seed": 20260909,
+  "rule": "Each plot/family passes if <=2/20 joint null false positives and >=16/20 injected-dominance detections.",
+  "plots": {
+    "Plot-1": {
+      "n_years": 24,
+      "all_species": 30,
+      "eligible_species": 14,
+      "support_edges": 235,
+      "support_vertices": 54,
+      "support_components": 1,
+      "cycle_df_proxy": 182,
+      "families": {
+        "exponential": {
+          "family": "exponential",
+          "n_cases": 20,
+          "null_replicates_per_case": 199,
+          "joint_false_positives": 0,
+          "joint_positive_detections": 17,
+          "joint_positive_power": 0.85,
+          "pass": true
+        },
+        "lognormal": {
+          "family": "lognormal",
+          "n_cases": 20,
+          "null_replicates_per_case": 199,
+          "joint_false_positives": 0,
+          "joint_positive_detections": 16,
+          "joint_positive_power": 0.8,
+          "pass": true
+        }
+      }
+    },
+    "Plot-2": {
+      "n_years": 24,
+      "all_species": 27,
+      "eligible_species": 14,
+      "support_edges": 226,
+      "support_vertices": 51,
+      "support_components": 1,
+      "cycle_df_proxy": 176,
+      "families": {
+        "exponential": {
+          "family": "exponential",
+          "n_cases": 20,
+          "null_replicates_per_case": 199,
+          "joint_false_positives": 0,
+          "joint_positive_detections": 20,
+          "joint_positive_power": 1.0,
+          "pass": true
+        },
+        "lognormal": {
+          "family": "lognormal",
+          "n_cases": 20,
+          "null_replicates_per_case": 199,
+          "joint_false_positives": 0,
+          "joint_positive_detections": 18,
+          "joint_positive_power": 0.9,
+          "pass": true
+        }
+      }
+    },
+    "Plot-3": {
+      "n_years": 24,
+      "all_species": 29,
+      "eligible_species": 15,
+      "support_edges": 239,
+      "support_vertices": 53,
+      "support_components": 1,
+      "cycle_df_proxy": 187,
+      "families": {
+        "exponential": {
+          "family": "exponential",
+          "n_cases": 20,
+          "null_replicates_per_case": 199,
+          "joint_false_positives": 1,
+          "joint_positive_detections": 20,
+          "joint_positive_power": 1.0,
+          "pass": true
+        },
+        "lognormal": {
+          "family": "lognormal",
+          "n_cases": 20,
+          "null_replicates_per_case": 199,
+          "joint_false_positives": 1,
+          "joint_positive_detections": 20,
+          "joint_positive_power": 1.0,
+          "pass": true
+        }
+      }
+    }
+  },
+  "calibration_pass": true
+}

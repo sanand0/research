@@ -1,0 +1,249 @@
+{
+  "claim_id": "C003",
+  "source": "BioTIME study 627",
+  "years": [
+    1921,
+    1926,
+    1931,
+    1937,
+    1942,
+    1949,
+    1959,
+    1974,
+    1994,
+    2011
+  ],
+  "n_plots": 5,
+  "null_replicates": 999,
+  "plot_rule": "b lower-tail p<=.025 AND CVratio upper-tail p<=.025",
+  "study_rule": "each family pass-count upper-tail p<=.025 AND >=20% plots pass under both families",
+  "plots": {
+    "8": {
+      "eligible": true,
+      "all_species": 35,
+      "eligible_species": 20,
+      "observed": {
+        "b": 1.6561274423611143,
+        "cvratio": 1.7749228075463352,
+        "n_species": 20
+      },
+      "families": {
+        "exponential": {
+          "observed": {
+            "b": 1.6561274423611143,
+            "cvratio": 1.7749228075463352,
+            "n_species": 20
+          },
+          "b_null_median": 1.67774363176201,
+          "b_null_q025": 1.577272654807663,
+          "cvratio_null_median": 1.6933340887810986,
+          "cvratio_null_q975": 1.9516081483825487,
+          "b_lower_tail_p": 0.356,
+          "cvratio_upper_tail_p": 0.252,
+          "joint_pass": false
+        },
+        "lognormal": {
+          "observed": {
+            "b": 1.6561274423611143,
+            "cvratio": 1.7749228075463352,
+            "n_species": 20
+          },
+          "b_null_median": 1.666502728596803,
+          "b_null_q025": 1.5735581878059752,
+          "cvratio_null_median": 1.7200434830002866,
+          "cvratio_null_q975": 1.9653754315197496,
+          "b_lower_tail_p": 0.415,
+          "cvratio_upper_tail_p": 0.31,
+          "joint_pass": false
+        }
+      },
+      "both_families_pass": false
+    },
+    "9": {
+      "eligible": true,
+      "all_species": 38,
+      "eligible_species": 26,
+      "observed": {
+        "b": 1.7253617943762793,
+        "cvratio": 1.9871688978912643,
+        "n_species": 26
+      },
+      "families": {
+        "exponential": {
+          "observed": {
+            "b": 1.7253617943762793,
+            "cvratio": 1.9871688978912643,
+            "n_species": 26
+          },
+          "b_null_median": 1.717146967517862,
+          "b_null_q025": 1.6407143278385916,
+          "cvratio_null_median": 1.8152978233773127,
+          "cvratio_null_q975": 2.1189701110160835,
+          "b_lower_tail_p": 0.596,
+          "cvratio_upper_tail_p": 0.128,
+          "joint_pass": false
+        },
+        "lognormal": {
+          "observed": {
+            "b": 1.7253617943762793,
+            "cvratio": 1.9871688978912643,
+            "n_species": 26
+          },
+          "b_null_median": 1.7120121334245186,
+          "b_null_q025": 1.6391505050363089,
+          "cvratio_null_median": 1.8466772681271508,
+          "cvratio_null_q975": 2.1391344004570922,
+          "b_lower_tail_p": 0.659,
+          "cvratio_upper_tail_p": 0.163,
+          "joint_pass": false
+        }
+      },
+      "both_families_pass": false
+    },
+    "13": {
+      "eligible": true,
+      "all_species": 15,
+      "eligible_species": 10,
+      "observed": {
+        "b": 1.665934217911539,
+        "cvratio": 2.80262460124014,
+        "n_species": 10
+      },
+      "families": {
+        "exponential": {
+          "observed": {
+            "b": 1.665934217911539,
+            "cvratio": 2.80262460124014,
+            "n_species": 10
+          },
+          "b_null_median": 1.6778867108732274,
+          "b_null_q025": 1.579174371011921,
+          "cvratio_null_median": 2.502926885002078,
+          "cvratio_null_q975": 3.280490623467858,
+          "b_lower_tail_p": 0.4,
+          "cvratio_upper_tail_p": 0.195,
+          "joint_pass": false
+        },
+        "lognormal": {
+          "observed": {
+            "b": 1.665934217911539,
+            "cvratio": 2.80262460124014,
+            "n_species": 10
+          },
+          "b_null_median": 1.6612875563112068,
+          "b_null_q025": 1.5600089844436176,
+          "cvratio_null_median": 2.6219946273060972,
+          "cvratio_null_q975": 3.482024816777622,
+          "b_lower_tail_p": 0.527,
+          "cvratio_upper_tail_p": 0.321,
+          "joint_pass": false
+        }
+      },
+      "both_families_pass": false
+    },
+    "14": {
+      "eligible": true,
+      "all_species": 24,
+      "eligible_species": 13,
+      "observed": {
+        "b": 1.6715667654135098,
+        "cvratio": 2.07289648228192,
+        "n_species": 13
+      },
+      "families": {
+        "exponential": {
+          "observed": {
+            "b": 1.6715667654135098,
+            "cvratio": 2.07289648228192,
+            "n_species": 13
+          },
+          "b_null_median": 1.6789226621822255,
+          "b_null_q025": 1.5763834513662986,
+          "cvratio_null_median": 2.148699736399198,
+          "cvratio_null_q975": 2.871868771811671,
+          "b_lower_tail_p": 0.432,
+          "cvratio_upper_tail_p": 0.624,
+          "joint_pass": false
+        },
+        "lognormal": {
+          "observed": {
+            "b": 1.6715667654135098,
+            "cvratio": 2.07289648228192,
+            "n_species": 13
+          },
+          "b_null_median": 1.661947882719816,
+          "b_null_q025": 1.5544660280314613,
+          "cvratio_null_median": 2.2653885064239785,
+          "cvratio_null_q975": 2.967556310768456,
+          "b_lower_tail_p": 0.58,
+          "cvratio_upper_tail_p": 0.764,
+          "joint_pass": false
+        }
+      },
+      "both_families_pass": false
+    },
+    "15": {
+      "eligible": true,
+      "all_species": 58,
+      "eligible_species": 41,
+      "observed": {
+        "b": 1.8472945983899076,
+        "cvratio": 1.5819839153292163,
+        "n_species": 41
+      },
+      "families": {
+        "exponential": {
+          "observed": {
+            "b": 1.8472945983899076,
+            "cvratio": 1.5819839153292163,
+            "n_species": 41
+          },
+          "b_null_median": 1.7854583073663577,
+          "b_null_q025": 1.7378755919686144,
+          "cvratio_null_median": 1.6750531616766031,
+          "cvratio_null_q975": 1.8841288359470982,
+          "b_lower_tail_p": 0.99,
+          "cvratio_upper_tail_p": 0.836,
+          "joint_pass": false
+        },
+        "lognormal": {
+          "observed": {
+            "b": 1.8472945983899076,
+            "cvratio": 1.5819839153292163,
+            "n_species": 41
+          },
+          "b_null_median": 1.7836099954173217,
+          "b_null_q025": 1.7320776533893292,
+          "cvratio_null_median": 1.6927503475334265,
+          "cvratio_null_q975": 1.9135920363829353,
+          "b_lower_tail_p": 0.987,
+          "cvratio_upper_tail_p": 0.85,
+          "joint_pass": false
+        }
+      },
+      "both_families_pass": false
+    }
+  },
+  "families": {
+    "exponential": {
+      "observed_plot_pass_count": 0,
+      "eligible_plots": 5,
+      "study_pass_count_null_max": 2,
+      "study_pass_count_null_q975": 1.0,
+      "study_upper_tail_p": 1.0,
+      "study_pass": false
+    },
+    "lognormal": {
+      "observed_plot_pass_count": 0,
+      "eligible_plots": 5,
+      "study_pass_count_null_max": 2,
+      "study_pass_count_null_q975": 1.0,
+      "study_upper_tail_p": 1.0,
+      "study_pass": false
+    }
+  },
+  "executable": true,
+  "both_families_plot_pass_count": 0,
+  "both_families_plot_pass_fraction": 0.0,
+  "confirmation_pass": false
+}

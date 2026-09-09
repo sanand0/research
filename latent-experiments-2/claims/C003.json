@@ -1,0 +1,50 @@
+{
+  "claim_id": "C003",
+  "status": "failed_confirmation",
+  "question": "Does within-community b<2 / declining species CV with mean cover contain evidence for dominance stabilization beyond a null preserving species totals, annual community totals, and the observed occurrence mask?",
+  "motivation": "A 2026 Ecography analysis interprets b<2 as a widespread potential dominance-stabilizing effect; classic feasible-set work shows Taylor-law form can arise from abundance and census constraints.",
+  "discovery": {
+    "source": "BioTIME 2.0 study 713",
+    "title": "Temporal dynamics of marginal steppic vegetation over a 26-year period of substantial environmental change",
+    "measurement": "percentage cover by species in three permanent 1 m2 plots",
+    "raw_values": "accessed",
+    "result": "2/3 plots passed under both null families",
+    "result_sha256": "cca844ad9bf90f2efb488bc98f38ae9fb286576843b793e8a264352650cebe21"
+  },
+  "confirmation": {
+    "source": "BioTIME 2.0 study 627",
+    "title": "LTER Norholm Hede, Denmark Plants",
+    "raw_values": "accessed",
+    "measurement": "species cover in five permanent plots; one recorded census per plot-year required, otherwise confirmation non-executable",
+    "eligibility": "Same as discovery: species present in >=15% census years with nonzero temporal variance; permanent plot must have >=4 eligible species; study must have >=5 eligible plots",
+    "plot_rule": "Within each eligible plot and null family: b lower-tail p<=.025 AND CVratio upper-tail p<=.025 using 999 nulls",
+    "study_rule": "For exponential and lognormal null families separately, observed plot-pass count must have upper-tail p<=.025 versus a study-level pseudo-observation pass-count distribution generated from the per-plot null draws. Additionally >=20% of eligible plots must pass the plot rule under BOTH families. All conditions required.",
+    "null": "Across the full observed species-by-year matrix, randomize positive cover magnitudes while preserving every species row total, every census-year column total, and the observed positive/zero support; metrics are then computed only for the frozen eligible-species subset. Primary weights iid Exponential(1) followed by IPF; sensitivity weights iid lognormal(0,1) followed by IPF.",
+    "replaced_source": {
+      "source": "BioTIME study 569",
+      "status": "rejected_before_raw_values",
+      "reason": "BioTIME metadata exposes Count abundance only and no Cover BIOMAS field; frozen cover-only confirmation cannot execute"
+    },
+    "second_replaced_source": {
+      "source": "BioTIME study 240",
+      "status": "rejected_after_raw_structure_only",
+      "reason": "40 quadrat-years contain two distinct Sep/Oct fall samples; frozen one-fall-census rule is ambiguous; no Taylor/CV statistic computed"
+    },
+    "result": "0/5 plots passed; study-level p=1.0 under both families; confirmation failed",
+    "result_sha256": "4e75f219116a59786e8bce6a2493145f034a8bcf5e58e939b7fc65b58583125b",
+    "reruns_identical": true
+  },
+  "unit_of_independence": "permanent plot/community",
+  "species_eligibility": "present in >=15% of census years and nonzero temporal variance, matching the 2026 Ecography analysis",
+  "community_eligibility": ">=4 eligible species, matching the 2026 Ecography analysis",
+  "primary_statistic": "OLS slope b from log temporal variance versus log temporal mean cover across eligible species within each permanent plot",
+  "secondary_statistic": "CVratio = arithmetic mean species CV / abundance-weighted mean species CV",
+  "null": "Across the full observed species-by-year matrix, randomize positive cover magnitudes while preserving every species row total, every census-year column total, and the observed positive/zero support; metrics are then computed only for the frozen eligible-species subset. Primary weights iid Exponential(1) followed by IPF; sensitivity weights iid lognormal(0,1) followed by IPF.",
+  "null_replicates": 999,
+  "decision_rule": "A plot supports dominance stabilization beyond the constraint null only if observed b is below the 2.5th percentile of its null b distribution. Secondary CVratio must be above the 97.5th percentile for concordance; no claim if primary and secondary disagree.",
+  "multiplicity": "Discovery is descriptive across the three study-713 plots; freeze a study-level confirmation prediction only if at least two of three discovery plots meet the primary rule with concordant secondary statistic. Confirmation will use a single predeclared aggregate criterion across eligible study-569 plots, defined before opening confirmation values.",
+  "holdout_note": "Procedural holdout only; public BioTIME data are not a secure blind. Study 569 raw values will not be fetched during discovery.",
+  "measurement_negative_control": "fridley_2009 pin-contact frequency rejected as primary before values because the 2026 paper excludes frequency/point-intercept methods for abnormal b<1; values not accessed.",
+  "null_sensitivity": "Repeat the full discovery decision under lognormal(0,1) support weights; do not proceed to confirmation if primary and sensitivity disagree on whether >=2/3 plots pass.",
+  "stop_reason": "Discovery extra-organization signal did not replicate in the frozen independent ecosystem. All confirmation slopes were <2 but ordinary under the constraint null; further null/source changes would be adaptive rescue."
+}

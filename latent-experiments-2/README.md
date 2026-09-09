@@ -8,7 +8,7 @@ This project is separate from `latent-experiments/`. The pilot is evidence about
 
 ## Current status
 
-**C001 and C002 both stopped before confirmation. No substantive discovery claim yet. Next: one bounded C003 feasibility gate, then fresh scouting if it only restates mature Taylor's-law results.**
+**C001 and C002 stopped before confirmation; C003 completed a positive discovery but failed frozen independent confirmation. No independently confirmed new scientific claim yet. Next: fresh discrepancy scout.**
 
 ### C001 — repeated TEM-1 DMS maps: stopped
 
@@ -46,9 +46,15 @@ All four stochastic C002 result files reproduced byte-identically across two run
 
 ## Candidate ranking
 
-1. **C003 — ecological Taylor's law, feasibility only.** Competing explanations: biological interactions/environmental stochasticity versus feasible-set/sampling constraints. Proceed only if primary literature + a specific dataset expose a sharper unresolved discriminator than “constraints can create Taylor's law.”
-2. **Fresh discrepancy scout.** Preferred immediately if C003's cheap gate shows the mechanism debate already covers the obvious tests.
-3. **Do not reopen C001/C002 confirmation.** Their active methods/questions failed before confirmation; preserved holdouts are not invitations to rescue them.
+1. **Fresh discrepancy scout.** Search current 2025–2026 primary literature for consequential observations with two credible explanations and clean, source-level independent confirmation.
+2. **Prefer direct measurements + cheap perturbations.** Penalize mature debates, ambiguous aggregation, derived traits, and confirmation that can only be made by arbitrary row splits.
+3. **Do not reopen C001/C002/C003.** C001/C002 methods failed before confirmation; C003 failed independent confirmation. Any follow-on requires a new claim and fresh evidence.
+
+### C003 — Taylor-law dominance interpretation: failed confirmation
+
+A constraint-preserving null fixed every species total, census total, and occurrence mask. Discovery in three German steppe cover plots found extra dominance-like temporal organization in 2/3 plots. Frozen confirmation in five independent Danish heath plots found 0/5 passes despite every raw Taylor slope being below 2; study-level p=1.0 under both null generators.
+
+Reusable lesson: **`b<2` alone is mechanistically non-diagnostic.** In all eight analyzed plots the constraint null itself typically produced `b<2` (median roughly 1.4–1.8). Some communities showed extra organization beyond those constraints, but it did not generalize. See `RESULTS-C003.md`.
 
 ## Minimal execution layer
 

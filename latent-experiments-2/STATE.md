@@ -4,86 +4,109 @@ Updated: 2026-09-09 SGT
 
 ## Phase
 
-`C001 STOPPED -> C002 STOPPED -> C003 FEASIBILITY`.
+`C001 STOPPED -> C002 STOPPED -> C003 FAILED CONFIRMATION -> FRESH DISCREPANCY SCOUT`.
 
-No C001 confirmation/control scores were opened. No C002 confirmation spikes were opened; only discovery mouse `767871931` was accessed.
+C001 confirmation/control scores remain unopened. C002 confirmation spikes remain unopened; only one discovery mouse was accessed. C003 completed a genuine discovery/confirmation loop and failed its frozen independent confirmation.
 
 ## Completed
 
-### Project/pilot
+### C001 — repeated TEM-1 DMS maps
 
-- Monorepo instructions/Git root inspected; pilot lessons compacted in `PILOT-LESSONS.md`.
-- Minimal claim/access ledger, resumable state, ignored raw-data cache, bounded analysis/results layer established.
+**STOP before confirmation.** A structured cross-assay residual looked significant against a shuffled null but was no larger than structure in real same-condition replicate pairs. Broad context dependence was already established. Jacquier confirmation and Deng control remain unopened. See commit `2d5a21e`.
 
-### C001 — stopped before confirmation
+Reusable lesson: empirical replicate nulls can invalidate attractive permutation-based biological signals.
 
-- Discovery-only Firnberg/Stiffler raw + processed score semantics verified.
-- 4,782 shared missense mutations; Spearman ~.937.
-- Broad context-dependence premise found substantially established in prior literature.
-- Proposed position-residual detector fails real same-condition replicate calibration.
-- Stop decision stable under independent percentile-rank residualization.
-- Jacquier confirmation and Deng control remain unopened.
-- Checkpoint commit: `2d5a21e`.
+### C002 — neuronal criticality / subsampling
 
-### C002 — stopped after one discovery mouse, before confirmation
+**STOP after one discovery mouse, before confirmation.** A subsampling-aware MR estimator calibrated well on aggregate and fixed-neuron branching simulations, including bounded heterogeneity/state-switch stress tests, but applicability depended strongly on which real VISp neurons were sampled. Further dynamical-model expansion would be post-outcome rescue. Eleven eligible discovery mice and all 12 confirmation mice remain unopened. See `RESULTS-C002.md` and commit `eb02a4b`.
 
-Data/design:
+Reusable lesson: subsampling robustness is conditional on model/correlation-form applicability.
 
-- Allen Visual Coding Neuropixels public S3 works through HTTP listing/range reads.
-- 58 independent mouse/sessions in metadata; `functional_connectivity` chosen before spike values because it contains a standardized continuous ~30-minute spontaneous block.
-- VISp metadata eligibility `>=32 quality=good` units leaves 12 discovery + 12 confirmation mice.
-- Spike values accessed only for discovery session `767871931`; 11 other eligible discovery mice and all 12 confirmation mice remain unopened.
+### C003 — within-community Taylor law / dominance stabilization
 
-Method/calibration:
+**FAILED CONFIRMATION / STOP.** See `RESULTS-C003.md`.
 
-- `mrestimator==0.2.0`, 4-ms bins, lags 1..200, applicability gate R²>=.90.
-- Aggregate/binomial-event calibration: true m=.8/.98/.99 recovered accurately under heavy sampling loss; Poisson known-null fails applicability.
-- First real mouse: primary 32/16/8 subsets all fail applicability; 7/10 alternative fixed 32-unit subsets pass, 3/10 fail.
-- Post-first-mouse fixed-neuron diagnostic: common m=.98 with strong rate heterogeneity 30/30 pass; static mixed m=.85... .995 modules 30/30 pass.
-- Post-first-mouse state-switch diagnostic: global and asynchronous module switches each 30/30 full-session pass; all within-state segments pass.
-- These bounded branching-family violations do not reproduce the real mouse's low-R²/subset-dependent failures.
+Scientific discrepancy:
 
-Decision:
+- Gracia et al. 2026 interpret within-community temporal Taylor slopes `b<2` as a widespread potential dominance-stabilizing effect in plant communities.
+- Feasible-set literature shows Taylor-law form can emerge from abundance/census constraints.
+- Frozen discriminator: compare observed `b` and a dominance-CV statistic against a continuous null preserving exact species totals, exact census totals, and the observed occurrence mask.
 
-**STOP C002.** Further progress would require inventing richer dynamical models after seeing the real-data failure (oscillation/refractory/spatial/latent-state variants), turning method calibration into adaptive rescue. The criticality/subsampling debate is already mature, so this is not justified before confirmation.
+Method:
 
-Reusable result: subsampling robustness does not waive the need to validate the estimator's assumed dynamical/correlation form on real recordings.
+- percentage-cover data only;
+- species present >=15% census years, nonzero variance; >=4 species/plot;
+- OLS `b` primary; CVratio secondary;
+- 999 nulls; Exponential positive weights + IPF primary, lognormal weights sensitivity;
+- plot pass requires `p_b<=.025` AND `p_CV>=tail .025` (upper-tail p<=.025);
+- null calibrated on toy and actual discovery support before observed slopes.
 
-Reproducibility hashes, each identical across two executions:
+Discovery — BioTIME 713, German steppe, 3 permanent plots x 24 census years:
 
-- `results/c002_mr_calibration.json`: `4cbdc7249d6f60ac9aa9025a8add628af7b58d5930b8f4d38c04cdbff65e492b`
-- `results/c002_session_767871931.json`: `58d6b672550ece5843ea98d2643ab34b14b3c5c21aabe0552fea1873bc863365`
-- `results/c002_fixed_neuron_calibration.json`: `3757409dad78d6ac79e0b41f2f2d09277a4949c473b0e80f9f0fd37e5cfdb570`
-- `results/c002_state_switch_calibration.json`: `6e0150da212fd74d65e0c5a4bdb7244bafe84b3dfabdc8a2e08d460b4af5ba20`
+- all raw `b<2`: 1.5065, 1.3218, 1.2587;
+- Plots 1 and 3 pass both metrics under both null families; Plot 2 does not;
+- discovery gate 2/3 passed;
+- result `cca844ad9bf90f2efb488bc98f38ae9fb286576843b793e8a264352650cebe21`, reproduced exactly.
 
-See `RESULTS-C002.md`.
+Confirmation-source gates:
+
+- BioTIME 569 rejected before raw values: Count only, no Cover field.
+- BioTIME 240 opened for structure only, then rejected: 40 quadrat-years had two distinct Sep/Oct fall samples; no outcome statistic computed.
+- BioTIME 627 chosen as fresh executable confirmation: Danish heath, Cover, exactly 5 permanent plots x 10 unique censuses.
+
+Frozen confirmation — BioTIME 627:
+
+- raw `b` again all <2: 1.6561, 1.7254, 1.6659, 1.6716, 1.8473;
+- 0/5 plots pass either constraint-null family;
+- study-level pass-count p=1.0 under both families;
+- confirmation failed;
+- result `4e75f219116a59786e8bce6a2493145f034a8bcf5e58e939b7fc65b58583125b`, reproduced exactly;
+- independent DuckDB derivation matched all eight observed slopes.
+
+Narrow result that survives without rescue: **`b<2` alone is mechanistically non-diagnostic in these communities.** The prespecified occurrence+margin null itself typically produces `b<2` (null medians ~1.4–1.8). Some discovery plots contain extra temporal organization beyond that null, but it did not generalize to the reserved ecosystem. This is consistent with older feasible-set work and is not a claim that the 2026 global study is generally wrong.
+
+Do not decompose which preserved constraint generates low `b`, change the null, or choose another confirmation on these C003 data without opening a new claim with fresh evidence.
 
 ## Scientific progress vs engineering progress
 
-Scientific progress: **no discovery claim yet.** Two plausible paths have been killed by calibration/applicability gates before confirmation. This is positive evidence about the research process, not evidence that the agent has discovered new biology.
+Scientific progress:
 
-Engineering progress: evidence-role guards, remote partial access, synthetic + empirical calibration, stochastic reproducibility, and explicit stop transitions are working. Do not expand this into a general platform yet.
+- **No independently confirmed new biological/scientific claim yet.**
+- C003 is the first complete positive-discovery -> frozen-confirmation-failure loop in this project.
+- It produced a useful narrower methodological observation but failed the intended generalization.
+- C001/C002 were stopped even earlier by calibration/applicability gates.
+
+Engineering progress:
+
+- evidence-role/access guards, partial remote reads, measurement-semantic gates, continuous fixed-support/margin randomization, known-null/known-positive calibration, independent re-derivation, deterministic reruns, and explicit stop transitions all work;
+- do not turn this into a platform yet.
 
 ## Three-step assessment
 
-1. **Does C002 still matter as a general scientific debate? Yes, but not as this active experiment.** The current single-timescale MR route fails applicability on the first mouse and richer rescue would be adaptive.
-2. **Can the next C002 test cleanly change the current conclusion? No.** Another discovery mouse or another post-hoc model would not repair the calibration boundary without redefining the experiment.
-3. **Does progress justify redirecting? Yes.** C002 produced a reusable method lesson while preserving almost all discovery data and all confirmation data.
+1. **Does the C003 scientific question still matter? Yes.** Mechanistic interpretation of dominance/stability matters, and the 2026 claim is current.
+2. **Can another test on the current C003 evidence cleanly repair the failed confirmation? No.** Another ecosystem, null decomposition, or altered census rule would be a new hypothesis after failure.
+3. **Does progress justify redirecting? Yes.** The discovery/confirmation failure is informative and fully documented; continuing C003 would reduce epistemic discipline rather than add it.
 
 ## Exact next action
 
-Run **one bounded C003 Taylor's-law feasibility gate** before any exploratory outcome analysis:
+Run a **fresh discrepancy scout**, not another member of the original shortlist.
 
-1. Re-read the primary mechanism papers already identified and locate one small, coherent open ecological time-series dataset with explicit units/census semantics.
-2. State a specific consequential disagreement, who cares, the two competing explanations, and one observation that could distinguish them. “Taylor's law appears” and “randomization changes the exponent” are insufficient because both are well studied.
-3. Verify dataset granularity, repeated-unit identifiers, census effort, missingness, and an independent ecosystem/data source for later confirmation.
-4. Designate discovery versus confirmation units/data before computing mean-variance relationships.
-5. Run only a cheap metadata/feasibility calculation. **Reject C003 immediately** if the only available question simply reproduces the known feasible-set/sampling explanation.
+1. Search current primary literature (prefer 2025–2026) across computational/experimental sciences for consequential observations where two credible explanations make different predictions.
+2. Shortlist **at most 3**. For each state:
+   - observed disagreement/anomaly;
+   - who cares / what decision changes;
+   - competing explanations;
+   - cheapest discriminating intervention or analysis;
+   - open raw discovery evidence and a genuinely independent confirmation source;
+   - contamination/prior-art risk.
+3. Prefer candidates where the central measurement is direct, one analysis unit maps cleanly to one independent experimental/observational unit, and confirmation can be withheld by source/file/session—not merely by row split.
+4. Penalize mature debates whose obvious discriminator is already published, and datasets requiring ambiguous census aggregation, derived traits, or brittle access.
+5. Choose one leader and run **metadata/access feasibility only** plus one cheap calibration thought experiment. Do not open substantive outcomes until discovery/confirmation roles and a stop rule are frozen.
 
-If C003 fails that gate, do a fresh discrepancy scout rather than forcing the original shortlist.
+Resource budget remains FOSS/local, <=2 GB source data before next checkpoint, <=30 CPU-min per bounded analysis.
 
 ## Ranked next actions
 
-1. C003 feasibility gate above.
-2. Fresh discrepancy scout across computational/experimental sciences, prioritizing clean independent confirmation and inexpensive perturbations.
-3. Preserve C001/C002 unopened confirmation evidence; do not spend it on stopped methods.
+1. Fresh discrepancy scout above.
+2. If no candidate clears the relevance + clean-confirmation gate, broaden domains rather than lowering the gate.
+3. Preserve C001/C002 untouched confirmation evidence; C003 is closed after confirmation failure.

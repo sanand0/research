@@ -244,3 +244,68 @@ All four C002 result-producing scripts were executed twice with identical explic
 - First remote HDF5 attempt lacked `aiohttp`; adding the explicit dependency fixed it before spike access.
 - An initial fixed-neuron calibration exceeded a 120-s command limit without producing a result; the exact design was preserved and rerun with a bounded 300-s execution allowance, completing in ~125 s.
 - Inspecting `mrestimator.coefficients.sm_method` initially failed because the package-level name resolves to the exported function rather than the module; `importlib.import_module` fixed the source inspection.
+
+## 2026-09-09 — C003 Taylor-law dominance interpretation
+
+### Gate and sharpened discrepancy
+
+The original C003 idea (“Taylor's law: biology or sampling?”) was too mature. A sharper current claim was found in Gracia et al. 2026 (Ecography, DOI 10.1002/ecog.08242): within-community temporal Taylor slopes `b<2` are interpreted as a widespread potential stabilizing effect of dominant plant species. Classic feasible-set work (Xiao, Locey & White 2015, DOI 10.1086/682050) establishes that Taylor-law form can emerge from constraints without process-specific mechanisms.
+
+The frozen C003 discriminator therefore became: does `b<2` / declining CV with mean cover exceed a null preserving species totals, year totals, and occurrence support while destroying species-specific temporal magnitudes?
+
+A literature search did not locate an obvious published use of exactly this continuous row+column-margin/support null for the 2026 within-community dominance interpretation. This is not a novelty claim.
+
+### Data-source gating
+
+- LOTVS/Dryad for the 2026 global analysis exposes derived outputs/code but not raw abundance matrices due data ownership, so it could not directly support the null test.
+- Cedar Creek annual species-sorted biomass had excellent semantics but EDI/PASTA API access was brittle (403); not selected for live dependence.
+- `fridley_2009` BioTIMEx plant data were rejected before values because their annual vertical-pin contact measurement is exactly a frequency/point-intercept class excluded by Gracia et al. for anomalously low `b`.
+- Discovery source selected before mean/variance analysis: BioTIME study 713 (Matesanz et al. 2009), percentage cover in three permanent 1 m2 plots across 24 common census years.
+- Initial confirmation source BioTIME 569 rejected from metadata before raw access: BioTIME exposes Count only, no Cover BIOMAS.
+- Replacement BioTIME 240 passed cover metadata but failed the frozen structural gate after raw access: 40 quadrat-years had two distinct Sep/Oct samples. No Taylor/CV outcome statistic was computed; selecting/averaging a season would have been post-access repair.
+- Fresh confirmation BioTIME 627 passed: ODC-BY cover data, 5 permanent Danish heath plots x 10 unique censuses, 50 samples exactly.
+
+### Frozen null and calibration
+
+For each plot, random positive cover magnitudes over the full species x census matrix are balanced by iterative proportional fitting to preserve exactly species totals and annual community totals while keeping the observed positive/zero support fixed. Primary support weights are iid Exponential(1); lognormal(0,1) is a frozen sensitivity. Metrics are computed only on species present >=15% of census years with nonzero temporal variance; >=4 eligible species required.
+
+Primary statistic: OLS Taylor slope `b`. Secondary concordance statistic: unweighted mean species CV / abundance-weighted mean species CV. Plot pass: lower-tail p(b)<=.025 AND upper-tail p(CVratio)<=.025 using 999 nulls.
+
+Toy calibration: 0/20 joint false positives and 20/20 injected dominance-stabilization detections. Real discovery support calibration passed under both null families for all three plots (0–1/20 false positives; 16–20/20 injected detections). Result hashes and exact values are in `RESULTS-C003.md` / ledger.
+
+### Discovery
+
+Study 713 raw SHA-256 `e31072a1eea3c972a52262a0da44193cd722c6cff9a2907437af2a148bd6a757`.
+
+Observed b: Plot 1 1.5065; Plot 2 1.3218; Plot 3 1.2587. Discovery gate passed because Plots 1 and 3 were extreme under both statistics/families (p .001–.002); Plot 2 was not (p roughly .028–.096 depending statistic/family).
+
+This is the first useful surprise: Plot 2 has a raw slope lower than Plot 1 but is less exceptional once conditioned on its own occurrence/margin geometry. Raw b ranking is not the same as evidence for extra temporal organization.
+
+The null itself usually produces b<2 (median b ~1.40–1.65 across discovery plots).
+
+### Confirmation
+
+Before final confirmation values, the study-level criterion was frozen: same plot-level rule; require >=5 eligible plots; for each null family, observed plot-pass count must be in upper 2.5% of a study-level pseudo-observation pass-count distribution; additionally >=20% of eligible plots must pass under both families.
+
+Study 627 raw SHA-256 `51f63ac966f4eb26f3048707894591b41b33bea23e638662c8bbe9c51d252420`.
+
+All five raw b values are <2: 1.6561, 1.7254, 1.6659, 1.6716, 1.8473. Yet 0/5 plots pass either constraint-null family; study-level p=1.0 under each family. Individual b p-values are roughly .36–.99, not borderline. Confirmation result SHA-256 `4e75f219116a59786e8bce6a2493145f034a8bcf5e58e939b7fc65b58583125b`, reproduced exactly.
+
+Independent DuckDB zero-grid/regr_slope derivation matched all eight observed slopes to floating-point precision.
+
+### Decision and interpretation
+
+**STOP C003 after failed confirmation.** Do not now decompose which constraint generates low b, change the null, or search for another favorable confirmation on these data.
+
+The extra temporal organization found in 2/3 German steppe plots did not generalize to the Danish heath ecosystem. No general dominance-stabilization claim is justified.
+
+Reusable narrower result: comparing `b` only against 2 is mechanistically non-diagnostic in these communities because the prespecified occurrence+margin constraint null itself typically has b<2. This does not prove biological stabilization absent: the null conditions on margins/support that can themselves contain biological information, and two discovery plots had additional structure. It does show that “b<2 therefore dominance stabilization” needs a stronger null than b=2.
+
+### C003 implementation/tool failures
+
+- Zenodo BioDyn API timed out; avoided as a live dependency.
+- Cedar Creek PASTA EML/data endpoint returned 403 although the browser landing page was reachable; source was not forced.
+- `gh api --jq -r` was an invalid invocation; retried with supported jq output + base64 decode.
+- One DuckDB summary used reserved/awkward alias `rows`; corrected without changing analysis.
+- One confirmation structural DuckDB query incorrectly mixed grouped/windowed expressions; split into two queries.
+- BioTIME 569 and 240 confirmation-source failures are scientific execution failures documented above, not tool failures or negative outcomes.
