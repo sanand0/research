@@ -454,3 +454,19 @@ Result `results/c012_semantic_gate.json` SHA-256 `42febae1469e3159bdddec5402fbe1
 ### Benchmark design correction
 
 The adaptive C001–C014 sequence cannot estimate agent question-selection quality. The prospective benchmark therefore freezes the candidate pool independently of the selector and runs all selected questions through one neutral common executor. Primary endpoint is confirmed + blinded-expert-useful, with confirmation and usefulness reported separately as well. Truly unseen collaborator/prospective confirmation evidence is required; public historical holdouts are rehearsal unless contamination is addressed.
+
+## 2026-09-09 — clean offline talk rehearsal + CFP draft
+
+Rehearsed commit `bd6ec1f` from detached clean worktree `/tmp/latent-experiments-2-rehearsal`, copying only C012 discovery labs 1/3/5/7 into ignored cache. Confirmation labs 2/4/6/8 were absent before and after.
+
+After dependency warm-up, the exact offline demo took 5.15 s total: calibration 4.875 s, semantic gate 0.275 s. Result hashes exactly matched committed fallbacks (`8e72ae...76c83`, `42febae...bcf49`) and the clean worktree remained unchanged.
+
+`unshare -n` is not permitted in this container. Rehearsal therefore used `uv --offline`, dead HTTP/HTTPS/ALL proxies, and `strace -f -e trace=network`. `strace` showed only local AF_UNIX socketpair traffic and no Internet socket/connect attempt. Talk commands were hardened to explicit `uv run --offline --script`.
+
+Created `REHEARSAL.md` and `CFP-DRAFT.md`. Live SciPy India Pretalx currently asks for session type, title, track, abstract, detailed description, optional notes and resources. Selected Talk / AI, machine learning, and data-driven discovery; Reproducibility is the secondary fit. Local branch is 24 commits ahead of `origin/main`, so no stale GitHub resource URL should be submitted before an explicit push/publication step.
+
+### Publication-readiness check
+
+GitHub `sanand0/research` is public, but local main is 24 commits ahead. All 24 ahead commits are the original `latent-experiments` pilot (15) plus `latent-experiments-2` (9) and root index changes. Pushing current main would publish both histories.
+
+No LICENSE/COPYING file exists at root or project level. Public visibility is not an open-source license. Do not advertise the repository itself as FOSS or choose a legal license without Anand's explicit decision. `PUBLICATION-READINESS.md` records the boundary and reasonable options. No push/submission performed.

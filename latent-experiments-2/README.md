@@ -8,7 +8,7 @@ This project is separate from `latent-experiments/`. The pilot is evidence about
 
 ## Current status
 
-**No independently confirmed new domain-science claim after C001–C014. Broad scouting is stopped by prior commitment. The project has now extracted its defensible contribution into `SCIENTIFIC-LOOP.md`, a talk-ready `TALK-NARRATIVE.md`, and a prospective question-selection experiment in `AGENT-BENCHMARK.md`. The recommended SciPy direction is to treat an AI research agent as an uncalibrated scientific instrument and demonstrate the empirical-null, applicability, confirmation, measurement-semantic and replication-unit gates that repeatedly changed conclusions. C012 now has a deterministic structure-only semantic demo (`results/c012_semantic_gate.json`) that stops before any Hue–Heat effect and leaves confirmation labs unopened. See `PROJECT-REASSESSMENT.md`.**
+**No independently confirmed new domain-science claim after C001–C014. Broad scouting is stopped by prior commitment. The methodological contribution is extracted into `SCIENTIFIC-LOOP.md`, `TALK-NARRATIVE.md`, and `AGENT-BENCHMARK.md`. A clean-worktree offline rehearsal now passes (`REHEARSAL.md`): the C012 computation takes ~5.15 s, reproduces both committed hashes, attempts no Internet socket connection under `uv --offline`, computes no Hue–Heat effect, and leaves confirmation labs unopened. `CFP-DRAFT.md` maps the talk directly to the live SciPy India Pretalx fields. `PUBLICATION-READINESS.md` records the remaining license/publication decisions; no external push or CFP submission has been made. See `PROJECT-REASSESSMENT.md`.**
 
 ### C001 — repeated TEM-1 DMS maps: stopped
 

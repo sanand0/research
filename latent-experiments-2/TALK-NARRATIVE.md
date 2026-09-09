@@ -127,7 +127,7 @@ Point out:
 #### Step 2 — Run statistical calibration
 
 ```bash
-uv run analysis/c012_calibrate.py
+uv run --offline --script analysis/c012_calibrate.py
 ```
 
 Expected final calibration:
@@ -149,7 +149,7 @@ Key sentence:
 #### Step 3 — Run the semantic gate
 
 ```bash
-uv run analysis/c012_semantic_gate.py --data-dir cache/c012-discovery
+uv run --offline --script analysis/c012_semantic_gate.py --data-dir cache/c012-discovery
 ```
 
 Expected headline:
@@ -252,7 +252,7 @@ Before the session:
 - [ ] `uv` dependencies warmed in cache;
 - [ ] discovery-only C012 files present under ignored `cache/c012-discovery/`;
 - [ ] verify no `lab2`, `lab4`, `lab6`, `lab8` file exists in the C012 cache;
-- [ ] run `uv run analysis/c012_calibrate.py` twice and compare result hash;
+- [ ] run `uv run --offline --script analysis/c012_calibrate.py` twice and compare result hash;
 - [ ] run semantic gate once and compare committed result;
 - [ ] disable network for rehearsal to prove offline operation;
 - [ ] keep screenshots/precomputed JSON as fallback;

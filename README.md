@@ -1,6 +1,6 @@
 # Research
 
-- 09 Sep 2026: [`latent-experiments-2`](latent-experiments-2/). Falsification-first agentic science case series; extracted a reusable calibration/confirmation protocol, safe live demo, and prospective question-selection benchmark after broad scouting was stopped.
+- 09 Sep 2026: [`latent-experiments-2`](latent-experiments-2/). Falsification-first agentic science case series; extracted a reusable protocol, offline-rehearsed safe demo, CFP draft, and prospective question-selection benchmark after broad scouting was stopped.
 - 07 Sep 2026: [`singapore-train-timings`](singapore-train-timings/). A quick check to see how Singapore trains compare with Japanese trains. See [Singapore Train Timings](https://sanand0.github.io/research/singapore-train-timings/).
 - 31 Aug 2026: [`gemini-omni-1.1-flash-videos`](gemini-omni-1.1-flash-videos/). Research and experiments on Gemini Omni 1.1 Flash video generation. See [Gemini Omini 1.1 Flash](https://sanand0.github.io/research/gemini-omni-1.1-flash-videos/).
 - 01 Aug 2026: [`simplification-prompt`](simplification-prompt/). Asking a model to simplify its writing also reduces its thinking quality.

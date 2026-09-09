@@ -69,21 +69,17 @@ True domain novelty remains a separate unresolved goal. Pursue it only via a tar
 
 ## Exact next action
 
-Run a **clean offline talk rehearsal**; do not search for a new scientific candidate.
+The local talk/CFP package is complete. The remaining blockers are **external/legal decisions**, so do not act on them without explicit user instruction.
 
-1. From a clean checkout/worktree, warm only declared FOSS dependencies, then disable network for the actual rehearsal.
-2. Verify the C012 live sequence end-to-end and time it:
-   - inspect frozen evidence roles;
-   - run `analysis/c012_calibrate.py`;
-   - run `analysis/c012_semantic_gate.py` on discovery labs only;
-   - show the STOP state and audit that confirmation labs 2/4/6/8 were never materialized.
-3. Verify precomputed offline fallbacks (`results/c012_calibration.json`, `results/c012_semantic_gate.json`) and all result hashes.
-4. Draft `CFP-DRAFT.md` from `TALK-NARRATIVE.md`: title, concise abstract, audience, three takeaways, FOSS/open-science fit, and explicit claims-not-made. Do not inflate the adaptive C001–C014 case series into a benchmark.
-5. If the rehearsal exposes a demo failure, fix only the minimum talk artifact/script required. Do not build a framework.
+1. Ask/await an explicit license choice before labeling the repository itself open-source. See `PUBLICATION-READINESS.md`.
+2. Ask/await explicit approval to publish: current `main` is 24 commits ahead of the public remote and pushing it would publish both the original `latent-experiments` pilot and `latent-experiments-2`.
+3. After an approved push, verify the public project URL and add it to Pretalx resources.
+4. Submit the SciPy India CFP only on explicit user request; use `CFP-DRAFT.md` without inflating claims.
+5. No scout 005. Genuine new domain science requires collaborator/prospective evidence.
 
 ## Ranked next actions
 
-1. Offline rehearsal + demo timing/confirmation-access audit.
-2. CFP-ready submission draft.
-3. If true domain novelty is still desired, seek collaborator/prospective evidence outside this repo; no scout 005.
-4. Implement `AGENT-BENCHMARK.md` only when genuinely unseen collaborator/prospective packets exist.
+1. User decision: license and publication boundary.
+2. User-requested push/publication.
+3. User-requested CFP submission.
+4. Physical-laptop rehearsal closer to the event.
