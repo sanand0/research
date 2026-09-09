@@ -8,7 +8,7 @@ This project is separate from `latent-experiments/`. The pilot is evidence about
 
 ## Current status
 
-**C001 and C002 stopped before confirmation; C003 completed a positive discovery but failed frozen independent confirmation; fresh scouts 001 and 002 both produced no survivor. Scout 002 rejected three explicit expert disagreements because the decisive observable was missing (C007), the discriminator was already published (C008), or the only available mechanism proxy was itself disputed (C009). No independently confirmed new scientific claim yet. Next: measurement-complete fresh scout 003.**
+**C001 and C002 stopped before confirmation; C003 completed a positive discovery but failed frozen independent confirmation; fresh scouts 001–003 produced no survivor. Scout 003 rejected C010 because independent confirmation aggregated away the unit-level pairing needed by the mechanism test, and C011 because the exact pigmentation/perfusion pulse-oximetry discriminator is already mature prior art. No independently confirmed new scientific claim yet. Next: one replicated-intervention scout, then project-level reassessment if it also fails.**
 
 ### C001 — repeated TEM-1 DMS maps: stopped
 
@@ -46,9 +46,9 @@ All four stochastic C002 result files reproduced byte-identically across two run
 
 ## Candidate ranking
 
-1. **Fresh discrepancy scout.** Search current 2025–2026 primary literature for consequential observations with two credible explanations and clean, source-level independent confirmation.
-2. **Prefer direct measurements + cheap perturbations.** Penalize mature debates, ambiguous aggregation, derived traits, and confirmation that can only be made by arbitrary row splits.
-3. **Do not reopen C001/C002/C003.** C001/C002 methods failed before confirmation; C003 failed independent confirmation. Any follow-on requires a new claim and fresh evidence.
+1. **Fresh scout 004 — replicated interventions.** Prefer repeated interventions across independent batches/sites/labs with direct mediator + outcome and identical measurement semantics.
+2. **Require unit-aligned confirmation.** Having the same variable names in two datasets is insufficient if aggregation destroys the analysis-unit pairing required by the discriminator.
+3. **Reassess after scout 004.** If it produces no survivor, stop broad scouting and evaluate a talk centered on the disciplined scientific loop itself rather than lowering the gate.
 
 ### C003 — Taylor-law dominance interpretation: failed confirmation
 
@@ -68,6 +68,12 @@ Reusable lesson: **search for the implied discriminating experiment before inves
 C007 (sea-star wasting disease) was an unusually consequential explicit causation dispute, but the critics' decisive requested evidence is lesion histopathology/spatial pathogen localization. The public Dryad/NCBI evidence contains disease trajectories and coelomic-fluid sequencing, not that pathology; reanalyzing the proxy cannot manufacture the missing observation. C008 (ReDeeM mitochondrial lineage tracing) had excellent orthogonal lineage ground truth, but the exact filter-vs-ground-truth discriminator is already addressed in the 2026 reply and MitoDrift work. C009 (InAs–Al parity readout versus a superconducting gap) had excellent open code and device-level holdout potential, but the obvious transport-derived "gap" score is itself the physical proxy under dispute; without an orthogonal gap measurement at the same tuning points, a correlation analysis cannot adjudicate the disagreement. See `scouts/FRESH-SCOUT-002.md`.
 
 Reusable lesson: **verify that the decisive observable is actually present and independent of the disputed proxy before treating an open dataset as capable of resolving a mechanism dispute.**
+
+### Fresh scout 003 — no survivor
+
+C010 (MuST-C SunScan versus destructive LAI) had unusually good discovery-side measurement completeness and a concrete spatial-heterogeneity-versus-senescence discrepancy. The best independent open confirmation, however, averaged SunScan over 50 plots while destructive LAI came from five plots, so it could not preserve the same-unit structure needed by the mechanism test; no MuST-C numeric LAI outcomes were opened. C011 (pulse-oximetry pigmentation versus perfusion/anatomy) was rejected before OpenOximetry outcomes because controlled-desaturation multivariable work already directly studies pigmentation, perfusion, hypoxemia, finger anatomy and device error. See `scouts/FRESH-SCOUT-003.md`.
+
+Reusable lesson: **measurement completeness includes unit alignment: discovery and confirmation must preserve the same unit-level pairing required by the discriminator.**
 
 ## Minimal execution layer
 

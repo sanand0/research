@@ -377,3 +377,19 @@ Scout 003 must therefore verify the decisive observable is already measured, pub
 - A bundled Dryad files-list fetch+parse was blocked before LocalMCP execution; split network fetch and local parse succeeded.
 - Dryad metadata/file listing worked, but `/api/v2/files/.../download` returned HTTP 401. This did not matter scientifically because the decisive pathology variable was absent from the public file descriptions.
 - Zenodo record and README requests for record 14804380 each timed out after 15 s. GitHub code was sufficient for metadata/coordinate feasibility; no attempt was made to work around the live-access weakness after C009 failed the identifiability gate.
+
+## 2026-09-09 — Fresh discrepancy scout 003
+
+### C010 MuST-C LAI discrepancy — rejected for confirmation-unit misalignment
+
+MuST-C offered a clean discovery discrepancy: indirect SunScan versus destructive green-leaf LAI, with authors proposing spatial heterogeneity versus senescent/brown vegetation as distinct explanations. BonnData exposes the reference-data package separately (~2.06 MB), and repository metadata show the needed plot/date/crop measurement structure. Numeric MuST-C LAI outcomes were not opened.
+
+Independent confirmation search found Edinburgh DataShare DOI `10.7488/ds/2989`. Its README says SunScan observations are averaged across 50 trial plots by date/treatment whereas destructive LAI is from five plots. Thus it cannot preserve the same-unit pairing needed to test spatial representativeness versus senescence. A bounded follow-up search found no compatible independent open archive. C010 was rejected rather than using within-MuST-C crop splitting as confirmation.
+
+### C011 pulse-oximetry pigmentation/perfusion — rejected on prior art
+
+A controlled-desaturation OpenOximetry analysis could directly condition pulse-oximeter error on objective skin pigmentation, perfusion and anatomy while using arterial SaO2 as gold standard. No numeric OpenOximetry outcomes were opened. Discriminator-specific search found controlled-hypoxia multivariable evidence already establishing joint skin-pigment/perfusion/hypoxemia effects, plus a 2026 34-device study measuring ITA, finger diameter and percent modulation, and 2026 EquiOx adjusting for perfusion in prospective ICU data. C011 therefore fails novelty/usefulness.
+
+### Scout conclusion
+
+No survivor. New lesson: variable-level measurement completeness is not enough; independent confirmation must preserve the **same analysis-unit alignment** needed by the mechanism test. Next scout should focus on replicated interventions with direct mediator/outcome measurements and independent experimental batches, rather than another observational instrument-bias problem.
