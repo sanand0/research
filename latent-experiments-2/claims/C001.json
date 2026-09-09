@@ -1,14 +1,27 @@
 {
   "claim_id": "C001",
-  "status": "feasibility",
+  "status": "stopped_before_confirmation",
   "protein": "BLAT_ECOLX",
   "question": "Are cross-assay TEM-1 DMS disagreements mostly calibratable scale/noise, or reproducible mutation-specific context effects?",
-  "discovery": ["BLAT_ECOLX_Firnberg_2014", "BLAT_ECOLX_Stiffler_2015"],
-  "confirmation": ["BLAT_ECOLX_Jacquier_2013"],
-  "control": ["BLAT_ECOLX_Deng_2012"],
+  "discovery": [
+    "BLAT_ECOLX_Firnberg_2014",
+    "BLAT_ECOLX_Stiffler_2015"
+  ],
+  "confirmation": [
+    "BLAT_ECOLX_Jacquier_2013"
+  ],
+  "control": [
+    "BLAT_ECOLX_Deng_2012"
+  ],
   "metadata_access": "accessed",
-  "discovery_scores": "not_accessed",
+  "discovery_scores": "accessed",
   "confirmation_scores": "not_accessed",
   "control_scores": "not_accessed",
-  "holdout_note": "Procedural holdout only; public data and model pretraining prevent a claim of secure blinding."
+  "holdout_note": "Procedural holdout only; public data and model pretraining prevent a claim of secure blinding.",
+  "discovery_access_date": "2026-09-09",
+  "raw_discovery_scores": "accessed",
+  "raw_discovery_note": "Firnberg raw linear column; Stiffler raw file includes 0/39/156/625/2500 ampicillin, cefotaxime, replicate columns, km, vmax.",
+  "stop_reason": "Broad context-dependence is established in prior literature, and the proposed position-residual detector fails empirical calibration: all five same-condition Stiffler replicate pairs trigger the nominal permutation null; Firnberg\u2192Stiffler position eta2 lies within that technical-null range.",
+  "result_file": "results/c001_calibration.json",
+  "result_sha256": "2eae5d560d0683778176677c167aa79a39458788556c0f1f249c7da6ebdb5e8b"
 }

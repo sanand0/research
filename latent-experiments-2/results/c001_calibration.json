@@ -1,0 +1,79 @@
+{
+  "seed": 20260909,
+  "common_mutants": 4782,
+  "cross_study_firnberg_to_stiffler2500": {
+    "n": 4782,
+    "spearman": 0.9372627227032779,
+    "rmse_after_cv_isotonic": 0.3073887997404545,
+    "residual_sd": 0.3074208262690314,
+    "position_eta2": 0.21512889269013105,
+    "position_null_p": 0.0024937655860349127,
+    "position_null_95": 0.06539104912397278
+  },
+  "known_null_same_condition_stiffler_replicates": {
+    "0": {
+      "n": 4763,
+      "spearman": 0.4159100919130062,
+      "rmse_after_cv_isotonic": 0.10525047316879144,
+      "residual_sd": 0.10526135438637615,
+      "position_eta2": 0.45354147710293424,
+      "position_null_p": 0.0024937655860349127,
+      "position_null_95": 0.06464792450229813
+    },
+    "39": {
+      "n": 4763,
+      "spearman": 0.3868104572135369,
+      "rmse_after_cv_isotonic": 0.1368006182453925,
+      "residual_sd": 0.1368137852416191,
+      "position_eta2": 0.29453240934861535,
+      "position_null_p": 0.0024937655860349127,
+      "position_null_95": 0.06884256140185847
+    },
+    "156": {
+      "n": 4763,
+      "spearman": 0.5267901280684189,
+      "rmse_after_cv_isotonic": 0.1703674255169589,
+      "residual_sd": 0.17038426261171508,
+      "position_eta2": 0.1862519214110164,
+      "position_null_p": 0.0024937655860349127,
+      "position_null_95": 0.06980988504334619
+    },
+    "625": {
+      "n": 4763,
+      "spearman": 0.7482312995896467,
+      "rmse_after_cv_isotonic": 0.23882703281123774,
+      "residual_sd": 0.2388519493141677,
+      "position_eta2": 0.22769358349164665,
+      "position_null_p": 0.0024937655860349127,
+      "position_null_95": 0.06643883725032189
+    },
+    "2500": {
+      "n": 4763,
+      "spearman": 0.936597663981922,
+      "rmse_after_cv_isotonic": 0.35152607826341514,
+      "residual_sd": 0.35156293777395947,
+      "position_eta2": 0.23746579223339243,
+      "position_null_p": 0.0024937655860349127,
+      "position_null_95": 0.06570809488006137
+    }
+  },
+  "known_context_shift_stiffler39_to_stiffler2500": {
+    "n": 4782,
+    "spearman": 0.37010112716945065,
+    "rmse_after_cv_isotonic": 0.9772628381874388,
+    "residual_sd": 0.9773639998953536,
+    "position_eta2": 0.5255164696177892,
+    "position_null_p": 0.0024937655860349127,
+    "position_null_95": 0.06572567320848495
+  },
+  "replicate_noise_sd": 0.17038426261171508,
+  "injected_position_effect_power_by_replicate_noise_multiple": {
+    "0.5": 1.0,
+    "1.0": 1.0,
+    "2.0": 1.0
+  },
+  "calibration_valid": false,
+  "calibration_failure_rule": "Invalid if any same-condition replicate pair is rejected by the nominal position permutation null at alpha=0.05.",
+  "injected_power_interpretable": false,
+  "injection_note": "Random position effects; SD is a multiple of the median same-condition replicate residual SD. Null preserves cross-study residual magnitude and heteroskedasticity by permuting within Firnberg score deciles. Power is not interpretable if calibration_valid is false."
+}
