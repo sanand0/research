@@ -8,7 +8,7 @@ This project is separate from `latent-experiments/`. The pilot is evidence about
 
 ## Current status
 
-**C001 and C002 stopped before confirmation; C003 completed a positive discovery but failed frozen independent confirmation; fresh scouts 001–003 produced no survivor. Scout 003 rejected C010 because independent confirmation aggregated away the unit-level pairing needed by the mechanism test, and C011 because the exact pigmentation/perfusion pulse-oximetry discriminator is already mature prior art. No independently confirmed new scientific claim yet. Next: one replicated-intervention scout, then project-level reassessment if it also fails.**
+**No independently confirmed new domain-science claim after C001–C014. C001/C002 stopped at calibration/applicability gates; C003 passed discovery then failed frozen independent confirmation; four fresh scouts produced no survivor without lowering the scientific gate. Broad scouting is now stopped by prior commitment. The recommended SciPy direction is to treat an AI research agent as an uncalibrated scientific instrument and demonstrate the empirical-null, applicability, confirmation, measurement-semantic and replication-unit gates that repeatedly changed conclusions. See `PROJECT-REASSESSMENT.md`.**
 
 ### C001 — repeated TEM-1 DMS maps: stopped
 
@@ -44,11 +44,18 @@ Reusable lesson: **“subsampling-invariant” estimation is conditional on mode
 
 All four stochastic C002 result files reproduced byte-identically across two runs.
 
-## Candidate ranking
+## Candidate ranking / next phase
 
-1. **Fresh scout 004 — replicated interventions.** Prefer repeated interventions across independent batches/sites/labs with direct mediator + outcome and identical measurement semantics.
-2. **Require unit-aligned confirmation.** Having the same variable names in two datasets is insufficient if aggregation destroys the analysis-unit pairing required by the discriminator.
-3. **Reassess after scout 004.** If it produces no survivor, stop broad scouting and evaluate a talk centered on the disciplined scientific loop itself rather than lowering the gate.
+1. **Stop broad candidate scouting.** Scout 004 was the frozen final attempt; creating scout 005 would be candidate fishing after a repeated no-survivor result.
+2. **Extract the proven scientific-loop protocol and talk demo.** Use C001 (empirical null), C002 (applicability), C003 (failed confirmation), and C012 (replication/measurement semantics).
+3. **Keep true domain novelty separate.** Pursue it only when a collaborator/prospective dataset supplies the decisive observable and source-level replication before analysis.
+4. **If benchmarking the agent, design a new frozen baseline comparison.** Do not infer an AI success/failure rate from this adaptive 14-candidate case series.
+
+### Fresh scout 004 — no survivor; broad scouting stopped
+
+C012 (eight-lab Hue–Heat) survived prior-art/access/calibration gates but stopped before any red-vs-blue effect because nominally identical physiology schemas encoded incompatible skin anatomy and incompatible HR coverage across discovery labs. Its calibration still produced a reusable result: participant-dominated pooling was anti-conservative; treating labs as the replication unit yielded 3.0% null pass rate and 93.9% power for a +0.10 °C effect in the frozen simulation. C013 (bur-oak reciprocal transplant) lacked clean same-mechanism garden-level confirmation; C014 (global antipredator coloration) duplicated published heterogeneous-mechanism analyses and used mostly site-level mediators. See `scouts/FRESH-SCOUT-004.md`.
+
+Reusable lesson: **replication requires common biological measurement semantics at the replication unit, not merely a common protocol or column schema.**
 
 ### C003 — Taylor-law dominance interpretation: failed confirmation
 

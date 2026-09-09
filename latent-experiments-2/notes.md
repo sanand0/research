@@ -393,3 +393,44 @@ A controlled-desaturation OpenOximetry analysis could directly condition pulse-o
 ### Scout conclusion
 
 No survivor. New lesson: variable-level measurement completeness is not enough; independent confirmation must preserve the **same analysis-unit alignment** needed by the mechanism test. Next scout should focus on replicated interventions with direct mediator/outcome measurements and independent experimental batches, rather than another observational instrument-bias problem.
+
+## 2026-09-09 — Fresh discrepancy scout 004 and project reassessment
+
+Scout 004 was the precommitted final broad scout and required replicated interventions with same-unit intervention/mediator/outcome, identical measurement semantics and source-level confirmation.
+
+### C012 Hue–Heat multi-lab physiology — stopped before outcome effect
+
+The coordinated eight-lab Hue–Heat dataset initially looked like the strongest replicated intervention found in the project. Odd labs 1/3/5/7 were frozen as discovery and even labs 2/4/6/8 as confirmation before CSV-value access. The 2026 multi-site perception analysis reports no CCT effect on thermal sensation/preference; an unresolved possibility was a reproducible physiological effect without a perceptual effect.
+
+Before real effects, a synthetic four-lab calibration invalidated participant-dominated fixed-effect pooling. The final rule treats laboratory as the replication unit: equal-weight lab-level one-sample t test, >=3/4 lab effects positive, and all leave-one-lab-out pooled effects positive. In 1,000 simulations the final rule passed 3.0% under true zero and 93.9% for a +0.10 C effect. Result SHA `8e72ae7abf9bd0f8c1440a5ccd3f06a409c1b0efb4e2d5c38e68c3fcc5576c83`, byte-identical on rerun.
+
+Only discovery labs were downloaded. A semantics/missingness gate then stopped the analysis before any red-vs-blue physiological effect:
+- Lab 1 records only back/shin skin temperatures.
+- Lab 3 records most/all ten sites.
+- Lab 5 records ten sites with heterogeneous missingness.
+- Lab 7 records only hand skin temperature.
+Thus `mean available skin temperature` would not represent the same anatomy across labs.
+
+Heart rate cannot repair the primary: Lab 1 lacks HRinst; Lab 7 has essentially no usable terminal-window HRave rounds. No common adequately observed HR variable spans all four discovery labs.
+
+No hue effect was computed. Confirmation labs 2/4/6/8 remain unopened. Reusable lesson: **shared schemas can hide incompatible biological measurements.**
+
+### C013 bur oak — rejected at scout gate
+
+The reciprocal-transplant release has same-tree physiology, growth, survival and phenology across Minnesota/Illinois/Oklahoma. A possible phenology-vs-physiology explanation of growth-survival decoupling was not promoted: only three gardens exist; the two extreme gardens represent opposite stresses, so using one as discovery and one as confirmation assumes transportability of mechanism; current 2026 papers already analyze local adaptation, physiology, selection and morphology extensively.
+
+### C014 global antipredator coloration — rejected at scout gate
+
+The 21-site replicated artificial-prey intervention is strong experimentally, but the 2026 paper already analyzes the relevant heterogeneous effects of predation pressure/background/light/prey context, and many mediators are site-level rather than same-target measurements.
+
+### Broad scouting stop
+
+Scout 004 has no survivor. Per the frozen rule, **do not create scout 005**. See `scouts/FRESH-SCOUT-004.md`.
+
+### Project-level conclusion
+
+There is no independently confirmed new domain-science claim from C001–C014. This is a case series, not a random benchmark, so do not convert 0/14 into a claimed population failure rate.
+
+What is well supported is a methodological story: agentic scientific analysis repeatedly produced or approached believable conclusions that were reversed by empirical-null calibration, applicability tests, independent confirmation, prior-art gates, decisive-observable checks, unit alignment, measurement semantics or replication-unit calibration. See `PROJECT-REASSESSMENT.md`.
+
+Recommended SciPy direction: **How do you calibrate an AI scientist?** Treat the agent as an uncalibrated scientific instrument; demonstrate the gates with C001/C002/C003 and a live C012 semantics/calibration check. True domain novelty should now be pursued via a targeted collaborator's under-analysed replicated dataset or a prospective experiment where the decisive measurement is chosen before collection, not via broader public-archive scouting.

@@ -4,84 +4,72 @@ Updated: 2026-09-09 SGT
 
 ## Phase
 
-`C001 STOPPED -> C002 STOPPED -> C003 FAILED CONFIRMATION -> SCOUT 001 NO SURVIVOR -> SCOUT 002 NO SURVIVOR -> SCOUT 003 NO SURVIVOR -> FRESH SCOUT 004`.
+`C001 STOPPED -> C002 STOPPED -> C003 FAILED CONFIRMATION -> SCOUTS 001–004 NO SURVIVOR -> PROJECT REASSESSMENT -> TALK/PROTOCOL EXTRACTION`.
 
-## Durable completed paths
+## Durable scientific state
 
-### C001 — TEM-1 repeated DMS maps
+- **C001:** stopped before confirmation; empirical same-condition replicate structure invalidated a tempting permutation-null residual. Jacquier/Deng remain unopened. Commit `2d5a21e`.
+- **C002:** stopped after one discovery mouse; estimator applicability failed on real VISp data despite branching-family calibration. Eleven discovery mice and all 12 confirmation mice remain unopened. Commit `eb02a4b`.
+- **C003:** positive discovery in 2/3 German steppe plots failed frozen independent confirmation in 0/5 Danish heath plots. Constraint null itself usually had `b<2`. Commit `5afac40`.
+- **Scout 001:** no survivor; exact-discriminator prior art killed C004 and C005/C006 failed confirmation/causal gates. Commit `3b47bc6`.
+- **Scout 002:** no survivor; C007 lacked decisive pathology, C008 discriminator already published, C009 lacked independent same-setting gap observable. Commit `4fe1dd2`.
+- **Scout 003:** no survivor; C010 confirmation destroyed same-unit LAI pairing, C011 was mature multivariable prior art. Commit `57bad75`.
+- **Scout 004:** no survivor. C012 stopped before hue-effect calculation because discovery labs did not share anatomically comparable skin-temperature measurements or a common adequately observed HR variable. Confirmation labs 2/4/6/8 remain unopened. C013/C014 rejected at scout gates. See `scouts/FRESH-SCOUT-004.md`.
 
-**STOP before confirmation.** Cross-assay residual structure was no larger than real same-condition replicate structure; broad context dependence was already established. Jacquier confirmation and Deng control remain unopened. Commit `2d5a21e`.
+## C012 calibration result worth preserving
 
-Lesson: empirical replicate nulls can invalidate attractive permutation-based biological signals.
+Before real outcomes, synthetic calibration rejected participant-dominated inverse-variance pooling for a multi-lab replication claim. Final analysis treats laboratory as the replication unit: equal-weight lab-level one-sample t test + >=3/4 positive + leave-one-lab-out positivity. In 1,000 simulations:
 
-### C002 — neuronal criticality / subsampling
+- true 0.00 °C: 3.0% pass rate;
+- +0.05 °C: 47.6% power;
+- +0.10 °C: 93.9% power;
+- +0.15 °C: 99.9% power.
 
-**STOP after one discovery mouse, before confirmation.** MR calibrated on branching simulations but failed its correlation-form applicability gate in the first Allen VISp mouse; bounded heterogeneity/state-switch simulations did not reproduce that failure. Eleven eligible discovery mice and all 12 confirmation mice remain unopened. Commit `eb02a4b`.
+Result SHA-256 `8e72ae7abf9bd0f8c1440a5ccd3f06a409c1b0efb4e2d5c38e68c3fcc5576c83`, reproduced byte-identically.
 
-Lesson: subsampling robustness is conditional on model applicability.
+## Project-level assessment
 
-### C003 — Taylor-law dominance interpretation
+There is **no independently confirmed new domain-science claim**. Do not convert this adaptive C001–C014 case series into a population estimate of AI discovery success/failure.
 
-**FAILED CONFIRMATION / STOP.** Constraint-preserving null found extra dominance-like organization in 2/3 German steppe discovery plots but 0/5 reserved Danish heath confirmation plots. All raw slopes were `<2`; the null itself typically produced `b<2`. Commit `5afac40`.
+The well-supported contribution is methodological: treating the research agent as an **uncalibrated scientific instrument** and using explicit gates that repeatedly changed whether results deserved belief:
 
-Lesson: `b<2` alone is mechanistically non-diagnostic; positive discovery that fails frozen independent confirmation stays failed.
+1. empirical known-null calibration;
+2. known-positive/power calibration;
+3. model/applicability checks distinct from estimator output;
+4. exact-discriminator prior-art search;
+5. decisive-observable and measurement-semantic checks;
+6. source-level discovery/confirmation access guards;
+7. replication at the true independent unit;
+8. deterministic reruns and independent verification;
+9. explicit stop rules that preserve nulls/failures.
 
-### Scout 001 — no survivor
+See `PROJECT-REASSESSMENT.md`.
 
-C004 methane representativeness rejected because the exact chamber-vs-EC discriminator was already published; C005/C006 failed clean-confirmation/causal-leverage gates. Commit `3b47bc6`.
+## SciPy direction
 
-Lesson: search the implied discriminator, not merely the topic/dataset.
+Recommended proposition: **How do you calibrate an AI scientist?**
 
-### Scout 002 — no survivor
+Use C001, C002 and C003 as three scientific failure modes and C012 as a compact live semantic/calibration gate. This is a scientific-computing/open-science talk, not a claim that AI cannot discover science.
 
-C007 sea-star wasting lacked the decisive lesion-pathology observation; C008 mtDNA-lineage filtering already had orthogonal-ground-truth prior art; C009 parity-vs-gap had only the disputed transport proxy rather than an independent same-setting gap observable. No substantive numeric outcomes opened. Commit `4fe1dd2`.
-
-Lesson: the decisive observable must exist and be independent of the disputed proxy.
-
-### Scout 003 — no survivor
-
-See `scouts/FRESH-SCOUT-003.md`.
-
-- **C010 — MuST-C SunScan vs destructive LAI:** rejected before numeric outcomes. Discovery data have direct repeated SunScan + destructive green-LAI measurements and plausible spatial-mismatch vs senescence mechanisms. The best independent open confirmation (Edinburgh DataShare `10.7488/ds/2989`) averages SunScan over 50 plots by date/treatment while destructive LAI comes from five plots, destroying the same-unit pairing required by the discriminator. A bounded search found no independent open raw same-unit pairing. Do not substitute within-MuST-C crop splitting for independent confirmation.
-- **C011 — pulse-oximetry pigmentation vs perfusion/anatomy:** rejected before OpenOximetry outcomes. Controlled-desaturation multivariable work already shows joint effects of pigmentation, perfusion and hypoxemia; the 2026 34-device study measures objective ITA, finger diameter and percent modulation, and 2026 EquiOx adjusts for perfusion.
-- A synchronized radar/ECG/accelerometry/breath-hold dataset was screened but not promoted: respiration harmonics, body motion and breath-hold isolation are already standard radar-vital-sign validation questions.
-
-Lesson: **variable completeness is insufficient; independent confirmation must preserve the same analysis-unit alignment needed by the discriminator.**
-
-## Scientific progress vs engineering progress
-
-Scientific progress: **no independently confirmed new scientific claim yet.** C001/C002 stopped at calibration/applicability, C003 passed discovery then failed confirmation, and three fresh scouts killed weak candidates before spending substantive outcome/confirmation evidence.
-
-Engineering progress: sufficient. Evidence-role guards, semantic gates, calibrated nulls, independent verification, deterministic reruns and stop transitions work. Do not build more infrastructure.
-
-Search-process progress:
-1. search the implied discriminator, not only the topic/dataset;
-2. verify the decisive observable exists and is independent of disputed proxies;
-3. verify discovery and confirmation preserve the same **unit-level measurement alignment** needed by the test.
+True domain novelty remains a separate unresolved goal. Pursue it only via a targeted collaborator's under-analysed replicated dataset or a prospective experiment in which the decisive observable is collected by design. Do **not** resume broad public-archive scouting in this repo.
 
 ## Three-step assessment
 
-1. **Did scout 003 find a well-measured unresolved discrepancy? Yes: C010.** But the independent archive aggregates away the decisive unit-level structure.
-2. **Can C010/C011 be repaired cheaply without redefining the claim? No.** Within-trial crop splitting would weaken confirmation; C011 is mature prior art.
-3. **Is another scout justified? Yes, once, with a stronger source structure.** Three no-survivor scouts are evidence that controversy/instrument-bias mining has low yield. Switch to replicated interventions. If scout 004 also has no survivor, reassess whether the SciPy talk should emphasize the disciplined discovery/failure loop rather than keep broad-scouting indefinitely.
+1. **Does continued broad scouting have positive expected value? No.** Four increasingly strict scouts produced no survivor, and the frozen rule required a strategy reassessment.
+2. **Can the current evidence support a strong SciPy contribution? Yes.** It contains reproducible examples where calibration/gating changed conclusions, including a complete discovery-to-failed-confirmation loop.
+3. **Is true new domain science solved? No.** Existing public archives repeatedly lacked the decisive observable/alignment or had already published the implied discriminator. Change evidence source, not standards.
 
-## Exact next action — fresh scout 004
+## Exact next action
 
-Run a **replicated-intervention scout** rather than another observational-measurement scout.
+Convert the accumulated evidence into a **minimal reusable protocol + talk-ready demonstration**, without building a platform:
 
-1. Search 2025–2026 primary studies/data for an intervention repeated across >=2 independent batches, laboratories, sites or organisms with **identical measurement semantics**.
-2. Start from a consequential heterogeneous or unexpected treatment response for which two explanations make different predictions. Require intervention, proposed mediator and endpoint to be directly observed on the same experimental unit.
-3. Require source-level confirmation from another batch/site/lab already present or from a genuinely independent public study; no arbitrary row split.
-4. Search the exact treatment-response discriminator before coding. Reject if already published.
-5. Prefer <1 GB, FOSS/public, no interactive authentication on live critical path.
-6. Shortlist at most 3. For the leader, inspect metadata/access only and run a known-null/known-positive calibration thought experiment; freeze roles and stop rule before substantive outcomes.
-
-If scout 004 has no survivor, stop broad scouting and explicitly reassess the talk direction using the accumulated C001–C011 evidence rather than lowering the scientific gate.
-
-Resource budget remains FOSS/local, <=2 GB source data before next checkpoint, <=30 CPU-min per bounded analysis.
+1. Create `SCIENTIFIC-LOOP.md`: a concise step-by-step protocol with a small claim-spec template, access ledger pattern, calibration checklist, confirmation rule and stop conditions, illustrated with C001/C003/C012.
+2. Create `TALK-NARRATIVE.md`: a 30-minute SciPy India narrative and live-demo plan; prefer C012 for the live gate because it can fail safely before outcome analysis, with C003 as the full discovery/confirmation case.
+3. Specify a separate `AGENT-BENCHMARK.md` experiment if we want to scientifically evaluate question selection. Freeze a candidate-generation protocol and human/rule-based baseline; do not use the adaptive C001–C014 case series as the benchmark.
+4. Do not perform any new domain scout unless new collaborator/prospective evidence is supplied.
 
 ## Ranked next actions
 
-1. Fresh scout 004 above: replicated interventions with direct mediator + outcome and source-aligned confirmation.
-2. If no survivor, perform a project-level scientific post-mortem and evaluate a talk centered on why agentic science needs calibration, semantic gates and frozen confirmation.
-3. Preserve untouched C001/C002 confirmation evidence; C003–C011 are closed/rejected under their current questions.
+1. Extract `SCIENTIFIC-LOOP.md` and `TALK-NARRATIVE.md`.
+2. Design the whole-agent benchmark separately.
+3. Seek one collaborator/prospective dataset for genuine new domain science; keep that path logically separate from talk-method validation.
