@@ -1,0 +1,22 @@
+{
+  "claim_id": "C004",
+  "status": "rejected_prior_art_before_real_outcomes",
+  "question": "Do sparse/manual chamber measurements bias Arctic-boreal monthly or annual methane flux estimates relative to continuous eddy-covariance observations after ecosystem-by-month representation is corrected?",
+  "initial_source": "ABCFlux v2 / ORNL DAAC 2448",
+  "real_flux_values_accessed": false,
+  "metadata_and_user_guide_accessed": true,
+  "synthetic_calibration": {
+    "file": "results/c004_sampling_calibration.json",
+    "sha256": "3e76e854e3a09a31db83b9986383b7d9410913c3491ac9d44f2d79c90b8fc0ea",
+    "result": "between-stratum reweighting can remove class/time imbalance but cannot repair within-stratum preferential measurement-day sampling"
+  },
+  "prior_art": {
+    "citation": "Määttä et al. 2026, Biogeosciences 23:4379-4445",
+    "doi": "10.5194/bg-23-4379-2026",
+    "published": "2026-07-03",
+    "reason": "Already compares coincident chamber and eddy-covariance CH4 across ten sites from half-hourly through annual scales and analyzes spatial heterogeneity, chamber placement/footprints, protocol and environmental drivers."
+  },
+  "decision": "reject",
+  "stop_reason": "The sharpened empirical discriminator is already published; continuing with new ABCFlux data would be rediscovery rather than a fresh scientific contribution.",
+  "holdout_note": "No ABCFlux methane flux outcomes were opened; there is no confirmation evidence to spend because the candidate was rejected on prior art."
+}

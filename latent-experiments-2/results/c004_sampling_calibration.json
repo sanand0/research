@@ -1,0 +1,51 @@
+{
+  "claim_id": "C004",
+  "status": "synthetic_feasibility_only",
+  "real_flux_values_accessed": false,
+  "synthetic_design": {
+    "ecosystem_area_weights": [
+      0.7,
+      0.3
+    ],
+    "synthetic_flux_bases": [
+      1.0,
+      3.0
+    ],
+    "observed_site_counts": [
+      35,
+      45
+    ],
+    "measurement_days_per_month": 3,
+    "months": 12
+  },
+  "unbiased_sparse_sampling": {
+    "preferential_high_flux_day_sampling": false,
+    "n_reps": 200,
+    "naive_mean_relative_bias": 0.32328930575362236,
+    "naive_rmse_relative": 0.32656214694677244,
+    "reweighted_mean_relative_bias": -0.0031448517928960172,
+    "reweighted_rmse_relative": 0.031045120117624773,
+    "reweighted_bias_q025_q975": [
+      -0.053657670759709536,
+      0.05959476613941078
+    ]
+  },
+  "preferential_hot_day_sampling": {
+    "preferential_high_flux_day_sampling": true,
+    "n_reps": 200,
+    "naive_mean_relative_bias": 0.8925880741926995,
+    "naive_rmse_relative": 0.8948227794997261,
+    "reweighted_mean_relative_bias": 0.4228391536460175,
+    "reweighted_rmse_relative": 0.4251763402656561,
+    "reweighted_bias_q025_q975": [
+      0.34347545588768646,
+      0.5115609282721484
+    ]
+  },
+  "calibration_checks": {
+    "area_month_reweighting_recovers_unbiased_sparse_sampling": true,
+    "naive_estimator_is_materially_biased_by_class_oversampling": true,
+    "area_month_reweighting_does_not_hide_within_stratum_preferential_sampling": true
+  },
+  "interpretation": "Ecosystem\u00d7month reweighting can correct observed stratum imbalance, but cannot identify/correct preferential measurement days within a stratum. C004 therefore needs an empirical continuous-vs-sparse measurement comparison, not only coverage reweighting."
+}

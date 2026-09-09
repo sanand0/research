@@ -309,3 +309,29 @@ Reusable narrower result: comparing `b` only against 2 is mechanistically non-di
 - One DuckDB summary used reserved/awkward alias `rows`; corrected without changing analysis.
 - One confirmation structural DuckDB query incorrectly mixed grouped/windowed expressions; split into two queries.
 - BioTIME 569 and 240 confirmation-source failures are scientific execution failures documented above, not tool failures or negative outcomes.
+
+## 2026-09-09 — Fresh discrepancy scout 001
+
+Started after C003 failed confirmation. Search filter: 2025–2026 primary literature, consequential unresolved observation, direct measurement, source/file-level discovery/confirmation, inexpensive intervention, and explicit prior-art search for the implied discriminator.
+
+### C004 methane measurement representativeness — rejected on prior art
+
+ABCFlux v2 (Virkkala et al. 2026 / ORNL DAAC 2448) is unusually attractive operationally/scientifically: >1,000 Arctic-boreal sites, monthly CH4, ecosystem class, month, flux method, chamber measurement-day count, gap-fill variables, and quality flags. Public guide/metadata were inspected; no real CH4 flux outcomes were opened. Download bundle is ~5.4 MB but requires Earthdata sign-in, so a live demo would need an identical hash-verified local fallback.
+
+Initial idea — simply correct ecosystem/month overrepresentation — was weakened by existing bottom-up methods that already use land-cover classes. Sharpened idea: distinguish between-stratum representativeness from within-stratum sparse/manual chamber sampling bias relative to continuous EC.
+
+Synthetic calibration (`analysis/c004_sampling_calibration.py`) deliberately oversamples a high-flux class. Under random sparse measurement days, target ecosystem×month weighting removes the induced class imbalance (mean relative bias -0.003 vs naive +0.323). Under preferential high-flux-day sampling the same weighting remains +0.423 biased. Thus coverage reweighting cannot answer the sharper measurement question; paired continuous-vs-sparse evidence is required. Result SHA `3e76e854e3a09a31db83b9986383b7d9410913c3491ac9d44f2d79c90b8fc0ea`.
+
+A discriminator-specific prior-art search then found Määttä et al. 2026, *Biogeosciences*, DOI `10.5194/bg-23-4379-2026`, published 3 Jul 2026. It already compares coincident chamber and EC methane across ten sites at half-hourly/hourly/daily/weekly/monthly/annual scales, quantifies disagreement and investigates spatial heterogeneity, chamber placement/EC footprints, measurement protocol/frequency, ebullition handling and environmental drivers. C004 therefore fails novelty/usefulness before real outcomes. **STOP.**
+
+### C005 human LO decoding without reported awareness — demoted
+
+Vanhoyland et al. 2025 explicitly leave backward-masking long-delay decoding among reported-unseen targets ambiguous between genuine unconscious information and occasional perceptual/report errors. Figshare metadata are clean and CC BY 4.0, but `BACKWARD MASKING.zip` is ~94.3 GB and related paradigms 20–46 GB. More importantly, a clean matched no-report confirmation of the same target-identity estimand is not obvious, while report-confound/unconscious-perception is a mature debate. No raw outcomes opened.
+
+### C006 oceanography DAS versus actual sharing — demoted
+
+Dunić & Vilibić 2026 report 1,400 oceanography papers, with sharply rising data-availability statements but broadly flat public accessibility. Supplementary XLSX is small (~648 KB) and article-level; year sheets include journal/country/OA/DAS/public-access fields. A possible Simpson's-paradox question is whether aggregate flatness hides within-journal improvement. However this remains observational and does not identify policy effects; prior natural-experiment/interrupted-time-series work already shows stringent/enforced journal data policies can alter sharing. Schema/sample only inspected; no model fit.
+
+### Scout conclusion
+
+No survivor. The key correction is methodological: **search for the implied discriminating experiment before implementing a new-dataset analysis.** Topic-level and dataset-level novelty searches were insufficient for C004; the exact paired chamber-vs-EC query killed it immediately.

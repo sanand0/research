@@ -8,7 +8,7 @@ This project is separate from `latent-experiments/`. The pilot is evidence about
 
 ## Current status
 
-**C001 and C002 stopped before confirmation; C003 completed a positive discovery but failed frozen independent confirmation. No independently confirmed new scientific claim yet. Next: fresh discrepancy scout.**
+**C001 and C002 stopped before confirmation; C003 completed a positive discovery but failed frozen independent confirmation; fresh scout 001 produced no survivor after C004 was killed by prior art and C005/C006 failed the clean-confirmation gate. No independently confirmed new scientific claim yet. Next: intervention-focused fresh scout 002.**
 
 ### C001 — repeated TEM-1 DMS maps: stopped
 
@@ -55,6 +55,12 @@ All four stochastic C002 result files reproduced byte-identically across two run
 A constraint-preserving null fixed every species total, census total, and occurrence mask. Discovery in three German steppe cover plots found extra dominance-like temporal organization in 2/3 plots. Frozen confirmation in five independent Danish heath plots found 0/5 passes despite every raw Taylor slope being below 2; study-level p=1.0 under both null generators.
 
 Reusable lesson: **`b<2` alone is mechanistically non-diagnostic.** In all eight analyzed plots the constraint null itself typically produced `b<2` (median roughly 1.4–1.8). Some communities showed extra organization beyond those constraints, but it did not generalize. See `RESULTS-C003.md`.
+
+### Fresh scout 001 — no survivor
+
+C004 used newly released ABCFlux v2 to ask whether CH4 observation-network representativeness is a between-ecosystem/time problem or a within-stratum sparse-measurement problem. Synthetic calibration showed ecosystem×month weighting can remove class oversampling but not preferential high-flux-day sampling. The exact needed empirical chamber-vs-eddy-covariance comparison, however, was already published across ten sites and multiple timescales in July 2026, so C004 was rejected before real flux outcomes. C005 (unperceived LO decoding) and C006 (data-availability statements) were demoted for weak clean confirmation / mature prior art. See `scouts/FRESH-SCOUT-001.md`.
+
+Reusable lesson: **search for the implied discriminating experiment before investing in a newly enabled dataset analysis.**
 
 ## Minimal execution layer
 
