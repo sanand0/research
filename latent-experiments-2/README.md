@@ -8,7 +8,7 @@ This project is separate from `latent-experiments/`. The pilot is evidence about
 
 ## Current status
 
-**No independently confirmed new domain-science claim after C001–C014. C001/C002 stopped at calibration/applicability gates; C003 passed discovery then failed frozen independent confirmation; four fresh scouts produced no survivor without lowering the scientific gate. Broad scouting is now stopped by prior commitment. The recommended SciPy direction is to treat an AI research agent as an uncalibrated scientific instrument and demonstrate the empirical-null, applicability, confirmation, measurement-semantic and replication-unit gates that repeatedly changed conclusions. See `PROJECT-REASSESSMENT.md`.**
+**No independently confirmed new domain-science claim after C001–C014. Broad scouting is stopped by prior commitment. The project has now extracted its defensible contribution into `SCIENTIFIC-LOOP.md`, a talk-ready `TALK-NARRATIVE.md`, and a prospective question-selection experiment in `AGENT-BENCHMARK.md`. The recommended SciPy direction is to treat an AI research agent as an uncalibrated scientific instrument and demonstrate the empirical-null, applicability, confirmation, measurement-semantic and replication-unit gates that repeatedly changed conclusions. C012 now has a deterministic structure-only semantic demo (`results/c012_semantic_gate.json`) that stops before any Hue–Heat effect and leaves confirmation labs unopened. See `PROJECT-REASSESSMENT.md`.**
 
 ### C001 — repeated TEM-1 DMS maps: stopped
 
@@ -46,10 +46,19 @@ All four stochastic C002 result files reproduced byte-identically across two run
 
 ## Candidate ranking / next phase
 
-1. **Stop broad candidate scouting.** Scout 004 was the frozen final attempt; creating scout 005 would be candidate fishing after a repeated no-survivor result.
-2. **Extract the proven scientific-loop protocol and talk demo.** Use C001 (empirical null), C002 (applicability), C003 (failed confirmation), and C012 (replication/measurement semantics).
-3. **Keep true domain novelty separate.** Pursue it only when a collaborator/prospective dataset supplies the decisive observable and source-level replication before analysis.
-4. **If benchmarking the agent, design a new frozen baseline comparison.** Do not infer an AI success/failure rate from this adaptive 14-candidate case series.
+1. **Do not resume broad candidate scouting.** Scout 004 was the frozen final attempt.
+2. **Rehearse the extracted talk/protocol offline.** The live path is C012 role freeze → synthetic calibration → structure-only semantic gate → STOP, with C003 as the completed discovery/confirmation story.
+3. **Prepare the CFP submission from the talk narrative.** Keep the methodological claim narrow: explicit gates changed whether results deserved belief.
+4. **Keep true domain novelty separate.** Pursue it only when a collaborator/prospective dataset supplies the decisive observable and source-level replication before analysis.
+5. **Treat `AGENT-BENCHMARK.md` as a new prospective experiment.** Do not infer selector quality from the adaptive C001–C014 case series.
+
+## Reusable outputs
+
+- `SCIENTIFIC-LOOP.md` — minimal falsification-first protocol, claim template, access ledger and calibration/confirmation gates.
+- `TALK-NARRATIVE.md` — 24-minute talk + 6-minute Q&A narrative with a safe C012 live demo and offline fallback.
+- `AGENT-BENCHMARK.md` — prospective benchmark isolating question selection from common analysis execution.
+- `analysis/c012_semantic_gate.py` — structure/missingness-only demo; deliberately computes no hue effect.
+- `results/c012_semantic_gate.json` — deterministic semantic-stop artifact, SHA-256 `42febae1469e3159bdddec5402fbe19498bcba57ebd558f9ca12165baadbcf49`.
 
 ### Fresh scout 004 — no survivor; broad scouting stopped
 

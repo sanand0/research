@@ -434,3 +434,23 @@ There is no independently confirmed new domain-science claim from C001–C014. T
 What is well supported is a methodological story: agentic scientific analysis repeatedly produced or approached believable conclusions that were reversed by empirical-null calibration, applicability tests, independent confirmation, prior-art gates, decisive-observable checks, unit alignment, measurement semantics or replication-unit calibration. See `PROJECT-REASSESSMENT.md`.
 
 Recommended SciPy direction: **How do you calibrate an AI scientist?** Treat the agent as an uncalibrated scientific instrument; demonstrate the gates with C001/C002/C003 and a live C012 semantics/calibration check. True domain novelty should now be pursued via a targeted collaborator's under-analysed replicated dataset or a prospective experiment where the decisive measurement is chosen before collection, not via broader public-archive scouting.
+
+## 2026-09-09 — protocol/talk/benchmark extraction
+
+After the frozen scout-004 stop, broad public-archive scouting was not resumed. The accumulated evidence was converted into three reusable artifacts:
+
+- `SCIENTIFIC-LOOP.md`: falsification-first protocol with evidence-role freeze, semantic gates, empirical null/known-positive calibration, model applicability, confirmation and stop rules.
+- `TALK-NARRATIVE.md`: 24-minute SciPy narrative + 6-minute Q&A. C012 is the live safe-failure demo; C003 is the complete positive-discovery → independent-confirmation-failure case.
+- `AGENT-BENCHMARK.md`: prospective benchmark that freezes a common candidate pool and uses a common executor, isolating question selection from coding/statistical execution.
+
+### C012 semantic demo hardened
+
+A consistency audit confirmed the earlier missingness table had been read correctly: it reported *missing* values. Lab 1 actually has only `Tsk_J`/back and `Tsk_Q`/shin populated; lab 7 only `Tsk_H`/hand. Labs 3/5 have all ten skin sites. Therefore the intersection of measured skin sites across discovery labs 1/3/5/7 is empty.
+
+`analysis/c012_semantic_gate.py` now reproduces this structure-only result without computing any reddish-minus-bluish effect. It also checks the frozen terminal-window heart-rate availability: `HRinst` has 0/50 usable rounds in lab 1; `HRave` has 0/17 in lab 7. No common HR field has even one qualifying terminal-window round in every discovery lab.
+
+Result `results/c012_semantic_gate.json` SHA-256 `42febae1469e3159bdddec5402fbe19498bcba57ebd558f9ca12165baadbcf49`, identical on rerun. Confirmation labs 2/4/6/8 remain unopened.
+
+### Benchmark design correction
+
+The adaptive C001–C014 sequence cannot estimate agent question-selection quality. The prospective benchmark therefore freezes the candidate pool independently of the selector and runs all selected questions through one neutral common executor. Primary endpoint is confirmed + blinded-expert-useful, with confirmation and usefulness reported separately as well. Truly unseen collaborator/prospective confirmation evidence is required; public historical holdouts are rehearsal unless contamination is addressed.

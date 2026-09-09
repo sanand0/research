@@ -66,5 +66,14 @@
   },
   "stop_reason": "Discovery labs do not share an anatomically comparable skin-temperature measurement, and no common heart-rate variable has adequate coverage across all four discovery labs. A pooled physiological Hue-Heat effect would therefore compare different biological quantities across laboratories.",
   "outcome_effects_computed": false,
-  "confirmation_accessed": false
+  "confirmation_accessed": false,
+  "semantic_gate": {
+    "result": "results/c012_semantic_gate.json",
+    "sha256": "42febae1469e3159bdddec5402fbe19498bcba57ebd558f9ca12165baadbcf49",
+    "reruns_identical": true,
+    "hue_effect_computed": false,
+    "common_skin_sites": [],
+    "common_hr_variables_with_any_terminal_round_in_every_lab": [],
+    "lesson": "identical CSV schemas did not imply a shared physiological measurement across laboratories"
+  }
 }

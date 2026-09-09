@@ -4,7 +4,7 @@ Updated: 2026-09-09 SGT
 
 ## Phase
 
-`C001 STOPPED -> C002 STOPPED -> C003 FAILED CONFIRMATION -> SCOUTS 001–004 NO SURVIVOR -> PROJECT REASSESSMENT -> TALK/PROTOCOL EXTRACTION`.
+`C001 STOPPED -> C002 STOPPED -> C003 FAILED CONFIRMATION -> SCOUTS 001–004 NO SURVIVOR -> PROJECT REASSESSMENT -> PROTOCOL/TALK/BENCHMARK EXTRACTED -> OFFLINE REHEARSAL`.
 
 ## Durable scientific state
 
@@ -26,6 +26,14 @@ Before real outcomes, synthetic calibration rejected participant-dominated inver
 - +0.15 °C: 99.9% power.
 
 Result SHA-256 `8e72ae7abf9bd0f8c1440a5ccd3f06a409c1b0efb4e2d5c38e68c3fcc5576c83`, reproduced byte-identically.
+
+## Extracted reusable artifacts
+
+- `SCIENTIFIC-LOOP.md`: minimal falsification-first protocol, claim spec, access ledger, calibration checklist, confirmation rule and stop conditions, with C001/C003/C012 examples.
+- `TALK-NARRATIVE.md`: 24-minute narrative + 6-minute Q&A, with C012 as a safe live gate and C003 as the full positive-discovery/failed-confirmation loop.
+- `AGENT-BENCHMARK.md`: prospective paired-packet experiment that freezes a common candidate pool, compares protocol-agent/rule/random/(optional human) selectors, and uses one neutral executor so question selection is not confounded with analysis skill.
+- `analysis/c012_semantic_gate.py`: discovery-only schema/missingness gate that computes no hue effect.
+- `results/c012_semantic_gate.json`: semantic-stop result SHA-256 `42febae1469e3159bdddec5402fbe19498bcba57ebd558f9ca12165baadbcf49`, reproduced byte-identically. Lab 1 has back/shin skin sites, lab 7 hand only; no skin site is common to all discovery labs. `HRinst` has no usable terminal round in lab 1 and `HRave` none in lab 7. Confirmation labs 2/4/6/8 remain unopened.
 
 ## Project-level assessment
 
@@ -61,15 +69,21 @@ True domain novelty remains a separate unresolved goal. Pursue it only via a tar
 
 ## Exact next action
 
-Convert the accumulated evidence into a **minimal reusable protocol + talk-ready demonstration**, without building a platform:
+Run a **clean offline talk rehearsal**; do not search for a new scientific candidate.
 
-1. Create `SCIENTIFIC-LOOP.md`: a concise step-by-step protocol with a small claim-spec template, access ledger pattern, calibration checklist, confirmation rule and stop conditions, illustrated with C001/C003/C012.
-2. Create `TALK-NARRATIVE.md`: a 30-minute SciPy India narrative and live-demo plan; prefer C012 for the live gate because it can fail safely before outcome analysis, with C003 as the full discovery/confirmation case.
-3. Specify a separate `AGENT-BENCHMARK.md` experiment if we want to scientifically evaluate question selection. Freeze a candidate-generation protocol and human/rule-based baseline; do not use the adaptive C001–C014 case series as the benchmark.
-4. Do not perform any new domain scout unless new collaborator/prospective evidence is supplied.
+1. From a clean checkout/worktree, warm only declared FOSS dependencies, then disable network for the actual rehearsal.
+2. Verify the C012 live sequence end-to-end and time it:
+   - inspect frozen evidence roles;
+   - run `analysis/c012_calibrate.py`;
+   - run `analysis/c012_semantic_gate.py` on discovery labs only;
+   - show the STOP state and audit that confirmation labs 2/4/6/8 were never materialized.
+3. Verify precomputed offline fallbacks (`results/c012_calibration.json`, `results/c012_semantic_gate.json`) and all result hashes.
+4. Draft `CFP-DRAFT.md` from `TALK-NARRATIVE.md`: title, concise abstract, audience, three takeaways, FOSS/open-science fit, and explicit claims-not-made. Do not inflate the adaptive C001–C014 case series into a benchmark.
+5. If the rehearsal exposes a demo failure, fix only the minimum talk artifact/script required. Do not build a framework.
 
 ## Ranked next actions
 
-1. Extract `SCIENTIFIC-LOOP.md` and `TALK-NARRATIVE.md`.
-2. Design the whole-agent benchmark separately.
-3. Seek one collaborator/prospective dataset for genuine new domain science; keep that path logically separate from talk-method validation.
+1. Offline rehearsal + demo timing/confirmation-access audit.
+2. CFP-ready submission draft.
+3. If true domain novelty is still desired, seek collaborator/prospective evidence outside this repo; no scout 005.
+4. Implement `AGENT-BENCHMARK.md` only when genuinely unseen collaborator/prospective packets exist.

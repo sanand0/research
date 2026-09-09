@@ -1,0 +1,121 @@
+{
+  "analysis_kind": "structure_and_missingness_only",
+  "claim_id": "C012",
+  "common_hr_variables_with_any_terminal_round_in_every_lab": [],
+  "common_skin_columns": [],
+  "common_skin_sites": [],
+  "confirmation_accessed": false,
+  "decision": "STOP: no common skin site and no HR variable has a usable terminal-window round in every discovery lab",
+  "discovery_labs": [
+    1,
+    3,
+    5,
+    7
+  ],
+  "hue_effect_computed": false,
+  "labs": {
+    "1": {
+      "available_skin_columns": [
+        "Tsk_J",
+        "Tsk_Q"
+      ],
+      "available_skin_sites": [
+        "back",
+        "shin"
+      ],
+      "file": "env_physiological_lab1.csv",
+      "rounds": 50,
+      "rows": 5550,
+      "sha256": "2266251ee0717eae6e946cf5053582f3a9beefdc1f405225ac2ad290be2c978b",
+      "terminal_hr_rounds": {
+        "HRave": 28,
+        "HRinst": 0
+      }
+    },
+    "3": {
+      "available_skin_columns": [
+        "Tsk_A",
+        "Tsk_D",
+        "Tsk_F",
+        "Tsk_H",
+        "Tsk_J",
+        "Tsk_K",
+        "Tsk_M",
+        "Tsk_O",
+        "Tsk_Q",
+        "Tsk_T"
+      ],
+      "available_skin_sites": [
+        "head",
+        "shoulder",
+        "forearm",
+        "hand",
+        "back",
+        "chest",
+        "abdomen",
+        "thigh",
+        "shin",
+        "foot"
+      ],
+      "file": "env_physiological_lab3.csv",
+      "rounds": 69,
+      "rows": 7354,
+      "sha256": "730e2a2d31152b4a02b024bebf2ac145646f4ce67a5b7b35fbfcf41fb88fa081",
+      "terminal_hr_rounds": {
+        "HRave": 61,
+        "HRinst": 61
+      }
+    },
+    "5": {
+      "available_skin_columns": [
+        "Tsk_A",
+        "Tsk_D",
+        "Tsk_F",
+        "Tsk_H",
+        "Tsk_J",
+        "Tsk_K",
+        "Tsk_M",
+        "Tsk_O",
+        "Tsk_Q",
+        "Tsk_T"
+      ],
+      "available_skin_sites": [
+        "head",
+        "shoulder",
+        "forearm",
+        "hand",
+        "back",
+        "chest",
+        "abdomen",
+        "thigh",
+        "shin",
+        "foot"
+      ],
+      "file": "env_physiological_lab5.csv",
+      "rounds": 94,
+      "rows": 10340,
+      "sha256": "da350b7df5db1cd660ec4133c2ce5a64579addc634985e3e7f22e146021a39e0",
+      "terminal_hr_rounds": {
+        "HRave": 60,
+        "HRinst": 62
+      }
+    },
+    "7": {
+      "available_skin_columns": [
+        "Tsk_H"
+      ],
+      "available_skin_sites": [
+        "hand"
+      ],
+      "file": "env_physiological_lab7.csv",
+      "rounds": 17,
+      "rows": 2023,
+      "sha256": "37a5617c698c35d98f9e1207e7aec7e90ab85b2e4eb943ae7c55ceed5d7973c3",
+      "terminal_hr_rounds": {
+        "HRave": 0,
+        "HRinst": 17
+      }
+    }
+  },
+  "semantic_gate_pass": false
+}
