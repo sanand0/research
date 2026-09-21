@@ -1,0 +1,87 @@
+{
+  "algorithms": {
+    "cma-s30": [
+      "cma",
+      {
+        "popsize_mult": 1.0,
+        "sigma_frac": 0.3
+      }
+    ],
+    "lshade-p2": [
+      "lshade",
+      {
+        "bound_correction": "saturate",
+        "lambda_per_d": 2
+      }
+    ],
+    "scipy-default-p15": [
+      "scipy",
+      {
+        "init": "latinhypercube",
+        "mutation": [
+          0.5,
+          1.0
+        ],
+        "popsize": 15,
+        "recombination": 0.7,
+        "strategy": "best1bin",
+        "updating": "immediate"
+      }
+    ],
+    "scipy-p2-halton": [
+      "scipy",
+      {
+        "init": "halton",
+        "mutation": [
+          0.5,
+          1.0
+        ],
+        "popsize": 2,
+        "recombination": 0.7,
+        "strategy": "best1bin",
+        "updating": "immediate"
+      }
+    ]
+  },
+  "budget_d": 200,
+  "dimension": 20,
+  "functions": [
+    2,
+    7,
+    11,
+    16,
+    21
+  ],
+  "instances": [
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "milestones_d": [
+    50,
+    100,
+    200
+  ],
+  "post_confirmation_rule": "No parameter changes or reinterpretation against failures.",
+  "primary_criterion": {
+    "comparison": "scipy-p2-halton vs scipy-default-p15",
+    "median_log10_advantage_min": 0.5,
+    "milestones_d": [
+      50,
+      100
+    ],
+    "problem_unit": "function x instance; median over seeds first",
+    "problem_unit_win_rate_min": 0.7
+  },
+  "secondary_questions": [
+    "Does early p2 vs late CMA crossover persist at unseen 20D problems?",
+    "Does L-SHADE p2 improve robustness relative to plain p2?",
+    "Do target success and NFE-to-target tell the same story as fixed-budget errors?"
+  ],
+  "seeds": [
+    1,
+    2
+  ]
+}

@@ -1,7 +1,7 @@
 # Research
 
 - 20 Sep 2026: [`cyphral-distich`](cyphral-distich/). Verified Claude Fable 5.1's Cyphral Distich reading 64/64 against the 1834 edition; found a Vals transcription error and an unresolved provenance gap because the surviving 1653 copy lacks the cipher and uses different Proquiritations.
-- 10 Sep 2026: [`algorithm-discovery`](algorithm-discovery/). Low-budget bounded optimization study: two candidate DE mechanisms rejected; found that 2D populations and crossover geometry dominate much of the apparent CMA gap, redirecting invention toward within-generation evaluation scheduling.
+- 21 Sep 2026: [algorithm-discovery](algorithm-discovery/). Low-budget DE study now enters a preregistered robustness phase: map when population size matters, whether ~2D is near-best, and where noise, multimodality, dimension, boundaries, or parallelism make it fail.
 - 09 Sep 2026: [`latent-experiments-2`](latent-experiments-2/). Falsification-first agentic science case series; extracted a reusable protocol, offline-rehearsed safe demo, CFP draft, and prospective question-selection benchmark after broad scouting was stopped.
 - 07 Sep 2026: [`singapore-train-timings`](singapore-train-timings/). A quick check to see how Singapore trains compare with Japanese trains. See [Singapore Train Timings](https://sanand0.github.io/research/singapore-train-timings/).
 - 31 Aug 2026: [`gemini-omni-1.1-flash-videos`](gemini-omni-1.1-flash-videos/). Research and experiments on Gemini Omni 1.1 Flash video generation. See [Gemini Omini 1.1 Flash](https://sanand0.github.io/research/gemini-omni-1.1-flash-videos/).

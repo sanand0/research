@@ -1,0 +1,26 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.log
+*.tmp
+*.prof
+.DS_Store
+
+# Generated / derived experiment outputs. Keep only primary append-only
+# evidence ledgers and frozen protocols under version control.
+results/*
+!results/runs.csv
+!results/pk-runs.csv
+!results/pk-ablation.csv
+!results/confirmation-runs.csv
+!results/pk-protocol.json
+!results/confirmation-protocol.json
+
+# New robustness runs are exploratory by default; raw ledgers live in
+# ~/.cache/algorithm-discovery/robustness/ until a checkpoint selects evidence.
+robustness-results/
