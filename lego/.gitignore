@@ -1,0 +1,4 @@
+.cache/
+*/build/
+*/build.zip
+.ruff_cache/

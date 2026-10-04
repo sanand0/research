@@ -1,0 +1,22 @@
+set shell := ["bash", "-cu"]
+
+default:
+    @just --list
+
+# Generate a project's LDraw model, BOM, BrickLink XML, and build coordinates.
+build project="ai-data":
+    uv run "{{project}}/generate.py" --output "{{project}}/build"
+
+# Fetch only the official LDraw geometry recursively required by a project.
+parts project="ai-data":
+    uv run scripts/fetch_ldraw.py --parts "{{project}}/parts.txt" --output .cache/ldraw
+
+# Render canonical views and every LDraw build step.
+render project="ai-data":
+    just build "{{project}}"
+    just parts "{{project}}"
+    ./scripts/render.sh "{{project}}"
+
+# Rebuild and render everything needed to verify a project.
+test project="ai-data":
+    just render "{{project}}"
