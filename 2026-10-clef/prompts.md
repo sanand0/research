@@ -19,3 +19,15 @@ Delete unnecessary files and commit the directory to the ~/code/research/ repo a
 ---
 
 Summarize what you did so far - and no need to commit or push - I'll do that myself.
+
+---
+
+I added a prompts.md and committed it.
+
+Hm... is there some approach like HTTP/2 or HTTP/3 or whatever that might help reduce latency? If yes, can you try benchmarking and get a sense of what's the lowest latency?
+
+Update README.md with the latest numbers - including from the current CSV which I ran on my machine and committed.
+
+---
+
+Delete what's not required, update README.md with findings, and commit.
