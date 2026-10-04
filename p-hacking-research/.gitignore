@@ -1,0 +1,9 @@
+data/
+cache/
+tmp/
+*.pdf
+*.xlsx
+*.zip
+*.rds
+*.parquet
+.DS_Store

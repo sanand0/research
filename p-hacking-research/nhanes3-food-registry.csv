@@ -1,0 +1,61 @@
+variable,start,end,label
+HAN1AS,1992,1994,Chocolate milk and hot cocoa - times/mo
+HAN1BS,1995,1998,Milk to drink or on cereal - times/month
+HAN1ES,2002,2004,Yogurt and frozen yogurt - times/month
+HAN1FS,2005,2007,"Ice cream,ice milk,milkshakes - times/mo"
+HAN1GS,2008,2010,"Cheese, all types - times/month"
+HAN1HS,2011,2013,"Pizza, calzone, lasagna - times/month"
+HAN1IS,2014,2016,Cheese dishes - times/month
+HAN2AS,2017,2019,Stew or soup with vegetables - times/mo
+HAN2BS,2020,2022,Spaghetti/pasta w/ tomato sauce-times/mo
+HAN2CS,2023,2026,Bacon/sausage/processed meats - times/mo
+HAN2DS,2027,2029,Liver and other organ meats - times/mo
+HAN2ES,2030,2032,Beef - times/month
+HAN2FS,2033,2035,Pork and ham - times/month
+HAN2GS,2036,2038,"Shrimp, clams, etc - times/mo"
+HAN2HS,2039,2041,Fish - times/month
+HAN2IS,2042,2044,Chicken and turkey - times/month
+HAN2JS,2045,2047,Eggs - times/month
+HAN3AS,2048,2050,"Orange juice, etc - times/month"
+HAN3BS,2051,2053,Other fruit juices - times/month
+HAN3CS,2054,2056,Citrus fruits - times/month
+HAN3DS,2057,2059,Melons - times/month
+HAN3ES,2060,2062,"Peaches, nectarines, etc - times/month"
+HAN3FS,2063,2065,Any other fruits - times/month
+HAN4AS,2066,2068,Carrots - times/month
+HAN4BS,2069,2071,Broccoli - times/month
+HAN4CS,2072,2074,Brussel sprouts/cauliflower - times/mo
+HAN4DS,2075,2077,White potatoes - times/month
+HAN4ES,2078,2080,"Sweet potatoes, yams, etc - times/month"
+HAN4FS,2081,2083,Tomatoes - times/month
+HAN4GS,2084,2086,"Spinach, greens, etc - times/month"
+HAN4HS,2087,2089,Tossed salad - times/month
+HAN4IS,2090,2092,"Cabbage, cole slaw, sauerkraut-times/mo"
+HAN4JS,2093,2095,Hot red chili peppers - times/month
+HAN4KS,2096,2098,Other peppers - times/month
+HAN4LS,2099,2101,Any other vegetables - times/month
+HAN5AS,2102,2104,"Beans, lentils, chickpeas - times/month"
+HAN5BS,2105,2107,"Peanuts, peanut butter, etc - times/mo"
+HAN5CS,2108,2110,"Cereals: All-Bran, etc - times/month"
+HAN5DS,2111,2113,"Cereals: Total, etc - times/month"
+HAN5ES,2114,2116,All other cold cereals - times/month
+HAN5FS,2117,2119,"Cooked, hot cereals - times/month"
+HAN5GS,2120,2122,"White bread, rolls, etc - times/month"
+HAN5HS,2123,2125,Dark breads and rolls - times/month
+HAN5IS,2126,2128,"Corn bread, muffins, tortillas-times/mo"
+HAN5JS,2129,2131,Flour tortillas - times/month
+HAN5KS,2132,2134,Rice - times/month
+HAN5LS,2135,2137,Salted snacks - times/month
+HAN6AS,2138,2141,"Cakes, cookies, brownies, etc - times/mo"
+HAN6BS,2142,2144,Chocolate candy and fudge - times/month
+HAN6CS,2145,2148,"Hi-C, Tang, Koolaid, etc - times/month"
+HAN6DS,2149,2151,"Diet colas, diet sodas, etc - times/mo"
+HAN6ES,2152,2155,Regular colas and sodas - times/month
+HAN6FS,2156,2159,Regular coffee - times/month
+HAN6GS,2160,2163,Regular tea - times/month
+HAN6HS,2164,2166,Beer and lite beer - times/month
+HAN6IS,2167,2169,"Wine, etc - times/month"
+HAN6JS,2170,2172,Hard liquor - times/month
+HAN7AS,2173,2175,Margarine - times/month
+HAN7BS,2176,2178,Butter - times/month
+HAN7CS,2179,2181,"Oil/vinegar, mayonnaise, etc - times/mo"
