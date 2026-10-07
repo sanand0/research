@@ -1,0 +1,1051 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can AI read an engineering drawing?</title>
+<meta name="description" content="We gave Codex a mechanical engineering drawing and FreeCAD. It built a plausible parametric part, checked itself, corrected itself — and still got the geometry badly wrong.">
+<meta property="og:title" content="Can AI read an engineering drawing?">
+<meta property="og:description" content="A small experiment in AI, CAD, self-correction, and what verification really means.">
+<meta property="og:image" content="assets/engineering-drawing.avif">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231b3155'/%3E%3Cpath d='M10 42h44M14 35l12-18 10 13 8-11 6 16' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script>
+(() => {
+  try {
+    const t = localStorage.getItem('edviz-theme');
+    if (t === 'dark' || t === 'light') document.documentElement.dataset.theme = t;
+  } catch {}
+})();
+</script>
+<style>
+:root {
+  --paper: #f5f2ea;
+  --paper-2: #ebe6da;
+  --card: #fffefb;
+  --ink: #172033;
+  --ink-2: #38445a;
+  --muted: #6d7482;
+  --line: #d5d0c5;
+  --blue: #255da5;
+  --blue-soft: #e8eff8;
+  --red: #a83d32;
+  --red-soft: #f5e7e3;
+  --green: #25764f;
+  --green-soft: #e4f0e9;
+  --gold: #a66b14;
+  --night: #172033;
+  --on-night: #f8f5ee;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --shadow: 0 2px 4px rgba(23,32,51,.06), 0 20px 50px rgba(23,32,51,.08);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #11151c; --paper-2: #181e28; --card: #1b222d;
+    --ink: #f2eee5; --ink-2: #d1d3d8; --muted: #9da5b1; --line: #343d4b;
+    --blue: #80ade9; --blue-soft: #1b2b41; --red: #f28e82; --red-soft: #392522;
+    --green: #73d29f; --green-soft: #173126; --gold: #e0ad59;
+    --night: #090c12; --on-night: #f8f5ee; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #11151c; --paper-2: #181e28; --card: #1b222d;
+  --ink: #f2eee5; --ink-2: #d1d3d8; --muted: #9da5b1; --line: #343d4b;
+  --blue: #80ade9; --blue-soft: #1b2b41; --red: #f28e82; --red-soft: #392522;
+  --green: #73d29f; --green-soft: #173126; --gold: #e0ad59;
+  --night: #090c12; --on-night: #f8f5ee; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 18px; line-height: 1.65;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+img { display: block; max-width: 100%; }
+a { color: var(--blue); text-underline-offset: .16em; }
+button, input { font: inherit; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 3px; }
+[id] { scroll-margin-top: 5rem; }
+
+.progress {
+  position: fixed; left: 0; top: 0; width: 0; height: 3px;
+  z-index: 1000; background: linear-gradient(90deg,var(--blue),var(--gold),var(--red));
+}
+.masthead {
+  position: sticky; top: 0; z-index: 500;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.masthead-inner {
+  max-width: 1280px; margin: auto; min-height: 54px;
+  padding: .55rem 1.25rem; display: flex; align-items: center;
+  justify-content: space-between; gap: .8rem;
+}
+.brand {
+  font: 600 .72rem var(--font-mono); letter-spacing: .1em;
+  text-transform: uppercase; color: var(--ink-2); text-decoration: none;
+}
+.nav { display: flex; align-items: center; gap: .35rem; }
+.nav a {
+  color: var(--muted); text-decoration: none; font: 500 .69rem var(--font-mono);
+  padding: .35rem .55rem; border-radius: 99px;
+}
+.nav a:hover, .nav a.active { color: var(--ink); background: var(--paper-2); }
+.theme {
+  appearance: none; border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  width: 34px; height: 34px; border-radius: 50%; cursor: pointer; display: grid; place-items: center;
+}
+
+.hero {
+  max-width: 1180px; margin: 0 auto;
+  padding: clamp(3rem,8vw,7rem) 1.4rem clamp(2rem,5vw,4rem);
+  text-align: center;
+}
+.eyebrow {
+  font: 600 .72rem var(--font-mono); color: var(--gold);
+  letter-spacing: .18em; text-transform: uppercase; margin-bottom: 1rem;
+}
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.06; letter-spacing: -.02em; }
+.hero h1 {
+  font-size: clamp(3rem,8.5vw,6.8rem); max-width: 1000px; margin: 0 auto 1.4rem;
+  font-weight: 600;
+}
+.hero .deck {
+  max-width: 720px; margin: 0 auto 2rem; color: var(--ink-2);
+  font-size: clamp(1.1rem,2.1vw,1.35rem);
+}
+.hero-drawing {
+  margin: 3rem auto 0; max-width: 1120px; background: white;
+  border: 1px solid var(--line); border-radius: 5px; box-shadow: var(--shadow);
+  padding: clamp(.45rem,1vw,.9rem);
+}
+.hero-drawing img { width: 100%; height: auto; }
+.caption {
+  max-width: 780px; margin: .8rem auto 0; color: var(--muted);
+  font-size: .82rem; font-family: var(--font-mono);
+}
+
+main { overflow: clip; }
+.story-section { padding: clamp(4rem,9vw,8rem) 1.4rem; }
+.story-section.tight { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+.inner { max-width: 1120px; margin: 0 auto; }
+.measure { max-width: 840px; margin-left: auto; margin-right: auto; }
+.measure > p { max-width: 720px; }
+.section-tag {
+  font: 600 .7rem var(--font-mono); letter-spacing: .16em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: .7rem;
+}
+.story-section h2 {
+  font-size: clamp(2.15rem,5vw,4.2rem); font-weight: 600;
+  max-width: 900px; margin: 0 0 1.25rem;
+}
+.story-section p { color: var(--ink-2); margin-block: 0 1.15rem; }
+.story-section p.measure { margin-inline: auto; }
+.lede { font-size: clamp(1.08rem,1.8vw,1.26rem); }
+.big-question {
+  font-family: var(--font-display); font-size: clamp(1.6rem,3vw,2.4rem);
+  color: var(--ink); line-height: 1.3;
+}
+
+.band { background: var(--paper-2); border-block: 1px solid var(--line); }
+.band.dark { background: var(--night); color: var(--on-night); border: 0; }
+.band.dark p, .band.dark .muted { color: #c5cad3; }
+.band.dark h2, .band.dark h3 { color: var(--on-night); }
+.band.blue { background: var(--blue-soft); }
+.band.red { background: var(--red-soft); }
+.band.green { background: var(--green-soft); }
+
+.split {
+  display: grid; grid-template-columns: minmax(0,1fr) minmax(360px,1fr);
+  gap: clamp(1.5rem,5vw,5rem); align-items: center;
+}
+.split.reverse { grid-template-columns: minmax(360px,1fr) minmax(0,1fr); }
+.split h2 { font-size: clamp(2rem, 3vw, 2.9rem); }
+.drawing-card, .cad-sheet {
+  background: #fff; border: 1px solid #d8d8d8; border-radius: 5px;
+  box-shadow: var(--shadow); padding: clamp(.35rem,1vw,.75rem);
+}
+.cad-sheet img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+.drawing-card img { width: 100%; }
+
+.give-list { display: grid; gap: 1rem; }
+.give {
+  display: grid; grid-template-columns: 2.6rem 1fr; gap: .8rem;
+  align-items: start; padding-bottom: 1rem; border-bottom: 1px solid var(--line);
+}
+.give:last-child { border-bottom: 0; }
+.give .n {
+  font: 600 .9rem var(--font-mono); color: var(--blue);
+  border: 1px solid currentColor; width: 2.3rem; height: 2.3rem;
+  display: grid; place-items: center; border-radius: 50%;
+}
+.give b { display: block; color: var(--ink); margin-bottom: .18rem; }
+.give span { color: var(--muted); font-size: .94rem; }
+
+.looking-visual {
+  max-width: 1080px; margin: 2.2rem auto 0;
+  display: grid; grid-template-columns: minmax(0,1.25fr) auto minmax(300px,.75fr);
+  gap: clamp(1rem,3vw,2rem); align-items: center;
+}
+.look-source {
+  background:#fff; border:1px solid var(--line); border-radius:5px; overflow:hidden;
+  box-shadow: var(--shadow); padding:.45rem;
+}
+.look-source img { width:100%; }
+.look-arrow { color:var(--gold); font-size:2.1rem; text-align:center; }
+.look-zooms { display:grid; grid-template-columns:repeat(3,1fr); gap:.55rem; }
+.look-crop {
+  aspect-ratio: 1.15; overflow:hidden; background:#fff; border:1px solid var(--line); border-radius:4px;
+  position:relative;
+}
+.look-crop img { width:230%; max-width:none; height:auto; position:absolute; }
+.look-crop.front img { left:-13%; top:-8%; }
+.look-crop.side img { left:-104%; top:-7%; }
+.look-crop.plan img { left:-23%; top:-90%; }
+.look-deadend {
+  margin-top:.75rem; display:flex; align-items:center; justify-content:center; gap:.6rem;
+  color:var(--red); font:600 .76rem var(--font-mono); text-transform:uppercase; letter-spacing:.08em;
+}
+.look-deadend i { font-size:1.3rem; }
+.workflow-turn {
+  max-width: 900px; margin: 2.8rem auto 0; text-align:center;
+  padding: 1.25rem 1.5rem; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  font-family:var(--font-display); font-size:clamp(1.45rem,2.7vw,2.15rem); line-height:1.35;
+}
+.workflow-turn strong { color:var(--blue); }
+
+.timeline {
+  max-width: 850px; margin: 2.2rem auto 0; display: grid;
+  grid-template-columns: repeat(4,1fr); gap: 0;
+}
+.timeline .step {
+  position: relative; text-align: center; padding: 2.8rem .7rem .6rem;
+  font-size: .88rem; color: var(--muted);
+}
+.timeline .step::before {
+  content: ""; position: absolute; top: 15px; left: 50%; width: 13px; height: 13px;
+  border-radius: 50%; background: var(--blue); transform: translateX(-50%); z-index: 2;
+}
+.timeline .step::after {
+  content: ""; position: absolute; top: 21px; left: 0; right: 0; height: 2px; background: var(--line);
+}
+.timeline .step:first-child::after { left: 50%; }
+.timeline .step:last-child::after { right: 50%; }
+.timeline strong { display: block; color: var(--ink); font-size: .95rem; margin-bottom: .15rem; }
+.timeline .fail::before { background: var(--red); }
+
+.model-hero {
+  display: grid; grid-template-columns: minmax(0,1.12fr) minmax(390px,.88fr);
+  gap: clamp(1rem,4vw,3rem); align-items: center;
+}
+.model-hero .cad-sheet { box-shadow: none; border-color: var(--line); }
+.model-hero h2 { font-size: clamp(2.15rem, 3.8vw, 3.45rem); }
+.metrics { display: grid; gap: 1.4rem; }
+.metric .value {
+  font: 600 clamp(1.8rem,4vw,3.2rem) var(--font-display); line-height: 1; color: var(--ink);
+}
+.metric .label { margin-top: .35rem; color: var(--muted); font-size: .86rem; }
+.ok { color: var(--green); }
+.bad { color: var(--red); }
+.accent { color: var(--gold); }
+
+.compare-pair {
+  display: grid; grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: clamp(1rem,3vw,2rem); align-items: stretch;
+}
+.compare-pair figure { margin: 0; }
+.figure-label {
+  display: flex; align-items: baseline; justify-content: space-between; gap: .6rem;
+  margin-bottom: .6rem; font: 600 .78rem var(--font-mono);
+  text-transform: uppercase; letter-spacing: .08em; color: var(--muted);
+}
+.figure-label .ref { color: var(--blue); }
+.figure-label .cand { color: var(--red); }
+.compare-pair figcaption { color: var(--muted); font-size: .88rem; margin-top: .6rem; }
+
+.quote {
+  margin: 2rem auto; max-width: 850px; padding: 1.4rem 1.6rem;
+  border-left: 4px solid var(--blue); background: var(--card);
+  font-family: var(--font-display); font-size: clamp(1.2rem,2.2vw,1.55rem);
+}
+.quote small {
+  display: block; margin-top: .65rem; font: .75rem var(--font-mono); color: var(--muted);
+}
+
+.checks { display: grid; gap: .85rem; }
+.check {
+  display: flex; gap: .7rem; align-items: start;
+  padding: .75rem 0; border-bottom: 1px solid var(--line);
+}
+.check:last-child { border-bottom: 0; }
+.check i { color: var(--green); margin-top: .1rem; }
+.check b { display:block; color: var(--ink); }
+.check small { color: var(--muted); }
+
+.reveal {
+  max-width: 1180px; margin: 2rem auto 0;
+}
+.reveal-pair {
+  display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem;
+}
+.reveal figure { margin: 0; }
+.reveal .cad-sheet { padding: 0; overflow: hidden; }
+.reveal .cad-sheet img { width:100%; }
+
+.compare-tools {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1.2rem;
+  align-items:start; margin:1.8rem auto 0; max-width:1120px;
+}
+.compare-tools .wipe, .compare-tools .blink-block { margin:0; max-width:none; }
+.compare-tools .wipe-controls { margin-top:.75rem; }
+
+.wipe {
+  --cut: 50%;
+  position: relative; aspect-ratio: 1; margin: 2rem auto 0; max-width: 720px;
+  background: white; border: 1px solid var(--line); border-radius: 5px; overflow: hidden;
+}
+.wipe img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.wipe .candidate { clip-path: inset(0 calc(100% - var(--cut)) 0 0); }
+.wipe .divider {
+  position: absolute; top: 0; bottom: 0; left: var(--cut); width: 2px;
+  background: var(--gold); transform: translateX(-1px); pointer-events: none;
+}
+.wipe .badge {
+  position: absolute; top: .7rem; z-index: 4; padding: .25rem .55rem;
+  background: color-mix(in srgb,var(--card) 90%, transparent); border: 1px solid var(--line);
+  border-radius: 4px; font: 600 .66rem var(--font-mono); letter-spacing: .06em;
+  text-transform: uppercase;
+}
+.wipe .badge.ref { left: .7rem; color: var(--blue); }
+.wipe .badge.cand { right: .7rem; color: var(--red); }
+.blink-block { max-width:720px; margin:2.5rem auto 0; }
+.blink-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.65rem;
+}
+.blink-head strong { font-family:var(--font-display); font-size:1.15rem; }
+.blink-toggle {
+  border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:99px;
+  padding:.35rem .7rem; cursor:pointer; font:600 .72rem var(--font-mono);
+}
+.blink-frame {
+  position:relative; aspect-ratio:1; background:#fff; border:1px solid var(--line); border-radius:5px; overflow:hidden;
+}
+.blink-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.blink-frame .blink-candidate { animation: blinkSwap 1.8s steps(1,end) infinite; }
+.blink-block.paused .blink-candidate { animation-play-state:paused; }
+.blink-key {
+  display:flex; justify-content:space-between; margin-top:.55rem; font:600 .7rem var(--font-mono);
+}
+.blink-key .ref { color:var(--blue); }
+.blink-key .cand { color:var(--red); }
+@keyframes blinkSwap { 0%,49.9% { opacity:0; } 50%,100% { opacity:1; } }
+
+.wipe-controls {
+  max-width: 720px; margin: 1rem auto 0; display: grid; grid-template-columns: auto 1fr auto;
+  gap: .75rem; align-items:center; color:var(--muted); font: .75rem var(--font-mono);
+}
+.wipe-controls input { width: 100%; accent-color: var(--gold); }
+
+.pipeline {
+  max-width: 1100px; margin: 2.4rem auto 0;
+  display: grid; grid-template-columns: .8fr 1.4fr .7fr;
+  gap: 1.2rem; align-items: stretch;
+}
+.pipe-col { display: grid; gap: .8rem; align-content: center; }
+.pipe-card {
+  background: var(--card); border: 1px solid var(--line); padding: 1rem 1.1rem; border-radius: 8px;
+}
+.pipe-card h3 { font-size: 1.08rem; margin: 0 0 .35rem; }
+.pipe-card p { margin: 0; font-size: .88rem; color: var(--muted); }
+.pipe-card.ref h3 { color: var(--blue); }
+.pipe-card.cand h3 { color: var(--red); }
+.pipe-branches { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; }
+.branch {
+  background: var(--card); border: 1px solid var(--line); border-top: 5px solid var(--red);
+  border-radius: 8px; padding: 1rem;
+}
+.branch.spec { border-top-color: var(--green); }
+.branch h3 { font-size: 1.15rem; margin-bottom: .8rem; }
+.branch ul { margin: 0; padding-left: 1.1rem; color: var(--ink-2); font-size: .88rem; }
+.branch li { margin-bottom: .38rem; }
+.branch .score {
+  margin-top: 1rem; padding-top: .8rem; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: baseline;
+}
+.branch .score b { font: 600 2.1rem var(--font-display); }
+.combine {
+  display: grid; place-content: center; text-align:center; background: var(--night); color:var(--on-night);
+  border-radius: 8px; padding: 1rem;
+}
+.combine .number { font: 600 clamp(2.6rem,5vw,4rem) var(--font-display); color:#ffd178; }
+.combine small { color:#b9c0ce; }
+
+.score-reveal {
+  display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1rem; margin: 2rem auto;
+}
+.score-box {
+  background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  min-height: 260px; display: grid; place-content: center; text-align:center; padding: 1.5rem;
+}
+.score-box .huge { font: 600 clamp(4rem,10vw,8rem) var(--font-display); line-height:.9; }
+.score-box.good .huge { color: var(--green); }
+.score-box.bad .huge { color: var(--red); }
+.score-box .what { font: 600 .8rem var(--font-mono); text-transform:uppercase; letter-spacing:.08em; margin-top:1rem; }
+.score-box .why { max-width: 320px; margin: .6rem auto 0; color:var(--muted); font-size:.9rem; }
+
+.geometry-grid {
+  display:grid; grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr); gap:2rem; align-items:center;
+}
+.diff-legend { display:flex; gap:1rem; flex-wrap:wrap; font-size:.83rem; color:var(--muted); margin-top:.7rem; }
+.swatch { width:.8rem; height:.8rem; display:inline-block; border-radius:2px; margin-right:.28rem; vertical-align:-.08rem; }
+.metric-list { display:grid; gap:.9rem; }
+.metric-row {
+  display:grid; grid-template-columns:1fr auto; gap:1rem; align-items:baseline;
+  padding-bottom:.65rem; border-bottom:1px solid var(--line);
+}
+.metric-row span { color:var(--muted); font-size:.92rem; }
+.metric-row b { font-family:var(--font-mono); font-size:.86rem; }
+
+.build-story { display:grid; gap:2.2rem; margin-top:2rem; }
+.build-line { display:grid; grid-template-columns:110px minmax(0,1fr); gap:1rem; align-items:start; }
+.build-name {
+  font:600 .76rem var(--font-mono); text-transform:uppercase; letter-spacing:.08em;
+  padding-top:.75rem;
+}
+.build-name.ref { color:var(--blue); }
+.build-name.cand { color:var(--red); }
+.build-stages {
+  display:grid; grid-template-columns:repeat(4,minmax(160px,1fr)); gap:.7rem;
+}
+.stage {
+  min-width:0; background:#fff; border:1px solid #ddd; border-radius:5px; overflow:hidden;
+}
+.stage img { width:100%; aspect-ratio:1; object-fit:contain; }
+.stage .stage-cap {
+  padding:.55rem .65rem .7rem; color:#505866; background:#fafafa;
+  font-size:.76rem; min-height:3.5rem;
+}
+.miss-list { margin:2rem 0 0; display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; }
+.miss {
+  background:var(--card); border:1px solid var(--line); border-top:4px solid var(--red);
+  border-radius:7px; padding:1rem;
+}
+.miss b { display:block; margin-bottom:.3rem; }
+.miss span { color:var(--muted); font-size:.9rem; }
+
+.proxy-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:2rem; }
+.proxy {
+  border:1px solid var(--line); border-radius:8px; background:var(--card); padding:1.2rem;
+}
+.proxy h3 { font-size:1.25rem; margin:0 0 .8rem; }
+.proxy.checked { border-top:5px solid var(--green); }
+.proxy.missed { border-top:5px solid var(--red); }
+.proxy ul { margin:0; padding-left:1.2rem; color:var(--ink-2); }
+.proxy li { margin:.45rem 0; }
+
+.loop {
+  margin:2rem auto 0; display:grid; grid-template-columns:repeat(5,1fr); gap:.65rem; align-items:center;
+}
+.loop-step {
+  background:var(--card); border:1px solid var(--line); border-radius:8px;
+  text-align:center; padding:1rem .6rem; min-height:100px; display:grid; place-content:center;
+}
+.loop-step b { display:block; }
+.loop-arrow { text-align:center; color:var(--gold); font-size:1.4rem; }
+.kit {
+  margin:2rem auto 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.7rem;
+}
+.kit-item {
+  display:flex; gap:.65rem; background:var(--card); border:1px solid var(--line);
+  border-radius:7px; padding:.85rem 1rem; color:var(--ink-2);
+}
+.kit-item i { color:var(--green); }
+
+.discuss {
+  min-height: 92vh; display:grid; place-items:center; position:relative; isolation:isolate;
+  background: #101722;
+}
+.discuss::before {
+  content:""; position:absolute; inset:0; z-index:-2;
+  background:url("assets/engineering-drawing.avif") center/cover no-repeat;
+  filter:grayscale(1) contrast(.8); opacity:.2;
+}
+.discuss::after {
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(rgba(9,14,22,.55),rgba(9,14,22,.9));
+}
+.discuss-inner { max-width:980px; padding:5rem 1.5rem; text-align:center; color:#fff; }
+.discuss h2 { max-width:none; margin:0 auto 2rem; font-size:clamp(2.8rem,8vw,6rem); }
+.discuss p { color:#ced4df; max-width:700px; margin:0 auto 1.4rem; }
+.questions { display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem; margin-top:2rem; }
+.questions span {
+  border:1px solid #6a7484; border-radius:99px; padding:.5rem .9rem;
+  color:#e8ebf0; font-size:.9rem;
+}
+
+.method {
+  max-width: 900px; margin:0 auto; padding:3rem 1.4rem 5rem;
+  color:var(--muted); font-size:.9rem;
+}
+.method details { border-top:1px solid var(--line); padding:1rem 0; }
+.method summary { cursor:pointer; color:var(--ink); font-weight:600; }
+.method code { font-family:var(--font-mono); font-size:.86em; }
+
+.fade { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
+.fade.in { opacity:1; transform:none; }
+
+@media (max-width: 900px) {
+  .nav a { display:none; }
+  .split, .split.reverse, .model-hero, .geometry-grid { grid-template-columns:1fr; }
+  .looking-visual { grid-template-columns:1fr; }
+  .look-arrow { transform:rotate(90deg); }
+  .model-hero .metrics { max-width:720px; margin-inline:auto; }
+  .split > div { max-width:760px; }
+  .pipeline { grid-template-columns:1fr; }
+  .pipe-branches { grid-template-columns:1fr; }
+  .score-reveal { grid-template-columns:1fr; }
+  .compare-tools { grid-template-columns:1fr; max-width:720px; }
+  .build-line { grid-template-columns:1fr; }
+  .build-stages { overflow-x:auto; grid-template-columns:repeat(4,210px); padding-bottom:.4rem; }
+  .miss-list, .proxy-grid, .kit { grid-template-columns:1fr; }
+  .loop { grid-template-columns:1fr; }
+  .loop-arrow { transform:rotate(90deg); }
+}
+@media (max-width: 640px) {
+  body { font-size:17px; }
+  .masthead-inner { padding-inline:.8rem; }
+  .hero, .story-section { padding-left:1rem; padding-right:1rem; }
+  .compare-pair, .reveal-pair { grid-template-columns:1fr; }
+  .timeline { grid-template-columns:1fr; margin-left:1rem; }
+  .timeline .step { text-align:left; padding: .7rem .5rem .7rem 2.5rem; }
+  .timeline .step::before { left:9px; top:1rem; }
+  .timeline .step::after { left:14px!important; right:auto!important; top:0; bottom:0; width:2px; height:auto; }
+  .timeline .step:first-child::after { top:1rem; }
+  .timeline .step:last-child::after { bottom:calc(100% - 1rem); }
+  .blink-block { max-width:720px; margin:2.5rem auto 0; }
+.blink-head {
+  display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:.65rem;
+}
+.blink-head strong { font-family:var(--font-display); font-size:1.15rem; }
+.blink-toggle {
+  border:1px solid var(--line); background:var(--card); color:var(--ink); border-radius:99px;
+  padding:.35rem .7rem; cursor:pointer; font:600 .72rem var(--font-mono);
+}
+.blink-frame {
+  position:relative; aspect-ratio:1; background:#fff; border:1px solid var(--line); border-radius:5px; overflow:hidden;
+}
+.blink-frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+.blink-frame .blink-candidate { animation: blinkSwap 1.8s steps(1,end) infinite; }
+.blink-block.paused .blink-candidate { animation-play-state:paused; }
+.blink-key {
+  display:flex; justify-content:space-between; margin-top:.55rem; font:600 .7rem var(--font-mono);
+}
+.blink-key .ref { color:var(--blue); }
+.blink-key .cand { color:var(--red); }
+@keyframes blinkSwap { 0%,49.9% { opacity:0; } 50%,100% { opacity:1; } }
+
+.wipe-controls { grid-template-columns:auto 1fr auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  .fade { opacity:1; transform:none; transition:none; }
+  .blink-frame .blink-candidate { animation:none; opacity:.5; }
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <a class="brand" href="#top">Engineering drawing → executable CAD</a>
+    <nav class="nav" aria-label="Story sections">
+      <a href="#experiment">Experiment</a>
+      <a href="#build">Build</a>
+      <a href="#reveal">Reveal</a>
+      <a href="#verify">Verify</a>
+      <a href="#lesson">Lesson</a>
+      <button class="theme" id="themeToggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+        <i class="bi bi-circle-half" aria-hidden="true"></i>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="eyebrow">IIT Madras · Engineering Design · 7 Oct 2026</div>
+  <h1>Can AI actually read an engineering drawing?</h1>
+  <p class="deck">Not “can it make something that looks close?” Can it turn a dimensioned drawing into the <em>right</em> editable CAD model — and know when it is wrong?</p>
+  <figure class="hero-drawing">
+    <img src="assets/engineering-drawing.avif" alt="Dimensioned orthographic engineering drawing of a forked mounting bracket" fetchpriority="high">
+  </figure>
+  <p class="caption">The only geometry source we gave the agent.</p>
+</section>
+
+<main>
+<section class="story-section band blue" id="experiment">
+  <div class="inner split">
+    <figure class="drawing-card fade">
+      <img src="assets/engineering-drawing.avif" alt="The engineering drawing given to Codex">
+    </figure>
+    <div class="fade">
+      <div class="section-tag">The experiment</div>
+      <h2>Give Codex only what an engineer would start with.</h2>
+      <p class="lede">One drawing. One CAD runtime. One instruction: build the real thing, not a picture of it.</p>
+      <div class="give-list">
+        <div class="give"><div class="n">1</div><div><b>The drawing</b><span>Three orthographic views, dimensions, radii and diameters.</span></div></div>
+        <div class="give"><div class="n">2</div><div><b>FreeCAD 1.1</b><span>Write Python. Build an editable PartDesign model. Save an FCStd.</span></div></div>
+        <div class="give"><div class="n">3</div><div><b>A render command</b><span>Turn the current CAD model into a picture so the agent can inspect its work.</span></div></div>
+        <div class="give"><div class="n">4</div><div><b>A constraint</b><span>The drawing is the only geometry source. No hidden reference. No grader.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story-section tight">
+  <div class="measure fade">
+    <div class="section-tag">Attempt 1</div>
+    <h2>First, it got stuck looking.</h2>
+    <p class="lede">Codex tried to compare the views by making crops and zooming into the drawing. A tooling detour ate the run. It never reached CAD.</p>
+  </div>
+  <div class="looking-visual fade" aria-label="Codex repeatedly zooms into the drawing but produces no CAD">
+    <div class="look-source"><img src="assets/engineering-drawing.avif" alt="Full engineering drawing"></div>
+    <div class="look-arrow" aria-hidden="true"><i class="bi bi-arrow-right"></i></div>
+    <div>
+      <div class="look-zooms" aria-hidden="true">
+        <div class="look-crop front"><img src="assets/engineering-drawing.avif" alt=""></div>
+        <div class="look-crop side"><img src="assets/engineering-drawing.avif" alt=""></div>
+        <div class="look-crop plan"><img src="assets/engineering-drawing.avif" alt=""></div>
+      </div>
+      <div class="look-deadend"><i class="bi bi-hourglass-split" aria-hidden="true"></i><span>More looking. Still no CAD.</span></div>
+    </div>
+  </div>
+  <div class="timeline fade" aria-label="First attempt sequence">
+    <div class="step"><strong>Compare views</strong>Front. Side. Plan.</div>
+    <div class="step"><strong>Make crops</strong>Zoom in on details.</div>
+    <div class="step fail"><strong>Tool detour</strong>Image tooling fights back.</div>
+    <div class="step fail"><strong>No model</strong>Time is gone.</div>
+  </div>
+  <div class="workflow-turn fade">So we changed the workflow, not the model:<br><strong>stop inspecting forever; start building.</strong></div>
+</section>
+
+<section class="story-section band" id="build">
+  <div class="inner model-hero">
+    <figure class="cad-sheet fade">
+      <img src="assets/first-model.avif" alt="First parametric CAD reconstruction made by Codex">
+    </figure>
+    <div class="metrics fade">
+      <div>
+        <div class="section-tag">Attempt 2</div>
+        <h2>A plausible part appears.</h2>
+      </div>
+      <div class="metric"><div class="value">150 × 48 × 88</div><div class="label">bounding box, mm</div></div>
+      <div class="metric"><div class="value">1</div><div class="label">valid closed solid</div></div>
+      <div class="metric"><div class="value">161,285</div><div class="label">volume, mm³</div></div>
+      <p>It looks like the drawing. Its own coarse checks pass. This is exactly where a demo usually ends.</p>
+    </div>
+  </div>
+</section>
+
+<section class="story-section">
+  <div class="inner">
+    <div class="measure fade">
+      <div class="section-tag">Self-correction</div>
+      <h2>Then Codex changed its mind.</h2>
+      <p class="lede">It noticed that it had treated the eye and support as one 48 mm-deep feature. It rebuilt the support at 35 mm and let only the circular eye reach 48 mm.</p>
+    </div>
+    <div class="compare-pair fade">
+      <figure>
+        <div class="figure-label"><span>First model</span><span>one deep eye/support</span></div>
+        <div class="cad-sheet"><img src="assets/first-model.avif" alt="First CAD model before self-correction"></div>
+      </figure>
+      <figure>
+        <div class="figure-label"><span>Revised model</span><span class="cand">support + separate eye</span></div>
+        <div class="cad-sheet"><img src="assets/codex-model.avif" alt="Revised CAD model after self-correction"></div>
+      </figure>
+    </div>
+    <blockquote class="quote fade">
+      “The first model is a valid single solid with a 150 × 48 × 88 mm bounding box. I’ll refine the eye…”
+      <small>Codex trajectory, before the second build</small>
+    </blockquote>
+    <p class="measure fade">This matters: the agent did not just emit one answer. It built, inspected, reconsidered, and repaired.</p>
+  </div>
+</section>
+
+<section class="story-section band green">
+  <div class="inner split reverse">
+    <div class="fade">
+      <div class="section-tag">Its final self-check</div>
+      <h2>Nothing it tested said “wrong.”</h2>
+      <div class="checks">
+        <div class="check"><i class="bi bi-check-circle-fill" aria-hidden="true"></i><div><b>Exact outer envelope</b><small>150 × 48 × 88 mm</small></div></div>
+        <div class="check"><i class="bi bi-check-circle-fill" aria-hidden="true"></i><div><b>Valid closed solid</b><small>FreeCAD Shape.isValid() passes</small></div></div>
+        <div class="check"><i class="bi bi-check-circle-fill" aria-hidden="true"></i><div><b>Editable PartDesign model</b><small>7 sketches + 7 CAD operations</small></div></div>
+        <div class="check"><i class="bi bi-check-circle-fill" aria-hidden="true"></i><div><b>Plausible render</b><small>It looks like the right kind of bracket</small></div></div>
+      </div>
+    </div>
+    <figure class="cad-sheet fade">
+      <img src="assets/codex-model.avif" alt="Final Codex CAD reconstruction">
+    </figure>
+  </div>
+</section>
+
+<section class="story-section" id="reveal">
+  <div class="inner">
+    <div class="measure fade">
+      <div class="section-tag">The reveal</div>
+      <h2>Now show it the answer it never saw.</h2>
+      <p class="lede">CAD Bench has a held-back reference model. Before comparing anything, we rigidly re-orient it into the Codex frame. Same center. Same scale. Same orientation. Same camera.</p>
+    </div>
+
+    <div class="reveal fade">
+      <div class="reveal-pair">
+        <figure>
+          <div class="figure-label"><span class="ref">Hidden reference</span><span>ground truth</span></div>
+          <div class="cad-sheet"><img src="assets/reference-model.avif" alt="Hidden reference CAD model"></div>
+        </figure>
+        <figure>
+          <div class="figure-label"><span class="cand">Codex</span><span>blind reconstruction</span></div>
+          <div class="cad-sheet"><img src="assets/codex-model.avif" alt="Codex blind CAD reconstruction in the same camera view"></div>
+        </figure>
+      </div>
+
+      <div class="compare-tools">
+        <div class="wipe-block">
+          <div class="blink-head"><strong>Scrub across them.</strong></div>
+          <div class="wipe" id="wipe" style="--cut:50%">
+            <img src="assets/reference-model.avif" alt="" aria-hidden="true">
+            <img class="candidate" src="assets/codex-model.avif" alt="" aria-hidden="true">
+            <div class="divider" aria-hidden="true"></div>
+            <span class="badge ref">Reference</span>
+            <span class="badge cand">Codex</span>
+          </div>
+          <div class="wipe-controls">
+            <span>Reference</span>
+            <input id="wipeRange" type="range" min="0" max="100" value="50" aria-label="Compare reference and Codex models">
+            <span>Codex</span>
+          </div>
+        </div>
+
+        <div class="blink-block" id="blinkBlock">
+          <div class="blink-head">
+            <strong>Or blink between them.</strong>
+            <button class="blink-toggle" id="blinkToggle" type="button" aria-pressed="false"><i class="bi bi-pause-fill" aria-hidden="true"></i> Pause</button>
+          </div>
+          <div class="blink-frame" aria-label="Alternating reference and Codex model">
+            <img src="assets/reference-model.avif" alt="Hidden reference CAD model">
+            <img class="blink-candidate" src="assets/codex-model.avif" alt="Codex reconstruction">
+          </div>
+          <div class="blink-key"><span class="ref">Reference</span><span class="cand">Codex</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="measure big-question fade" style="margin-top:2.5rem">They are clearly related. But are they the <em>same engineered object?</em></p>
+  </div>
+</section>
+
+<section class="story-section band blue" id="verify">
+  <div class="inner">
+    <div class="measure fade">
+      <div class="section-tag">What CAD Bench asks</div>
+      <h2>It does not trust the picture.</h2>
+      <p class="lede">The verifier gets three things: the candidate, a hidden reference model, and a hidden specification. Then it checks two different notions of correctness.</p>
+    </div>
+
+    <div class="pipeline fade">
+      <div class="pipe-col">
+        <div class="pipe-card cand"><h3>Candidate.FCStd</h3><p>The model the agent built.</p></div>
+        <div class="pipe-card ref"><h3>Reference.FCStd</h3><p>Held back from the agent.</p></div>
+        <div class="pipe-card"><h3>Spec.json</h3><p>30 expected dimensions and structural parameters.</p></div>
+      </div>
+
+      <div class="pipe-branches">
+        <div class="branch">
+          <h3>Geometry fidelity</h3>
+          <ul>
+            <li>solid count</li>
+            <li>oriented bounding box</li>
+            <li>volume and surface area</li>
+            <li>surface types</li>
+            <li>principal moments</li>
+            <li>aligned face-centre residuals</li>
+          </ul>
+          <div class="score"><span>geometry</span><b class="bad">0.042</b></div>
+        </div>
+        <div class="branch spec">
+          <h3>Spec consistency</h3>
+          <ul>
+            <li>dimensions and diameters</li>
+            <li>radii</li>
+            <li>counts</li>
+            <li>offsets and references</li>
+            <li>feature-history measurements</li>
+          </ul>
+          <div class="score"><span>spec</span><b class="ok">0.700</b></div>
+        </div>
+      </div>
+
+      <div class="combine">
+        <small>harmonic mean</small>
+        <div class="number">0.0798</div>
+        <small>overall</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story-section">
+  <div class="inner">
+    <div class="measure fade">
+      <div class="section-tag">The surprise</div>
+      <h2>It read most of the numbers. It still built the wrong part.</h2>
+    </div>
+
+    <div class="score-reveal fade">
+      <div class="score-box good">
+        <div class="huge">27/30</div>
+        <div class="what">spec parameters consistent</div>
+        <div class="why">Most labeled dimensions could be found somewhere in the CAD.</div>
+      </div>
+      <div class="score-box bad">
+        <div class="huge">4.2%</div>
+        <div class="what">geometry similarity</div>
+        <div class="why">The material distribution and surfaces were substantially different.</div>
+      </div>
+    </div>
+
+    <p class="measure lede fade">The outer bounding box was an exact match. That did not save it. Same size is not the same thing as same geometry.</p>
+
+    <div class="geometry-grid" style="margin-top:2.5rem">
+      <figure class="cad-sheet fade">
+        <img src="assets/geometry-diff.avif" alt="Aligned outline difference: dark where reference and Codex overlap, blue for reference-only geometry, red for Codex-only geometry">
+        <figcaption class="diff-legend">
+          <span><i class="swatch" style="background:#333337"></i>overlap</span>
+          <span><i class="swatch" style="background:#2d5fbe"></i>reference only</span>
+          <span><i class="swatch" style="background:#c33c32"></i>Codex only</span>
+        </figcaption>
+      </figure>
+      <div class="metric-list fade">
+        <div class="metric-row"><span>Bounding box</span><b class="ok">0.0% diff</b></div>
+        <div class="metric-row"><span>Volume</span><b class="bad">13.7% diff</b></div>
+        <div class="metric-row"><span>Surface types</span><b class="bad">20.2% diff</b></div>
+        <div class="metric-row"><span>Principal moments</span><b class="bad">16.8% diff</b></div>
+        <div class="metric-row"><span>Face-centre alignment</span><b class="bad">8.44 mm RMSE</b></div>
+      </div>
+    </div>
+
+    <p class="measure fade" style="margin-top:2.5rem"><strong>One caveat:</strong> 27/30 does not mean “90% understood.” The spec checker searches for matching measurements, so a value can occasionally match the wrong feature. That makes the geometry branch even more important.</p>
+  </div>
+</section>
+
+<section class="story-section band" id="geometry-story">
+  <div class="inner">
+    <div class="measure fade">
+      <div class="section-tag">What actually went wrong</div>
+      <h2>Codex told itself a different geometric story.</h2>
+      <p class="lede">The hidden reference and Codex both use sensible CAD operations. They just compose the part differently.</p>
+    </div>
+
+    <div class="build-story fade">
+      <div class="build-line">
+        <div class="build-name ref">Reference</div>
+        <div class="build-stages">
+          <div class="stage"><img src="assets/reference-stages/1.avif" alt="Reference construction stage 1"><div class="stage-cap">Eye / boss profile</div></div>
+          <div class="stage"><img src="assets/reference-stages/2.avif" alt="Reference construction stage 2"><div class="stage-cap">Add main body profile</div></div>
+          <div class="stage"><img src="assets/reference-stages/3.avif" alt="Reference construction stage 3"><div class="stage-cap">Add lower / fork profile</div></div>
+          <div class="stage"><img src="assets/reference-stages/4.avif" alt="Reference construction stage 4"><div class="stage-cap">Cut mounting holes</div></div>
+        </div>
+      </div>
+
+      <div class="build-line">
+        <div class="build-name cand">Codex</div>
+        <div class="build-stages">
+          <div class="stage"><img src="assets/codex-stages/1.avif" alt="Codex construction stage 1"><div class="stage-cap">Base + upright</div></div>
+          <div class="stage"><img src="assets/codex-stages/2.avif" alt="Codex construction stage 2"><div class="stage-cap">Add separate circular eye</div></div>
+          <div class="stage"><img src="assets/codex-stages/3.avif" alt="Codex construction stage 3"><div class="stage-cap">Cut rectangular fork + bore</div></div>
+          <div class="stage"><img src="assets/codex-stages/4.avif" alt="Codex construction stage 4"><div class="stage-cap">Cut mounting holes</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="miss-list fade">
+      <div class="miss"><b>R3</b><span>Expected a 3 mm lower-profile radius. Nearest candidate radius was R5.</span></div>
+      <div class="miss"><b>R6</b><span>Expected an R6 feature. No final-geometry witness existed.</span></div>
+      <div class="miss"><b>46.39 mm</b><span>Expected a fork reference. Nearest candidate measurement was 48 mm.</span></div>
+    </div>
+
+    <p class="measure big-question fade" style="margin-top:2.7rem">The failure was not “it cannot read numbers.” It was: <strong>the numbers were attached to the wrong geometric relationships.</strong></p>
+  </div>
+</section>
+
+<section class="story-section" id="why">
+  <div class="inner">
+    <div class="measure fade">
+      <div class="section-tag">Why self-correction was not enough</div>
+      <h2>The agent improved against the tests it had.</h2>
+      <p class="lede">Its checks were useful. They were just too weak to establish engineering fidelity.</p>
+    </div>
+
+    <div class="proxy-grid fade">
+      <div class="proxy checked">
+        <h3>What it checked</h3>
+        <ul>
+          <li>bounding box</li>
+          <li>one valid closed solid</li>
+          <li>editable feature tree</li>
+          <li>plausible rendered appearance</li>
+        </ul>
+      </div>
+      <div class="proxy missed">
+        <h3>What it did not check</h3>
+        <ul>
+          <li>R3 / R6 final profile geometry</li>
+          <li>material distribution and volume</li>
+          <li>surface types and topology</li>
+          <li>whether each dimension belonged to the right relationship</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="measure big-question fade" style="margin-top:2.7rem"><strong>Self-verification is only as strong as the verification kit.</strong></p>
+  </div>
+</section>
+
+<section class="story-section band green" id="lesson">
+  <div class="inner">
+    <div class="measure fade">
+      <div class="section-tag">The practical lesson</div>
+      <h2>Put CAD-Bench-like checks inside the agent loop.</h2>
+      <p class="lede">Do not wait until the end to discover that the model is beautifully valid and geometrically wrong. Give the agent engineering-grade ways to fail early.</p>
+    </div>
+
+    <div class="loop fade" aria-label="Recommended agent loop">
+      <div class="loop-step"><b>Draw</b><span>read the source</span></div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-step"><b>Model</b><span>build editable CAD</span></div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-step"><b>Test</b><span>measure independently</span></div>
+    </div>
+    <div class="loop fade" style="margin-top:.65rem">
+      <div class="loop-step"><b>Repair</b><span>target the failed invariant</span></div>
+      <div class="loop-arrow">←</div>
+      <div class="loop-step"><b>Diagnose</b><span>which relationship is wrong?</span></div>
+      <div class="loop-arrow">←</div>
+      <div class="loop-step"><b>Fail loudly</b><span>before calling it done</span></div>
+    </div>
+
+    <div class="kit fade">
+      <div class="kit-item"><i class="bi bi-check2-square" aria-hidden="true"></i><span>Valid solid + editable feature structure</span></div>
+      <div class="kit-item"><i class="bi bi-check2-square" aria-hidden="true"></i><span>Dimensions, radii, holes and counts</span></div>
+      <div class="kit-item"><i class="bi bi-check2-square" aria-hidden="true"></i><span>Check values on the <strong>right features</strong></span></div>
+      <div class="kit-item"><i class="bi bi-check2-square" aria-hidden="true"></i><span>Bounding box, volume, surface area</span></div>
+      <div class="kit-item"><i class="bi bi-check2-square" aria-hidden="true"></i><span>Mass / principal moments</span></div>
+      <div class="kit-item"><i class="bi bi-check2-square" aria-hidden="true"></i><span>Surface types and topology</span></div>
+      <div class="kit-item"><i class="bi bi-check2-square" aria-hidden="true"></i><span>Geometric alignment and residuals</span></div>
+      <div class="kit-item"><i class="bi bi-check2-square" aria-hidden="true"></i><span>Assembly / clearance / physics when relevant</span></div>
+    </div>
+
+    <p class="measure big-question fade" style="margin-top:3rem">If we want an agent to behave like an engineer, we have to give it <strong>engineering-grade ways to know when it is wrong.</strong></p>
+  </div>
+</section>
+
+<section class="discuss" id="discuss">
+  <div class="discuss-inner fade">
+    <div class="eyebrow" style="color:#ffd178">Discuss</div>
+    <h2>What does it mean to understand an engineering drawing?</h2>
+    <p>Reading the numbers is not enough. Making a recognizable shape is not enough. So where should we draw the line?</p>
+    <div class="questions" aria-label="Discussion prompts">
+      <span>Read the callouts?</span>
+      <span>Recover exact geometry?</span>
+      <span>Recover design intent?</span>
+      <span>Pass assembly tests?</span>
+      <span>Pass physics tests?</span>
+      <span>Know when to ask?</span>
+    </div>
+  </div>
+</section>
+
+<footer class="method">
+  <details>
+    <summary>Method and reproducibility</summary>
+    <p>The benchmark task is CAD Bench V3 <code>f32bdb2966</code>, a forked mounting bracket. The reconstruction was blind: the agent workspace did not contain the hidden reference model or grader. The final candidate was frozen before running the official verifier.</p>
+    <p>The successful run used Codex CLI 0.160.0. A separate local smoke test reported GPT‑6.1 Sol, but the saved reconstruction trajectory does not itself record model identity, so this story refers to the agent simply as <strong>Codex</strong>.</p>
+    <p>All reference-versus-candidate images on this page are rendered after rigidly mapping the reference axes into the Codex coordinate frame, then using the same center, scale, orientation and camera. The black-and-white images contain no added labels or callouts.</p>
+  </details>
+  <details>
+    <summary>Sources</summary>
+    <p><a href="https://www.gnucleus.ai/cad-bench/news/cad-bench-v3">Parametric CAD Bench V3</a> · <a href="https://www.freecad.org/">FreeCAD</a></p>
+  </details>
+</footer>
+</main>
+
+<script>
+const root = document.documentElement;
+const themeBtn = document.getElementById('themeToggle');
+themeBtn.addEventListener('click', () => {
+  const current = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = current === 'dark' ? 'light' : 'dark';
+  root.dataset.theme = next;
+  try { localStorage.setItem('edviz-theme', next); } catch {}
+});
+
+const progress = document.getElementById('progress');
+function updateProgress() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  progress.style.width = (max > 0 ? scrollY / max * 100 : 0) + '%';
+}
+addEventListener('scroll', updateProgress, { passive: true });
+addEventListener('resize', updateProgress);
+updateProgress();
+
+const wipe = document.getElementById('wipe');
+const range = document.getElementById('wipeRange');
+range.addEventListener('input', () => wipe.style.setProperty('--cut', range.value + '%'));
+
+const blinkBlock = document.getElementById('blinkBlock');
+const blinkToggle = document.getElementById('blinkToggle');
+blinkToggle.addEventListener('click', () => {
+  const paused = blinkBlock.classList.toggle('paused');
+  blinkToggle.setAttribute('aria-pressed', String(paused));
+  blinkToggle.innerHTML = paused
+    ? '<i class="bi bi-play-fill" aria-hidden="true"></i> Play'
+    : '<i class="bi bi-pause-fill" aria-hidden="true"></i> Pause';
+});
+
+const fadeEls = document.querySelectorAll('.fade');
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: .12 });
+  fadeEls.forEach(el => io.observe(el));
+} else {
+  fadeEls.forEach(el => el.classList.add('in'));
+}
+
+const navLinks = [...document.querySelectorAll('.nav a[href^="#"]')];
+const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+if ('IntersectionObserver' in window) {
+  const sio = new IntersectionObserver(entries => {
+    const visible = entries.filter(e => e.isIntersecting).sort((a,b) => b.intersectionRatio-a.intersectionRatio)[0];
+    if (!visible) return;
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + visible.target.id));
+  }, { rootMargin: '-25% 0px -60% 0px', threshold: [0,.2,.5] });
+  sections.forEach(s => sio.observe(s));
+}
+</script>
+</body>
+</html>

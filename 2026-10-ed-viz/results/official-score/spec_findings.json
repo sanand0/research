@@ -1,0 +1,292 @@
+{
+  "summary": {
+    "total_params": 30,
+    "consistent": 27,
+    "inconsistent": 2,
+    "not_found": 1,
+    "unexpected_features": 15,
+    "consistency_rate": 0.9,
+    "measurable_rate": 0.9667
+  },
+  "consistent": [
+    {
+      "param": "overall_front_envelope_1",
+      "spec_value": 150.0,
+      "measured_value": 150.0,
+      "unit": "mm",
+      "feature": "BasePlan.segment",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "overall_front_envelope_2",
+      "spec_value": 88.0,
+      "measured_value": 88.0,
+      "unit": "mm",
+      "feature": "UprightOutline.ax1_from_max",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "upper_width",
+      "spec_value": 90.0,
+      "measured_value": 90.0,
+      "unit": "mm",
+      "feature": "UprightOutline.segment",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "inner_base_width",
+      "spec_value": 138.0,
+      "measured_value": 138.0,
+      "unit": "mm",
+      "feature": "UprightOutline.segment",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "boss_width_reference",
+      "spec_value": 35.98,
+      "measured_value": 35.98,
+      "unit": "mm",
+      "feature": "StemOutline.segment",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "boss_bore",
+      "spec_value": 20.3,
+      "measured_value": 20.3,
+      "unit": "mm",
+      "feature": "candidate.Face6.wire1.extent_x",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "boss_center_height",
+      "spec_value": 66.82,
+      "measured_value": 66.82,
+      "unit": "mm",
+      "feature": "EyeOuterProfile.center_polar_radius",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "shoulder_height",
+      "spec_value": 48.0,
+      "measured_value": 48.0,
+      "unit": "mm",
+      "feature": "CircularEye_48mm.Length",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "base_thickness",
+      "spec_value": 10.0,
+      "measured_value": 10.0,
+      "unit": "mm",
+      "feature": "BasePlate_10mm.Length",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "shoulder_radii_1",
+      "spec_value": 12.0,
+      "measured_value": 12.0,
+      "unit": "mm",
+      "feature": "UprightOutline.circle_radius",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "shoulder_radii_2",
+      "spec_value": 12.0,
+      "measured_value": 12.0,
+      "unit": "mm",
+      "feature": "UprightOutline.circle_radius",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "fork_horizontal_references_2",
+      "spec_value": 50.39,
+      "measured_value": 50.39,
+      "unit": "mm",
+      "feature": "ForkOpening.segment",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "fork_horizontal_references_3",
+      "spec_value": 70.39,
+      "measured_value": 70.195,
+      "unit": "mm",
+      "feature": "plane_pair_28.offset",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "fork_vertical_references_1",
+      "spec_value": 23.13,
+      "measured_value": 23.0,
+      "unit": "mm",
+      "feature": "candidate.Vertex7.to_min_y",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "fork_vertical_references_2",
+      "spec_value": 25.0,
+      "measured_value": 25.0,
+      "unit": "mm",
+      "feature": "plane_pair_9.offset",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "depth_references_1",
+      "spec_value": 10.0,
+      "measured_value": 10.0,
+      "unit": "mm",
+      "feature": "BasePlate_10mm.Length",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "depth_references_2",
+      "spec_value": 35.0,
+      "measured_value": 35.0,
+      "unit": "mm",
+      "feature": "BasePlan.segment",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "depth_references_3",
+      "spec_value": 48.0,
+      "measured_value": 48.0,
+      "unit": "mm",
+      "feature": "CircularEye_48mm.Length",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "base_hole_spacing",
+      "spec_value": 126.0,
+      "measured_value": 126.0,
+      "unit": "mm",
+      "feature": "UprightOutline.ax0_from_max",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "base_hole_depth_offset",
+      "spec_value": 23.0,
+      "measured_value": 23.0,
+      "unit": "mm",
+      "feature": "candidate.Vertex7.to_min_y",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "shoulder_radii_1_count",
+      "spec_value": 4.0,
+      "measured_value": 4.0,
+      "unit": "count",
+      "feature": "UprightOutline.equal_arc_count",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "shoulder_radii_2_count",
+      "spec_value": 2.0,
+      "measured_value": 2.0,
+      "unit": "count",
+      "feature": "BasePlan.equal_segment_count",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "lower_profile_radii_1_count",
+      "spec_value": 2.0,
+      "measured_value": 2.0,
+      "unit": "count",
+      "feature": "BasePlan.equal_segment_count",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "lower_profile_radii_2_count",
+      "spec_value": 4.0,
+      "measured_value": 4.0,
+      "unit": "count",
+      "feature": "UprightOutline.equal_arc_count",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "base_holes_count",
+      "spec_value": 2.0,
+      "measured_value": 2.0,
+      "unit": "count",
+      "feature": "BasePlan.equal_segment_count",
+      "rel_diff": null,
+      "reason": null
+    },
+    {
+      "param": "boss_outer_diameter",
+      "spec_value": 35.98,
+      "measured_value": [
+        35.98
+      ],
+      "unit": "mm",
+      "feature": "final_geometry:diameter",
+      "rel_diff": null,
+      "reason": "Compared every bound final-geometry instance"
+    },
+    {
+      "param": "base_holes",
+      "spec_value": 10.0,
+      "measured_value": [
+        10.0,
+        10.0
+      ],
+      "unit": "mm",
+      "feature": "final_geometry:diameter",
+      "rel_diff": null,
+      "reason": "Compared every bound final-geometry instance"
+    }
+  ],
+  "inconsistent": [
+    {
+      "param": "lower_profile_radii_2",
+      "spec_value": 3.0,
+      "measured_value": 5.0,
+      "unit": "mm",
+      "feature": "MountingHolesPlan.circle_radius",
+      "rel_diff": 0.4,
+      "reason": "measured CAD R differs (rel_diff 0.4 > tol 0.01)"
+    },
+    {
+      "param": "fork_horizontal_references_1",
+      "spec_value": 46.39,
+      "measured_value": 48.0,
+      "unit": "mm",
+      "feature": "CircularEye_48mm.Length",
+      "rel_diff": 0.03354166666666666,
+      "reason": "measured CAD L differs (rel_diff 0.0335417 > tol 0.01)"
+    }
+  ],
+  "not_found": [
+    {
+      "param": "lower_profile_radii_1",
+      "spec_value": 6.0,
+      "measured_value": null,
+      "unit": "mm",
+      "feature": "final_geometry:radius",
+      "rel_diff": null,
+      "reason": "Missing corresponding final-geometry witness; legacy values cannot replace it"
+    }
+  ]
+}

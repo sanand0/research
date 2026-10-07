@@ -1,0 +1,11 @@
+.venv/
+.blender-home/
+__pycache__/
+*.pyc
+
+# Re-downloadable local runtimes / benchmark suites
+tools/
+harbor-v3/
+
+# Local scratch
+.build/

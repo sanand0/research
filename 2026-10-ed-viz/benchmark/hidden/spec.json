@@ -1,0 +1,1036 @@
+{
+  "mode": "image_to_cad",
+  "name": "Forked Mounting Bracket",
+  "description": "Engineering drawing of a stepped mounting bracket with two feet, a lower central fork opening, a raised central bored boss, and a broad shaped back plate. Orthographic views show the rounded shoulder transitions, stepped depth, and two base mounting holes. Dimensions are in millimetres.",
+  "key_parameters": "- **dimensions**\n  - overall_front_envelope_1 = 150 mm (front view)\n  - overall_front_envelope_2 = 88 mm (front view)\n  - upper_width = 90 mm (front view)\n  - inner_base_width = 138 mm (front view)\n  - boss_outer_diameter = 35.98 mm (front view)\n  - boss_width_reference = 35.98 mm (front view)\n  - boss_bore = 20.3 mm (front view)\n  - boss_center_height = 66.82 mm (front view)\n  - shoulder_height = 48 mm (front view)\n  - base_thickness = 10 mm (front view)\n  - shoulder_radii_1_count = 4\n  - shoulder_radii_1 = 12 mm (front view; 4 x R12)\n  - shoulder_radii_2_count = 2\n  - shoulder_radii_2 = 12 mm (front view; 2 x R12)\n  - lower_profile_radii_1_count = 2\n  - lower_profile_radii_1 = 6 mm (front view; 2 x R6)\n  - lower_profile_radii_2_count = 4\n  - lower_profile_radii_2 = 3 mm (front view; 4 x R3)\n  - fork_horizontal_references_1 = 46.39 mm (front view)\n  - fork_horizontal_references_2 = 50.39 mm (front view)\n  - fork_horizontal_references_3 = 70.39 mm (front view)\n  - fork_vertical_references_1 = 23.13 mm (front view)\n  - fork_vertical_references_2 = 25 mm (front view)\n  - depth_references_1 = 10 mm (end view)\n  - depth_references_2 = 35 mm (end view)\n  - depth_references_3 = 48 mm (end view)\n  - base_holes_count = 2\n  - base_holes = 10 mm (plan)\n  - base_hole_spacing = 126 mm (plan)\n  - base_hole_depth_offset = 23 mm (plan)",
+  "geometry_bindings": {
+    "version": 1,
+    "datum": {
+      "center": [
+        0.0,
+        28.054678417,
+        14.811814175
+      ],
+      "diagonal": 152.74443645079322,
+      "frames": [
+        [
+          [
+            -0.0,
+            0.0,
+            -1.0
+          ],
+          [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            -0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            -0.0,
+            1.0,
+            0.0
+          ],
+          [
+            -0.0,
+            0.0,
+            1.0
+          ],
+          [
+            1.0,
+            -0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            -0.0,
+            -1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            0.0,
+            -0.0
+          ],
+          [
+            -0.0,
+            0.999999999,
+            -5.3153e-05
+          ],
+          [
+            0.0,
+            5.3153e-05,
+            0.999999999
+          ]
+        ]
+      ],
+      "landmarks": [
+        {
+          "kind": "plane",
+          "position": [
+            0.0,
+            24.903782553,
+            0.0
+          ],
+          "direction": [
+            -0.0,
+            -0.0,
+            1.0
+          ],
+          "convex": null,
+          "scale": 93.61777898780187,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -0.0,
+            18.757859556,
+            10.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": null,
+          "scale": 73.98727450620106,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            0.0,
+            44.501615278,
+            35.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": null,
+          "scale": 50.963090173820845,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            0.0,
+            41.819860986,
+            17.5
+          ],
+          "direction": [
+            0.0,
+            1.0,
+            -1.278885e-11
+          ],
+          "convex": null,
+          "scale": 41.9960879094708,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            49.488898157,
+            66.819860986,
+            17.240500639
+          ],
+          "direction": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 40.79980985017277,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -49.488898157,
+            66.819860986,
+            17.240500639
+          ],
+          "direction": [
+            0.0,
+            1.0,
+            -1.277848e-11
+          ],
+          "convex": null,
+          "scale": 40.79980985017277,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            0.0,
+            -21.180139014,
+            5.0
+          ],
+          "direction": [
+            -0.0,
+            1.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 29.999999999999996,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            25.19530571,
+            54.319860986,
+            17.5
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 29.580398915498076,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -25.19530571,
+            54.319860986,
+            17.5
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 29.58039891549808,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            58.194367821,
+            56.819860986,
+            21.791632165
+          ],
+          "direction": [
+            -0.0,
+            1.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 28.22370530086819,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -58.194367821,
+            56.819860986,
+            21.791632165
+          ],
+          "direction": [
+            -3.24849e-12,
+            1.0,
+            -6.31719e-12
+          ],
+          "convex": null,
+          "scale": 28.22370530086819,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -17.989989721,
+            14.426230451,
+            22.5
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 26.857243391215714,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            17.989989721,
+            14.426230451,
+            22.5
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 26.85724339098667,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -0.0,
+            0.0,
+            48.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": null,
+          "scale": 26.323662240193826,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            75.0,
+            61.819860986,
+            17.5
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 18.7082869338697,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -75.0,
+            61.819860986,
+            17.5
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 18.7082869338697,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            45.0,
+            -7.180139014,
+            5.0
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 16.733200530681508,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -45.0,
+            -7.180139014,
+            5.0
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 16.733200530681508,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            69.0,
+            42.319860986,
+            5.0
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 15.165750888103103,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -69.0,
+            42.319860986,
+            5.0
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 15.165750888103101,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            35.19530571,
+            47.254661153,
+            22.5
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 13.351404107808289,
+          "coincident_order": 0
+        },
+        {
+          "kind": "plane",
+          "position": [
+            -35.19530571,
+            47.254661153,
+            22.5
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 13.351404107808282,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            0.0,
+            0.0,
+            24.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 20.304837602,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            0.0,
+            0.0,
+            29.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": true,
+          "scale": 35.979979442,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            23.19530571,
+            43.68946132,
+            22.5
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": true,
+          "scale": 24.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            -23.19530571,
+            43.68946132,
+            22.5
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": true,
+          "scale": 24.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            63.0,
+            61.819860986,
+            23.0
+          ],
+          "direction": [
+            -0.0,
+            1.0,
+            -2.2e-16
+          ],
+          "convex": false,
+          "scale": 10.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            -63.0,
+            61.819860986,
+            23.0
+          ],
+          "direction": [
+            -0.0,
+            1.0,
+            -2.2e-16
+          ],
+          "convex": false,
+          "scale": 10.00000000035984,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            41.19530571,
+            50.819860986,
+            22.5
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 15.274443645079323,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            -41.19530571,
+            50.819860986,
+            22.5
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 15.274443645079323,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            57.0,
+            30.819860986,
+            5.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": true,
+          "scale": 24.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            -57.0,
+            30.819860986,
+            5.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": true,
+          "scale": 24.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            57.0,
+            6.819860986,
+            5.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 24.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            -57.0,
+            6.819860986,
+            5.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 24.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            20.989989721,
+            28.852460903,
+            22.5
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 15.274443645079323,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            -20.989989721,
+            28.852460903,
+            22.5
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 15.274443645079323,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            72.0,
+            53.819860986,
+            5.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 10.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "cylinder",
+          "position": [
+            -72.0,
+            53.819860986,
+            5.0
+          ],
+          "direction": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "convex": false,
+          "scale": 10.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "line",
+          "position": [
+            0.0,
+            -21.180139014,
+            10.0
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 90.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "line",
+          "position": [
+            0.0,
+            -21.180139014,
+            0.0
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 90.0,
+          "coincident_order": 0
+        },
+        {
+          "kind": "line",
+          "position": [
+            0.0,
+            41.819860986,
+            0.0
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 50.39061142,
+          "coincident_order": 0
+        },
+        {
+          "kind": "line",
+          "position": [
+            0.0,
+            41.819860986,
+            35.0
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 50.39061142,
+          "coincident_order": 0
+        },
+        {
+          "kind": "line",
+          "position": [
+            -50.097652855,
+            66.819860986,
+            0.0
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 49.80469429,
+          "coincident_order": 0
+        },
+        {
+          "kind": "line",
+          "position": [
+            50.097652855,
+            66.819860986,
+            0.0
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 49.80469429,
+          "coincident_order": 0
+        },
+        {
+          "kind": "line",
+          "position": [
+            50.097652855,
+            66.819860986,
+            35.0
+          ],
+          "direction": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "convex": null,
+          "scale": 49.80469429,
+          "coincident_order": 0
+        },
+        {
+          "kind": "line",
+          "position": [
+            -50.097652855,
+            66.819860986,
+            35.0
+          ],
+          "direction": [
+            1.0,
+            -0.0,
+            -0.0
+          ],
+          "convex": null,
+          "scale": 49.80469429,
+          "coincident_order": 0
+        }
+      ]
+    },
+    "parameters": {
+      "overall_front_envelope_1": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "overall_front_envelope_2": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "upper_width": {
+        "mode": "legacy",
+        "reason": "No surviving finite feature of the required measurement type matches the reference parameter uniquely; retain the existing checker and equal failure penalty."
+      },
+      "inner_base_width": {
+        "mode": "legacy",
+        "reason": "No surviving finite feature of the required measurement type matches the reference parameter uniquely; retain the existing checker and equal failure penalty."
+      },
+      "boss_outer_diameter": {
+        "mode": "geometry",
+        "quantity": "diameter",
+        "witnesses": [
+          {
+            "kind": "cylinder",
+            "position": [
+              0.0,
+              0.0,
+              29.0
+            ],
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "convex": true,
+            "scale": 35.979979442,
+            "coincident_order": 0
+          }
+        ],
+        "reason": "Final cylinder diameter, anchored to the reference location, direction and material side; check all 1 instances of this reference feature family."
+      },
+      "boss_width_reference": {
+        "mode": "legacy",
+        "reason": "No surviving finite feature of the required measurement type matches the reference parameter uniquely; retain the existing checker and equal failure penalty."
+      },
+      "boss_bore": {
+        "mode": "legacy",
+        "reason": "No surviving finite feature of the required measurement type matches the reference parameter uniquely; retain the existing checker and equal failure penalty."
+      },
+      "boss_center_height": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "shoulder_height": {
+        "mode": "legacy",
+        "reason": "Several linear parameters share this value; an explicit owner is required before binding. Retain the existing checker and equal failure penalty."
+      },
+      "base_thickness": {
+        "mode": "legacy",
+        "reason": "Several linear parameters share this value; an explicit owner is required before binding. Retain the existing checker and equal failure penalty."
+      },
+      "shoulder_radii_1": {
+        "mode": "legacy",
+        "reason": "Multiple named parameters share this typed value; scalar equality cannot identify their intended owners. Retain the existing checker and equal failure penalty."
+      },
+      "shoulder_radii_2": {
+        "mode": "legacy",
+        "reason": "Multiple named parameters share this typed value; scalar equality cannot identify their intended owners. Retain the existing checker and equal failure penalty."
+      },
+      "lower_profile_radii_1": {
+        "mode": "geometry",
+        "quantity": "radius",
+        "witnesses": [
+          {
+            "kind": "cylinder",
+            "position": [
+              -41.19530571,
+              50.819860986,
+              22.5
+            ],
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "convex": false,
+            "scale": 15.274443645079323,
+            "coincident_order": 0
+          },
+          {
+            "kind": "cylinder",
+            "position": [
+              41.19530571,
+              50.819860986,
+              22.5
+            ],
+            "direction": [
+              0.0,
+              0.0,
+              1.0
+            ],
+            "convex": false,
+            "scale": 15.274443645079323,
+            "coincident_order": 0
+          }
+        ],
+        "reason": "Final cylinder radius, anchored to the reference location, direction and material side; check all 2 instances of this reference feature family."
+      },
+      "lower_profile_radii_2": {
+        "mode": "legacy",
+        "reason": "Several unrelated final features could explain this number; no unique geometric owner or repeated family established. Retain the existing checker and equal failure penalty."
+      },
+      "fork_horizontal_references_1": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "fork_horizontal_references_2": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "fork_horizontal_references_3": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "fork_vertical_references_1": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "fork_vertical_references_2": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "depth_references_1": {
+        "mode": "legacy",
+        "reason": "Several linear parameters share this value; an explicit owner is required before binding. Retain the existing checker and equal failure penalty."
+      },
+      "depth_references_2": {
+        "mode": "legacy",
+        "reason": "No surviving finite feature of the required measurement type matches the reference parameter uniquely; retain the existing checker and equal failure penalty."
+      },
+      "depth_references_3": {
+        "mode": "legacy",
+        "reason": "Several linear parameters share this value; an explicit owner is required before binding. Retain the existing checker and equal failure penalty."
+      },
+      "base_holes": {
+        "mode": "geometry",
+        "quantity": "diameter",
+        "witnesses": [
+          {
+            "kind": "cylinder",
+            "position": [
+              -63.0,
+              61.819860986,
+              23.0
+            ],
+            "direction": [
+              -0.0,
+              1.0,
+              -2.2e-16
+            ],
+            "convex": false,
+            "scale": 10.00000000035984,
+            "coincident_order": 0
+          },
+          {
+            "kind": "cylinder",
+            "position": [
+              63.0,
+              61.819860986,
+              23.0
+            ],
+            "direction": [
+              -0.0,
+              1.0,
+              -2.2e-16
+            ],
+            "convex": false,
+            "scale": 10.0,
+            "coincident_order": 0
+          }
+        ],
+        "reason": "Final cylinder diameter, anchored to the reference location, direction and material side; check all 2 instances of this reference feature family."
+      },
+      "base_hole_spacing": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "base_hole_depth_offset": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      },
+      "shoulder_radii_1_count": {
+        "mode": "legacy",
+        "reason": "Multiple named parameters share this typed value; scalar equality cannot identify their intended owners. Retain the existing checker and equal failure penalty."
+      },
+      "shoulder_radii_2_count": {
+        "mode": "legacy",
+        "reason": "Multiple named parameters share this typed value; scalar equality cannot identify their intended owners. Retain the existing checker and equal failure penalty."
+      },
+      "lower_profile_radii_1_count": {
+        "mode": "legacy",
+        "reason": "Multiple named parameters share this typed value; scalar equality cannot identify their intended owners. Retain the existing checker and equal failure penalty."
+      },
+      "lower_profile_radii_2_count": {
+        "mode": "legacy",
+        "reason": "Multiple named parameters share this typed value; scalar equality cannot identify their intended owners. Retain the existing checker and equal failure penalty."
+      },
+      "base_holes_count": {
+        "mode": "legacy",
+        "reason": "This coordinate, angle, pattern or construction parameter needs a case-specific semantic binding; retain the existing checker and equal failure penalty."
+      }
+    }
+  }
+}
