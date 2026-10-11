@@ -1,0 +1,14 @@
+# Rebuildable artifacts; retain source, manifests, lockfiles, tests and notes.
+target/
+wasi/target/
+.tools/
+.kraftkit/
+*.cpio
+*.qcow2
+*.img
+*.log
+results/*
+!results/.gitkeep
+.build/
+.unikraft/
+.kraft/

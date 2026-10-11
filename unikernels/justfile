@@ -1,0 +1,65 @@
+# Self-contained comparison; `just --list` shows all reproducible steps.
+set shell := ["bash", "-euo", "pipefail", "-c"]
+export PATH := justfile_directory() + "/.tools/bin:" + env_var("PATH")
+
+default:
+    @just --list
+
+setup-tools:
+    bash tests/install-tools.sh
+
+doctor:
+    @echo "Available tools:"; for cmd in rustc cargo docker just runsc kraft wasmtime qemu-system-x86_64; do command -v "$cmd" || true; done
+    @echo "Registered Docker runtimes:"; docker info 2>/dev/null | grep 'Runtimes:' || true
+    @echo "KVM:"; ls -l /dev/kvm || true
+    @rustup target list --installed
+
+test-unit:
+    cargo test
+
+build-native:
+    rustup target add x86_64-unknown-linux-musl
+    cargo build --release --target x86_64-unknown-linux-musl
+    file target/x86_64-unknown-linux-musl/release/inspect-server
+    ls -lh target/x86_64-unknown-linux-musl/release/inspect-server
+
+test-native: build-native
+    bash tests/with-server.sh native
+
+build-docker: build-native
+    mkdir -p .build
+    cp target/x86_64-unknown-linux-musl/release/inspect-server .build/inspect-server
+    docker build --tag inspect-scratch:local .
+    docker image inspect inspect-scratch:local | jaq -r '.[0].Size'
+
+test-docker: build-docker
+    bash tests/with-server.sh docker
+
+# Requires host-installed runsc registered as a Docker runtime. No daemon changes here.
+test-gvisor: build-docker
+    bash tests/with-server.sh gvisor
+
+build-wasi:
+    rustup target add wasm32-wasip2
+    cargo build --manifest-path wasi/Cargo.toml --release --target wasm32-wasip2
+    file wasi/target/wasm32-wasip2/release/inspect_wasi.wasm
+    ls -lh wasi/target/wasm32-wasip2/release/inspect_wasi.wasm
+
+test-wasi: build-wasi
+    bash tests/with-server.sh wasi
+
+# Unikraft ELF loader: boots pre-built specialized OS and loads our Linux ELF.
+# Does not compile the Rust app into an original Unikraft OS image.
+test-unikraft: build-native
+    bash tests/with-server.sh unikraft
+
+# Not an equitable runtime benchmark until all environments can run on one host.
+sizes:
+    @for f in target/x86_64-unknown-linux-musl/release/inspect-server wasi/target/wasm32-wasip2/release/inspect_wasi.wasm; do if test -f "$f"; then stat -c '%n %s bytes' "$f"; fi; done
+    @docker image inspect inspect-scratch:local | jaq -r '.[0].Size' 2>/dev/null || true
+
+# Small, noisy trial: includes executable/container start and probes; not throughput or memory.
+benchmark: build-docker build-wasi
+    mkdir -p results
+    : > results/bench.txt
+    for mode in native docker wasi; do for i in 1 2 3 4 5; do bash tests/with-server.sh "$mode" | tee -a results/bench.txt; done; done

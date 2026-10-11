@@ -1,0 +1,21 @@
+[package]
+name = "inspect-wasi"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+inspect-core = { package = "unikernel-inspect", path = ".." }
+wstd = "0.6"
+http-body-util = "0.1"
+
+[workspace]
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"
+opt-level = "z"

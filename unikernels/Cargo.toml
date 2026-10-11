@@ -1,0 +1,26 @@
+[package]
+name = "unikernel-inspect"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+name = "inspect_core"
+path = "src/lib.rs"
+
+[[bin]]
+name = "inspect-server"
+path = "src/bin/server.rs"
+
+[dependencies]
+serde_json = "1"
+sha2 = "0.10"
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"
+opt-level = "z"
+
+[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+tiny_http = "0.12"

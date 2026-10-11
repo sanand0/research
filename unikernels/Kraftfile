@@ -1,0 +1,7 @@
+# Optional alternative to `kraft run <ELF>`: use a prebuilt Unikraft loader
+# with the exact same scratch Dockerfile filesystem. Requires BuildKit + QEMU.
+spec: v0.6
+name: inspect-unihost
+runtime: base:latest
+rootfs: ./Dockerfile
+cmd: ["/inspect-server"]

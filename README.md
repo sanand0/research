@@ -1,5 +1,6 @@
 # Research
 
+- 11 Oct 2026: [`unikernels`](unikernels/). Built one Rust JSON-inspection HTTP service for scratch Docker, gVisor, Unikraft ELF-loader, and WASI; native/Docker/WASI pass while gVisor and Unikraft need host runtime setup.
 - 03 Oct 2026: [`p-hacking-research`](p-hacking-research/). Reproducible mortality “headline factories”: NHANES III finds 21/60 named foods FDR-significant while hot chili ranks 28th; HRS/CAMS near-replicates books→longevity (HR .816 vs .80 published) but finds 18/31 everyday activities FDR-significant, with books only 11th among 28 estimable. Strong cross-dataset evidence for hidden exposure-selection degrees of freedom.
 - 20 Sep 2026: [`cyphral-distich`](cyphral-distich/). Verified Claude Fable 5.1's Cyphral Distich reading 64/64 against the 1834 edition; found a Vals transcription error and an unresolved provenance gap because the surviving 1653 copy lacks the cipher and uses different Proquiritations.
 - 21 Sep 2026: [algorithm-discovery](algorithm-discovery/). Low-budget DE study now enters a preregistered robustness phase: map when population size matters, whether ~2D is near-best, and where noise, multimodality, dimension, boundaries, or parallelism make it fail.
