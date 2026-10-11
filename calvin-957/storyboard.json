@@ -1,0 +1,288 @@
+{
+ "video": {
+  "width": 1080,
+  "height": 1350,
+  "fps": 30,
+  "crf": 27,
+  "preset": "slow",
+  "output": "calvin-957.mp4"
+ },
+ "palette": {
+  "bg": "#0f1d18",
+  "panel": "#16271f",
+  "fg": "#e5eee7",
+  "muted": "#9db1a5",
+  "line": "#2b4237",
+  "frame": "#0a1511",
+  "sq": "#1f382d",
+  "sq_text": "#5f7a6c",
+  "TW": "#d9554a",
+  "DW": "#a85b53",
+  "TL": "#3e8cc2",
+  "DL": "#2f6683",
+  "premium_text": "#f3ece4",
+  "tile": "#ead5a3",
+  "tile_edge": "#a88d55",
+  "ink": "#2a1e10",
+  "highlight": "#f5c542",
+  "Calvin": "#f08a5d",
+  "Hobbes": "#f2c14e",
+  "US": "#4fc283",
+  "UK": "#d9c34a",
+  "NO": "#f0675a",
+  "tiers": [
+   "#4fc283",
+   "#8cc95a",
+   "#d9c34a",
+   "#f2a84a",
+   "#f58a52",
+   "#f0675a",
+   "#e0587f",
+   "#c46bd0"
+  ]
+ },
+ "tiers": [
+  "By the book",
+  "British loophole",
+  "Proper nouns",
+  "Extra Zs",
+  "Sound effects",
+  "Just letters",
+  "The jinx war",
+  "Worm from New Guinea"
+ ],
+ "acts": [
+  {
+   "from": 1,
+   "to": 5,
+   "label": "ACT I",
+   "title": "A perfectly normal game"
+  },
+  {
+   "from": 6,
+   "to": 12,
+   "label": "ACT II",
+   "title": "Technically legal"
+  },
+  {
+   "from": 13,
+   "to": 15,
+   "label": "ACT III",
+   "title": "Close enough"
+  },
+  {
+   "from": 16,
+   "to": 30,
+   "label": "ACT IV",
+   "title": "Calvinball rules"
+  },
+  {
+   "from": 31,
+   "to": 33,
+   "label": "ACT V",
+   "title": "The jinx war"
+  }
+ ],
+ "timing": {
+  "intro_fade": 0.4,
+  "act_banner": 1.1,
+  "tile_stagger": 0.06,
+  "tile_drop": 0.26,
+  "score_pop": 0.35,
+  "hold_by_act": [
+   0.65,
+   0.65,
+   0.75,
+   0.45,
+   0.9
+  ],
+  "dialogue_base": 0.55,
+  "dialogue_per_char": 0.036
+ },
+ "intro": [
+  {
+   "duration": 3.8,
+   "kicker": "In a Calvin & Hobbes strip, Calvin plays",
+   "tiles": "ZQFMGB",
+   "after": "on a double-word square, and claims 957 points.",
+   "say": [
+    [
+     "Hobbes",
+     "ZQFMGB isn't a word!"
+    ]
+   ],
+   "top": 420
+  },
+  {
+   "duration": 3.9,
+   "kicker": "Could a real Scrabble board ever give 957?",
+   "title": "Yes. In 33 moves.",
+   "after": "Watch two friends start honest and slide, one move at a time, into Calvinball.",
+   "meter": true,
+   "top": 440
+  }
+ ],
+ "moves": {
+  "1": {
+   "say": []
+  },
+  "5": {
+   "say": [
+    [
+     "Hobbes",
+     "Proper noun!"
+    ],
+    [
+     "Calvin",
+     "Look it up."
+    ]
+   ]
+  },
+  "7": {
+   "say": [
+    [
+     "Calvin",
+     "A South American weevil. Look it up."
+    ]
+   ]
+  },
+  "8": {
+   "say": [
+    [
+     "Calvin",
+     "That's a noise, not a word!"
+    ],
+    [
+     "Hobbes",
+     "Look it up."
+    ]
+   ]
+  },
+  "10": {
+   "say": [
+    [
+     "Hobbes",
+     "British for 'nap'."
+    ],
+    [
+     "Calvin",
+     "You're not British!"
+    ]
+   ]
+  },
+  "13": {
+   "say": [
+    [
+     "Hobbes",
+     "Proper noun."
+    ],
+    [
+     "Calvin",
+     "The most proper noun there is."
+    ]
+   ]
+  },
+  "14": {
+   "say": [
+    [
+     "Calvin",
+     "Proper noun AND gross!"
+    ]
+   ]
+  },
+  "15": {
+   "say": [
+    [
+     "Calvin",
+     "New rule: we're playing Calvinball now."
+    ]
+   ]
+  },
+  "17": {
+   "say": [
+    [
+     "Calvin",
+     "Pizzazz, with extra pizzazz."
+    ]
+   ]
+  },
+  "25": {
+   "say": [
+    [
+     "Hobbes",
+     "That's a sentence."
+    ],
+    [
+     "Calvin",
+     "It's one word if you say it fast."
+    ]
+   ]
+  },
+  "27": {
+   "say": [
+    [
+     "Calvin",
+     "Five Qs is fifty points. That's just math."
+    ]
+   ]
+  },
+  "28": {
+   "say": [
+    [
+     "Hobbes",
+     "Seven kisses. From Susie."
+    ],
+    [
+     "Calvin",
+     "GROSS!"
+    ]
+   ]
+  },
+  "31": {
+   "say": [
+    [
+     "Calvin",
+     "JINX! And that one's a real word!"
+    ]
+   ]
+  },
+  "32": {
+   "say": [
+    [
+     "Hobbes",
+     "A triple jinx. On a triple word score."
+    ]
+   ],
+   "extra_hold": 0.6
+  },
+  "33": {
+   "say": []
+  }
+ },
+ "finale": {
+  "step_main": 1.0,
+  "step_cross": 0.6,
+  "stamp_hold": 1.3,
+  "say": [
+   [
+    "Hobbes",
+    "ZQFMGB isn't a word! It doesn't even have a vowel!"
+   ],
+   [
+    "Calvin",
+    "It is SO a word! It's a worm found in New Guinea!"
+   ]
+  ],
+  "say_hold": 3.6
+ },
+ "outro": {
+  "duration": 5.0,
+  "title": "Calvin 4,024 \u00b7 Hobbes 3,769",
+  "lines": [
+   "Every placement follows Scrabble rules.",
+   "Every word checked against the US (TWL06) and British (Collins) word lists.",
+   "Tiles used: 57 Zs. A real set has one."
+  ],
+  "credit": ""
+ }
+}
