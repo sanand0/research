@@ -1,0 +1,12 @@
+set fallback
+
+default:
+  @just --list
+
+check:
+  node --check app.js
+  node --check game.js
+  uv run test_data.py
+
+browser:
+  uv run test_browser.py

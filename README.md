@@ -1,5 +1,6 @@
 # Research
 
+- 11 Oct 2026: [`whatsnewt`](whatsnewt/) and [`whatsnewt2`](whatsnewt2/). Interactive, offline static expedition solves all 18 Python 3.15 `uvx --python 3.15 whatsnewt` adventure puzzles with upstream-verified answers, all 8 collectibles, 15 rooms and 11 hidden curiosities (375/375).
 - 11 Oct 2026: [`unikernels`](unikernels/). Built one Rust JSON-inspection HTTP service for scratch Docker, gVisor, Unikraft ELF-loader, and WASI; native/Docker/WASI pass while gVisor and Unikraft need host runtime setup.
 - 03 Oct 2026: [`p-hacking-research`](p-hacking-research/). Reproducible mortality “headline factories”: NHANES III finds 21/60 named foods FDR-significant while hot chili ranks 28th; HRS/CAMS near-replicates books→longevity (HR .816 vs .80 published) but finds 18/31 everyday activities FDR-significant, with books only 11th among 28 estimable. Strong cross-dataset evidence for hidden exposure-selection degrees of freedom.
 - 20 Sep 2026: [`cyphral-distich`](cyphral-distich/). Verified Claude Fable 5.1's Cyphral Distich reading 64/64 against the 1834 edition; found a Vals transcription error and an unresolved provenance gap because the surviving 1653 copy lacks the cipher and uses different Proquiritations.

@@ -1,0 +1,9 @@
+# Editor, Python, dev-server and browser artifacts only
+__pycache__/
+.pytest_cache/
+.venv/
+*.pyc
+.DS_Store
+playwright-report/
+test-results/
+node_modules/

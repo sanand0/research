@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="description" content="An interactive, fully solved journey through whatsnewt, Barry Warsaw's Python 3.15 adventure, with every puzzle, collectible and Easter egg.">
+  <title>whatsnewt · The Complete Expedition</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c1720'/%3E%3Ctext x='32' y='44' font-size='41' text-anchor='middle' fill='%23bef4c6'%3E%3F%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+  <script src="game.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to expedition</a>
+  <header class="masthead">
+    <a class="logo" href="#step=0" aria-label="whatsnewt: Return to start"><span class="logo-symbol" aria-hidden="true">↝</span> whats<span class="logo-accent">newt</span><small>/ the complete expedition</small></a>
+    <div class="header-actions">
+      <span class="version">PYTHON 3.15 / 2026</span>
+      <button class="quiet-button" id="spoilers" type="button" aria-pressed="false">Show all answers</button>
+      <button class="quiet-button" id="theme" type="button" aria-label="Switch color theme">☾ Theme</button>
+    </div>
+  </header>
+
+  <div class="dashboard" aria-label="Expedition status">
+    <div><small>REFERENCE RUN</small><strong id="score">000 <span>/ 375</span></strong></div>
+    <div><small>SIGILS FOUND</small><strong id="sigils">0 <span>/ 6</span></strong></div>
+    <div><small>YOUR PUZZLES READ</small><strong id="learned">0 <span>/ 18</span></strong></div>
+    <div><small>SECRET WORDS FOUND</small><strong id="found-secrets">0 <span>/ 11</span></strong></div>
+    <div class="dashboard-progress"><span id="meter-label">YOUR EXPEDITION</span><progress id="progress" value="0" max="23">0%</progress></div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="aside-head"><span class="eyebrow">THE INTERPRETER</span><span class="aside-meta">15 ROOMS · 18 PUZZLES</span></div>
+      <div class="map-wrap">
+        <div class="aside-caption">You are here <span class="ping" aria-hidden="true"></span> <span class="map-caption-right">Select any room</span></div>
+        <div id="map" class="map-grid" aria-label="Clickable game map"></div>
+        <div id="lower-map" class="lower-map"></div>
+      </div>
+      <label class="search-label" for="find">JUMP TO A CHAPTER</label>
+      <input id="find" type="search" placeholder="Search rooms, features…" autocomplete="off">
+      <nav id="chapters" class="chapters" aria-label="Chapters"></nav>
+      <p class="sidebar-note">Movement follows the upstream perfect-run route. Chapter links jump directly to any room.</p>
+      <a class="source-link" href="https://gitlab.com/flufl/whatsnewt" target="_blank" rel="noopener noreferrer">↑ The original game <span>↗</span></a>
+    </aside>
+
+    <main id="main" tabindex="-1">
+      <section class="hero" id="hero">
+        <div class="eyebrow"><span class="accent-dot"></span> A FIELD GUIDE TO PYTHON 3.15</div>
+        <h1>YOU WAKE UP<br>INSIDE <em>PYTHON.</em></h1>
+        <p>Fifteen rooms. Eighteen puzzles. Six sigils guarding the gate. Eleven secrets the game won't admit exist. One perfect score.</p>
+        <div class="hero-actions"><button id="begin" class="action-primary" type="button">Enter the interpreter <span>→</span></button><a class="action-secondary" href="#secrets">Spoil the Easter eggs ↗</a></div>
+        <div class="hero-foot"><span>Based on Barry Warsaw's <a href="https://gitlab.com/flufl/whatsnewt">whatsnewt</a></span><span>Run it yourself: <code>uvx --python 3.15 whatsnewt</code></span></div>
+      </section>
+
+      <section class="scene" id="scene">
+        <div class="scene-topline"><span class="eyebrow" id="stage">ENCOUNTER 01 / 23</span><span id="room-type" class="room-type">MAIN FLOOR</span></div>
+        <div class="scene-intro"><div><p class="room-overline" id="room-label">ROOM 01</p><h2 id="room-title">The Startup Foyer</h2><p id="room-subtitle" class="scene-subtitle"></p></div><div class="room-glyph" id="room-glyph" aria-hidden="true">01</div></div>
+        <p class="story" id="story"></p>
+        <div class="path-card"><span>YOUR MOVE</span><strong id="move"></strong><small id="route-note"></small></div>
+
+        <section class="terminal" aria-label="Interactive adventure command console">
+          <div class="terminal-bar"><span class="terminal-dots"><i></i><i></i><i></i></span><span>THE INTERPRETER — PLAYGROUND</span><span>SIMULATED</span></div>
+          <div class="terminal-body" id="log" role="log" aria-live="polite" aria-label="Game-style output"></div>
+          <form id="command-form" class="prompt"><label for="command" class="prompt-char">❯</label><input id="command" aria-label="Enter a game command" placeholder="Try: look, examine, take, xyzzy, secrets…" autocomplete="off" spellcheck="false"><button type="submit" aria-label="Submit command">↵</button></form>
+        </section>
+        <p class="simulation-note">A guided simulation of game commands, not a Python runtime. To actually submit code, use the original TUI.</p>
+
+        <div id="pickups" class="pickup-section"></div>
+        <div id="puzzles" class="puzzle-section"></div>
+        <div id="examine" class="examine-section"></div>
+        <div id="special"></div>
+
+        <div class="finish-panel"><button id="prev" class="action-secondary" type="button">← Previous step</button><span id="step-count">01 / 23</span><button id="next" class="action-primary" type="button">Next encounter <span>→</span></button></div>
+        <div class="keyboard-tip">USE <kbd>←</kbd> <kbd>→</kbd> to move between encounters · <kbd>/</kbd> to search · every section is linkable</div>
+      </section>
+      <footer class="page-footer">An independent, educational companion to <a href="https://gitlab.com/flufl/whatsnewt">whatsnewt</a> (Apache-2.0). All canonical answers are sourced from upstream tests; explanatory storytelling is original. <a href="https://docs.python.org/3.15/whatsnew/3.15.html">Python 3.15 release notes ↗</a></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
