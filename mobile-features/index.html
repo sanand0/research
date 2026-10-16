@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#faf9f6">
+<title>Mobile Field Lab — What can your browser sense?</title>
+<style>
+  :root { color-scheme: light; --ink:#17242b; --muted:#66757a; --accent:#155c53; --accent-dark:#0b403b; --accent-pale:#e7f2ee; --line:#e3e8e5; --bg:#faf9f6; --surface:#fff; --amber:#95610d; --amber-bg:#fff5df; --red:#9d4544; --red-bg:#fff0ee; --radius:16px }
+  * { box-sizing:border-box }
+  body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.48 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; -webkit-font-smoothing:antialiased }
+  button { font:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent }
+  button:focus-visible, a:focus-visible, .touch-pad:focus-visible { outline:3px solid #39a997; outline-offset:3px }
+  .wrap { max-width:1120px; margin:auto; padding:0 24px }
+  header { border-bottom:1px solid var(--line) }
+  .header-inner { min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:16px }
+  .brand { display:flex; align-items:center; gap:11px; font-weight:770; letter-spacing:-.35px }
+  .brand-mark { width:32px; height:32px; display:grid; place-items:center; color:white; border-radius:10px; background:var(--accent) }
+  .brand-mark svg { width:22px; height:22px }
+  .small-meta { color:var(--muted); font-size:12px; text-align:right }
+  .hero { padding:64px 0 32px; max-width:760px }
+  .eyebrow, .kicker { color:var(--accent); font-size:11px; letter-spacing:.14em; font-weight:800; text-transform:uppercase }
+  h1 { font-size:clamp(37px,6vw,64px); line-height:1.06; letter-spacing:-.065em; font-weight:780; max-width:760px; margin:14px 0 20px }
+  .lead { font-size:17px; line-height:1.62; color:#58686d; max-width:670px; margin:0 0 28px }
+  .actions { display:flex; gap:10px; flex-wrap:wrap; align-items:center }
+  .btn { min-height:45px; padding:10px 18px; border-radius:11px; border:1px solid var(--line); background:white; color:var(--ink); font-weight:650; transition:background .15s,transform .1s }
+  .btn:active { transform:translateY(1px) }
+  .btn-primary { background:var(--accent); color:white; border-color:var(--accent) }
+  .btn-primary:hover { background:var(--accent-dark) }
+  .btn-secondary:hover,.btn-small:hover { background:#f1f5f1 }
+  .btn-small { font-size:12px; min-height:32px; padding:6px 11px; border-radius:8px; flex-shrink:0 }
+  .privacy { display:flex; gap:7px; align-items:flex-start; color:var(--muted); font-size:12px; margin-top:18px }
+  .privacy svg { flex:none; margin-top:1px }
+  .notice { border:1px solid #ecd5a5; color:#865f21; border-radius:12px; background:#fff7e8; padding:12px 16px; font-size:13px; margin:6px 0 24px }
+  .notice[hidden] { display:none }
+  .summary { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:16px 0 45px }
+  .stat { padding:17px 20px; background:white; border:1px solid var(--line); border-radius:var(--radius) }
+  .stat strong { display:block; font-size:31px; line-height:1.1; letter-spacing:-.05em; font-variant-numeric:tabular-nums }
+  .stat span { color:var(--muted); font-size:12px; display:block; margin-top:6px }
+  .group { margin:38px 0 46px }
+  .group-head { display:flex; align-items:end; justify-content:space-between; gap:18px; border-bottom:1px solid var(--line); padding-bottom:16px; margin-bottom:18px }
+  .group h2 { font-size:21px; letter-spacing:-.035em; margin:4px 0 0; line-height:1.25 }
+  .group-desc { color:var(--muted); font-size:12px; text-align:right; max-width:320px }
+  .grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:13px }
+  .card { min-width:0; position:relative; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:17px; min-height:192px; display:flex; flex-direction:column; gap:12px; overflow:hidden }
+  .card-top { display:flex; align-items:start; gap:10px }
+  .symbol { color:var(--accent); border-radius:9px; background:#eaf4ef; display:grid; place-items:center; font-size:12px; font-weight:750; letter-spacing:-.025em; width:35px; height:35px; flex:none }
+  .card-title { font-weight:730; font-size:14px; margin:0; line-height:1.3 }
+  .card-type { color:#8a989b; font-size:11px; margin-top:3px }
+  .state { margin-left:auto; flex:none; white-space:nowrap; font-size:10px; font-weight:720; border-radius:99px; padding:4px 8px; color:#707b7e; background:#f1f3f2 }
+  .state[data-state="active"],.state[data-state="ready"] { color:#176754; background:#e5f5ed }
+  .state[data-state="waiting"],.state[data-state="action"] { color:var(--amber); background:var(--amber-bg) }
+  .state[data-state="denied"],.state[data-state="error"] { color:var(--red); background:var(--red-bg) }
+  .reading { color:#52636a; font-size:12px; line-height:1.5; margin:0; overflow-wrap:anywhere; min-height:32px; }
+  .values { margin-top:auto; border-top:1px solid #eef1ef; padding-top:10px; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 6px; font-variant-numeric:tabular-nums }
+  .value { min-width:0 }
+  .value-name { font-size:10px; letter-spacing:.025em; color:#869296; overflow:hidden; text-overflow:ellipsis; white-space:nowrap }
+  .value-number { font-size:13px; font-weight:700; overflow-wrap:anywhere; }
+  .trace { width:100%; height:37px; display:none; margin-top:3px; background:linear-gradient(to bottom,transparent 92%,#ecf0ed 92%); overflow:visible }
+  .trace.visible { display:block }
+  .trace polyline { fill:none; stroke:#208374; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke }
+  .card > .btn-small { margin-top:auto; align-self:flex-start }
+  .card:has(.values:not(:empty)) > .btn-small { margin-top:0 }
+  .preview { width:100%; border-radius:9px; background:#152b2b; aspect-ratio:16 / 9; object-fit:cover; display:none }
+  .preview.visible { display:block }
+  .touch-pad { background:#f1f7f3; border:1px dashed #b4d8cb; border-radius:10px; width:100%; min-height:100px; display:grid; place-items:center; user-select:none; touch-action:none; text-align:center; padding:12px; color:#629184; font-size:12px; font-weight:650; }
+  .touch-pad:active { background:#deefe7 }
+  .footnote { margin:55px 0; padding:22px; color:#5b6c71; background:#f0f3ef; border-radius:14px; font-size:13px }
+  .footnote p { margin:0 0 10px }
+  .footnote p:last-child { margin:0 }
+  footer { border-top:1px solid var(--line); padding:24px 0 42px; font-size:12px; color:var(--muted) }
+  dialog { border:1px solid var(--line); box-shadow:0 25px 80px #14272535; border-radius:18px; max-width:min(460px,calc(100vw - 32px)); padding:26px; color:var(--ink); font:inherit }
+  dialog::backdrop { background:#152d2d7c }
+  dialog h2 { font-size:22px; line-height:1.2; letter-spacing:-.04em; margin:0 0 14px }
+  dialog p, dialog li { color:#52626a; font-size:14px; line-height:1.55 }
+  dialog ol { padding-left:20px }
+  @media(max-width:940px) { .grid { grid-template-columns:repeat(2,minmax(0,1fr)) } }
+  @media(max-width:620px) { .wrap { padding:0 17px } .header-inner { min-height:65px } .small-meta { max-width:150px; font-size:10px } .hero { padding:42px 0 25px } .lead { font-size:15px } .summary { grid-template-columns:repeat(2,minmax(0,1fr)); margin-bottom:32px } .stat { padding:14px 16px } .stat strong { font-size:28px } .grid { grid-template-columns:1fr } .group-head { align-items:start; flex-direction:column; gap:6px } .group-desc { text-align:left } .card { min-height:160px } }
+  @media(prefers-reduced-motion:reduce) { .btn { transition:none } }
+</style>
+</head>
+<body>
+<header><div class="wrap header-inner">
+  <div class="brand"><div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><path d="M2 15h5l3-8 5 15 4-10 2 3h5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Mobile Field Lab</div>
+  <div class="small-meta" id="platform">Detecting your browser…</div>
+</div></header>
+<main class="wrap">
+  <section class="hero">
+    <div class="eyebrow">A live browser capability experiment</div>
+    <h1>Everything your phone can sense.</h1>
+    <p class="lead">Discover the sensors and device features your browser actually exposes. Enable them, move your phone, and watch the readings update in real time.</p>
+    <div class="actions">
+      <button class="btn btn-primary" id="enable">Enable available features ↗</button>
+      <button class="btn btn-secondary" id="reset">Stop &amp; reset</button>
+    </div>
+    <div class="privacy"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span>Private by design: no uploads, analytics, recordings, or third-party scripts. Camera and microphone data stay on this device.</span></div>
+  </section>
+  <div class="notice" id="notice" hidden></div>
+  <section class="summary" aria-label="Feature status summary">
+    <div class="stat"><strong id="count-active">0</strong><span>Live / accessible</span></div>
+    <div class="stat"><strong id="count-ready">0</strong><span>Ready to use</span></div>
+    <div class="stat"><strong id="count-action">0</strong><span>Needs action</span></div>
+    <div class="stat"><strong id="count-unavailable">0</strong><span>Unavailable / blocked</span></div>
+  </section>
+  <div id="sections"></div>
+  <aside class="footnote">
+    <p><strong>What the labels mean.</strong> “Live” means actual readings or a successful device interaction, not merely that the API exists. “Ready” means access without a permission prompt or a detected API awaiting activity. “Needs action” includes device pickers that require their own tap. “Unavailable” means the API is missing, blocked, or denied.</p>
+    <p><strong>Browser limitation.</strong> Websites can stop access, but cannot reliably erase permissions granted by the browser or operating system. Use <em>Stop &amp; reset</em> to release resources and see instructions for revoking site grants.</p>
+  </aside>
+</main>
+<footer><div class="wrap">Mobile Field Lab · Standalone HTML · Best opened over HTTPS in Safari on iPhone or Chrome on Android. Some features require physical hardware or an attached peripheral.</div></footer>
+<dialog id="reset-dialog" aria-labelledby="reset-title">
+  <h2 id="reset-title">Session stopped. Permissions may remain.</h2>
+  <p>All available streams, listeners, watches, scans, and locks were stopped and this page's readings cleared. Websites cannot universally revoke browser permissions.</p>
+  <ol>
+    <li><strong>Android Chrome:</strong> Open the site's controls beside the address bar → Permissions / Site settings → reset or block allowed permissions.</li>
+    <li><strong>iPhone Safari:</strong> Open the page's website settings or iPhone Settings → Apps → Safari. Change site permissions, then reload this page. The exact menus vary by iOS version.</li>
+    <li>For a fresh permission test, also close other tabs that may have camera or microphone access.</li>
+  </ol>
+  <button class="btn btn-primary" id="dialog-close">Close</button>
+</dialog>
+<script>
+(() => {
+  'use strict';
+  const groups = [
+    { id:'core', label:'01 / The essentials', heading:'Motion, sound & surroundings', description:'The features most useful for interactive talks and workshops.' },
+    { id:'device', label:'02 / Device capabilities', heading:'Screen, power & feedback', description:'Interfaces and device signals beyond the main sensors.' },
+    { id:'hardware', label:'03 / Connected hardware', heading:'Nearby devices & external sensors', description:'These device choosers require individual taps and compatible peripherals.' },
+    { id:'limits', label:'04 / Browser boundaries', heading:'What the web cannot reliably read', description:'Visible here so absence is not confused with a missed permission prompt.' }
+  ];
+  const features = [
+    {id:'motion', group:'core', name:'Accelerometer', symbol:'AX', type:'Motion · m/s²', hint:'Move or shake your phone.', supported:()=> 'DeviceMotionEvent' in window || 'Accelerometer' in window},
+    {id:'gyro', group:'core', name:'Gyroscope', symbol:'GY', type:'Rotation · °/s', hint:'Rotate your phone.', supported:()=> 'DeviceMotionEvent' in window || 'Gyroscope' in window},
+    {id:'tilt', group:'core', name:'Device orientation', symbol:'3D', type:'Tilt · degrees', hint:'Tilt and turn the phone.', supported:()=> 'DeviceOrientationEvent' in window},
+    {id:'microphone', group:'core', name:'Microphone', symbol:'AU', type:'Audio · local analysis', hint:'Speak or hum to see sound levels.', supported:()=>!!navigator.mediaDevices?.getUserMedia},
+    {id:'camera', group:'core', name:'Camera', symbol:'CA', type:'Video · live preview', hint:'Camera preview stays on your phone.', supported:()=>!!navigator.mediaDevices?.getUserMedia},
+    {id:'location', group:'core', name:'Location', symbol:'GPS', type:'Position · coordinates', hint:'Allow location access for a live fix.', supported:()=>!!navigator.geolocation},
+    {id:'touch', group:'core', name:'Touch & pressure', symbol:'TX', type:'Input · multiple pointers', hint:'Touch or drag in the pad below.', supported:()=> 'PointerEvent' in window, initiallyReady:true},
+    {id:'screen', group:'device', name:'Screen orientation', symbol:'SC', type:'Display · orientation', hint:'Rotate the screen between portrait and landscape.', supported:()=>true, initiallyReady:true},
+    {id:'battery', group:'device', name:'Battery', symbol:'BT', type:'Power · level & charging', hint:'Battery information depends on the browser.', supported:()=>typeof navigator.getBattery === 'function'},
+    {id:'network', group:'device', name:'Connectivity', symbol:'NET', type:'Network · estimates', hint:'Effective network type where exposed.', supported:()=>true, initiallyReady:true},
+    {id:'wake', group:'device', name:'Screen wake lock', symbol:'WK', type:'Display · keep awake', hint:'Requests that the screen remain awake.', supported:()=>!!navigator.wakeLock?.request},
+    {id:'vibration', group:'device', name:'Vibration', symbol:'VB', type:'Output · tactile feedback', hint:'Tests a 40 ms vibration on enable.', supported:()=>typeof navigator.vibrate === 'function'},
+    {id:'bluetooth', group:'hardware', name:'Bluetooth LE', symbol:'BLE', type:'Device · chooser', hint:'Connect a peripheral; readings require its GATT service.', supported:()=>!!navigator.bluetooth?.requestDevice, manual:'Choose device'},
+    {id:'nfc', group:'hardware', name:'NFC tags', symbol:'NFC', type:'Tag · scan', hint:'Bring a compatible NDEF tag near the phone.', supported:()=> 'NDEFReader' in window},
+    {id:'usb', group:'hardware', name:'WebUSB', symbol:'USB', type:'Device · chooser', hint:'Choose a USB device; decoding requires a device protocol.', supported:()=>!!navigator.usb?.requestDevice, manual:'Choose device'},
+    {id:'serial', group:'hardware', name:'Web Serial', symbol:'SER', type:'Port · chooser', hint:'Choose a serial port; reading requires baud and protocol.', supported:()=>!!navigator.serial?.requestPort, manual:'Choose port'},
+    {id:'magnetic', group:'limits', name:'Magnetometer', symbol:'MG', type:'Magnetic field · µT', hint:'Raw magnetic field access is not widely available.', supported:()=> 'Magnetometer' in window},
+    {id:'light', group:'limits', name:'Ambient light', symbol:'LX', type:'Light · lux', hint:'A raw lux sensor is generally hidden from browsers.', supported:()=> 'AmbientLightSensor' in window},
+    {id:'proximity', group:'limits', name:'Proximity', symbol:'PX', type:'Near / far', hint:'Phone proximity sensors are not exposed by mainstream browsers.', supported:()=> 'ProximitySensor' in window},
+    {id:'barometer', group:'limits', name:'Barometer', symbol:'BP', type:'Air pressure', hint:'No standard browser API for internal pressure sensors.', supported:()=>false},
+    {id:'temperature', group:'limits', name:'Temperature / humidity', symbol:'TH', type:'Environment', hint:'Internal hardware and environmental values are not exposed.', supported:()=>false},
+    {id:'health', group:'limits', name:'Step count / health', symbol:'HL', type:'Health data', hint:'No direct access to system step counts or health databases.', supported:()=>false},
+    {id:'biometrics', group:'limits', name:'Raw face / fingerprint', symbol:'ID', type:'Identity · protected', hint:'WebAuthn allows authentication, not raw biometric sensor access.', supported:()=>false}
+  ];
+  const byId = Object.fromEntries(features.map(f=>[f.id,f]));
+  const $ = id=>document.getElementById(id);
+  let generation=0, cleanup=[], streams=[], geoWatch=null, audioContext=null, nfcAbort=null, wakeLock=null, bluetoothDevice=null, selectedPort=null;
+  let animationFrame=null;
+  const lastUpdate={}, histories={}, cardElements={}, statuses={};
+  const statusText={idle:'Not started',ready:'Ready',waiting:'Waiting',active:'Live',action:'Tap to connect',unsupported:'Unavailable',denied:'Denied',error:'Blocked'};
+  const txt=(x)=>x===undefined||x===null||x===''?'—':String(x);
+  const num=(x,d=1)=>Number.isFinite(x)?x.toFixed(d):'—';
+  const errorMessage=e => e?.message || e?.name || 'Permission denied or device unavailable';
+  const isCurrent = t=>t===generation;
+  const isSupported = f=>{try{return !!f.supported()}catch{return false}};
+
+  function build() {
+    const root=$('sections');
+    groups.forEach(g=>{
+      const section=document.createElement('section'); section.className='group';
+      const head=document.createElement('div'); head.className='group-head';
+      head.innerHTML=`<div><div class="kicker">${g.label}</div><h2>${g.heading}</h2></div><div class="group-desc">${g.description}</div>`;
+      section.append(head);
+      const grid=document.createElement('div'); grid.className='grid';
+      features.filter(f=>f.group===g.id).forEach(f=>{
+        const card=document.createElement('article'); card.className='card'; card.id=`feature-${f.id}`;
+        const top=document.createElement('div'); top.className='card-top';
+        const symbol=document.createElement('div'); symbol.className='symbol'; symbol.textContent=f.symbol;
+        const heading=document.createElement('div');
+        const title=document.createElement('h3'); title.className='card-title'; title.textContent=f.name;
+        const type=document.createElement('div'); type.className='card-type'; type.textContent=f.type;
+        heading.append(title,type);
+        const status=document.createElement('span'); status.className='state'; status.textContent='Checking';
+        top.append(symbol,heading,status);
+        const reading=document.createElement('p'); reading.className='reading'; reading.textContent=f.hint;
+        const values=document.createElement('div'); values.className='values'; values.setAttribute('aria-label',`${f.name} sensor values`);
+        const trace=document.createElementNS('http://www.w3.org/2000/svg','svg');
+        trace.classList.add('trace'); trace.setAttribute('viewBox','0 0 240 37'); trace.setAttribute('preserveAspectRatio','none'); trace.setAttribute('aria-hidden','true');
+        const line=document.createElementNS('http://www.w3.org/2000/svg','polyline'); trace.append(line);
+        card.append(top,reading,values,trace);
+        if(f.id==='camera') {const v=document.createElement('video'); v.className='preview'; v.autoplay=true; v.muted=true; v.playsInline=true; v.setAttribute('aria-label','Live camera feed'); card.append(v); cardElements[f.id]={video:v};}
+        if(f.id==='touch') {
+          const pad=document.createElement('div'); pad.className='touch-pad'; pad.tabIndex=0; pad.setAttribute('aria-label','Touch surface'); pad.textContent='Touch, drag, or use two fingers'; card.append(pad); initPad(pad);
+        }
+        if(f.manual){ const btn=document.createElement('button'); btn.className='btn btn-small'; btn.textContent=f.manual; btn.addEventListener('click',()=>connectPeripheral(f.id)); card.append(btn); }
+        if(f.id==='vibration') {const btn=document.createElement('button'); btn.className='btn btn-small'; btn.textContent='Test again'; btn.addEventListener('click',testVibration); card.append(btn); }
+        cardElements[f.id]={...cardElements[f.id],status,reading,values,trace,line}; grid.append(card);
+      });
+      section.append(grid); root.append(section);
+    });
+  }
+  function updateSummary(){
+    const states=Object.values(statuses);
+    $('count-active').textContent=states.filter(s=>s==='active').length;
+    $('count-ready').textContent=states.filter(s=>s==='ready').length;
+    $('count-action').textContent=states.filter(s=>s==='waiting'||s==='action'||s==='idle').length;
+    $('count-unavailable').textContent=states.filter(s=>['unsupported','denied','error'].includes(s)).length;
+  }
+  function setState(id,status,detail){
+    const f=byId[id],card=cardElements[id]; if(!f||!card)return;
+    const changed=statuses[id]!==status;
+    statuses[id]=status; card.status.dataset.state=status; card.status.textContent=statusText[status]||status;
+    if(detail!==undefined)card.reading.textContent=detail;
+    if(changed)updateSummary();
+  }
+  function showValues(id,entries,historyValue){
+    const card=cardElements[id]; if(!card)return;
+    const now=performance.now(); if(now-(lastUpdate[id]||0)<125)return;
+    lastUpdate[id]=now;
+    card.values.replaceChildren();
+    for(const [label,value] of Object.entries(entries)) {
+      const el=document.createElement('div');el.className='value';
+      const k=document.createElement('div');k.className='value-name';k.textContent=label;
+      const v=document.createElement('div');v.className='value-number';v.textContent=txt(value);
+      el.append(k,v);card.values.append(el);
+    }
+    if(Number.isFinite(historyValue)) {
+      const values=histories[id]??(histories[id]=[]); values.push(historyValue);if(values.length>48)values.shift();
+      const low=Math.min(...values),high=Math.max(...values),range=high-low||1;
+      card.line.setAttribute('points',values.map((n,i)=>`${(i/47*240).toFixed(1)},${(32-(n-low)/range*26).toFixed(1)}`).join(' '));
+      card.trace.classList.add('visible');
+    }
+  }
+  function resetStates(){
+    for(const f of features) {
+      const status=!isSupported(f)?'unsupported':f.manual?'action':f.initiallyReady?'ready':'idle';
+      statuses[f.id]=status;
+      const c=cardElements[f.id];c.status.dataset.state=status;c.status.textContent=statusText[status];c.reading.textContent=f.hint;
+      c.values.replaceChildren();c.trace.classList.remove('visible');c.line.setAttribute('points','');
+      if(c.video){c.video.pause();c.video.srcObject=null;c.video.classList.remove('visible');}
+      histories[f.id]=[];lastUpdate[f.id]=0;
+    }
+    updateSummary();$('enable').textContent='Enable available features ↗';
+  }
+  function stopSession(){
+    ++generation;
+    for(const fn of cleanup.splice(0)) {try{fn()}catch{}}
+    if(geoWatch!==null){navigator.geolocation?.clearWatch(geoWatch);geoWatch=null;}
+    for(const stream of streams.splice(0))stream.getTracks().forEach(track=>track.stop());
+    if(audioContext){audioContext.close().catch(()=>{});audioContext=null;}
+    if(nfcAbort){nfcAbort.abort();nfcAbort=null;}
+    if(wakeLock){wakeLock.release().catch(()=>{});wakeLock=null;}
+    if(bluetoothDevice?.gatt?.connected)bluetoothDevice.gatt.disconnect();bluetoothDevice=null;
+    if(selectedPort){try{selectedPort.close().catch(()=>{});}catch{}selectedPort=null;}
+    if(animationFrame!==null){cancelAnimationFrame(animationFrame);animationFrame=null;}
+    resetStates();
+  }
+  function withWindowListener(event,callback){window.addEventListener(event,callback);cleanup.push(()=>window.removeEventListener(event,callback));}
+  function withListener(target,event,callback){target.addEventListener(event,callback);cleanup.push(()=>target.removeEventListener(event,callback));}
+  function startTimeout(id,token,ms=7000){const timeout=setTimeout(()=>{if(isCurrent(token)&&statuses[id]==='waiting')setState(id,'error','No readings arrived. Check permissions, sensor hardware, and browser settings.');},ms);cleanup.push(()=>clearTimeout(timeout));}
+
+  function startMotion(token) {
+    for(const id of ['motion','gyro'])if(isSupported(byId[id]))setState(id,'waiting','Waiting for movement data…');
+    if('DeviceMotionEvent' in window) {
+      const handler=e=>{
+        if(!isCurrent(token))return;
+        const a=e.accelerationIncludingGravity||e.acceleration;
+        if(a&&[a.x,a.y,a.z].some(Number.isFinite)){
+          const magnitude=Math.hypot(a.x||0,a.y||0,a.z||0);
+          setState('motion','active','Acceleration including gravity, where available.');
+          showValues('motion',{X:num(a.x,2),Y:num(a.y,2),Z:num(a.z,2),'|a|':num(magnitude,2)},magnitude);
+        }
+        const r=e.rotationRate;
+        if(r&&[r.alpha,r.beta,r.gamma].some(Number.isFinite)) {
+          const mag=Math.hypot(r.alpha||0,r.beta||0,r.gamma||0);
+          setState('gyro','active','Angular velocity reported by the device.');
+          showValues('gyro',{α:num(r.alpha,2),β:num(r.beta,2),γ:num(r.gamma,2),'|ω|':num(mag,2)},mag);
+        }
+      };
+      const listen=()=>{if(isCurrent(token))withWindowListener('devicemotion',handler);};
+      try {
+        if(typeof DeviceMotionEvent.requestPermission==='function') {
+          // Called synchronously from the Enable button handler (iOS user activation).
+          DeviceMotionEvent.requestPermission().then(result=>{
+            if(!isCurrent(token))return;
+            if(result==='granted')listen();
+            else for(const id of ['motion','gyro'])if(statuses[id]==='waiting')setState(id,'denied','Motion permission was denied.');
+          }).catch(e=>{if(isCurrent(token))for(const id of ['motion','gyro'])if(statuses[id]==='waiting')setState(id,'error',errorMessage(e));});
+        } else listen();
+      } catch(e) {for(const id of ['motion','gyro'])setState(id,'error',errorMessage(e));}
+    }
+    // Chromium Generic Sensor API fallback; Safari normally uses the event API above.
+    startGeneric('motion','Accelerometer',s=>({X:num(s.x,2),Y:num(s.y,2),Z:num(s.z,2),'|a|':num(Math.hypot(s.x||0,s.y||0,s.z||0),2)}),s=>Math.hypot(s.x||0,s.y||0,s.z||0),token,'Acceleration including gravity.');
+    startGeneric('gyro','Gyroscope',s=>({X:num(s.x*180/Math.PI,2),Y:num(s.y*180/Math.PI,2),Z:num(s.z*180/Math.PI,2)}),s=>Math.hypot(s.x||0,s.y||0,s.z||0)*180/Math.PI,token,'Angular velocity (converted from rad/s to °/s).');
+    for(const id of ['motion','gyro'])if(isSupported(byId[id]))startTimeout(id,token);
+  }
+  function startGeneric(id,ctorName,format,measure,token,detail){
+    const C=window[ctorName];if(typeof C!=='function')return;
+    try{
+      const s=new C({frequency:15});
+      const onreading=()=>{if(!isCurrent(token))return;setState(id,'active',detail);showValues(id,format(s),measure?.(s));};
+      const onerror=e=>{if(isCurrent(token)&&statuses[id]!=='active')setState(id,'error',errorMessage(e.error||e));};
+      s.addEventListener('reading',onreading);s.addEventListener('error',onerror);
+      s.start();cleanup.push(()=>s.stop());
+    }catch(e){if(statuses[id]!=='active')setState(id,'error',errorMessage(e));}
+  }
+  function startOrientation(token){
+    if(!isSupported(byId.tilt))return;
+    setState('tilt','waiting','Waiting for physical orientation readings…');
+    const handler=e=>{
+      if(!isCurrent(token)||![e.alpha,e.beta,e.gamma].some(Number.isFinite))return;
+      setState('tilt','active','Rotation angles; compass heading is not guaranteed.');
+      showValues('tilt',{Alpha:num(e.alpha,1)+'°',Beta:num(e.beta,1)+'°',Gamma:num(e.gamma,1)+'°',Absolute:String(!!e.absolute)},Number.isFinite(e.beta)?e.beta:0);
+    };
+    const listen=()=>{if(isCurrent(token))withWindowListener('deviceorientation',handler);};
+    try{
+      if(typeof DeviceOrientationEvent.requestPermission==='function'){
+        // Call before any await; required by iOS Safari's gesture gating.
+        DeviceOrientationEvent.requestPermission().then(result=>{if(!isCurrent(token))return;if(result==='granted')listen();else setState('tilt','denied','Orientation permission denied.');}).catch(e=>{if(isCurrent(token))setState('tilt','error',errorMessage(e));});
+      }else listen();
+    }catch(e){setState('tilt','error',errorMessage(e));}
+    startTimeout('tilt',token);
+  }
+  function startScreen(token){
+    const render=()=>{if(!isCurrent(token))return;
+      const ori=screen.orientation?.type||(innerWidth>=innerHeight?'landscape (estimated)':'portrait (estimated)');
+      const angle=screen.orientation?.angle??window.orientation;
+      setState('screen','active','Current screen layout, not a physical tilt sensor.');
+      showValues('screen',{Orientation:ori,Angle:Number.isFinite(angle)?angle+'°':'—',Viewport:`${innerWidth} × ${innerHeight}`,DPR:num(devicePixelRatio,2)});
+    };
+    render();withWindowListener('resize',render);withWindowListener('orientationchange',render);
+    if(screen.orientation)withListener(screen.orientation,'change',render);
+  }
+  function initPad(pad){
+    const pointers=new Map();
+    const render=e=>{
+      const rect=pad.getBoundingClientRect();
+      const x=e.clientX-rect.left,y=e.clientY-rect.top;
+      const info={X:num(x,0)+' px',Y:num(y,0)+' px',Pressure:num(e.pressure,2),Pointers:String(pointers.size),Type:e.pointerType||'pointer'};
+      setState('touch','active','Live pointer coordinates and pressure (device-dependent).');showValues('touch',info,pointers.size);
+    };
+    pad.addEventListener('pointerdown',e=>{pointers.set(e.pointerId,true);pad.setPointerCapture?.(e.pointerId);render(e);});
+    pad.addEventListener('pointermove',e=>{if(pointers.has(e.pointerId))render(e);});
+    for(const type of ['pointerup','pointercancel','lostpointercapture'])pad.addEventListener(type,e=>{pointers.delete(e.pointerId);render(e);});
+    cleanup.push(()=>pointers.clear());
+  }
+  function startGeo(token){
+    if(!isSupported(byId.location))return;
+    setState('location','waiting','Waiting for a location fix; accuracy may vary indoors.');
+    try{geoWatch=navigator.geolocation.watchPosition(p=>{
+      if(!isCurrent(token))return;const c=p.coords;
+      setState('location','active','Live position; never sent to a server.');
+      showValues('location',{Latitude:num(c.latitude,6),Longitude:num(c.longitude,6),'Accuracy ±':num(c.accuracy,0)+' m',Altitude:Number.isFinite(c.altitude)?num(c.altitude,1)+' m':'—',Speed:Number.isFinite(c.speed)?num(c.speed,1)+' m/s':'—',Heading:Number.isFinite(c.heading)?num(c.heading,0)+'°':'—'});
+    },e=>{if(isCurrent(token))setState('location',e.code===1?'denied':'error',errorMessage(e));},{enableHighAccuracy:false,maximumAge:2000,timeout:15000});}
+    catch(e){setState('location','error',errorMessage(e));}
+  }
+  function startCamera(token){
+    if(!isSupported(byId.camera))return;
+    setState('camera','waiting','Requesting camera access…');
+    navigator.mediaDevices.getUserMedia({video:{facingMode:'user'},audio:false}).then(stream=>{
+      if(!isCurrent(token)){stream.getTracks().forEach(t=>t.stop());return;}
+      streams.push(stream);const c=cardElements.camera;const track=stream.getVideoTracks()[0];
+      c.video.srcObject=stream;c.video.classList.add('visible');c.video.play().catch(()=>{});
+      const s=track.getSettings();
+      setState('camera','active','On-device video preview only; not recorded or uploaded.');
+      showValues('camera',{Resolution:s.width&&s.height?`${s.width} × ${s.height}`:'—',FPS:num(s.frameRate,0),Facing:s.facingMode||'—'});
+      track.addEventListener('ended',()=>{if(isCurrent(token))setState('camera','error','Camera stream ended.');});
+    }).catch(e=>{if(isCurrent(token))setState('camera',e.name==='NotAllowedError'?'denied':'error',errorMessage(e));});
+  }
+  function startMicrophone(token){
+    if(!isSupported(byId.microphone))return;
+    setState('microphone','waiting','Requesting microphone access…');
+    navigator.mediaDevices.getUserMedia({audio:{echoCancellation:false,noiseSuppression:false,autoGainControl:false},video:false}).then(stream=>{
+      if(!isCurrent(token)){stream.getTracks().forEach(t=>t.stop());return;}
+      streams.push(stream);
+      const AC=window.AudioContext||window.webkitAudioContext;
+      if(!AC){setState('microphone','active','Microphone stream opened; Web Audio analyser unavailable.');return;}
+      audioContext=new AC();const source=audioContext.createMediaStreamSource(stream);const analyser=audioContext.createAnalyser();analyser.fftSize=2048;
+      source.connect(analyser);audioContext.resume().catch(()=>{});
+      const waveform=new Float32Array(analyser.fftSize),freq=new Float32Array(analyser.frequencyBinCount);
+      const draw=()=>{
+        if(!isCurrent(token))return;
+        analyser.getFloatTimeDomainData(waveform);
+        let sum=0;for(let i=0;i<waveform.length;i++)sum+=waveform[i]*waveform[i];
+        const rms=Math.sqrt(sum/waveform.length),db=rms>0?20*Math.log10(rms):-Infinity;
+        analyser.getFloatFrequencyData(freq);
+        let best=-Infinity,index=0;
+        for(let i=2;i<freq.length;i++)if(freq[i]>best){best=freq[i];index=i;}
+        const peak=index*audioContext.sampleRate/analyser.fftSize;
+        setState('microphone','active','Analyzes audio locally; dominant FFT bin is not necessarily pitch.');
+        showValues('microphone',{Level:Number.isFinite(db)?num(db,1)+' dBFS':'Silence',RMS:num(rms,3),'Peak bin':rms>.002?num(peak,0)+' Hz':'—',Sample:`${audioContext.sampleRate} Hz`},rms);
+        animationFrame=requestAnimationFrame(draw);
+      };
+      draw();
+    }).catch(e=>{if(isCurrent(token))setState('microphone',e.name==='NotAllowedError'?'denied':'error',errorMessage(e));});
+  }
+  async function startBattery(token){
+    if(!isSupported(byId.battery))return;
+    setState('battery','waiting','Checking battery API…');
+    try{const b=await navigator.getBattery();if(!isCurrent(token))return;
+      const render=()=>{if(!isCurrent(token))return;setState('battery','active','Browser-exposed battery information.');showValues('battery',{Level:Math.round(b.level*100)+'%',Charging:b.charging?'Yes':'No','Charge time':Number.isFinite(b.chargingTime)?b.chargingTime+' s':'—','Discharge time':Number.isFinite(b.dischargingTime)?b.dischargingTime+' s':'—'});};
+      render();for(const name of ['levelchange','chargingchange','chargingtimechange','dischargingtimechange'])withListener(b,name,render);
+    }catch(e){if(isCurrent(token))setState('battery','error',errorMessage(e));}
+  }
+  function startNetwork(token){
+    const connection=navigator.connection||navigator.mozConnection||navigator.webkitConnection;
+    const render=()=>{if(!isCurrent(token))return;setState('network','active',connection?'Estimated network information; values may be coarse.':'Only online/offline information exposed.');showValues('network',{Online:navigator.onLine?'Yes':'No',Type:connection?.effectiveType||'—',Downlink:Number.isFinite(connection?.downlink)?connection.downlink+' Mbps':'—',RTT:Number.isFinite(connection?.rtt)?connection.rtt+' ms':'—','Save data':connection?.saveData?'Yes':'No'});};
+    render();withWindowListener('online',render);withWindowListener('offline',render);if(connection)withListener(connection,'change',render);
+  }
+  async function startWakeLock(token){
+    if(!isSupported(byId.wake))return;
+    setState('wake','waiting','Requesting screen wake lock…');
+    try {const lock=await navigator.wakeLock.request('screen');if(!isCurrent(token)){lock.release().catch(()=>{});return;}
+      wakeLock=lock;setState('wake','active','Screen wake lock held while page is visible.');showValues('wake',{Held:'Yes',Released:String(lock.released)});
+      lock.addEventListener('release',()=>{if(isCurrent(token)){wakeLock=null;setState('wake','ready','Wake lock released (screen may sleep).');showValues('wake',{Held:'No'});}});
+    }catch(e){if(isCurrent(token))setState('wake','error',errorMessage(e));}
+  }
+  function testVibration(){
+    if(!isSupported(byId.vibration))return;
+    try{const ok=navigator.vibrate(40);
+      setState('vibration',ok?'active':'error',ok?'40 ms vibration requested; physical feedback cannot be verified.':'Vibration request rejected by the browser.');
+      if(ok)showValues('vibration',{Request:'40 ms',Accepted:'Yes'});
+    }catch(e){setState('vibration','error',errorMessage(e));}
+  }
+  async function startNfc(token){
+    if(!isSupported(byId.nfc))return;
+    setState('nfc','waiting','Starting NFC tag scan…');
+    const ac=new AbortController();nfcAbort=ac;
+    try{const reader=new NDEFReader();
+      reader.addEventListener('reading',ev=>{if(!isCurrent(token))return;
+        setState('nfc','active','Detected an NFC tag. Payloads are not stored.');
+        showValues('nfc',{Serial:ev.serialNumber||'—',Records:ev.message?.records?.length??0,Time:new Date().toLocaleTimeString()});
+      });
+      reader.addEventListener('readingerror',()=>{if(isCurrent(token))setState('nfc','error','A tag was detected but could not be read.');});
+      await reader.scan({signal:ac.signal});if(!isCurrent(token))return;
+      setState('nfc','ready','NFC scan running. Present a compatible NDEF tag.');
+      showValues('nfc',{Scanning:'Yes'});
+    }catch(e){if(isCurrent(token))setState('nfc',e.name==='NotAllowedError'?'denied':'error',errorMessage(e));}
+  }
+  function startExperimental(token){
+    for(const id of ['magnetic','light','proximity']){
+      if(!isSupported(byId[id]))continue;
+      setState(id,'waiting','Waiting for experimental sensor data…');
+    }
+    startGeneric('magnetic','Magnetometer',s=>({X:num(s.x,2),Y:num(s.y,2),Z:num(s.z,2),'Field':num(Math.hypot(s.x||0,s.y||0,s.z||0),2)}),s=>Math.hypot(s.x||0,s.y||0,s.z||0),token,'Raw magnetic field (µT).');
+    startGeneric('light','AmbientLightSensor',s=>({'Illuminance':Number.isFinite(s.illuminance)?num(s.illuminance,1)+' lux':'—'}),s=>s.illuminance,token,'Ambient light measured in lux.');
+    startGeneric('proximity','ProximitySensor',s=>({Distance:Number.isFinite(s.distance)?num(s.distance,1):'—',Near:s.near===undefined?'—':String(s.near)}),s=>s.distance,token,'Proximity sensor values.');
+    for(const id of ['magnetic','light','proximity'])if(isSupported(byId[id]))startTimeout(id,token);
+  }
+  function enableAll(){
+    // Calls that need transient user activation happen synchronously before any await.
+    stopSession();const token=generation;
+    $('enable').textContent='Retry permissions ↗';
+    if(!window.isSecureContext){$('notice').hidden=false;$('notice').textContent='This page is not in a secure context. Most phone sensors require HTTPS (or localhost). Use an HTTPS URL for reliable tests.';}
+    else $('notice').hidden=true;
+    startMotion(token);startOrientation(token);
+    startCamera(token);startMicrophone(token);startGeo(token);
+    startScreen(token);startNetwork(token);
+    startWakeLock(token);startNfc(token);testVibration();
+    startBattery(token);startExperimental(token);
+    // Browser security intentionally requires a separate gesture/device picker for BLE, USB and Serial.
+  }
+  async function connectPeripheral(id){
+    const token=generation;
+    try{
+      if(id==='bluetooth'){
+        setState(id,'waiting','Choose a nearby BLE device in the browser dialog…');
+        const device=await navigator.bluetooth.requestDevice({acceptAllDevices:true});
+        if(!isCurrent(token))return;bluetoothDevice=device;
+        setState(id,'active','Device selected; reading characteristics needs its GATT service.');
+        showValues(id,{Name:device.name||'Unnamed',ID:device.id||'—',GATT:device.gatt?'Available':'—'});
+        device.addEventListener('gattserverdisconnected',()=>{if(isCurrent(token))setState(id,'ready','Bluetooth device disconnected.');});
+      } else if(id==='usb'){
+        setState(id,'waiting','Select a connected USB device…');
+        const device=await navigator.usb.requestDevice({filters:[]});if(!isCurrent(token))return;
+        setState(id,'active','USB device selected. Raw data requires a device-specific protocol.');
+        showValues(id,{Name:device.productName||'—',Vendor:device.manufacturerName||'—',VendorID:'0x'+device.vendorId.toString(16),ProductID:'0x'+device.productId.toString(16)});
+      } else if(id==='serial'){
+        setState(id,'waiting','Choose a serial port…');
+        const port=await navigator.serial.requestPort();if(!isCurrent(token))return;selectedPort=port;
+        const info=port.getInfo?.()||{};
+        setState(id,'active','Serial port selected; no data read without a protocol / baud rate.');
+        showValues(id,{USBVendor:info.usbVendorId===undefined?'—':'0x'+info.usbVendorId.toString(16),USBProduct:info.usbProductId===undefined?'—':'0x'+info.usbProductId.toString(16)});
+      }
+    }catch(e){if(isCurrent(token))setState(id,e.name==='NotFoundError'?'action':e.name==='NotAllowedError'?'denied':'error',e.name==='NotFoundError'?'No device selected. Tap to try again.':errorMessage(e));}
+  }
+  build();resetStates();
+  $('platform').textContent=`${/iPad|iPhone|iPod/.test(navigator.userAgent)?'iOS / iPadOS':/Android/.test(navigator.userAgent)?'Android':'Desktop / other'} · ${window.isSecureContext?'Secure context':'Not HTTPS'} · local only`;
+  $('notice').hidden=window.isSecureContext;
+  if(!window.isSecureContext)$('notice').textContent='Not a secure context. Serve this file via HTTPS (or localhost) to enable protected sensor APIs.';
+  $('enable').addEventListener('click',enableAll);
+  $('reset').addEventListener('click',()=>{stopSession();$('reset-dialog').showModal();});
+  $('dialog-close').addEventListener('click',()=>$('reset-dialog').close());
+  // Browsers may deliver transient readings after a tab becomes hidden; do not retain them after reset.
+  window.addEventListener('pagehide',stopSession);
+})();
+</script>
+</body>
+</html>

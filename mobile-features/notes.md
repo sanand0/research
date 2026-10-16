@@ -1,0 +1,6 @@
+# Field notes
+
+- 2026-10-16: Created a self-contained, zero-dependency browser sensor dashboard, focusing on mobile Safari and Chromium. A single user gesture initiates motion/orientation permission requests, camera, microphone, location, NFC, wake lock, and ordinary device signals.
+- Browser security constraints: BLE/USB/Serial require separate user-triggered choosers. Websites cannot clear stored site permissions; reset stops streams and subscriptions and offers instructions for removing permission grants in browser settings.
+- Measurement policy: mark a sensor Live only on a real reading or successful interface interaction; distinguish API absence from denial/no readings; retain all data locally in the page.
+- Validation: Extracted inline JavaScript and passed `node --check`. Opened the page in an isolated Chromium browser, verified all 23 cards / 4 groups and no JavaScript errors after Enable / Reset, tested modal and clearing active status. At a 390 px mobile viewport, page width remains 390 px with a single card column. Injected synthetic `devicemotion` and `deviceorientation` events and observed live values for accelerometer, gyro, and tilt. Physical phone permissions and hardware readings were not tested.
