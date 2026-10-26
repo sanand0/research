@@ -8,3 +8,9 @@ __pycache__/
 **/models-store.json
 pi-home/**/settings.json
 pi-home/**/sessions/
+experiments/*/logs/
+experiments/*/sessions/
+experiments/*/world/
+experiments/launch-failures/*/
+experiments/*/.env
+experiments/*/pi-home/

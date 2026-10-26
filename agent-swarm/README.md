@@ -102,3 +102,41 @@ manually stop the otherwise idle proxy.
 - Initial setup logs were archived before the run. The first four-agent run
   used a native WSL directory after discovering Windows bind-mounted SQLite
   locking issues. Full audit and findings: result-2026-10-26.md.
+
+## Successive experiments and cumulative records
+
+**Completed 26 October 2026:** a 2x2 comparison of default vs neutral system
+prompt and original vs explicit-autonomy user prompt. All 16 agent instances
+finished normally without creating files or coordinating. See
+[experiments/HISTORY.md](experiments/HISTORY.md) for observations and
+[experiments/INDEX.md](experiments/INDEX.md) for the numbered experiment log.
+
+The single-source-of-truth runtime is WSL
+`/home/sanand/agent-swarm/experiments/`. Its `experiment_runner.py`
+creates each fresh experiment with an independent USD 1 cap, independent
+sessions, initial prompt, full Pi JSON events, network wire logs and model
+usage ledger. The companion `export_experiments.py` mirrors results to the
+Windows research repository, excluding all credentials. Raw logs, generated
+files, and Pi sessions remain locally accessible but are Git-ignored.
+
+To inspect run 004 from PowerShell on Plutonium:
+
+```powershell
+Get-Content ~/code/private-research/agent-swarm/experiments/004-both/summary.md
+Get-Content ~/code/private-research/agent-swarm/experiments/INDEX.md
+```
+
+To add another condition, define a new numbered entry (e.g.
+`005-minimal-output-goal`) in `experiment_runner.py`, copy that updated
+script into the WSL runtime, then run it there with:
+
+```sh
+cd /home/sanand/agent-swarm
+python3 experiment_runner.py run 005-minimal-output-goal --max-seconds 240
+```
+
+The run's final summary, token/cost ledger and raw transcript archives are
+automatically exported to the matching Windows folder. The first run had
+several infrastructure startup failures, recorded separately in
+`experiments/launch-failures/README.md`; successful measurements exclude
+those attempts.

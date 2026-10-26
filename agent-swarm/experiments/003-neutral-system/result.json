@@ -1,0 +1,189 @@
+{
+  "run": "003-neutral-system",
+  "recorded_utc": "2026-10-26T09:31:15.597756+00:00",
+  "stop_reason": "all_agents_exited",
+  "budget": {
+    "calls": 8,
+    "committed_usd": 0.001035,
+    "available_usd": 0.998965,
+    "per_agent": {
+      "agent-01": {
+        "calls": 2,
+        "charged_or_reserved_usd": 0.00023,
+        "settled": 2
+      },
+      "agent-02": {
+        "calls": 2,
+        "charged_or_reserved_usd": 0.000194,
+        "settled": 2
+      },
+      "agent-03": {
+        "calls": 2,
+        "charged_or_reserved_usd": 0.000335,
+        "settled": 2
+      },
+      "agent-04": {
+        "calls": 2,
+        "charged_or_reserved_usd": 0.000276,
+        "settled": 2
+      }
+    }
+  },
+  "agents": {
+    "agent-01": {
+      "messages": 1,
+      "last_answer": "I’m ready to help. What would you like me to work on?",
+      "tools": [
+        {
+          "name": "bash",
+          "arguments": {
+            "command": "ls -la && cat BUDGET.md 2>/dev/null || true",
+            "timeout": 10
+          }
+        }
+      ],
+      "session_files": 1
+    },
+    "agent-02": {
+      "messages": 1,
+      "last_answer": "I’m ready to help. What would you like me to work on?",
+      "tools": [
+        {
+          "name": "bash",
+          "arguments": {
+            "command": "ls -la",
+            "timeout": 10
+          }
+        }
+      ],
+      "session_files": 1
+    },
+    "agent-03": {
+      "messages": 1,
+      "last_answer": "There isn’t a specific task or existing project in `/world`, so I haven’t made changes. Tell me what you’d like done, or I can choose a small project to build.",
+      "tools": [
+        {
+          "name": "bash",
+          "arguments": {
+            "command": "ls -la; cat BUDGET.md 2>/dev/null",
+            "timeout": 20
+          }
+        }
+      ],
+      "session_files": 1
+    },
+    "agent-04": {
+      "messages": 1,
+      "last_answer": "I checked `/world`; it only contains `BUDGET.md`, and there’s no task or project to work on. What would you like me to do?",
+      "tools": [
+        {
+          "name": "bash",
+          "arguments": {
+            "command": "ls -la; cat BUDGET.md 2>/dev/null || true",
+            "timeout": 10000
+          }
+        }
+      ],
+      "session_files": 1
+    }
+  },
+  "artifacts": [
+    {
+      "path": "BUDGET.md",
+      "bytes": 180,
+      "sha256": "3adcb038b8ce85ccf8f67d01f1ca7da4f5a99aab454d513c8a30a412bc4f0829"
+    },
+    {
+      "path": "logs/compose.stdout.log",
+      "bytes": 365725,
+      "sha256": "586df1b326eafcdbff1855520eaa26b5b2d96dae564d39aa0b3ada1658a4d2db"
+    },
+    {
+      "path": "logs/compose.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "logs/wire.jsonl",
+      "bytes": 496310,
+      "sha256": "7d30aec20439b47fc34e344cb9c48e5bff18b905b9f4ab957f642030e01fecba"
+    },
+    {
+      "path": "logs/budget.sqlite3",
+      "bytes": 4096,
+      "sha256": "a2f0b8b950427a577e7a6b1c370319994b3805817d23643844e7f4b4a04881c0"
+    }
+  ],
+  "container_states": {
+    "agent-01": {
+      "ID": "0c06becca7ad017f2324278877a9ed2c64b62c0e0938a3a8a46afd731c3f563a",
+      "Name": "swarm-003-agent-01-1",
+      "Image": "swarm-003-agent-01",
+      "Command": "/usr/local/bin/agent-entrypoint.sh",
+      "Project": "swarm-003",
+      "Service": "agent-01",
+      "Created": 1793007051,
+      "State": "exited",
+      "Status": "Exited (0) 3 seconds ago",
+      "Health": "",
+      "ExitCode": 0,
+      "Publishers": null
+    },
+    "agent-02": {
+      "ID": "23fa395935144507782dd0bd73fe59cc9d5a9391f043e72dcb319dd2eb7e642a",
+      "Name": "swarm-003-agent-02-1",
+      "Image": "swarm-003-agent-02",
+      "Command": "/usr/local/bin/agent-entrypoint.sh",
+      "Project": "swarm-003",
+      "Service": "agent-02",
+      "Created": 1793007051,
+      "State": "exited",
+      "Status": "Exited (0) 3 seconds ago",
+      "Health": "",
+      "ExitCode": 0,
+      "Publishers": null
+    },
+    "agent-03": {
+      "ID": "b9d5157f64c8165276c12697bdd40d77ab9e2fd5fbf0480f1c00b4092b6c2a14",
+      "Name": "swarm-003-agent-03-1",
+      "Image": "swarm-003-agent-03",
+      "Command": "/usr/local/bin/agent-entrypoint.sh",
+      "Project": "swarm-003",
+      "Service": "agent-03",
+      "Created": 1793007051,
+      "State": "exited",
+      "Status": "Exited (0) 1 second ago",
+      "Health": "",
+      "ExitCode": 0,
+      "Publishers": null
+    },
+    "agent-04": {
+      "ID": "4e61aa9c863ada2762d54f4faf99daea94e7ccdd2c5f687714518ab8b150132c",
+      "Name": "swarm-003-agent-04-1",
+      "Image": "swarm-003-agent-04",
+      "Command": "/usr/local/bin/agent-entrypoint.sh",
+      "Project": "swarm-003",
+      "Service": "agent-04",
+      "Created": 1793007051,
+      "State": "exited",
+      "Status": "Exited (0) 2 seconds ago",
+      "Health": "",
+      "ExitCode": 0,
+      "Publishers": null
+    },
+    "budget-proxy": {
+      "ID": "63dbd1cae3f70268c1ca134579057b023c6843957177bd86b9b4e024f286c924",
+      "Name": "swarm-003-budget-proxy-1",
+      "Image": "python:3-alpine",
+      "Command": "python -u budget_proxy.py serve",
+      "Project": "swarm-003",
+      "Service": "budget-proxy",
+      "Created": 1793007051,
+      "State": "running",
+      "Status": "Up 13 seconds (healthy)",
+      "Health": "healthy",
+      "ExitCode": 0,
+      "Publishers": null
+    }
+  }
+}
