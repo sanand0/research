@@ -1,0 +1,10 @@
+.env
+logs/
+sessions/
+world/
+__pycache__/
+*.pyc
+**/auth.json
+**/models-store.json
+pi-home/**/settings.json
+pi-home/**/sessions/

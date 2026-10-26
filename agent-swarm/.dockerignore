@@ -1,0 +1,8 @@
+.env
+.git
+logs/
+sessions/
+world/
+pi-home/
+__pycache__/
+*.pyc

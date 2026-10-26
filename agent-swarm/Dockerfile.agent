@@ -1,0 +1,8 @@
+FROM node:24-alpine
+RUN apk add --no-cache bash git python3 curl
+RUN npm install -g @earendil-works/pi-coding-agent@0.87.1
+COPY agent-entrypoint.sh /usr/local/bin/agent-entrypoint.sh
+RUN chmod +x /usr/local/bin/agent-entrypoint.sh
+USER node
+WORKDIR /world
+ENTRYPOINT ["/usr/local/bin/agent-entrypoint.sh"]

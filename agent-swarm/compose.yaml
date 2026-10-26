@@ -1,0 +1,80 @@
+name: agent-swarm
+services:
+  budget-proxy:
+    image: python:3-alpine
+    working_dir: /app
+    command: ["python", "-u", "budget_proxy.py", "serve"]
+    env_file:
+      - .env
+    environment:
+      SWARM_LISTEN_HOST: "0.0.0.0"
+    volumes:
+      - ./budget_proxy.py:/app/budget_proxy.py:ro
+      - ./world:/app/world:rw
+      - ./logs:/app/logs:rw
+    networks:
+      - internal
+      - outbound
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8721/health',timeout=2)"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+
+  agent-01:
+    profiles: [run]
+    build:
+      context: .
+      dockerfile: Dockerfile.agent
+    environment:
+      PI_CODING_AGENT_DIR: /config
+      AGENT_ID: "01"
+      SESSION_ID: "25320e75-d6d5-4f9c-9a1a-6dd305197601"
+    volumes:
+      - ./world:/world:rw
+      - ./pi-home/agent-01:/config:rw
+      - ./sessions/agent-01:/sessions:rw
+    networks: [internal]
+    depends_on:
+      budget-proxy: {condition: service_healthy}
+
+  agent-02:
+    profiles: [run]
+    extends: {service: agent-01}
+    environment:
+      PI_CODING_AGENT_DIR: /config
+      AGENT_ID: "02"
+      SESSION_ID: "25320e75-d6d5-4f9c-9a1a-6dd305197602"
+    volumes:
+      - ./world:/world:rw
+      - ./pi-home/agent-02:/config:rw
+      - ./sessions/agent-02:/sessions:rw
+
+  agent-03:
+    profiles: [run]
+    extends: {service: agent-01}
+    environment:
+      PI_CODING_AGENT_DIR: /config
+      AGENT_ID: "03"
+      SESSION_ID: "25320e75-d6d5-4f9c-9a1a-6dd305197603"
+    volumes:
+      - ./world:/world:rw
+      - ./pi-home/agent-03:/config:rw
+      - ./sessions/agent-03:/sessions:rw
+
+  agent-04:
+    profiles: [run]
+    extends: {service: agent-01}
+    environment:
+      PI_CODING_AGENT_DIR: /config
+      AGENT_ID: "04"
+      SESSION_ID: "25320e75-d6d5-4f9c-9a1a-6dd305197604"
+    volumes:
+      - ./world:/world:rw
+      - ./pi-home/agent-04:/config:rw
+      - ./sessions/agent-04:/sessions:rw
+
+networks:
+  internal:
+    internal: true
+  outbound: {}
