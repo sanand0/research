@@ -1,5 +1,4 @@
-# Start or resume all four agents. This stays in the foreground to keep WSL alive.
+# Start or resume the existing swarm from its native WSL filesystem.
+# A foreground WSL process keeps Docker running; logs/sessions are inside WSL.
 $ErrorActionPreference = "Stop"
-$root = (Resolve-Path $PSScriptRoot).Path
-$wslRoot = "/mnt/" + $root.Substring(0, 1).ToLower() + $root.Substring(2).Replace("\", "/")
-wsl -d Ubuntu -e sh "$wslRoot/run-swarm.sh"
+wsl -d Ubuntu -e sh /home/sanand/agent-swarm/run-swarm.sh

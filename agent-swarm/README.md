@@ -1,6 +1,6 @@
 # Unguided four-agent Pi swarm
 
-Prepared 26 October 2026 on Plutonium. **The four-agent experiment has NOT been run.**
+Prepared on Plutonium and **run once on 26 October 2026**. See result-2026-10-26.md.
 
 ## Experiment
 
@@ -65,7 +65,7 @@ The agent entrypoint detects an existing saved session and offers a neutral
 continuation prompt without changing its past conversation. No automatic
 wake-up occurs just to keep agents active.
 
-## Commands (prepared, NOT run for the full swarm)
+## Commands (first run completed; these commands resume the same sessions)
 
 From PowerShell in this directory, START (blocks to keep WSL alive):
 
@@ -73,8 +73,11 @@ From PowerShell in this directory, START (blocks to keep WSL alive):
 
 CHECK SPENDING:
 
-    uv run --no-project --python 3.12 .\budget_proxy.py status
-    Get-Content .\world\BUDGET.md
+    wsl -d Ubuntu -e sh -lc 'cd /home/sanand/agent-swarm && python3 budget_proxy.py status'
+
+The authoritative runtime, sessions, world and ledger are on WSL native ext4
+at /home/sanand/agent-swarm, not in the Windows working tree. A frozen copy
+of the first run's audit data is at logs/run-2026-10-26/ in the Windows repo.
 
 STOP from another shell (sessions are saved):
 
@@ -96,7 +99,6 @@ manually stop the otherwise idle proxy.
 - Tool-free Docker Pi smoke: PONG_OK; 380 input, 7 output tokens,
   USD 0.0000415 estimated, zero error events.
 - Atomic concurrent reservation, rejection and persistence tests passed.
-- All testing logs archived. Production ledger freshly initialized to
-  USD 1.00 available, with zero production calls.
-
-No multi-agent or tool-enabled swarm run has occurred.
+- Initial setup logs were archived before the run. The first four-agent run
+  used a native WSL directory after discovering Windows bind-mounted SQLite
+  locking issues. Full audit and findings: result-2026-10-26.md.

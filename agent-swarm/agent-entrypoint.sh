@@ -8,6 +8,6 @@ fi
 printf 'Launching agent %s; resumable session %s\n' "$AGENT_ID" "$SESSION_ID" >&2
 exec pi --provider swarm --model openai/gpt-6-luna \
   --mode json --session-id "$SESSION_ID" --session-dir /sessions \
-  --no-context-files --no-extensions --no-skills --no-mcp \
+  --no-context-files --no-extensions --no-skills \
   --tools read,bash,edit,write \
   --print "$PROMPT" </dev/null
