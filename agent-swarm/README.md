@@ -140,3 +140,12 @@ automatically exported to the matching Windows folder. The first run had
 several infrastructure startup failures, recorded separately in
 `experiments/launch-failures/README.md`; successful measurements exclude
 those attempts.
+
+## Experiment 005 outcome (26 October 2026)
+
+Adding one minimal output criterion and a nudge to collaborate produced the first
+actual shared-world artifacts: a tested Python snapshot utility plus backup
+playbook, and an offline HTML decision matrix plus guide. Four agents performed
+83 model calls, spending USD 0.026636, and edited one another's files.
+See experiments/005-collaborate/analysis.md and collaboration_timeline.md.
+The cumulative experiments/HISTORY.md and INDEX.md now include five runs.

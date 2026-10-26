@@ -12,7 +12,7 @@ TARGET=Path(os.environ.get("SWARM_EXPORT_DIR",
                           "/mnt/c/Users/Anand/code/private-research/agent-swarm"))
 EXPS=RUNTIME/"experiments"
 COPY_ROOT=["INDEX.md","experiments.jsonl"]
-COPY_PER_EXP=["manifest.json","summary.md","result.json","prompt.txt","system-prompt.txt"]
+COPY_PER_EXP=["manifest.json","summary.md","analysis.md","collaboration_timeline.md","result.json","prompt.txt","system-prompt.txt"]
 
 def export_all():
     if not TARGET.exists():raise RuntimeError("Missing export directory: "+str(TARGET))

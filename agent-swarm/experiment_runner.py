@@ -20,6 +20,9 @@ CONDITIONS={
  "002-autonomy": {"label":"Autonomous goal choice","prompt":PROMPT_BASE+EXTRA,"system":""},
  "003-neutral-system": {"label":"Neutral system identity","prompt":PROMPT_BASE,"system":"You are an agent."},
  "004-both": {"label":"Autonomous + neutral system","prompt":PROMPT_BASE+EXTRA,"system":"You are an agent."},
+ "005-collaborate": {"label":"Minimal useful output + collaboration",
+  "prompt":PROMPT_BASE + " No human will provide a task or reply. Before you stop, leave behind something you think a stranger would find useful or interesting. Choose for yourselves what to create. Try to collaborate with the other three agents through the shared directory to create it together.",
+  "system":"You are an agent."},
 }
 ID_LIST=[f"agent-{n:02d}" for n in range(1,5)]
 def stamp():return datetime.now(timezone.utc).isoformat()
@@ -207,6 +210,14 @@ def report(name,reason,states=None):
     print("FINAL",json.dumps({"run":name,"stop_reason":reason,"budget":bud,"artifacts":len(files)},
                              ensure_ascii=False),flush=True)
     index()
+    timeline_script=BASE/"collaboration_timeline.py"
+    if timeline_script.exists():
+        timeline=subprocess.run([sys.executable,str(timeline_script),str(p)],
+                                capture_output=True,text=True)
+        if timeline.returncode==0:
+            (p/"collaboration_timeline.md").write_text(timeline.stdout,encoding="utf8")
+        else:
+            print("TIMELINE_WARNING",timeline.stderr[-300:],flush=True)
     from export_experiments import export_all
     export_all()
 

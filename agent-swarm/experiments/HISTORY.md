@@ -39,7 +39,7 @@ contains little stimulus; there is no built-in communication protocol, social
 feedback, payoff, or external challenge, and only one repetition per cell.
 The $1 budget framing itself may discourage spending.
 
-## Suggested next test (NOT yet run)
+## Earlier proposal (superseded by Experiment 005)
 
 005: Retain all existing setup, but replace only one clause in the user prompt
 with an explicit output criterion, such as "Before you stop, leave behind
@@ -76,3 +76,30 @@ navigation table, and experiments.jsonl a machine-readable register.
 
 Tooling/startup failures are recorded under launch-failures/README.md
 and archived separately, not miscounted as successful experiments.
+
+
+## 005 — Required useful artifact and invitation to collaborate (26 Oct 2026)
+
+With the neutral system prompt from 004 unchanged, four fresh agents were
+told to choose what to create, leave something a stranger might find useful
+or interesting, and try to collaborate through the shared directory.
+
+**Result: first productive swarm.** 83 model calls and **USD 0.026636**
+in OpenRouter charges, with **USD 0.973364 of the $1 cap unused**.
+All four exited naturally. Two loosely connected clusters emerged:
+a tested Python directory snapshot tool with a backup playbook; and
+an offline HTML decision matrix with a decision-making guide.
+Agents cross-read and edited each other's work, jointly maintained README
+and NOTES, and fixed/tested each other's code. Four independently re-run
+Python tests passed; the HTML JavaScript passed a syntax check.
+There was no evidence of direct messaging or elected leadership.
+
+See 005-collaborate/analysis.md for the detailed interpretation and
+005-collaborate/collaboration_timeline.md for 100 timestamped tool actions.
+The run's full Pi conversation JSONL, model requests/responses, usage/cost
+records, and original output files are retained (Git-ignored) in the
+numbered experiment directory.
+
+This confirms that a small goal plus a collaboration nudge changes
+behavior in this run; it does **not** isolate which of these two changes
+caused the result. Compare a goal-only condition next.

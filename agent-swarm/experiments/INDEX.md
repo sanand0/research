@@ -8,6 +8,7 @@ Experiments are numbered and stored separately. Each run retains its original pr
 | 002-autonomy | Autonomous goal choice | complete | 14 | $0.001713 |
 | 003-neutral-system | Neutral system identity | complete | 8 | $0.001035 |
 | 004-both | Autonomous + neutral system | complete | 10 | $0.001667 |
+| 005-collaborate | Minimal useful output + collaboration | complete | 83 | $0.026636 |
 
 Each experiment has its own USD 1 ceiling; neither its ledger nor its files are reset when another run starts.
 Run-specific data lives on Plutonium WSL at /home/sanand/agent-swarm/experiments/.
