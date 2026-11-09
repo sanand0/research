@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "surface": "posts",
+  "observed_at": "2026-11-08T13:10:47.053Z",
+  "status": 200,
+  "contentType": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+  "characters": 161156,
+  "keys": [
+    "data",
+    "meta",
+    "included"
+  ],
+  "includedCount": 14,
+  "types": [
+    "com.linkedin.voyager.dash.feed.SocialActivityCounts",
+    "com.linkedin.voyager.dash.feed.Update",
+    "com.linkedin.voyager.dash.feed.controlmenu.UpdateActions",
+    "com.linkedin.voyager.dash.identity.profile.Profile",
+    "com.linkedin.voyager.dash.organization.Company",
+    "com.linkedin.voyager.dash.social.SocialDetail",
+    "com.linkedin.voyager.dash.social.SocialPermissions"
+  ],
+  "collections": [
+    {
+      "name": "feedDashProfileUpdatesByMemberShareFeed",
+      "references": 2,
+      "paging": {
+        "start": 0,
+        "count": 2,
+        "total": 0
+      },
+      "hasPaginationToken": true
+    }
+  ]
+}

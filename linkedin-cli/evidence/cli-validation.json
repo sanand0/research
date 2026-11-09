@@ -1,0 +1,100 @@
+{
+  "observedAt": "2026-11-08T14:21:07.484Z",
+  "scenarios": [
+    {
+      "operation": "profile",
+      "ok": true,
+      "source": "voyager",
+      "sectionLengths": {
+        "experience": 1647,
+        "education": 236
+      }
+    },
+    {
+      "operation": "people",
+      "ok": true,
+      "records": 3,
+      "source": "voyager",
+      "pages": 1
+    },
+    {
+      "operation": "content",
+      "ok": true,
+      "records": 3,
+      "source": "voyager",
+      "pages": 1
+    },
+    {
+      "operation": "companies",
+      "ok": true,
+      "records": 2,
+      "source": "voyager",
+      "pages": 1
+    },
+    {
+      "operation": "connections",
+      "ok": true,
+      "records": 3,
+      "source": "voyager",
+      "pages": 1
+    },
+    {
+      "operation": "invitations",
+      "ok": true,
+      "records": 3,
+      "source": "voyager",
+      "pages": 1
+    },
+    {
+      "operation": "activity",
+      "ok": true,
+      "records": 6,
+      "source": "voyager",
+      "pages": 2
+    },
+    {
+      "operation": "comments-activity",
+      "ok": true,
+      "records": 2,
+      "source": "voyager",
+      "pages": 1
+    },
+    {
+      "operation": "reactions-activity",
+      "ok": true,
+      "records": 2,
+      "source": "voyager",
+      "pages": 1
+    },
+    {
+      "operation": "post",
+      "ok": true,
+      "source": "voyager"
+    },
+    {
+      "operation": "analytics",
+      "ok": true,
+      "source": "dom-analytics"
+    },
+    {
+      "operation": "feed",
+      "ok": true,
+      "records": 3,
+      "source": "dom-feed",
+      "pages": 1
+    },
+    {
+      "operation": "backup",
+      "ok": true,
+      "source": "backup-adapter",
+      "imported": 3403
+    },
+    {
+      "operation": "offline-search",
+      "ok": true,
+      "records": 5,
+      "source": "cache"
+    }
+  ],
+  "automatedTests": 25
+}

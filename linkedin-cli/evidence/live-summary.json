@@ -1,0 +1,360 @@
+{
+  "observedAt": "2026-11-08T13:05:46.514Z",
+  "method": "same-origin fetch in logged-in CDP browser; raw bodies and session headers kept only in process memory",
+  "records": {
+    "profile": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 11405,
+      "keys": [
+        "data",
+        "included"
+      ],
+      "included": 5,
+      "types": [
+        "com.linkedin.restli.common.CollectionResponse",
+        "com.linkedin.voyager.dash.common.Geo",
+        "com.linkedin.voyager.dash.common.Industry",
+        "com.linkedin.voyager.dash.identity.profile.Profile"
+      ],
+      "dataKeys": [
+        "entityUrn",
+        "paging",
+        "*elements",
+        "$type"
+      ],
+      "nestedDataKeys": []
+    },
+    "people": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 53448,
+      "keys": [
+        "data",
+        "included"
+      ],
+      "included": 19,
+      "types": [
+        "com.linkedin.voyager.dash.identity.profile.Profile",
+        "com.linkedin.voyager.dash.premium.PremiumUpsellSlotContent",
+        "com.linkedin.voyager.dash.search.EntityResultViewModel",
+        "com.linkedin.voyager.dash.search.FeedbackCard",
+        "com.linkedin.voyager.dash.search.LazyLoadedActions"
+      ],
+      "dataKeys": [
+        "data"
+      ],
+      "nestedDataKeys": [
+        "searchDashClustersByAll",
+        "$recipeTypes",
+        "$type"
+      ]
+    },
+    "people2": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 54221,
+      "keys": [
+        "data",
+        "included"
+      ],
+      "included": 22,
+      "types": [
+        "com.linkedin.voyager.dash.identity.profile.Profile",
+        "com.linkedin.voyager.dash.search.EntityResultViewModel",
+        "com.linkedin.voyager.dash.search.LazyLoadedActions"
+      ],
+      "dataKeys": [
+        "data"
+      ],
+      "nestedDataKeys": [
+        "searchDashClustersByAll",
+        "$recipeTypes",
+        "$type"
+      ]
+    },
+    "content": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 107989,
+      "keys": [
+        "data",
+        "included"
+      ],
+      "included": 37,
+      "types": [
+        "com.linkedin.voyager.dash.feed.FollowingState",
+        "com.linkedin.voyager.dash.feed.SocialActivityCounts",
+        "com.linkedin.voyager.dash.feed.Update",
+        "com.linkedin.voyager.dash.feed.component.polls.PollSummary",
+        "com.linkedin.voyager.dash.feed.controlmenu.UpdateActions",
+        "com.linkedin.voyager.dash.identity.profile.Profile",
+        "com.linkedin.voyager.dash.search.FeedbackCard",
+        "com.linkedin.voyager.dash.social.SocialDetail",
+        "com.linkedin.voyager.dash.social.SocialPermissions"
+      ],
+      "dataKeys": [
+        "data"
+      ],
+      "nestedDataKeys": [
+        "searchDashClustersByAll",
+        "$recipeTypes",
+        "$type"
+      ]
+    },
+    "posts": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 112251,
+      "keys": [
+        "data",
+        "included"
+      ],
+      "included": 34,
+      "types": [
+        "com.linkedin.videocontent.VideoPlayMetadata",
+        "com.linkedin.voyager.dash.feed.SaveState",
+        "com.linkedin.voyager.dash.feed.SocialActivityCounts",
+        "com.linkedin.voyager.dash.feed.Update",
+        "com.linkedin.voyager.dash.feed.controlmenu.UpdateActions",
+        "com.linkedin.voyager.dash.identity.profile.Profile",
+        "com.linkedin.voyager.dash.organization.Company",
+        "com.linkedin.voyager.dash.social.SocialDetail",
+        "com.linkedin.voyager.dash.social.SocialPermissions"
+      ],
+      "dataKeys": [
+        "data"
+      ],
+      "nestedDataKeys": [
+        "$recipeTypes",
+        "feedDashProfileUpdatesByMemberShareFeed",
+        "$type"
+      ]
+    },
+    "posts2": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 113291,
+      "keys": [
+        "data",
+        "included"
+      ],
+      "included": 33,
+      "types": [
+        "com.linkedin.voyager.dash.feed.SocialActivityCounts",
+        "com.linkedin.voyager.dash.feed.Update",
+        "com.linkedin.voyager.dash.feed.controlmenu.UpdateActions",
+        "com.linkedin.voyager.dash.identity.profile.Profile",
+        "com.linkedin.voyager.dash.organization.Company",
+        "com.linkedin.voyager.dash.social.SocialDetail",
+        "com.linkedin.voyager.dash.social.SocialPermissions"
+      ],
+      "dataKeys": [
+        "data"
+      ],
+      "nestedDataKeys": [
+        "$recipeTypes",
+        "feedDashProfileUpdatesByMemberShareFeed",
+        "$type"
+      ]
+    },
+    "comments": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 316207,
+      "keys": [
+        "data",
+        "meta",
+        "included"
+      ],
+      "included": 63,
+      "types": [
+        "com.linkedin.videocontent.VideoPlayMetadata",
+        "com.linkedin.voyager.dash.feed.FollowingState",
+        "com.linkedin.voyager.dash.feed.SaveState",
+        "com.linkedin.voyager.dash.feed.SocialActivityCounts",
+        "com.linkedin.voyager.dash.feed.Update",
+        "com.linkedin.voyager.dash.feed.controlmenu.UpdateActions",
+        "com.linkedin.voyager.dash.identity.profile.Profile",
+        "com.linkedin.voyager.dash.organization.Company",
+        "com.linkedin.voyager.dash.social.Comment",
+        "com.linkedin.voyager.dash.social.SocialDetail",
+        "com.linkedin.voyager.dash.social.SocialPermissions"
+      ],
+      "dataKeys": [
+        "data",
+        "extensions"
+      ],
+      "nestedDataKeys": [
+        "$recipeTypes",
+        "feedDashProfileUpdatesByMemberComments",
+        "$type"
+      ]
+    },
+    "reactions": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 276816,
+      "keys": [
+        "data",
+        "meta",
+        "included"
+      ],
+      "included": 58,
+      "types": [
+        "com.linkedin.voyager.dash.feed.FollowingState",
+        "com.linkedin.voyager.dash.feed.SocialActivityCounts",
+        "com.linkedin.voyager.dash.feed.Update",
+        "com.linkedin.voyager.dash.feed.controlmenu.UpdateActions",
+        "com.linkedin.voyager.dash.identity.profile.Profile",
+        "com.linkedin.voyager.dash.organization.Company",
+        "com.linkedin.voyager.dash.social.Comment",
+        "com.linkedin.voyager.dash.social.SocialDetail",
+        "com.linkedin.voyager.dash.social.SocialPermissions"
+      ],
+      "dataKeys": [
+        "data",
+        "extensions"
+      ],
+      "nestedDataKeys": [
+        "feedDashProfileUpdatesByMemberReactions",
+        "$recipeTypes",
+        "$type"
+      ]
+    },
+    "legacyFeed": {
+      "status": 400,
+      "type": null,
+      "bytes": 14,
+      "keys": [
+        "status"
+      ],
+      "types": [],
+      "dataKeys": [],
+      "nestedDataKeys": []
+    },
+    "otherProfile": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 6478,
+      "keys": [
+        "data",
+        "included"
+      ],
+      "included": 4,
+      "types": [
+        "com.linkedin.restli.common.CollectionResponse",
+        "com.linkedin.voyager.dash.common.Geo",
+        "com.linkedin.voyager.dash.common.Industry",
+        "com.linkedin.voyager.dash.identity.profile.Profile"
+      ],
+      "dataKeys": [
+        "entityUrn",
+        "paging",
+        "*elements",
+        "$type"
+      ],
+      "nestedDataKeys": []
+    },
+    "otherPosts": {
+      "status": 200,
+      "type": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+      "bytes": 136010,
+      "keys": [
+        "data",
+        "included"
+      ],
+      "included": 45,
+      "types": [
+        "com.linkedin.voyager.dash.feed.FollowingState",
+        "com.linkedin.voyager.dash.feed.SocialActivityCounts",
+        "com.linkedin.voyager.dash.feed.Update",
+        "com.linkedin.voyager.dash.feed.controlmenu.UpdateActions",
+        "com.linkedin.voyager.dash.identity.profile.Profile",
+        "com.linkedin.voyager.dash.organization.Company",
+        "com.linkedin.voyager.dash.social.SocialDetail",
+        "com.linkedin.voyager.dash.social.SocialPermissions"
+      ],
+      "dataKeys": [
+        "data"
+      ],
+      "nestedDataKeys": [
+        "$recipeTypes",
+        "feedDashProfileUpdatesByMemberShareFeed",
+        "$type"
+      ]
+    }
+  },
+  "parity": {
+    "people": {
+      "apiResults": 5,
+      "namesInDOM": 5,
+      "urlsInDOM": 0
+    },
+    "content": {
+      "apiUpdates": 5,
+      "textMatches": 5,
+      "isSearchPage": true,
+      "domTextLength": 7684
+    },
+    "home": {
+      "domTextCandidates": 17,
+      "capturedTextMatches": 5,
+      "domActivityIds": 1,
+      "capturedActivityOverlap": 0
+    },
+    "activityUI": "Not validated: recent-activity UI remained at bootstrap screen"
+  },
+  "pagination": {
+    "people": {
+      "page1": 5,
+      "page2": 5,
+      "overlap": 0
+    },
+    "posts": {
+      "page1": 5,
+      "page2": 5,
+      "overlap": 0,
+      "pagingTotal": 0,
+      "hasToken": true
+    }
+  },
+  "home": {
+    "captured": {
+      "characters": 4437729,
+      "activityIds": 7
+    },
+    "replay": {
+      "status": 200,
+      "type": "application/octet-stream",
+      "bytes": 4437804,
+      "keys": [],
+      "types": [],
+      "dataKeys": [],
+      "nestedDataKeys": []
+    },
+    "sameActivityIds": true,
+    "requestKeys": [
+      "pagerId",
+      "clientArguments",
+      "paginationRequest"
+    ],
+    "clientArgumentKeys": [
+      "$type",
+      "requestedStateKeys",
+      "payload",
+      "requestMetadata",
+      "states",
+      "screenId",
+      "knownTemplateIds"
+    ],
+    "paginationKeys": [
+      "$type",
+      "pagerId",
+      "trigger",
+      "retryCount",
+      "requestedArguments",
+      "onClientError"
+    ]
+  }
+}

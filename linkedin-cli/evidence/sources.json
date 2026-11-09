@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-11-08T13:01:34.557Z",
+  "repositories": [
+    {
+      "repo": "tulir/whatsmeow",
+      "sha": "79dc2a8c33df1d0c7f85d76a4b91a0debc7c1476",
+      "commitDate": "2026-11-07T16:04:54Z",
+      "url": "https://github.com/tulir/whatsmeow/commit/79dc2a8c33df1d0c7f85d76a4b91a0debc7c1476"
+    },
+    {
+      "repo": "public-clis/twitter-cli",
+      "sha": "7c634e0d396b1e7af9f63315b414925fe4f29ae7",
+      "commitDate": "2026-05-07T15:53:22Z",
+      "url": "https://github.com/public-clis/twitter-cli/commit/7c634e0d396b1e7af9f63315b414925fe4f29ae7"
+    },
+    {
+      "repo": "public-clis/rdt-cli",
+      "sha": "5e4fb3720d5c174e976cd425ccc3b879d52cac66",
+      "commitDate": "2026-03-21T11:38:06Z",
+      "url": "https://github.com/public-clis/rdt-cli/commit/5e4fb3720d5c174e976cd425ccc3b879d52cac66"
+    },
+    {
+      "repo": "OpenRecruiterTools/linkedin-toolkit",
+      "sha": "7937c834dd068b35ace372f4f39da85ad82f7ac7",
+      "commitDate": "2026-10-09T11:34:07Z",
+      "url": "https://github.com/OpenRecruiterTools/linkedin-toolkit/commit/7937c834dd068b35ace372f4f39da85ad82f7ac7"
+    },
+    {
+      "repo": "vicnaum/linkedin-toolkit",
+      "sha": "d6b4fcc8917e1f72461dc3932c6b4b5553ec2559",
+      "commitDate": "2026-04-26T15:18:48Z",
+      "url": "https://github.com/vicnaum/linkedin-toolkit/commit/d6b4fcc8917e1f72461dc3932c6b4b5553ec2559"
+    },
+    {
+      "repo": "bvgroup-co/lnk",
+      "sha": "9ff8a92448094a27307257d9e2e43221328392ed",
+      "commitDate": "2026-06-30T08:54:49Z",
+      "url": "https://github.com/bvgroup-co/lnk/commit/9ff8a92448094a27307257d9e2e43221328392ed"
+    }
+  ],
+  "unavailable": [
+    "tomquirk/linkedin-api (GitHub API 404)",
+    "mguttmann/linkedin-internal-api (GitHub API 404; indexed docs exist)"
+  ]
+}

@@ -1,0 +1,108 @@
+diff --git a/README.md b/README.md
+index 412c5c9..12592c6 100644
+--- a/README.md
++++ b/README.md
+@@ -78,9 +78,7 @@ Here are the setup details for my laptops.
+ - [audiosync.py](audiosync.py) syncs audio and video files using cross-correlation. Usage: `uv run audiosync.py video.mkv audio.opus output.mkv`. I use this to sync screen recordings via `videorecord` with phone audio recordings of better quality.
+ - [backupgoogle.py](backupgoogle.py) archives Google Mail, Calendar, and Chat from currently logged in `gws` user into `~/Documents/data/$EMAIL/{source}-YYYY-MM.jsonl`. `backupgoogle.py --since YYYY-MM-DD --until YYYY-MM-DD`. Use `--config-dir ~/.config/gws-root.node@gmail.com` for the personal account or `--config-dir ~/.config/gws-anand@study.iitm.ac.in` for IITM. `daily-activities` backs up all three accounts. Account setup and service checks: `~/Dropbox/notes/gws-cli.md`.
+ - [backupchatgpt.py](backupchatgpt.py) backs up rendered ChatGPT conversations via `../tools/aiscrapers/{chatgptscraper,chatgpt-sidebar-scraper}.js`. Daily: `uv run backupchatgpt.py --limit 20 --format jsonl`. Weekly: `uv run backupchatgpt.py --rescan --limit 5`. Retry: `uv run backupchatgpt.py --conversation 'https://chatgpt.com/c/UUID' --format jsonl`. Logs: `~/.cache/sanand-scripts/backupchatgpt/YYYY-MM-runs.jsonl`
+-- [backuplinkedin.py](backuplinkedin.py) backs up LinkedIn posts and comments that the standard export misses via a logged-in CDP browser. Examples: `backuplinkedin.py posts --username sanand0 --limit 5`, `backuplinkedin.py posts --username sanand0 --no-comments --dry-run`, `backuplinkedin.py --describe | jaq .`.
+-  - Weekly analytics refresh: `uv run backuplinkedin.py posts --username sanand0 --analytics --since 7d --limit 0`.
+-  - Year refresh: `uv run backuplinkedin.py posts --username sanand0 --analytics --since 1y --limit 0`. Updates saved original posts in `--out`, preserving comments; `--until` is exclusive. Captures discovery, profile activity, engagements, video views/watch time, visible profile-viewer summaries, all six demographic tabs, and public repost details. Missing/withheld metrics stay null; `repostScrapeStats` reports incomplete lists (private shares are excluded by LinkedIn). Use `--dry-run` to inspect without writing.
++- [archive/backuplinkedin.py](archive/backuplinkedin.py) is the archived backup implementation. Use `linkedin backup me`; the native CLI preserves the existing blog-compatible JSONL archive.
+ - [backupmeet.py](backupmeet.py) archives owned Google Meet recordings/transcripts from `root.node@gmail.com` Drive into `/home/sanand/Documents/Meet Recordings/`, renames files to start with the meeting date, converts `.mp4` files to `.opus` in `/home/sanand/Documents/calls/`, and deletes Drive originals older than `--older-than 7d` after a verified copy. It refuses to run against any other `gws` account.
+   Set up the isolated login with `GOOGLE_WORKSPACE_CLI_CONFIG_DIR="$HOME/.config/gws-root.node@gmail.com" gws auth login`, then run e.g. `backupmeet.py --dry-run`, `backupmeet.py --older-than 365d --type video --limit 3`, or `backupmeet.py --before "6 months ago" --type transcript`.
+ - [backupwhatsapp.py](backupwhatsapp.py) backs up WhatsApp Web conversations through Chrome DevTools Protocol into `~/Documents/data/whatsapp/`. Examples: `backupwhatsapp.py --limit 5`, `backupwhatsapp.py --conversation "Family" --format jsonl`, `backupwhatsapp.py --since 2026-05-01 --until 2026-05-17 --limit 20 | moor`.
+@@ -123,6 +121,17 @@ Here are the setup details for my laptops.
+ - [histfreq](histfreq) ranks the most common commands from a NUL-delimited shell history stream. `history --null | uv run histfreq.py -n 40`.
+ - [htmlemail.py](htmlemail.py) renders Markdown to HTML and sends as email via Gmail API. Usage: `uv run htmlemail.py --from EMAIL --email EMAIL body.md`.
+   - Initialized via `htmlemail.py --init --client-secrets google-root.node-desktop_872568319651-7pde9a28vem61qfvon8pu0d9bgijv8lf.apps.googleusercontent.com.json` with Google OAuth desktop client secrets JSON.
++- [linkedin](linkedin) is a standalone LinkedIn API CLI with Markdown (`md`) output, real people-search filters and an account-scoped SQLite/FTS offline cache. `linkedin --help` documents partial-name filters, IDs and profile-name lookup; `--describe` prints JSON.
++  - Read/search: `linkedin profile me --sections experience,education`, `linkedin activity "First Last"`, `linkedin search people engineer --location Chennai --organization Tata --degree 2`. Text location/current/past-company filters OR all returned matching suggestions; different filters combine with AND. The selected profile or filter matches are shown.
++  - Scheduled posts: `linkedin scheduled --refresh` shows exact scheduled times and full contents; `--offline` uses the last cached list. It never changes the schedule.
++  - Local files: `linkedin paths` lists backup, cache, locks/temporary files, config sources and executable/tests; `--format json` is available.
++  - Fetch/update own post metrics: `linkedin analytics POST_URL --refresh`; reads impressions, reactions/likes, comments, reposts, saves and sends, and updates cached post counters.
++  - Weekly analytics sync: `linkedin sync analytics me --since 7d --limit 20 --max-pages 5`; add `--resume` after interruption. `--until` is exclusive; dates can use activity-ID time estimates.
++  - Compact terminal Markdown: ranges/counts in headings, raw URLs in the last table column, metric/value lists, full posts and comment threads. Save with `--output report.md`; JSON/JSONL output is unchanged.
++  - Durable backup: `linkedin backup me --limit 100` updates `~/Documents/data/linkedin-posts.jsonl` and SQLite natively, including full text/media/comments/replies. Choose another data file with `--archive PATH` (`--file` alias); `--output` saves the report. Historical rows/unknown fields are retained; rerun after interruption.
++  - Detailed weekly analytics: `linkedin backup me --analytics --since 7d --limit 0` refreshes saved original posts, including demographic tabs, video metrics and public reposts. `--until` is exclusive; incomplete comment/repost lists are reported.
++  - Compatible offline export: `linkedin export --schema backup --output posts.jsonl` atomically merges all saved backup rows in raw JSONL, preserving the unchanged blog consumer. Ordinary JSON/JSONL output remains available for agents.
++  - Offline: `linkedin find agents --offline`, `linkedin analytics POST_URL --offline`. Use `--format json` or `--format jsonl` for pipelines. Interactive Markdown uses `glow -p`, then `$PAGER`, then raw output; pipes and saved files bypass viewers. Posts show date/time near the top. Tests: `just test-linkedin-api` (91 native tests, including backup regressions and isolated Chromium fixtures; included in `just test`/`just verify`). The old Python tests are archived as `archive/test_backuplinkedin.py`.
+ - [linkedin.py](linkedin.py) is a CLI for LinkedIn that uses CDP to fetch profiles, etc. `linkedin.py profile sanand0` fetches my profile.
+ - [mailindex.py](mailindex.py) builds a compact, resumable SQLite FTS index for `~/Documents/Mail/*.mbox` at `~/Documents/Mail/mail-index.sqlite`.
+ - [mcpserver](mcpserver) starts or reuses the LocalMCP2 OpenAI tunnel, then runs [mcpserver.py](mcpserver.py) in the development container. Pass `dev.sh` options directly, for example `mcpserver -p ~/code/talks,~/Downloads,~/code:ro,~/r2:ro`; do not add `-- mcpserver.py`. See the [LocalMCP2 setup and operations guide](setup/localmcp.md).
+diff --git a/justfile b/justfile
+index 8264fde..484e993 100644
+--- a/justfile
++++ b/justfile
+@@ -35,7 +35,7 @@ build:
+ verify: test
+ 
+ # Run the complete test suite, failing on the first test module with an error.
+-test: test-agentlog test-backup-chatgpt test-backup-google test-backup-linkedin test-backup-observability test-backup-whatsapp test-browsing-history test-fish-usage test-chatgpt test-codextags test-context test-edge test-htmlemail test-linkedin test-mcpserver test-musictag test-podcast test-prompt test-rofi test-run-at test-skilluse test-summarize-blog-tags test-summarize-transcript test-call test-transcribe test-timestamp
++test: test-agentlog test-backup-chatgpt test-backup-google test-backup-observability test-backup-whatsapp test-browsing-history test-fish-usage test-chatgpt test-codextags test-context test-edge test-htmlemail test-linkedin test-linkedin-api test-mcpserver test-musictag test-podcast test-prompt test-rofi test-run-at test-skilluse test-summarize-blog-tags test-summarize-transcript test-call test-transcribe test-timestamp
+ 
+ # Run the agentlog tests.
+ test-agentlog:
+@@ -53,10 +53,6 @@ test-backup-chatgpt:
+ test-backup-google:
+     {{ pytest }} --with typer pytest -q tests/test_backupgoogle.py
+ 
+-# Run the LinkedIn backup transport, timestamp, and merge tests.
+-test-backup-linkedin: playwright-install
+-    {{ pytest }} --with typer --with websockets --with 'playwright=={{ playwright }}' pytest -q tests/test_backuplinkedin.py
+-
+ # Run the WhatsApp backup parser, merge, and incremental-selection tests.
+ test-backup-whatsapp:
+     {{ pytest }} --with typer --with websockets pytest -q tests/test_backupwhatsapp.py
+@@ -101,6 +97,10 @@ test-htmlemail:
+ test-linkedin:
+     uv run --python {{ python }} tests/test_linkedin.py -q
+ 
++# Run the standalone LinkedIn API/cache/backup tests with isolated Chromium DOM fixtures.
++test-linkedin-api: playwright-install
++    node --test tests/test_linkedin.mjs
++
+ # Run the MCP server tests against the ToolResult contract they require.
+ test-mcpserver:
+     {{ pytest }} --with 'fastmcp=={{ fastmcp }}' pytest -q tests/test_mcpserver.py
+diff --git a/backuplinkedin.py b/archive/backuplinkedin.py
+similarity index 100%
+rename from backuplinkedin.py
+rename to archive/backuplinkedin.py
+diff --git a/tests/test_backuplinkedin.py b/archive/test_backuplinkedin.py
+rename from tests/test_backuplinkedin.py
+rename to archive/test_backuplinkedin.py
+--- a/tests/test_backuplinkedin.py
++++ b/archive/test_backuplinkedin.py
+@@ -9,6 +9,7 @@
+ from pathlib import Path
+ 
+ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
++sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "archive"))
+ 
+ import backuplinkedin as backup
+ 
+@@ -109,7 +110,7 @@
+ 
+ def test_default_output_path_follows_home(monkeypatch, tmp_path: Path) -> None:
+     monkeypatch.setenv("HOME", str(tmp_path))
+-    namespace = runpy.run_path(str(Path(__file__).resolve().parents[1] / "backuplinkedin.py"), run_name="test_default_home")
++    namespace = runpy.run_path(str(Path(__file__).resolve().parents[1] / "archive" / "backuplinkedin.py"), run_name="test_default_home")
+     expected = tmp_path / "Documents/data/linkedin-posts.jsonl"
+     assert namespace["OUT_PATH"] == expected
+     assert namespace["describe"]()["output"] == str(expected)
+diff --git a/setup.fish b/setup.fish
+index bed5113..f225694 100644
+--- a/setup.fish
++++ b/setup.fish
+@@ -177,6 +177,9 @@ abbr --add recentblogs 'rg -l "^[[:space:]]*- llms" -g ~/code/blog/posts/**/*.md
+ # Summarize descriptions & keywords for blogs, transcripts, etc.
+ abbr --add descriptions "ug --ignore-files '^(summary|description|keywords):' > description.md"
+ 
++# Replace the archived LinkedIn backup command.
++abbr --add backuplinkedin.py 'linkedin backup me'
++
+ # Replace previously used commands with a single agentlog.py
+ abbr --add claudelog 'agentlog.py claude'
+ abbr --add codexlog 'agentlog.py codex'

@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-11-08T13:06:57.308Z",
+  "transport": "Node fetch outside browser; two cookies in memory",
+  "status": 200,
+  "contentType": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+  "keys": [
+    "data",
+    "included"
+  ],
+  "types": [
+    "com.linkedin.voyager.identity.shared.MiniProfile"
+  ]
+}

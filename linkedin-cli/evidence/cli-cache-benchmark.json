@@ -1,0 +1,47 @@
+{
+  "observedAt": "2026-11-08T14:21:07.233Z",
+  "counts": [
+    {
+      "kind": "activity",
+      "records": 4
+    },
+    {
+      "kind": "analytics",
+      "records": 1
+    },
+    {
+      "kind": "comment",
+      "records": 3077
+    },
+    {
+      "kind": "company",
+      "records": 2
+    },
+    {
+      "kind": "history",
+      "records": 925
+    },
+    {
+      "kind": "invitation",
+      "records": 1568
+    },
+    {
+      "kind": "post",
+      "records": 336
+    },
+    {
+      "kind": "profile",
+      "records": 7
+    }
+  ],
+  "queries": 100,
+  "queryScope": "Four generic literal queries over the seeded cache; 20 results each",
+  "medianMs": 3.2804849999999988,
+  "p95Ms": 6.1392079999999964,
+  "sqliteIntegrity": "ok",
+  "ftsQueryPlan": [
+    "SCAN search VIRTUAL TABLE INDEX 0:M2",
+    "SEARCH r USING INTEGER PRIMARY KEY (rowid=?)",
+    "USE TEMP B-TREE FOR ORDER BY"
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "date": "2026-11-09",
+  "scenarios": [
+    {
+      "operation": "location",
+      "ok": true,
+      "count": 2,
+      "pages": 1
+    },
+    {
+      "operation": "organization",
+      "ok": true,
+      "count": 2,
+      "pages": 1
+    },
+    {
+      "operation": "analytics",
+      "ok": true,
+      "count": 1,
+      "pages": 1
+    },
+    {
+      "operation": "analytics-resume",
+      "ok": true,
+      "count": 1,
+      "pages": 1
+    },
+    {
+      "operation": "analytics-range",
+      "ok": true,
+      "count": 1,
+      "pages": 1
+    },
+    {
+      "operation": "installed-single-refresh",
+      "ok": true,
+      "hasAnalytics": true
+    }
+  ],
+  "focusedTests": 30,
+  "formatDefault": "markdown",
+  "aliases": [
+    "md",
+    "jsonl"
+  ],
+  "noLocalRuntimeImports": true,
+  "isolatedCopyRuns": true,
+  "verification": {
+    "focused": "passed",
+    "full_scripts_verify": "stopped at two unrelated tests/test_transcribe.py assertions",
+    "remaining_recipe": "test-timestamp: 13 passed",
+    "full_scripts_verify_other_python_passes_reported": 723
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "date": "2026-11-09",
+  "standaloneTests": 44,
+  "researchTests": 46,
+  "unchangedFormatChecks": {
+    "recordKinds": 8,
+    "formats": [
+      "json",
+      "ndjson",
+      "text"
+    ],
+    "total": 24
+  },
+  "markdownStructure": {
+    "documents": 16,
+    "oneTitleEach": true,
+    "rawJsonDumps": false,
+    "safeLinks": true
+  },
+  "visualReview": [
+    "metric lists",
+    "last-column raw links",
+    "comment anchors"
+  ],
+  "fullVerification": {
+    "result": "stopped",
+    "unrelatedFailures": [
+      "tests/test_transcribe.py::test_multiple_paths_default_prompt_model_and_same_directory",
+      "tests/test_transcribe.py::test_env_model_override"
+    ]
+  },
+  "examples": "markdown-examples.md",
+  "executable": "~/code/scripts/linkedin",
+  "pathResolution": "~/code/scripts/linkedin",
+  "removed": [
+    "~/code/scripts/linkedin.mjs",
+    "~/.local/bin/linkedin"
+  ],
+  "terminalLineCounts": {
+    "analytics-batch.md": {
+      "before": 66,
+      "after": 46
+    },
+    "analytics.md": {
+      "before": 43,
+      "after": 31
+    },
+    "cache-status.md": {
+      "before": 23,
+      "after": 19
+    },
+    "comments.md": {
+      "before": 21,
+      "after": 21
+    },
+    "import.md": {
+      "before": 10,
+      "after": 6
+    },
+    "people.md": {
+      "before": 24,
+      "after": 20
+    },
+    "post.md": {
+      "before": 23,
+      "after": 17
+    },
+    "profile.md": {
+      "before": 25,
+      "after": 21
+    }
+  }
+}

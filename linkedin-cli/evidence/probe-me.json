@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "surface": "me",
+  "observed_at": "2026-11-08T13:05:30.394Z",
+  "status": 200,
+  "contentType": "application/vnd.linkedin.normalized+json+2.1; charset=UTF-8",
+  "characters": 2801,
+  "keys": [
+    "data",
+    "included"
+  ],
+  "includedCount": 1,
+  "types": [
+    "com.linkedin.voyager.identity.shared.MiniProfile"
+  ],
+  "collections": []
+}

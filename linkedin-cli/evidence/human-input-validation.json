@@ -1,0 +1,92 @@
+{
+  "date": "2026-11-09",
+  "nativeStandaloneTests": 91,
+  "researchTests": 93,
+  "archivedHistoricalTests": 43,
+  "search": {
+    "ok": true,
+    "returned": 3,
+    "queries": [
+      "Chennai",
+      "Singapore",
+      "Boston",
+      "IBM",
+      "Tata"
+    ],
+    "semantics": "OR all returned typeahead suggestions within a facet; AND across facets",
+    "aliasMatchesRetained": true
+  },
+  "activityName": {
+    "ok": true,
+    "returned": 2,
+    "selectedFirstPersonalizedResult": true
+  },
+  "connections": {
+    "ok": true,
+    "returned": 20,
+    "unavailable": 1,
+    "cause": "Valid connectedMember identity without a resolved profile. Preserve identity/date and report unavailable instead of aborting the page."
+  },
+  "scheduled": {
+    "ok": true,
+    "returned": 3,
+    "posts": [
+      {
+        "scheduledAt": "2026-11-10T08:15:00.000Z",
+        "textCharacters": 978
+      },
+      {
+        "scheduledAt": "2026-11-13T01:15:00.000Z",
+        "textCharacters": 1287
+      },
+      {
+        "scheduledAt": "2026-11-15T23:45:00.000Z",
+        "textCharacters": 1910
+      }
+    ],
+    "remoteWrites": 0
+  },
+  "lookupCache": {
+    "accountScoped": true,
+    "schemaVersion": 2,
+    "offlineRequiresCachedBinding": true
+  },
+  "terminalViewer": [
+    "glow -p",
+    "PAGER",
+    "raw Markdown"
+  ],
+  "privateCapturePolicy": "Only aggregate counts and timestamps are included; no post contents, private profile identifiers or session headers.",
+  "installedLive": {
+    "connections": {
+      "ok": true,
+      "returned": 20,
+      "unavailable": 1
+    },
+    "scheduled": {
+      "ok": true,
+      "returned": 3,
+      "contentsPresent": true
+    },
+    "paths": {
+      "ok": true
+    },
+    "backupArchiveUnchanged": true
+  },
+  "offlineInstalled": {
+    "nameQuery": true,
+    "allOrTextFacets": true
+  },
+  "ttyGlowSmoke": "passed; interactive pager opened and quit cleanly",
+  "timestampTests": 13,
+  "fullVerification": {
+    "command": "just verify",
+    "result": "LinkedIn suite passed; stopped at two unrelated existing transcription assertions",
+    "failures": [
+      "tests/test_transcribe.py::test_multiple_paths_default_prompt_model_and_same_directory",
+      "tests/test_transcribe.py::test_env_model_override"
+    ]
+  },
+  "installedCopiesMatch": true,
+  "historicalTestArchivePreservedSha256": "251f74f83a9ed33990fe957e0268f614abc56b882a272c6e6842bcdb3dcccbe0"
+}

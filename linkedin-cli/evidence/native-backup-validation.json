@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-09",
+  "nativeStandaloneTests": 57,
+  "researchTests": 59,
+  "archivedPythonTests": 43,
+  "blogTests": 10,
+  "timestampTests": 13,
+  "archiveRoundTrip": {
+    "rows": 3403,
+    "lossless": true
+  },
+  "blogConsumer": {
+    "originalPosts": 326,
+    "identicalDocumentsDatesAndLinks": true,
+    "codeChanged": false
+  },
+  "liveDefaultBackup": {
+    "beforeRows": 3403,
+    "afterRows": 3405,
+    "allOriginalRowsUnchanged": true,
+    "newPosts": 1,
+    "newComments": 1,
+    "commentThreadComplete": true
+  },
+  "liveDetailedAnalytics": {
+    "demographicTabs": [
+      "Job title",
+      "Location",
+      "Seniority",
+      "Company",
+      "Industry",
+      "Company size"
+    ],
+    "rowsPerTab": {
+      "Job title": 9,
+      "Location": 9,
+      "Seniority": 9,
+      "Company": 9,
+      "Industry": 10,
+      "Company size": 8
+    },
+    "publicReposts": {
+      "expected": 1,
+      "loaded": 1,
+      "complete": true,
+      "excludesPrivate": true
+    }
+  },
+  "headlessNativeCdp": [
+    "legacy and SDUI extraction",
+    "full text and media variants",
+    "stable card identity",
+    "nested replies",
+    "delayed flat replies",
+    "delayed comment hydration",
+    "role=button previous-comment loaders"
+  ],
+  "recoveryTests": [
+    "unknown-field/null round trip",
+    "archive idempotence",
+    "corrupt input preservation",
+    "concurrent writer rejection",
+    "dead process lock recovery",
+    "completed-post retention on disconnect",
+    "safe dry-run export",
+    "SSR click retry",
+    "keyed React replacement"
+  ],
+  "runtime": "single extensionless Node script; no Python subprocess",
+  "fishAbbreviation": "backuplinkedin.py -> linkedin backup me",
+  "fullVerification": {
+    "result": "stopped on unrelated pre-existing failures",
+    "failures": [
+      "tests/test_transcribe.py::test_multiple_paths_default_prompt_model_and_same_directory",
+      "tests/test_transcribe.py::test_env_model_override"
+    ]
+  }
+}

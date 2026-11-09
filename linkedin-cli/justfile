@@ -1,0 +1,10 @@
+test: playwright-install
+    node --test tests/test_linkedin.mjs test-probe.mjs
+
+# Pass --refresh to bypass the cache; all successful online reads are saved.
+cli *args:
+    node linkedin {{args}}
+
+# Reuse the same Chromium revision as the scripts suite.
+playwright-install:
+    test -x "${PLAYWRIGHT_BROWSERS_PATH:-$HOME/.cache/ms-playwright}/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell" || uv run --no-project --with playwright==1.62.0 playwright install chromium

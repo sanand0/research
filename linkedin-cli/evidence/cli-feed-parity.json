@@ -1,0 +1,21 @@
+{
+  "observedAt": "2026-11-08T14:13:58.504Z",
+  "sampleSize": 3,
+  "checks": [
+    {
+      "sameId": true,
+      "matchingText": true,
+      "hasAuthor": true
+    },
+    {
+      "sameId": true,
+      "matchingText": true,
+      "hasAuthor": true
+    },
+    {
+      "sameId": true,
+      "matchingText": true,
+      "hasAuthor": true
+    }
+  ]
+}

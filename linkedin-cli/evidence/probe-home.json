@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "surface": "home",
+  "observed_at": "2026-11-08T13:05:37.830Z",
+  "captured": {
+    "characters": 4411925,
+    "activityIdCount": 5
+  },
+  "replay": {
+    "status": 200,
+    "contentType": "application/octet-stream",
+    "characters": 4411921,
+    "keys": [],
+    "types": [],
+    "collections": [],
+    "activityIdCount": 5
+  },
+  "sameActivityIds": true
+}
