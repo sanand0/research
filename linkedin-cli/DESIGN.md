@@ -92,3 +92,9 @@ Activity resolves explicit profile/company URLs and URNs without switching types
 Voyager originals can be referenced by `*resharedUpdate`, supplied directly, or wrapped by `*update`. Decode all three with cycle protection; legacy original IDs come from `updateMetadata.urn`. Feed cards containing embedded commentary are hydrated through a post read. Do not infer missing text from an `aria-hidden` decorative more button: SDUI can keep the full text in the DOM while retaining that control. Visible expansion controls remain a truncation signal and trigger a bounded post hydration. Full API observations clear stale truncation flags. Media-only updates do not require commentary.
 
 A new sync replaces collection membership in its first committed page, retaining canonical records and resumable page transactions. Fresh cached pages with continuations must satisfy the requested output count. These changes prevent stale members and undersized cached results from overriding a refreshed/larger list.
+
+## Local post dates and showcase actors — 2026-11-10
+
+Post publication dates in Markdown use the process/system timezone, including date rollover and daylight-saving changes. Date-only and month-only observations keep their precision; JSON timestamps/confidence and other timestamp displays retain their contracts. Activity-ID-derived post dates no longer include a provenance suffix in Markdown.
+
+LinkedIn showcase pages resolve through the existing organization/company endpoint and `fromOrganization` search facet. Accept `/showcase/SLUG/...` URLs and `showcase:SLUG` as explicit organization targets. Bare names retain profile-first resolution: `claude` is a valid member identity, so `showcase:claude` explicitly selects organization 106863934. Resolved actor IDs/URLs, per-account caches and offline/native-list paths are shared with company activity.

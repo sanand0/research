@@ -102,3 +102,8 @@
 - Investigation and live evidence: [activity-posts-update](activity-posts-update/README.md). Implemented three-line post headers; corrected hidden expansion controls and normalized original-post references; native multi-member/company post filters; profile-first actor lookup and company URLs/URNs; explicit actor selections; sorted live/offline lists.
 - Cleanup found and fixed a nonexistent package bin, undersized fresh paginated caches, stale refresh membership and a tab-close/discovery race between successive invocations. No dependencies added; retained the independently executable copies and legacy tools pending caller review.
 - Name search still follows the established first-personalized-result policy: exact usernames/URLs are preferable where names are ambiguous. Documented other review items in the report.
+
+## Local post times and showcase targets — 2026-11-10
+
+- [Follow-up investigation](showcase-local-time/README.md): local-time Markdown post dates without the activity-ID suffix; explicit showcase URLs and `showcase:SLUG` reuse organization lookup/native post search.
+- Live Claude showcase actor 106863934 and three post IDs match the rendered page. User confirmed preserving profile-first semantics because bare claude is a real member handle. Research tests: 105 passed.

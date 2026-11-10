@@ -105,9 +105,11 @@ linkedin activity sanand0 ramar --limit 20
 linkedin activity openai
 linkedin activity https://www.linkedin.com/company/openai/home
 linkedin activity urn:li:company:11130470
+linkedin activity showcase:claude
+linkedin activity https://www.linkedin.com/showcase/claude/
 ```
 
-`activity` tries a bare username as a profile first. If LinkedIn reports it missing or inaccessible, it tries the exact company slug, then personalized people name search. This prevents an unrelated person who mentions OpenAI from replacing the OpenAI company. A valid profile identity wins ambiguity. Quoted names and `name:QUERY` use the existing first-personalized-result policy; inspect the selected profile, since name search can choose someone else. URLs and URNs stay explicit and never change type. Resolved actors appear in Markdown and `meta.resolved_actors`.
+`activity` tries a bare username as a profile first. If LinkedIn reports it missing or inaccessible, it tries the exact company slug, then personalized people name search. This prevents an unrelated person who mentions OpenAI from replacing the OpenAI company. A valid profile identity wins ambiguity. For example, bare `claude` selects the member Claude Schitter; `showcase:claude` or `https://www.linkedin.com/showcase/claude/` explicitly selects Anthropic’s Claude page. Showcase pages share LinkedIn’s company entity namespace and use the same native organization-post filter. Quoted names and `name:QUERY` use the existing first-personalized-result policy; inspect the selected profile, since name search can choose someone else. URLs and URNs stay explicit and never change type. Resolved actors appear in Markdown and `meta.resolved_actors`.
 
 A single profile retains the profile activity endpoint. Multiple profiles and companies use native Posts search with `fromMember` and/or `fromOrganization` and `sortBy=date_posted`, following LinkedIn's [native lists feature](https://www.linkedin.com/pulse/how-take-advantage-linkedins-secret-lists-feature-mickey-mellen-munfe/). The API rejects an empty keywords string: author-only requests omit that field. Returned posts are sorted by publication time before applying the output limit, including offline reads. Duplicate actor identities are removed and lists share a cache key regardless of actor order.
 
@@ -217,7 +219,7 @@ Markdown output is designed to be saved and read as a document:
 - Cache status, imports, backups and previews use summaries rather than JSON dumps. Empty results, stale data and pagination use plain language.
 - `--fields` preserves all selected fields: lists for one record, tables for multiple records, with link columns last.
 
-Headings include date ranges and result counts, for example `# Post analytics (30d, 4 posts)`. Post metadata shares the second line, with a Markdown hard break before its URL. Other metadata shares a line and simple metric/value summaries use lists. Numbers use separators, dates state UTC where time is known, month-only dates keep their precision, and unavailable metrics use an em dash. A result has one document title; embedded source headings and unfinished code fences cannot swallow the rest of the export.
+Headings include date ranges and result counts, for example `# Post analytics (30d, 4 posts)`. Post metadata shares the second line, with a Markdown hard break before its URL. Other metadata shares a line and simple metric/value summaries use lists. Numbers use separators. Post publication times use the system local timezone (or the `TZ` environment variable), including a timezone label; the activity-ID note is omitted in Markdown, while JSON retains UTC timestamps and provenance. Other timestamps retain UTC. Month-only and date-only dates keep their precision, and unavailable metrics use an em dash. A result has one document title; embedded source headings and unfinished code fences cannot swallow the rest of the export.
 
 ```bash
 linkedin profile me --sections experience,education --output profile.md
@@ -253,7 +255,7 @@ just test
 node --test tests/test_linkedin.mjs test-probe.mjs  # assumes Chromium is already installed
 ```
 
-101 standalone tests (103 including the research probes) cover graph root selection, encoding/input validation, unknown schemas, auth/rate-limit errors, FTS updates, sparse merges, account isolation, atomic rollback, disconnect/kill recovery, imports, reply parents, analytics label order, native backup/archive recovery, offline reads, field masks and NDJSON. Live scenarios cover the command families above; API activity pagination returned six records over two pages. The scripts repository’s `just test` suite includes the standalone tests. The native test file includes isolated headless Chromium fixtures (installed by `just playwright-install`), with a fresh temporary profile and network interception; it never uses the logged-in browser or imports the archived Python module. No credentials or personal cache database are included in either repository.
+103 standalone tests (105 including the research probes) cover graph root selection, encoding/input validation, unknown schemas, auth/rate-limit errors, FTS updates, sparse merges, account isolation, atomic rollback, disconnect/kill recovery, imports, reply parents, analytics label order, native backup/archive recovery, offline reads, field masks and NDJSON. Live scenarios cover the command families above; API activity pagination returned six records over two pages. The scripts repository’s `just test` suite includes the standalone tests. The native test file includes isolated headless Chromium fixtures (installed by `just playwright-install`), with a fresh temporary profile and network interception; it never uses the logged-in browser or imports the archived Python module. No credentials or personal cache database are included in either repository.
 
 The original dependency-free research probes remain available as `probe.mjs` and `http-probe.mjs`.
 
@@ -266,3 +268,5 @@ Native backup migration validation: [aggregate evidence](evidence/native-backup-
 Human-input and command validation: [aggregate evidence](evidence/human-input-validation.json) and [backup-test migration coverage](evidence/backup-test-migration.md). The connections decoder now handles a valid connection whose profile details are omitted, retaining its identity/date rather than aborting the page with `SCHEMA_CHANGED`.
 
 Latest changes and review items: [activity/post investigation](activity-posts-update/README.md), with [bounded live evidence](activity-posts-update/live-checks.json).
+
+Local post dates and explicit showcase targeting: [follow-up report](showcase-local-time/README.md).

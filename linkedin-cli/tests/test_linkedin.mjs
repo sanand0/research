@@ -664,7 +664,7 @@ test('explicit identities bypass people lookup and missing names/filters fail ra
 
 test('posts put timestamps first and infer missing publication time from stable activity IDs',()=>{
  const id='urn:li:activity:'+String(BigInt(Date.parse('2026-11-09T10:30:00Z'))<<22n),record={kind:'post',id,author:{name:'Author',headline:'A long headline'},text:'Body'};
- const output=render({ok:true,data:record},'md',undefined,mdContext('post'));assert.match(output,/\nPublished: 9 Nov 2026, 10:30 UTC \(from activity ID\) · Author/);assert.ok(output.indexOf('Published:')<output.indexOf('Body'));
+ const output=render({ok:true,data:record},'md',undefined,mdContext('post'));assert.match(output,/\nPublished: /);assert.doesNotMatch(output,/from activity ID/);assert.ok(output.indexOf('Published:')<output.indexOf('Body'));
 });
 
 test('interactive Markdown prefers glow -p, falls back to PAGER, and leaves pipes/raw fallback untouched',async()=>{
@@ -855,4 +855,23 @@ test('fresh paged caches honor larger limits and refresh replaces membership wit
 
 test('cleanup waits until closed targets stop appearing before allowing the next invocation',async()=>{
  const client=new Client({timeout:1000});let polls=0;const closed=[];client.owned=[{id:'closing',page:{close(){closed.push('page');}}}];client.json=async()=>++polls<3?[{id:'closing'}]:[];client.browser={async call(method){assert.equal(method,'Target.closeTarget');},close(){closed.push('browser');}};await client.close();assert.equal(polls,3);assert.deepEqual(closed,['page','browser']);
+});
+
+test('post Markdown uses local wall time across date rollover and DST without the activity-ID note',()=>{
+ const previous=process.env.TZ;
+ try{for(const [zone,when,date]of [['Asia/Singapore','2026-11-09T20:30:00Z','10 Nov 2026, 04:30 GMT+8'],['America/New_York','2026-07-09T10:30:00Z','9 Jul 2026, 06:30 GMT-4'],['America/New_York','2026-11-09T10:30:00Z','9 Nov 2026, 05:30 GMT-5']]){
+ process.env.TZ=zone;const id='urn:li:activity:'+String(BigInt(Date.parse(when))<<22n);const inferred={kind:'post',id,text:'Body'};const published={...inferred,publishedAt:when,publishedAtConfidence:'id'};
+ for(const post of [inferred,published,{...published,resharedPost:inferred}]){const output=render({ok:true,data:post},'md',undefined,mdContext('post'));assert.ok(output.includes('Published: '+date),output);assert.doesNotMatch(output,/from activity ID|UTC/);}
+ assert.equal(JSON.parse(render({ok:true,data:published},'json')).data.publishedAt,when);
+ const partial=render({ok:true,data:{...published,publishedAt:'2026-11-09'}},'md',undefined,mdContext('post'));assert.match(partial,/Published: 9 Nov 2026 ·|Published: 9 Nov 2026\n/);assert.doesNotMatch(partial,/8 Nov/);
+ }}finally{if(previous===undefined)delete process.env.TZ;else process.env.TZ=previous;}
+});
+
+test('showcase URLs and typed showcase targets resolve through organization lookup, bypassing member ambiguity',async()=>{
+ const {activityTarget,resolveActivityTarget}=await import('../linkedin');assert.deepEqual(activityTarget('https://www.linkedin.com/showcase/claude/posts/?feedView=all'),{company:'claude'});assert.deepEqual(activityTarget('showcase:claude'),{company:'claude'});assert.throws(()=>activityTarget('https://www.linkedin.com/showcase/'));assert.throws(()=>activityTarget('showcase:bad/name'));
+ const calls=[],organization={kind:'company',id:'urn:li:fsd_company:106863934',name:'Claude',url:'https://www.linkedin.com/showcase/claude/'};
+ for(const value of ['showcase:claude','https://www.linkedin.com/showcase/claude/']){const actor=await resolveActivityTarget(value,{profile(){throw Error('Must not look up person');},async company(slug){calls.push(slug);return organization;}},()=>{throw Error('Must not search');});assert.equal(actor,organization);}assert.deepEqual(calls,['claude','claude']);
+ const f=fixture();try{const factory=()=>({...f.factory(),async company(){return organization;},async authorPosts(actors){assert.equal(actors[0].id,organization.id);return{records:[{id:'showcase-post',kind:'post',author:{name:'Claude'},text:'Showcase content',publishedAt:'2026-11-10T00:00:00Z'}],next:null,source:'voyager'};}});
+ const args=['activity','showcase:claude','--db',f.path];const live=await run(args,{clientFactory:factory,log(){}});assert.equal(live.result.data[0].author.name,'Claude');const offline=await run([...args,'--offline'],{clientFactory(){throw Error('Must stay offline');}});assert.equal(offline.result.data[0].id,'showcase-post');
+ }finally{f.clean();}
 });

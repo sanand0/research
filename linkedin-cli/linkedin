@@ -513,12 +513,13 @@ export async function resolveProfileTarget(value,lookup) {
   throw new Failure('NOT_FOUND',`No accessible profile matches “${target.query}” in your personalized people search`);
 }
 
-/** Validate activity targets before browser/cache access. Company suffixes such as /home are allowed. */
+/** Validate activity targets before browser/cache access. Companies and showcases share organization IDs. */
 export function activityTarget(value) {
   if (value.includes('://')) {
     const url = linkedinUrl(value);
-    if (url.pathname.startsWith('/company/')) return { company: profileIdentifier(decodeURIComponent(url.pathname.split('/')[2] ?? '')) };
+    if (/^\/(?:company|showcase)\//.test(url.pathname)) return { company: profileIdentifier(decodeURIComponent(url.pathname.split('/')[2] ?? '')) };
   }
+  if(value.startsWith('showcase:'))return {company:profileIdentifier(value.slice('showcase:'.length))};
   const company = value.match(/^urn:li:(?:fsd_company|company|organization):(\d+)$/);
   return company ? {company:company[1]} : profileTarget(value);
 }
@@ -1623,7 +1624,8 @@ export const schema = { ...manifest, name: 'linkedin', description: 'Read-only L
   usage: ['linkedin profile USER --sections experience,education', 'linkedin search people engineer --location Chennai --organization Tata', 'linkedin activity sanand0 ramar --limit 20', 'linkedin activity https://www.linkedin.com/company/openai/home', 'linkedin sync activity USER --kind posts --limit 100', 'linkedin find "agents" --offline', 'linkedin import archive ~/Documents/data/linkedin-posts.jsonl'],
   cache: 'LINKEDIN_DB or ~/.cache/sanand-scripts/linkedin-cli/cache.sqlite', output: ['markdown (default; md alias)', 'json', 'ndjson (jsonl alias)', 'text'],
   profile_targets:'me, explicit URL/URN/identifier, or quoted full name; first personalized result. Use name:QUERY for single-word names. Account-scoped lookups last 1 hour; --refresh re-resolves.',
-  activity_targets:'One or more profiles or companies. Bare usernames try profiles, then exact company slugs, then personalized people name search; explicit URLs/URNs never switch type. Multiple actors and companies support posts only. Native fromMember/fromOrganization filters with date_posted; returned posts sorted latest first. Resolutions cached per account for 1 hour.',
+  activity_targets:'One or more profiles, companies or showcases. Use showcase:SLUG or an explicit /showcase/ URL for showcase pages. Bare usernames try profiles, then exact company slugs, then personalized people name search; explicit URLs/URNs never switch type. Multiple actors and companies support posts only. Native fromMember/fromOrganization filters with date_posted; returned posts sorted latest first. Resolutions cached per account for 1 hour.',
+  post_dates:'Markdown post publication times use the system local timezone (or TZ); activity-ID provenance stays in JSON without a Markdown suffix. Date-only values retain their precision.',
   viewer:'Interactive Markdown uses glow -p, then PAGER, then raw Markdown; pipes/files and JSON/JSONL/text bypass viewers.',
   record_kinds:kinds,
   search_filters: {location:'Comma-separated partial location names (Chennai, Singapore, Boston), geo IDs or urn:li:geo:ID',organization:'Comma-separated partial organization names (IBM, Tata), current-employer company IDs/URNs','past-organization':'Same name/ID resolution for previous employers',degree:'1,2,3 or F,S,O; 3 includes third-degree and beyond. OR within a filter, AND across filters. All returned typeahead matches/aliases are included.'},
@@ -1723,13 +1725,15 @@ const mdInline = value => String(value ?? '').replace(/&/g,'&amp;').replace(/</g
 const mdCount = value => typeof value === 'number' ? value.toLocaleString('en-US',{maximumFractionDigits:2}) : typeof value === 'boolean' ? value?'Yes':'No' : value === null || value === undefined ? '—' : mdInline(value);
 const mdPlural = kind => ({scheduled:'Scheduled posts',profile:'People',post:'Posts',comment:'Comments',activity:'Activity',invitation:'Invitations',company:'Companies',analytics:'Analytics',history:'Visited links'})[kind] ?? mdLabel(kind);
 const mdAmount = (count,plural) => `${mdCount(count)} ${count===1?({'Scheduled posts':'post',People:'person',Companies:'company',Posts:'post',Comments:'comment',Invitations:'invitation',Analytics:'post',Activity:'activity item','Visited links':'visited link',Records:'record'})[plural]??plural.toLowerCase():plural==='Activity'?'activity items':plural.toLowerCase()}`;
-function mdDate(value) {
+function mdDate(value, local = false) {
   if (!value && value !== 0) return '';
   if (/^\d{4}-\d{2}$/.test(String(value))) return new Date(value+'-01T00:00:00Z').toLocaleDateString('en-GB',{month:'short',year:'numeric',timeZone:'UTC'});
   if (/^[A-Za-z]+\s+\d{4}$/.test(String(value))) return mdInline(value);
   const date = new Date(value);
   if (!Number.isFinite(date.getTime())) return mdInline(value);
-  return date.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}) + (/^\d{4}-\d{2}-\d{2}$/.test(String(value)) ? '' : ', '+date.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone:'UTC'})+' UTC');
+  const dateOnly = /^\d{4}-\d{2}-\d{2}$/.test(String(value));
+  const timeZone = local && !dateOnly ? undefined : 'UTC';
+  return date.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone}) + (dateOnly ? '' : ', '+date.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',timeZone,timeZoneName:'short'}));
 }
 function mdUrl(url) {
   let parsed;try{parsed=new URL(url);}catch{return '—';}
@@ -1792,7 +1796,7 @@ function mdPost(record,level=2) {
   const author=record.author??{name:record.name,url:record.profile,headline:record.description};
   const info=[author.name?'Author: '+mdInline(author.name):'',mdInline(author.headline)].filter(Boolean).join(' · ');
   const published=record.publishedAt??record.postedAt,fromId=!published&&backupIdDate(record.id??record.postId??record.url);
-  const date=published?mdDate(published)+(['id','exact'].includes(record.publishedAtConfidence??record.postedAtConfidence)?'':record.publishedAtConfidence?' (estimated)':''):fromId?mdDate(fromId)+' (from activity ID)':mdInline(record.relativeTime??record.postedText??'');
+  const date=published?mdDate(published,true)+(['id','exact'].includes(record.publishedAtConfidence??record.postedAtConfidence)?'':record.publishedAtConfidence?' (estimated)':''):fromId?mdDate(fromId,true):mdInline(record.relativeTime??record.postedText??'');
   const metrics={...(record.analytics??{}),...Object.fromEntries(['reactionCount','commentCount','repostCount','impressionCount','replyCount'].filter(key=>key in record).map(key=>[key,record[key]]))};
   const counts=['impressionCount','reactionCount','commentCount','repostCount','replyCount'].filter(key=>key in metrics&&metrics[key]!==null).map(key=>mdCount(metrics[key])+' '+({impressionCount:'impressions',reactionCount:'reactions',commentCount:'comments',repostCount:'reposts',replyCount:'replies'})[key]).join(' · ');
   const attachments=(record.media??[]).map((media,i)=>'- '+mdInline(mdLabel(media.kind??'attachment')+(media.alt?' — '+media.alt:' '+(i+1)))+': '+mdUrl(media.url));
@@ -2090,6 +2094,8 @@ Activity targets:
   linkedin activity sanand0 ramar --limit 20
   linkedin activity openai
   linkedin activity https://www.linkedin.com/company/openai/home
+  linkedin activity showcase:claude
+  Showcase URLs also work; bare claude remains the member profile under the profile-first rule.
   Bare usernames try profiles, then exact company slugs, then people name search. Profiles win ambiguity.
   URLs/URNs are explicit. Native member/company lists use latest order; returned posts are sorted by publication.
   Companies and multiple actors support posts only. Comments/reactions require a single profile.

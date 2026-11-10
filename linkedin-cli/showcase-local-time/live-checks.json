@@ -1,0 +1,65 @@
+{
+  "timeZone": "Asia/Singapore",
+  "variants": [
+    {
+      "target": "showcase:claude",
+      "postIds": [
+        "urn:li:activity:7525659760197779457",
+        "urn:li:activity:7525632919030210560",
+        "urn:li:activity:7524168879569534977"
+      ],
+      "uiMatches": [
+        "urn:li:activity:7525659760197779457",
+        "urn:li:activity:7525632919030210560",
+        "urn:li:activity:7524168879569534977"
+      ],
+      "offlineMatches": true,
+      "header": [
+        "# Post by Claude",
+        "Published: 10 Nov 2026, 04:45 GMT+8 · Author: Claude · 4,084,031 followers  ",
+        "https://www.linkedin.com/feed/update/urn:li:activity:7525659760197779457/"
+      ]
+    },
+    {
+      "target": "https://www.linkedin.com/showcase/claude/",
+      "postIds": [
+        "urn:li:activity:7525659760197779457",
+        "urn:li:activity:7525632919030210560",
+        "urn:li:activity:7524168879569534977"
+      ],
+      "uiMatches": [
+        "urn:li:activity:7525659760197779457",
+        "urn:li:activity:7525632919030210560",
+        "urn:li:activity:7524168879569534977"
+      ],
+      "offlineMatches": true,
+      "header": [
+        "# Post by Claude",
+        "Published: 10 Nov 2026, 04:45 GMT+8 · Author: Claude · 4,084,031 followers  ",
+        "https://www.linkedin.com/feed/update/urn:li:activity:7525659760197779457/"
+      ]
+    }
+  ],
+  "identities": {
+    "member": {
+      "name": "Claude Schitter",
+      "url": "https://www.linkedin.com/in/claude/"
+    },
+    "organization": {
+      "name": "Claude",
+      "id": "urn:li:fsd_company:106863934",
+      "url": "https://www.linkedin.com/showcase/claude/"
+    }
+  },
+  "ui": {
+    "title": "Claude: Home | LinkedIn",
+    "postIds": [
+      "urn:li:activity:7525659760197779457",
+      "urn:li:activity:7525644020555976704",
+      "urn:li:activity:7525632919030210560",
+      "urn:li:activity:7524519361772957696",
+      "urn:li:activity:7524202640885514240",
+      "urn:li:activity:7524168879569534977"
+    ]
+  }
+}
