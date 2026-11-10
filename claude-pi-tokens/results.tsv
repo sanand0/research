@@ -1,0 +1,10 @@
+variant	name	trial	status	turns	costUsd	input	cacheRead	cacheWrite	output	total	inputContext	htmlBytes
+Claude cache on	claude-cache-on	1	success	2	0.00506111	4	7241	9169	6309	22723	16414	10845
+Claude cache on	claude-cache-on-2	2	success	3	0.00942177	6	18597	15521	12262	46386	34124	10923
+Claude cache on	claude-cache-on-3	3	success	3	0.00838017	6	17727	13989	10809	42531	31722	9682
+Claude cache off	claude-cache-off	1	success	3	0.0088266	32151	0	0	11223	43374	32151	10010
+Claude cache off	claude-cache-off-2	2	success	3	0.0082812	31222	0	0	10318	41540	31222	8771
+Claude cache off	claude-cache-off-3	3	success	2	0.004543	16195	0	0	5847	22042	16195	10583
+Pi subscription	pi-sdk	1	stop	2	0.00463163	4	2313	7658	6153	16128	9975	10455
+Pi subscription	pi-sdk-budgeted	2	stop	2	0.00534204	4	3084	8359	7278	18725	11447	12917
+Pi subscription	pi-sdk-budgeted-3	3	stop	3	0.0084617	6	10850	12888	11550	35294	23744	10385

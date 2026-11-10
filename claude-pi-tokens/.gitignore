@@ -1,0 +1,15 @@
+# Full agent traces have session/request IDs, local paths and model transcripts.
+# Keep them locally. Commit only usage-evidence.json with audited numeric fields.
+**/events.jsonl
+**/pi-events.jsonl
+**/stderr.txt
+**/debug.log
+pi-budget-test.jsonl
+pi-budget-test.err
+
+# This is a copy of third-party code. Commit pi-budget.patch instead.
+pi-budgeted-extension/
+
+# Disposable launcher test (the launcher's source is tracked).
+launcher-smoke/
+launcher-smoke-after-move/

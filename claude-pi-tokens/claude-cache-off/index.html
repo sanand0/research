@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aurora Garden</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #03060f; overflow: hidden; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+  canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; cursor: crosshair; touch-action: none; }
+  .title { position: fixed; left: 50%; bottom: 14vh; transform: translateX(-50%); color: rgba(220,240,255,.7); letter-spacing: .4em; font-size: clamp(11px, 1.4vw, 15px); text-transform: uppercase; pointer-events: none; text-align: center; white-space: nowrap; text-shadow: 0 0 12px rgba(120,255,220,.4); }
+  button#toggle {
+    position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
+    background: rgba(10,20,40,.55); color: #d8f5ff; border: 1px solid rgba(150,230,255,.35);
+    border-radius: 999px; padding: 10px 18px; font-family: inherit; font-size: 14px; font-weight: 500; line-height: 1; cursor: pointer;
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: background .2s, border-color .2s;
+  }
+  button#toggle:hover { background: rgba(30,60,90,.6); border-color: rgba(170,240,255,.7); }
+  button#toggle:focus-visible { outline: 2px solid #8ff3d6; outline-offset: 3px; }
+</style>
+</head>
+<body>
+<canvas id="c" aria-label="Animated aurora over a midnight garden. Click or tap to create bursts; move the pointer to bend the light."></canvas>
+<div class="title" aria-hidden="true">Aurora Garden</div>
+<button id="toggle" type="button" aria-pressed="false">Pause</button>
+
+<script>
+(() => {
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  const btn = document.getElementById('toggle');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  let W = 0, H = 0, dpr = 1, running = true, t = 0, last = performance.now(), rafId = 0;
+  const pointer = { x: -9999, y: -9999, active: false, vx: 0, vy: 0 };
+  const bursts = [];
+  const stars = [];
+  const trails = [];
+
+  const palette = [
+    [120, 255, 220], [90, 200, 255], [180, 140, 255], [255, 150, 210], [140, 255, 160]
+  ];
+
+  // Ribbons: layered sinusoidal curves
+  const ribbons = Array.from({ length: 6 }, (_, i) => ({
+    phase: Math.random() * Math.PI * 2,
+    speed: 0.15 + i * 0.03,
+    amp: 0.10 + i * 0.025,
+    y: 0.25 + i * 0.07,
+    width: 60 + i * 18,
+    color: palette[i % palette.length],
+    drift: Math.random() * 1000
+  }));
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    stars.length = 0;
+    const count = Math.round(Math.min(260, (W * H) / 6000));
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W, y: Math.random() * H,
+        z: 0.2 + Math.random() * 0.8,
+        r: Math.random() * 1.4 + 0.2,
+        tw: Math.random() * Math.PI * 2,
+        c: palette[(Math.random() * palette.length) | 0]
+      });
+    }
+  }
+
+  function ribbonY(r, x, time) {
+    const base = H * r.y;
+    const nx = x / W;
+    const wave = Math.sin(nx * 3.2 + time * r.speed + r.phase) * H * r.amp
+               + Math.sin(nx * 7.1 - time * r.speed * 1.7 + r.phase * 2) * H * r.amp * 0.35;
+    let y = base + wave;
+    if (pointer.active) {
+      const dx = x - pointer.x, dy = y - pointer.y;
+      const d2 = dx * dx + dy * dy;
+      const influence = 220 * (r.width / 120);
+      const f = Math.exp(-d2 / (influence * influence));
+      y += -dy * f * 0.45 + pointer.vy * f * 0.6;
+    }
+    return y;
+  }
+
+  function drawRibbon(r, time) {
+    const [R, G, B] = r.color;
+    const step = Math.max(6, W / 160);
+    const top = [], bottom = [];
+    for (let x = -step; x <= W + step; x += step) {
+      const y = ribbonY(r, x, time);
+      const thick = r.width * (0.55 + 0.45 * Math.sin(x / W * 4 + time * 0.4 + r.drift));
+      top.push([x, y - thick * 0.5]);
+      bottom.push([x, y + thick * 0.5]);
+    }
+    const g = ctx.createLinearGradient(0, 0, 0, H);
+    g.addColorStop(0, `rgba(${R},${G},${B},0)`);
+    g.addColorStop(0.5, `rgba(${R},${G},${B},0.32)`);
+    g.addColorStop(1, `rgba(${R},${G},${B},0)`);
+    ctx.beginPath();
+    ctx.moveTo(top[0][0], top[0][1]);
+    for (const p of top) ctx.lineTo(p[0], p[1]);
+    for (let i = bottom.length - 1; i >= 0; i--) ctx.lineTo(bottom[i][0], bottom[i][1]);
+    ctx.closePath();
+    ctx.fillStyle = g;
+    ctx.filter = 'blur(10px)';
+    ctx.fill();
+    ctx.filter = 'none';
+    // bright core line
+    ctx.beginPath();
+    for (let i = 0; i < top.length; i++) {
+      const y = (top[i][1] + bottom[i][1]) / 2;
+      i ? ctx.lineTo(top[i][0], y) : ctx.moveTo(top[i][0], y);
+    }
+    ctx.strokeStyle = `rgba(${R},${G},${B},0.5)`;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+  }
+
+  function spawnBurst(x, y) {
+    const n = 46;
+    for (let i = 0; i < n; i++) {
+      const a = (i / n) * Math.PI * 2 + Math.random() * 0.2;
+      const s = 1.5 + Math.random() * 4;
+      trails.push({
+        x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s,
+        life: 1, decay: 0.012 + Math.random() * 0.01,
+        c: palette[(Math.random() * palette.length) | 0]
+      });
+    }
+    bursts.push({ x, y, r: 0, life: 1 });
+  }
+
+  // Draws one frame. dt is in seconds; dt = 0 renders a still frame (used when paused).
+  function step(dt, time) {
+    const bg = ctx.createLinearGradient(0, 0, 0, H);
+    bg.addColorStop(0, '#02030a');
+    bg.addColorStop(0.6, '#081430');
+    bg.addColorStop(1, '#0b1f2e');
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, W, H);
+
+    ctx.globalCompositeOperation = 'lighter';
+    for (const r of ribbons) drawRibbon(r, time);
+
+    for (const s of stars) {
+      s.tw += dt * 2;
+      let x = s.x, y = s.y;
+      if (pointer.active) {
+        const dx = s.x - pointer.x, dy = s.y - pointer.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < 40000) {
+          const f = (1 - d2 / 40000) * 0.6 * s.z;
+          x += pointer.vx * f * 0.8;
+          y += pointer.vy * f * 0.8;
+        }
+      }
+      s.x += (x - s.x) * 0.2;
+      s.y += (y - s.y) * 0.2;
+      s.x += Math.sin(time * 0.05 + s.tw) * 0.05 * s.z * (dt > 0 ? 1 : 0);
+      s.y -= dt * 4 * s.z;
+      if (s.y < -5) { s.y = H + 5; s.x = Math.random() * W; }
+      const a = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(s.tw)) * s.z;
+      ctx.fillStyle = `rgba(${s.c[0]},${s.c[1]},${s.c[2]},${a})`;
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r * s.z + 0.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    for (let i = trails.length - 1; i >= 0; i--) {
+      const p = trails[i];
+      if (dt > 0) {
+        p.x += p.vx; p.y += p.vy;
+        p.vx *= 0.975; p.vy *= 0.975; p.vy += 0.01;
+        p.life -= p.decay;
+      }
+      if (p.life <= 0) { trails.splice(i, 1); continue; }
+      ctx.fillStyle = `rgba(${p.c[0]},${p.c[1]},${p.c[2]},${p.life * 0.9})`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 1.2 + p.life * 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    for (let i = bursts.length - 1; i >= 0; i--) {
+      const b = bursts[i];
+      if (dt > 0) { b.r += 6; b.life -= 0.02; }
+      if (b.life <= 0) { bursts.splice(i, 1); continue; }
+      ctx.strokeStyle = `rgba(160,255,230,${b.life * 0.6})`;
+      ctx.lineWidth = 2 * b.life + 0.5;
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    ctx.globalCompositeOperation = 'source-over';
+    if (pointer.active) {
+      const pg = ctx.createRadialGradient(pointer.x, pointer.y, 0, pointer.x, pointer.y, 120);
+      pg.addColorStop(0, 'rgba(140,255,230,0.12)');
+      pg.addColorStop(1, 'rgba(140,255,230,0)');
+      ctx.fillStyle = pg;
+      ctx.fillRect(pointer.x - 120, pointer.y - 120, 240, 240);
+    }
+  }
+
+  // Single rAF chain: only ever one pending frame request.
+  function tick(now) {
+    rafId = 0;
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    t += dt;
+    step(dt, t);
+    if (running) rafId = requestAnimationFrame(tick);
+  }
+
+  function setRunning(v) {
+    if (v === running) return;
+    running = v;
+    btn.textContent = running ? 'Pause' : 'Resume';
+    btn.setAttribute('aria-pressed', String(!running));
+    last = performance.now();
+    if (running) { if (!rafId) rafId = requestAnimationFrame(tick); }
+    else { cancelAnimationFrame(rafId); rafId = 0; step(0, t); }
+  }
+
+  // Pointer interaction
+  let lastX = null, lastY = null;
+  function setPointer(e) {
+    const x = e.clientX, y = e.clientY;
+    if (lastX !== null) {
+      pointer.vx = (x - lastX) * 0.5 + pointer.vx * 0.5;
+      pointer.vy = (y - lastY) * 0.5 + pointer.vy * 0.5;
+    }
+    lastX = x; lastY = y;
+    pointer.x = x; pointer.y = y; pointer.active = true;
+  }
+  canvas.addEventListener('pointermove', e => { setPointer(e); if (!running) step(0, t); });
+  canvas.addEventListener('pointerdown', e => {
+    setPointer(e);
+    spawnBurst(e.clientX, e.clientY);
+    if (!running) step(0, t);
+  });
+  const clearPointer = () => { pointer.active = false; lastX = lastY = null; if (!running) step(0, t); };
+  canvas.addEventListener('pointerleave', clearPointer);
+  canvas.addEventListener('pointercancel', clearPointer);
+
+  btn.addEventListener('click', () => setRunning(!running));
+  window.addEventListener('keydown', e => {
+    if (e.code === 'Space') { e.preventDefault(); setRunning(!running); }
+  });
+
+  window.addEventListener('resize', () => { resize(); if (!running) step(0, t); });
+
+  resize();
+  if (reduceMotion.matches) {
+    // Start calm: a still, art-directed frame instead of motion.
+    t = 20;
+    running = true;      // set so setRunning(false) takes effect
+    setRunning(false);
+  } else {
+    rafId = requestAnimationFrame(tick);
+  }
+})();
+</script>
+</body>
+</html>

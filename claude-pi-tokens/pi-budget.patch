@@ -1,0 +1,9 @@
+--- a/src/session.ts
++++ b/src/session.ts
+@@ -149,0 +150 @@
++				...(Number(process.env.PI_CLAUDE_SDK_MAX_BUDGET_USD) > 0 ? { maxBudgetUsd: Number(process.env.PI_CLAUDE_SDK_MAX_BUDGET_USD) } : {}),
+--- a/src/provider.ts
++++ b/src/provider.ts
+@@ -117 +117 @@
+-				maxOutputTokens: options?.maxTokens ?? model.maxTokens,
++				maxOutputTokens: Number(process.env.PI_CLAUDE_SDK_MAX_OUTPUT_TOKENS) > 0 ? Math.min(Number(process.env.PI_CLAUDE_SDK_MAX_OUTPUT_TOKENS), options?.maxTokens ?? model.maxTokens) : options?.maxTokens ?? model.maxTokens,

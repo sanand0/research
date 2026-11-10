@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aurora Garden</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body {
+    margin: 0; height: 100%; overflow: hidden;
+    background: #04060f;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  canvas {
+    position: fixed; inset: 0; width: 100vw; height: 100vh; display: block;
+    touch-action: none; cursor: crosshair;
+  }
+  .title {
+    position: fixed; left: 50%; top: 9vh; transform: translateX(-50%);
+    margin: 0; pointer-events: none; text-align: center;
+    color: #e9f7ff; font-weight: 300; letter-spacing: 0.35em;
+    font-size: clamp(1.1rem, 3.2vw, 2.2rem);
+    text-shadow: 0 0 24px rgba(120, 255, 220, 0.45);
+    opacity: 0.85; white-space: nowrap;
+  }
+  .controls {
+    position: fixed; right: 1.2rem; bottom: 1.2rem; z-index: 2;
+  }
+  button {
+    font: inherit; font-size: 0.9rem; letter-spacing: 0.08em;
+    color: #d9fff4; background: rgba(15, 30, 50, 0.45);
+    border: 1px solid rgba(140, 255, 220, 0.35); border-radius: 999px;
+    padding: 0.55rem 1.1rem; cursor: pointer; backdrop-filter: blur(6px);
+    transition: background 0.3s, border-color 0.3s;
+  }
+  button:hover { background: rgba(40, 80, 100, 0.55); border-color: rgba(160, 255, 230, 0.7); }
+  button:focus-visible { outline: 2px solid #8fffe0; outline-offset: 3px; }
+  .hint {
+    position: fixed; left: 1.2rem; bottom: 1.4rem; color: #9fd8cc;
+    font-size: 0.8rem; opacity: 0.6; pointer-events: none; letter-spacing: 0.05em;
+  }
+  @media (max-width: 600px) { .hint { display: none; } }
+</style>
+</head>
+<body>
+<canvas id="sky" aria-label="Animated aurora garden. Move the pointer to stir the ribbons; click or tap to create a burst."role="img"></canvas>
+<h1 class="title">AURORA GARDEN</h1>
+<div class="hint">Move to stir · Click or tap for a burst · Space to pause</div>
+<div class="controls">
+  <button id="toggle" type="button" aria-pressed="false">Pause</button>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('sky');
+  const ctx = canvas.getContext('2d');
+  const btn = document.getElementById('toggle');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  let W = 0, H = 0, DPR = 1;
+  const pointer = { x: -9999, y: -9999, active: false, vx: 0, vy: 0 };
+  let paused = false;
+  let time = 0;
+  let last = performance.now();
+  const bursts = [];
+  const particles = [];
+
+  const palette = [
+    [110, 255, 214], [96, 200, 255], [170, 130, 255], [255, 170, 230], [180, 255, 150]
+  ];
+
+  const ribbons = Array.from({ length: 6 }, (_, i) => ({
+    phase: Math.random() * Math.PI * 2,
+    speed: 0.00012 + i * 0.00003,
+    amp: 0.10 + Math.random() * 0.07,
+    y: 0.22 + i * 0.09,
+    color: palette[i % palette.length],
+    width: 90 + i * 22
+  }));
+
+  function resize() {
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.floor(W * DPR); canvas.height = Math.floor(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    const count = Math.min(260, Math.floor((W * H) / 7000));
+    particles.length = 0;
+    for (let i = 0; i < count; i++) particles.push(spawnParticle(true));
+  }
+
+  function spawnParticle(anywhere) {
+    const c = palette[(Math.random() * palette.length) | 0];
+    return {
+      x: Math.random() * W, y: anywhere ? Math.random() * H : H + 10,
+      vx: 0, vy: -(0.08 + Math.random() * 0.25),
+      r: 0.4 + Math.random() * 1.6, life: Math.random(), c,
+      tw: Math.random() * Math.PI * 2
+    };
+  }
+
+  // Ribbon centre line y at x, layered sines for fluid motion
+  function ribbonY(r, x, t) {
+    const k = x / W;
+    return H * r.y
+      + Math.sin(k * 3.1 + t * r.speed * 1000 + r.phase) * H * r.amp
+      + Math.sin(k * 7.3 - t * r.speed * 1400 + r.phase * 2) * H * r.amp * 0.35;
+  }
+
+  function drawRibbon(r, t) {
+    const [cr, cg, cb] = r.color;
+    const steps = Math.max(60, Math.floor(W / 14));
+    const band = r.width * (0.8 + 0.2 * Math.sin(t * 0.0005 + r.phase));
+    for (let layer = 0; layer < 3; layer++) {
+      const spread = band * (1 - layer * 0.3);
+      const alpha = 0.05 + layer * 0.03;
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const x = (i / steps) * W;
+        const y = ribbonY(r, x, t);
+        if (i === 0) ctx.moveTo(x, y - spread); else ctx.lineTo(x, y - spread);
+      }
+      for (let i = steps; i >= 0; i--) {
+        const x = (i / steps) * W;
+        ctx.lineTo(x, ribbonY(r, x, t) + spread);
+      }
+      ctx.closePath();
+      const g = ctx.createLinearGradient(0, 0, W, 0);
+      g.addColorStop(0, `rgba(${cr},${cg},${cb},0)`);
+      g.addColorStop(0.5, `rgba(${cr},${cg},${cb},${alpha * 1.8})`);
+      g.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
+      ctx.fillStyle = g;
+      ctx.filter = layer === 0 ? 'blur(18px)' : 'blur(6px)';
+      ctx.fill();
+    }
+    ctx.filter = 'none';
+    // bright core line
+    ctx.beginPath();
+    for (let i = 0; i <= steps; i++) {
+      const x = (i / steps) * W;
+      const y = ribbonY(r, x, t);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = `rgba(${cr},${cg},${cb},0.35)`;
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+  }
+
+  function drawStars(t) {
+    // static background stars, twinkling
+    for (let i = 0; i < starField.length; i++) {
+      const s = starField[i];
+      const a = 0.35 + 0.35 * Math.sin(t * 0.002 * s.sp + s.tw);
+      ctx.fillStyle = `rgba(230,245,255,${a})`;
+      ctx.fillRect(s.x * W, s.y * H, s.r, s.r);
+    }
+  }
+  const starField = Array.from({ length: 140 }, () => ({
+    x: Math.random(), y: Math.random() * 0.8, r: Math.random() * 1.4 + 0.4,
+    tw: Math.random() * 6.28, sp: 0.5 + Math.random() * 1.5
+  }));
+
+  function step(dt) {
+    const f = dt / 16.67;
+    for (const p of particles) {
+      // Gentle drift plus pointer influence
+      let ax = Math.sin(p.y * 0.005 + time * 0.0004) * 0.02;
+      let ay = 0;
+      if (pointer.active) {
+        const dx = p.x - pointer.x, dy = p.y - pointer.y;
+        const d2 = dx * dx + dy * dy;
+        if (d2 < 160 * 160) {
+          const d = Math.sqrt(d2) + 1;
+          const force = (1 - d / 160) * 0.9;
+          ax += (dx / d) * force + pointer.vx * 0.02;
+          ay += (dy / d) * force + pointer.vy * 0.02;
+        }
+      }
+      p.vx = (p.vx + ax * f) * 0.95;
+      p.vy = (p.vy + ay * f) * 0.95;
+      p.x += (p.vx + Math.sin(time * 0.001 + p.tw) * 0.15) * f;
+      p.y += (p.vy - 0.1) * f;
+      p.life += 0.002 * f;
+      if (p.y < -10 || p.x < -20 || p.x > W + 20) Object.assign(p, spawnParticle(false));
+    }
+    pointer.vx *= 0.9; pointer.vy *= 0.9;
+
+    for (let i = bursts.length - 1; i >= 0; i--) {
+      const b = bursts[i];
+      b.age += dt;
+      if (b.age > b.life) { bursts.splice(i, 1); continue; }
+      b.r = b.speed * b.age;
+    }
+  }
+
+  function render(t) {
+    ctx.globalCompositeOperation = 'source-over';
+    const sky = ctx.createLinearGradient(0, 0, 0, H);
+    sky.addColorStop(0, '#03040c');
+    sky.addColorStop(0.55, '#081229');
+    sky.addColorStop(1, '#0c1f2e');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, W, H);
+
+    drawStars(t);
+
+    ctx.globalCompositeOperation = 'lighter';
+    for (const r of ribbons) drawRibbon(r, t);
+
+    // particle trails
+    ctx.lineCap = 'round';
+    for (const p of particles) {
+      const [cr, cg, cb] = p.c;
+      const a = 0.25 + 0.35 * Math.abs(Math.sin(p.life * 3 + p.tw));
+      ctx.strokeStyle = `rgba(${cr},${cg},${cb},${a})`;
+      ctx.lineWidth = p.r;
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      ctx.lineTo(p.x - p.vx * 6, p.y - p.vy * 6 + 4);
+      ctx.stroke();
+    }
+
+    // click bursts
+    for (const b of bursts) {
+      const k = 1 - b.age / b.life;
+      const [cr, cg, cb] = b.color;
+      const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+      g.addColorStop(0, `rgba(${cr},${cg},${cb},${0.35 * k})`);
+      g.addColorStop(0.7, `rgba(${cr},${cg},${cb},${0.12 * k})`);
+      g.addColorStop(1, `rgba(${cr},${cg},${cb},0)`);
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  function burst(x, y) {
+    const color = palette[(Math.random() * palette.length) | 0];
+    bursts.push({ x, y, age: 0, life: 1100, speed: 0.5, r: 0, color });
+    for (let i = 0; i < 40; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const s = 1.5 + Math.random() * 4;
+      particles.push({
+        x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s,
+        r: 0.8 + Math.random() * 2, life: 0, c: color, tw: Math.random() * 6
+      });
+    }
+    if (particles.length > 500) particles.splice(0, particles.length - 500);
+  }
+
+  function frame(now) {
+    const dt = Math.min(now - last, 50);
+    last = now;
+    if (!paused) {
+      time += dt;
+      step(dt);
+      render(time);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function setPaused(p) {
+    paused = p;
+    btn.textContent = p ? 'Resume' : 'Pause';
+    btn.setAttribute('aria-pressed', String(p));
+    if (!p) last = performance.now();
+  }
+
+  // Input
+  canvas.addEventListener('pointermove', e => {
+    const nx = e.clientX, ny = e.clientY;
+    pointer.vx = (nx - pointer.x) * 0.3;
+    pointer.vy = (ny - pointer.y) * 0.3;
+    pointer.x = nx; pointer.y = ny; pointer.active = true;
+  });
+  canvas.addEventListener('pointerleave', () => { pointer.active = false; });
+  canvas.addEventListener('pointerdown', e => {
+    pointer.x = e.clientX; pointer.y = e.clientY; pointer.active = true;
+    burst(e.clientX, e.clientY);
+  });
+  btn.addEventListener('click', () => setPaused(!paused));
+  window.addEventListener('keydown', e => {
+    if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); setPaused(!paused); }
+  });
+  window.addEventListener('resize', resize);
+
+  // Reduced motion: draw a calm static frame and start paused
+  function applyReducedMotion() {
+    if (reducedMotion.matches) {
+      setPaused(true);
+      time = 4000;
+      step(0);
+      render(time);
+    }
+  }
+  reducedMotion.addEventListener?.('change', () => {
+    if (!reducedMotion.matches && paused) setPaused(false);
+  });
+
+  resize();
+  applyReducedMotion();
+  if (!reducedMotion.matches) setPaused(false);
+  btn.textContent = paused ? 'Resume' : 'Pause';
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

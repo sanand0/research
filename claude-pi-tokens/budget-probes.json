@@ -1,0 +1,50 @@
+[
+  {
+    "name": "claude-sonnet-cache-on",
+    "mode": "Claude Code, Sonnet 5.5, cache on",
+    "budgetUsd": 0.03,
+    "reason": "error_max_budget_usd",
+    "reportedEstimatedCostUsd": 0.04812459999999999,
+    "reportedModelTokens": 0,
+    "htmlCreated": false
+  },
+  {
+    "name": "claude-sonnet-cache-on8k",
+    "mode": "Claude Code, Sonnet 5.5, cache on",
+    "budgetUsd": 0.03,
+    "reason": "error_max_budget_usd",
+    "reportedEstimatedCostUsd": 0.046790599999999995,
+    "reportedModelTokens": 0,
+    "htmlCreated": false
+  },
+  {
+    "name": "pi-sonnet-budgeted",
+    "mode": "Pi SDK, Sonnet 5.5",
+    "budgetUsd": 0.03,
+    "reason": "error",
+    "error": "Reached maximum budget ($0.03)",
+    "reportedEstimatedCostUsd": 0.00964,
+    "reportedModelTokens": 2375,
+    "htmlCreated": false
+  },
+  {
+    "name": "pi-sonnet-budgeted8k",
+    "mode": "Pi SDK, Sonnet 5.5",
+    "budgetUsd": 0.03,
+    "reason": "error",
+    "error": "Reached maximum budget ($0.03)",
+    "reportedEstimatedCostUsd": 0.0068478,
+    "reportedModelTokens": 2379,
+    "htmlCreated": false
+  },
+  {
+    "name": "pi-budget-test",
+    "mode": "Pi SDK, Haiku 5.5, simple OK prompt",
+    "budgetUsd": 0.00001,
+    "reason": "error",
+    "error": "Reached maximum budget ($0.00001)",
+    "reportedEstimatedCostUsd": 0.0002406,
+    "reportedModelTokens": 1198,
+    "htmlCreated": false
+  }
+]

@@ -1,0 +1,155 @@
+[
+  {
+    "name": "claude-cache-on",
+    "variant": "Claude cache on",
+    "trial": 1,
+    "status": "success",
+    "turns": 2,
+    "costUsd": 0.00506111,
+    "input": 4,
+    "cacheRead": 7241,
+    "cacheWrite": 9169,
+    "output": 6309,
+    "htmlBytes": 10845,
+    "sha256": "52b9aa8c1fb1416a38bccf0d3ae35386781b02e262f46afeb298acf99c26cdbc",
+    "quotaAtStart": {
+      "fiveHour": 0.27,
+      "sevenDay": 0.48
+    }
+  },
+  {
+    "name": "claude-cache-on-2",
+    "variant": "Claude cache on",
+    "trial": 2,
+    "status": "success",
+    "turns": 3,
+    "costUsd": 0.00942177,
+    "input": 6,
+    "cacheRead": 18597,
+    "cacheWrite": 15521,
+    "output": 12262,
+    "htmlBytes": 10923,
+    "sha256": "82b395a42863f441f8369dd3c2b8056a73d54d3e5cb7a55733acad9d1eec0bb6",
+    "quotaAtStart": {
+      "fiveHour": 0.29,
+      "sevenDay": 0.49
+    }
+  },
+  {
+    "name": "claude-cache-on-3",
+    "variant": "Claude cache on",
+    "trial": 3,
+    "status": "success",
+    "turns": 3,
+    "costUsd": 0.00838017,
+    "input": 6,
+    "cacheRead": 17727,
+    "cacheWrite": 13989,
+    "output": 10809,
+    "htmlBytes": 9682,
+    "sha256": "94ebf02e88615bd6fdaf57b5e1f9786ac6281655689f3eb0bef58575b68b5c97",
+    "quotaAtStart": {
+      "fiveHour": 0.29,
+      "sevenDay": 0.49
+    }
+  },
+  {
+    "name": "claude-cache-off",
+    "variant": "Claude cache off",
+    "trial": 1,
+    "status": "success",
+    "turns": 3,
+    "costUsd": 0.0088266,
+    "input": 32151,
+    "cacheRead": 0,
+    "cacheWrite": 0,
+    "output": 11223,
+    "htmlBytes": 10010,
+    "sha256": "c5b27508ccf57deeb7678ac245bb1167d1b522dd2c5ca7330dbe88961f188eb7",
+    "quotaAtStart": {
+      "fiveHour": 0.27,
+      "sevenDay": 0.48
+    }
+  },
+  {
+    "name": "claude-cache-off-2",
+    "variant": "Claude cache off",
+    "trial": 2,
+    "status": "success",
+    "turns": 3,
+    "costUsd": 0.0082812,
+    "input": 31222,
+    "cacheRead": 0,
+    "cacheWrite": 0,
+    "output": 10318,
+    "htmlBytes": 8771,
+    "sha256": "5668df5d5f203b7e880e0aeded5499dabf22fd810e41cedb2f2a6d39b9691745",
+    "quotaAtStart": {
+      "fiveHour": 0.29,
+      "sevenDay": 0.49
+    }
+  },
+  {
+    "name": "claude-cache-off-3",
+    "variant": "Claude cache off",
+    "trial": 3,
+    "status": "success",
+    "turns": 2,
+    "costUsd": 0.004543,
+    "input": 16195,
+    "cacheRead": 0,
+    "cacheWrite": 0,
+    "output": 5847,
+    "htmlBytes": 10583,
+    "sha256": "01c097158ce1749d0797e59e5773710a4893c3112b88dd0d1104fc6f4004d655",
+    "quotaAtStart": {
+      "fiveHour": 0.29,
+      "sevenDay": 0.49
+    }
+  },
+  {
+    "name": "pi-sdk",
+    "variant": "Pi subscription",
+    "trial": 1,
+    "status": "stop",
+    "turns": 2,
+    "costUsd": 0.00463163,
+    "input": 4,
+    "cacheRead": 2313,
+    "cacheWrite": 7658,
+    "output": 6153,
+    "htmlBytes": 10455,
+    "sha256": "8cfa570454b253dac62831d56bc28bed8e6e1beed69348429871b0cc9dc4bbfb",
+    "quotaAtStart": null
+  },
+  {
+    "name": "pi-sdk-budgeted",
+    "variant": "Pi subscription",
+    "trial": 2,
+    "status": "stop",
+    "turns": 2,
+    "costUsd": 0.00534204,
+    "input": 4,
+    "cacheRead": 3084,
+    "cacheWrite": 8359,
+    "output": 7278,
+    "htmlBytes": 12917,
+    "sha256": "4a9e15b64436ae5157b629b9e3d0f7e183433d365d252cb2cdf8fc8762f54a1c",
+    "quotaAtStart": null
+  },
+  {
+    "name": "pi-sdk-budgeted-3",
+    "variant": "Pi subscription",
+    "trial": 3,
+    "status": "stop",
+    "turns": 3,
+    "costUsd": 0.0084617,
+    "input": 6,
+    "cacheRead": 10850,
+    "cacheWrite": 12888,
+    "output": 11550,
+    "htmlBytes": 10385,
+    "sha256": "1d6c8a536ee0700d5a9b97bbc19db649470069991700c44d1288c364e3ec9b05",
+    "quotaAtStart": null
+  }
+]

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Aurora Garden</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body {
+    margin: 0; height: 100%; overflow: hidden;
+    background: radial-gradient(ellipse at 50% 120%, #0d1a2e 0%, #050812 60%, #02030a 100%);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  canvas { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; touch-action: none; }
+  .title {
+    position: fixed; left: 50%; top: 6vh; transform: translateX(-50%);
+    margin: 0; pointer-events: none; text-align: center;
+    color: rgba(220, 240, 255, 0.85); font-weight: 300;
+    font-size: clamp(1.4rem, 4vw, 2.6rem); letter-spacing: 0.35em; text-transform: uppercase;
+    text-shadow: 0 0 24px rgba(120, 255, 210, 0.45);
+    opacity: 0; animation: fadeIn 3s ease 0.5s forwards;
+  }
+  .controls {
+    position: fixed; right: max(16px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom));
+    display: flex; gap: 10px; align-items: center;
+  }
+  button {
+    font: inherit; font-size: 0.9rem; letter-spacing: 0.08em;
+    color: #e6fff7; background: rgba(20, 40, 60, 0.45);
+    border: 1px solid rgba(140, 255, 220, 0.35); border-radius: 999px;
+    padding: 10px 18px; cursor: pointer; backdrop-filter: blur(8px);
+    transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  button:hover, button:focus-visible {
+    background: rgba(60, 120, 120, 0.45); border-color: rgba(160, 255, 230, 0.8);
+    box-shadow: 0 0 18px rgba(120, 255, 210, 0.35); outline: none;
+  }
+  .hint {
+    position: fixed; left: 50%; bottom: max(20px, env(safe-area-inset-bottom)); transform: translateX(-50%);
+    margin: 0; color: rgba(200, 230, 255, 0.5); font-size: 0.8rem; letter-spacing: 0.05em;
+    pointer-events: none; white-space: nowrap;
+  }
+  @keyframes fadeIn { to { opacity: 1; } }
+  @media (max-width: 600px) { .hint { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .title { animation: none; opacity: 1; } }
+</style>
+</head>
+<body>
+<canvas id="c" aria-label="Animated aurora over a midnight garden. Move the pointer or tap to stir the light; click or tap to create a burst." role="img"></canvas>
+<h1 class="title">Aurora Garden</h1>
+<p class="hint">Move to stir · Click to burst · Space to pause</p>
+<div class="controls">
+  <button id="toggle" type="button" aria-pressed="false">Pause</button>
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('c');
+  const ctx = canvas.getContext('2d');
+  const btn = document.getElementById('toggle');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  let W = 0, H = 0, dpr = 1;
+  const pointer = { x: -9999, y: -9999, active: false, vx: 0, vy: 0 };
+  const bursts = [];
+  const stars = [];
+  const particles = [];
+
+  // Ribbon definitions: each is a layered aurora curtain
+  const RIBBONS = [
+    { hue: 165, amp: 0.10, y: 0.38, freq: 1.1, speed: 0.22, width: 0.22, alpha: 0.35 },
+    { hue: 190, amp: 0.13, y: 0.45, freq: 0.8, speed: 0.17, width: 0.30, alpha: 0.28 },
+    { hue: 280, amp: 0.09, y: 0.32, freq: 1.4, speed: 0.28, width: 0.16, alpha: 0.30 },
+    { hue: 120, amp: 0.07, y: 0.50, freq: 1.8, speed: 0.12, width: 0.18, alpha: 0.22 },
+    { hue: 300, amp: 0.11, y: 0.28, freq: 0.6, speed: 0.10, width: 0.26, alpha: 0.18 },
+  ];
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    W = window.innerWidth; H = window.innerHeight;
+    canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    stars.length = 0;
+    const count = Math.round(Math.min(260, (W * H) / 6000));
+    for (let i = 0; i < count; i++) {
+      stars.push({
+        x: Math.random() * W, y: Math.random() * H * 0.75,
+        r: Math.random() * 1.3 + 0.2, tw: Math.random() * Math.PI * 2,
+        sp: 0.5 + Math.random() * 2
+      });
+    }
+  }
+
+  function spawnBurst(x, y) {
+    bursts.push({ x, y, t: 0, life: 1 });
+    for (let i = 0; i < 46; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const s = 1.5 + Math.random() * 5;
+      particles.push({
+        x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s,
+        life: 1, hue: 150 + Math.random() * 160, size: 1 + Math.random() * 2.5
+      });
+    }
+  }
+
+  // Pointer / touch
+  function setPointer(e) {
+    const r = canvas.getBoundingClientRect();
+    const nx = e.clientX - r.left, ny = e.clientY - r.top;
+    pointer.vx = nx - pointer.x; pointer.vy = ny - pointer.y;
+    pointer.x = nx; pointer.y = ny;
+  }
+  canvas.addEventListener('pointermove', (e) => { setPointer(e); pointer.active = true; });
+  canvas.addEventListener('pointerleave', () => { pointer.active = false; pointer.x = pointer.y = -9999; });
+  canvas.addEventListener('pointerdown', (e) => {
+    setPointer(e); pointer.active = true;
+    spawnBurst(e.clientX, e.clientY);
+  });
+
+  // Pause / resume
+  let paused = false;
+  let lastTime = performance.now();
+  let time = 0;
+
+  function setPaused(p) {
+    paused = p;
+    btn.textContent = paused ? 'Play' : 'Pause';
+    btn.setAttribute('aria-pressed', String(paused));
+    if (!paused) lastTime = performance.now();
+  }
+  btn.addEventListener('click', () => setPaused(!paused));
+  window.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && e.target === document.body || e.code === 'Space' && e.target === canvas) {
+      e.preventDefault(); setPaused(!paused);
+    }
+  });
+  reduceMotion.addEventListener?.('change', (e) => { if (e.matches) setPaused(true); });
+
+  function drawRibbon(r, t, idx) {
+    const steps = 90;
+    const baseY = H * r.y;
+    const thickness = H * r.width;
+    ctx.beginPath();
+    const pts = [];
+    for (let i = 0; i <= steps; i++) {
+      const u = i / steps;
+      const x = u * (W + 200) - 100;
+      let y = baseY
+        + Math.sin(u * Math.PI * 2 * r.freq + t * r.speed + idx) * H * r.amp
+        + Math.sin(u * 7.3 + t * r.speed * 2.3) * H * 0.02;
+      // interaction: pointer pushes ribbons
+      if (pointer.active) {
+        const dx = x - pointer.x, dy = y - pointer.y;
+        const d2 = dx * dx + dy * dy;
+        const influence = Math.exp(-d2 / (160 * 160));
+        y += influence * (pointer.y < y ? 1 : -1) * 40 * (1 + Math.min(Math.hypot(pointer.vx, pointer.vy), 30) / 30);
+      }
+      pts.push([x, y]);
+    }
+    // Top edge then bottom edge forming a curtain
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+    for (let i = pts.length - 1; i >= 0; i--) {
+      const [x, y] = pts[i];
+      const shimmer = Math.sin(i * 0.3 + t * 1.5 + idx) * 0.5 + 0.5;
+      ctx.lineTo(x, y + thickness * (0.6 + 0.4 * shimmer));
+    }
+    ctx.closePath();
+
+    const grad = ctx.createLinearGradient(0, baseY - thickness * 0.5, 0, baseY + thickness * 1.2);
+    grad.addColorStop(0, `hsla(${r.hue}, 90%, 70%, 0)`);
+    grad.addColorStop(0.35, `hsla(${r.hue}, 95%, 65%, ${r.alpha})`);
+    grad.addColorStop(0.7, `hsla(${(r.hue + 40) % 360}, 90%, 60%, ${r.alpha * 0.45})`);
+    grad.addColorStop(1, `hsla(${r.hue}, 80%, 40%, 0)`);
+    ctx.fillStyle = grad;
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fill();
+
+    // Bright filament along the top edge
+    ctx.beginPath();
+    ctx.moveTo(pts[0][0], pts[0][1]);
+    for (let i = 1; i < pts.length; i++) ctx.lineTo(pts[i][0], pts[i][1]);
+    ctx.strokeStyle = `hsla(${r.hue + 20}, 100%, 80%, ${r.alpha * 1.4})`;
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  function drawBackground(t) {
+    // Moon glow
+    const mx = W * 0.8, my = H * 0.18;
+    const g = ctx.createRadialGradient(mx, my, 0, mx, my, Math.max(W, H) * 0.35);
+    g.addColorStop(0, 'rgba(180, 230, 255, 0.22)');
+    g.addColorStop(1, 'rgba(180, 230, 255, 0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, W, H);
+
+    // Stars
+    for (const s of stars) {
+      const tw = 0.5 + 0.5 * Math.sin(t * s.sp + s.tw);
+      ctx.globalAlpha = 0.25 + tw * 0.7;
+      ctx.fillStyle = '#e8f7ff';
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+
+    // Garden silhouette at the bottom
+    ctx.fillStyle = 'rgba(2, 6, 14, 0.92)';
+    ctx.beginPath();
+    ctx.moveTo(0, H);
+    for (let x = 0; x <= W; x += 12) {
+      const y = H * 0.92 + Math.sin(x * 0.012 + 0.7) * H * 0.012 + Math.sin(x * 0.031) * H * 0.006;
+      ctx.lineTo(x, y);
+    }
+    ctx.lineTo(W, H);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  function updateParticles(dt) {
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.vx *= 0.97; p.vy *= 0.97;
+      p.vy -= 0.01 * dt; // slight rise
+      p.x += p.vx * dt; p.y += p.vy * dt;
+      p.life -= 0.012 * dt;
+      if (p.life <= 0) { particles.splice(i, 1); continue; }
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.fillStyle = `hsla(${p.hue}, 100%, 70%, ${p.life * 0.9})`;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size * (0.4 + p.life), 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  function updateBursts(dt) {
+    for (let i = bursts.length - 1; i >= 0; i--) {
+      const b = bursts[i];
+      b.t += 0.025 * dt;
+      if (b.t >= 1) { bursts.splice(i, 1); continue; }
+      const r = Math.pow(b.t, 0.6) * Math.min(W, H) * 0.35;
+      ctx.strokeStyle = `hsla(170, 100%, 75%, ${(1 - b.t) * 0.8})`;
+      ctx.lineWidth = 2 * (1 - b.t) + 0.5;
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, r, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+  }
+
+  function frame(now) {
+    const dt = Math.min((now - lastTime) / 16.67, 3);
+    lastTime = now;
+    if (!paused) {
+      time += dt * 0.016;
+      step(dt);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  function step(dt) {
+    const t = time * 60;
+    ctx.clearRect(0, 0, W, H);
+    drawBackground(t);
+    ctx.globalCompositeOperation = 'lighter';
+    RIBBONS.forEach((r, i) => drawRibbon(r, t, i));
+    ctx.globalCompositeOperation = 'source-over';
+    updateBursts(dt);
+    updateParticles(dt);
+    pointer.vx *= 0.9; pointer.vy *= 0.9;
+  }
+
+  function renderStatic() {
+    // Single frame for reduced-motion / paused-by-preference
+    ctx.clearRect(0, 0, W, H);
+    drawBackground(0);
+    ctx.globalCompositeOperation = 'lighter';
+    RIBBONS.forEach((r, i) => drawRibbon(r, 0, i));
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  window.addEventListener('resize', () => { resize(); if (paused) renderStatic(); });
+  resize();
+
+  if (reduceMotion.matches) {
+    setPaused(true);
+    renderStatic();
+    btn.textContent = 'Play';
+  } else {
+    setPaused(false);
+  }
+  requestAnimationFrame((now) => { lastTime = now; frame(now); });
+})();
+</script>
+</body>
+</html>

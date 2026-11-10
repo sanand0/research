@@ -1,5 +1,6 @@
 # Research
 
+- 10 Nov 2026: [`claude-pi-tokens`](claude-pi-tokens/). Nine Haiku 5.5 HTML-animation trials: Pi used 37% fewer tokens and 19% less API-equivalent cost than cached Claude Code; includes a tested soft-budget launcher and checks.
 - 10 Nov 2026: [`linkedin-cli`](linkedin-cli/). Native LinkedIn CLI with profile/company/showcase activity lists, complete reposts, local-time Markdown, compatible backups, analytics, scheduled posts and SQLite/FTS offline caching.
 - 16 Oct 2026: [`mobile-features`](mobile-features/). Standalone mobile-browser sensor monitor, plus [Air Ink](mobile-features/draw.html): tilt-to-aim, hold-to-draw speed-sensitive ink.
 - 11 Oct 2026: [`whatsnewt`](whatsnewt/) and [`whatsnewt2`](whatsnewt2/). Interactive, offline static expedition solves all 18 Python 3.15 `uvx --python 3.15 whatsnewt` adventure puzzles with upstream-verified answers, all 8 collectibles, 15 rooms and 11 hidden curiosities (375/375).
