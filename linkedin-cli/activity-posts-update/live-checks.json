@@ -1,0 +1,110 @@
+{
+  "posts": [
+    {
+      "id": "7525629644318879744",
+      "apiCharacters": 1550,
+      "domCharacters": 1550,
+      "textMatches": true,
+      "warning": false
+    },
+    {
+      "id": "7525540464230461440",
+      "apiCharacters": 447,
+      "domCharacters": 447,
+      "textMatches": true,
+      "warning": false
+    },
+    {
+      "id": "7525680542780944385",
+      "apiCharacters": 468,
+      "domCharacters": 468,
+      "textMatches": true,
+      "warning": false
+    },
+    {
+      "id": "7525498889613877249",
+      "apiCharacters": 1199,
+      "domCharacters": 1199,
+      "textMatches": true,
+      "warning": false
+    }
+  ],
+  "activities": [
+    {
+      "targets": [
+        "sanand0"
+      ],
+      "posts": 5,
+      "authors": [
+        "Anand S"
+      ],
+      "latestFirst": true,
+      "offlineMatches": true
+    },
+    {
+      "targets": [
+        "sanand0",
+        "ramar"
+      ],
+      "posts": 5,
+      "authors": [
+        "Anand S",
+        "Rama Ramakrishnan"
+      ],
+      "latestFirst": true,
+      "offlineMatches": true
+    },
+    {
+      "targets": [
+        "openai"
+      ],
+      "posts": 5,
+      "authors": [
+        "OpenAI"
+      ],
+      "latestFirst": true,
+      "offlineMatches": true
+    },
+    {
+      "targets": [
+        "https://www.linkedin.com/company/openai/home"
+      ],
+      "posts": 5,
+      "authors": [
+        "OpenAI"
+      ],
+      "latestFirst": true,
+      "offlineMatches": true
+    },
+    {
+      "targets": [
+        "urn:li:company:11130470"
+      ],
+      "posts": 5,
+      "authors": [
+        "OpenAI"
+      ],
+      "latestFirst": true,
+      "offlineMatches": true
+    },
+    {
+      "targets": [
+        "Rama Ramakrishnan"
+      ],
+      "posts": 5,
+      "authors": [
+        "Ramakrishnan Venkataramanan"
+      ],
+      "latestFirst": true,
+      "offlineMatches": true
+    }
+  ],
+  "repost": {
+    "id": "urn:li:activity:7521206725807419393",
+    "originalId": "urn:li:activity:7521186532800708609",
+    "commentCharacters": 680,
+    "originalCharacters": 278,
+    "independentOriginalMatches": true
+  },
+  "sequentialCleanup": true
+}

@@ -96,3 +96,9 @@
 - Installed byte-identical runtime/tests in ~/code/scripts. Archived the previous Python tests unchanged at archive/test_backuplinkedin.py, removed their active recipe, and made the native recipe install the existing Chromium fixture dependency. Preserved concurrent justfile changes and user-owned fish edits.
 - Installed validation: 91/91 native tests passed; full just verify passed its LinkedIn recipe and stopped only at the same two pre-existing transcription prompt assertions. The final timestamp recipe passed 13 tests separately. Node syntax and diff whitespace checks passed; no private captures are tracked.
 - Installed live defaults returned 20 connections (one unavailable), three scheduled posts with complete text/times and effective paths. The legacy backup archive hash stayed unchanged. Name/filter lookups also passed offline; an actual interactive glow -p session opened and exited cleanly, and tests cover PAGER/raw fallback and non-TTY bypass.
+
+## Profile/company activity and post corrections — 2026-11-10
+
+- Investigation and live evidence: [activity-posts-update](activity-posts-update/README.md). Implemented three-line post headers; corrected hidden expansion controls and normalized original-post references; native multi-member/company post filters; profile-first actor lookup and company URLs/URNs; explicit actor selections; sorted live/offline lists.
+- Cleanup found and fixed a nonexistent package bin, undersized fresh paginated caches, stale refresh membership and a tab-close/discovery race between successive invocations. No dependencies added; retained the independently executable copies and legacy tools pending caller review.
+- Name search still follows the established first-personalized-result policy: exact usernames/URLs are preferable where names are ambiguous. Documented other review items in the report.

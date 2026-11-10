@@ -1,6 +1,6 @@
 # Research
 
-- 09 Nov 2026: [`linkedin-cli`](linkedin-cli/). Native LinkedIn CLI with compatible JSONL backups, analytics, scheduled posts, human search filters, compact Markdown and SQLite/FTS offline caching.
+- 10 Nov 2026: [`linkedin-cli`](linkedin-cli/). Native LinkedIn CLI with profile/company activity lists, complete reposts, compact Markdown, compatible backups, analytics, scheduled posts and SQLite/FTS offline caching.
 - 16 Oct 2026: [`mobile-features`](mobile-features/). Standalone mobile-browser sensor monitor, plus [Air Ink](mobile-features/draw.html): tilt-to-aim, hold-to-draw speed-sensitive ink.
 - 11 Oct 2026: [`whatsnewt`](whatsnewt/) and [`whatsnewt2`](whatsnewt2/). Interactive, offline static expedition solves all 18 Python 3.15 `uvx --python 3.15 whatsnewt` adventure puzzles with upstream-verified answers, all 8 collectibles, 15 rooms and 11 hidden curiosities (375/375).
 - 11 Oct 2026: [`unikernels`](unikernels/). Built one Rust JSON-inspection HTTP service for scratch Docker, gVisor, Unikraft ELF-loader, and WASI; native/Docker/WASI pass while gVisor and Unikraft need host runtime setup.

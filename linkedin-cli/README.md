@@ -7,6 +7,8 @@ A single-file, read-only LinkedIn CLI with automatic SQLite caching and fast off
 ./linkedin whoami
 ./linkedin profile sanand0 --sections experience,education --format markdown
 ./linkedin search people "data science" --limit 10
+./linkedin activity sanand0 ramar --limit 20
+./linkedin activity openai --limit 5
 ./linkedin activity "First Last" --kind posts --limit 20
 ./linkedin scheduled
 ./linkedin paths
@@ -45,7 +47,7 @@ The implementation session seeded the cache with the existing post/comment archi
 | `search people QUERY` | People, names, headlines and profile links. |
 | `search posts QUERY` | Matching posts and their authors/text/counts when returned. |
 | `search companies QUERY` | Company search results. |
-| `activity USER --kind posts` | Member posts; `me` selects the signed-in member. |
+| `activity ACTOR... --kind posts` | Posts by one or more profiles/companies, newest first; `me` selects the signed-in member. |
 | `activity USER --kind comments` | Activity-owner context plus target posts; detailed comment attribution remains incomplete. |
 | `activity USER --kind reactions` | Activity-owner context plus target posts; detailed reaction attribution remains incomplete. |
 | `post URL_OR_URN_OR_ID` | One post, its author, text and accessible social counts. |
@@ -66,7 +68,7 @@ All read output identifies its source. Missing fields remain unknown; sparse obs
 
 ## Profile names and people search filters
 
-`profile`, `activity` and `backup` accept `me`, a profile URL/URN/identifier, or a quoted name. A name uses the **first accessible result from the logged-in member’s personalized people search**. Markdown and JSON identify the selected name, URL and identifier. Bare single words remain identifiers; use `name:Anand` to request a single-word name search. Use `me` when you specifically want your own profile.
+`profile`, `activity` and `backup` accept `me`, a profile URL/URN/identifier, or a quoted name. A name uses the **first accessible result from the logged-in member’s personalized people search**. Markdown and JSON identify the selected name, URL and identifier. For `profile` and `backup`, bare single words remain identifiers; use `name:Anand` to request a single-word name search. Use `me` when you specifically want your own profile.
 
 ```bash
 linkedin profile "First Last" --sections experience,education
@@ -94,6 +96,24 @@ linkedin search people engineer --location 102713980 --organization 1035
 ```
 
 `3` means third-degree and beyond. Text resolutions are saved per account for one hour; `--refresh` repeats them, once per unique term in an invocation. Offline reads and `--resume` reuse saved resolutions and never rerank a running traversal. If a name/filter has not been resolved for the selected account, offline/resume fails with `CACHE_MISS`. Empty lookup results fail with `NOT_FOUND`, rather than silently running a broader search. Numeric IDs remain useful for choosing an exact organization/location.
+
+## Activity lists and companies
+
+```bash
+linkedin activity sanand0
+linkedin activity sanand0 ramar --limit 20
+linkedin activity openai
+linkedin activity https://www.linkedin.com/company/openai/home
+linkedin activity urn:li:company:11130470
+```
+
+`activity` tries a bare username as a profile first. If LinkedIn reports it missing or inaccessible, it tries the exact company slug, then personalized people name search. This prevents an unrelated person who mentions OpenAI from replacing the OpenAI company. A valid profile identity wins ambiguity. Quoted names and `name:QUERY` use the existing first-personalized-result policy; inspect the selected profile, since name search can choose someone else. URLs and URNs stay explicit and never change type. Resolved actors appear in Markdown and `meta.resolved_actors`.
+
+A single profile retains the profile activity endpoint. Multiple profiles and companies use native Posts search with `fromMember` and/or `fromOrganization` and `sortBy=date_posted`, following LinkedIn's [native lists feature](https://www.linkedin.com/pulse/how-take-advantage-linkedins-secret-lists-feature-mickey-mellen-munfe/). The API rejects an empty keywords string: author-only requests omit that field. Returned posts are sorted by publication time before applying the output limit, including offline reads. Duplicate actor identities are removed and lists share a cache key regardless of actor order.
+
+Multiple actors and companies support `--kind posts` only. Comments/reactions still require a single profile. Search indexing/visibility and page budgets bound coverage: native lists need not contain every item from a member's profile timeline. Resolutions last one hour per account; `--refresh` repeats them, and offline/resume reuses saved resolutions. Run a query online once before using a new actor with offline/resume.
+
+Refresh replaces the current collection's membership while preserving historical records for `find`/`export`. A small cached snapshot with a continuation no longer prevents a later larger request from fetching more rows.
 
 ## Scheduled posts and local paths
 
@@ -191,13 +211,13 @@ Markdown output is designed to be saved and read as a document:
 
 - Profiles have an About section and readable experience/education headings.
 - People, company, invitation and browsing-history lists use tables with plain names and raw URLs in the final Link column.
-- Posts retain their full text, author, publication date, engagement counts and attachment links.
+- Posts begin with a title, a Published/Author line, and the bare post URL on the third line. Redundant profile links are omitted. Reposts include their accessible original post; full text, engagement counts and attachment links remain.
 - Analytics use compact Reach, Engagement and Profile activity lists, with grouped audience data. Raw page navigation text is omitted.
 - Comments form threads with local reply links; member activity distinguishes the actor from the target post's author.
 - Cache status, imports, backups and previews use summaries rather than JSON dumps. Empty results, stale data and pagination use plain language.
 - `--fields` preserves all selected fields: lists for one record, tables for multiple records, with link columns last.
 
-Headings include date ranges and result counts, for example `# Post analytics (30d, 4 posts)`. Metadata shares a line and simple metric/value summaries use lists. Numbers use separators, dates state UTC where time is known, month-only dates keep their precision, and unavailable metrics use an em dash. A result has one document title; embedded source headings and unfinished code fences cannot swallow the rest of the export.
+Headings include date ranges and result counts, for example `# Post analytics (30d, 4 posts)`. Post metadata shares the second line, with a Markdown hard break before its URL. Other metadata shares a line and simple metric/value summaries use lists. Numbers use separators, dates state UTC where time is known, month-only dates keep their precision, and unavailable metrics use an em dash. A result has one document title; embedded source headings and unfinished code fences cannot swallow the rest of the export.
 
 ```bash
 linkedin profile me --sections experience,education --output profile.md
@@ -233,7 +253,7 @@ just test
 node --test tests/test_linkedin.mjs test-probe.mjs  # assumes Chromium is already installed
 ```
 
-91 standalone tests cover graph root selection, encoding/input validation, unknown schemas, auth/rate-limit errors, FTS updates, sparse merges, account isolation, atomic rollback, disconnect/kill recovery, imports, reply parents, analytics label order, native backup/archive recovery, offline reads, field masks and NDJSON. Live scenarios cover the command families above; API activity pagination returned six records over two pages. The scripts repository’s `just test` suite includes the standalone tests. The native test file includes isolated headless Chromium fixtures (installed by `just playwright-install`), with a fresh temporary profile and network interception; it never uses the logged-in browser or imports the archived Python module. No credentials or personal cache database are included in either repository.
+101 standalone tests (103 including the research probes) cover graph root selection, encoding/input validation, unknown schemas, auth/rate-limit errors, FTS updates, sparse merges, account isolation, atomic rollback, disconnect/kill recovery, imports, reply parents, analytics label order, native backup/archive recovery, offline reads, field masks and NDJSON. Live scenarios cover the command families above; API activity pagination returned six records over two pages. The scripts repository’s `just test` suite includes the standalone tests. The native test file includes isolated headless Chromium fixtures (installed by `just playwright-install`), with a fresh temporary profile and network interception; it never uses the logged-in browser or imports the archived Python module. No credentials or personal cache database are included in either repository.
 
 The original dependency-free research probes remain available as `probe.mjs` and `http-probe.mjs`.
 
@@ -244,3 +264,5 @@ Markdown document improvements are covered by 91 standalone tests. The formatter
 Native backup migration validation: [aggregate evidence](evidence/native-backup-validation.json). All 3,403 original rows round-tripped losslessly; the unchanged blog loader produced identical documents, dates and links for 326 original posts. A one-post installed backup updated the real archive to 3,405 rows without modifying any original row. Native detailed collection captured six demographic tabs and the visible public repost. The former Python test file is archived at `~/code/scripts/archive/test_backuplinkedin.py`; its backup regressions now exercise the native implementation in `tests/test_linkedin.mjs`.
 
 Human-input and command validation: [aggregate evidence](evidence/human-input-validation.json) and [backup-test migration coverage](evidence/backup-test-migration.md). The connections decoder now handles a valid connection whose profile details are omitted, retaining its identity/date rather than aborting the page with `SCHEMA_CHANGED`.
+
+Latest changes and review items: [activity/post investigation](activity-posts-update/README.md), with [bounded live evidence](activity-posts-update/live-checks.json).

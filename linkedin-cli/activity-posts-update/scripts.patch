@@ -1,0 +1,487 @@
+diff --git a/linkedin b/linkedin
+index b4366ba..f9673e4 100755
+--- a/linkedin
++++ b/linkedin
+@@ -173,20 +173,20 @@ export function actorRecord(actor = {}) {
+   const url = actor.navigationContext?.actionTarget;
+   return clean({ id: actor.backendUrn, name: text(actor.name), headline: text(actor.description), url: url ? url.split('?')[0] : undefined });
+ }
+-export function postRecord(update, resolve = x => x) {
+-  const id = update.metadata?.backendUrn ?? update.backendUrn ?? update.urn ?? update.entityUrn;
++export function postRecord(update, resolve = x => x, seen = new Set()) {
++  seen.add(update);
++  const id = update.metadata?.backendUrn ?? update.updateMetadata?.urn ?? update.backendUrn ?? update.urn ?? update.entityUrn;
+   const social = resolve(update['*socialDetail']) ?? update.socialDetail;
+   const counts = resolve(social?.['*totalSocialActivityCounts']) ?? social?.totalSocialActivityCounts ?? {};
+   const record = clean({ id, kind: 'post', url: /^urn:li:activity:\d+$/.test(id) ? `https://www.linkedin.com/feed/update/${id}/` : undefined,
+     author: actorRecord(update.actor), text: text(update.commentary?.text),
+     publishedAt:backupIdDate(id)??undefined,publishedAtConfidence:backupIdDate(id)?'id':undefined,
+     reactionCount: counts.numLikes, commentCount: counts.numComments, repostCount: counts.numShares, impressionCount: counts.numImpressions,
+-    source: 'voyager',
++    source: 'voyager', textTruncated: false,
+   });
+-  if (update.resharedUpdate) {
+-    const shared = resolve(update.resharedUpdate['*update']) ?? update.resharedUpdate.update;
+-    if (shared) record.resharedPost = postRecord(shared, resolve);
+-  }
++  const reshare = resolve(update['*resharedUpdate']) ?? update.resharedUpdate;
++  const shared = resolve(reshare?.['*update']) ?? reshare?.update ?? reshare;
++  if (shared && !seen.has(shared)) record.resharedPost = postRecord(shared, resolve, seen);
+   // Preserve accessible media/links without retaining tracking/template payloads.
+   const links = new Set();
+   function scan(value) {
+@@ -259,7 +259,7 @@ export function decodeNetwork(payload, kind, cursor) {
+ /** Explicit DOM fallback for SDUI surfaces. Selectors come from the existing backup workflow. */
+ export function feedCards() {
+   const cards = [...document.querySelectorAll('[componentkey^="update-card-focus"][role="listitem"], [data-urn][role="article"], .feed-shared-update-v2[data-urn]')];
+-  const records = [], missing = [];
++  const records = [], missing = [], hydrate = [];
+   const text = el => (el?.innerText ?? el?.textContent ?? '').trim();
+   for (const card of cards) {
+     const permalink = card.querySelector('a[href*="/analytics/post-summary/"],a[href*="/feed/update/urn:li:activity:"]');
+@@ -285,13 +285,16 @@ export function feedCards() {
+     clone?.querySelectorAll('button').forEach(button => button.remove());
+     clone?.querySelectorAll('br').forEach(br => br.replaceWith('\n'));
+     const body = text(clone);
++    const textTruncated = [...(content?.querySelectorAll('button') ?? [])].some(button =>
++      button.getAttribute('aria-hidden') !== 'true' && button.getAttribute('aria-expanded') !== 'true' && /(?:see|show|read|…|\.\.\.)\s*more|visually reveals content/i.test((button.getAttribute('aria-label') ?? '') + ' ' + text(button)));
++    if (textTruncated || card.querySelectorAll('[data-testid="expandable-text-box"], .update-components-update-v2__commentary').length > 1) hydrate.push(id);
+     const name = text(link?.querySelector('p [aria-hidden="true"],p') ?? card.querySelector('.update-components-actor__name')).replace(/\s*•.*$/s, '');
+     records.push({ id, kind: 'post', url: `https://www.linkedin.com/feed/update/${id}/`, text: body,
+       author: { name, url: link?.href.split('?')[0] }, source: 'dom-feed',
+-      textTruncated: Boolean(content?.querySelector('button')), media: [...card.querySelectorAll('img[src]')].filter(img => !/profile-|static\.licdn\.com/.test(img.src)).map(img => ({ kind: 'image', url: img.currentSrc || img.src, alt: img.alt })),
++      textTruncated, media: [...card.querySelectorAll('img[src]')].filter(img => !/profile-|static\.licdn\.com/.test(img.src)).map(img => ({ kind: 'image', url: img.currentSrc || img.src, alt: img.alt })),
+     });
+   }
+-  return { records, cardCount: cards.length, missing };
++  return { records, cardCount: cards.length, missing, hydrate };
+ }
+ 
+ export function analyticsSnapshot() {
+@@ -369,7 +372,7 @@ export const operations = {
+   people: { description: 'Search people by keywords', args: ['query'], source: 'voyager', paged: true },
+   posts: { description: 'Search posts by keywords', args: ['query'], source: 'voyager', paged: true },
+   companies: { description: 'Search companies by keywords', args: ['query'], source: 'voyager', paged: true },
+-  activity: { description: 'Read a member activity category; --kind posts|comments|reactions', args: ['profile'], source: 'voyager', paged: true },
++  activity: { description: 'Read profiles or companies, latest first; multiple actors use native author lists. --kind posts|comments|reactions', args: ['actor...'], source: 'voyager', paged: true },
+   post: { description: 'Read a post by URL, activity URN or numeric ID', args: ['post'], source: 'voyager' },
+   connections: { description: 'Read your connections, most recently added first', args: [], source: 'voyager', paged: true },
+   invitations: { description: 'Read received connection invitations; no accept/send actions', args: [], source: 'voyager', paged: true },
+@@ -377,7 +380,7 @@ export const operations = {
+   scheduled: {description:'Read your scheduled posts with exact scheduled times and contents',args:[],source:'sdui',many:true},
+   analytics: { description: 'Read/update own post metrics; use analytics me for a bounded batch', args: ['post-or-me'], source: 'dom' },
+ };
+-export const manifest = { schema_version: 1, captured_at: '2026-11-09', queryIds, operations };
++export const manifest = { schema_version: 1, captured_at: '2026-11-10', queryIds, operations };
+ 
+ /** Explicit search facets; free text is never silently substituted for a filter. */
+ export function searchFacets(values) {
+@@ -510,6 +513,31 @@ export async function resolveProfileTarget(value,lookup) {
+   throw new Failure('NOT_FOUND',`No accessible profile matches “${target.query}” in your personalized people search`);
+ }
+ 
++/** Validate activity targets before browser/cache access. Company suffixes such as /home are allowed. */
++export function activityTarget(value) {
++  if (value.includes('://')) {
++    const url = linkedinUrl(value);
++    if (url.pathname.startsWith('/company/')) return { company: profileIdentifier(decodeURIComponent(url.pathname.split('/')[2] ?? '')) };
++  }
++  const company = value.match(/^urn:li:(?:fsd_company|company|organization):(\d+)$/);
++  return company ? {company:company[1]} : profileTarget(value);
++}
++export async function resolveActivityTarget(value, client, lookup) {
++  const target = activityTarget(value);
++  if (target.company) return client.company(target.company);
++  if (target.identifier) {
++    try { return await client.profile(target.identifier); }
++    catch (error) {
++      if (value.includes('://') || value.startsWith('urn:') || value === 'me' || !['NOT_FOUND','FORBIDDEN'].includes(error.code)) throw error;
++      try { return await client.company(target.identifier); }
++      catch (companyError) { if (!['NOT_FOUND','FORBIDDEN'].includes(companyError.code)) throw companyError; }
++    }
++  }
++  const selected = await resolveProfileTarget('name:' + (target.query ?? value), lookup);
++  return {...await client.profile(selected.identifier), resolution:selected};
++}
++const newestPosts = (a,b) => (Date.parse(b.publishedAt ?? b.postedAt ?? backupIdDate(b.id)) || 0) - (Date.parse(a.publishedAt ?? a.postedAt ?? backupIdDate(a.id)) || 0) || String(b.id).localeCompare(String(a.id));
++
+ export function sinceDate(value, now = new Date()) {
+   if (!value) return undefined;
+   const period = value.trim().match(/^(\d+)\s*(d|days?|w|weeks?|mo|months?|y|years?)(?:\s+ago)?$/i);
+@@ -618,13 +646,13 @@ export class Cache {
+     const row = this.db.prepare('SELECT json,first_seen,last_seen FROM records WHERE account=? AND (id=? OR url=?) ORDER BY observed_at DESC LIMIT 1').get(account, id, id);
+     return row ? { ...JSON.parse(row.json), firstSeenAt: row.first_seen, lastSeenAt: row.last_seen } : null;
+   }
+-  list(account, { kind, collection, limit = 100, offset = 0, since } = {}) {
++  list(account, { kind, collection, limit = 100, offset = 0, since, newest = false } = {}) {
+     const where = ['r.account=?'], params = [account];
+     if (kind) { where.push('r.kind=?'); params.push(kind); }
+     if (since) { where.push('r.observed_at>=?'); params.push(since); }
+     if (collection) { where.push('m.collection=?'); params.push(collection); }
+     const join = collection ? 'JOIN membership m ON m.account=r.account AND m.id=r.id' : '';
+-    return this.db.prepare(`SELECT r.json,r.first_seen,r.last_seen FROM records r ${join} WHERE ${where.join(' AND ')} ORDER BY ${collection ? 'm.position ASC,m.seen_at DESC' : 'r.last_seen DESC,r.id'} LIMIT ? OFFSET ?`).all(...params, limit, offset).map(row => ({ ...JSON.parse(row.json), firstSeenAt: row.first_seen, lastSeenAt: row.last_seen }));
++    return this.db.prepare(`SELECT r.json,r.first_seen,r.last_seen FROM records r ${join} WHERE ${where.join(' AND ')} ORDER BY ${newest ? "COALESCE(json_extract(r.json,'$.publishedAt'),json_extract(r.json,'$.postedAt'),'') DESC,r.id DESC" : collection ? 'm.position ASC,m.seen_at DESC' : 'r.last_seen DESC,r.id'} LIMIT ? OFFSET ?`).all(...params, limit, offset).map(row => ({ ...JSON.parse(row.json), firstSeenAt: row.first_seen, lastSeenAt: row.last_seen }));
+   }
+   search(account, query, { kind, limit = 20, prefix = false, since } = {}) {
+     const terms = query.match(/[\p{L}\p{N}_]+(?:[-'][\p{L}\p{N}_]+)*/gu) ?? [];
+@@ -691,7 +719,7 @@ export class Cache {
+ 
+ // ---- sync ----
+ /** Bounded traversal. Save whole pages before truncating output; no record is lost at a limit. */
+-export async function sync(cache, account, key, fetchPage, { limit = 20, maxPages = 2, resume = false, allowEmpty = false, log = () => {} } = {}) {
++export async function sync(cache, account, key, fetchPage, { limit = 20, maxPages = 2, resume = false, allowEmpty = false, sort, log = () => {} } = {}) {
+   const saved = cache.state(account, key);
+   if (resume && !saved) throw new Failure('CURSOR_MISSING', 'No checkpoint for this collection; start without --resume');
+   if (resume && saved.cursor === null) return { data: [], page: { next: null }, coverage: { complete: false, reason: 'previous_traversal_exhausted' }, warnings: [] };
+@@ -707,7 +735,7 @@ export async function sync(cache, account, key, fetchPage, { limit = 20, maxPage
+       const page = await fetchPage(cursor);
+       if (!Array.isArray(page.records) || page.records.some(row => !row.id)) throw new Failure('SCHEMA_CHANGED', 'Invalid decoded page; checkpoint was not advanced');
+       if (pages > 0 && page.records.length && page.records.every(record => recordIds.has(record.id))) throw new Failure('PAGINATION_STALLED', 'LinkedIn repeated a whole page; the checkpoint was not advanced');
+-      const committed = cache.commit(account, key, page.records, page.next, { position: cursor?.start ?? 0 });
++      const committed = cache.commit(account, key, page.records, page.next, { position: cursor?.start ?? 0, replace: !resume && pages===0 });
+       changed += committed.changed;
+       for (const warning of page.warnings ?? []) warnings.add(warning);
+       data.push(...page.records); pages++; source = page.source;
+@@ -719,7 +747,7 @@ export async function sync(cache, account, key, fetchPage, { limit = 20, maxPage
+     }
+     const reason = !cursor ? 'traversal_exhausted' : data.length >= limit ? 'item_limit' : 'page_limit';
+     cache.finishRun(run, 'ok', reason);
+-    return { data: data.slice(0, limit), page: { next: cursor, fetched: data.length, returned: Math.min(data.length, limit), pages }, coverage: { complete: false, reason }, meta: { source, changed, run_id: run }, warnings: [...warnings] };
++    return { data: (sort ? data.sort(sort) : data).slice(0, limit), page: { next: cursor, fetched: data.length, returned: Math.min(data.length, limit), pages }, coverage: { complete: false, reason }, meta: { source, changed, run_id: run }, warnings: [...warnings] };
+   } catch (error) {
+     cache.finishRun(run, 'partial', error.code ?? 'ERROR');
+     const checkpoint = cache.state(account, key)?.cursor;
+@@ -1354,7 +1382,16 @@ export class Client {
+     try{
+       if(this.page&&!this.owned.some(item=>item.page===this.page))this.page.close();
+       for(const item of this.owned.splice(0).reverse()){
+-        try{await this.browser.call('Target.closeTarget',{targetId:item.id});}catch(error){failure??=error;}finally{item.page?.close();}
++        try{
++          await this.browser.call('Target.closeTarget',{targetId:item.id});
++          // Chrome acknowledges close before removing the target from discovery. A following
++          // invocation must not borrow that closing tab and lose its CDP connection mid-read.
++          const deadline=Date.now()+this.timeout;
++          while((await this.json('/json/list')).some(tab=>tab.id===item.id)){
++            if(Date.now()>=deadline)throw new Failure('PAGE_NOT_READY','Background tab did not finish closing');
++            await delay(25);
++          }
++        }catch(error){failure??=error;}finally{item.page?.close();}
+       }
+     }finally{this.browser?.close();}
+     if(failure)throw failure;
+@@ -1393,6 +1430,23 @@ export class Client {
+     }
+     return record;
+   }
++  async company(value) {
++    const identifier = profileIdentifier(value);
++    const numeric = /^\d+$/.test(identifier);
++    const payload = await this.api('/voyager/api/organization/dash/companies' + (numeric ? '/' + identifier : '?q=universalName&universalName=' + encodeURIComponent(identifier)));
++    const {root,resolve} = graph(payload);
++    const refs = numeric ? [root] : required(root?.['*elements'] ?? root?.elements, 'Company root references are missing');
++    if (!refs.length) throw new Failure('NOT_FOUND', 'No company matches “' + value + '”');
++    const entity = required(resolve(refs[0]), 'Company reference is missing');
++    return clean({id:entity.entityUrn,kind:'company',name:entity.name,username:entity.universalName,url:entity.url ?? `https://www.linkedin.com/company/${entity.universalName ?? identifier}/`,text:entity.description,source:'voyager'});
++  }
++  async authorPosts(actors, cursor, pageSize = 10) {
++    const facets = [['profile','fromMember'],['company','fromOrganization']].map(([kind,key]) => ({key,value:actors.filter(actor=>actor.kind===kind).map(actor=>actor.id.split(':').at(-1))})).filter(facet=>facet.value.length);
++    const input = {start:cursor?.start ?? 0,count:pageSize};
++    // Empty keywords cause HTTP 400. Omit the field for an author-only native list.
++    const payload = await this.gql(queryIds.search, {...input,origin:'FACETED_SEARCH',query:{flagshipSearchIntent:'SEARCH_SRP',queryParameters:[{key:'resultType',value:['CONTENT']},...facets,{key:'sortBy',value:['date_posted']}],includeFiltersInResponse:false}});
++    return decodeSearch(payload,'posts',input);
++  }
+   async sduiRead(body){
+     const readActions=['com.linkedin.sdui.search.filters.requests.FiltersLocationTypeaheadRequest','com.linkedin.sdui.search.filters.requests.FiltersCompanyTypeaheadRequest'];
+     const components=[scheduledComponentPrefix+'scheduledPostsList',scheduledComponentPrefix+'scheduledPostFullRow'];
+@@ -1432,7 +1486,7 @@ export class Client {
+     const payload = await this.api('/voyager/api/feed/updates/' + encodeURIComponent(id));
+     const { root, resolve } = graph(payload);
+     const update = resolve(root?.['*value']);
+-    if (!update?.actor || !update.commentary) throw new Failure('SCHEMA_CHANGED', 'Post root content is missing');
++    if (!update?.actor) throw new Failure('SCHEMA_CHANGED', 'Post root content is missing');
+     return postRecord({ ...update, metadata: { ...update.updateMetadata, backendUrn: id } }, resolve);
+   }
+   async feed(cursor, pageSize = 10) {
+@@ -1447,6 +1501,14 @@ export class Client {
+       }
+       const seen = this.feedSeen ??= new Set();
+       const records = result.records.filter(record => !seen.has(record.id));
++      for (const record of records) if (result.hydrate.includes(record.id)) {
++        // Keep DOM attachments while replacing commentary and decoding embedded originals.
++        try { Object.assign(record, await this.post(record.id)); }
++        catch (error) {
++          if (!['NOT_FOUND','FORBIDDEN','SCHEMA_CHANGED'].includes(error.code)) throw error;
++          result.missing.push(`Could not read complete/embedded text for ${record.url}: ${error.code}`);
++        }
++      }
+       if (records.length) {
+         records.forEach(record => seen.add(record.id));
+         return { records, next: { start: seen.size, volatile: true }, source: 'dom-feed', warnings: ['Feed is a visible ranked snapshot; continuation requires this process', ...result.missing] };
+@@ -1558,9 +1620,10 @@ const extras = {
+   'import history': { description: 'Import LinkedIn links from a read-only browsing-history SQLite snapshot', args: ['path'] },
+ };
+ export const schema = { ...manifest, name: 'linkedin', description: 'Read-only LinkedIn CLI with automatic local caching and offline FTS search', commands: { ...operations, ...extras }, options: optionTypes,
+-  usage: ['linkedin profile USER --sections experience,education', 'linkedin search people engineer --location Chennai --organization Tata', 'linkedin sync activity USER --kind posts --limit 100', 'linkedin find "agents" --offline', 'linkedin import archive ~/Documents/data/linkedin-posts.jsonl'],
++  usage: ['linkedin profile USER --sections experience,education', 'linkedin search people engineer --location Chennai --organization Tata', 'linkedin activity sanand0 ramar --limit 20', 'linkedin activity https://www.linkedin.com/company/openai/home', 'linkedin sync activity USER --kind posts --limit 100', 'linkedin find "agents" --offline', 'linkedin import archive ~/Documents/data/linkedin-posts.jsonl'],
+   cache: 'LINKEDIN_DB or ~/.cache/sanand-scripts/linkedin-cli/cache.sqlite', output: ['markdown (default; md alias)', 'json', 'ndjson (jsonl alias)', 'text'],
+   profile_targets:'me, explicit URL/URN/identifier, or quoted full name; first personalized result. Use name:QUERY for single-word names. Account-scoped lookups last 1 hour; --refresh re-resolves.',
++  activity_targets:'One or more profiles or companies. Bare usernames try profiles, then exact company slugs, then personalized people name search; explicit URLs/URNs never switch type. Multiple actors and companies support posts only. Native fromMember/fromOrganization filters with date_posted; returned posts sorted latest first. Resolutions cached per account for 1 hour.',
+   viewer:'Interactive Markdown uses glow -p, then PAGER, then raw Markdown; pipes/files and JSON/JSONL/text bypass viewers.',
+   record_kinds:kinds,
+   search_filters: {location:'Comma-separated partial location names (Chennai, Singapore, Boston), geo IDs or urn:li:geo:ID',organization:'Comma-separated partial organization names (IBM, Tata), current-employer company IDs/URNs','past-organization':'Same name/ID resolution for previous employers',degree:'1,2,3 or F,S,O; 3 includes third-degree and beyond. OR within a filter, AND across filters. All returned typeahead matches/aliases are included.'},
+@@ -1601,7 +1664,8 @@ export function parse(argv) {
+   const parsedOperation = canonicalOperation(positionals);
+   const descriptor = operations[parsedOperation.operation] ?? extras[parsedOperation.operation];
+   if (!positionals.length && !values.describe) values.help = true;
+-  if (!values.help && !values.describe && (!descriptor || parsedOperation.args.length !== descriptor.args.length)) throw new Failure('INVALID_INPUT', 'Invalid command or arguments; run --help or --describe');
++  if (!values.help && !values.describe && (!descriptor || (parsedOperation.operation === 'activity' ? !parsedOperation.args.length : parsedOperation.args.length !== descriptor.args.length))) throw new Failure('INVALID_INPUT', 'Invalid command or arguments; run --help or --describe');
++  if (parsedOperation.operation === 'activity' && (values.kind ?? 'posts') !== 'posts' && parsedOperation.args.length > 1) throw new Failure('INVALID_INPUT','Multiple actors support --kind posts; comments/reactions require one profile');
+   const archiveExport=parsedOperation.operation==='export'&&values.schema==='backup',isBackup=parsedOperation.operation==='backup';
+   const limit = numeric(values.limit, archiveExport?0:isBackup?100:parsedOperation.syncing?100:20, isBackup||archiveExport?0:1,10000,'--limit');
+   const pageSize = numeric(values['page-size'], Math.min(limit||10, 10), 1, 50, '--page-size');
+@@ -1726,14 +1790,14 @@ function mdAnalytics(record,level=2) {
+ }
+ function mdPost(record,level=2) {
+   const author=record.author??{name:record.name,url:record.profile,headline:record.description};
+-  const info=[mdInline(author.name),mdInline(author.headline)].filter(Boolean).join(' · ');
++  const info=[author.name?'Author: '+mdInline(author.name):'',mdInline(author.headline)].filter(Boolean).join(' · ');
+   const published=record.publishedAt??record.postedAt,fromId=!published&&backupIdDate(record.id??record.postId??record.url);
+   const date=published?mdDate(published)+(['id','exact'].includes(record.publishedAtConfidence??record.postedAtConfidence)?'':record.publishedAtConfidence?' (estimated)':''):fromId?mdDate(fromId)+' (from activity ID)':mdInline(record.relativeTime??record.postedText??'');
+   const metrics={...(record.analytics??{}),...Object.fromEntries(['reactionCount','commentCount','repostCount','impressionCount','replyCount'].filter(key=>key in record).map(key=>[key,record[key]]))};
+   const counts=['impressionCount','reactionCount','commentCount','repostCount','replyCount'].filter(key=>key in metrics&&metrics[key]!==null).map(key=>mdCount(metrics[key])+' '+({impressionCount:'impressions',reactionCount:'reactions',commentCount:'comments',repostCount:'reposts',replyCount:'replies'})[key]).join(' · ');
+   const attachments=(record.media??[]).map((media,i)=>'- '+mdInline(mdLabel(media.kind??'attachment')+(media.alt?' — '+media.alt:' '+(i+1)))+': '+mdUrl(media.url));
+   const links=(record.links??[]).filter(url=>!(record.media??[]).some(media=>media.url===url)).map(url=>'- '+mdUrl(url));
+-  const metadata=[date?'Published: '+date+(record.edited?' · Edited':''):'',info,author.url?'Profile: '+mdUrl(author.url):'',record.url?'Post: '+mdUrl(record.url):''].filter(Boolean).join(' · ');
++  const metadata=[date?'Published: '+date+(record.edited?' · Edited':''):'',info].filter(Boolean).join(' · ')+(record.url?'  \n'+mdUrl(record.url):'');
+   return [metadata,mdBody(record.text??record.content,level+1),counts?'**'+counts+'**':'',record.repostedBy?'Reposted by '+mdInline(record.repostedBy)+(record.repostedByProfile?' · '+mdUrl(record.repostedByProfile):''):'',mdSection('Attachments',attachments.join('\n'),level),mdSection('Links',links.join('\n'),level),record.textTruncated?'_This saved post text is incomplete._':'',record.resharedPost?mdSection('Original post',mdPost(record.resharedPost,level+1),level):''].filter(Boolean).join('\n\n');
+ }
+ function mdCollection(key) {
+@@ -1764,7 +1828,7 @@ function renderMarkdown(result,context={}) {
+   const op=context.operation??'',data=result.data,array=Array.isArray(data),records=(array?data:[data]).filter(Boolean);
+   const kind=record=>record.kind??({scheduled:'scheduled',profile:'profile',whoami:'profile',people:'profile',connections:'profile',companies:'company',invitations:'invitation',analytics:'analytics',post:'post',posts:'post',feed:'post',activity:'post',comments:'comment',reposts:'post'})[op]??(record.analytics?'analytics':undefined);
+   const query=context.args?.[0],plural=!records.length?mdPlural(kind({})??'records'):records.every(record=>kind(record)===kind(records[0]))?mdPlural(kind(records[0])??'records'):'Records';
+-  let title=({scheduled:'Scheduled posts',people:'People',posts:'Posts',companies:'Companies',feed:'Home feed',connections:'Connections',invitations:'Received invitations',comments:'Comments',reposts:'Public reposts',find:'Search saved LinkedIn data',paths:'LinkedIn paths','cache status':'LinkedIn cache','cache list':'Saved LinkedIn records',export:'Saved LinkedIn records','import archive':'Archive import','import history':'Browsing history import',backup:'Backup summary',analytics:'Post analytics',activity:'Member activity'})[op];
++  let title=({scheduled:'Scheduled posts',people:'People',posts:'Posts',companies:'Companies',feed:'Home feed',connections:'Connections',invitations:'Received invitations',comments:'Comments',reposts:'Public reposts',find:'Search saved LinkedIn data',paths:'LinkedIn paths','cache status':'LinkedIn cache','cache list':'Saved LinkedIn records',export:'Saved LinkedIn records','import archive':'Archive import','import history':'Browsing history import',backup:'Backup summary',analytics:'Post analytics',activity:'LinkedIn activity'})[op];
+   if(['people','posts','companies','find'].includes(op)&&query)title+=' matching “'+query+'”';
+   const first=records[0]??{};
+   title??=array?plural:({profile:first.name??'LinkedIn profile',company:first.name??'Company',post:'Post'+(first.author?.name?' by '+first.author.name:''),analytics:'Post analytics',comment:'Comment',activity:'Member activity',invitation:'Connection invitation'+(first.name?' from '+first.name:''),history:first.name??'Saved link'})[kind(first)]??(data?.counts?'LinkedIn cache':first.name??'LinkedIn');
+@@ -1775,6 +1839,8 @@ function renderMarkdown(result,context={}) {
+   if(selections.length)blocks.push('**Resolved filters (OR within each):**\n\n'+selections.map(row=>'- '+mdInline(({geoUrn:'Location',currentCompany:'Organization',pastCompany:'Past organization'})[row.filter]+' “'+row.query+'”: '+row.matches.map(match=>match.name+' ['+match.id+']').join(', '))).join('\n'));
+   const selectedProfile=context.resolvedProfile??result.meta?.resolved_profile;
+   if(selectedProfile)blocks.push('**Resolved profile:** '+mdInline(selectedProfile.query+' → '+selectedProfile.name)+' · '+mdUrl(selectedProfile.url));
++  const actors=context.activityActors??result.meta?.resolved_actors??[];
++  if(actors.length)blocks.push('**Actors:** '+actors.map(actor=>mdInline(actor.name)+' ('+actor.kind+')'+(actor.url?' · '+mdUrl(actor.url):'')).join('; '));
+   const facets=(context.facets??result.meta?.filters??[]).map(facet=>({...facet,value:facet.value.filter(value=>!selections.some(row=>row.filter===facet.key&&row.matches.some(match=>match.id===value)))})).filter(facet=>facet.value.length);
+   if(facets.length)blocks.push('**Filters:** '+facets.map(facet=>({geoUrn:'Location IDs',currentCompany:'Current organization IDs',pastCompany:'Past organization IDs',network:'Connections'})[facet.key]+': '+facet.value.map(value=>facet.key==='network'?({F:'1st degree',S:'2nd degree',O:'3rd degree and beyond'})[value]??mdInline(value):mdInline(value)).join(', ')).join(' · '));
+   if(result.meta?.dry_run){blocks[0]='# Preview: '+mdInline(mdLabel(data.operation));blocks.push('No changes were made.',mdDetails({target:data.args?.join(', '),browserAccess:data.network,cacheUpdates:data.cacheWrites,recordLimit:data.limit,pageLimit:data.maxPages}));}
+@@ -1815,7 +1881,7 @@ function renderMarkdown(result,context={}) {
+     for(const [i,record]of records.entries()){
+       const type=kind(record),level=array?3:2;
+       const heading=type==='scheduled'?'Scheduled for '+mdDate(record.scheduledAt):type==='activity'?`${record.actor?.name??'Member'} — ${record.activityKind==='comments'?'comment activity':'reaction activity'}`:type==='analytics'?'Post '+(i+1):record.name??(type==='post'?'Post by '+(record.author?.name??'a LinkedIn member'):mdLabel(type??'Record'));
+-      if(array&&records.length>1)blocks.push('## '+mdInline(heading));
++      if(array&&records.length>1&&type!=='post')blocks.push('## '+mdInline(heading));
+       if(type==='profile'||type==='company'){
+         blocks.push([mdInline(record.headline),mdInline(record.location),mdInline(record.industry),record.url?mdUrl(record.url):''].filter(Boolean).join(' · '),mdSection('About',mdBody(record.text,level+1),level));
+         for(const [name,content]of Object.entries(record.sections??{})){const cleaned=String(content).replace(new RegExp('^'+name+'\\s*\\n','i'),'');blocks.push(mdSection(mdLabel(name),mdBody(cleaned,level+1),level));}
+@@ -1826,7 +1892,8 @@ function renderMarkdown(result,context={}) {
+       else if(type==='analytics')blocks.push(mdAnalytics(record,level));
+       else if(type==='activity')blocks.push(`This is ${mdInline(record.actor?.name??'the member')}’s ${record.activityKind==='comments'?'comment':'reaction'} activity on a post by ${mdInline(record.post?.author?.name??'another member')}.`,mdSection('Target post',mdPost(record.post??{text:record.text},level+1),level));
+       else if(type==='post'){
+-        blocks.push(mdPost(record,level));
++        if(array)blocks.push('## '+mdInline(heading)+'\n'+mdPost(record,level));
++        else blocks[0]+='\n'+mdPost(record,level);
+         if(!record.text&&!record.content&&!record.author&&!record.url&&!record.media)blocks.push(mdDetails(record));
+       }else blocks.push(mdDetails(record));
+     }
+@@ -1864,7 +1931,8 @@ async function runCommand(argv, { clientFactory = options => new Client(options)
+   const options = parse(argv), { operation, args, values, limit, pageSize, maxPages, sections, maxAge } = options;
+   if (values.describe) return { result: schema, options };
+   if (values.help || !operation) return { result: schema, options };
+-  if (['profile','activity','backup'].includes(operation)){const target=profileTarget(args[0]);args[0]=target.identifier??'name:'+target.query;}
++  if (['profile','backup'].includes(operation)){const target=profileTarget(args[0]);args[0]=target.identifier??'name:'+target.query;}
++  if (operation === 'activity') args.forEach(activityTarget);
+   if (['post', 'analytics', 'comments', 'reposts'].includes(operation) && !options.batchAnalytics) args[0] = activityUrn(args[0]);
+   if (['people', 'posts', 'companies', 'find'].includes(operation) && (!args[0].trim() || args[0].length > 1000)) throw new Failure('INVALID_INPUT', 'Query must contain 1..1000 characters');
+   if (values['dry-run']) return { result: envelope({ data: { operation, args, network: !values.offline && Boolean(operations[operation] || operation === 'backup'), limit, maxPages, cacheWrites: Boolean(operations[operation] || operation === 'backup' || operation.startsWith('import ')) }, meta: { dry_run: true } }), options };
+@@ -1884,7 +1952,7 @@ async function runCommand(argv, { clientFactory = options => new Client(options)
+     if(saved&&(values.offline||values.resume||!values.refresh&&Date.now()-Date.parse(saved.observedAt)<3600000)){lookupMemo.set(memoKey,saved.data);return saved.data;}
+     if(values.offline||values.resume)throw new Failure('CACHE_MISS',`No saved ${kind} resolution for “${query}”; run this lookup online before using --offline/--resume`);
+     await authenticate();log(`Resolving ${kind}: ${query}`);
+-    const data=kind==='profile'?(await client.search('people',query,null,5)).records:await client.typeahead(kind,query);
++    const data=kind==='activity-target'?await resolveActivityTarget(query,client,lookup):kind==='profile'?(await client.search('people',query,null,5)).records:await client.typeahead(kind,query);
+     cache.saveLookup(account,kind,query,data);lookupMemo.set(memoKey,data);return data;
+   }
+   try {
+@@ -1909,10 +1977,24 @@ async function runCommand(argv, { clientFactory = options => new Client(options)
+     }
+     try{account=localAccount();}catch(error){if(values.offline)throw error;}
+     if(options.facets.some(facet=>facet.key!=='network'&&facet.value.some(value=>!/^\d+$/.test(value)))){const resolved=await resolveSearchFacets(options.facets,lookup);options.facets=resolved.facets;options.resolvedFilters=resolved.selections;}
+-    if(['profile','activity','backup'].includes(operation)&&profileTarget(args[0]).query){const target=await resolveProfileTarget(args[0],lookup);args[0]=target.identifier;options.resolvedProfile=target;log(`Selected profile: ${target.name} — ${target.url}`);}
++    if(['profile','backup'].includes(operation)&&profileTarget(args[0]).query){const target=await resolveProfileTarget(args[0],lookup);args[0]=target.identifier;options.resolvedProfile=target;log(`Selected profile: ${target.name} — ${target.url}`);}
++    if (operation === 'activity') {
++      const actors = [];
++      for (const value of args) {
++        const actor = await lookup('activity-target',value);
++        if (!actors.some(item=>item.id===actor.id)) actors.push(actor);
++        if (actor.resolution) options.resolvedProfile = actor.resolution;
++      }
++      if ((values.kind ?? 'posts') !== 'posts' && actors.some(actor=>actor.kind==='company')) throw new Failure('INVALID_INPUT','Companies support --kind posts only');
++      actors.sort((a,b)=>a.id.localeCompare(b.id));
++      options.activityActors = actors;
++      const ownOnly = args.length===1 && args[0]==='me';
++      args.splice(0,args.length,...actors.map(actor=>ownOnly?'me':actor.kind==='company'?actor.url:actor.username ?? actor.resolution?.identifier ?? actor.id));
++    }
+     const key = JSON.stringify({ operation, args, kind: operation === 'activity' ? values.kind ?? 'posts' : undefined, sections: [...sections].sort(), ...(options.facets.length ? { facets: options.facets } : {}), ...(options.batchAnalytics ? { since: values.since, until: values.until } : {}) });
+     const saved = account ? cache.state(account, key) : null;
+-    const fresh = saved && Date.now()-Date.parse(saved.updatedAt)<=maxAge*1000&&(operation!=='scheduled'||!saved.cursor||cache.list(account,{collection:key,limit}).length>=Math.min(limit,saved.cursor.total));
++    const enough = !operations[operation]?.paged || !saved?.cursor || cache.list(account,{collection:key,limit}).length>=limit;
++    const fresh = saved && enough && Date.now()-Date.parse(saved.updatedAt)<=maxAge*1000&&(operation!=='scheduled'||!saved.cursor||cache.list(account,{collection:key,limit}).length>=Math.min(limit,saved.cursor.total));
+     if (values.offline || (operation !== 'backup' && operation !== 'whoami' && !options.syncing && !values.refresh && !values.resume && fresh)) {
+       if (!saved) {
+         let record;
+@@ -1926,7 +2008,7 @@ async function runCommand(argv, { clientFactory = options => new Client(options)
+         if (!record) throw new Failure('CACHE_MISS', 'This query is not cached; run it online first or import the corresponding archive');
+         return { result: envelope({ data: record, meta: { account, source: 'cache', offline: true, stale: true }, coverage: { complete: false, reason: 'cached_record' } }), options };
+       }
+-      const data = cache.list(account, { collection: key, limit });
++      const data = cache.list(account, { collection: key, limit, newest:operation==='activity'&&(values.kind??'posts')==='posts' });
+       return { result: envelope({ data: operations[operation].paged || operations[operation].many || options.batchAnalytics ? data : data[0], meta: { account, source: 'cache', offline: true, observed_at: saved.updatedAt, stale: !fresh }, coverage: { complete: false, reason: 'cached_observations' },...(operation==='scheduled'&&saved.cursor?.total>data.length?{warnings:[`${data.length} of ${saved.cursor.total} scheduled posts are cached; run scheduled --refresh online to fetch the remaining contents`]}:{}) }), options };
+     }
+     await authenticate();
+@@ -1955,13 +2037,13 @@ async function runCommand(argv, { clientFactory = options => new Client(options)
+     let fetchPage;
+     if (['people', 'posts', 'companies'].includes(operation)) fetchPage = cursor => client.search(operation, args[0], cursor, pageSize, options.facets);
+     if (operation === 'activity') {
+-      const owner = args[0] === 'me' ? self : await client.profile(args[0]);
+-      cache.commit(account, `profile:${args[0]}`, [owner], null);
+-      fetchPage = cursor => client.activity(owner, values.kind ?? 'posts', cursor, pageSize);
++      const actors = options.activityActors;
++      cache.commit(account, `actors:${args.join(',')}`, actors, null);
++      fetchPage = actors.length===1&&actors[0].kind==='profile' ? cursor => client.activity(actors[0], values.kind ?? 'posts', cursor, pageSize) : cursor => client.authorPosts(actors,cursor,pageSize);
+     }
+     if (['connections', 'invitations'].includes(operation)) fetchPage = cursor => client.network(operation, cursor, pageSize);
+     if (operation === 'feed') fetchPage = cursor => client.feed(cursor, pageSize);
+-    const result = await sync(cache, account, key, fetchPage, { limit, maxPages, resume: values.resume, log });
++    const result = await sync(cache, account, key, fetchPage, { limit, maxPages, resume: values.resume, sort:operation==='activity'&&(values.kind??'posts')==='posts'?newestPosts:undefined, log });
+     // Tokens stay in SQLite. Resume is bound to this account and exact query key.
+     result.page = { ...result.page, next: result.page.next ? { resumable: operation !== 'feed' } : null };
+     return { result: envelope({ ...result, meta: { ...result.meta, account, cached: true, ...(options.facets.length ? { filters: options.facets } : {}) } }), options };
+@@ -1970,7 +2052,7 @@ async function runCommand(argv, { clientFactory = options => new Client(options)
+ 
+ export async function run(argv,dependencies={}){
+   const response=await runCommand(argv,dependencies),{options}=response;
+-  if(!options.values.help&&!options.values.describe&&(options.resolvedFilters?.length||options.resolvedProfile))response.result={...response.result,meta:{...response.result.meta,...(options.resolvedFilters?.length?{resolved_filters:options.resolvedFilters}:{}),...(options.resolvedProfile?{resolved_profile:options.resolvedProfile}:{})}};
++  if(!options.values.help&&!options.values.describe&&(options.resolvedFilters?.length||options.resolvedProfile||options.activityActors))response.result={...response.result,meta:{...response.result.meta,...(options.resolvedFilters?.length?{resolved_filters:options.resolvedFilters}:{}),...(options.resolvedProfile?{resolved_profile:options.resolvedProfile}:{}),...(options.activityActors?{resolved_actors:options.activityActors.map(({id,kind,name,url})=>clean({id,kind,name,url}))}:{})}};
+   return response;
+ }
+ /** Only interactive Markdown is paged. Data is passed on stdin, never interpolated into a command. */
+@@ -2002,7 +2084,15 @@ Profile targets:
+   Use me, a profile URL/URN/identifier, or a quoted name: linkedin activity "First Last"
+   Names select the first accessible result in your personalized people search; the selection is shown.
+   Bare single words remain identifiers; use name:Anand to search a single-word name.
+-  Applies to profile, activity and backup. Offline/resume reuses saved account-scoped resolutions.
++  Applies to profile and backup. Offline/resume reuses saved account-scoped resolutions.
++
++Activity targets:
++  linkedin activity sanand0 ramar --limit 20
++  linkedin activity openai
++  linkedin activity https://www.linkedin.com/company/openai/home
++  Bare usernames try profiles, then exact company slugs, then people name search. Profiles win ambiguity.
++  URLs/URNs are explicit. Native member/company lists use latest order; returned posts are sorted by publication.
++  Companies and multiple actors support posts only. Comments/reactions require a single profile.
+ 
+ People search filters (OR within a filter; AND across filters):
+ ${Object.entries(schema.search_filters).map(([key,description])=>'  --'+key+': '+description).join('\n')}
+diff --git a/tests/test_linkedin.mjs b/tests/test_linkedin.mjs
+index 24a4569..94b85a0 100644
+--- a/tests/test_linkedin.mjs
++++ b/tests/test_linkedin.mjs
+@@ -664,7 +664,7 @@ test('explicit identities bypass people lookup and missing names/filters fail ra
+ 
+ test('posts put timestamps first and infer missing publication time from stable activity IDs',()=>{
+  const id='urn:li:activity:'+String(BigInt(Date.parse('2026-11-09T10:30:00Z'))<<22n),record={kind:'post',id,author:{name:'Author',headline:'A long headline'},text:'Body'};
+- const output=render({ok:true,data:record},'md',undefined,mdContext('post'));assert.match(output,/\n\nPublished: 9 Nov 2026, 10:30 UTC \(from activity ID\) · Author/);assert.ok(output.indexOf('Published:')<output.indexOf('Body'));
++ const output=render({ok:true,data:record},'md',undefined,mdContext('post'));assert.match(output,/\nPublished: 9 Nov 2026, 10:30 UTC \(from activity ID\) · Author/);assert.ok(output.indexOf('Published:')<output.indexOf('Body'));
+ });
+ 
+ test('interactive Markdown prefers glow -p, falls back to PAGER, and leaves pipes/raw fallback untouched',async()=>{
+@@ -696,7 +696,7 @@ test('paths reports effective locations and configuration without credentials, b
+ });
+ 
+ test('native session cleanup closes every owned socket and browser socket after a target-close failure',async()=>{
+- const client=new Client(),closed=[],targets=[];client.page={close(){closed.push('borrowed');}};client.owned=[{id:'one',page:{close(){closed.push('one');}}},{id:'two',page:{close(){closed.push('two');}}}];client.browser={async call(method,{targetId}){targets.push(targetId);if(targetId==='two')throw Error('Target disappeared');},close(){closed.push('browser');}};
++ const client=new Client(),closed=[],targets=[];client.json=async()=>[];client.page={close(){closed.push('borrowed');}};client.owned=[{id:'one',page:{close(){closed.push('one');}}},{id:'two',page:{close(){closed.push('two');}}}];client.browser={async call(method,{targetId}){targets.push(targetId);if(targetId==='two')throw Error('Target disappeared');},close(){closed.push('browser');}};
+  await assert.rejects(client.close(),/Target disappeared/);assert.deepEqual(new Set(closed),new Set(['borrowed','one','two','browser']));assert.deepEqual(targets,['two','one']);
+ });
+ 
+@@ -789,3 +789,70 @@ test('native short permalinks follow a bounded HEAD redirect and restore clipboa
+ test('machine post records carry inferred publication timestamps and the help documents human lookup/viewer behavior',async()=>{
+  const {postRecord,helpText}=await import('../linkedin'),when='2026-11-09T10:30:00.000Z',id='urn:li:activity:'+String(BigInt(Date.parse(when))<<22n);const record=postRecord({metadata:{backendUrn:id},commentary:{text:'Body'}});assert.equal(record.publishedAt,when);assert.equal(record.publishedAtConfidence,'id');const help=helpText();for(const text of ['Chennai','Tata','first accessible','glow -p','$PAGER','scheduled','paths'])assert.ok(help.includes(text),text);
+ });
++
++test('post Markdown has a three-line header without redundant profile or Post labels',()=>{
++ const output=render({ok:true,data:mdPost},'md',undefined,mdContext('post'));
++ const lines=output.split('\n');assert.match(lines[0],/^# Post by Ada Rao$/);assert.match(lines[1],/^Published: .* · Author: Ada Rao/);assert.equal(lines[2],mdPost.url);assert.doesNotMatch(output,/Profile:|Post: /);
++ const list=render({ok:true,data:[mdPost,{...mdPost,id:'other'}]},'md',undefined,mdContext('feed'));assert.match(list,/## Post by Ada Rao\nPublished: .*\nhttps:/);
++});
++
++test('native author lists omit keywords, OR identities and request latest',async()=>{
++ const client=new Client();let captured;client.gql=async(id,args)=>{captured=args;return {data:{data:{searchDashClustersByAll:{elements:[],paging:{total:0}}}}};};
++ await client.authorPosts([{id:'urn:li:fsd_profile:one',kind:'profile'},{id:'urn:li:fsd_profile:two',kind:'profile'},{id:'urn:li:fsd_company:123',kind:'company'}],null,5);
++ assert.equal(captured.query.keywords,undefined);assert.deepEqual(captured.query.queryParameters,[{key:'resultType',value:['CONTENT']},{key:'fromMember',value:['one','two']},{key:'fromOrganization',value:['123']},{key:'sortBy',value:['date_posted']}]);
++});
++
++test('activity usernames try profiles, fall back to exact companies, and names search people',async()=>{
++ const f=fixture(),calls=[];const factory=()=>({...f.factory(),async profile(value){calls.push('profile:'+value);if(value==='openai'||value==='Alice')throw Object.assign(Error('Missing profile'),{code:value==='openai'?'FORBIDDEN':'NOT_FOUND'});return {id:'urn:li:fsd_profile:'+value,kind:'profile',username:value,name:value,url:'https://www.linkedin.com/in/'+value+'/'};},async company(value){calls.push('company:'+value);if(value!=='openai')throw Object.assign(Error('Missing company'),{code:'NOT_FOUND'});return{id:'urn:li:fsd_company:123',kind:'company',name:'OpenAI',url:'https://www.linkedin.com/company/openai/'};},async search(){calls.push('search');return{records:[{url:'https://www.linkedin.com/in/alice-person/',name:'Alice Person'}]};},async activity(){return{records:[{id:'post',kind:'post',text:'Body'}],next:null};},async authorPosts(actors){assert.equal(actors[0].kind,'company');return{records:[{id:'company-post',kind:'post',text:'Company body'}],next:null};}});
++ try{await run(['activity','sanand0','--db',f.path],{clientFactory:factory,log(){}});assert.deepEqual(calls,['profile:sanand0']);calls.length=0;
++ await run(['activity','openai','--db',f.path],{clientFactory:factory,log(){}});assert.deepEqual(calls,['profile:openai','company:openai']);calls.length=0;
++ await run(['activity','Alice','--db',f.path],{clientFactory:factory,log(){}});assert.deepEqual(calls,['profile:Alice','company:Alice','search','profile:alice-person']);calls.length=0;
++ await run(['activity','https://www.linkedin.com/company/openai/home','--db',f.path],{clientFactory:factory,log(){}});assert.deepEqual(calls,['company:openai']);
++ }finally{f.clean();}
++});
++
++test('multiple activity profiles use one native list, sort before limiting, and work offline',async()=>{
++ const f=fixture();let requests=0;const factory=()=>({...f.factory(),async profile(value){return{id:'urn:li:fsd_profile:'+value,kind:'profile',username:value,name:value};},async authorPosts(actors){requests++;assert.equal(actors.length,2);return{records:[{id:'old',kind:'post',publishedAt:'2026-01-01'},{id:'new',kind:'post',publishedAt:'2026-11-01'}],next:null,source:'voyager'};}});
++ try{const args=['activity','sanand0','ramar','--limit','1','--db',f.path];const response=await run(args,{clientFactory:factory,log(){}});assert.equal(response.result.data[0].id,'new');assert.equal(requests,1);
++ const offline=await run([...args,'--offline'],{clientFactory(){throw Error('No browser');}});assert.equal(offline.result.data[0].id,'new');
++ assert.throws(()=>parse(['activity','one','two','--kind','comments']),e=>e.code==='INVALID_INPUT');
++ }finally{f.clean();}
++});
++
++test('feed distinguishes collapse controls from unexpanded text and hydrates embedded reposts',async()=>{
++ const {feedCards}=await import('../linkedin');const dom=await backupDom(`<div data-urn="urn:li:activity:1" role="article"><div data-testid="expandable-text-box">Full text<button aria-label="see less">less</button><button aria-hidden="true">… more</button></div><div data-testid="expandable-text-box">Original text</div></div><div data-urn="urn:li:activity:2" role="article"><div data-testid="expandable-text-box">Short text<button aria-label="see more">… more</button></div></div>`);
++ try{const snapshot=await dom.root.value(feedCards);assert.equal(snapshot.records[0].textTruncated,false);assert.equal(snapshot.records[0].text,'Full text');assert.equal(snapshot.records[1].textTruncated,true);assert.deepEqual(snapshot.hydrate,['urn:li:activity:1','urn:li:activity:2']);
++ const client=new Client();client.feedPage=dom.page;client.wait=async()=>{};const hydrated=[];client.post=async id=>{hydrated.push(id);return{id,kind:'post',text:'API full text',textTruncated:false,...(id.endsWith(':1')?{resharedPost:{text:'API original text'}}:{})};};
++ const page=await client.feed(null,2);assert.equal(page.records[0].resharedPost.text,'API original text');assert.ok(page.records.every(post=>!post.textTruncated));assert.equal(hydrated.length,2);
++ }finally{await dom.close();}
++});
++
++test('post decoder accepts direct legacy reshares and metadata identity without infinite cycles',async()=>{
++ const {postRecord}=await import('../linkedin');const original={updateMetadata:{urn:'urn:li:activity:22'},actor:{name:'Original'},commentary:{text:'Original body'}};
++ const record=postRecord({updateMetadata:{urn:'urn:li:activity:33'},actor:{name:'Reposter'},commentary:{text:'My comment'},resharedUpdate:original});assert.equal(record.id,'urn:li:activity:33');assert.equal(record.resharedPost.text,'Original body');assert.equal(record.resharedPost.url,'https://www.linkedin.com/feed/update/urn:li:activity:22/');
++ const wrapped=postRecord({metadata:{backendUrn:'urn:li:activity:33'},resharedUpdate:{'*update':'original'}},ref=>ref==='original'?original:ref);assert.equal(wrapped.resharedPost.text,'Original body');
++ original.resharedUpdate=original;assert.doesNotThrow(()=>postRecord(original));
++ const c=new Client();c.api=async()=>({data:{'*value':'media'},included:[{entityUrn:'media',actor:{name:'Author'},content:{url:'https://example.com/image.jpg'}}]});assert.equal((await c.post('urn:li:activity:33')).text,'');
++});
++
++test('activity validates explicit types, propagates auth/rate/schema errors, and keeps profile precedence',async()=>{
++ const {activityTarget,resolveActivityTarget}=await import('../linkedin');assert.deepEqual(activityTarget('https://www.linkedin.com/company/openai/home'),{company:'openai'});assert.deepEqual(activityTarget('urn:li:company:123'),{company:'123'});assert.throws(()=>activityTarget('https://linkedin.com.evil/company/openai'));assert.throws(()=>activityTarget('https://www.linkedin.com/company/'));
++ for(const code of ['AUTH_REQUIRED','RATE_LIMITED','NETWORK_ERROR','SCHEMA_CHANGED'])await assert.rejects(resolveActivityTarget('someone',{profile(){throw Object.assign(Error('Failure'),{code});},company(){throw Error('Must not try company');}},()=>{throw Error('Must not search');}),e=>e.code===code);
++ await assert.rejects(resolveActivityTarget('https://www.linkedin.com/in/missing/',{profile(){throw Object.assign(Error('Missing'),{code:'NOT_FOUND'});},company(){throw Error('Must not try company');}},()=>{throw Error('Must not search');}),e=>e.code==='NOT_FOUND');
++ const person={kind:'profile',id:'person'};assert.equal(await resolveActivityTarget('openai',{async profile(){return person;},company(){throw Error('Profile must win');}},()=>[]),person);
++});
++
++test('company decoder handles numeric URLs, missing slugs and normalized roots',async()=>{
++ const c=new Client();let path;c.api=async p=>{path=p;return{data:{entityUrn:'urn:li:fsd_company:123',name:'Example',universalName:'example'}};};assert.equal((await c.company('123')).id,'urn:li:fsd_company:123');assert.match(path,/companies\/123$/);
++ c.api=async()=>({data:{elements:[]}});await assert.rejects(c.company('missing'),e=>e.code==='NOT_FOUND');
++});
++
++test('fresh paged caches honor larger limits and refresh replaces membership without losing saved records',async()=>{
++ const f=fixture();let calls=0;const factory=()=>({...f.factory(),async search(kind,query,cursor,size){calls++;const start=cursor?.start??0;return{records:Array.from({length:size},(_,i)=>({id:'p'+(start+i),kind:'profile',name:'Person '+(start+i)})),next:{start:start+size},source:'test'};}});
++ try{const args=['people','engineer','--page-size','2','--db',f.path];await run([...args,'--limit','1'],{clientFactory:factory,log(){}});const bigger=await run([...args,'--limit','3'],{clientFactory:factory,log(){}});assert.equal(bigger.result.data.length,3);assert.equal(calls,3);}finally{f.clean();}
++ const c=new Cache(':memory:');try{c.commit('a','query',[record('old')],null);await sync(c,'a','query',async()=>({records:[record('new')],next:null}),{limit:2});assert.deepEqual(c.list('a',{collection:'query'}).map(r=>r.id),['new']);assert.ok(c.get('a','old'));}finally{c.close();}
++});
++
++test('cleanup waits until closed targets stop appearing before allowing the next invocation',async()=>{
++ const client=new Client({timeout:1000});let polls=0;const closed=[];client.owned=[{id:'closing',page:{close(){closed.push('page');}}}];client.json=async()=>++polls<3?[{id:'closing'}]:[];client.browser={async call(method){assert.equal(method,'Target.closeTarget');},close(){closed.push('browser');}};await client.close();assert.equal(polls,3);assert.deepEqual(closed,['page','browser']);
++});

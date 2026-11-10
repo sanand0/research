@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "bin": { "linkedin": "./linkedin.mjs" },
+  "bin": { "linkedin": "./linkedin" },
   "engines": { "node": ">=24.0.0" },
   "scripts": { "test": "node --test tests/test_linkedin.mjs test-probe.mjs" }
 }
