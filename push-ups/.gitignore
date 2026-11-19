@@ -1,0 +1,9 @@
+work/
+logs/
+data/models/
+*-sample.npz
+.ruff_cache/
+__pycache__/
+*.pt
+# Raw keypoints live in GitHub release push-ups-keypoints-2026-11 (see README)
+data/raw/

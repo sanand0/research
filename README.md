@@ -1,5 +1,6 @@
 # Research
 
+- 19 Nov 2026: [`push-ups`](push-ups/). Per-rep push-up form scores from side-view video, with angles drawn on the video as proof. 4 pose models agree on 230/230 reps; RTMPose-x is the best single model, Gemini coaches well but scores badly. Form went from hip sag (7 Nov) to best (11 Nov, 87/100) to an overcorrected pike (15 Nov). See [Push-up Form Lab](https://sanand0.github.io/research/push-ups/).
 - 10 Nov 2026: [`claude-pi-tokens`](claude-pi-tokens/). Nine Haiku 5.5 HTML-animation trials: Pi used 37% fewer tokens and 19% less API-equivalent cost than cached Claude Code; includes a tested soft-budget launcher and checks.
 - 10 Nov 2026: [`linkedin-cli`](linkedin-cli/). Native LinkedIn CLI with profile/company/showcase activity lists, complete reposts, local-time Markdown, compatible backups, analytics, scheduled posts and SQLite/FTS offline caching.
 - 16 Oct 2026: [`mobile-features`](mobile-features/). Standalone mobile-browser sensor monitor, plus [Air Ink](mobile-features/draw.html): tilt-to-aim, hold-to-draw speed-sensitive ink.

@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Push-up Form Lab</title>
+<meta name="description" content="Per-rep push-up form scores from side-view video, with telestrated proof and a side-by-side comparison of pose-estimation approaches.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='6'%20fill='%23111418'/%3E%3Cpath%20d='M4%2022%20L13%2016%20L27%2018'%20stroke='%23c6ff3d'%20stroke-width='3'%20fill='none'%20stroke-linecap='round'/%3E%3Ccircle%20cx='13'%20cy='16'%20r='3'%20fill='%2300d1ff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* Look borrowed from sports video-analysis tools (Kinovea, Dartfish): a dark analysis canvas, neon telestration, broadcast-style condensed numerals. */
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#eef0ec, #0d0f12);
+  --panel: light-dark(#ffffff, #15191e);
+  --panel-2: light-dark(#f5f6f2, #1b2026);
+  --line: light-dark(#d5d9d0, #2a3139);
+  --ink: light-dark(#14181c, #e8ece6);
+  --muted: light-dark(#5b6470, #8f9aa6);
+  --accent: light-dark(#4d7c00, #c6ff3d);
+  --good: light-dark(#14853f, #3ddc84);
+  --ok: light-dark(#a86a00, #ffc53d);
+  --bad: light-dark(#c21f45, #ff5470);
+  --font-d: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font: "Barlow", system-ui, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --r: 10px;
+}
+:root[data-theme="light"] { color-scheme: light; }
+:root[data-theme="dark"] { color-scheme: dark; }
+* { box-sizing: border-box; }
+[hidden] { display: none !important; } /* component display rules would otherwise override the attribute */
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 var(--font); }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+h1, h2, h3 { font-family: var(--font-d); font-weight: 700; letter-spacing: .01em; line-height: 1.1; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(2rem, 5vw, 3.4rem); text-transform: uppercase; }
+h2 { font-size: 1.8rem; text-transform: uppercase; margin-block: 2.5rem .75rem; }
+h1 em, h2 em { font-style: normal; color: var(--accent); }
+.wrap { max-width: 1400px; margin-inline: auto; padding-inline: 16px; }
+header.top { display: flex; align-items: center; gap: 1rem; padding-block: 1.25rem .5rem; flex-wrap: wrap; }
+header.top .sub { color: var(--muted); max-width: 70ch; }
+header.top .tools { margin-left: auto; display: flex; gap: .5rem; }
+button, select { font: inherit; color: var(--ink); background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: .35rem .7rem; cursor: pointer; }
+button:hover, select:hover { border-color: var(--accent); }
+button[aria-pressed="true"] { background: var(--accent); color: contrast-color(var(--accent)); color: light-dark(#fff, #0d0f12); border-color: var(--accent); }
+.mono { font-family: var(--mono); }
+.muted { color: var(--muted); }
+.lede { font-size: 1.15rem; max-width: 80ch; }
+.lede strong { color: var(--accent); font-weight: 600; }
+
+/* Video cards */
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .75rem; margin-block: 1rem; }
+.card { text-align: left; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: .8rem 1rem; display: grid; gap: .2rem;
+  animation: rise .5s both; animation-delay: calc(var(--i) * 70ms); }
+.card[aria-pressed="true"] { border-color: var(--accent); background: var(--panel); color: var(--ink); box-shadow: inset 0 0 0 1px var(--accent); }
+.card .date { font-family: var(--font-d); font-size: 1.25rem; font-weight: 600; text-transform: uppercase; }
+.card .big { font-family: var(--font-d); font-size: 3rem; font-weight: 700; line-height: 1; }
+.card .big small { font-size: 1rem; color: var(--muted); font-weight: 500; }
+.card .row { display: flex; gap: .6rem; font-size: .85rem; color: var(--muted); flex-wrap: wrap; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* Workbench */
+.bench { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 1rem; align-items: start; }
+@media (max-width: 980px) { .bench { grid-template-columns: 1fr; } }
+.controls { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; margin-bottom: .6rem; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 9px; overflow: hidden; }
+.seg button { border: 0; border-radius: 0; border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.chips { display: flex; gap: .4rem; flex-wrap: wrap; }
+.chip { display: inline-flex; align-items: center; gap: .35rem; font-size: .9rem; padding: .2rem .6rem; border-radius: 99px; }
+.chip i { width: .7rem; height: .7rem; border-radius: 50%; background: var(--c); display: inline-block; }
+.chip[aria-pressed="true"] { background: color-mix(in oklab, var(--c) 25%, var(--panel-2)); color: var(--ink); border-color: var(--c); }
+label.pick { display: inline-flex; gap: .4rem; align-items: center; font-size: .9rem; }
+label.pick b { font-family: var(--font-d); font-size: 1.1rem; }
+.stage { position: relative; display: grid; grid-template-columns: 1fr; gap: 4px; background: #000; border-radius: var(--r); overflow: hidden; }
+.stage.side { grid-template-columns: 1fr 1fr; }
+.stage canvas { width: 100%; aspect-ratio: 16 / 9; display: block; touch-action: none; }
+.stage .tag { position: absolute; top: 8px; font: 600 .8rem var(--mono); padding: .15rem .5rem; border-radius: 6px; background: #000a; color: #fff; pointer-events: none; }
+.stage .loading { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-family: var(--mono); background: #000c; }
+#swipe { width: 100%; margin: .3rem 0 0; accent-color: var(--accent); }
+.transport { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin-top: .5rem; }
+.transport .time { font-family: var(--mono); margin-left: auto; color: var(--muted); }
+.transport svg { width: 1em; height: 1em; vertical-align: -.15em; }
+
+/* HUD */
+.hud { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: 1rem; display: grid; gap: .75rem; position: sticky; top: 8px; }
+.hud .repno { font-family: var(--font-d); text-transform: uppercase; color: var(--muted); font-size: 1.1rem; }
+.hud .score { font-family: var(--font-d); font-size: 4rem; font-weight: 700; line-height: .9; }
+.hud .score small { font-size: 1rem; color: var(--muted); font-weight: 500; margin-left: .3rem; }
+.bars { display: grid; gap: .4rem; }
+.bar { display: grid; grid-template-columns: 5.5rem 1fr 3.5rem; gap: .5rem; align-items: center; font-size: .85rem; }
+.bar .track { height: 8px; background: var(--panel-2); border-radius: 4px; overflow: hidden; }
+.bar .fill { display: block; height: 100%; background: var(--c, var(--accent)); width: var(--w); transition: width .2s; }
+.bar .v { font-family: var(--mono); text-align: right; font-size: .8rem; }
+.live { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; }
+.live div { background: var(--panel-2); border-radius: 8px; padding: .3rem .5rem; }
+.live b { display: block; font-family: var(--font-d); font-size: 1.5rem; line-height: 1; }
+.live span { font-size: .72rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.note { font-size: .85rem; border-left: 3px solid var(--line); padding-left: .6rem; color: var(--muted); }
+
+/* Timeline */
+.timeline { margin-top: .8rem; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: .5rem; }
+.timeline .head { display: flex; justify-content: space-between; align-items: center; gap: .5rem; flex-wrap: wrap; font-size: .85rem; color: var(--muted); padding: 0 .3rem .3rem; }
+#tl { width: 100%; height: auto; display: block; cursor: crosshair; user-select: none; }
+#tl text { font: 11px var(--font); fill: var(--muted); }
+#tl .lane-label { font: 600 11px var(--font); fill: var(--ink); }
+#tl .grid, #repchart .grid { stroke: var(--line); }
+.repchart { margin: .5rem 0 1rem; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: .5rem; }
+#repchart { width: 100%; height: auto; display: block; }
+#repchart text { font: 11px var(--font); fill: var(--muted); }
+#repchart circle { cursor: pointer; }
+.repchart figcaption { font-size: .85rem; padding: .2rem .4rem 0; }
+
+/* Tables */
+.tablewrap { overflow: auto; background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { padding: .4rem .6rem; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--line); }
+th { font-family: var(--font-d); font-weight: 600; text-transform: uppercase; font-size: .95rem; color: var(--muted); position: sticky; top: 0; background: var(--panel); }
+th:first-child, td:first-child { text-align: left; }
+td.s { background: color-mix(in oklab, var(--sc) 22%, transparent); cursor: pointer; }
+td .dir { font-size: .75rem; color: var(--muted); margin-left: .2rem; }
+tbody tr { cursor: pointer; }
+tbody tr:hover, tbody tr.active { background: color-mix(in oklab, var(--accent) 12%, transparent); }
+tbody tr.active td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+td.miss { color: var(--muted); }
+.legend { display: flex; gap: 1rem; flex-wrap: wrap; font-size: .85rem; color: var(--muted); margin: .4rem 0; }
+.legend i { display: inline-block; width: .8rem; height: .8rem; border-radius: 3px; vertical-align: -.1rem; margin-right: .3rem; background: var(--c); }
+.cmp td:first-child { font-weight: 600; }
+.cmp td.best { color: var(--accent); font-weight: 700; }
+.verdict { white-space: normal; text-align: left; min-width: 22ch; color: var(--muted); font-size: .85rem; }
+.prose { max-width: 85ch; }
+.prose table { display: block; overflow-x: auto; max-width: 100%; }
+.prose li { margin-block: .3rem; }
+details { background: var(--panel); border: 1px solid var(--line); border-radius: var(--r); padding: .6rem 1rem; margin-block: .6rem; }
+details summary { cursor: pointer; font-family: var(--font-d); font-size: 1.2rem; font-weight: 600; text-transform: uppercase; }
+details img { max-width: 100%; border-radius: 6px; margin-top: .6rem; }
+dialog { background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: var(--r); max-width: 560px; }
+dialog::backdrop { background: #0008; }
+kbd { font: .8rem var(--mono); border: 1px solid var(--line); border-bottom-width: 2px; border-radius: 4px; padding: 0 .3rem; }
+footer { padding-block: 3rem; color: var(--muted); font-size: .85rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Push-up <em>form lab</em></h1>
+      <p class="sub">Every rep from four side-view videos, scored on depth, body line, lockout, head and knees — with the angles drawn on the video so you can check each score yourself.</p>
+    </div>
+    <div class="tools">
+      <button id="help-btn" commandfor="help" command="show-modal" title="Keyboard shortcuts (?)">?</button>
+      <button id="theme" title="Toggle light / dark">◐</button>
+    </div>
+  </header>
+
+  <p class="lede" id="lede">Loading…</p>
+  <div class="cards" id="cards" role="group" aria-label="Choose video"></div>
+
+  <section class="bench" aria-label="Video workbench">
+    <div>
+      <div class="controls">
+        <div class="seg" id="modes" role="group" aria-label="Compare mode"></div>
+        <label class="pick"><b>A</b><select id="pick-a" aria-label="Approach A"></select></label>
+        <label class="pick" id="pick-b-wrap"><b>B</b><select id="pick-b" aria-label="Approach B"></select></label>
+        <div class="chips" id="chips" role="group" aria-label="Approaches to overlay" hidden></div>
+      </div>
+      <div class="stage" id="stage">
+        <canvas id="c0" aria-label="Video with pose overlay"></canvas>
+        <canvas id="c1" hidden aria-label="Video with pose overlay, approach B"></canvas>
+        <span class="tag" id="tag0" style="left:8px"></span>
+        <span class="tag" id="tag1" style="right:8px"></span>
+        <div class="loading" id="loading">Loading video…</div>
+      </div>
+      <input type="range" id="swipe" min="0" max="1" step="0.001" value="0.5" aria-label="Swipe position between A and B" hidden>
+      <div class="transport">
+        <button id="play" title="Play / pause (Space)"><svg viewBox="0 0 16 16"><path id="play-icon" d="M4 2l10 6-10 6z" fill="currentColor"/></svg></button>
+        <button id="prev-rep" title="Previous rep ([)">⟨ rep</button>
+        <button id="next-rep" title="Next rep (])">rep ⟩</button>
+        <button id="back" title="Back one frame (←)">−1f</button>
+        <button id="fwd" title="Forward one frame (→)">+1f</button>
+        <div class="seg" id="speeds" role="group" aria-label="Playback speed"></div>
+        <span class="time" id="time">0:00.0</span>
+      </div>
+      <div class="timeline">
+        <div class="head">
+          <span>Elbow angle (line) and the reps each approach found (blocks, coloured by score). Click to jump.</span>
+          <button id="zoom" aria-pressed="false" title="Zoom timeline to ±15 s around the playhead (Z)">Zoom</button>
+        </div>
+        <svg id="tl" viewBox="0 0 1000 250" role="img" aria-label="Timeline of elbow angle and detected reps"></svg>
+      </div>
+    </div>
+    <aside class="hud" id="hud" aria-live="polite"></aside>
+  </section>
+
+  <h2>Every rep, <em>scored</em></h2>
+  <p class="muted" id="table-sub"></p>
+  <figure class="repchart"><svg id="repchart" viewBox="0 0 1000 200" role="img" aria-label="Score of each rep by each approach"></svg>
+    <figcaption class="muted" id="repchart-cap"></figcaption></figure>
+  <div class="legend" id="legend"></div>
+  <div class="tablewrap" style="max-height: 70vh"><table id="reps"></table></div>
+
+  <h2>Which approach to <em>trust</em></h2>
+  <div class="prose" id="verdict">
+    <p><b>Use a pose model for scoring, and a vision-language model only for commentary.</b> The four pose models agree on every rep in three of four sessions (60 / 60 / 60). In the backlit fourth they agree on 50, and only YOLO double-counts. <b>RTMPose-x</b> is the best single model: it agrees most with the others, shakes least among the accurate ones, and runs at ~60 ms/frame. The <b>ensemble</b> (median of all four) is the safest default.</p>
+    <p>Gemini 4 Argon finds 90–100% of the reps and writes genuinely useful coaching — it spotted the piked top and the "worming" ascent. But its numbers are flat and miscalibrated, and it can't draw proof. Gemini 3.8 Flash missed 35 seconds of real push-ups.</p>
+    <p class="muted">No hand-labelled keypoints exist, so "accuracy" here means agreement with the other models, frame-to-frame steadiness, rep counts against an adjudicated set (reps ≥ 3 of 4 pose models agree on, plus eyeballed rulings on every dispute), and the visual audit below. Click a row to view that approach.</p>
+  </div>
+  <div class="tablewrap"><table class="cmp" id="cmp"></table></div>
+  <details>
+    <summary>Visual audit: same frames, every model</summary>
+    <p class="muted">Hard frames (transitions, the bottom of a rep, backlight). Blue = left side, red = right side, green dot = nose.</p>
+    <div id="audits"></div>
+  </details>
+
+  <h2>How it <em>works</em></h2>
+  <div class="prose" id="method"></div>
+  <footer>Pose: <a href="https://github.com/Tau-J/rtmlib">rtmlib</a> RTMPose · <a href="https://huggingface.co/docs/transformers/model_doc/vitpose">ViTPose++</a> · <a href="https://docs.ultralytics.com/tasks/pose/">Ultralytics YOLO26</a> · <a href="https://ai.google.dev/edge/mediapipe/solutions/vision/pose_landmarker">MediaPipe</a> · VLM: Gemini. Design after Kinovea / Dartfish telestration. Code: <a href="./">push-ups/</a>.</footer>
+</div>
+
+<dialog id="help" closedby="any">
+  <h3>Keyboard</h3>
+  <p><kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> frame step (<kbd>Shift</kbd> = 1 s) · <kbd>[</kbd>/<kbd>]</kbd> previous/next rep · <kbd>1</kbd>–<kbd>5</kbd> compare mode · <kbd>S</kbd> swap A/B · <kbd>Z</kbd> zoom timeline · <kbd>,</kbd>/<kbd>.</kbd> slower/faster.</p>
+  <p>In the rep table: <kbd>↑</kbd>/<kbd>↓</kbd>/<kbd>←</kbd>/<kbd>→</kbd> move between cells, <kbd>Enter</kbd> jumps the video to the moment that proves that cell.</p>
+  <h3>Reading the overlay</h3>
+  <p>Arc at the elbow = elbow angle. Dashed line = a perfectly straight body from shoulder to ankle; the short line from the hip shows how far the hips sag or pike. Dotted line past the shoulder = where a neutral head would be. Bottom dotted line = floor (wrists to toes), with the shoulder's height above it in arm-lengths. Green / amber / red = good / borderline / poor by the scoring thresholds.</p>
+  <form method="dialog"><button>Close</button></form>
+</dialog>
+
+<video id="video" muted playsinline preload="auto" hidden></video>
+
+<script type="module">
+// @ts-check
+let VIDEOS = ["07", "08", "11", "15"]; // replaced by the videos in data/site/summary.js
+const DATES = { "07": "7 Nov", "08": "8 Nov", "11": "11 Nov", "15": "15 Nov" };
+const SRC = (v) => `https://media.s-anand.net/2026-11-push-ups/2026-11-${v}-push-ups.webm`;
+const MODELS = {
+  "ensemble": { label: "Ensemble", c: "#e8ece6", cl: "#30363d", desc: "Per-keypoint median of the four pose models below" },
+  "rtmpose-x": { label: "RTMPose-x", c: "#00d1ff", cl: "#0077a8", desc: "rtmlib · RTMPose-x Halpe26 (body + feet) with YOLOX detector · ONNX" },
+  "vitpose-h": { label: "ViTPose++ H", c: "#ff5cf0", cl: "#a3159a", desc: "HF transformers · ViTPose++ huge with RT-DETR person detector" },
+  "yolo26x": { label: "YOLO26x-pose", c: "#ffb020", cl: "#9a5a00", desc: "Ultralytics · one-stage YOLO26x-pose @ 640" },
+  "mediapipe-heavy": { label: "MediaPipe", c: "#7cff6b", cl: "#2c8a1f", desc: "Google MediaPipe Pose Landmarker heavy (BlazePose), video tracking mode" },
+};
+const VLMS = {
+  "gemini-4-argon": { label: "Gemini 4 Argon", c: "#9aa7ff" },
+  "gemini-3.8-flash": { label: "Gemini 3.8 Flash", c: "#c3a6ff" },
+};
+const MODES = [["single", "Single"], ["overlay", "Overlay"], ["side", "Side by side"], ["swipe", "Swipe"], ["flicker", "Flicker"]];
+const SPEEDS = [0.25, 0.5, 1];
+const METRICS = ["depth", "body", "lockout", "neck", "knees"];
+const EVIDENCE = { depth: "bottom", body: "worst_body_t", lockout: "start", neck: "bottom", knees: "bottom" }; // where each metric's proof is
+
+const $ = (s) => /** @type {any} */ (document.querySelector(s));
+const P = window.PUSHUPS ||= {};
+const video = /** @type {HTMLVideoElement} */ ($("#video"));
+const state = { v: "07", a: "ensemble", b: "rtmpose-x", mode: "single", split: 0.5, on: ["ensemble", "rtmpose-x", "vitpose-h"], speed: 1, zoom: false };
+const cache = {};
+
+// ---------- utils ----------
+const loadScript = (src) => new Promise((ok, fail) => { const s = document.createElement("script"); s.src = src; s.onload = ok; s.onerror = () => fail(new Error(`Could not load ${src}`)); document.head.append(s); });
+const fmtT = (t) => `${Math.floor(t / 60)}:${(t % 60).toFixed(1).padStart(4, "0")}`;
+const isDark = () => matchMedia("(prefers-color-scheme: dark)").matches && document.documentElement.dataset.theme !== "light" || document.documentElement.dataset.theme === "dark";
+const mcol = (m) => (MODELS[m] ? (isDark() ? MODELS[m].c : MODELS[m].cl) : VLMS[m].c);
+const label = (m) => MODELS[m]?.label ?? VLMS[m]?.label ?? m;
+function scoreOf(metric, v) {
+  const s = P.summary.scoring[metric];
+  return Math.max(0, Math.min(100, (100 * (v - s.bad)) / (s.good - s.bad)));
+}
+// 0..100 -> red / amber / green. Page elements use theme tokens; the canvas sits on dark video, so it always uses the neon set.
+const scoreColor = (s) => (s >= 75 ? "var(--good)" : s >= 40 ? "var(--ok)" : "var(--bad)");
+const NEON = { good: "#3ddc84", ok: "#ffc53d", bad: "#ff5470", accent: "#c6ff3d" };
+const canvasScore = (s) => (s >= 75 ? NEON.good : s >= 40 ? NEON.ok : NEON.bad);
+const scoreHue = (s) => (s == null ? "transparent" : `oklch(0.72 0.17 ${25 + (s / 100) * 120})`);
+const deg = (v) => (v == null ? "–" : `${v.toFixed(0)}°`);
+
+// ---------- URL state ----------
+function readHash() {
+  const q = new URLSearchParams(location.hash.replace(/^#\??/, ""));
+  for (const k of ["v", "a", "b", "mode"]) if (q.get(k)) state[k] = q.get(k);
+  if (q.get("split")) state.split = +q.get("split");
+  if (q.get("on")) state.on = q.get("on").split(",").filter((m) => MODELS[m]);
+  if (q.get("speed")) state.speed = +q.get("speed");
+  state.zoom = q.get("zoom") === "1";
+  return q.get("t") ? +q.get("t") : null;
+}
+function writeHash() {
+  const q = new URLSearchParams({ v: state.v, a: state.a, b: state.b, mode: state.mode, on: state.on.join(","), split: state.split.toFixed(3), speed: String(state.speed), t: video.currentTime.toFixed(2) });
+  if (state.zoom) q.set("zoom", "1");
+  history.replaceState(null, "", `#?${q}`);
+}
+
+// ---------- data ----------
+/** Inverse of analyze.pack(): base64 → inflate → running sum over rows of `width` int16 values. */
+async function unpack(b64, width) {
+  const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+  const d = new Int16Array(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate"))).arrayBuffer());
+  for (let i = width; i < d.length; i++) d[i] += d[i - width];
+  return d;
+}
+/** Decode every model's tracks for video v once; model() then reads the cache synchronously on every frame. */
+async function prepare(v) {
+  await Promise.all(Object.keys(MODELS).map(async (m) => {
+    if (cache[`${v}/${m}`]) return;
+    const d = P[v].models[m];
+    const sig = Object.fromEntries(await Promise.all(Object.entries(d.sig).map(async ([k, b]) => [k, await unpack(b, 1)])));
+    cache[`${v}/${m}`] = { xy: await unpack(d.xy, P[v].pts.length * 2), sig, reps: d.reps, summary: P.summary.videos[v].models[m] };
+  }));
+}
+const model = (v, m) => cache[`${v}/${m}`];
+function frameAt(t) {
+  const d = P[state.v];
+  const f = Math.max(0, Math.min(d.n - 1.001, (t - d.t0) / d.dt));
+  return [Math.floor(f), f - Math.floor(f)];
+}
+/** Interpolated pose: {name: [x, y]} normalised 0..1, or null for missing points */
+function poseAt(m, t) {
+  const d = P[state.v], { xy } = model(state.v, m), [i, u] = frameAt(t), k = d.pts.length;
+  const out = {};
+  d.pts.forEach((p, j) => {
+    const a = (i * k + j) * 2, b = ((i + 1) * k + j) * 2;
+    const A = xy[a] >= 0 ? [xy[a], xy[a + 1]] : null, B = xy[b] >= 0 ? [xy[b], xy[b + 1]] : null;
+    const pt = A && B ? [A[0] + (B[0] - A[0]) * u, A[1] + (B[1] - A[1]) * u] : A ?? B;
+    out[p] = pt ? [pt[0] / 5000, pt[1] / 5000] : null; // analyze.py stores 1/5000 of the frame
+  });
+  return out;
+}
+function sigAt(m, k, t) {
+  const s = model(state.v, m).sig[k], [i, u] = frameAt(t);
+  const a = s[i], b = s[i + 1] ?? a;
+  if (a === -9999 || b === -9999) return null;
+  return (a + (b - a) * u) / (k === "height" ? 100 : 1); // degrees; height in 0.01 arm-lengths
+}
+const repAt = (m, t) => model(state.v, m).reps.find((r) => r.start <= t && t <= r.end);
+
+// ---------- drawing ----------
+const canvases = [$("#c0"), $("#c1")];
+function sizeCanvases() {
+  for (const c of canvases) {
+    const w = Math.round(c.clientWidth * devicePixelRatio);
+    if (w && c.width !== w) { c.width = w; c.height = Math.round((w * 9) / 16); }
+  }
+}
+function line(ctx, pts, color, w, dash = []) {
+  const ok = pts.filter(Boolean);
+  if (ok.length < 2) return;
+  ctx.save(); ctx.strokeStyle = color; ctx.lineWidth = w; ctx.setLineDash(dash); ctx.lineCap = ctx.lineJoin = "round";
+  ctx.beginPath(); ok.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.stroke(); ctx.restore();
+}
+function tag(ctx, [x, y], text, color, s) {
+  ctx.save(); ctx.font = `600 ${13 * s}px "JetBrains Mono", monospace`;
+  const w = ctx.measureText(text).width + 10 * s, h = 18 * s;
+  ctx.fillStyle = "#000c"; ctx.beginPath(); ctx.roundRect(x, y - h / 2, w, h, 4 * s); ctx.fill();
+  ctx.fillStyle = color; ctx.fillText(text, x + 5 * s, y + 4.5 * s); ctx.restore();
+}
+/** Telestrate one model's pose. full = all annotations, semantic colours; else skeleton + elbow in the model colour. */
+function drawPose(ctx, m, t, full) {
+  const W = ctx.canvas.width, H = ctx.canvas.height, s = Math.max(W / 960, 0.8 * devicePixelRatio); // floor keeps labels legible in half-width panes
+  const n = poseAt(m, t), p = Object.fromEntries(Object.entries(n).map(([k, v]) => [k, v && [v[0] * W, v[1] * H]]));
+  const col = MODELS[m].c;
+  const { shoulder: sh, elbow: el, wrist: wr, hip, knee, ankle: an, ear, toe, heel } = p;
+  const lw = 3.2 * s;
+  const elbow = sigAt(m, "elbow", t), body = sigAt(m, "body", t), neck = sigAt(m, "neck", t), knees = sigAt(m, "knees", t), height = sigAt(m, "height", t);
+  if (full) {
+    // floor line (wrist→toe, extended) and shoulder height above it
+    const ft = toe ?? an;
+    if (wr && ft) {
+      const dx = ft[0] - wr[0], dy = ft[1] - wr[1];
+      line(ctx, [[wr[0] + dx * 0.15, wr[1] + dy * 0.15], [wr[0] - dx * 0.25, wr[1] - dy * 0.25]], "#ffffff70", 1.5 * s, [2 * s, 6 * s]);
+      line(ctx, [[ft[0] + dx * 0.05, ft[1] + dy * 0.05], wr], "#ffffff70", 1.5 * s, [2 * s, 6 * s]);
+      if (sh && height != null) {
+        const L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L, k = (sh[0] - wr[0]) * ux + (sh[1] - wr[1]) * uy;
+        const foot = [wr[0] + ux * k, wr[1] + uy * k];
+        line(ctx, [sh, foot], "#ffffffb0", 1.5 * s, [4 * s, 4 * s]);
+        tag(ctx, [foot[0] - 120 * s, (sh[1] + foot[1]) / 2], `height ${height.toFixed(2)}`, "#fff", s);
+      }
+    }
+    // straight-body reference shoulder→ankle and hip deviation
+    if (sh && an && hip && body != null) {
+      const c = canvasScore(scoreOf("body", Math.abs(body)));
+      line(ctx, [sh, an], "#ffffffc0", 2 * s, [8 * s, 6 * s]);
+      const dx = an[0] - sh[0], dy = an[1] - sh[1], L2 = dx * dx + dy * dy, k = ((hip[0] - sh[0]) * dx + (hip[1] - sh[1]) * dy) / L2;
+      line(ctx, [hip, [sh[0] + dx * k, sh[1] + dy * k]], c, 3 * s);
+      tag(ctx, [hip[0] - 30 * s, hip[1] + (body > 0 ? -26 : 26) * s], `${body > 0 ? "pike" : "sag"} ${Math.abs(body).toFixed(0)}°`, c, s);
+    }
+    // neutral-head guide: hip→shoulder continued past the shoulder
+    if (sh && hip && ear && neck != null) {
+      const c = canvasScore(scoreOf("neck", Math.abs(neck)));
+      const dx = sh[0] - hip[0], dy = sh[1] - hip[1], L = Math.hypot(dx, dy), e = Math.hypot(ear[0] - sh[0], ear[1] - sh[1]);
+      line(ctx, [sh, [sh[0] + (dx / L) * e * 1.3, sh[1] + (dy / L) * e * 1.3]], "#ffffffa0", 1.5 * s, [3 * s, 4 * s]);
+      line(ctx, [sh, ear], c, lw);
+      tag(ctx, [ear[0] + 10 * s, ear[1] - 22 * s], `head ${neck > 0 ? "up" : "down"} ${Math.abs(neck).toFixed(0)}°`, c, s);
+    }
+    line(ctx, [sh, hip], "#ffffffe0", lw);
+    const kc = knees != null ? canvasScore(scoreOf("knees", knees)) : "#fff";
+    line(ctx, [hip, knee, an], kc, lw);
+    line(ctx, [heel, an, toe], "#ffffffc0", 2 * s);
+    if (knee && knees != null && knees < 170) tag(ctx, [knee[0] - 20 * s, knee[1] + 22 * s], `knee ${knees.toFixed(0)}°`, kc, s);
+  } else {
+    line(ctx, [ear, sh, hip, knee, an], col, lw);
+    line(ctx, [heel, an, toe], col, 2 * s);
+  }
+  // arm + elbow arc (both modes)
+  const ac = full ? NEON.accent : col;
+  line(ctx, [sh, el, wr], ac, lw * 1.2);
+  if (sh && el && wr && elbow != null) {
+    const a1 = Math.atan2(sh[1] - el[1], sh[0] - el[0]), a2 = Math.atan2(wr[1] - el[1], wr[0] - el[0]);
+    let d = a2 - a1; while (d > Math.PI) d -= 2 * Math.PI; while (d < -Math.PI) d += 2 * Math.PI;
+    ctx.save(); ctx.fillStyle = ac + "40"; ctx.strokeStyle = ac; ctx.lineWidth = 2 * s;
+    ctx.beginPath(); ctx.moveTo(...el); ctx.arc(el[0], el[1], 28 * s, a1, a1 + d, d < 0); ctx.closePath(); ctx.fill(); ctx.stroke(); ctx.restore();
+    tag(ctx, [el[0] + 14 * s, el[1] + 30 * s], full ? `elbow ${elbow.toFixed(0)}°` : `${label(m)} ${elbow.toFixed(0)}°`, ac, s);
+  }
+  for (const q of [ear, sh, el, wr, hip, knee, an]) if (q) { ctx.fillStyle = full ? "#fff" : col; ctx.beginPath(); ctx.arc(q[0], q[1], 4 * s, 0, 7); ctx.fill(); }
+}
+let flickOn = false;
+function render() {
+  if (!model(state.v, state.a)) return; // ResizeObserver can fire before the video's data is decoded
+  sizeCanvases();
+  const t = video.currentTime, [c0, c1] = canvases;
+  const frame = (c) => { const ctx = c.getContext("2d"); ctx.drawImage(video, 0, 0, c.width, c.height); return ctx; };
+  const ctx = frame(c0);
+  const tags = ["", ""];
+  if (state.mode === "single") { drawPose(ctx, state.a, t, true); tags[0] = label(state.a); }
+  if (state.mode === "overlay") { for (const m of state.on) drawPose(ctx, m, t, false); tags[0] = "Overlay"; }
+  if (state.mode === "flicker") { const m = flickOn ? state.b : state.a; drawPose(ctx, m, t, true); tags[0] = label(m); }
+  if (state.mode === "side") { drawPose(ctx, state.a, t, true); drawPose(frame(c1), state.b, t, true); tags[0] = `A · ${label(state.a)}`; tags[1] = `B · ${label(state.b)}`; }
+  if (state.mode === "swipe") {
+    const x = state.split * c0.width;
+    ctx.save(); ctx.beginPath(); ctx.rect(0, 0, x, c0.height); ctx.clip(); drawPose(ctx, state.a, t, true); ctx.restore();
+    ctx.save(); ctx.beginPath(); ctx.rect(x, 0, c0.width - x, c0.height); ctx.clip(); drawPose(ctx, state.b, t, true); ctx.restore();
+    line(ctx, [[x, 0], [x, c0.height]], "#fff", 3 * devicePixelRatio);
+    tags[0] = `◀ A · ${label(state.a)}`; tags[1] = `B · ${label(state.b)} ▶`;
+  }
+  $("#tag0").textContent = tags[0]; $("#tag1").textContent = tags[1];
+  $("#tag1").hidden = !tags[1];
+  $("#time").textContent = `${fmtT(t)} / ${fmtT(video.duration || 0)}`;
+  hud(t); playhead(t); activeRow(t);
+}
+// rAF while playing: requestVideoFrameCallback needs a rendered <video>; ours is hidden and only drawn into canvases.
+function loop() { render(); if (!video.paused) requestAnimationFrame(loop); }
+
+// ---------- HUD ----------
+let lastHud = "";
+function hud(t) {
+  const m = state.mode === "flicker" && flickOn ? state.b : state.a;
+  const r = repAt(m, t), reps = model(state.v, m).reps;
+  const live = [["elbow", "Elbow", "°"], ["body", "Hip bend", "°"], ["neck", "Head", "°"], ["knees", "Knee", "°"], ["height", "Height", ""]]
+    .map(([k, l, u]) => { const v = sigAt(m, k, t); return `<div><b>${v == null ? "–" : k === "height" ? v.toFixed(2) : v.toFixed(0) + u}</b><span>${l}</span></div>`; }).join("");
+  const vl = Object.keys(VLMS).map((v) => P[state.v].vlm[v]?.reps.find((q) => q.start - 0.3 <= t && t <= q.end + 0.3) && [v, P[state.v].vlm[v].reps.find((q) => q.start - 0.3 <= t && t <= q.end + 0.3)]).filter(Boolean);
+  const html = `
+    <div class="repno">${r ? `Rep ${r.n} of ${reps.length}` : "Between reps"} · ${label(m)}</div>
+    <div class="score" style="color:${r ? scoreColor(r.score) : "inherit"}">${r ? r.score : "–"}<small>${r ? "/ 100 rep score" : ""}</small></div>
+    ${r ? `<div class="bars">${METRICS.map((k) => `<div class="bar" title="${P.summary.scoring[k].label}: ${r.metrics[k]} ${P.summary.scoring[k].unit} → ${r.scores[k]}/100 (weight ${P.summary.scoring[k].weight * 100}%)"><span>${P.summary.scoring[k].label}</span><span class="track"><span class="fill" style="--w:${r.scores[k] ?? 0}%;--c:${scoreColor(r.scores[k] ?? 0)}"></span></span><span class="v">${deg(r.metrics[k])}</span></div>`).join("")}</div>
+      <div class="muted" style="font-size:.85rem">${r.body_dir === "sag" ? "Hips sag" : "Hips pike"} · head ${r.neck_dir} · down ${r.down_s}s / up ${r.up_s}s</div>` : `<div class="muted">Play, or pick a rep from the table or timeline.</div>`}
+    <div class="live">${live}</div>
+    ${vl.map(([v, q]) => `<div class="note"><b style="color:${VLMS[v].c}">${VLMS[v].label}</b> ${q.overall}/100 — ${q.note.replace(/[<>&]/g, "")}</div>`).join("")}`;
+  if (html !== lastHud) { $("#hud").innerHTML = html; lastHud = html; }
+}
+
+// ---------- timeline ----------
+const TL = { x0: 120, x1: 990, top: 8, h: 110, lane: 15 };
+function tlRange() {
+  const dur = video.duration || P[state.v].n * P[state.v].dt;
+  if (!state.zoom) return [0, dur];
+  const t = video.currentTime, a = Math.max(0, Math.min(dur - 30, t - 15));
+  return [a, a + 30];
+}
+function renderTimeline() {
+  const [ta, tb] = tlRange(), X = (t) => TL.x0 + ((t - ta) / (tb - ta)) * (TL.x1 - TL.x0);
+  const Y = (a) => TL.top + TL.h - ((a - 40) / 140) * TL.h;
+  const d = P[state.v], parts = [];
+  for (const g of [90, 165]) parts.push(`<line class="grid" x1="${TL.x0}" x2="${TL.x1}" y1="${Y(g)}" y2="${Y(g)}" stroke-dasharray="3 3"/><text x="${TL.x0 - 6}" y="${Y(g) + 4}" text-anchor="end">${g}°</text>`);
+  parts.push(`<text x="4" y="${TL.top + 12}" class="lane-label">Elbow angle</text>`);
+  const traces = state.mode === "overlay" ? state.on : state.mode === "single" ? [state.a] : [state.a, state.b];
+  for (const m of traces) {
+    const s = model(state.v, m).sig.elbow, step = Math.max(1, Math.floor(s.length / 2500 * (tb - ta) / (d.n * d.dt)));
+    let path = "", pen = false;
+    for (let i = 0; i < s.length; i += state.zoom ? 1 : step) {
+      const t = d.t0 + i * d.dt;
+      if (t < ta || t > tb || s[i] === -9999) { pen = false; continue; }
+      path += `${pen ? "L" : "M"}${X(t).toFixed(1)},${Y(s[i]).toFixed(1)}`; pen = true;
+    }
+    parts.push(`<path d="${path}" fill="none" stroke="${mcol(m)}" stroke-width="1.3" opacity=".9"/>`);
+  }
+  // rep lanes: every pose approach + every VLM
+  const lanes = [...Object.keys(MODELS), ...Object.keys(VLMS).filter((v) => d.vlm[v])];
+  const ty = TL.top + TL.h + 12;
+  parts.push(`<text x="4" y="${ty + 10}" class="lane-label">Adjudicated (${d.truth?.length ?? 0})</text>`);
+  for (const b of d.truth ?? []) if (b >= ta && b <= tb) parts.push(`<line x1="${X(b)}" x2="${X(b)}" y1="${ty}" y2="${ty + TL.lane - 3}" stroke="var(--ink)" stroke-width="1.5"><title>Adjudicated rep at ${fmtT(b)}</title></line>`);
+  lanes.forEach((m, j) => {
+    const y = TL.top + TL.h + 12 + (j + 1) * TL.lane;
+    const reps = MODELS[m] ? model(state.v, m).reps : d.vlm[m].reps;
+    parts.push(`<text x="4" y="${y + 10}" class="lane-label" ${m === state.a ? 'style="fill:var(--accent)"' : ""}>${label(m)} (${reps.length})</text>`);
+    for (const r of reps) {
+      if (r.end < ta || r.start > tb) continue;
+      const sc = MODELS[m] ? r.score : r.overall;
+      parts.push(`<rect x="${X(r.start).toFixed(1)}" y="${y}" width="${Math.max(1.5, X(r.end) - X(r.start)).toFixed(1)}" height="${TL.lane - 3}" rx="2" fill="${scoreHue(sc)}"><title>${label(m)} rep${r.n ? " " + r.n : ""}: ${sc}/100 · ${fmtT(r.start)}–${fmtT(r.end)}${r.note ? " · " + r.note.replace(/[<>&"]/g, "") : ""}</title></rect>`);
+    }
+    if (!MODELS[m]) for (const o of d.vlm[m].other_movements ?? []) {
+      if (o.end < ta || o.start > tb) continue;
+      parts.push(`<rect x="${X(Math.max(ta, o.start)).toFixed(1)}" y="${y + 4}" width="${Math.max(1, X(Math.min(tb, o.end)) - X(Math.max(ta, o.start))).toFixed(1)}" height="${TL.lane - 11}" fill="var(--line)"><title>${label(m)}: ${o.what.replace(/[<>&"]/g, "")} ${fmtT(o.start)}–${fmtT(o.end)}</title></rect>`);
+    }
+  });
+  const H = TL.top + TL.h + 16 + (lanes.length + 1) * TL.lane;
+  for (let k = Math.ceil(ta / 10) * 10; k <= tb; k += state.zoom ? 5 : 30) parts.push(`<text x="${X(k)}" y="${H + 10}" text-anchor="middle">${fmtT(k).replace(/\.0$/, "")}</text>`);
+  parts.push(`<line id="ph" y1="0" y2="${H}" stroke="var(--accent)" stroke-width="2"/>`);
+  const svg = $("#tl");
+  svg.setAttribute("viewBox", `0 0 1000 ${H + 16}`);
+  svg.innerHTML = parts.join("");
+  playhead(video.currentTime);
+}
+let tlEdge = 0;
+function playhead(t) {
+  const [ta, tb] = tlRange();
+  if (state.zoom && Math.abs(ta - tlEdge) > 2) { tlEdge = ta; return renderTimeline(); }
+  const x = TL.x0 + ((t - ta) / (tb - ta)) * (TL.x1 - TL.x0);
+  $("#ph")?.setAttribute("x1", x); $("#ph")?.setAttribute("x2", x);
+}
+function tlSeek(e) {
+  const svg = $("#tl"), b = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal;
+  const x = ((e.clientX - b.left) / b.width) * vb.width, [ta, tb] = tlRange();
+  if (x < TL.x0) return;
+  seek(ta + ((x - TL.x0) / (TL.x1 - TL.x0)) * (tb - ta));
+}
+
+// ---------- rep table ----------
+function match(reps, r, key = "bottom") {
+  const c = reps.map((q) => [Math.abs(q[key] - r.bottom), q]).sort((a, b) => a[0] - b[0])[0];
+  return c && c[0] <= 0.8 ? c[1] : null;
+}
+function renderTable() {
+  const d = P[state.v], A = model(state.v, state.a), sc = P.summary.scoring;
+  const others = [...Object.keys(MODELS).filter((m) => m !== state.a), ...Object.keys(VLMS).filter((v) => d.vlm[v])];
+  $("#table-sub").textContent = `${label(state.a)} found ${A.reps.length} reps in the ${DATES[state.v]} video. Click a row to jump to its bottom position; click a metric to jump to the frame that proves it. The right-hand columns show how the other approaches scored the same rep (— = they missed it).`;
+  $("#legend").innerHTML = METRICS.map((k) => `<span title="${sc[k].unit}"><b>${sc[k].label}</b> 100 at ${sc[k].good}°, 0 at ${sc[k].bad}° · ${sc[k].weight * 100}%</span>`).join("");
+  const head = `<thead><tr><th>Rep</th><th>Time</th><th>Score</th>${METRICS.map((k) => `<th title="${sc[k].unit}">${sc[k].label}</th>`).join("")}<th title="Seconds down / up">Tempo</th>${others.map((m) => `<th title="${MODELS[m]?.desc ?? "Vision-language model watching the video"}" style="color:${mcol(m)}">${label(m)}</th>`).join("")}</tr></thead>`;
+  const rows = A.reps.map((r, i) => {
+    const cells = METRICS.map((k) => `<td class="s" tabindex="-1" data-t="${r[EVIDENCE[k]]}" style="--sc:${scoreHue(r.scores[k])}" title="${sc[k].label}: ${r.metrics[k]} (${sc[k].unit}) → ${r.scores[k]}/100. Click to see it.">${deg(r.metrics[k])}${k === "body" ? `<span class="dir">${r.body_dir}</span>` : k === "neck" && r.neck_dir ? `<span class="dir">${r.neck_dir}</span>` : ""}</td>`).join("");
+    const oth = others.map((m) => {
+      const q = MODELS[m] ? match(model(state.v, m).reps, r) : match(d.vlm[m].reps, r);
+      const s = q ? (MODELS[m] ? q.score : q.overall) : null;
+      return s == null ? `<td class="miss" tabindex="-1" data-t="${r.bottom}">—</td>` : `<td class="s" tabindex="-1" data-t="${q.bottom}" style="--sc:${scoreHue(s)}" title="${label(m)}: ${s}/100${q.note ? " · " + q.note.replace(/[<>&"]/g, "") : ""}">${s}</td>`;
+    }).join("");
+    return `<tr data-i="${i}" data-t="${r.bottom}"><td tabindex="${i ? -1 : 0}" data-t="${r.bottom}">${r.n}</td><td class="mono" tabindex="-1" data-t="${r.bottom}">${fmtT(r.bottom)}</td><td class="s" tabindex="-1" data-t="${r.bottom}" style="--sc:${scoreHue(r.score)}"><b>${r.score}</b></td>${cells}<td class="mono" tabindex="-1" data-t="${r.start}" title="${r.down_s} s down, ${r.up_s} s up">${r.down_s.toFixed(1)}↓ ${r.up_s.toFixed(1)}↑</td>${oth}</tr>`;
+  }).join("");
+  const s = A.summary;
+  const foot = `<tfoot><tr><th>Mean</th><th></th><th>${s.score ?? "–"}</th>${METRICS.map((k) => `<th>${s.metrics[k] ?? "–"}°</th>`).join("")}<th></th>${others.map((m) => `<th>${MODELS[m] ? P.summary.videos[state.v].models[m].score ?? "–" : P.summary.videos[state.v].vlm[m]?.score ?? "–"}</th>`).join("")}</tr></tfoot>`;
+  $("#reps").innerHTML = head + `<tbody>${rows}</tbody>` + foot;
+  renderRepChart(A.reps, others.filter((m) => MODELS[m] || d.vlm[m]));
+}
+function renderRepChart(reps, others) {
+  const d = P[state.v], x0 = 40, x1 = 990, y0 = 10, y1 = 175;
+  const X = (i) => x0 + (reps.length > 1 ? (i / (reps.length - 1)) * (x1 - x0) : 0), Y = (v) => y1 - (v / 100) * (y1 - y0);
+  const parts = [0, 50, 100].map((g) => `<line class="grid" x1="${x0}" x2="${x1}" y1="${Y(g)}" y2="${Y(g)}" stroke-dasharray="3 3"/><text x="${x0 - 6}" y="${Y(g) + 4}" text-anchor="end">${g}</text>`);
+  const series = [state.a, ...others].map((m) => [m, reps.map((r) => {
+    const q = m === state.a ? r : MODELS[m] ? match(model(state.v, m).reps, r) : match(d.vlm[m].reps, r);
+    return q ? (MODELS[m] ? q.score : q.overall) : null;
+  })]);
+  for (const [m, ys] of series) {
+    let path = "";
+    ys.forEach((y, i) => { if (y != null) path += `${path && ys[i - 1] != null ? "L" : "M"}${X(i).toFixed(1)},${Y(y).toFixed(1)}`; });
+    const main = m === state.a;
+    parts.push(`<path d="${path}" fill="none" stroke="${mcol(m)}" stroke-width="${main ? 2.5 : 1.2}" opacity="${main ? 1 : 0.75}"/>`);
+    if (main) ys.forEach((y, i) => parts.push(`<circle cx="${X(i)}" cy="${Y(y)}" r="3.5" fill="${mcol(m)}" data-t="${reps[i].bottom}"><title>Rep ${reps[i].n}: ${y}/100 (${label(m)}). Click to jump.</title></circle>`));
+  }
+  for (let i = 0; i < reps.length; i += Math.max(1, Math.ceil(reps.length / 15))) parts.push(`<text x="${X(i)}" y="${y1 + 18}" text-anchor="middle">${reps[i].n}</text>`);
+  $("#repchart").innerHTML = parts.join("");
+  $("#repchart-cap").innerHTML = `Score per rep (rep number below). Thick line: <b style="color:${mcol(state.a)}">${label(state.a)}</b>. Thin lines: ${others.map((m) => `<span style="color:${mcol(m)}">${label(m)}</span>`).join(", ")} on the same reps. Gaps = that approach missed the rep.`;
+}
+let activeI = -1;
+function activeRow(t) {
+  const reps = model(state.v, state.a).reps, i = reps.findIndex((r) => r.start <= t && t <= r.end);
+  if (i === activeI) return;
+  document.querySelector("#reps tr.active")?.classList.remove("active");
+  if (i >= 0) document.querySelector(`#reps tr[data-i="${i}"]`)?.classList.add("active");
+  activeI = i;
+}
+
+// ---------- summary: cards, verdict, comparison ----------
+function renderCards() {
+  const S = P.summary.videos;
+  $("#cards").innerHTML = VIDEOS.map((v, i) => {
+    const m = S[v].models[state.a], worst = METRICS.map((k) => [k, m.scores[k]]).sort((a, b) => a[1] - b[1])[0];
+    return `<button class="card" style="--i:${i}" data-v="${v}" aria-pressed="${v === state.v}"><span class="date">${DATES[v]}</span><span class="big" style="color:${scoreColor(m.score)}">${m.score ?? "–"}<small> /100</small></span><span class="row"><span>${m.reps} reps</span><span>weakest: ${P.summary.scoring[worst[0]].label.toLowerCase()} (${worst[1]})</span></span><span class="row" title="Share of reps whose worst hip bend is a pike (hips above the shoulder–ankle line) vs a sag (below)">hips: ${m.pike_pct >= 50 ? `<b>pike</b> in ${m.pike_pct}%` : `<b>sag</b> in ${100 - m.pike_pct}%`} of reps</span></button>`;
+  }).join("");
+}
+function renderCompare() {
+  const S = P.summary.videos, cols = VIDEOS;
+  const all = [...Object.keys(MODELS), ...Object.keys(VLMS)];
+  const avg = (m, k) => { const xs = cols.map((v) => (MODELS[m] ? S[v].models[m]?.[k] : S[v].vlm[m]?.[k])).filter((x) => x != null); return xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null; };
+  const acc = (m) => {
+    const a = cols.map((v) => S[v].accuracy?.[m]).filter(Boolean), tp = a.reduce((x, y) => x + y.tp, 0), fp = a.reduce((x, y) => x + y.fp, 0), n = a.reduce((x, y) => x + y.truth, 0);
+    return a.length ? { recall: (100 * tp) / n, precision: (100 * tp) / (tp + fp || 1), tp, fp, n } : null;
+  };
+  const metrics = [["coverage", "Coverage %", "Near-side limb keypoints found (confidence ≥ 0.3)", 1, (a, b) => b - a],
+    ["jitter_px", "Jitter px", "Median frame-to-frame acceleration of raw keypoints, in 1080p pixels. Lower = steadier", 2, (a, b) => a - b],
+    ["consensus_pck10", "Agree %", "Keypoints within 10% of torso length of the median of the OTHER three models", 1, (a, b) => b - a],
+    ["ms", "ms / frame", "Median inference time on an RTX 2000 Ada laptop GPU (MediaPipe on CPU)", 0, (a, b) => a - b]];
+  const best = Object.fromEntries(metrics.map(([k, , , , cmp]) => [k, Object.keys(MODELS).filter((m) => m !== "ensemble" || k === "jitter_px").map((m) => [m, avg(m, k)]).filter(([, x]) => x != null).sort((a, b) => cmp(a[1], b[1]))[0]?.[0]]));
+  const accs = Object.fromEntries(all.map((m) => [m, acc(m)]));
+  const bestAcc = all.filter((m) => accs[m]).sort((a, b) => accs[b].recall + accs[b].precision - accs[a].recall - accs[a].precision)[0];
+  const head = `<thead><tr><th>Approach</th><th title="Share of the adjudicated reps this approach found / share of its reps that are real">Rep recall · precision</th>${cols.map((v) => `<th title="Reps found (adjudicated: ${S[v].truth ?? "?"}) · mean score">${DATES[v]}</th>`).join("")}${metrics.map(([, l, t]) => `<th title="${t}">${l}</th>`).join("")}<th>Verdict</th></tr></thead>`;
+  const rows = all.map((m) => {
+    const per = cols.map((v) => { const x = MODELS[m] ? S[v].models[m] : S[v].vlm[m]; return `<td title="${x ? `${x.reps} reps, mean score ${x.score}` : "not run"}">${x ? `${x.reps} · <b style="color:${scoreColor(x.score ?? 0)}">${x.score ?? "–"}</b>` : "–"}</td>`; }).join("");
+    const q = metrics.map(([k, , , dp]) => { const x = avg(m, k); return `<td class="${best[k] === m ? "best" : ""}">${x == null ? "–" : x.toFixed(dp)}</td>`; }).join("");
+    const ac = accs[m], acTd = ac ? `<td class="${m === bestAcc ? "best" : ""}" title="${ac.tp} of ${ac.n} adjudicated reps found; ${ac.fp} extra">${ac.recall.toFixed(0)}% · ${ac.precision.toFixed(0)}%</td>` : "<td>–</td>";
+    return `<tr data-m="${m}" ${MODELS[m] ? `title="Click to view ${label(m)} as approach A"` : ""}><td><span style="color:${mcol(m)}">●</span> ${label(m)}<br><span class="muted" style="font-weight:400;font-size:.75rem">${MODELS[m]?.desc ?? "Watches the 480p video at 5 fps; no keypoints"}</span></td>${acTd}${per}${q}<td class="verdict">${VERDICT[m] ?? ""}</td></tr>`;
+  }).join("");
+  $("#cmp").innerHTML = head + `<tbody>${rows}</tbody>`;
+}
+
+// From the analysis (README.md); update if data/site/summary.js changes
+const VERDICT = {
+  "ensemble": "<b>Use this.</b> Median of the four models outvotes any one model's glitch; 100% of adjudicated reps. Cost: run all four.",
+  "rtmpose-x": "<b>Best single model.</b> Top agreement, low jitter, feet keypoints, ONNX (no PyTorch). Pick this if you run one.",
+  "vitpose-h": "As accurate as RTMPose but 1.5–2× slower; its CPU-side preprocessing overheated this laptop.",
+  "yolo26x": "Fastest (20 ms), but 2–3× the jitter: double-counted reps in backlight and noisier angles drag scores down. Must run at 640.",
+  "mediapipe-heavy": "Smoothest (temporal tracking) but biased — lowest agreement; CPU-only here. Smooth ≠ accurate.",
+  "gemini-4-argon": "Counts well (90–100%) and its written coaching matched the geometry — but scores are poorly calibrated (scored the piked 15 Nov as high as its best sessions) and it draws no proof.",
+  "gemini-3.8-flash": "Unreliable: called 35 s of real push-ups “cobra stretches” (40% recall on 7 Nov) and gave all 56 reps on 11 Nov the same score.",
+};
+
+// ---------- control wiring ----------
+function renderControls() {
+  $("#modes").innerHTML = MODES.map(([k, l], i) => `<button data-mode="${k}" aria-pressed="${state.mode === k}" title="${l} (${i + 1})">${l}</button>`).join("");
+  $("#speeds").innerHTML = SPEEDS.map((s) => `<button data-speed="${s}" aria-pressed="${state.speed === s}">${s}×</button>`).join("");
+  const opts = (sel) => Object.keys(MODELS).map((m) => `<option value="${m}" ${m === sel ? "selected" : ""}>${label(m)}</option>`).join("");
+  $("#pick-a").innerHTML = opts(state.a); $("#pick-b").innerHTML = opts(state.b);
+  $("#chips").innerHTML = Object.keys(MODELS).map((m) => `<button class="chip" data-m="${m}" style="--c:${mcol(m)}" aria-pressed="${state.on.includes(m)}"><i></i>${label(m)}</button>`).join("");
+  const two = ["side", "swipe", "flicker"].includes(state.mode);
+  $("#pick-b-wrap").hidden = !two; $("#chips").hidden = state.mode !== "overlay"; $("#pick-a").parentElement.hidden = state.mode === "overlay";
+  $("#swipe").hidden = state.mode !== "swipe"; $("#swipe").value = state.split;
+  $("#stage").classList.toggle("side", state.mode === "side"); canvases[1].hidden = state.mode !== "side";
+  $("#zoom").setAttribute("aria-pressed", state.zoom);
+}
+function update({ table = true, timeline = true, cards = false } = {}) {
+  renderControls();
+  if (cards) renderCards();
+  if (timeline) renderTimeline();
+  if (table) { activeI = -1; renderTable(); }
+  lastHud = ""; render(); writeHash();
+}
+let flickTimer = 0;
+function setMode(mode) {
+  state.mode = mode;
+  clearInterval(flickTimer);
+  // flicker = A/B blink; a timer because it must keep alternating while the video is paused
+  if (mode === "flicker" && !matchMedia("(prefers-reduced-motion: reduce)").matches) flickTimer = setInterval(() => { flickOn = !flickOn; render(); }, 650);
+  update();
+}
+function seek(t) { video.currentTime = Math.max(0, Math.min(video.duration || t, t)); }
+async function setVideo(v) {
+  state.v = v;
+  $("#loading").hidden = false; $("#loading").textContent = "Loading data…";
+  if (!P[v]) await loadScript(`data/site/${v}.js`);
+  await prepare(v);
+  $("#loading").textContent = "Loading video…";
+  video.src = SRC(v); video.playbackRate = state.speed;
+  renderLede();
+  update({ cards: true });
+}
+function renderLede() {
+  const S = P.summary.videos, a = state.a;
+  const sc = VIDEOS.map((v) => S[v].models[a].score), reps = VIDEOS.reduce((n, v) => n + S[v].models[a].reps, 0);
+  const mean = (k) => Math.round(VIDEOS.reduce((x, v) => x + S[v].models[a].scores[k], 0) / VIDEOS.length);
+  const ranked = METRICS.map((k) => [k, mean(k)]).sort((x, y) => x[1] - y[1]);
+  const dirs = VIDEOS.map((v) => S[v].models[a].pike_pct);
+  const story = dirs[0] < 50 && dirs.at(-1) >= 50
+    ? ` The body-line story: hips <strong>sagged</strong> on ${DATES[VIDEOS[0]]} (${100 - dirs[0]}% of reps), then flipped to a <strong>pike</strong> by ${DATES[VIDEOS.at(-1)]} (${dirs.at(-1)}%) — the sag was fixed, then overcorrected.`
+    : "";
+  $("#lede").innerHTML = `${label(a)} found <strong>${reps} push-ups</strong> across four sessions, scoring <strong>${sc.join(" → ")}</strong> from 7 to 15 Nov. Strongest: <strong>${P.summary.scoring[ranked.at(-1)[0]].label.toLowerCase()}</strong> (${ranked.at(-1)[1]}/100). Weakest: <strong>${P.summary.scoring[ranked[0][0]].label.toLowerCase()}</strong> (${ranked[0][1]}/100) — ${LEDE_FIX[ranked[0][0]] ?? ""}${story}`;
+}
+const LEDE_FIX = {
+  body: "keep the hips on the dashed shoulder-to-ankle line, neither below (sag) nor above (pike).",
+  depth: "lower until the elbow arc reads 90° or less.",
+  lockout: "press until the elbows are fully straight at the top.",
+  neck: "keep the ear on the dotted line extending the back (eyes to the floor just ahead of the hands).",
+  knees: "keep the knees locked.",
+};
+
+document.addEventListener("click", (e) => {
+  const el = /** @type {HTMLElement} */ (e.target).closest("[data-mode],[data-speed],[data-m],[data-v],td[data-t],tr[data-t],circle[data-t]");
+  if (!el) return;
+  if (el.dataset.mode) return setMode(el.dataset.mode);
+  if (el.dataset.speed) { state.speed = +el.dataset.speed; video.playbackRate = state.speed; return update({ table: false, timeline: false }); }
+  if (el.closest("#cmp") && MODELS[el.dataset.m]) { state.a = el.dataset.m; renderLede(); update({ cards: true }); return $("#stage").scrollIntoView({ behavior: "smooth", block: "center" }); }
+  if (el.classList.contains("chip")) { const m = el.dataset.m; state.on = state.on.includes(m) ? state.on.filter((x) => x !== m) : [...state.on, m]; return update({ table: false }); }
+  if (el.dataset.v) return setVideo(el.dataset.v);
+  if (el.dataset.t) { video.pause(); seek(+el.dataset.t); el.focus?.(); }
+});
+$("#pick-a").addEventListener("change", (e) => { state.a = e.target.value; renderLede(); update({ cards: true }); });
+$("#pick-b").addEventListener("change", (e) => { state.b = e.target.value; update(); });
+$("#swipe").addEventListener("input", (e) => { state.split = +e.target.value; render(); writeHash(); });
+$("#play").addEventListener("click", () => (video.paused ? video.play() : video.pause()));
+$("#prev-rep").addEventListener("click", () => jumpRep(-1));
+$("#next-rep").addEventListener("click", () => jumpRep(1));
+$("#back").addEventListener("click", () => { video.pause(); seek(video.currentTime - 1 / 30); });
+$("#fwd").addEventListener("click", () => { video.pause(); seek(video.currentTime + 1 / 30); });
+$("#zoom").addEventListener("click", () => { state.zoom = !state.zoom; update({ table: false }); });
+$("#help-btn").addEventListener("click", () => $("#help").showModal?.());
+$("#theme").addEventListener("click", () => {
+  const r = document.documentElement;
+  r.dataset.theme = isDark() ? "light" : "dark";
+  try { localStorage.setItem("pushups-theme", r.dataset.theme); } catch {}
+  update({ table: false, cards: true }); renderCompare();
+});
+function jumpRep(dir) {
+  const reps = model(state.v, state.a).reps, t = video.currentTime;
+  const r = dir > 0 ? reps.find((q) => q.bottom > t + 0.05) : reps.findLast((q) => q.bottom < t - 0.05);
+  if (r) { video.pause(); seek(r.bottom); }
+}
+// Swipe by dragging on the canvas, too (the range input below is the keyboard-accessible route)
+let dragging = false;
+canvases[0].addEventListener("pointerdown", (e) => { if (state.mode !== "swipe") return; dragging = true; canvases[0].setPointerCapture(e.pointerId); drag(e); });
+canvases[0].addEventListener("pointermove", (e) => dragging && drag(e));
+canvases[0].addEventListener("pointerup", () => { dragging = false; writeHash(); });
+function drag(e) { const b = canvases[0].getBoundingClientRect(); state.split = Math.max(0, Math.min(1, (e.clientX - b.left) / b.width)); $("#swipe").value = state.split; render(); }
+let tlDown = false;
+$("#tl").addEventListener("pointerdown", (e) => { tlDown = true; video.pause(); tlSeek(e); });
+addEventListener("pointermove", (e) => tlDown && tlSeek(e));
+addEventListener("pointerup", () => (tlDown = false));
+
+// Table: arrow keys move between cells (roving tabindex), Enter jumps the video
+$("#reps").addEventListener("keydown", (e) => {
+  const td = /** @type {HTMLElement} */ (e.target).closest("td");
+  if (!td) return;
+  const tr = td.parentElement, ci = [...tr.children].indexOf(td);
+  const go = { ArrowUp: [tr.previousElementSibling, ci], ArrowDown: [tr.nextElementSibling, ci], ArrowLeft: [tr, ci - 1], ArrowRight: [tr, ci + 1] }[e.key];
+  if (go) {
+    const next = go[0]?.children?.[go[1]];
+    if (next) { e.preventDefault(); td.tabIndex = -1; next.tabIndex = 0; next.focus(); }
+  } else if (e.key === "Enter" && td.dataset.t) { video.pause(); seek(+td.dataset.t); }
+});
+addEventListener("keydown", (e) => {
+  if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement || e.metaKey || e.ctrlKey || e.altKey) return;
+  const inTable = /** @type {HTMLElement} */ (e.target).closest?.("#reps");
+  const k = e.key;
+  if (k === " " && !(e.target instanceof HTMLButtonElement)) { e.preventDefault(); video.paused ? video.play() : video.pause(); }
+  else if ((k === "ArrowLeft" || k === "ArrowRight") && !inTable) { e.preventDefault(); video.pause(); seek(video.currentTime + (k === "ArrowRight" ? 1 : -1) * (e.shiftKey ? 1 : 1 / 30)); }
+  else if (k === "[" || k === "]") jumpRep(k === "]" ? 1 : -1);
+  else if (k >= "1" && k <= "5") setMode(MODES[+k - 1][0]);
+  else if (k === "s" || k === "S") { [state.a, state.b] = [state.b, state.a]; renderLede(); update({ cards: true }); }
+  else if (k === "z" || k === "Z") { state.zoom = !state.zoom; update({ table: false }); }
+  else if (k === "," || k === ".") { const i = SPEEDS.indexOf(state.speed) + (k === "." ? 1 : -1); if (SPEEDS[i]) { state.speed = SPEEDS[i]; video.playbackRate = state.speed; renderControls(); writeHash(); } }
+  else if (k === "?") $("#help").showModal();
+});
+video.addEventListener("play", () => { $("#play-icon").setAttribute("d", "M3 2h4v12H3zM9 2h4v12H9z"); loop(); });
+video.addEventListener("pause", () => { $("#play-icon").setAttribute("d", "M4 2l10 6-10 6z"); writeHash(); });
+video.addEventListener("seeked", () => { render(); if (video.paused) writeHash(); });
+video.addEventListener("loadeddata", () => { $("#loading").hidden = true; if (pendingT != null) { seek(pendingT); pendingT = null; } renderTimeline(); render(); });
+video.addEventListener("error", () => { $("#loading").hidden = false; $("#loading").textContent = "Could not load the video (AV1 WebM). Try a recent Chrome, Edge or Firefox."; });
+new ResizeObserver(() => render()).observe($("#stage"));
+
+// ---------- method text ----------
+function renderMethod() {
+  const sc = P.summary.scoring, rr = P.summary.rep_rules;
+  $("#method").innerHTML = `
+  <ol>
+    <li><b>Pose.</b> Each model finds keypoints in every second frame (~15 fps). Angles use the side of the body facing the camera (the far side is hidden and only guessed).</li>
+    <li><b>Clean-up.</b> Keypoints below 0.3 confidence are dropped, gaps up to 0.5 s are interpolated, then a Savitzky–Golay filter (~0.33 s) removes shake.</li>
+    <li><b>Reps.</b> A rep is a dip in elbow angle of at least ${rr.prominence}° with the bottom under ${rr.max_bottom}°, at most ${rr.max_half} s down and up, a plank at the bottom (hips within ${rr.plank_bend}° of straight, body within 45° of the floor), and hips bent less than ${rr.max_bend}° for ${rr.min_frac * 100}% of the rep. That rules out walking, cobra stretches and downward-dog rests, but keeps reps with piked hips at the top, which are scored down rather than dropped.</li>
+    <li><b>Scores.</b> Each metric maps linearly to 0–100 between a "poor" and a "good" threshold. The rep score is the weighted mean:
+      <table style="margin-block:.5rem;width:auto"><thead><tr><th>Metric</th><th>Measured as</th><th>100 at</th><th>0 at</th><th>Weight</th></tr></thead><tbody>
+      ${METRICS.map((k) => `<tr><td>${sc[k].label}</td><td style="text-align:left">${sc[k].unit}</td><td>${sc[k].good}°</td><td>${sc[k].bad}°</td><td>${sc[k].weight * 100}%</td></tr>`).join("")}
+      </tbody></table>
+      The anchors follow common test standards: the U.S. Army APFT push-up asks for upper arms parallel to the ground at the bottom (≈ 90° elbow) and full extension at the top; the ACSM push-up test requires a straight, rigid back throughout. The exact "0" thresholds are judgement calls, so compare scores <em>between</em> sessions rather than reading them as absolutes.</li>
+    <li><b>Ensemble.</b> The median of the four models' keypoints, point by point. One model's glitch gets outvoted.</li>
+    <li><b>VLM coach.</b> Gemini watches a 480p copy at 5 fps and returns reps with timestamps and scores. It gives no keypoints, so it can't draw proof — it's shown as a cross-check.</li>
+  </ol>
+  <p><b>Is the camera setup the same each day?</b> 2D angles change if the camera moves, so here is the setup at the top of each rep (ensemble keypoints):</p>
+  <table style="width:auto;margin-block:.5rem"><thead><tr><th>Session</th><th title="Angle of the wrist–toe floor line in the image">Floor tilt</th><th title="Angle between the shoulder–ankle line and the floor">Body incline</th><th title="Shoulder-to-ankle length as % of frame width (camera distance)">Body length</th></tr></thead><tbody>
+  ${VIDEOS.map((v) => { const c = P.summary.videos[v].camera ?? {}; return `<tr><td>${DATES[v]}</td><td>${c.floor_tilt}°</td><td>${c.incline}°</td><td>${c.body_length_pct}%</td></tr>`; }).join("")}
+  </tbody></table>
+  <p class="muted">Floor tilt stays within about a degree, so angles are comparable across days. Body incline is within about a degree too. Distance varies a little (body length 73–82% of the frame), which changes pixel sizes but not angles.</p>
+  <p><b>What a side view can't see:</b> elbow flare (needs a front or top view), hand width, shoulder-blade movement, and whether the chest actually touches the floor (the shoulder height is a proxy). Camera tilt is handled by measuring height against the wrist-to-toe floor line, not the image edge.</p>`;
+}
+
+// ---------- boot ----------
+try { const t = localStorage.getItem("pushups-theme"); if (t) document.documentElement.dataset.theme = t; } catch {}
+let pendingT = readHash();
+await loadScript("data/site/summary.js");
+VIDEOS = Object.keys(P.summary.videos).sort(); // integer-like keys ("11") would otherwise come before "07"
+if (!VIDEOS.includes(state.v)) state.v = VIDEOS[0];
+Object.assign(VERDICT, P.summary.verdict ?? {});
+renderCompare(); renderMethod();
+$("#audits").innerHTML = (P.summary.audits ?? []).map((a) => `<figure><img src="${a.src}" alt="${a.alt}" loading="lazy"><figcaption class="muted">${a.alt}</figcaption></figure>`).join("");
+if (state.mode === "flicker") setMode("flicker");
+await setVideo(state.v);
+</script>
+</body>
+</html>

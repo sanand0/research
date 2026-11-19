@@ -1,0 +1,20 @@
+{
+  "_doc": "Manual rulings on disputed reps (fewer than 3 of 4 pose models agree), from 5 fps contact sheets (work/dispute-*.jpg, work/d15-*.jpg). Times = rep bottom (s). Reps that ≥3 pose models agree on are accepted without review.",
+  "08": {
+    "reject": [49.19, 160.2, 164.0],
+    "why": {
+      "49.19": "MediaPipe only (before the 0.7 s min-gap rule): a pause in the bottom of the 48.7 s rep (elbow 76° → 110° → down) counted twice.",
+      "160.2": "Gemini 4 Argon only: downward-dog rest, no elbow bend.",
+      "164.0": "Gemini 4 Argon only: downward-dog rest, no elbow bend."
+    }
+  },
+  "15": {
+    "reject": [10.69, 12.64, 34.62, 94.6],
+    "why": {
+      "10.69": "YOLO only: one rep (bottom 10.3 s) split into two dips by YOLO's jittery elbow angle in the backlight (110° → 131° → 107°).",
+      "12.64": "YOLO (+ Gemini Flash): same split; the single rep's bottom is ~12.2 s.",
+      "34.62": "YOLO only: same split; the single rep's bottom is 34.15 s (YOLO also has 33.95).",
+      "94.6": "Gemini 3.8 Flash only: holding the top position, no rep."
+    }
+  }
+}
